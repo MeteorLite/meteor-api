@@ -1,0 +1,7 @@
+package osrs;
+
+import net.runelite.mapping.ObfuscatedName;
+
+@ObfuscatedName("p")
+public interface class2 {
+}
