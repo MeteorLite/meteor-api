@@ -52,7 +52,7 @@ tasks{
         dependsOn(":mixins:jar")
     }
     findByName("publishToMavenLocal")!!.dependsOn("inject")
-
+    findByName("build")!!.finalizedBy("inject")
 }
 
 
