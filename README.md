@@ -7,6 +7,7 @@ api-rs
 http  
 logger  
 mixins (as injected)
+scripts
 ```
   
 Import into IntelliJ, bump val release in root build.gradle.kts, execute the ```Publish API``` task that is built into the project.  
