@@ -51,7 +51,7 @@ tasks{
         mainClass.set("com.openosrs.injector.Injector")
         dependsOn(":mixins:jar")
     }
-    findByName("publishToMavenLocal")!!.dependsOn("inject")
+    findByName("publishMavenLocalPublicationToMavenLocal")!!.dependsOn("inject")
     findByName("build")!!.finalizedBy("inject")
 }
 
