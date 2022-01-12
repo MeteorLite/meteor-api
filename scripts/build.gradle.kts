@@ -1,5 +1,5 @@
 plugins{
-    java
+    id("org.jetbrains.kotlin.jvm")
 }
 
 group = "org.meteorlite"
@@ -29,6 +29,6 @@ tasks{
     register<JavaExec>("assembleScripts"){
         outputs.cacheIf{true}
         classpath(sourceSets["main"].runtimeClasspath)
-        mainClass.set("net.runelite.script.AssembleMojo")
+        mainClass.set("meteor.scripts.AssembleScripts")
     }
 }

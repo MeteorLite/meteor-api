@@ -6,7 +6,7 @@ plugins{
     `maven-publish`
 }
 
-group = "org.meteorlite"
+group = "meteor"
 val release by rootProject.extra { "1.0.0" }
 
 repositories{
@@ -17,6 +17,23 @@ dependencies{
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     implementation(kotlin("stdlib-jdk8"))
 }
+tasks {
+    processResources {
+        dependsOn(findByPath(":scripts:assembleScripts"))
+        from("scripts/build/scripts")
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenLocal") {
+            artifactId = "scripts"
+            version = release
+            from(components["java"])
+        }
+    }
+}
+
 tasks.test{
     useJUnitPlatform()
 }

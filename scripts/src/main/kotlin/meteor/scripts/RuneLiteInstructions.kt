@@ -22,17 +22,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.script;
+package meteor.scripts
 
-import static net.runelite.api.Opcodes.RUNELITE_EXECUTE;
+import net.runelite.api.Opcodes
+import net.runelite.cache.script.Instructions
 
-import net.runelite.cache.script.Instructions;
-
-public class RuneLiteInstructions extends Instructions {
-
-  @Override
-  public void init() {
-    super.init();
-    add(RUNELITE_EXECUTE, "runelite_callback");
-  }
+class RuneLiteInstructions : Instructions() {
+    override fun init() {
+        super.init()
+        add(Opcodes.RUNELITE_EXECUTE, "runelite_callback")
+    }
 }
