@@ -19,11 +19,11 @@ dependencies {
     compileOnly(group = "com.google.guava", name = "guava", version = "23.2-jre")
     compileOnly(group = "javax.inject", name = "javax.inject", version = "1")
     compileOnly(group = "commons-io", name = "commons-io", version = "2.8.0")
-    compileOnly(project(":runelite-annotations"))
-    compileOnly(project(":runescape-api"))
-    compileOnly(project(":runescape-client"))
-    compileOnly(project(":runelite-api"))
-    compileOnly(project(":meteor-logger"))
+    compileOnly(project(":annotations"))
+    compileOnly(project(":api-rs"))
+    compileOnly(project(":osrs"))
+    compileOnly(project(":api"))
+    compileOnly(project(":logger"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
 tasks{

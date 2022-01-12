@@ -1,6 +1,6 @@
 {
-  "name": "Build MeteorLite",
-  "description": "Verify code will compile",
+  "name": "Build API",
+  "description": "Verifies api functionality",
   "iconName": "gradle",
   "categories": ["Java", "Gradle"]
 }
