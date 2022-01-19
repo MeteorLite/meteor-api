@@ -176,7 +176,7 @@ public abstract class ClientMixin implements RSClient {
     RSNPC npc = cachedNPCs[idx];
     if (npc != null) {
       npc.setIndex(idx);
-      client.getCallbacks().postDeferred(new NpcSpawned(npc));
+      client.getCallbacks().postDeferred(Events.NPC_SPAWNED, new NpcSpawned(npc));
     }
   }
 
@@ -202,7 +202,7 @@ public abstract class ClientMixin implements RSClient {
       client.getCallbacks().post(Events.PLAYER_DESPAWNED, new eventbus.events.PlayerDespawned(oldPlayer));
     }
     if (player != null) {
-      client.getCallbacks().postDeferred(new eventbus.events.PlayerSpawned(player));
+      client.getCallbacks().postDeferred(Events.PLAYER_SPAWNED, new eventbus.events.PlayerSpawned(player));
     }
   }
 

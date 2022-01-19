@@ -460,7 +460,7 @@ public abstract class WidgetMixin implements RSWidget
 
     rl$widgetLastPosChanged = tick;
     WidgetPositioned widgetPositioned = WidgetPositioned.INSTANCE;
-    client.getCallbacks().postDeferred(widgetPositioned);
+    client.getCallbacks().postDeferred(Events.WIDGET_POSITIONED, widgetPositioned);
   }
 
   @Inject

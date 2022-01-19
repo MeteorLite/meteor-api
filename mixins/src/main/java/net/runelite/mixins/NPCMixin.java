@@ -63,7 +63,7 @@ public abstract class NPCMixin implements RSNPC {
         return;
       }
 
-      client.getCallbacks().postDeferred(new NpcChanged(this, oldComposition));
+      client.getCallbacks().postDeferred(Events.NPC_CHANGED, new NpcChanged(this, oldComposition));
     }
   }
 
