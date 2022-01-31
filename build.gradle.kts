@@ -7,7 +7,7 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.0.1" }
+val release by rootProject.extra { "1.0.2" }
 
 repositories{
     mavenCentral()
@@ -16,12 +16,6 @@ dependencies{
     testImplementation("org.junit.jupiter:junit-jupiter-api:_")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     implementation(kotlin("stdlib-jdk8"))
-}
-tasks {
-    processResources {
-        dependsOn(findByPath(":scripts:assembleScripts"))
-        from("scripts/build/scripts")
-    }
 }
 
 publishing {
@@ -34,15 +28,17 @@ publishing {
     }
 }
 
-tasks.test{
-    useJUnitPlatform()
-}
-
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
-}
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+tasks {
+    processResources {
+        dependsOn(findByPath(":scripts:assembleScripts"))
+        from("scripts/build/scripts")
+    }
+    test {
+        useJUnitPlatform()
+    }
+    compileKotlin{
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
 }
