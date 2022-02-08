@@ -47,14 +47,14 @@ public interface Callbacks {
    *
    * @param event the event
    */
-  void post(Enum<Events> type, Object event);
+  void post(Enum<?> type, Object event);
 
   /**
    * Post a deferred event, which gets delayed until the next cycle.
    *
    * @param event the event
    */
-  void postDeferred(Enum<Events> type, Object event);
+  void postDeferred(Enum<?> type, Object event);
 
   /**
    * Called each client cycle.
