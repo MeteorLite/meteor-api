@@ -122,7 +122,7 @@ public class Injector extends InjectData implements InjectTaskHandler {
 
     inject(new CopyRuneLiteClasses(this));
 
-    //inject(new RuneLiteIterableHashTable(this));
+    inject(new RuneLiteIterableHashTable(this));
 
     inject(new RuneliteObject(this));
 

@@ -54,7 +54,18 @@ public abstract class ClanSettingsMixin implements RSClanSettings
 
 		for (int i = 0; i < memberCount; i++)
 		{
-			memberList.add(new ClanMember(memberNames[i], client.getClanRankFromRs(memberRanks[i])));
+			int finalI = i;
+			memberList.add(new ClanMember() {
+				@Override
+				public String getName() {
+					return memberNames[finalI];
+				}
+
+				@Override
+				public ClanRank getRank() {
+					return client.getClanRankFromRs(memberRanks[finalI]);
+				}
+			});
 		}
 
 		return memberList;
@@ -83,7 +94,18 @@ public abstract class ClanSettingsMixin implements RSClanSettings
 			}
 			else if (compare == 0)
 			{
-				return new ClanMember(memberName, client.getClanRankFromRs(memberRanks[tag]));
+
+				return new ClanMember() {
+					@Override
+					public String getName() {
+						return memberName;
+					}
+
+					@Override
+					public ClanRank getRank() {
+						return client.getClanRankFromRs(memberRanks[tag]);
+					}
+				};
 			}
 			else
 			{

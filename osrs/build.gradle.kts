@@ -8,6 +8,7 @@ repositories{
     mavenCentral()
 }
 dependencies{
+    implementation(project(":api"))
     implementation(project(":annotations"))
     implementation(project(":logger"))
     implementation("org.bouncycastle:bcprov-jdk15on:1.52")
