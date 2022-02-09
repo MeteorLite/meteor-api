@@ -7,10 +7,11 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.0.3" }
+val release by rootProject.extra { "1.0.4" }
 
 repositories{
     mavenCentral()
+    mavenLocal()
 }
 dependencies{
     testImplementation("org.junit.jupiter:junit-jupiter-api:_")
