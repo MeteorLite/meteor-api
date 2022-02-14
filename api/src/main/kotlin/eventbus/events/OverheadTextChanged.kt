@@ -1,6 +1,5 @@
 package eventbus.events
 
-import meteor.Event
+import net.runelite.api.Actor
 
-class OverheadTextChanged: Event() {
-}
+class OverheadTextChanged(val actor: Actor, val overheadText: String)
