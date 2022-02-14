@@ -5,6 +5,7 @@ import eventbus.Events;
 import meteor.Logger;
 import eventbus.events.PlaneChanged;
 import net.runelite.api.*;
+import net.runelite.api.Point;
 import net.runelite.api.clan.ClanChannel;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
@@ -23,8 +24,10 @@ import net.runelite.rs.Reflection;
 import net.runelite.rs.api.*;
 
 import javax.annotation.Nullable;
+import java.awt.*;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.List;
 
 import static net.runelite.api.MenuAction.*;
 import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
@@ -1557,14 +1560,60 @@ public abstract class ClientMixin implements RSClient {
   }
 
   @Inject
+  private java.awt.Point getClickPoint(InvokeMenuAction e) {
+    Rectangle bounds = client.getCanvas().getBounds();
+    Random r = new Random();
+    java.awt.Point randomPoint = new java.awt.Point(r.nextInt(bounds.width) + 2, r.nextInt(bounds.height) + 2);
+    if (clickInsideMinimap(randomPoint)) {
+      return getClickPoint(e);
+    }
+
+    return randomPoint;
+  }
+
+  @Inject
+  private boolean clickInsideMinimap(java.awt.Point point) {
+    Rectangle minimap = getMinimap();
+    if (minimap.contains(point)) {
+      return true;
+    }
+    return false;
+  }
+
+  @Inject
+  private static final int MINIMAP_WIDTH = 250;
+
+  @Inject
+  private static final int MINIMAP_HEIGHT = 180;
+
+  @Inject
+  private Rectangle getMinimap() {
+    Rectangle bounds = client.getCanvas().getBounds();
+    return new Rectangle(bounds.width - MINIMAP_WIDTH, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT);
+  }
+
+  @Inject
+  private void processAction(MenuEntry entry, int x, int y) {
+    if (entry.getMenuAction() == MenuAction.WALK) {
+      setDestinationX(x - getBaseX());
+      setDestinationY(y - getBaseY());
+    } else {
+      invokeMenuAction(entry.getOption(), entry.getTarget(), entry.getId(),
+              entry.getMenuAction().getId(), entry.getParam0(), entry.getParam1(), x, y);
+    }
+  }
+
+  @Inject
   @Override
   public void interact(final int identifier, final int opcode, final int param0, final int param1,
                        final int screenX, final int screenY) {
     InvokeMenuAction event = new InvokeMenuAction(identifier, opcode, param0, param1);
     event.setClickX(screenX);
     event.setClickY(screenY);
-
-    client.getCallbacks().post(Events.INVOKE_MENU_ACTION, event);
+    MenuEntry action = new MenuEntry(event.getOption(), event.getTarget(), event.getId(),
+            event.getOpcode(), event.getParam0(), event.getParam1(), false);
+    java.awt.Point p = getClickPoint(event);
+    processAction(action, p.x, p.y);
   }
 
   @Inject
