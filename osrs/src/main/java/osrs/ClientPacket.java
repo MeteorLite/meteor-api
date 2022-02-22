@@ -14,31 +14,37 @@ public class ClientPacket implements class253 {
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("OPPLAYERU")
 	public static final ClientPacket field2913;
 	@ObfuscatedName("l")
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("OPNPC1")
 	public static final ClientPacket field2834;
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("RESUME_PAUSEBUTTON")
 	public static final ClientPacket field2835;
 	@ObfuscatedName("e")
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("RESUME_PAUSEBUTTON")
 	public static final ClientPacket field2836;
 	@ObfuscatedName("r")
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("OPHELD2")
 	public static final ClientPacket field2870;
 	@ObfuscatedName("o")
 	@ObfuscatedSignature(
 		descriptor = "Lie;"
 	)
+	@Export("OPLOCT")
 	public static final ClientPacket field2910;
 	@ObfuscatedName("i")
 	@ObfuscatedSignature(
