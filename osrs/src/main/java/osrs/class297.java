@@ -43,7 +43,7 @@ public class class297 {
 	)
 	@Export("readStringIntParameters")
 	static final IterableNodeHashTable readStringIntParameters(Buffer var0, IterableNodeHashTable var1) {
-		int var2 = var0.readUnsignedByte(); // L: 16
+		int var2 = var0.asfjaja(); // L: 16
 		int var3;
 		if (var1 == null) { // L: 17
 			var3 = GrandExchangeOfferNameComparator.method5702(var2); // L: 18
@@ -51,13 +51,13 @@ public class class297 {
 		}
 
 		for (var3 = 0; var3 < var2; ++var3) { // L: 21
-			boolean var4 = var0.readUnsignedByte() == 1; // L: 22
-			int var5 = var0.readMedium(); // L: 23
+			boolean var4 = var0.asfjaja() == 1; // L: 22
+			int var5 = var0.asfjahsn(); // L: 23
 			Object var6;
 			if (var4) { // L: 25
-				var6 = new ObjectNode(var0.readStringCp1252NullTerminated());
+				var6 = new ObjectNode(var0.asndbaeba());
 			} else {
-				var6 = new IntegerNode(var0.readInt()); // L: 26
+				var6 = new IntegerNode(var0.ehahsjd()); // L: 26
 			}
 
 			var1.put((Node)var6, (long)var5); // L: 27

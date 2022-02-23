@@ -92,7 +92,7 @@ public class Buffer extends Node {
 		garbageValue = "94"
 	)
 	@Export("writeByte")
-	public void writeByte(int var1) {
+	public void asfag(int var1) {
 		this.array[++this.offset - 1] = (byte)var1; // L: 71
 	} // L: 72
 
@@ -102,7 +102,7 @@ public class Buffer extends Node {
 		garbageValue = "255"
 	)
 	@Export("writeShort")
-	public void writeShort(int var1) {
+	public void gaf(int var1) {
 		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 75
 		this.array[++this.offset - 1] = (byte)var1; // L: 76
 	} // L: 77
@@ -113,7 +113,7 @@ public class Buffer extends Node {
 		garbageValue = "1187655626"
 	)
 	@Export("writeMedium")
-	public void writeMedium(int var1) {
+	public void gasgag(int var1) {
 		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 80
 		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 81
 		this.array[++this.offset - 1] = (byte)var1; // L: 82
@@ -125,7 +125,7 @@ public class Buffer extends Node {
 		garbageValue = "18"
 	)
 	@Export("writeInt")
-	public void writeInt(int var1) {
+	public void lakak(int var1) {
 		this.array[++this.offset - 1] = (byte)(var1 >> 24); // L: 86
 		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 87
 		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 88
@@ -134,7 +134,7 @@ public class Buffer extends Node {
 
 	@ObfuscatedName("at")
 	@Export("writeLongMedium")
-	public void writeLongMedium(long var1) {
+	public void opiasfa(long var1) {
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 93
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 32)); // L: 94
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 24)); // L: 95
@@ -145,7 +145,7 @@ public class Buffer extends Node {
 
 	@ObfuscatedName("ae")
 	@Export("writeLong")
-	public void writeLong(long var1) {
+	public void asofoa(long var1) {
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 56)); // L: 102
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 48)); // L: 103
 		this.array[++this.offset - 1] = (byte)((int)(var1 >> 40)); // L: 104
@@ -162,8 +162,8 @@ public class Buffer extends Node {
 		garbageValue = "4"
 	)
 	@Export("writeBoolean")
-	public void writeBoolean(boolean var1) {
-		this.writeByte(var1 ? 1 : 0); // L: 113
+	public void ekekaksd(boolean var1) {
+		this.asfag(var1 ? 1 : 0); // L: 113
 	} // L: 114
 
 	@ObfuscatedName("aj")
@@ -172,7 +172,7 @@ public class Buffer extends Node {
 		garbageValue = "-2105418018"
 	)
 	@Export("writeStringCp1252NullTerminated")
-	public void writeStringCp1252NullTerminated(String var1) {
+	public void aaa(String var1) {
 		int var2 = var1.indexOf(0); // L: 121
 		if (var2 >= 0) { // L: 122
 			throw new IllegalArgumentException("");
@@ -188,7 +188,7 @@ public class Buffer extends Node {
 		garbageValue = "-86251043"
 	)
 	@Export("writeStringCp1252NullCircumfixed")
-	public void writeStringCp1252NullCircumfixed(String var1) {
+	public void aaaa(String var1) {
 		int var2 = var1.indexOf(0); // L: 132
 		if (var2 >= 0) { // L: 133
 			throw new IllegalArgumentException("");
@@ -205,10 +205,10 @@ public class Buffer extends Node {
 		garbageValue = "412537347"
 	)
 	@Export("writeCESU8")
-	public void writeCESU8(CharSequence var1) {
+	public void ekakakf(CharSequence var1) {
 		int var2 = class186.method3692(var1); // L: 140
 		this.array[++this.offset - 1] = 0; // L: 141
-		this.writeVarInt(var2); // L: 142
+		this.achahash(var2); // L: 142
 		this.offset += UrlRequester.method2420(this.array, this.offset, var1); // L: 143
 	} // L: 144
 
@@ -218,7 +218,7 @@ public class Buffer extends Node {
 		garbageValue = "-751072732"
 	)
 	@Export("writeBytes")
-	public void writeBytes(byte[] var1, int var2, int var3) {
+	public void asdd(byte[] var1, int var2, int var3) {
 		for (int var4 = var2; var4 < var3 + var2; ++var4) { // L: 147
 			this.array[++this.offset - 1] = var1[var4];
 		}
@@ -232,7 +232,7 @@ public class Buffer extends Node {
 	)
 	@Export("writeBuffer")
 	public void method7361(Buffer var1) {
-		this.writeBytes(var1.array, 0, var1.offset); // L: 151
+		this.asdd(var1.array, 0, var1.offset); // L: 151
 	} // L: 152
 
 	@ObfuscatedName("bn")
@@ -241,7 +241,7 @@ public class Buffer extends Node {
 		garbageValue = "-489588257"
 	)
 	@Export("writeLengthInt")
-	public void writeLengthInt(int var1) {
+	public void oakskdka(int var1) {
 		if (var1 < 0) { // L: 155
 			throw new IllegalArgumentException(); // L: 156
 		} else {
@@ -258,7 +258,7 @@ public class Buffer extends Node {
 		garbageValue = "156866960"
 	)
 	@Export("writeLengthShort")
-	public void writeLengthShort(int var1) {
+	public void askdkda(int var1) {
 		if (var1 >= 0 && var1 <= 65535) { // L: 165
 			this.array[this.offset - var1 - 2] = (byte)(var1 >> 8); // L: 168
 			this.array[this.offset - var1 - 1] = (byte)var1; // L: 169
@@ -287,11 +287,11 @@ public class Buffer extends Node {
 		garbageValue = "-793889673"
 	)
 	@Export("writeSmartByteShort")
-	public void writeSmartByteShort(int var1) {
+	public void kekeka(int var1) {
 		if (var1 >= 0 && var1 < 128) { // L: 180
-			this.writeByte(var1); // L: 181
+			this.asfag(var1); // L: 181
 		} else if (var1 >= 0 && var1 < 32768) { // L: 184
-			this.writeShort(var1 + 32768); // L: 185
+			this.gaf(var1 + 32768); // L: 185
 		} else {
 			throw new IllegalArgumentException(); // L: 188
 		}
@@ -303,24 +303,24 @@ public class Buffer extends Node {
 		garbageValue = "2108823362"
 	)
 	@Export("writeVarInt")
-	public void writeVarInt(int var1) {
+	public void achahash(int var1) {
 		if ((var1 & -128) != 0) { // L: 192
 			if ((var1 & -16384) != 0) { // L: 193
 				if ((var1 & -2097152) != 0) { // L: 194
 					if ((var1 & -268435456) != 0) { // L: 195
-						this.writeByte(var1 >>> 28 | 128);
+						this.asfag(var1 >>> 28 | 128);
 					}
 
-					this.writeByte(var1 >>> 21 | 128); // L: 196
+					this.asfag(var1 >>> 21 | 128); // L: 196
 				}
 
-				this.writeByte(var1 >>> 14 | 128); // L: 198
+				this.asfag(var1 >>> 14 | 128); // L: 198
 			}
 
-			this.writeByte(var1 >>> 7 | 128); // L: 200
+			this.asfag(var1 >>> 7 | 128); // L: 200
 		}
 
-		this.writeByte(var1 & 127); // L: 202
+		this.asfag(var1 & 127); // L: 202
 	} // L: 203
 
 	@ObfuscatedName("bm")
@@ -329,7 +329,7 @@ public class Buffer extends Node {
 		garbageValue = "-879271951"
 	)
 	@Export("readUnsignedByte")
-	public int readUnsignedByte() {
+	public int asfjaja() {
 		return this.array[++this.offset - 1] & 255; // L: 206
 	}
 
@@ -339,7 +339,7 @@ public class Buffer extends Node {
 		garbageValue = "255"
 	)
 	@Export("readByte")
-	public byte readByte() {
+	public byte ajsfjah() {
 		return this.array[++this.offset - 1]; // L: 210
 	}
 
@@ -349,7 +349,7 @@ public class Buffer extends Node {
 		garbageValue = "24"
 	)
 	@Export("readUnsignedShort")
-	public int readUnsignedShort() {
+	public int nashfa() {
 		this.offset += 2; // L: 214
 		return (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 215
 	}
@@ -360,7 +360,7 @@ public class Buffer extends Node {
 		garbageValue = "37"
 	)
 	@Export("readShort")
-	public int readShort() {
+	public int asfhasd() {
 		this.offset += 2; // L: 219
 		int var1 = (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 220
 		if (var1 > 32767) { // L: 221
@@ -376,7 +376,7 @@ public class Buffer extends Node {
 		garbageValue = "4032"
 	)
 	@Export("readMedium")
-	public int readMedium() {
+	public int asfjahsn() {
 		this.offset += 3; // L: 226
 		return ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8); // L: 227
 	}
@@ -387,7 +387,7 @@ public class Buffer extends Node {
 		garbageValue = "0"
 	)
 	@Export("readInt")
-	public int readInt() {
+	public int ehahsjd() {
 		this.offset += 4; // L: 231
 		return ((this.array[this.offset - 3] & 255) << 16) + (this.array[this.offset - 1] & 255) + ((this.array[this.offset - 2] & 255) << 8) + ((this.array[this.offset - 4] & 255) << 24); // L: 232
 	}
@@ -398,9 +398,9 @@ public class Buffer extends Node {
 		garbageValue = "-1980860780"
 	)
 	@Export("readLong")
-	public long readLong() {
-		long var1 = (long)this.readInt() & 4294967295L; // L: 236
-		long var3 = (long)this.readInt() & 4294967295L; // L: 237
+	public long asfkajsdj() {
+		long var1 = (long)this.ehahsjd() & 4294967295L; // L: 236
+		long var3 = (long)this.ehahsjd() & 4294967295L; // L: 237
 		return var3 + (var1 << 32); // L: 238
 	}
 
@@ -410,7 +410,7 @@ public class Buffer extends Node {
 		garbageValue = "-2022142605"
 	)
 	public float method7374() {
-		return Float.intBitsToFloat(this.readInt()); // L: 242
+		return Float.intBitsToFloat(this.ehahsjd()); // L: 242
 	}
 
 	@ObfuscatedName("bf")
@@ -419,8 +419,8 @@ public class Buffer extends Node {
 		garbageValue = "10416"
 	)
 	@Export("readBoolean")
-	public boolean readBoolean() {
-		return (this.readUnsignedByte() & 1) == 1; // L: 246
+	public boolean asfjwean() {
+		return (this.asfjaja() & 1) == 1; // L: 246
 	}
 
 	@ObfuscatedName("bq")
@@ -429,12 +429,12 @@ public class Buffer extends Node {
 		garbageValue = "1507200448"
 	)
 	@Export("readStringCp1252NullTerminatedOrNull")
-	public String readStringCp1252NullTerminatedOrNull() {
+	public String jasfneba() {
 		if (this.array[this.offset] == 0) { // L: 250
 			++this.offset; // L: 251
 			return null; // L: 252
 		} else {
-			return this.readStringCp1252NullTerminated(); // L: 254
+			return this.asndbaeba(); // L: 254
 		}
 	}
 
@@ -444,7 +444,7 @@ public class Buffer extends Node {
 		garbageValue = "2026301329"
 	)
 	@Export("readStringCp1252NullTerminated")
-	public String readStringCp1252NullTerminated() {
+	public String asndbaeba() {
 		int var1 = this.offset; // L: 258
 
 		while (this.array[++this.offset - 1] != 0) { // L: 259
@@ -460,7 +460,7 @@ public class Buffer extends Node {
 		garbageValue = "1876672545"
 	)
 	@Export("readStringCp1252NullCircumfixed")
-	public String readStringCp1252NullCircumfixed() {
+	public String asnfaebabsfd() {
 		byte var1 = this.array[++this.offset - 1]; // L: 266
 		if (var1 != 0) { // L: 267
 			throw new IllegalStateException("");
@@ -481,12 +481,12 @@ public class Buffer extends Node {
 		garbageValue = "-24918"
 	)
 	@Export("readCESU8")
-	public String readCESU8() {
+	public String asnfabsfba() {
 		byte var1 = this.array[++this.offset - 1]; // L: 276
 		if (var1 != 0) { // L: 277
 			throw new IllegalStateException("");
 		} else {
-			int var2 = this.readVarInt(); // L: 278
+			int var2 = this.enadb(); // L: 278
 			if (var2 + this.offset > this.array.length) {
 				throw new IllegalStateException(""); // L: 279
 			} else {
@@ -503,7 +503,7 @@ public class Buffer extends Node {
 		garbageValue = "11937"
 	)
 	@Export("readBytes")
-	public void readBytes(byte[] var1, int var2, int var3) {
+	public void asfneabab(byte[] var1, int var2, int var3) {
 		for (int var4 = var2; var4 < var3 + var2; ++var4) {
 			var1[var4] = this.array[++this.offset - 1]; // L: 286
 		}
@@ -516,9 +516,9 @@ public class Buffer extends Node {
 		garbageValue = "-23"
 	)
 	@Export("readShortSmart")
-	public int readShortSmart() {
+	public int asfnaebabsf() {
 		int var1 = this.array[this.offset] & 255; // L: 290
-		return var1 < 128 ? this.readUnsignedByte() - 64 : this.readUnsignedShort() - 49152; // L: 291 292
+		return var1 < 128 ? this.asfjaja() - 64 : this.nashfa() - 49152; // L: 291 292
 	}
 
 	@ObfuscatedName("bo")
@@ -527,9 +527,9 @@ public class Buffer extends Node {
 		garbageValue = "1587760461"
 	)
 	@Export("readUShortSmart")
-	public int readUShortSmart() {
+	public int asfmaenansd() {
 		int var1 = this.array[this.offset] & 255; // L: 296
-		return var1 < 128 ? this.readUnsignedByte() : this.readUnsignedShort() - 32768; // L: 297 298
+		return var1 < 128 ? this.asfjaja() : this.nashfa() - 32768; // L: 297 298
 	}
 
 	@ObfuscatedName("by")
@@ -542,7 +542,7 @@ public class Buffer extends Node {
 		int var1 = 0; // L: 302
 
 		int var2;
-		for (var2 = this.readUShortSmart(); var2 == 32767; var2 = this.readUShortSmart()) { // L: 303 304 306
+		for (var2 = this.asfmaenansd(); var2 == 32767; var2 = this.asfmaenansd()) { // L: 303 304 306
 			var1 += 32767; // L: 305
 		}
 
@@ -557,7 +557,7 @@ public class Buffer extends Node {
 	)
 	@Export("readLargeSmart")
 	public int method7384() {
-		return this.array[this.offset] < 0 ? this.readInt() & Integer.MAX_VALUE : this.readUnsignedShort(); // L: 313 314
+		return this.array[this.offset] < 0 ? this.ehahsjd() & Integer.MAX_VALUE : this.nashfa(); // L: 313 314
 	}
 
 	@ObfuscatedName("bp")
@@ -568,9 +568,9 @@ public class Buffer extends Node {
 	@Export("readNullableLargeSmart")
 	public int method7352() {
 		if (this.array[this.offset] < 0) { // L: 318
-			return this.readInt() & Integer.MAX_VALUE;
+			return this.ehahsjd() & Integer.MAX_VALUE;
 		} else {
-			int var1 = this.readUnsignedShort(); // L: 319
+			int var1 = this.nashfa(); // L: 319
 			return var1 == 32767 ? -1 : var1; // L: 320
 		}
 	}
@@ -581,7 +581,7 @@ public class Buffer extends Node {
 		garbageValue = "-86778709"
 	)
 	@Export("readVarInt")
-	public int readVarInt() {
+	public int enadb() {
 		byte var1 = this.array[++this.offset - 1]; // L: 325
 
 		int var2;
@@ -603,8 +603,8 @@ public class Buffer extends Node {
 		this.offset = 0; // L: 336
 
 		for (int var3 = 0; var3 < var2; ++var3) { // L: 337
-			int var4 = this.readInt(); // L: 338
-			int var5 = this.readInt(); // L: 339
+			int var4 = this.ehahsjd(); // L: 338
+			int var5 = this.ehahsjd(); // L: 339
 			int var6 = 0; // L: 340
 			int var7 = -1640531527; // L: 341
 
@@ -614,8 +614,8 @@ public class Buffer extends Node {
 			}
 
 			this.offset -= 8; // L: 348
-			this.writeInt(var4); // L: 349
-			this.writeInt(var5); // L: 350
+			this.lakak(var4); // L: 349
+			this.lakak(var5); // L: 350
 		}
 
 	} // L: 352
@@ -631,8 +631,8 @@ public class Buffer extends Node {
 		this.offset = 0; // L: 356
 
 		for (int var3 = 0; var3 < var2; ++var3) { // L: 357
-			int var4 = this.readInt(); // L: 358
-			int var5 = this.readInt(); // L: 359
+			int var4 = this.ehahsjd(); // L: 358
+			int var5 = this.ehahsjd(); // L: 359
 			int var6 = -957401312; // L: 360
 			int var7 = -1640531527; // L: 361
 
@@ -642,8 +642,8 @@ public class Buffer extends Node {
 			}
 
 			this.offset -= 8; // L: 368
-			this.writeInt(var4); // L: 369
-			this.writeInt(var5); // L: 370
+			this.lakak(var4); // L: 369
+			this.lakak(var5); // L: 370
 		}
 
 	} // L: 372
@@ -660,8 +660,8 @@ public class Buffer extends Node {
 		int var5 = (var3 - var2) / 8; // L: 377
 
 		for (int var6 = 0; var6 < var5; ++var6) { // L: 378
-			int var7 = this.readInt(); // L: 379
-			int var8 = this.readInt(); // L: 380
+			int var7 = this.ehahsjd(); // L: 379
+			int var8 = this.ehahsjd(); // L: 380
 			int var9 = 0; // L: 381
 			int var10 = -1640531527; // L: 382
 
@@ -671,8 +671,8 @@ public class Buffer extends Node {
 			}
 
 			this.offset -= 8; // L: 389
-			this.writeInt(var7); // L: 390
-			this.writeInt(var8); // L: 391
+			this.lakak(var7); // L: 390
+			this.lakak(var8); // L: 391
 		}
 
 		this.offset = var4; // L: 393
@@ -690,8 +690,8 @@ public class Buffer extends Node {
 		int var5 = (var3 - var2) / 8; // L: 399
 
 		for (int var6 = 0; var6 < var5; ++var6) { // L: 400
-			int var7 = this.readInt(); // L: 401
-			int var8 = this.readInt(); // L: 402
+			int var7 = this.ehahsjd(); // L: 401
+			int var8 = this.ehahsjd(); // L: 402
 			int var9 = -957401312; // L: 403
 			int var10 = -1640531527; // L: 404
 
@@ -701,8 +701,8 @@ public class Buffer extends Node {
 			}
 
 			this.offset -= 8; // L: 411
-			this.writeInt(var7); // L: 412
-			this.writeInt(var8); // L: 413
+			this.lakak(var7); // L: 412
+			this.lakak(var8); // L: 413
 		}
 
 		this.offset = var4; // L: 415
@@ -718,13 +718,13 @@ public class Buffer extends Node {
 		int var3 = this.offset; // L: 419
 		this.offset = 0; // L: 420
 		byte[] var4 = new byte[var3]; // L: 421
-		this.readBytes(var4, 0, var3); // L: 422
+		this.asfneabab(var4, 0, var3); // L: 422
 		BigInteger var5 = new BigInteger(var4); // L: 423
 		BigInteger var6 = var5.modPow(var1, var2); // L: 424
 		byte[] var7 = var6.toByteArray(); // L: 425
 		this.offset = 0; // L: 426
-		this.writeShort(var7.length); // L: 427
-		this.writeBytes(var7, 0, var7.length); // L: 428
+		this.gaf(var7.length); // L: 427
+		this.asdd(var7, 0, var7.length); // L: 428
 	} // L: 429
 
 	@ObfuscatedName("cq")
@@ -733,9 +733,9 @@ public class Buffer extends Node {
 		garbageValue = "424794387"
 	)
 	@Export("writeCrc")
-	public int writeCrc(int var1) {
+	public int lsfnman(int var1) {
 		int var2 = ClientPreferences.method2230(this.array, var1, this.offset); // L: 432
-		this.writeInt(var2); // L: 433
+		this.lakak(var2); // L: 433
 		return var2; // L: 434
 	}
 
@@ -748,7 +748,7 @@ public class Buffer extends Node {
 	public boolean checkCrc() {
 		this.offset -= 4; // L: 438
 		int var1 = ClientPreferences.method2230(this.array, 0, this.offset); // L: 439
-		int var2 = this.readInt(); // L: 440
+		int var2 = this.ehahsjd(); // L: 440
 		return var2 == var1; // L: 441
 	}
 
@@ -971,7 +971,7 @@ public class Buffer extends Node {
 		garbageValue = "614331119"
 	)
 	@Export("writeIntLE")
-	public void writeIntME(int var1) {
+	public void asfaggfasd(int var1) {
 		this.array[++this.offset - 1] = (byte)var1; // L: 538
 		this.array[++this.offset - 1] = (byte)(var1 >> 8); // L: 539
 		this.array[++this.offset - 1] = (byte)(var1 >> 16); // L: 540

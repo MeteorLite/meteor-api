@@ -16,7 +16,7 @@ public class class8 {
 		descriptor = "(Lpi;)V"
 	)
 	class8(Buffer var1) {
-		this(var1.readUnsignedByte(), var1.readUnsignedByte(), var1.readStringCp1252NullTerminated()); // L: 19
+		this(var1.asfjaja(), var1.asfjaja(), var1.asndbaeba()); // L: 19
 	} // L: 20
 
 	class8(int var1, int var2, String var3) {

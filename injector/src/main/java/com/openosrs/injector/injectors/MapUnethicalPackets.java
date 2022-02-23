@@ -18,7 +18,7 @@ public class MapUnethicalPackets extends AbstractInjector {
     public void inject() {
         unethicalRsc = load(new File("./lib/unethical-rsc-203.jar"));
 
-        for (final ClassFile deobClass : inject.getVanilla()) {
+        for (final ClassFile deobClass : inject.getDeobfuscated()) {
             if ((deobClass.getName().equals("osrs/ClientPacket")) ||
                 (deobClass.getName().equals("osrs/ServerPacket")) ||
                 (deobClass.getName().equals("osrs/Buffer")))

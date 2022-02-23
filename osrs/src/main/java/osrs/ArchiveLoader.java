@@ -77,16 +77,16 @@ public class ArchiveLoader {
 	@Export("decompressBytes")
 	static final byte[] decompressBytes(byte[] var0) {
 		Buffer var1 = new Buffer(var0); // L: 424
-		int var2 = var1.readUnsignedByte(); // L: 425
-		int var3 = var1.readInt(); // L: 426
+		int var2 = var1.asfjaja(); // L: 425
+		int var3 = var1.ehahsjd(); // L: 426
 		if (var3 < 0 || AbstractArchive.field3910 != 0 && var3 > AbstractArchive.field3910) { // L: 427
 			throw new RuntimeException(); // L: 428
 		} else if (var2 == 0) { // L: 430
 			byte[] var6 = new byte[var3]; // L: 431
-			var1.readBytes(var6, 0, var3); // L: 432
+			var1.asfneabab(var6, 0, var3); // L: 432
 			return var6; // L: 433
 		} else {
-			int var4 = var1.readInt(); // L: 436
+			int var4 = var1.ehahsjd(); // L: 436
 			if (var4 >= 0 && (AbstractArchive.field3910 == 0 || var4 <= AbstractArchive.field3910)) { // L: 437
 				byte[] var5 = new byte[var4]; // L: 440
 				if (var2 == 1) { // L: 441

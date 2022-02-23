@@ -51,7 +51,7 @@ public class StructComposition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 37
+			int var2 = var1.asfjaja(); // L: 37
 			if (var2 == 0) { // L: 38
 				return; // L: 41
 			}
@@ -105,10 +105,10 @@ public class StructComposition extends DualNode {
 			if (var3.rank == -1) {
 				String var4 = var3.username.getName(); // L: 11947
 				PacketBufferNode var5 = class135.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher); // L: 11948
-				var5.packetBuffer.writeByte(3 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4)); // L: 11949
-				var5.packetBuffer.writeByte(var0); // L: 11950
-				var5.packetBuffer.writeShort(var1); // L: 11951
-				var5.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 11952
+				var5.packetBuffer.asfag(3 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4)); // L: 11949
+				var5.packetBuffer.asfag(var0); // L: 11950
+				var5.packetBuffer.gaf(var1); // L: 11951
+				var5.packetBuffer.aaa(var4); // L: 11952
 				Client.packetWriter.addNode(var5); // L: 11953
 			}
 		}

@@ -71,8 +71,8 @@ public abstract class RouteStrategy {
 	@Export("readReflectionCheck")
 	public static void readReflectionCheck(Buffer var0, int var1) {
 		ReflectionCheck var2 = new ReflectionCheck(); // L: 133
-		var2.size = var0.readUnsignedByte(); // L: 134
-		var2.id = var0.readInt(); // L: 135
+		var2.size = var0.asfjaja(); // L: 134
+		var2.id = var0.ehahsjd(); // L: 135
 		var2.operations = new int[var2.size]; // L: 136
 		var2.creationErrors = new int[var2.size]; // L: 137
 		var2.fields = new Field[var2.size]; // L: 138
@@ -82,29 +82,29 @@ public abstract class RouteStrategy {
 
 		for (int var3 = 0; var3 < var2.size; ++var3) { // L: 142
 			try {
-				int var4 = var0.readUnsignedByte(); // L: 144
+				int var4 = var0.asfjaja(); // L: 144
 				String var5;
 				String var6;
 				int var7;
 				if (var4 != 0 && var4 != 1 && var4 != 2) { // L: 145
 					if (var4 == 3 || var4 == 4) { // L: 155
-						var5 = var0.readStringCp1252NullTerminated(); // L: 156
-						var6 = var0.readStringCp1252NullTerminated(); // L: 157
-						var7 = var0.readUnsignedByte(); // L: 158
+						var5 = var0.asndbaeba(); // L: 156
+						var6 = var0.asndbaeba(); // L: 157
+						var7 = var0.asfjaja(); // L: 158
 						String[] var8 = new String[var7]; // L: 159
 
 						for (int var9 = 0; var9 < var7; ++var9) { // L: 160
-							var8[var9] = var0.readStringCp1252NullTerminated();
+							var8[var9] = var0.asndbaeba();
 						}
 
-						String var20 = var0.readStringCp1252NullTerminated(); // L: 161
+						String var20 = var0.asndbaeba(); // L: 161
 						byte[][] var10 = new byte[var7][]; // L: 162
 						int var12;
 						if (var4 == 3) { // L: 163
 							for (int var11 = 0; var11 < var7; ++var11) { // L: 164
-								var12 = var0.readInt(); // L: 165
+								var12 = var0.ehahsjd(); // L: 165
 								var10[var11] = new byte[var12]; // L: 166
-								var0.readBytes(var10[var11], 0, var12); // L: 167
+								var0.asfneabab(var10[var11], 0, var12); // L: 167
 							}
 						}
 
@@ -147,11 +147,11 @@ public abstract class RouteStrategy {
 						var2.arguments[var3] = var10; // L: 199
 					}
 				} else {
-					var5 = var0.readStringCp1252NullTerminated(); // L: 146
-					var6 = var0.readStringCp1252NullTerminated(); // L: 147
+					var5 = var0.asndbaeba(); // L: 146
+					var6 = var0.asndbaeba(); // L: 147
 					var7 = 0; // L: 148
 					if (var4 == 1) { // L: 149
-						var7 = var0.readInt();
+						var7 = var0.ehahsjd();
 					}
 
 					var2.operations[var3] = var4; // L: 150

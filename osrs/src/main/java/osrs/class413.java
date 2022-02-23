@@ -28,7 +28,7 @@ final class class413 implements class410 {
 		garbageValue = "1"
 	)
 	public Object vmethod7281(Buffer var1) {
-		return var1.readLong(); // L: 31
+		return var1.asfkajsdj(); // L: 31
 	}
 
 	@ObfuscatedName("v")
@@ -37,6 +37,6 @@ final class class413 implements class410 {
 		garbageValue = "117738037"
 	)
 	void method7244(Long var1, Buffer var2) {
-		var2.writeLong(var1); // L: 26
+		var2.asofoa(var1); // L: 26
 	} // L: 27
 }

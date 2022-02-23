@@ -201,18 +201,18 @@ public class Varcs {
 			}
 
 			Buffer var23 = new Buffer(var2); // L: 112
-			var23.writeByte(2); // L: 113
-			var23.writeShort(var3); // L: 114
+			var23.asfag(2); // L: 113
+			var23.gaf(var3); // L: 114
 			Iterator var24 = this.map.entrySet().iterator(); // L: 115
 
 			while (var24.hasNext()) {
 				Entry var12 = (Entry)var24.next(); // L: 116
 				int var13 = (Integer)var12.getKey(); // L: 118
 				if (this.intsPersistence[var13]) { // L: 119
-					var23.writeShort(var13); // L: 120
+					var23.gaf(var13); // L: 120
 					Object var8 = var12.getValue(); // L: 121
 					class414 var9 = class414.method7269(var8.getClass()); // L: 122
-					var23.writeByte(var9.field4491); // L: 123
+					var23.asfag(var9.field4491); // L: 123
 					class414.method7256(var8, var23); // L: 124
 				}
 			}
@@ -257,14 +257,14 @@ public class Varcs {
 					return; // L: 152
 				}
 
-				int var15 = var14.readUnsignedByte(); // L: 153
+				int var15 = var14.asfjaja(); // L: 153
 				if (var15 >= 0 && var15 <= 2) {
 					int var7;
 					int var8;
 					int var9;
 					int var16;
 					if (var15 >= 2) { // L: 155
-						var16 = var14.readUnsignedShort(); // L: 156
+						var16 = var14.nashfa(); // L: 156
 						var7 = 0;
 
 						while (true) {
@@ -272,8 +272,8 @@ public class Varcs {
 								break label224;
 							}
 
-							var8 = var14.readUnsignedShort(); // L: 158
-							var9 = var14.readUnsignedByte(); // L: 159
+							var8 = var14.nashfa(); // L: 158
+							var9 = var14.asfjaja(); // L: 159
 							class414 var10 = (class414)class140.findEnumerated(class414.method7264(), var9); // L: 160
 							Object var11 = var10.method7259(var14); // L: 161
 							if (this.intsPersistence[var8]) { // L: 162
@@ -283,17 +283,17 @@ public class Varcs {
 							++var7; // L: 157
 						}
 					} else {
-						var16 = var14.readUnsignedShort(); // L: 168
+						var16 = var14.nashfa(); // L: 168
 
 						for (var7 = 0; var7 < var16; ++var7) { // L: 169
-							var8 = var14.readUnsignedShort(); // L: 170
-							var9 = var14.readInt(); // L: 171
+							var8 = var14.nashfa(); // L: 170
+							var9 = var14.ehahsjd(); // L: 171
 							if (this.intsPersistence[var8]) { // L: 172
 								this.map.put(var8, var9); // L: 173
 							}
 						}
 
-						var7 = var14.readUnsignedShort(); // L: 176
+						var7 = var14.nashfa(); // L: 176
 						var8 = 0;
 
 						while (true) {
@@ -301,8 +301,8 @@ public class Varcs {
 								break label224;
 							}
 
-							var14.readUnsignedShort(); // L: 178
-							var14.readStringCp1252NullTerminated(); // L: 179
+							var14.nashfa(); // L: 178
+							var14.asndbaeba(); // L: 179
 							++var8; // L: 177
 						}
 					}

@@ -1,6 +1,10 @@
 package net.runelite.api.packets;
 
-public interface PacketWriter {
+public interface PacketWriter
+{
     void queuePacket(PacketBufferNode packet);
+
     IsaacCipher getIsaacCipher();
+
+    ServerPacket getServerPacket();
 }

@@ -20,7 +20,7 @@ final class class411 implements class410 {
 		garbageValue = "1"
 	)
 	public Object vmethod7281(Buffer var1) {
-		return var1.readInt(); // L: 17
+		return var1.ehahsjd(); // L: 17
 	}
 
 	@ObfuscatedName("v")
@@ -29,6 +29,6 @@ final class class411 implements class410 {
 		garbageValue = "1498076670"
 	)
 	void method7230(Integer var1, Buffer var2) {
-		var2.writeInt(var1); // L: 12
+		var2.lakak(var1); // L: 12
 	} // L: 13
 }

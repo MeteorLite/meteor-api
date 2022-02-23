@@ -185,8 +185,8 @@ public class FriendSystem {
 						LoginScreenAnimation.addGameMessage(30, "", var4); // L: 109
 					} else {
 						PacketBufferNode var3 = class135.getPacketBufferNode(ClientPacket.field2917, Client.packetWriter.isaacCipher); // L: 116
-						var3.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1)); // L: 117
-						var3.packetBuffer.writeStringCp1252NullTerminated(var1); // L: 118
+						var3.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1)); // L: 117
+						var3.packetBuffer.aaa(var1); // L: 118
 						Client.packetWriter.addNode(var3); // L: 119
 					}
 				}
@@ -263,8 +263,8 @@ public class FriendSystem {
 				if (this.friendsList.removeByUsername(var2)) { // L: 194
 					class412.method7241(); // L: 195
 					PacketBufferNode var3 = class135.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher); // L: 197
-					var3.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1)); // L: 198
-					var3.packetBuffer.writeStringCp1252NullTerminated(var1); // L: 199
+					var3.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1)); // L: 198
+					var3.packetBuffer.aaa(var1); // L: 199
 					Client.packetWriter.addNode(var3); // L: 200
 				}
 
@@ -286,8 +286,8 @@ public class FriendSystem {
 				if (this.ignoreList.removeByUsername(var2)) { // L: 209
 					class412.method7241(); // L: 210
 					PacketBufferNode var3 = class135.getPacketBufferNode(ClientPacket.field2916, Client.packetWriter.isaacCipher);
-					var3.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1));
-					var3.packetBuffer.writeStringCp1252NullTerminated(var1);
+					var3.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var1));
+					var3.packetBuffer.aaa(var1);
 					Client.packetWriter.addNode(var3); // L: 215
 				}
 
@@ -331,7 +331,7 @@ public class FriendSystem {
 			while (true) {
 				int var9;
 				while (!var8) { // L: 222
-					var9 = var4.readUShortSmart(); // L: 228
+					var9 = var4.asfmaenansd(); // L: 228
 					if (var9 == 0) { // L: 229
 						continue label68;
 					}
@@ -339,7 +339,7 @@ public class FriendSystem {
 					var7 += var9 - 1; // L: 230
 					int var10 = var7 & 63; // L: 231
 					int var11 = var7 >> 6 & 63; // L: 232
-					int var12 = var4.readUnsignedByte() >> 2; // L: 233
+					int var12 = var4.asfjaja() >> 2; // L: 233
 					int var13 = var11 + var1; // L: 234
 					int var14 = var10 + var2; // L: 235
 					if (var13 > 0 && var14 > 0 && var13 < 103 && var14 < 103) { // L: 236
@@ -355,12 +355,12 @@ public class FriendSystem {
 					}
 				}
 
-				var9 = var4.readUShortSmart(); // L: 223
+				var9 = var4.asfmaenansd(); // L: 223
 				if (var9 == 0) { // L: 224
 					break;
 				}
 
-				var4.readUnsignedByte(); // L: 225
+				var4.asfjaja(); // L: 225
 			}
 		}
 	}

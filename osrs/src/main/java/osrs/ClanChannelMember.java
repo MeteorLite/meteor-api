@@ -134,9 +134,9 @@ public class ClanChannelMember {
 
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2]; // L: 3330
 			PacketBufferNode var13 = class135.getPacketBufferNode(ClientPacket.field2872, Client.packetWriter.isaacCipher); // L: 3332
-			var13.packetBuffer.writeByte(Client.publicChatMode); // L: 3333
-			var13.packetBuffer.writeByte(class65.privateChatMode.field4631); // L: 3334
-			var13.packetBuffer.writeByte(Client.tradeChatMode); // L: 3335
+			var13.packetBuffer.asfag(Client.publicChatMode); // L: 3333
+			var13.packetBuffer.asfag(class65.privateChatMode.field4631); // L: 3334
+			var13.packetBuffer.asfag(Client.tradeChatMode); // L: 3335
 			Client.packetWriter.addNode(var13); // L: 3336
 			return 1; // L: 3337
 		} else {
@@ -150,10 +150,10 @@ public class ClanChannelMember {
 				var7 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize]; // L: 3342
 				var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1]; // L: 3343
 				var6 = class135.getPacketBufferNode(ClientPacket.field2877, Client.packetWriter.isaacCipher); // L: 3345
-				var6.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var8) + 2); // L: 3346
-				var6.packetBuffer.writeStringCp1252NullTerminated(var8); // L: 3347
-				var6.packetBuffer.writeByte(var7 - 1); // L: 3348
-				var6.packetBuffer.writeByte(var9); // L: 3349
+				var6.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var8) + 2); // L: 3346
+				var6.packetBuffer.aaa(var8); // L: 3347
+				var6.packetBuffer.asfag(var7 - 1); // L: 3348
+				var6.packetBuffer.asfag(var9); // L: 3349
 				Client.packetWriter.addNode(var6); // L: 3350
 				return 1; // L: 3351
 			} else {
@@ -224,11 +224,11 @@ public class ClanChannelMember {
 							var8 = Interpreter.Interpreter_stringStack[BufferedNetSocket.Interpreter_stringStackSize]; // L: 3411
 							String var11 = Interpreter.Interpreter_stringStack[BufferedNetSocket.Interpreter_stringStackSize + 1]; // L: 3412
 							var12 = class135.getPacketBufferNode(ClientPacket.field2875, Client.packetWriter.isaacCipher); // L: 3414
-							var12.packetBuffer.writeShort(0); // L: 3415
+							var12.packetBuffer.gaf(0); // L: 3415
 							int var10 = var12.packetBuffer.offset; // L: 3416
-							var12.packetBuffer.writeStringCp1252NullTerminated(var8); // L: 3417
+							var12.packetBuffer.aaa(var8); // L: 3417
 							WorldMapRectangle.method4757(var12.packetBuffer, var11); // L: 3418
-							var12.packetBuffer.writeLengthShort(var12.packetBuffer.offset - var10); // L: 3419
+							var12.packetBuffer.askdkda(var12.packetBuffer.offset - var10); // L: 3419
 							Client.packetWriter.addNode(var12); // L: 3420
 							return 1; // L: 3421
 						} else if (var0 == ScriptOpcodes.CHAT_SENDCLAN) { // L: 3423
@@ -400,8 +400,8 @@ public class ClanChannelMember {
 		}
 
 		PacketBufferNode var1 = class135.getPacketBufferNode(ClientPacket.field2854, Client.packetWriter.isaacCipher); // L: 3594
-		var1.packetBuffer.writeByte(var0.length() + 1); // L: 3595
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 3596
+		var1.packetBuffer.asfag(var0.length() + 1); // L: 3595
+		var1.packetBuffer.aaa(var0); // L: 3596
 		Client.packetWriter.addNode(var1); // L: 3597
 	} // L: 3598
 }

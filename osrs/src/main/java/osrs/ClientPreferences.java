@@ -97,47 +97,47 @@ public class ClientPreferences {
 		this.field1231 = -1; // L: 22
 		this.parameters = new LinkedHashMap(); // L: 23
 		if (var1 != null && var1.array != null) { // L: 30
-			int var2 = var1.readUnsignedByte(); // L: 34
+			int var2 = var1.asfjaja(); // L: 34
 			if (var2 >= 0 && var2 <= ClientPreferences_optionCount) { // L: 35
-				if (var1.readUnsignedByte() == 1) {
+				if (var1.asfjaja() == 1) {
 					this.roofsHidden = true;
 				}
 
 				if (var2 > 1) { // L: 40
-					this.titleMusicDisabled = var1.readUnsignedByte() == 1; // L: 41
+					this.titleMusicDisabled = var1.asfjaja() == 1; // L: 41
 				}
 
 				if (var2 > 3) {
-					this.windowMode = var1.readUnsignedByte();
+					this.windowMode = var1.asfjaja();
 				}
 
 				if (var2 > 2) {
-					int var3 = var1.readUnsignedByte();
+					int var3 = var1.asfjaja();
 
 					for (int var4 = 0; var4 < var3; ++var4) {
-						int var5 = var1.readInt();
-						int var6 = var1.readInt(); // L: 50
+						int var5 = var1.ehahsjd();
+						int var6 = var1.ehahsjd(); // L: 50
 						this.parameters.put(var5, var6);
 					}
 				}
 
 				if (var2 > 4) { // L: 54
-					this.rememberedUsername = var1.readStringCp1252NullTerminatedOrNull(); // L: 55
+					this.rememberedUsername = var1.jasfneba(); // L: 55
 				}
 
 				if (var2 > 5) { // L: 57
-					this.hideUsername = var1.readBoolean(); // L: 58
+					this.hideUsername = var1.asfjwean(); // L: 58
 				}
 
 				if (var2 > 6) { // L: 60
-					this.brightness = (double)var1.readUnsignedByte() / 100.0D; // L: 61
-					this.musicVolume = var1.readUnsignedByte(); // L: 62
-					this.soundEffectsVolume = var1.readUnsignedByte(); // L: 63
-					this.areaSoundEffectsVolume = var1.readUnsignedByte(); // L: 64
+					this.brightness = (double)var1.asfjaja() / 100.0D; // L: 61
+					this.musicVolume = var1.asfjaja(); // L: 62
+					this.soundEffectsVolume = var1.asfjaja(); // L: 63
+					this.areaSoundEffectsVolume = var1.asfjaja(); // L: 64
 				}
 
 				if (var2 > 7) { // L: 66
-					this.field1231 = var1.readUnsignedByte(); // L: 67
+					this.field1231 = var1.asfjaja(); // L: 67
 				}
 			} else {
 				this.method2226(true); // L: 36
@@ -164,26 +164,26 @@ public class ClientPreferences {
 	@Export("toBuffer")
 	Buffer toBuffer() {
 		Buffer var1 = new Buffer(100); // L: 76
-		var1.writeByte(ClientPreferences_optionCount); // L: 77
-		var1.writeByte(this.roofsHidden ? 1 : 0); // L: 78
-		var1.writeByte(this.titleMusicDisabled ? 1 : 0); // L: 79
-		var1.writeByte(this.windowMode); // L: 80
-		var1.writeByte(this.parameters.size()); // L: 81
+		var1.asfag(ClientPreferences_optionCount); // L: 77
+		var1.asfag(this.roofsHidden ? 1 : 0); // L: 78
+		var1.asfag(this.titleMusicDisabled ? 1 : 0); // L: 79
+		var1.asfag(this.windowMode); // L: 80
+		var1.asfag(this.parameters.size()); // L: 81
 		Iterator var2 = this.parameters.entrySet().iterator(); // L: 82
 
 		while (var2.hasNext()) {
 			Entry var3 = (Entry)var2.next(); // L: 83
-			var1.writeInt((Integer)var3.getKey()); // L: 85
-			var1.writeInt((Integer)var3.getValue()); // L: 86
+			var1.lakak((Integer)var3.getKey()); // L: 85
+			var1.lakak((Integer)var3.getValue()); // L: 86
 		}
 
-		var1.writeStringCp1252NullTerminated(this.rememberedUsername != null ? this.rememberedUsername : ""); // L: 89
-		var1.writeBoolean(this.hideUsername); // L: 90
-		var1.writeByte((int)(100.0D * this.brightness)); // L: 91
-		var1.writeByte(this.musicVolume); // L: 92
-		var1.writeByte(this.soundEffectsVolume); // L: 93
-		var1.writeByte(this.areaSoundEffectsVolume); // L: 94
-		var1.writeByte(this.field1231); // L: 95
+		var1.aaa(this.rememberedUsername != null ? this.rememberedUsername : ""); // L: 89
+		var1.ekekaksd(this.hideUsername); // L: 90
+		var1.asfag((int)(100.0D * this.brightness)); // L: 91
+		var1.asfag(this.musicVolume); // L: 92
+		var1.asfag(this.soundEffectsVolume); // L: 93
+		var1.asfag(this.areaSoundEffectsVolume); // L: 94
+		var1.asfag(this.field1231); // L: 95
 		return var1; // L: 96
 	}
 

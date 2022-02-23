@@ -42,7 +42,7 @@ public class class125 extends class126 {
 		garbageValue = "703192976"
 	)
 	void vmethod3019(Buffer var1) {
-		this.field1514 = var1.readUnsignedShort(); // L: 119
+		this.field1514 = var1.nashfa(); // L: 119
 	} // L: 120
 
 	@ObfuscatedName("l")
@@ -121,39 +121,39 @@ public class class125 extends class126 {
 				Buffer var6 = new Buffer(128); // L: 1229
 				Buffer var7 = new Buffer(128); // L: 1230
 				int[] var8 = new int[]{var5.nextInt(), var5.nextInt(), (int)(var1 >> 32), (int)var1}; // L: 1231 1232 1233 1234 1235
-				var6.writeByte(10); // L: 1236
+				var6.asfag(10); // L: 1236
 
 				int var9;
 				for (var9 = 0; var9 < 4; ++var9) { // L: 1237
-					var6.writeInt(var5.nextInt()); // L: 1238
+					var6.lakak(var5.nextInt()); // L: 1238
 				}
 
-				var6.writeInt(var8[0]); // L: 1240
-				var6.writeInt(var8[1]); // L: 1241
-				var6.writeLong(var1); // L: 1242
-				var6.writeLong(0L); // L: 1243
+				var6.lakak(var8[0]); // L: 1240
+				var6.lakak(var8[1]); // L: 1241
+				var6.asofoa(var1); // L: 1242
+				var6.asofoa(0L); // L: 1243
 
 				for (var9 = 0; var9 < 4; ++var9) { // L: 1244
-					var6.writeInt(var5.nextInt()); // L: 1245
+					var6.lakak(var5.nextInt()); // L: 1245
 				}
 
 				var6.encryptRsa(class65.field869, class65.field868); // L: 1247
-				var7.writeByte(10); // L: 1248
+				var7.asfag(10); // L: 1248
 
 				for (var9 = 0; var9 < 3; ++var9) { // L: 1249
-					var7.writeInt(var5.nextInt()); // L: 1250
+					var7.lakak(var5.nextInt()); // L: 1250
 				}
 
-				var7.writeLong(var5.nextLong()); // L: 1252
-				var7.writeLongMedium(var5.nextLong()); // L: 1253
+				var7.asofoa(var5.nextLong()); // L: 1252
+				var7.opiasfa(var5.nextLong()); // L: 1253
 				if (Client.randomDatData != null) { // L: 1255
-					var7.writeBytes(Client.randomDatData, 0, Client.randomDatData.length); // L: 1256
+					var7.asdd(Client.randomDatData, 0, Client.randomDatData.length); // L: 1256
 				} else {
 					byte[] var22 = KeyHandler.method332(); // L: 1259
-					var7.writeBytes(var22, 0, var22.length); // L: 1260
+					var7.asdd(var22, 0, var22.length); // L: 1260
 				}
 
-				var7.writeLong(var5.nextLong()); // L: 1262
+				var7.asofoa(var5.nextLong()); // L: 1262
 				var7.encryptRsa(class65.field869, class65.field868); // L: 1263
 				var9 = GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4); // L: 1264
 				if (var9 % 8 != 0) { // L: 1265
@@ -161,17 +161,17 @@ public class class125 extends class126 {
 				}
 
 				Buffer var10 = new Buffer(var9); // L: 1266
-				var10.writeStringCp1252NullTerminated(var4); // L: 1267
+				var10.aaa(var4); // L: 1267
 				var10.offset = var9; // L: 1268
 				var10.xteaEncryptAll(var8); // L: 1269
 				Buffer var11 = new Buffer(var7.offset + var6.offset + var10.offset + 5); // L: 1270
-				var11.writeByte(2); // L: 1271
-				var11.writeByte(var6.offset); // L: 1272
-				var11.writeBytes(var6.array, 0, var6.offset); // L: 1273
-				var11.writeByte(var7.offset); // L: 1274
-				var11.writeBytes(var7.array, 0, var7.offset); // L: 1275
-				var11.writeShort(var10.offset); // L: 1276
-				var11.writeBytes(var10.array, 0, var10.offset); // L: 1277
+				var11.asfag(2); // L: 1271
+				var11.asfag(var6.offset); // L: 1272
+				var11.asdd(var6.array, 0, var6.offset); // L: 1273
+				var11.asfag(var7.offset); // L: 1274
+				var11.asdd(var7.array, 0, var7.offset); // L: 1275
+				var11.gaf(var10.offset); // L: 1276
+				var11.asdd(var10.array, 0, var10.offset); // L: 1277
 				byte[] var13 = var11.array; // L: 1279
 				String var12 = class134.method2826(var13, 0, var13.length); // L: 1281
 				String var14 = var12; // L: 1283

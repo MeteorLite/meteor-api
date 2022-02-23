@@ -284,10 +284,10 @@ public class class117 implements MouseWheel {
 				ClanChannelMember var2 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 11959
 				if (var2.rank == -1) {
 					PacketBufferNode var3 = class135.getPacketBufferNode(ClientPacket.field2850, Client.packetWriter.isaacCipher); // L: 11961
-					var3.packetBuffer.writeByte(3 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var2.username.getName())); // L: 11962
-					var3.packetBuffer.writeByte(var0); // L: 11963
-					var3.packetBuffer.writeShort(var1); // L: 11964
-					var3.packetBuffer.writeStringCp1252NullTerminated(var2.username.getName()); // L: 11965
+					var3.packetBuffer.asfag(3 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var2.username.getName())); // L: 11962
+					var3.packetBuffer.asfag(var0); // L: 11963
+					var3.packetBuffer.gaf(var1); // L: 11964
+					var3.packetBuffer.aaa(var2.username.getName()); // L: 11965
 					Client.packetWriter.addNode(var3); // L: 11966
 				}
 			}

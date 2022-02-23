@@ -22,9 +22,9 @@ public class class78 {
 	)
 	public static PacketBufferNode method2082(int var0, String var1, Language var2, int var3) {
 		PacketBufferNode var4 = class135.getPacketBufferNode(ClientPacket.field2839, Client.packetWriter.isaacCipher); // L: 17
-		var4.packetBuffer.writeByte(0); // L: 18
+		var4.packetBuffer.asfag(0); // L: 18
 		int var5 = var4.packetBuffer.offset; // L: 19
-		var4.packetBuffer.writeByte(var0); // L: 20
+		var4.packetBuffer.asfag(var0); // L: 20
 		String var6 = var1.toLowerCase(); // L: 21
 		byte var7 = 0; // L: 22
 		if (var6.startsWith("yellow:")) { // L: 23
@@ -139,11 +139,11 @@ public class class78 {
 			}
 		}
 
-		var4.packetBuffer.writeByte(var7); // L: 165
-		var4.packetBuffer.writeByte(var8); // L: 166
+		var4.packetBuffer.asfag(var7); // L: 165
+		var4.packetBuffer.asfag(var8); // L: 166
 		WorldMapRectangle.method4757(var4.packetBuffer, var1); // L: 167
 		if (var0 == class287.field3420.rsOrdinal()) { // L: 168
-			var4.packetBuffer.writeByte(var3); // L: 169
+			var4.packetBuffer.asfag(var3); // L: 169
 		}
 
 		var4.packetBuffer.method7504(var4.packetBuffer.offset - var5); // L: 171
@@ -192,7 +192,7 @@ public class class78 {
 			int var8 = 0; // L: 258
 
 			while (true) {
-				int var9 = var5.readUShortSmart(); // L: 260
+				int var9 = var5.asfmaenansd(); // L: 260
 				if (var9 == 0) { // L: 261
 					break;
 				}
@@ -201,7 +201,7 @@ public class class78 {
 				int var10 = var8 & 63; // L: 263
 				int var11 = var8 >> 6 & 63; // L: 264
 				int var12 = var8 >> 12; // L: 265
-				int var13 = var5.readUnsignedByte(); // L: 266
+				int var13 = var5.asfjaja(); // L: 266
 				int var14 = var13 >> 2; // L: 267
 				int var15 = var13 & 3; // L: 268
 				int var16 = var11 + var1; // L: 269

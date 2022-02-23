@@ -28,7 +28,7 @@ public class SoundEffect {
 		this.instruments = new Instrument[10]; // L: 10
 
 		for (int var2 = 0; var2 < 10; ++var2) { // L: 21
-			int var3 = var1.readUnsignedByte(); // L: 22
+			int var3 = var1.asfjaja(); // L: 22
 			if (var3 != 0) { // L: 23
 				--var1.offset; // L: 24
 				this.instruments[var2] = new Instrument(); // L: 25
@@ -36,8 +36,8 @@ public class SoundEffect {
 			}
 		}
 
-		this.start = var1.readUnsignedShort(); // L: 28
-		this.end = var1.readUnsignedShort(); // L: 29
+		this.start = var1.nashfa(); // L: 28
+		this.end = var1.nashfa(); // L: 29
 	} // L: 30
 
 	@ObfuscatedName("l")

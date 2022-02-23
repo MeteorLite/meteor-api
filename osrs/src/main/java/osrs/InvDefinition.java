@@ -44,7 +44,7 @@ public class InvDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 32
+			int var2 = var1.asfjaja(); // L: 32
 			if (var2 == 0) { // L: 33
 				return; // L: 36
 			}
@@ -61,7 +61,7 @@ public class InvDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 2) { // L: 39
-			this.size = var1.readUnsignedShort();
+			this.size = var1.nashfa();
 		}
 
 	} // L: 41

@@ -31,11 +31,11 @@ public class class149 extends class142 {
 		garbageValue = "-103"
 	)
 	void vmethod3014(Buffer var1) {
-		this.field1677 = var1.readStringCp1252NullTerminatedOrNull(); // L: 158
+		this.field1677 = var1.jasfneba(); // L: 158
 		if (this.field1677 != null) { // L: 159
-			var1.readUnsignedByte(); // L: 160
-			this.field1675 = var1.readByte(); // L: 161
-			this.field1676 = var1.readByte(); // L: 162
+			var1.asfjaja(); // L: 160
+			this.field1675 = var1.ajsfjah(); // L: 161
+			this.field1676 = var1.ajsfjah(); // L: 162
 		}
 
 	} // L: 164

@@ -37,10 +37,10 @@ public class class129 {
 		garbageValue = "1524635602"
 	)
 	void method2777(Buffer var1) {
-		this.field1538 = var1.readLong(); // L: 32
-		this.field1530 = var1.readInt(); // L: 33
+		this.field1538 = var1.asfkajsdj(); // L: 32
+		this.field1530 = var1.ehahsjd(); // L: 33
 
-		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) { // L: 34 35 55
+		for (int var2 = var1.asfjaja(); var2 != 0; var2 = var1.asfjaja()) { // L: 34 35 55
 			Object var3;
 			if (var2 == 3) { // L: 37
 				var3 = new class148(this);

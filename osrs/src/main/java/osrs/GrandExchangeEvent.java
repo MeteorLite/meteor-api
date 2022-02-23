@@ -38,12 +38,12 @@ public class GrandExchangeEvent {
 		descriptor = "(Lpi;BI)V"
 	)
 	GrandExchangeEvent(Buffer var1, byte var2, int var3) {
-		this.offerName = var1.readStringCp1252NullTerminated(); // L: 111
-		this.previousOfferName = var1.readStringCp1252NullTerminated(); // L: 112
-		this.world = var1.readUnsignedShort(); // L: 113
-		this.age = var1.readLong(); // L: 114
-		int var4 = var1.readInt(); // L: 115
-		int var5 = var1.readInt(); // L: 116
+		this.offerName = var1.asndbaeba(); // L: 111
+		this.previousOfferName = var1.asndbaeba(); // L: 112
+		this.world = var1.nashfa(); // L: 113
+		this.age = var1.asfkajsdj(); // L: 114
+		int var4 = var1.ehahsjd(); // L: 115
+		int var5 = var1.ehahsjd(); // L: 116
 		this.grandExchangeOffer = new GrandExchangeOffer(); // L: 117
 		this.grandExchangeOffer.method5735(2); // L: 118
 		this.grandExchangeOffer.method5731(var2); // L: 119

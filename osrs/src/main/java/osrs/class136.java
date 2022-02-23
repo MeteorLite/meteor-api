@@ -33,8 +33,8 @@ public class class136 extends class126 {
 		garbageValue = "703192976"
 	)
 	void vmethod3019(Buffer var1) {
-		this.field1578 = var1.readInt(); // L: 326
-		this.field1579 = var1.readStringCp1252NullTerminated(); // L: 327
+		this.field1578 = var1.ehahsjd(); // L: 326
+		this.field1579 = var1.asndbaeba(); // L: 327
 	} // L: 328
 
 	@ObfuscatedName("l")

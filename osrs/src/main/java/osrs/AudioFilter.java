@@ -112,28 +112,28 @@ public class AudioFilter {
 		descriptor = "(Lpi;Laz;)V"
 	)
 	final void method1053(Buffer var1, SoundEnvelope var2) {
-		int var3 = var1.readUnsignedByte(); // L: 67
+		int var3 = var1.asfjaja(); // L: 67
 		this.pairs[0] = var3 >> 4; // L: 68
 		this.pairs[1] = var3 & 15; // L: 69
 		if (var3 != 0) { // L: 70
-			this.field425[0] = var1.readUnsignedShort(); // L: 71
-			this.field425[1] = var1.readUnsignedShort(); // L: 72
-			int var7 = var1.readUnsignedByte(); // L: 73
+			this.field425[0] = var1.nashfa(); // L: 71
+			this.field425[1] = var1.nashfa(); // L: 72
+			int var7 = var1.asfjaja(); // L: 73
 
 			int var5;
 			int var6;
 			for (var5 = 0; var5 < 2; ++var5) { // L: 74
 				for (var6 = 0; var6 < this.pairs[var5]; ++var6) { // L: 75
-					this.field421[var5][0][var6] = var1.readUnsignedShort(); // L: 76
-					this.field424[var5][0][var6] = var1.readUnsignedShort(); // L: 77
+					this.field421[var5][0][var6] = var1.nashfa(); // L: 76
+					this.field424[var5][0][var6] = var1.nashfa(); // L: 77
 				}
 			}
 
 			for (var5 = 0; var5 < 2; ++var5) { // L: 80
 				for (var6 = 0; var6 < this.pairs[var5]; ++var6) { // L: 81
 					if ((var7 & 1 << var5 * 4 << var6) != 0) { // L: 82
-						this.field421[var5][1][var6] = var1.readUnsignedShort(); // L: 83
-						this.field424[var5][1][var6] = var1.readUnsignedShort(); // L: 84
+						this.field421[var5][1][var6] = var1.nashfa(); // L: 83
+						this.field424[var5][1][var6] = var1.nashfa(); // L: 84
 					} else {
 						this.field421[var5][1][var6] = this.field421[var5][0][var6]; // L: 87
 						this.field424[var5][1][var6] = this.field424[var5][0][var6]; // L: 88

@@ -3,132 +3,113 @@ package net.runelite.rs.api;
 import net.runelite.api.Buffer;
 import net.runelite.mapping.Import;
 
-public interface RSBuffer extends Buffer, RSNode {
-
+public interface RSBuffer extends Buffer, RSNode
+{
   @Import("array")
   byte[] getPayload();
 
   @Import("offset")
   int getOffset();
 
-  @Import("writeByte0A1")
-  @Override
-  void writeByte0A1$api(int var1);
-
-  @Import("writeByte2")
-  @Override
-  void writeByte2$api(int var1);
-
-  @Import("writeByte01A")
-  @Override
-  void writeByte01A$api(int var1);
-
-  @Import("write1")
-  @Override
-  void write1$api(int var1);
-
-  @Import("write2")
-  @Override
-  void write2$api(int var1);
-
-  @Import("writeIntME2")
-  @Override
-  void writeIntME2$api(int var1);
-
-  @Import("writeIntME3")
-  @Override
-  void writeIntME3$api(int var1);
-
-  @Import("writeByteB0")
-  @Override
-  void writeByteB0$api(int var1);
-
-  @Import("writeByte")
-  @Override
-  void writeByte$api(int var1);
-
-  @Import("writeByteA")
-  @Override
-  void writeByteA$api(int var1);
-
-  @Import("writeByteC")
-  @Override
-  void writeByteC$api(int var1);
-
-  @Import("writeByte01")
-  @Override
-  void writeByte01$api(int var1);
-
-  @Import("writeShort")
-  @Override
-  void writeShort$api(int var1);
-
-  @Import("writeShort01")
-  @Override
-  void writeShort01$api(int var1);
-
-  @Import("writeInt0123")
-  @Override
-  void writeInt0123$api(int var1);
-
-  @Import("writeShortA")
-  @Override
-  void writeShortA$api(int var1);
-
-  @Import("writeInt2")
-  @Override
-  void writeInt2$api(int var1);
-
-  @Import("writeIntME")
-  @Override
-  void writeIntME$api(int var1);
-
-  @Import("writeShort01A")
-  @Override
-  void writeShort01A$api(int var1);
-
-  @Import("writeMedium")
-  @Override
-  void writeMedium$api(int var1);
-
-  @Import("writeInt")
-  @Override
-  void writeInt$api(int var1);
-
-  @Import("writeLong")
-  @Override
-  void writeLong$api(long var1);
-
-  @Import("writeStringCp1252NullTerminated")
-  @Override
-  void writeStringCp1252NullTerminated$api(String string);
-
   @Import("offset")
   void setOffset(int offset);
 
   @Import("readUnsignedByte")
-  int readUnsignedByte$api();
+  int readUnsignedByte();
 
   @Import("readByte")
-  byte readByte$api();
+  byte readByte();
 
   @Import("readUnsignedShort")
-  int readUnsignedShort$api();
+  int readUnsignedShort();
 
   @Import("readShort")
-  int readShort$api();
+  int readShort();
 
   @Import("readInt")
-  int readInt$api();
+  int readInt();
 
   @Import("readStringCp1252NullTerminated")
-  String readStringCp1252NullTerminated$api();
+  String readStringCp1252NullTerminated();
 
-  @Import("writeByteB")
-  @Override
-  void writeByteB$api(int i);
+  @Import("writeBoolean")
+  void writeBoolean(boolean i);
+
+  @Import("writeBuffer")
+  void writeBuffer(Buffer i);
+
+  @Import("writeByte")
+  void writeByte(int i);
+
+  @Import("writeByteAdd")
+  void writeByteAdd(int i);
+
+  @Import("writeByteNeg")
+  void writeByteNeg(int i);
+
+  @Import("writeByteSub")
+  void writeByteSub(int i);
+
+  @Import("writeBytes")
+  void writeBytes(byte[] var1, int var2, int var3);
+
+  @Import("writeCESU8")
+  void writeCESU8(CharSequence i);
+
+  @Import("writeCrc")
+  int writeCrc(int i);
+
+  @Import("writeInt")
+  void writeInt(int i);
+
+  @Import("writeIntIME")
+  void writeIntIME(int i);
+
+  @Import("writeIntLE")
+  void writeIntLE(int i);
+
+  @Import("writeIntME")
+  void writeIntME(int i);
+
+  @Import("writeLengthByte")
+  void writeLengthByte(int i);
+
+  @Import("writeLengthInt")
+  void writeLengthInt(int i);
+
+  @Import("writeLengthShort")
+  void writeLengthShort(int i);
+
+  @Import("writeLong")
+  void writeLong(long i);
+
+  @Import("writeLongMedium")
+  void writeLongMedium(long i);
+
+  @Import("writeMedium")
+  void writeMedium(int i);
+
+  @Import("writeShort")
+  void writeShort(int i);
+
+  @Import("writeShortAdd")
+  void writeShortAdd(int i);
+
+  @Import("writeShortAddLE")
+  void writeShortAddLE(int i);
 
   @Import("writeShortLE")
-  @Override
-  void writeShortLE$api(int i);
+  void writeShortLE(int i);
+
+  @Import("writeSmartByteShort")
+  void writeSmartByteShort(int i);
+
+  @Import("writeStringCp1252NullCircumfixed")
+  void writeStringCp1252NullCircumfixed(String i);
+
+  @Import("writeStringCp1252NullTerminated")
+  void writeStringCp1252NullTerminated(String i);
+
+  @Import("writeVarInt")
+  void writeVarInt(int i);
 }

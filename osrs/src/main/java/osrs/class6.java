@@ -70,19 +70,19 @@ public enum class6 implements MouseWheel {
 			} else if (WorldMapID.World_request.isDone()) { // L: 33
 				byte[] var0 = WorldMapID.World_request.getResponse(); // L: 34
 				Buffer var1 = new Buffer(var0); // L: 35
-				var1.readInt(); // L: 36
-				World.World_count = var1.readUnsignedShort(); // L: 37
+				var1.ehahsjd(); // L: 36
+				World.World_count = var1.nashfa(); // L: 37
 				class33.World_worlds = new World[World.World_count]; // L: 38
 
 				World var3;
 				for (int var2 = 0; var2 < World.World_count; var3.index = var2++) { // L: 39 47
 					var3 = class33.World_worlds[var2] = new World(); // L: 40
-					var3.id = var1.readUnsignedShort(); // L: 41
-					var3.properties = var1.readInt(); // L: 42
-					var3.host = var1.readStringCp1252NullTerminated(); // L: 43
-					var3.activity = var1.readStringCp1252NullTerminated(); // L: 44
-					var3.location = var1.readUnsignedByte(); // L: 45
-					var3.population = var1.readShort(); // L: 46
+					var3.id = var1.nashfa(); // L: 41
+					var3.properties = var1.ehahsjd(); // L: 42
+					var3.host = var1.asndbaeba(); // L: 43
+					var3.activity = var1.asndbaeba(); // L: 44
+					var3.location = var1.asfjaja(); // L: 45
+					var3.population = var1.asfhasd(); // L: 46
 				}
 
 				Players.sortWorlds(class33.World_worlds, 0, class33.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2); // L: 49

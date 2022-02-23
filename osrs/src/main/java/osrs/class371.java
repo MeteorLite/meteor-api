@@ -81,10 +81,10 @@ public final class class371 {
 	void method6736(Buffer var1, boolean var2) {
 		if (var2) { // L: 55
 			class372 var4 = new class372(); // L: 56
-			var4.method6746(class114.method2609(var1.readShort())); // L: 57
-			var4.method6740(class114.method2609(var1.readShort())); // L: 58
-			var4.method6741(class114.method2609(var1.readShort())); // L: 59
-			var4.method6742((float)var1.readShort(), (float)var1.readShort(), (float)var1.readShort()); // L: 60
+			var4.method6746(class114.method2609(var1.asfhasd())); // L: 57
+			var4.method6740(class114.method2609(var1.asfhasd())); // L: 58
+			var4.method6741(class114.method2609(var1.asfhasd())); // L: 59
+			var4.method6742((float)var1.asfhasd(), (float)var1.asfhasd(), (float)var1.asfhasd()); // L: 60
 			this.method6689(var4); // L: 61
 		} else {
 			for (int var3 = 0; var3 < 16; ++var3) { // L: 64

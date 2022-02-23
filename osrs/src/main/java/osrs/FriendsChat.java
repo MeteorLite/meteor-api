@@ -106,20 +106,20 @@ public class FriendsChat extends UserList {
 	)
 	@Export("readUpdate")
 	public final void readUpdate(Buffer var1) {
-		this.setOwner(var1.readStringCp1252NullTerminated()); // L: 43
-		long var2 = var1.readLong(); // L: 44
+		this.setOwner(var1.asndbaeba()); // L: 43
+		long var2 = var1.asfkajsdj(); // L: 44
 		this.readName(AbstractByteArrayCopier.method5309(var2)); // L: 45
-		this.minKick = var1.readByte(); // L: 46
-		int var4 = var1.readUnsignedByte(); // L: 47
+		this.minKick = var1.ajsfjah(); // L: 46
+		int var4 = var1.asfjaja(); // L: 47
 		if (var4 != 255) { // L: 48
 			this.clear(); // L: 49
 
 			for (int var5 = 0; var5 < var4; ++var5) { // L: 50
-				ClanMate var6 = (ClanMate)this.addLastNoPreviousUsername(new Username(var1.readStringCp1252NullTerminated(), this.loginType)); // L: 51
-				int var7 = var1.readUnsignedShort(); // L: 52
+				ClanMate var6 = (ClanMate)this.addLastNoPreviousUsername(new Username(var1.asndbaeba(), this.loginType)); // L: 51
+				int var7 = var1.nashfa(); // L: 52
 				var6.set(var7, ++this.field4143 - 1); // L: 53
-				var6.rank = var1.readByte(); // L: 54
-				var1.readStringCp1252NullTerminated(); // L: 55
+				var6.rank = var1.ajsfjah(); // L: 54
+				var1.asndbaeba(); // L: 55
 				this.isLocalPlayer(var6); // L: 56
 			}
 
@@ -132,9 +132,9 @@ public class FriendsChat extends UserList {
 		garbageValue = "496706080"
 	)
 	public final void method6299(Buffer var1) {
-		Username var2 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 61
-		int var3 = var1.readUnsignedShort(); // L: 62
-		byte var4 = var1.readByte(); // L: 63
+		Username var2 = new Username(var1.asndbaeba(), this.loginType); // L: 61
+		int var3 = var1.nashfa(); // L: 62
+		byte var4 = var1.ajsfjah(); // L: 63
 		boolean var5 = false; // L: 64
 		if (var4 == -128) { // L: 65
 			var5 = true;
@@ -151,7 +151,7 @@ public class FriendsChat extends UserList {
 				this.remove(var6); // L: 70
 			}
 		} else {
-			var1.readStringCp1252NullTerminated(); // L: 74
+			var1.asndbaeba(); // L: 74
 			var6 = (ClanMate)this.getByCurrentUsername(var2); // L: 75
 			if (var6 == null) { // L: 76
 				if (this.getSize() > super.capacity) { // L: 77

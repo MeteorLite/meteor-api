@@ -45,8 +45,8 @@ public class UserComparator4 implements Comparator {
 		if (NetCache.NetCache_socket != null) { // L: 42
 			try {
 				Buffer var1 = new Buffer(4); // L: 44
-				var1.writeByte(var0 ? 2 : 3); // L: 45
-				var1.writeMedium(0); // L: 46
+				var1.asfag(var0 ? 2 : 3); // L: 45
+				var1.gasgag(0); // L: 46
 				NetCache.NetCache_socket.write(var1.array, 0, 4); // L: 47
 			} catch (IOException var4) {
 				try {

@@ -116,7 +116,7 @@ public class SpotAnimationDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 49
+			int var2 = var1.asfjaja(); // L: 49
 			if (var2 == 0) { // L: 50
 				return; // L: 53
 			}
@@ -133,39 +133,39 @@ public class SpotAnimationDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 56
-			this.archive = var1.readUnsignedShort();
+			this.archive = var1.nashfa();
 		} else if (var2 == 2) { // L: 57
-			this.sequence = var1.readUnsignedShort();
+			this.sequence = var1.nashfa();
 		} else if (var2 == 4) { // L: 58
-			this.widthScale = var1.readUnsignedShort();
+			this.widthScale = var1.nashfa();
 		} else if (var2 == 5) { // L: 59
-			this.heightScale = var1.readUnsignedShort();
+			this.heightScale = var1.nashfa();
 		} else if (var2 == 6) { // L: 60
-			this.orientation = var1.readUnsignedShort();
+			this.orientation = var1.nashfa();
 		} else if (var2 == 7) { // L: 61
-			this.ambient = var1.readUnsignedByte();
+			this.ambient = var1.asfjaja();
 		} else if (var2 == 8) { // L: 62
-			this.contrast = var1.readUnsignedByte();
+			this.contrast = var1.asfjaja();
 		} else {
 			int var3;
 			int var4;
 			if (var2 == 40) { // L: 63
-				var3 = var1.readUnsignedByte(); // L: 64
+				var3 = var1.asfjaja(); // L: 64
 				this.recolorFrom = new short[var3]; // L: 65
 				this.recolorTo = new short[var3]; // L: 66
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 67
-					this.recolorFrom[var4] = (short)var1.readUnsignedShort(); // L: 68
-					this.recolorTo[var4] = (short)var1.readUnsignedShort(); // L: 69
+					this.recolorFrom[var4] = (short)var1.nashfa(); // L: 68
+					this.recolorTo[var4] = (short)var1.nashfa(); // L: 69
 				}
 			} else if (var2 == 41) { // L: 72
-				var3 = var1.readUnsignedByte(); // L: 73
+				var3 = var1.asfjaja(); // L: 73
 				this.retextureFrom = new short[var3]; // L: 74
 				this.retextureTo = new short[var3]; // L: 75
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 76
-					this.retextureFrom[var4] = (short)var1.readUnsignedShort(); // L: 77
-					this.retextureTo[var4] = (short)var1.readUnsignedShort(); // L: 78
+					this.retextureFrom[var4] = (short)var1.nashfa(); // L: 77
+					this.retextureTo[var4] = (short)var1.nashfa(); // L: 78
 				}
 			}
 		}

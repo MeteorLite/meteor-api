@@ -338,7 +338,7 @@ public class ObjectComposition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 105
+			int var2 = var1.asfjaja(); // L: 105
 			if (var2 == 0) { // L: 106
 				return; // L: 109
 			}
@@ -357,7 +357,7 @@ public class ObjectComposition extends DualNode {
 		int var3;
 		int var4;
 		if (var2 == 1) { // L: 112
-			var3 = var1.readUnsignedByte(); // L: 113
+			var3 = var1.asfjaja(); // L: 113
 			if (var3 > 0) { // L: 114
 				if (this.modelIds != null && !ObjectDefinition_isLowDetail) { // L: 115
 					var1.offset += var3 * 3; // L: 123
@@ -366,15 +366,15 @@ public class ObjectComposition extends DualNode {
 					this.modelIds = new int[var3]; // L: 117
 
 					for (var4 = 0; var4 < var3; ++var4) { // L: 118
-						this.modelIds[var4] = var1.readUnsignedShort(); // L: 119
-						this.models[var4] = var1.readUnsignedByte(); // L: 120
+						this.modelIds[var4] = var1.nashfa(); // L: 119
+						this.models[var4] = var1.asfjaja(); // L: 120
 					}
 				}
 			}
 		} else if (var2 == 2) { // L: 126
-			this.name = var1.readStringCp1252NullTerminated();
+			this.name = var1.asndbaeba();
 		} else if (var2 == 5) { // L: 127
-			var3 = var1.readUnsignedByte(); // L: 128
+			var3 = var1.asfjaja(); // L: 128
 			if (var3 > 0) { // L: 129
 				if (this.modelIds != null && !ObjectDefinition_isLowDetail) { // L: 130
 					var1.offset += var3 * 2; // L: 135
@@ -383,21 +383,21 @@ public class ObjectComposition extends DualNode {
 					this.modelIds = new int[var3]; // L: 132
 
 					for (var4 = 0; var4 < var3; ++var4) { // L: 133
-						this.modelIds[var4] = var1.readUnsignedShort();
+						this.modelIds[var4] = var1.nashfa();
 					}
 				}
 			}
 		} else if (var2 == 14) { // L: 138
-			this.sizeX = var1.readUnsignedByte();
+			this.sizeX = var1.asfjaja();
 		} else if (var2 == 15) { // L: 139
-			this.sizeY = var1.readUnsignedByte();
+			this.sizeY = var1.asfjaja();
 		} else if (var2 == 17) { // L: 140
 			this.interactType = 0; // L: 141
 			this.boolean1 = false; // L: 142
 		} else if (var2 == 18) { // L: 144
 			this.boolean1 = false;
 		} else if (var2 == 19) { // L: 145
-			this.int1 = var1.readUnsignedByte();
+			this.int1 = var1.asfjaja();
 		} else if (var2 == 21) { // L: 146
 			this.clipType = 0;
 		} else if (var2 == 22) { // L: 147
@@ -405,116 +405,116 @@ public class ObjectComposition extends DualNode {
 		} else if (var2 == 23) { // L: 148
 			this.modelClipped = true;
 		} else if (var2 == 24) { // L: 149
-			this.animationId = var1.readUnsignedShort(); // L: 150
+			this.animationId = var1.nashfa(); // L: 150
 			if (this.animationId == 65535) { // L: 151
 				this.animationId = -1;
 			}
 		} else if (var2 == 27) { // L: 153
 			this.interactType = 1;
 		} else if (var2 == 28) { // L: 154
-			this.int2 = var1.readUnsignedByte();
+			this.int2 = var1.asfjaja();
 		} else if (var2 == 29) { // L: 155
-			this.ambient = var1.readByte();
+			this.ambient = var1.ajsfjah();
 		} else if (var2 == 39) { // L: 156
-			this.contrast = var1.readByte() * 25;
+			this.contrast = var1.ajsfjah() * 25;
 		} else if (var2 >= 30 && var2 < 35) { // L: 157
-			this.actions[var2 - 30] = var1.readStringCp1252NullTerminated();
+			this.actions[var2 - 30] = var1.asndbaeba();
 			if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) { // L: 159
 				this.actions[var2 - 30] = null;
 			}
 		} else if (var2 == 40) {
-			var3 = var1.readUnsignedByte();
+			var3 = var1.asfjaja();
 			this.recolorFrom = new short[var3]; // L: 163
 			this.recolorTo = new short[var3];
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 165
-				this.recolorFrom[var4] = (short)var1.readUnsignedShort(); // L: 166
-				this.recolorTo[var4] = (short)var1.readUnsignedShort(); // L: 167
+				this.recolorFrom[var4] = (short)var1.nashfa(); // L: 166
+				this.recolorTo[var4] = (short)var1.nashfa(); // L: 167
 			}
 		} else if (var2 == 41) {
-			var3 = var1.readUnsignedByte();
+			var3 = var1.asfjaja();
 			this.retextureFrom = new short[var3]; // L: 172
 			this.retextureTo = new short[var3];
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 174
-				this.retextureFrom[var4] = (short)var1.readUnsignedShort(); // L: 175
-				this.retextureTo[var4] = (short)var1.readUnsignedShort(); // L: 176
+				this.retextureFrom[var4] = (short)var1.nashfa(); // L: 175
+				this.retextureTo[var4] = (short)var1.nashfa(); // L: 176
 			}
 		} else if (var2 == 61) { // L: 179
-			var1.readUnsignedShort(); // L: 180
+			var1.nashfa(); // L: 180
 		} else if (var2 == 62) { // L: 182
 			this.isRotated = true;
 		} else if (var2 == 64) { // L: 183
 			this.clipped = false;
 		} else if (var2 == 65) { // L: 184
-			this.modelSizeX = var1.readUnsignedShort();
+			this.modelSizeX = var1.nashfa();
 		} else if (var2 == 66) { // L: 185
-			this.modelHeight = var1.readUnsignedShort();
+			this.modelHeight = var1.nashfa();
 		} else if (var2 == 67) { // L: 186
-			this.modelSizeY = var1.readUnsignedShort();
+			this.modelSizeY = var1.nashfa();
 		} else if (var2 == 68) { // L: 187
-			this.mapSceneId = var1.readUnsignedShort();
+			this.mapSceneId = var1.nashfa();
 		} else if (var2 == 69) { // L: 188
-			var1.readUnsignedByte(); // L: 189
+			var1.asfjaja(); // L: 189
 		} else if (var2 == 70) { // L: 191
-			this.offsetX = var1.readShort();
+			this.offsetX = var1.asfhasd();
 		} else if (var2 == 71) { // L: 192
-			this.offsetHeight = var1.readShort();
+			this.offsetHeight = var1.asfhasd();
 		} else if (var2 == 72) {
-			this.offsetY = var1.readShort(); // L: 193
+			this.offsetY = var1.asfhasd(); // L: 193
 		} else if (var2 == 73) { // L: 194
 			this.boolean2 = true;
 		} else if (var2 == 74) { // L: 195
 			this.isSolid = true;
 		} else if (var2 == 75) { // L: 196
-			this.int3 = var1.readUnsignedByte();
+			this.int3 = var1.asfjaja();
 		} else if (var2 != 77 && var2 != 92) { // L: 197
 			if (var2 == 78) { // L: 215
-				this.ambientSoundId = var1.readUnsignedShort(); // L: 216
-				this.int7 = var1.readUnsignedByte(); // L: 217
+				this.ambientSoundId = var1.nashfa(); // L: 216
+				this.int7 = var1.asfjaja(); // L: 217
 			} else if (var2 == 79) { // L: 219
-				this.int5 = var1.readUnsignedShort(); // L: 220
-				this.int6 = var1.readUnsignedShort(); // L: 221
-				this.int7 = var1.readUnsignedByte(); // L: 222
-				var3 = var1.readUnsignedByte(); // L: 223
+				this.int5 = var1.nashfa(); // L: 220
+				this.int6 = var1.nashfa(); // L: 221
+				this.int7 = var1.asfjaja(); // L: 222
+				var3 = var1.asfjaja(); // L: 223
 				this.soundEffectIds = new int[var3]; // L: 224
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 225
-					this.soundEffectIds[var4] = var1.readUnsignedShort();
+					this.soundEffectIds[var4] = var1.nashfa();
 				}
 			} else if (var2 == 81) { // L: 227
-				this.clipType = var1.readUnsignedByte() * 256;
+				this.clipType = var1.asfjaja() * 256;
 			} else if (var2 == 82) { // L: 228
-				this.mapIconId = var1.readUnsignedShort();
+				this.mapIconId = var1.nashfa();
 			} else if (var2 == 89) { // L: 229
 				this.boolean3 = false;
 			} else if (var2 == 249) { // L: 230
 				this.params = class297.readStringIntParameters(var1, this.params);
 			}
 		} else {
-			this.transformVarbit = var1.readUnsignedShort(); // L: 198
+			this.transformVarbit = var1.nashfa(); // L: 198
 			if (this.transformVarbit == 65535) { // L: 199
 				this.transformVarbit = -1;
 			}
 
-			this.transformVarp = var1.readUnsignedShort(); // L: 200
+			this.transformVarp = var1.nashfa(); // L: 200
 			if (this.transformVarp == 65535) { // L: 201
 				this.transformVarp = -1;
 			}
 
 			var3 = -1; // L: 202
 			if (var2 == 92) { // L: 203
-				var3 = var1.readUnsignedShort(); // L: 204
+				var3 = var1.nashfa(); // L: 204
 				if (var3 == 65535) { // L: 205
 					var3 = -1;
 				}
 			}
 
-			var4 = var1.readUnsignedByte(); // L: 207
+			var4 = var1.asfjaja(); // L: 207
 			this.transforms = new int[var4 + 2]; // L: 208
 
 			for (int var5 = 0; var5 <= var4; ++var5) { // L: 209
-				this.transforms[var5] = var1.readUnsignedShort(); // L: 210
+				this.transforms[var5] = var1.nashfa(); // L: 210
 				if (this.transforms[var5] == 65535) { // L: 211
 					this.transforms[var5] = -1;
 				}

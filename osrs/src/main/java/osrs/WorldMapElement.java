@@ -154,7 +154,7 @@ public class WorldMapElement extends DualNode {
 	@Export("decode")
 	public void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte();
+			int var2 = var1.asfjaja();
 			if (var2 == 0) {
 				return;
 			}
@@ -175,17 +175,17 @@ public class WorldMapElement extends DualNode {
 		} else if (var2 == 2) {
 			this.sprite2 = var1.method7352();
 		} else if (var2 == 3) { // L: 61
-			this.name = var1.readStringCp1252NullTerminated();
+			this.name = var1.asndbaeba();
 		} else if (var2 == 4) { // L: 62
-			this.field1767 = var1.readMedium();
+			this.field1767 = var1.asfjahsn();
 		} else if (var2 == 5) { // L: 63
-			var1.readMedium(); // L: 64
+			var1.asfjahsn(); // L: 64
 		} else if (var2 == 6) { // L: 66
-			this.textSize = var1.readUnsignedByte();
+			this.textSize = var1.asfjaja();
 		} else {
 			int var6;
 			if (var2 == 7) { // L: 67
-				var6 = var1.readUnsignedByte(); // L: 68
+				var6 = var1.asfjaja(); // L: 68
 				if ((var6 & 1) == 0) { // L: 69
 					this.field1769 = false;
 				}
@@ -194,59 +194,59 @@ public class WorldMapElement extends DualNode {
 					this.field1773 = true;
 				}
 			} else if (var2 == 8) { // L: 72
-				var1.readUnsignedByte(); // L: 73
+				var1.asfjaja(); // L: 73
 			} else if (var2 >= 10 && var2 <= 14) { // L: 75
-				this.menuActions[var2 - 10] = var1.readStringCp1252NullTerminated();
+				this.menuActions[var2 - 10] = var1.asndbaeba();
 			} else if (var2 == 15) { // L: 76
-				var6 = var1.readUnsignedByte(); // L: 77
+				var6 = var1.asfjaja(); // L: 77
 				this.field1770 = new int[var6 * 2]; // L: 78
 
 				int var4;
 				for (var4 = 0; var4 < var6 * 2; ++var4) { // L: 79
-					this.field1770[var4] = var1.readShort();
+					this.field1770[var4] = var1.asfhasd();
 				}
 
-				var1.readInt(); // L: 80
-				var4 = var1.readUnsignedByte(); // L: 81
+				var1.ehahsjd(); // L: 80
+				var4 = var1.asfjaja(); // L: 81
 				this.field1780 = new int[var4]; // L: 82
 
 				int var5;
 				for (var5 = 0; var5 < this.field1780.length; ++var5) { // L: 83
-					this.field1780[var5] = var1.readInt();
+					this.field1780[var5] = var1.ehahsjd();
 				}
 
 				this.field1768 = new byte[var6]; // L: 84
 
 				for (var5 = 0; var5 < var6; ++var5) { // L: 85
-					this.field1768[var5] = var1.readByte();
+					this.field1768[var5] = var1.ajsfjah();
 				}
 			} else if (var2 != 16) { // L: 87
 				if (var2 == 17) { // L: 88
-					this.menuTargetName = var1.readStringCp1252NullTerminated();
+					this.menuTargetName = var1.asndbaeba();
 				} else if (var2 == 18) { // L: 89
 					var1.method7352(); // L: 90
 				} else if (var2 == 19) { // L: 92
-					this.category = var1.readUnsignedShort();
+					this.category = var1.nashfa();
 				} else if (var2 == 21) { // L: 93
-					var1.readInt(); // L: 94
+					var1.ehahsjd(); // L: 94
 				} else if (var2 == 22) { // L: 96
-					var1.readInt(); // L: 97
+					var1.ehahsjd(); // L: 97
 				} else if (var2 == 23) { // L: 99
-					var1.readUnsignedByte(); // L: 100
-					var1.readUnsignedByte(); // L: 101
-					var1.readUnsignedByte(); // L: 102
+					var1.asfjaja(); // L: 100
+					var1.asfjaja(); // L: 101
+					var1.asfjaja(); // L: 102
 				} else if (var2 == 24) { // L: 104
-					var1.readShort(); // L: 105
-					var1.readShort(); // L: 106
+					var1.asfhasd(); // L: 105
+					var1.asfhasd(); // L: 106
 				} else if (var2 == 25) { // L: 108
 					var1.method7352(); // L: 109
 				} else if (var2 == 28) { // L: 111
-					var1.readUnsignedByte(); // L: 112
+					var1.asfjaja(); // L: 112
 				} else if (var2 == 29) { // L: 114
 					HorizontalAlignment[] var3 = new HorizontalAlignment[]{HorizontalAlignment.field1844, HorizontalAlignment.HorizontalAlignment_centered, HorizontalAlignment.field1842}; // L: 117
-					this.horizontalAlignment = (HorizontalAlignment)class140.findEnumerated(var3, var1.readUnsignedByte()); // L: 119
+					this.horizontalAlignment = (HorizontalAlignment)class140.findEnumerated(var3, var1.asfjaja()); // L: 119
 				} else if (var2 == 30) { // L: 121
-					this.verticalAlignment = (VerticalAlignment)class140.findEnumerated(KeyHandler.method322(), var1.readUnsignedByte()); // L: 122
+					this.verticalAlignment = (VerticalAlignment)class140.findEnumerated(KeyHandler.method322(), var1.asfjaja()); // L: 122
 				}
 			}
 		}

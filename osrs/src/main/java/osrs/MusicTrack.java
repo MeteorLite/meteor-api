@@ -23,8 +23,8 @@ public class MusicTrack extends Node {
 	)
 	MusicTrack(Buffer var1) {
 		var1.offset = var1.array.length - 3; // L: 22
-		int var2 = var1.readUnsignedByte(); // L: 23
-		int var3 = var1.readUnsignedShort(); // L: 24
+		int var2 = var1.asfjaja(); // L: 23
+		int var3 = var1.nashfa(); // L: 24
 		int var4 = var2 * 10 + 14; // L: 25
 		var1.offset = 0; // L: 26
 		int var5 = 0; // L: 27
@@ -43,7 +43,7 @@ public class MusicTrack extends Node {
 			var14 = -1; // L: 36
 
 			while (true) {
-				var15 = var1.readUnsignedByte(); // L: 38
+				var15 = var1.asfjaja(); // L: 38
 				if (var15 != var14) { // L: 39
 					++var4;
 				}
@@ -84,7 +84,7 @@ public class MusicTrack extends Node {
 		var14 = var2 + var5 + var6 + var7 + var8 + var9 + var10 + var11 + var12; // L: 81
 
 		for (var15 = 0; var15 < var14; ++var15) { // L: 82
-			var1.readVarInt();
+			var1.enadb();
 		}
 
 		var4 += var1.offset - var13; // L: 83
@@ -105,7 +105,7 @@ public class MusicTrack extends Node {
 
 		int var29;
 		for (var29 = 0; var29 < var6; ++var29) { // L: 98
-			var28 = var28 + var1.readUnsignedByte() & 127; // L: 99
+			var28 = var28 + var1.asfjaja() & 127; // L: 99
 			if (var28 != 0 && var28 != 32) { // L: 100
 				if (var28 == 1) { // L: 101
 					++var16;
@@ -182,11 +182,11 @@ public class MusicTrack extends Node {
 		var1.offset += var5 * 3; // L: 156
 		this.midi = new byte[var4]; // L: 157
 		Buffer var51 = new Buffer(this.midi); // L: 158
-		var51.writeInt(1297377380); // L: 159
-		var51.writeInt(6); // L: 160
-		var51.writeShort(var2 > 1 ? 1 : 0); // L: 161
-		var51.writeShort(var2); // L: 162
-		var51.writeShort(var3); // L: 163
+		var51.lakak(1297377380); // L: 159
+		var51.lakak(6); // L: 160
+		var51.gaf(var2 > 1 ? 1 : 0); // L: 161
+		var51.gaf(var2); // L: 162
+		var51.gaf(var3); // L: 163
 		var1.offset = var13; // L: 164
 		int var52 = 0; // L: 165
 		int var53 = 0; // L: 166
@@ -200,66 +200,66 @@ public class MusicTrack extends Node {
 
 		label243:
 		for (int var60 = 0; var60 < var2; ++var60) { // L: 174
-			var51.writeInt(1297379947); // L: 175
+			var51.lakak(1297379947); // L: 175
 			var51.offset += 4; // L: 176
 			int var61 = var51.offset; // L: 177
 			int var62 = -1; // L: 178
 
 			while (true) {
 				while (true) {
-					int var63 = var1.readVarInt(); // L: 180
-					var51.writeVarInt(var63); // L: 181
+					int var63 = var1.enadb(); // L: 180
+					var51.achahash(var63); // L: 181
 					int var64 = var1.array[var29++] & 255; // L: 182
 					boolean var65 = var64 != var62; // L: 183
 					var62 = var64 & 15; // L: 184
 					if (var64 == 7) { // L: 185
 						if (var65) { // L: 186
-							var51.writeByte(255);
+							var51.asfag(255);
 						}
 
-						var51.writeByte(47); // L: 187
-						var51.writeByte(0); // L: 188
-						var51.writeLengthInt(var51.offset - var61); // L: 269
+						var51.asfag(47); // L: 187
+						var51.asfag(0); // L: 188
+						var51.oakskdka(var51.offset - var61); // L: 269
 						continue label243;
 					}
 
 					if (var64 == 23) { // L: 191
 						if (var65) { // L: 192
-							var51.writeByte(255);
+							var51.asfag(255);
 						}
 
-						var51.writeByte(81); // L: 193
-						var51.writeByte(3); // L: 194
-						var51.writeByte(var1.array[var50++]); // L: 195
-						var51.writeByte(var1.array[var50++]); // L: 196
-						var51.writeByte(var1.array[var50++]); // L: 197
+						var51.asfag(81); // L: 193
+						var51.asfag(3); // L: 194
+						var51.asfag(var1.array[var50++]); // L: 195
+						var51.asfag(var1.array[var50++]); // L: 196
+						var51.asfag(var1.array[var50++]); // L: 197
 					} else {
 						var52 ^= var64 >> 4; // L: 200
 						if (var62 == 0) { // L: 201
 							if (var65) { // L: 202
-								var51.writeByte(var52 + 144);
+								var51.asfag(var52 + 144);
 							}
 
 							var53 += var1.array[var37++]; // L: 203
 							var54 += var1.array[var38++]; // L: 204
-							var51.writeByte(var53 & 127); // L: 205
-							var51.writeByte(var54 & 127); // L: 206
+							var51.asfag(var53 & 127); // L: 205
+							var51.asfag(var54 & 127); // L: 206
 						} else if (var62 == 1) { // L: 209
 							if (var65) { // L: 210
-								var51.writeByte(var52 + 128);
+								var51.asfag(var52 + 128);
 							}
 
 							var53 += var1.array[var37++]; // L: 211
 							var55 += var1.array[var40++]; // L: 212
-							var51.writeByte(var53 & 127); // L: 213
-							var51.writeByte(var55 & 127); // L: 214
+							var51.asfag(var53 & 127); // L: 213
+							var51.asfag(var55 & 127); // L: 214
 						} else if (var62 == 2) { // L: 217
 							if (var65) { // L: 218
-								var51.writeByte(var52 + 176);
+								var51.asfag(var52 + 176);
 							}
 
 							var28 = var28 + var1.array[var15++] & 127; // L: 219
-							var51.writeByte(var28); // L: 220
+							var51.asfag(var28); // L: 220
 							byte var66;
 							if (var28 != 0 && var28 != 32) { // L: 222
 								if (var28 == 1) { // L: 223
@@ -293,42 +293,42 @@ public class MusicTrack extends Node {
 
 							int var67 = var66 + var59[var28]; // L: 235
 							var59[var28] = var67; // L: 236
-							var51.writeByte(var67 & 127); // L: 237
+							var51.asfag(var67 & 127); // L: 237
 						} else if (var62 == 3) { // L: 240
 							if (var65) { // L: 241
-								var51.writeByte(var52 + 224);
+								var51.asfag(var52 + 224);
 							}
 
 							var56 += var1.array[var45++]; // L: 242
 							var56 += var1.array[var33++] << 7; // L: 243
-							var51.writeByte(var56 & 127); // L: 244
-							var51.writeByte(var56 >> 7 & 127); // L: 245
+							var51.asfag(var56 & 127); // L: 244
+							var51.asfag(var56 >> 7 & 127); // L: 245
 						} else if (var62 == 4) { // L: 248
 							if (var65) { // L: 249
-								var51.writeByte(var52 + 208);
+								var51.asfag(var52 + 208);
 							}
 
 							var57 += var1.array[var32++]; // L: 250
-							var51.writeByte(var57 & 127); // L: 251
+							var51.asfag(var57 & 127); // L: 251
 						} else if (var62 == 5) { // L: 254
 							if (var65) { // L: 255
-								var51.writeByte(var52 + 160);
+								var51.asfag(var52 + 160);
 							}
 
 							var53 += var1.array[var37++]; // L: 256
 							var58 += var1.array[var31++]; // L: 257
-							var51.writeByte(var53 & 127); // L: 258
-							var51.writeByte(var58 & 127); // L: 259
+							var51.asfag(var53 & 127); // L: 258
+							var51.asfag(var58 & 127); // L: 259
 						} else {
 							if (var62 != 6) { // L: 262
 								throw new RuntimeException(); // L: 267
 							}
 
 							if (var65) { // L: 263
-								var51.writeByte(var52 + 192);
+								var51.asfag(var52 + 192);
 							}
 
-							var51.writeByte(var1.array[var44++]); // L: 264
+							var51.asfag(var1.array[var44++]); // L: 264
 						}
 					}
 				}

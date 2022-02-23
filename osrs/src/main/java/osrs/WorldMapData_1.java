@@ -56,20 +56,20 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 	)
 	@Export("init")
 	void init(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 14
+		int var2 = var1.asfjaja(); // L: 14
 		if (var2 != WorldMapID.field2771.value) {
 			throw new IllegalStateException(""); // L: 16
 		} else {
-			super.minPlane = var1.readUnsignedByte(); // L: 18
-			super.planes = var1.readUnsignedByte(); // L: 19
-			super.regionXLow = var1.readUnsignedShort(); // L: 20
-			super.regionYLow = var1.readUnsignedShort(); // L: 21
-			this.chunkXLow = var1.readUnsignedByte(); // L: 22
-			this.chunkYLow = var1.readUnsignedByte(); // L: 23
-			super.regionX = var1.readUnsignedShort(); // L: 24
-			super.regionY = var1.readUnsignedShort();
-			this.chunkX = var1.readUnsignedByte();
-			this.chunkY = var1.readUnsignedByte();
+			super.minPlane = var1.asfjaja(); // L: 18
+			super.planes = var1.asfjaja(); // L: 19
+			super.regionXLow = var1.nashfa(); // L: 20
+			super.regionYLow = var1.nashfa(); // L: 21
+			this.chunkXLow = var1.asfjaja(); // L: 22
+			this.chunkYLow = var1.asfjaja(); // L: 23
+			super.regionX = var1.nashfa(); // L: 24
+			super.regionY = var1.nashfa();
+			this.chunkX = var1.asfjaja();
+			this.chunkY = var1.asfjaja();
 			super.groupId = var1.method7352();
 			super.fileId = var1.method7352();
 		}
@@ -88,14 +88,14 @@ public class WorldMapData_1 extends AbstractWorldMapData {
 		super.field2736 = new byte[super.planes][64][64];
 		super.field2731 = new byte[super.planes][64][64];
 		super.decorations = new WorldMapDecoration[super.planes][64][64][];
-		int var2 = var1.readUnsignedByte(); // L: 40
+		int var2 = var1.asfjaja(); // L: 40
 		if (var2 != class231.field2765.value) {
 			throw new IllegalStateException(""); // L: 42
 		} else {
-			int var3 = var1.readUnsignedByte(); // L: 44
-			int var4 = var1.readUnsignedByte(); // L: 45
-			int var5 = var1.readUnsignedByte(); // L: 46
-			int var6 = var1.readUnsignedByte(); // L: 47
+			int var3 = var1.asfjaja(); // L: 44
+			int var4 = var1.asfjaja(); // L: 45
+			int var5 = var1.asfjaja(); // L: 46
+			int var6 = var1.asfjaja(); // L: 47
 			if (var3 == super.regionX && var4 == super.regionY && var5 == this.chunkX && var6 == this.chunkY) { // L: 48
 				for (int var7 = 0; var7 < 8; ++var7) { // L: 51
 					for (int var8 = 0; var8 < 8; ++var8) { // L: 52

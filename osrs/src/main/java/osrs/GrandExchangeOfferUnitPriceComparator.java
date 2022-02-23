@@ -35,7 +35,7 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 	public static String method5755(Buffer var0) {
 		String var1;
 		try {
-			int var2 = var0.readUShortSmart(); // L: 29
+			int var2 = var0.asfmaenansd(); // L: 29
 			if (var2 > 32767) { // L: 30
 				var2 = 32767;
 			}

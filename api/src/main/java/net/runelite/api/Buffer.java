@@ -27,8 +27,8 @@ package net.runelite.api;
 /**
  * Represents a byte buffer
  */
-public interface Buffer extends Node {
-
+public interface Buffer extends Node
+{
   byte[] getPayload();
 
   int getOffset();
@@ -37,64 +37,57 @@ public interface Buffer extends Node {
    * Use this api to write to byte buffers
    */
 
-  void writeIntME2$api(int var1);
+  void writeBoolean(boolean i);
 
-  void writeByte$api(int var1);
+  void writeBuffer(Buffer i);
 
-  void writeByteA$api(int var1);
+  void writeByte(int i);
 
-  void writeByteB$api(int var1);
+  void writeByteAdd(int i);
 
-  void writeByteC$api(int var1);
+  void writeByteNeg(int i);
 
-  void writeByteB0$api(int var1);
+  void writeByteSub(int i);
 
-  void writeIntME3$api(int var1);
+  void writeBytes(byte[] var1, int var2, int var3);
 
-  void write1$api(int var1);
+  void writeCESU8(CharSequence i);
 
-  void writeByte01$api(int var1);
+  int writeCrc(int i);
 
-  void writeShort$api(int var1);
+  void writeInt(int i);
 
-  void writeMedium$api(int var1);
+  void writeIntIME(int i);
 
-  void writeByte0A1$api(int var1);
+  void writeIntLE(int i);
 
-  void writeByte2$api(int var1);
+  void writeIntME(int i);
 
-  void writeByte01A$api(int var1);
+  void writeLengthByte(int i);
 
-  void writeIntME$api(int var1);
+  void writeLengthInt(int i);
 
-  void writeInt2$api(int var1);
+  void writeLengthShort(long i);
 
-  void writeInt$api(int var1);
+  void writeLong(long i);
 
-  void writeLong$api(long var1);
+  void writeLongMedium(int i);
 
-  void writeShort01$api(int var1);
+  void writeMedium(int i);
 
-  void writeInt0123$api(int var1);
+  void writeShort(int i);
 
-  void writeShortA$api(int var1);
+  void writeShortAdd(int i);
 
-  void writeShort01A$api(int var1);
+  void writeShortAddLE(int i);
 
-  void write2$api(int i);
+  void writeShortLE(int i);
 
-  void writeShortLE$api(int i);
+  void writeSmartByteShort(int i);
 
-  void writeStringCp1252NullTerminated$api(String string);
+  void writeStringCp1252NullCircumfixed(String i);
 
-  /**
-   * Use this api to write to byte buffers
-   */
-  void writeByte(int var1);
+  void writeStringCp1252NullTerminated(String i);
 
-  void writeShort(int var1);
-
-  void writeInt(int var1);
-
-  void writeLong(long var1);
+  void writeVarInt(int i);
 }

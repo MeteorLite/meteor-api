@@ -2450,4 +2450,6 @@ public interface Client extends GameEngine {
   void setUnlockedFpsTarget(int fps);
 
   void posToCameraAngle(int var0, int var1);
+
+  ClientPacket createClientPacket(int opcode, int length);
 }

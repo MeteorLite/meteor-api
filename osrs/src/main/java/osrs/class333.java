@@ -36,7 +36,7 @@ public class class333 {
 	@Export("Clan_leaveChat")
 	static final void Clan_leaveChat() {
 		PacketBufferNode var0 = class135.getPacketBufferNode(ClientPacket.field2860, Client.packetWriter.isaacCipher); // L: 11937
-		var0.packetBuffer.writeByte(0); // L: 11938
+		var0.packetBuffer.asfag(0); // L: 11938
 		Client.packetWriter.addNode(var0); // L: 11939
 	} // L: 11940
 }

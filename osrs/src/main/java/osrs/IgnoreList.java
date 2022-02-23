@@ -52,11 +52,11 @@ public class IgnoreList extends UserList {
 	public void read(Buffer var1, int var2) {
 		while (true) {
 			if (var1.offset < var2) { // L: 28
-				int var3 = var1.readUnsignedByte(); // L: 29
+				int var3 = var1.asfjaja(); // L: 29
 				boolean var4 = (var3 & 1) == 1; // L: 30
-				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 31
-				Username var6 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 32
-				var1.readStringCp1252NullTerminated(); // L: 33
+				Username var5 = new Username(var1.asndbaeba(), this.loginType); // L: 31
+				Username var6 = new Username(var1.asndbaeba(), this.loginType); // L: 32
+				var1.asndbaeba(); // L: 33
 				if (var5 != null && var5.hasCleanName()) { // L: 34
 					Ignored var7 = (Ignored)this.getByCurrentUsername(var5); // L: 35
 					if (var4) { // L: 36

@@ -79,7 +79,7 @@ public class KitDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 44
+			int var2 = var1.asfjaja(); // L: 44
 			if (var2 == 0) { // L: 45
 				return; // L: 48
 			}
@@ -96,39 +96,39 @@ public class KitDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 51
-			this.bodypartID = var1.readUnsignedByte();
+			this.bodypartID = var1.asfjaja();
 		} else {
 			int var3;
 			int var4;
 			if (var2 == 2) { // L: 52
-				var3 = var1.readUnsignedByte(); // L: 53
+				var3 = var1.asfjaja(); // L: 53
 				this.models2 = new int[var3]; // L: 54
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 55
-					this.models2[var4] = var1.readUnsignedShort();
+					this.models2[var4] = var1.nashfa();
 				}
 			} else if (var2 == 3) { // L: 57
 				this.nonSelectable = true;
 			} else if (var2 == 40) { // L: 58
-				var3 = var1.readUnsignedByte(); // L: 59
+				var3 = var1.asfjaja(); // L: 59
 				this.recolorFrom = new short[var3]; // L: 60
 				this.recolorTo = new short[var3]; // L: 61
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 62
-					this.recolorFrom[var4] = (short)var1.readUnsignedShort(); // L: 63
-					this.recolorTo[var4] = (short)var1.readUnsignedShort(); // L: 64
+					this.recolorFrom[var4] = (short)var1.nashfa(); // L: 63
+					this.recolorTo[var4] = (short)var1.nashfa(); // L: 64
 				}
 			} else if (var2 == 41) { // L: 67
-				var3 = var1.readUnsignedByte(); // L: 68
+				var3 = var1.asfjaja(); // L: 68
 				this.retextureFrom = new short[var3]; // L: 69
 				this.retextureTo = new short[var3]; // L: 70
 
 				for (var4 = 0; var4 < var3; ++var4) { // L: 71
-					this.retextureFrom[var4] = (short)var1.readUnsignedShort(); // L: 72
-					this.retextureTo[var4] = (short)var1.readUnsignedShort(); // L: 73
+					this.retextureFrom[var4] = (short)var1.nashfa(); // L: 72
+					this.retextureTo[var4] = (short)var1.nashfa(); // L: 73
 				}
 			} else if (var2 >= 60 && var2 < 70) { // L: 76
-				this.models[var2 - 60] = var1.readUnsignedShort();
+				this.models[var2 - 60] = var1.nashfa();
 			}
 		}
 

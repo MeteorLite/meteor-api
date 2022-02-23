@@ -146,9 +146,9 @@ public class Timer {
 		NetFileRequest.method5573(var1, this.field4089); // L: 53
 		NetFileRequest.method5573(var1, this.field4088); // L: 54
 		NetFileRequest.method5573(var1, this.field4085); // L: 55
-		var1.writeShort(this.field4090); // L: 56
-		var1.writeShort(this.field4097); // L: 57
-		var1.writeShort(this.field4093); // L: 58
-		var1.writeShort(this.field4094); // L: 59
+		var1.gaf(this.field4090); // L: 56
+		var1.gaf(this.field4097); // L: 57
+		var1.gaf(this.field4093); // L: 58
+		var1.gaf(this.field4094); // L: 59
 	} // L: 60
 }

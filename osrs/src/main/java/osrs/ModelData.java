@@ -315,7 +315,7 @@ public class ModelData extends Renderable {
 		this.priority = 0;
 		this.isBoundsCalculated = false;
 		Buffer var2 = new Buffer(10); // L: 64
-		var2.writeShort(-2); // L: 65
+		var2.gaf(-2); // L: 65
 		if (var1[var1.length - 1] == -3 && var1[var1.length - 2] == -1) { // L: 66
 			this.method3700(var1);
 		} else if (var1[var1.length - 1] == -2 && var1[var1.length - 2] == -1) { // L: 67
@@ -412,22 +412,22 @@ public class ModelData extends Renderable {
 		Buffer var7 = new Buffer(var1); // L: 78
 		Buffer var8 = new Buffer(var1); // L: 79
 		var2.offset = var1.length - 26; // L: 80
-		int var9 = var2.readUnsignedShort(); // L: 81
-		int var10 = var2.readUnsignedShort(); // L: 82
-		int var11 = var2.readUnsignedByte(); // L: 83
-		int var12 = var2.readUnsignedByte(); // L: 84
-		int var13 = var2.readUnsignedByte(); // L: 85
-		int var14 = var2.readUnsignedByte(); // L: 86
-		int var15 = var2.readUnsignedByte(); // L: 87
-		int var16 = var2.readUnsignedByte(); // L: 88
-		int var17 = var2.readUnsignedByte(); // L: 89
-		int var18 = var2.readUnsignedByte(); // L: 90
-		int var19 = var2.readUnsignedShort(); // L: 91
-		int var20 = var2.readUnsignedShort(); // L: 92
-		int var21 = var2.readUnsignedShort(); // L: 93
-		int var22 = var2.readUnsignedShort(); // L: 94
-		int var23 = var2.readUnsignedShort(); // L: 95
-		int var24 = var2.readUnsignedShort(); // L: 96
+		int var9 = var2.nashfa(); // L: 81
+		int var10 = var2.nashfa(); // L: 82
+		int var11 = var2.asfjaja(); // L: 83
+		int var12 = var2.asfjaja(); // L: 84
+		int var13 = var2.asfjaja(); // L: 85
+		int var14 = var2.asfjaja(); // L: 86
+		int var15 = var2.asfjaja(); // L: 87
+		int var16 = var2.asfjaja(); // L: 88
+		int var17 = var2.asfjaja(); // L: 89
+		int var18 = var2.asfjaja(); // L: 90
+		int var19 = var2.nashfa(); // L: 91
+		int var20 = var2.nashfa(); // L: 92
+		int var21 = var2.nashfa(); // L: 93
+		int var22 = var2.nashfa(); // L: 94
+		int var23 = var2.nashfa(); // L: 95
+		int var24 = var2.nashfa(); // L: 96
 		int var25 = 0; // L: 97
 		int var26 = 0; // L: 98
 		int var27 = 0; // L: 99
@@ -437,7 +437,7 @@ public class ModelData extends Renderable {
 			var2.offset = 0; // L: 102
 
 			for (var28 = 0; var28 < var11; ++var28) { // L: 103
-				byte var29 = this.textureRenderTypes[var28] = var2.readByte(); // L: 104
+				byte var29 = this.textureRenderTypes[var28] = var2.ajsfjah(); // L: 104
 				if (var29 == 0) { // L: 105
 					++var25;
 				}
@@ -572,20 +572,20 @@ public class ModelData extends Renderable {
 		int var56;
 		int var57;
 		for (var53 = 0; var53 < var9; ++var53) { // L: 187
-			var54 = var2.readUnsignedByte(); // L: 188
+			var54 = var2.asfjaja(); // L: 188
 			var55 = 0; // L: 189
 			if ((var54 & 1) != 0) { // L: 190
-				var55 = var3.readShortSmart();
+				var55 = var3.asfnaebabsf();
 			}
 
 			var56 = 0; // L: 191
 			if ((var54 & 2) != 0) { // L: 192
-				var56 = var4.readShortSmart();
+				var56 = var4.asfnaebabsf();
 			}
 
 			var57 = 0; // L: 193
 			if ((var54 & 4) != 0) { // L: 194
-				var57 = var5.readShortSmart();
+				var57 = var5.asfnaebabsf();
 			}
 
 			this.verticesX[var53] = var50 + var55; // L: 195
@@ -595,19 +595,19 @@ public class ModelData extends Renderable {
 			var51 = this.verticesY[var53]; // L: 199
 			var52 = this.verticesZ[var53]; // L: 200
 			if (var17 == 1) { // L: 201
-				this.vertexSkins[var53] = var6.readUnsignedByte();
+				this.vertexSkins[var53] = var6.asfjaja();
 			}
 		}
 
 		if (var18 == 1) { // L: 203
 			for (var53 = 0; var53 < var9; ++var53) { // L: 204
-				var54 = var6.readUnsignedByte(); // L: 205
+				var54 = var6.asfjaja(); // L: 205
 				this.field2180[var53] = new int[var54]; // L: 206
 				this.field2181[var53] = new int[var54]; // L: 207
 
 				for (var55 = 0; var55 < var54; ++var55) { // L: 208
-					this.field2180[var53][var55] = var6.readUnsignedByte(); // L: 209
-					this.field2181[var53][var55] = var6.readUnsignedByte(); // L: 210
+					this.field2180[var53][var55] = var6.asfjaja(); // L: 209
+					this.field2181[var53][var55] = var6.asfjaja(); // L: 210
 				}
 			}
 		}
@@ -621,29 +621,29 @@ public class ModelData extends Renderable {
 		var8.offset = var38; // L: 220
 
 		for (var53 = 0; var53 < var10; ++var53) { // L: 221
-			this.faceColors[var53] = (short)var2.readUnsignedShort(); // L: 222
+			this.faceColors[var53] = (short)var2.nashfa(); // L: 222
 			if (var12 == 1) { // L: 223
-				this.faceRenderTypes[var53] = var3.readByte();
+				this.faceRenderTypes[var53] = var3.ajsfjah();
 			}
 
 			if (var13 == 255) { // L: 224
-				this.faceRenderPriorities[var53] = var4.readByte();
+				this.faceRenderPriorities[var53] = var4.ajsfjah();
 			}
 
 			if (var14 == 1) { // L: 225
-				this.faceAlphas[var53] = var5.readByte();
+				this.faceAlphas[var53] = var5.ajsfjah();
 			}
 
 			if (var15 == 1) { // L: 226
-				this.faceSkins[var53] = var6.readUnsignedByte();
+				this.faceSkins[var53] = var6.asfjaja();
 			}
 
 			if (var16 == 1) { // L: 227
-				this.faceTextures[var53] = (short)(var7.readUnsignedShort() - 1);
+				this.faceTextures[var53] = (short)(var7.nashfa() - 1);
 			}
 
 			if (this.textureCoords != null && this.faceTextures[var53] != -1) { // L: 228
-				this.textureCoords[var53] = (byte)(var8.readUnsignedByte() - 1);
+				this.textureCoords[var53] = (byte)(var8.asfjaja() - 1);
 			}
 		}
 
@@ -656,11 +656,11 @@ public class ModelData extends Renderable {
 
 		int var58;
 		for (var57 = 0; var57 < var10; ++var57) { // L: 236
-			var58 = var3.readUnsignedByte(); // L: 237
+			var58 = var3.asfjaja(); // L: 237
 			if (var58 == 1) { // L: 238
-				var53 = var2.readShortSmart() + var56; // L: 239
-				var54 = var2.readShortSmart() + var53; // L: 241
-				var55 = var2.readShortSmart() + var54; // L: 243
+				var53 = var2.asfnaebabsf() + var56; // L: 239
+				var54 = var2.asfnaebabsf() + var53; // L: 241
+				var55 = var2.asfnaebabsf() + var54; // L: 243
 				var56 = var55; // L: 244
 				this.indices1[var57] = var53; // L: 245
 				this.indices2[var57] = var54; // L: 246
@@ -669,7 +669,7 @@ public class ModelData extends Renderable {
 
 			if (var58 == 2) { // L: 249
 				var54 = var55; // L: 250
-				var55 = var2.readShortSmart() + var56; // L: 251
+				var55 = var2.asfnaebabsf() + var56; // L: 251
 				var56 = var55; // L: 252
 				this.indices1[var57] = var53; // L: 253
 				this.indices2[var57] = var54; // L: 254
@@ -678,7 +678,7 @@ public class ModelData extends Renderable {
 
 			if (var58 == 3) { // L: 257
 				var53 = var55; // L: 258
-				var55 = var2.readShortSmart() + var56; // L: 259
+				var55 = var2.asfnaebabsf() + var56; // L: 259
 				var56 = var55; // L: 260
 				this.indices1[var57] = var53; // L: 261
 				this.indices2[var57] = var54; // L: 262
@@ -689,7 +689,7 @@ public class ModelData extends Renderable {
 				int var59 = var53; // L: 266
 				var53 = var54; // L: 267
 				var54 = var59; // L: 268
-				var55 = var2.readShortSmart() + var56; // L: 269
+				var55 = var2.asfnaebabsf() + var56; // L: 269
 				var56 = var55; // L: 270
 				this.indices1[var57] = var53; // L: 271
 				this.indices2[var57] = var59; // L: 272
@@ -707,20 +707,20 @@ public class ModelData extends Renderable {
 		for (var57 = 0; var57 < var11; ++var57) { // L: 282
 			var58 = this.textureRenderTypes[var57] & 255; // L: 283
 			if (var58 == 0) { // L: 284
-				this.texTriangleX[var57] = (short)var2.readUnsignedShort(); // L: 285
-				this.texTriangleY[var57] = (short)var2.readUnsignedShort(); // L: 286
-				this.texTriangleZ[var57] = (short)var2.readUnsignedShort(); // L: 287
+				this.texTriangleX[var57] = (short)var2.nashfa(); // L: 285
+				this.texTriangleY[var57] = (short)var2.nashfa(); // L: 286
+				this.texTriangleZ[var57] = (short)var2.nashfa(); // L: 287
 			}
 		}
 
 		var2.offset = var28; // L: 290
-		var57 = var2.readUnsignedByte(); // L: 291
+		var57 = var2.asfjaja(); // L: 291
 		if (var57 != 0) { // L: 292
 			new ModelData0();
-			var2.readUnsignedShort(); // L: 294
-			var2.readUnsignedShort(); // L: 295
-			var2.readUnsignedShort(); // L: 296
-			var2.readInt(); // L: 297
+			var2.nashfa(); // L: 294
+			var2.nashfa(); // L: 295
+			var2.nashfa(); // L: 296
+			var2.ehahsjd(); // L: 297
 		}
 
 	} // L: 299
@@ -735,20 +735,20 @@ public class ModelData extends Renderable {
 		Buffer var7 = new Buffer(var1); // L: 307
 		Buffer var8 = new Buffer(var1); // L: 308
 		var4.offset = var1.length - 23; // L: 309
-		int var9 = var4.readUnsignedShort(); // L: 310
-		int var10 = var4.readUnsignedShort(); // L: 311
-		int var11 = var4.readUnsignedByte(); // L: 312
-		int var12 = var4.readUnsignedByte(); // L: 313
-		int var13 = var4.readUnsignedByte(); // L: 314
-		int var14 = var4.readUnsignedByte(); // L: 315
-		int var15 = var4.readUnsignedByte(); // L: 316
-		int var16 = var4.readUnsignedByte(); // L: 317
-		int var17 = var4.readUnsignedByte(); // L: 318
-		int var18 = var4.readUnsignedShort(); // L: 319
-		int var19 = var4.readUnsignedShort(); // L: 320
-		int var20 = var4.readUnsignedShort(); // L: 321
-		int var21 = var4.readUnsignedShort(); // L: 322
-		int var22 = var4.readUnsignedShort(); // L: 323
+		int var9 = var4.nashfa(); // L: 310
+		int var10 = var4.nashfa(); // L: 311
+		int var11 = var4.asfjaja(); // L: 312
+		int var12 = var4.asfjaja(); // L: 313
+		int var13 = var4.asfjaja(); // L: 314
+		int var14 = var4.asfjaja(); // L: 315
+		int var15 = var4.asfjaja(); // L: 316
+		int var16 = var4.asfjaja(); // L: 317
+		int var17 = var4.asfjaja(); // L: 318
+		int var18 = var4.nashfa(); // L: 319
+		int var19 = var4.nashfa(); // L: 320
+		int var20 = var4.nashfa(); // L: 321
+		int var21 = var4.nashfa(); // L: 322
+		int var22 = var4.nashfa(); // L: 323
 		byte var23 = 0; // L: 324
 		int var47 = var23 + var9; // L: 326
 		int var25 = var47; // L: 327
@@ -847,20 +847,20 @@ public class ModelData extends Renderable {
 		int var43;
 		int var44;
 		for (var40 = 0; var40 < var9; ++var40) { // L: 389
-			var41 = var4.readUnsignedByte(); // L: 390
+			var41 = var4.asfjaja(); // L: 390
 			var42 = 0; // L: 391
 			if ((var41 & 1) != 0) { // L: 392
-				var42 = var5.readShortSmart();
+				var42 = var5.asfnaebabsf();
 			}
 
 			var43 = 0; // L: 393
 			if ((var41 & 2) != 0) { // L: 394
-				var43 = var6.readShortSmart();
+				var43 = var6.asfnaebabsf();
 			}
 
 			var44 = 0; // L: 395
 			if ((var41 & 4) != 0) { // L: 396
-				var44 = var7.readShortSmart();
+				var44 = var7.asfnaebabsf();
 			}
 
 			this.verticesX[var40] = var37 + var42; // L: 397
@@ -870,19 +870,19 @@ public class ModelData extends Renderable {
 			var38 = this.verticesY[var40]; // L: 401
 			var39 = this.verticesZ[var40]; // L: 402
 			if (var16 == 1) { // L: 403
-				this.vertexSkins[var40] = var8.readUnsignedByte();
+				this.vertexSkins[var40] = var8.asfjaja();
 			}
 		}
 
 		if (var17 == 1) { // L: 405
 			for (var40 = 0; var40 < var9; ++var40) { // L: 406
-				var41 = var8.readUnsignedByte(); // L: 407
+				var41 = var8.asfjaja(); // L: 407
 				this.field2180[var40] = new int[var41]; // L: 408
 				this.field2181[var40] = new int[var41]; // L: 409
 
 				for (var42 = 0; var42 < var41; ++var42) { // L: 410
-					this.field2180[var40][var42] = var8.readUnsignedByte(); // L: 411
-					this.field2181[var40][var42] = var8.readUnsignedByte(); // L: 412
+					this.field2180[var40][var42] = var8.asfjaja(); // L: 411
+					this.field2181[var40][var42] = var8.asfjaja(); // L: 412
 				}
 			}
 		}
@@ -894,9 +894,9 @@ public class ModelData extends Renderable {
 		var8.offset = var27; // L: 420
 
 		for (var40 = 0; var40 < var10; ++var40) { // L: 421
-			this.faceColors[var40] = (short)var4.readUnsignedShort(); // L: 422
+			this.faceColors[var40] = (short)var4.nashfa(); // L: 422
 			if (var12 == 1) { // L: 423
-				var41 = var5.readUnsignedByte(); // L: 424
+				var41 = var5.asfjaja(); // L: 424
 				if ((var41 & 1) == 1) { // L: 425
 					this.faceRenderTypes[var40] = 1; // L: 426
 					var2 = true; // L: 427
@@ -918,15 +918,15 @@ public class ModelData extends Renderable {
 			}
 
 			if (var13 == 255) { // L: 441
-				this.faceRenderPriorities[var40] = var6.readByte();
+				this.faceRenderPriorities[var40] = var6.ajsfjah();
 			}
 
 			if (var14 == 1) { // L: 442
-				this.faceAlphas[var40] = var7.readByte();
+				this.faceAlphas[var40] = var7.ajsfjah();
 			}
 
 			if (var15 == 1) { // L: 443
-				this.faceSkins[var40] = var8.readUnsignedByte();
+				this.faceSkins[var40] = var8.asfjaja();
 			}
 		}
 
@@ -940,11 +940,11 @@ public class ModelData extends Renderable {
 		int var45;
 		int var46;
 		for (var44 = 0; var44 < var10; ++var44) { // L: 451
-			var45 = var5.readUnsignedByte(); // L: 452
+			var45 = var5.asfjaja(); // L: 452
 			if (var45 == 1) { // L: 453
-				var40 = var4.readShortSmart() + var43; // L: 454
-				var41 = var4.readShortSmart() + var40; // L: 456
-				var42 = var4.readShortSmart() + var41; // L: 458
+				var40 = var4.asfnaebabsf() + var43; // L: 454
+				var41 = var4.asfnaebabsf() + var40; // L: 456
+				var42 = var4.asfnaebabsf() + var41; // L: 458
 				var43 = var42; // L: 459
 				this.indices1[var44] = var40; // L: 460
 				this.indices2[var44] = var41; // L: 461
@@ -953,7 +953,7 @@ public class ModelData extends Renderable {
 
 			if (var45 == 2) { // L: 464
 				var41 = var42; // L: 465
-				var42 = var4.readShortSmart() + var43; // L: 466
+				var42 = var4.asfnaebabsf() + var43; // L: 466
 				var43 = var42; // L: 467
 				this.indices1[var44] = var40; // L: 468
 				this.indices2[var44] = var41; // L: 469
@@ -962,7 +962,7 @@ public class ModelData extends Renderable {
 
 			if (var45 == 3) { // L: 472
 				var40 = var42; // L: 473
-				var42 = var4.readShortSmart() + var43; // L: 474
+				var42 = var4.asfnaebabsf() + var43; // L: 474
 				var43 = var42; // L: 475
 				this.indices1[var44] = var40; // L: 476
 				this.indices2[var44] = var41; // L: 477
@@ -973,7 +973,7 @@ public class ModelData extends Renderable {
 				var46 = var40; // L: 481
 				var40 = var41; // L: 482
 				var41 = var46; // L: 483
-				var42 = var4.readShortSmart() + var43; // L: 484
+				var42 = var4.asfnaebabsf() + var43; // L: 484
 				var43 = var42; // L: 485
 				this.indices1[var44] = var40; // L: 486
 				this.indices2[var44] = var46; // L: 487
@@ -985,9 +985,9 @@ public class ModelData extends Renderable {
 
 		for (var44 = 0; var44 < var11; ++var44) { // L: 492
 			this.textureRenderTypes[var44] = 0; // L: 493
-			this.texTriangleX[var44] = (short)var4.readUnsignedShort(); // L: 494
-			this.texTriangleY[var44] = (short)var4.readUnsignedShort(); // L: 495
-			this.texTriangleZ[var44] = (short)var4.readUnsignedShort(); // L: 496
+			this.texTriangleX[var44] = (short)var4.nashfa(); // L: 494
+			this.texTriangleY[var44] = (short)var4.nashfa(); // L: 495
+			this.texTriangleZ[var44] = (short)var4.nashfa(); // L: 496
 		}
 
 		if (this.textureCoords != null) { // L: 498
@@ -1029,20 +1029,20 @@ public class ModelData extends Renderable {
 		Buffer var7 = new Buffer(var1); // L: 519
 		Buffer var8 = new Buffer(var1); // L: 520
 		var2.offset = var1.length - 23; // L: 521
-		int var9 = var2.readUnsignedShort(); // L: 522
-		int var10 = var2.readUnsignedShort(); // L: 523
-		int var11 = var2.readUnsignedByte(); // L: 524
-		int var12 = var2.readUnsignedByte(); // L: 525
-		int var13 = var2.readUnsignedByte(); // L: 526
-		int var14 = var2.readUnsignedByte(); // L: 527
-		int var15 = var2.readUnsignedByte(); // L: 528
-		int var16 = var2.readUnsignedByte(); // L: 529
-		int var17 = var2.readUnsignedByte(); // L: 530
-		int var18 = var2.readUnsignedShort(); // L: 531
-		int var19 = var2.readUnsignedShort(); // L: 532
-		int var20 = var2.readUnsignedShort(); // L: 533
-		int var21 = var2.readUnsignedShort(); // L: 534
-		int var22 = var2.readUnsignedShort(); // L: 535
+		int var9 = var2.nashfa(); // L: 522
+		int var10 = var2.nashfa(); // L: 523
+		int var11 = var2.asfjaja(); // L: 524
+		int var12 = var2.asfjaja(); // L: 525
+		int var13 = var2.asfjaja(); // L: 526
+		int var14 = var2.asfjaja(); // L: 527
+		int var15 = var2.asfjaja(); // L: 528
+		int var16 = var2.asfjaja(); // L: 529
+		int var17 = var2.asfjaja(); // L: 530
+		int var18 = var2.nashfa(); // L: 531
+		int var19 = var2.nashfa(); // L: 532
+		int var20 = var2.nashfa(); // L: 533
+		int var21 = var2.nashfa(); // L: 534
+		int var22 = var2.nashfa(); // L: 535
 		int var23 = 0; // L: 536
 		int var24 = 0; // L: 537
 		int var25 = 0; // L: 538
@@ -1052,7 +1052,7 @@ public class ModelData extends Renderable {
 			var2.offset = 0; // L: 541
 
 			for (var26 = 0; var26 < var11; ++var26) { // L: 542
-				byte var27 = this.textureRenderTypes[var26] = var2.readByte(); // L: 543
+				byte var27 = this.textureRenderTypes[var26] = var2.ajsfjah(); // L: 543
 				if (var27 == 0) { // L: 544
 					++var23;
 				}
@@ -1185,20 +1185,20 @@ public class ModelData extends Renderable {
 		int var54;
 		int var55;
 		for (var51 = 0; var51 < var9; ++var51) { // L: 622
-			var52 = var2.readUnsignedByte(); // L: 623
+			var52 = var2.asfjaja(); // L: 623
 			var53 = 0; // L: 624
 			if ((var52 & 1) != 0) { // L: 625
-				var53 = var3.readShortSmart();
+				var53 = var3.asfnaebabsf();
 			}
 
 			var54 = 0; // L: 626
 			if ((var52 & 2) != 0) { // L: 627
-				var54 = var4.readShortSmart();
+				var54 = var4.asfnaebabsf();
 			}
 
 			var55 = 0; // L: 628
 			if ((var52 & 4) != 0) { // L: 629
-				var55 = var5.readShortSmart();
+				var55 = var5.asfnaebabsf();
 			}
 
 			this.verticesX[var51] = var48 + var53; // L: 630
@@ -1208,7 +1208,7 @@ public class ModelData extends Renderable {
 			var49 = this.verticesY[var51]; // L: 634
 			var50 = this.verticesZ[var51]; // L: 635
 			if (var17 == 1) { // L: 636
-				this.vertexSkins[var51] = var6.readUnsignedByte();
+				this.vertexSkins[var51] = var6.asfjaja();
 			}
 		}
 
@@ -1221,29 +1221,29 @@ public class ModelData extends Renderable {
 		var8.offset = var36; // L: 644
 
 		for (var51 = 0; var51 < var10; ++var51) { // L: 645
-			this.faceColors[var51] = (short)var2.readUnsignedShort(); // L: 646
+			this.faceColors[var51] = (short)var2.nashfa(); // L: 646
 			if (var12 == 1) { // L: 647
-				this.faceRenderTypes[var51] = var3.readByte();
+				this.faceRenderTypes[var51] = var3.ajsfjah();
 			}
 
 			if (var13 == 255) { // L: 648
-				this.faceRenderPriorities[var51] = var4.readByte();
+				this.faceRenderPriorities[var51] = var4.ajsfjah();
 			}
 
 			if (var14 == 1) { // L: 649
-				this.faceAlphas[var51] = var5.readByte();
+				this.faceAlphas[var51] = var5.ajsfjah();
 			}
 
 			if (var15 == 1) { // L: 650
-				this.faceSkins[var51] = var6.readUnsignedByte();
+				this.faceSkins[var51] = var6.asfjaja();
 			}
 
 			if (var16 == 1) { // L: 651
-				this.faceTextures[var51] = (short)(var7.readUnsignedShort() - 1);
+				this.faceTextures[var51] = (short)(var7.nashfa() - 1);
 			}
 
 			if (this.textureCoords != null && this.faceTextures[var51] != -1) { // L: 652
-				this.textureCoords[var51] = (byte)(var8.readUnsignedByte() - 1);
+				this.textureCoords[var51] = (byte)(var8.asfjaja() - 1);
 			}
 		}
 
@@ -1256,11 +1256,11 @@ public class ModelData extends Renderable {
 
 		int var56;
 		for (var55 = 0; var55 < var10; ++var55) { // L: 660
-			var56 = var3.readUnsignedByte(); // L: 661
+			var56 = var3.asfjaja(); // L: 661
 			if (var56 == 1) { // L: 662
-				var51 = var2.readShortSmart() + var54; // L: 663
-				var52 = var2.readShortSmart() + var51; // L: 665
-				var53 = var2.readShortSmart() + var52; // L: 667
+				var51 = var2.asfnaebabsf() + var54; // L: 663
+				var52 = var2.asfnaebabsf() + var51; // L: 665
+				var53 = var2.asfnaebabsf() + var52; // L: 667
 				var54 = var53; // L: 668
 				this.indices1[var55] = var51; // L: 669
 				this.indices2[var55] = var52; // L: 670
@@ -1269,7 +1269,7 @@ public class ModelData extends Renderable {
 
 			if (var56 == 2) { // L: 673
 				var52 = var53; // L: 674
-				var53 = var2.readShortSmart() + var54; // L: 675
+				var53 = var2.asfnaebabsf() + var54; // L: 675
 				var54 = var53; // L: 676
 				this.indices1[var55] = var51; // L: 677
 				this.indices2[var55] = var52; // L: 678
@@ -1278,7 +1278,7 @@ public class ModelData extends Renderable {
 
 			if (var56 == 3) { // L: 681
 				var51 = var53; // L: 682
-				var53 = var2.readShortSmart() + var54; // L: 683
+				var53 = var2.asfnaebabsf() + var54; // L: 683
 				var54 = var53; // L: 684
 				this.indices1[var55] = var51; // L: 685
 				this.indices2[var55] = var52; // L: 686
@@ -1289,7 +1289,7 @@ public class ModelData extends Renderable {
 				int var57 = var51; // L: 690
 				var51 = var52; // L: 691
 				var52 = var57; // L: 692
-				var53 = var2.readShortSmart() + var54; // L: 693
+				var53 = var2.asfnaebabsf() + var54; // L: 693
 				var54 = var53; // L: 694
 				this.indices1[var55] = var51; // L: 695
 				this.indices2[var55] = var57; // L: 696
@@ -1307,20 +1307,20 @@ public class ModelData extends Renderable {
 		for (var55 = 0; var55 < var11; ++var55) { // L: 706
 			var56 = this.textureRenderTypes[var55] & 255; // L: 707
 			if (var56 == 0) { // L: 708
-				this.texTriangleX[var55] = (short)var2.readUnsignedShort(); // L: 709
-				this.texTriangleY[var55] = (short)var2.readUnsignedShort(); // L: 710
-				this.texTriangleZ[var55] = (short)var2.readUnsignedShort(); // L: 711
+				this.texTriangleX[var55] = (short)var2.nashfa(); // L: 709
+				this.texTriangleY[var55] = (short)var2.nashfa(); // L: 710
+				this.texTriangleZ[var55] = (short)var2.nashfa(); // L: 711
 			}
 		}
 
 		var2.offset = var26; // L: 714
-		var55 = var2.readUnsignedByte(); // L: 715
+		var55 = var2.asfjaja(); // L: 715
 		if (var55 != 0) { // L: 716
 			new ModelData0();
-			var2.readUnsignedShort(); // L: 718
-			var2.readUnsignedShort(); // L: 719
-			var2.readUnsignedShort(); // L: 720
-			var2.readInt(); // L: 721
+			var2.nashfa(); // L: 718
+			var2.nashfa(); // L: 719
+			var2.nashfa(); // L: 720
+			var2.ehahsjd(); // L: 721
 		}
 
 	} // L: 723
@@ -1335,18 +1335,18 @@ public class ModelData extends Renderable {
 		Buffer var7 = new Buffer(var1); // L: 731
 		Buffer var8 = new Buffer(var1); // L: 732
 		var4.offset = var1.length - 18; // L: 733
-		int var9 = var4.readUnsignedShort(); // L: 734
-		int var10 = var4.readUnsignedShort(); // L: 735
-		int var11 = var4.readUnsignedByte(); // L: 736
-		int var12 = var4.readUnsignedByte(); // L: 737
-		int var13 = var4.readUnsignedByte(); // L: 738
-		int var14 = var4.readUnsignedByte(); // L: 739
-		int var15 = var4.readUnsignedByte(); // L: 740
-		int var16 = var4.readUnsignedByte(); // L: 741
-		int var17 = var4.readUnsignedShort(); // L: 742
-		int var18 = var4.readUnsignedShort(); // L: 743
-		int var19 = var4.readUnsignedShort(); // L: 744
-		int var20 = var4.readUnsignedShort(); // L: 745
+		int var9 = var4.nashfa(); // L: 734
+		int var10 = var4.nashfa(); // L: 735
+		int var11 = var4.asfjaja(); // L: 736
+		int var12 = var4.asfjaja(); // L: 737
+		int var13 = var4.asfjaja(); // L: 738
+		int var14 = var4.asfjaja(); // L: 739
+		int var15 = var4.asfjaja(); // L: 740
+		int var16 = var4.asfjaja(); // L: 741
+		int var17 = var4.nashfa(); // L: 742
+		int var18 = var4.nashfa(); // L: 743
+		int var19 = var4.nashfa(); // L: 744
+		int var20 = var4.nashfa(); // L: 745
 		byte var21 = 0; // L: 746
 		int var45 = var21 + var9; // L: 748
 		int var23 = var45; // L: 749
@@ -1443,20 +1443,20 @@ public class ModelData extends Renderable {
 		int var41;
 		int var42;
 		for (var38 = 0; var38 < var9; ++var38) { // L: 807
-			var39 = var4.readUnsignedByte(); // L: 808
+			var39 = var4.asfjaja(); // L: 808
 			var40 = 0; // L: 809
 			if ((var39 & 1) != 0) { // L: 810
-				var40 = var5.readShortSmart();
+				var40 = var5.asfnaebabsf();
 			}
 
 			var41 = 0; // L: 811
 			if ((var39 & 2) != 0) { // L: 812
-				var41 = var6.readShortSmart();
+				var41 = var6.asfnaebabsf();
 			}
 
 			var42 = 0; // L: 813
 			if ((var39 & 4) != 0) { // L: 814
-				var42 = var7.readShortSmart();
+				var42 = var7.asfnaebabsf();
 			}
 
 			this.verticesX[var38] = var35 + var40; // L: 815
@@ -1466,7 +1466,7 @@ public class ModelData extends Renderable {
 			var36 = this.verticesY[var38]; // L: 819
 			var37 = this.verticesZ[var38]; // L: 820
 			if (var16 == 1) { // L: 821
-				this.vertexSkins[var38] = var8.readUnsignedByte();
+				this.vertexSkins[var38] = var8.asfjaja();
 			}
 		}
 
@@ -1477,9 +1477,9 @@ public class ModelData extends Renderable {
 		var8.offset = var25; // L: 827
 
 		for (var38 = 0; var38 < var10; ++var38) { // L: 828
-			this.faceColors[var38] = (short)var4.readUnsignedShort(); // L: 829
+			this.faceColors[var38] = (short)var4.nashfa(); // L: 829
 			if (var12 == 1) { // L: 830
-				var39 = var5.readUnsignedByte(); // L: 831
+				var39 = var5.asfjaja(); // L: 831
 				if ((var39 & 1) == 1) { // L: 832
 					this.faceRenderTypes[var38] = 1; // L: 833
 					var2 = true; // L: 834
@@ -1501,15 +1501,15 @@ public class ModelData extends Renderable {
 			}
 
 			if (var13 == 255) { // L: 848
-				this.faceRenderPriorities[var38] = var6.readByte();
+				this.faceRenderPriorities[var38] = var6.ajsfjah();
 			}
 
 			if (var14 == 1) { // L: 849
-				this.faceAlphas[var38] = var7.readByte();
+				this.faceAlphas[var38] = var7.ajsfjah();
 			}
 
 			if (var15 == 1) { // L: 850
-				this.faceSkins[var38] = var8.readUnsignedByte();
+				this.faceSkins[var38] = var8.asfjaja();
 			}
 		}
 
@@ -1523,11 +1523,11 @@ public class ModelData extends Renderable {
 		int var43;
 		int var44;
 		for (var42 = 0; var42 < var10; ++var42) { // L: 858
-			var43 = var5.readUnsignedByte(); // L: 859
+			var43 = var5.asfjaja(); // L: 859
 			if (var43 == 1) { // L: 860
-				var38 = var4.readShortSmart() + var41; // L: 861
-				var39 = var4.readShortSmart() + var38; // L: 863
-				var40 = var4.readShortSmart() + var39; // L: 865
+				var38 = var4.asfnaebabsf() + var41; // L: 861
+				var39 = var4.asfnaebabsf() + var38; // L: 863
+				var40 = var4.asfnaebabsf() + var39; // L: 865
 				var41 = var40; // L: 866
 				this.indices1[var42] = var38; // L: 867
 				this.indices2[var42] = var39; // L: 868
@@ -1536,7 +1536,7 @@ public class ModelData extends Renderable {
 
 			if (var43 == 2) { // L: 871
 				var39 = var40; // L: 872
-				var40 = var4.readShortSmart() + var41; // L: 873
+				var40 = var4.asfnaebabsf() + var41; // L: 873
 				var41 = var40; // L: 874
 				this.indices1[var42] = var38; // L: 875
 				this.indices2[var42] = var39; // L: 876
@@ -1545,7 +1545,7 @@ public class ModelData extends Renderable {
 
 			if (var43 == 3) { // L: 879
 				var38 = var40; // L: 880
-				var40 = var4.readShortSmart() + var41; // L: 881
+				var40 = var4.asfnaebabsf() + var41; // L: 881
 				var41 = var40; // L: 882
 				this.indices1[var42] = var38; // L: 883
 				this.indices2[var42] = var39; // L: 884
@@ -1556,7 +1556,7 @@ public class ModelData extends Renderable {
 				var44 = var38; // L: 888
 				var38 = var39; // L: 889
 				var39 = var44; // L: 890
-				var40 = var4.readShortSmart() + var41; // L: 891
+				var40 = var4.asfnaebabsf() + var41; // L: 891
 				var41 = var40; // L: 892
 				this.indices1[var42] = var38; // L: 893
 				this.indices2[var42] = var44; // L: 894
@@ -1568,9 +1568,9 @@ public class ModelData extends Renderable {
 
 		for (var42 = 0; var42 < var11; ++var42) { // L: 899
 			this.textureRenderTypes[var42] = 0; // L: 900
-			this.texTriangleX[var42] = (short)var4.readUnsignedShort(); // L: 901
-			this.texTriangleY[var42] = (short)var4.readUnsignedShort(); // L: 902
-			this.texTriangleZ[var42] = (short)var4.readUnsignedShort(); // L: 903
+			this.texTriangleX[var42] = (short)var4.nashfa(); // L: 901
+			this.texTriangleY[var42] = (short)var4.nashfa(); // L: 902
+			this.texTriangleZ[var42] = (short)var4.nashfa(); // L: 903
 		}
 
 		if (this.textureCoords != null) { // L: 905

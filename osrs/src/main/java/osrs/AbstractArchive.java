@@ -127,17 +127,17 @@ public abstract class AbstractArchive {
 		int var2 = ClientPreferences.method2230(var1, 0, var3); // L: 40
 		this.hash = var2; // L: 42
 		Buffer var4 = new Buffer(ArchiveLoader.decompressBytes(var1)); // L: 43
-		int var5 = var4.readUnsignedByte(); // L: 44
+		int var5 = var4.asfjaja(); // L: 44
 		if (var5 >= 5 && var5 <= 7) { // L: 45
 			if (var5 >= 6) { // L: 46
-				var4.readInt(); // L: 47
+				var4.ehahsjd(); // L: 47
 			}
 
-			int var6 = var4.readUnsignedByte(); // L: 50
+			int var6 = var4.asfjaja(); // L: 50
 			if (var5 >= 7) { // L: 51
 				this.groupCount = var4.method7384();
 			} else {
-				this.groupCount = var4.readUnsignedShort(); // L: 52
+				this.groupCount = var4.nashfa(); // L: 52
 			}
 
 			int var7 = 0; // L: 53
@@ -153,7 +153,7 @@ public abstract class AbstractArchive {
 				}
 			} else {
 				for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 63
-					this.groupIds[var9] = var7 += var4.readUnsignedShort(); // L: 64
+					this.groupIds[var9] = var7 += var4.nashfa(); // L: 64
 					if (this.groupIds[var9] > var8) { // L: 65
 						var8 = this.groupIds[var9];
 					}
@@ -170,22 +170,22 @@ public abstract class AbstractArchive {
 				this.groupNameHashes = new int[var8 + 1]; // L: 75
 
 				for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 76
-					this.groupNameHashes[this.groupIds[var9]] = var4.readInt();
+					this.groupNameHashes[this.groupIds[var9]] = var4.ehahsjd();
 				}
 
 				this.groupNameHashTable = new IntHashTable(this.groupNameHashes); // L: 77
 			}
 
 			for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 79
-				this.groupCrcs[this.groupIds[var9]] = var4.readInt();
+				this.groupCrcs[this.groupIds[var9]] = var4.ehahsjd();
 			}
 
 			for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 80
-				this.groupVersions[this.groupIds[var9]] = var4.readInt();
+				this.groupVersions[this.groupIds[var9]] = var4.ehahsjd();
 			}
 
 			for (var9 = 0; var9 < this.groupCount; ++var9) { // L: 81
-				this.fileCounts[this.groupIds[var9]] = var4.readUnsignedShort();
+				this.fileCounts[this.groupIds[var9]] = var4.nashfa();
 			}
 
 			int var10;
@@ -219,7 +219,7 @@ public abstract class AbstractArchive {
 					this.fileIds[var10] = new int[var11]; // L: 102
 
 					for (var13 = 0; var13 < var11; ++var13) { // L: 103
-						var14 = this.fileIds[var10][var13] = var7 += var4.readUnsignedShort(); // L: 104
+						var14 = this.fileIds[var10][var13] = var7 += var4.nashfa(); // L: 104
 						if (var14 > var12) { // L: 105
 							var12 = var14;
 						}
@@ -239,7 +239,7 @@ public abstract class AbstractArchive {
 					this.fileNameHashes[var10] = new int[this.files[var10].length]; // L: 116
 
 					for (var12 = 0; var12 < var11; ++var12) { // L: 117
-						this.fileNameHashes[var10][this.fileIds[var10][var12]] = var4.readInt();
+						this.fileNameHashes[var10][this.fileIds[var10][var12]] = var4.ehahsjd();
 					}
 
 					this.fileNameHashTables[var10] = new IntHashTable(this.fileNameHashes[var10]); // L: 118
@@ -550,7 +550,7 @@ public abstract class AbstractArchive {
 						var14 = 0; // L: 291
 
 						for (var15 = 0; var15 < var3; ++var15) { // L: 292
-							var14 += var11.readInt(); // L: 293
+							var14 += var11.ehahsjd(); // L: 293
 							var12[var15] += var14; // L: 294
 						}
 					}
@@ -570,7 +570,7 @@ public abstract class AbstractArchive {
 						int var24 = 0; // L: 305
 
 						for (var17 = 0; var17 < var3; ++var17) { // L: 306
-							var24 += var11.readInt(); // L: 307
+							var24 += var11.ehahsjd(); // L: 307
 							System.arraycopy(var25, var14, var23[var17], var12[var17], var24); // L: 308
 							var12[var17] += var24; // L: 309
 							var14 += var24; // L: 310

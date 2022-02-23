@@ -60,7 +60,7 @@ public final class WorldMapRectangle {
 	public static int method4757(Buffer var0, String var1) {
 		int var2 = var0.offset; // L: 18
 		byte[] var3 = class126.method2754(var1); // L: 19
-		var0.writeSmartByteShort(var3.length); // L: 20
+		var0.kekeka(var3.length); // L: 20
 		var0.offset += class13.huffman.compress(var3, 0, var3.length, var0.array, var0.offset); // L: 21
 		return var0.offset - var2; // L: 22
 	}

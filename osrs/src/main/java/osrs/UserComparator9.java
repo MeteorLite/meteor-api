@@ -82,7 +82,7 @@ public class UserComparator9 extends AbstractUserComparator {
 			Tiles.Tiles_renderFlags[var1][var2][var3] = 0; // L: 170
 
 			while (true) {
-				var7 = var0.readUnsignedByte(); // L: 172
+				var7 = var0.asfjaja(); // L: 172
 				if (var7 == 0) { // L: 173
 					if (var1 == 0) {
 						Tiles.Tiles_heights[0][var2][var3] = -Skills.method5471(var4 + 932731 + var2, var5 + 556238 + var3) * 8; // L: 174
@@ -93,7 +93,7 @@ public class UserComparator9 extends AbstractUserComparator {
 				}
 
 				if (var7 == 1) { // L: 178
-					int var8 = var0.readUnsignedByte(); // L: 179
+					int var8 = var0.asfjaja(); // L: 179
 					if (var8 == 1) { // L: 180
 						var8 = 0;
 					}
@@ -107,7 +107,7 @@ public class UserComparator9 extends AbstractUserComparator {
 				}
 
 				if (var7 <= 49) { // L: 185
-					Tiles.Tiles_overlays[var1][var2][var3] = var0.readByte(); // L: 186
+					Tiles.Tiles_overlays[var1][var2][var3] = var0.ajsfjah(); // L: 186
 					Tiles.Tiles_shapes[var1][var2][var3] = (byte)((var7 - 2) / 4); // L: 187
 					Tiles.field998[var1][var2][var3] = (byte)(var7 - 2 + var6 & 3); // L: 188
 				} else if (var7 <= 81) { // L: 191
@@ -118,18 +118,18 @@ public class UserComparator9 extends AbstractUserComparator {
 			}
 		} else {
 			while (true) {
-				var7 = var0.readUnsignedByte(); // L: 200
+				var7 = var0.asfjaja(); // L: 200
 				if (var7 == 0) { // L: 201
 					break;
 				}
 
 				if (var7 == 1) { // L: 202
-					var0.readUnsignedByte(); // L: 203
+					var0.asfjaja(); // L: 203
 					break;
 				}
 
 				if (var7 <= 49) { // L: 206
-					var0.readUnsignedByte();
+					var0.asfjaja();
 				}
 			}
 		}

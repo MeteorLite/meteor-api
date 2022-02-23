@@ -145,7 +145,7 @@ public class HitSplatDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 57
+			int var2 = var1.asfjaja(); // L: 57
 			if (var2 == 0) { // L: 58
 				return; // L: 61
 			}
@@ -164,7 +164,7 @@ public class HitSplatDefinition extends DualNode {
 		if (var2 == 1) { // L: 64
 			this.fontId = var1.method7352();
 		} else if (var2 == 2) { // L: 65
-			this.textColor = var1.readMedium();
+			this.textColor = var1.asfjahsn();
 		} else if (var2 == 3) { // L: 66
 			this.field1953 = var1.method7352();
 		} else if (var2 == 4) {
@@ -174,45 +174,45 @@ public class HitSplatDefinition extends DualNode {
 		} else if (var2 == 6) {
 			this.field1956 = var1.method7352();
 		} else if (var2 == 7) {
-			this.field1957 = var1.readShort();
+			this.field1957 = var1.asfhasd();
 		} else if (var2 == 8) {
-			this.field1960 = var1.readStringCp1252NullCircumfixed();
+			this.field1960 = var1.asnfaebabsfd();
 		} else if (var2 == 9) {
-			this.field1944 = var1.readUnsignedShort();
+			this.field1944 = var1.nashfa();
 		} else if (var2 == 10) {
-			this.field1952 = var1.readShort();
+			this.field1952 = var1.asfhasd();
 		} else if (var2 == 11) {
 			this.field1959 = 0;
 		} else if (var2 == 12) {
-			this.field1961 = var1.readUnsignedByte();
+			this.field1961 = var1.asfjaja();
 		} else if (var2 == 13) { // L: 76
-			this.field1958 = var1.readShort();
+			this.field1958 = var1.asfhasd();
 		} else if (var2 == 14) {
-			this.field1959 = var1.readUnsignedShort();
+			this.field1959 = var1.nashfa();
 		} else if (var2 == 17 || var2 == 18) {
-			this.transformVarbit = var1.readUnsignedShort();
+			this.transformVarbit = var1.nashfa();
 			if (this.transformVarbit == 65535) {
 				this.transformVarbit = -1;
 			}
 
-			this.transformVarp = var1.readUnsignedShort();
+			this.transformVarp = var1.nashfa();
 			if (this.transformVarp == 65535) {
 				this.transformVarp = -1;
 			}
 
 			int var3 = -1;
 			if (var2 == 18) {
-				var3 = var1.readUnsignedShort();
+				var3 = var1.nashfa();
 				if (var3 == 65535) {
 					var3 = -1;
 				}
 			}
 
-			int var4 = var1.readUnsignedByte();
+			int var4 = var1.asfjaja();
 			this.transforms = new int[var4 + 2];
 
 			for (int var5 = 0; var5 <= var4; ++var5) {
-				this.transforms[var5] = var1.readUnsignedShort(); // L: 91
+				this.transforms[var5] = var1.nashfa(); // L: 91
 				if (this.transforms[var5] == 65535) { // L: 92
 					this.transforms[var5] = -1;
 				}

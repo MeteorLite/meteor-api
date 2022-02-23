@@ -92,14 +92,14 @@ public class WorldMapArea {
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		this.id = var2; // L: 23
-		this.internalName = var1.readStringCp1252NullTerminated(); // L: 24
-		this.externalName = var1.readStringCp1252NullTerminated(); // L: 25
-		this.origin = new Coord(var1.readInt()); // L: 26
-		this.backGroundColor = var1.readInt(); // L: 27
-		var1.readUnsignedByte(); // L: 28
-		this.isMain = var1.readUnsignedByte() == 1; // L: 29
-		this.zoom = var1.readUnsignedByte(); // L: 30
-		int var3 = var1.readUnsignedByte(); // L: 31
+		this.internalName = var1.asndbaeba(); // L: 24
+		this.externalName = var1.asndbaeba(); // L: 25
+		this.origin = new Coord(var1.ehahsjd()); // L: 26
+		this.backGroundColor = var1.ehahsjd(); // L: 27
+		var1.asfjaja(); // L: 28
+		this.isMain = var1.asfjaja() == 1; // L: 29
+		this.zoom = var1.asfjaja(); // L: 30
+		int var3 = var1.asfjaja(); // L: 31
 		this.sections = new LinkedList(); // L: 32
 
 		for (int var4 = 0; var4 < var3; ++var4) { // L: 33
@@ -116,7 +116,7 @@ public class WorldMapArea {
 	)
 	@Export("readWorldMapSection")
 	WorldMapSection readWorldMapSection(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 40
+		int var2 = var1.asfjaja(); // L: 40
 		WorldMapSectionType var3 = (WorldMapSectionType)class140.findEnumerated(WorldMapSectionType.method4723(), var2); // L: 41
 		Object var4 = null; // L: 42
 		switch(var3.type) { // L: 43

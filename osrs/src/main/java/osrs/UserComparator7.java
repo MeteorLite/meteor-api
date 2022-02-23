@@ -1057,10 +1057,10 @@ public class UserComparator7 extends AbstractUserComparator {
 		int var38;
 		if (class255.field2946 == var0) { // L: 6991
 			var2 = var1.method7414(); // L: 6992
-			var38 = var1.readUnsignedByte(); // L: 6993
+			var38 = var1.asfjaja(); // L: 6993
 			var4 = (var38 >> 4 & 7) + class33.field243; // L: 6994
 			var5 = (var38 & 7) + Canvas.field157; // L: 6995
-			var6 = var1.readUnsignedByte(); // L: 6996
+			var6 = var1.asfjaja(); // L: 6996
 			var7 = var6 >> 2; // L: 6997
 			var8 = var6 & 3; // L: 6998
 			var9 = Client.field565[var7]; // L: 6999
@@ -1117,12 +1117,12 @@ public class UserComparator7 extends AbstractUserComparator {
 			}
 
 		} else if (class255.field2942 == var0) { // L: 7037
-			var2 = var1.readUnsignedByte(); // L: 7038
+			var2 = var1.asfjaja(); // L: 7038
 			var38 = (var2 >> 4 & 7) + class33.field243; // L: 7039
 			var4 = (var2 & 7) + Canvas.field157; // L: 7040
 			var5 = var1.method7414(); // L: 7041
 			var6 = var1.method7408(); // L: 7042
-			var7 = var1.readUnsignedShort(); // L: 7043
+			var7 = var1.nashfa(); // L: 7043
 			if (var38 >= 0 && var4 >= 0 && var38 < 104 && var4 < 104) { // L: 7044
 				NodeDeque var41 = Client.groundItems[SoundSystem.Client_plane][var38][var4]; // L: 7045
 				if (var41 != null) { // L: 7046
@@ -1145,7 +1145,7 @@ public class UserComparator7 extends AbstractUserComparator {
 				var2 = var1.method7414(); // L: 7061
 				var3 = var1.method7400(); // L: 7062
 				var4 = var1.method7562(); // L: 7063
-				var5 = var1.readUnsignedShort(); // L: 7064
+				var5 = var1.nashfa(); // L: 7064
 				var6 = var1.method7398(); // L: 7065
 				var7 = (var6 >> 4 & 7) + class33.field243; // L: 7066
 				var8 = (var6 & 7) + Canvas.field157; // L: 7067
@@ -1155,8 +1155,8 @@ public class UserComparator7 extends AbstractUserComparator {
 				var12 = Client.field565[var10]; // L: 7071
 				byte var13 = var1.method7400(); // L: 7072
 				byte var14 = var1.method7400(); // L: 7073
-				byte var15 = var1.readByte(); // L: 7074
-				int var16 = var1.readUnsignedShort(); // L: 7075
+				byte var15 = var1.ajsfjah(); // L: 7074
+				int var16 = var1.nashfa(); // L: 7075
 				Player var17;
 				if (var2 == Client.localPlayerIndex) { // L: 7077
 					var17 = WorldMapSprite.localPlayer;
@@ -1216,7 +1216,7 @@ public class UserComparator7 extends AbstractUserComparator {
 
 			TileItem var33;
 			if (class255.field2941 == var0) { // L: 7125
-				var2 = var1.readUnsignedShort(); // L: 7126
+				var2 = var1.nashfa(); // L: 7126
 				var38 = var1.method7408(); // L: 7127
 				var4 = var1.method7467(); // L: 7128
 				var5 = (var4 >> 4 & 7) + class33.field243; // L: 7129
@@ -1234,7 +1234,7 @@ public class UserComparator7 extends AbstractUserComparator {
 				}
 
 			} else if (class255.field2945 == var0) { // L: 7141
-				var2 = var1.readUnsignedShort(); // L: 7142
+				var2 = var1.nashfa(); // L: 7142
 				var38 = var1.method7398(); // L: 7143
 				var4 = var38 >> 2; // L: 7144
 				var5 = var38 & 3; // L: 7145
@@ -1262,7 +1262,7 @@ public class UserComparator7 extends AbstractUserComparator {
 
 			} else {
 				if (class255.field2950 == var0) { // L: 7170
-					var2 = var1.readUnsignedByte(); // L: 7171
+					var2 = var1.asfjaja(); // L: 7171
 					var38 = var2 >> 4 & 15; // L: 7172
 					var4 = var2 & 7; // L: 7173
 					var5 = var1.method7408(); // L: 7174

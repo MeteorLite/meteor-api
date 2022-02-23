@@ -93,14 +93,14 @@ public class GraphicsDefaults {
 		Buffer var3 = new Buffer(var2); // L: 21
 
 		while (true) {
-			int var4 = var3.readUnsignedByte(); // L: 23
+			int var4 = var3.asfjaja(); // L: 23
 			if (var4 == 0) { // L: 24
 				return; // L: 51
 			}
 
 			switch(var4) { // L: 25
 			case 1:
-				var3.readMedium(); // L: 28
+				var3.asfjahsn(); // L: 28
 				break;
 			case 2:
 				this.compass = var3.method7352(); // L: 36

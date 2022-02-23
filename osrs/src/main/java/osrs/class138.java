@@ -40,15 +40,15 @@ public class class138 extends class142 {
 		garbageValue = "-103"
 	)
 	void vmethod3014(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) { // L: 62
+		if (var1.asfjaja() != 255) { // L: 62
 			--var1.offset; // L: 63
-			var1.readLong(); // L: 64
+			var1.asfkajsdj(); // L: 64
 		}
 
-		this.field1617 = var1.readStringCp1252NullTerminatedOrNull(); // L: 66
-		this.field1616 = var1.readUnsignedShort(); // L: 67
-		this.field1615 = var1.readByte(); // L: 68
-		var1.readLong(); // L: 69
+		this.field1617 = var1.jasfneba(); // L: 66
+		this.field1616 = var1.nashfa(); // L: 67
+		this.field1615 = var1.ajsfjah(); // L: 68
+		var1.asfkajsdj(); // L: 69
 	} // L: 70
 
 	@ObfuscatedName("l")

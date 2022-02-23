@@ -96,13 +96,13 @@ public class ModelData0 {
 					Client.packetWriter.addNode(var8); // L: 9143
 				} else if (var0 == 6) { // L: 9145
 					var8 = class135.getPacketBufferNode(ClientPacket.field2867, Client.packetWriter.isaacCipher); // L: 9147
-					var8.packetBuffer.writeByte(0); // L: 9148
+					var8.packetBuffer.asfag(0); // L: 9148
 					var8.packetBuffer.method7555(var3[var6]); // L: 9149
 					Client.packetWriter.addNode(var8); // L: 9150
 				} else if (var0 == 7) { // L: 9152
 					var8 = class135.getPacketBufferNode(ClientPacket.field2862, Client.packetWriter.isaacCipher); // L: 9154
 					var8.packetBuffer.method7458(0); // L: 9155
-					var8.packetBuffer.writeShort(var3[var6]); // L: 9156
+					var8.packetBuffer.gaf(var3[var6]); // L: 9156
 					Client.packetWriter.addNode(var8); // L: 9157
 				}
 

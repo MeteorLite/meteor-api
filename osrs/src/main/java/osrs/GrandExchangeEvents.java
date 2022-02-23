@@ -47,8 +47,8 @@ public class GrandExchangeEvents {
 		garbageValue = "1"
 	)
 	public GrandExchangeEvents(Buffer var1, boolean var2) {
-		int var3 = var1.readUnsignedShort(); // L: 82
-		boolean var4 = var1.readUnsignedByte() == 1; // L: 83
+		int var3 = var1.nashfa(); // L: 82
+		boolean var4 = var1.asfjaja() == 1; // L: 83
 		byte var5;
 		if (var4) { // L: 85
 			var5 = 1;
@@ -56,7 +56,7 @@ public class GrandExchangeEvents {
 			var5 = 0; // L: 86
 		}
 
-		int var6 = var1.readUnsignedShort(); // L: 87
+		int var6 = var1.nashfa(); // L: 87
 		this.events = new ArrayList(var6); // L: 88
 
 		for (int var7 = 0; var7 < var6; ++var7) { // L: 89

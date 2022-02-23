@@ -183,20 +183,20 @@ public class PlayerComposition {
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		var1.writeByte(this.isFemale ? 1 : 0); // L: 104
+		var1.asfag(this.isFemale ? 1 : 0); // L: 104
 
 		int var2;
 		for (var2 = 0; var2 < 7; ++var2) { // L: 105
 			int var3 = this.equipment[equipmentIndices[var2]]; // L: 106
 			if (var3 == 0) { // L: 107
-				var1.writeByte(-1);
+				var1.asfag(-1);
 			} else {
-				var1.writeByte(var3 - 256); // L: 108
+				var1.asfag(var3 - 256); // L: 108
 			}
 		}
 
 		for (var2 = 0; var2 < 5; ++var2) { // L: 110
-			var1.writeByte(this.bodyColors[var2]);
+			var1.asfag(this.bodyColors[var2]);
 		}
 
 	}

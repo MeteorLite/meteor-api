@@ -64,7 +64,7 @@ public class VarbitComposition extends DualNode {
 	@Export("decode")
 	public void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 31
+			int var2 = var1.asfjaja(); // L: 31
 			if (var2 == 0) { // L: 32
 				return; // L: 35
 			}
@@ -81,9 +81,9 @@ public class VarbitComposition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 38
-			this.baseVar = var1.readUnsignedShort(); // L: 39
-			this.startBit = var1.readUnsignedByte(); // L: 40
-			this.endBit = var1.readUnsignedByte(); // L: 41
+			this.baseVar = var1.nashfa(); // L: 39
+			this.startBit = var1.asfjaja(); // L: 40
+			this.endBit = var1.asfjaja(); // L: 41
 		}
 
 	} // L: 44

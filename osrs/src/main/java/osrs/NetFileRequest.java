@@ -46,7 +46,7 @@ public class NetFileRequest extends DualNode {
 			var1 = 65535L;
 		}
 
-		var0.writeShort((int)var1); // L: 66
+		var0.gaf((int)var1); // L: 66
 	} // L: 67
 
 	@ObfuscatedName("gk")

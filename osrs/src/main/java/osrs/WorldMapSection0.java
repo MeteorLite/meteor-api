@@ -190,20 +190,20 @@ public class WorldMapSection0 implements WorldMapSection {
 	)
 	@Export("read")
 	public void read(Buffer var1) {
-		this.oldZ = var1.readUnsignedByte(); // L: 68
-		this.newZ = var1.readUnsignedByte(); // L: 69
-		this.oldX = var1.readUnsignedShort(); // L: 70
-		this.oldChunkXLow = var1.readUnsignedByte(); // L: 71
-		this.oldChunkXHigh = var1.readUnsignedByte(); // L: 72
-		this.oldY = var1.readUnsignedShort(); // L: 73
-		this.oldChunkYLow = var1.readUnsignedByte(); // L: 74
-		this.oldChunkYHigh = var1.readUnsignedByte(); // L: 75
-		this.newX = var1.readUnsignedShort(); // L: 76
-		this.newChunkXLow = var1.readUnsignedByte(); // L: 77
-		this.newChunkXHigh = var1.readUnsignedByte(); // L: 78
-		this.newY = var1.readUnsignedShort(); // L: 79
-		this.newChunkYLow = var1.readUnsignedByte(); // L: 80
-		this.newChunkYHigh = var1.readUnsignedByte(); // L: 81
+		this.oldZ = var1.asfjaja(); // L: 68
+		this.newZ = var1.asfjaja(); // L: 69
+		this.oldX = var1.nashfa(); // L: 70
+		this.oldChunkXLow = var1.asfjaja(); // L: 71
+		this.oldChunkXHigh = var1.asfjaja(); // L: 72
+		this.oldY = var1.nashfa(); // L: 73
+		this.oldChunkYLow = var1.asfjaja(); // L: 74
+		this.oldChunkYHigh = var1.asfjaja(); // L: 75
+		this.newX = var1.nashfa(); // L: 76
+		this.newChunkXLow = var1.asfjaja(); // L: 77
+		this.newChunkXHigh = var1.asfjaja(); // L: 78
+		this.newY = var1.nashfa(); // L: 79
+		this.newChunkYLow = var1.asfjaja(); // L: 80
+		this.newChunkYHigh = var1.asfjaja(); // L: 81
 		this.postRead(); // L: 82
 	} // L: 83
 

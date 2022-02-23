@@ -72,7 +72,7 @@ public class class113 {
 		this.field1401 = new class371(); // L: 15
 		this.field1402 = true; // L: 16
 		this.field1403 = new class371(); // L: 17
-		this.field1397 = var2.readShort(); // L: 23
+		this.field1397 = var2.asfhasd(); // L: 23
 		this.field1396 = new class371[var1]; // L: 24
 		this.field1405 = new class371[this.field1396.length]; // L: 25
 		this.field1398 = new class371[this.field1396.length]; // L: 26

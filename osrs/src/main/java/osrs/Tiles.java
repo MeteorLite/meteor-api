@@ -248,7 +248,7 @@ public final class Tiles {
 			int var13 = 0; // L: 290
 
 			while (true) {
-				int var14 = var10.readUShortSmart(); // L: 292
+				int var14 = var10.asfmaenansd(); // L: 292
 				if (var14 == 0) { // L: 293
 					break;
 				}
@@ -257,7 +257,7 @@ public final class Tiles {
 				int var15 = var13 & 63; // L: 295
 				int var16 = var13 >> 6 & 63; // L: 296
 				int var17 = var13 >> 12; // L: 297
-				int var18 = var10.readUnsignedByte(); // L: 298
+				int var18 = var10.asfjaja(); // L: 298
 				int var19 = var18 >> 2; // L: 299
 				int var20 = var18 & 3; // L: 300
 				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) { // L: 301

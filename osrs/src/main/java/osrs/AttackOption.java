@@ -80,20 +80,20 @@ public enum AttackOption implements MouseWheel {
 		for (int var1 = 0; var1 < Players.Players_pendingUpdateCount; ++var1) { // L: 445
 			int var2 = Players.Players_pendingUpdateIndices[var1]; // L: 446
 			Player var3 = Client.players[var2]; // L: 447
-			int var4 = var0.readUnsignedByte(); // L: 448
+			int var4 = var0.asfjaja(); // L: 448
 			if ((var4 & 128) != 0) { // L: 449
-				var4 += var0.readUnsignedByte() << 8;
+				var4 += var0.asfjaja() << 8;
 			}
 
 			byte var5 = class185.field2137.field2136; // L: 451
 			if ((var4 & 2048) != 0) { // L: 452
 				var3.field1153 = var0.method7400(); // L: 453
 				var3.field1144 = var0.method7400(); // L: 454
-				var3.field1147 = var0.readByte(); // L: 455
+				var3.field1147 = var0.ajsfjah(); // L: 455
 				var3.field1156 = var0.method7401(); // L: 456
 				var3.field1157 = var0.method7408() + Client.cycle; // L: 457
-				var3.field1158 = var0.readUnsignedShort() + Client.cycle; // L: 458
-				var3.field1159 = var0.readUnsignedShort(); // L: 459
+				var3.field1158 = var0.nashfa() + Client.cycle; // L: 458
+				var3.field1159 = var0.nashfa(); // L: 459
 				if (var3.field1067) { // L: 460
 					var3.field1153 += var3.tileX; // L: 461
 					var3.field1144 += var3.tileY; // L: 462
@@ -112,7 +112,7 @@ public enum AttackOption implements MouseWheel {
 			}
 
 			if ((var4 & 16384) != 0) { // L: 476
-				Players.field1277[var2] = (class185)class140.findEnumerated(class113.method2601(), var0.readByte()); // L: 477
+				Players.field1277[var2] = (class185)class140.findEnumerated(class113.method2601(), var0.ajsfjah()); // L: 477
 			}
 
 			int var6;
@@ -123,7 +123,7 @@ public enum AttackOption implements MouseWheel {
 				var6 = var0.method7414(); // L: 480
 				PlayerType var7 = (PlayerType)class140.findEnumerated(MidiPcmStream.PlayerType_values(), var0.method7398()); // L: 481
 				boolean var8 = var0.method7398() == 1; // L: 482
-				var9 = var0.readUnsignedByte(); // L: 483
+				var9 = var0.asfjaja(); // L: 483
 				var10 = var0.offset; // L: 484
 				if (var3.username != null && var3.appearance != null) { // L: 485
 					boolean var11 = false; // L: 486
@@ -161,7 +161,7 @@ public enum AttackOption implements MouseWheel {
 
 			if ((var4 & 1024) != 0) { // L: 510
 				var3.spotAnimation = var0.method7408(); // L: 511
-				var6 = var0.readInt(); // L: 512
+				var6 = var0.ehahsjd(); // L: 512
 				var3.spotAnimationHeight = var6 >> 16; // L: 513
 				var3.field1177 = (var6 & 65535) + Client.cycle; // L: 514
 				var3.spotAnimationFrame = 0; // L: 515
@@ -176,7 +176,7 @@ public enum AttackOption implements MouseWheel {
 			}
 
 			if ((var4 & 64) != 0) { // L: 520
-				var3.targetIndex = var0.readUnsignedShort(); // L: 521
+				var3.targetIndex = var0.nashfa(); // L: 521
 				if (var3.targetIndex == 65535) { // L: 522
 					var3.targetIndex = -1;
 				}
@@ -184,16 +184,16 @@ public enum AttackOption implements MouseWheel {
 
 			if ((var4 & 8192) != 0) { // L: 524
 				var3.field1162 = Client.cycle + var0.method7562(); // L: 525
-				var3.field1163 = Client.cycle + var0.readUnsignedShort(); // L: 526
-				var3.field1164 = var0.readByte(); // L: 527
-				var3.field1155 = var0.readByte(); // L: 528
+				var3.field1163 = Client.cycle + var0.nashfa(); // L: 526
+				var3.field1164 = var0.ajsfjah(); // L: 527
+				var3.field1155 = var0.ajsfjah(); // L: 528
 				var3.field1166 = var0.method7365(); // L: 529
 				var3.field1167 = (byte)var0.method7398(); // L: 530
 			}
 
 			int var14;
 			if ((var4 & 2) != 0) { // L: 532
-				var6 = var0.readUnsignedByte(); // L: 533
+				var6 = var0.asfjaja(); // L: 533
 				int var17;
 				int var19;
 				int var20;
@@ -202,19 +202,19 @@ public enum AttackOption implements MouseWheel {
 						var9 = -1; // L: 537
 						var10 = -1; // L: 538
 						var20 = -1; // L: 539
-						var19 = var0.readUShortSmart(); // L: 540
+						var19 = var0.asfmaenansd(); // L: 540
 						if (var19 == 32767) { // L: 541
-							var19 = var0.readUShortSmart(); // L: 542
-							var10 = var0.readUShortSmart(); // L: 543
-							var9 = var0.readUShortSmart(); // L: 544
-							var20 = var0.readUShortSmart(); // L: 545
+							var19 = var0.asfmaenansd(); // L: 542
+							var10 = var0.asfmaenansd(); // L: 543
+							var9 = var0.asfmaenansd(); // L: 544
+							var20 = var0.asfmaenansd(); // L: 545
 						} else if (var19 != 32766) { // L: 547
-							var10 = var0.readUShortSmart(); // L: 548
+							var10 = var0.asfmaenansd(); // L: 548
 						} else {
 							var19 = -1; // L: 550
 						}
 
-						var17 = var0.readUShortSmart(); // L: 551
+						var17 = var0.asfmaenansd(); // L: 551
 						var3.addHitSplat(var19, var10, var9, var20, Client.cycle, var17); // L: 552
 					}
 				}
@@ -222,10 +222,10 @@ public enum AttackOption implements MouseWheel {
 				var14 = var0.method7467(); // L: 555
 				if (var14 > 0) { // L: 556
 					for (var19 = 0; var19 < var14; ++var19) { // L: 557
-						var9 = var0.readUShortSmart(); // L: 558
-						var10 = var0.readUShortSmart(); // L: 559
+						var9 = var0.asfmaenansd(); // L: 558
+						var10 = var0.asfmaenansd(); // L: 559
 						if (var10 != 32767) { // L: 560
-							var20 = var0.readUShortSmart(); // L: 561
+							var20 = var0.asfmaenansd(); // L: 561
 							var17 = var0.method7467(); // L: 562
 							var13 = var10 > 0 ? var0.method7399() : var17; // L: 563
 							var3.addHealthBar(var9, Client.cycle, var10, var20, var17, var13); // L: 564
@@ -245,22 +245,22 @@ public enum AttackOption implements MouseWheel {
 			}
 
 			if ((var4 & 4) != 0) { // L: 577
-				var6 = var0.readUnsignedShort(); // L: 578
+				var6 = var0.nashfa(); // L: 578
 				if (var6 == 65535) {
 					var6 = -1; // L: 579
 				}
 
-				var14 = var0.readUnsignedByte(); // L: 580
+				var14 = var0.asfjaja(); // L: 580
 				ItemContainer.performPlayerAnimation(var3, var6, var14); // L: 581
 			}
 
 			if ((var4 & 4096) != 0) { // L: 583
-				var5 = var0.readByte(); // L: 584
+				var5 = var0.ajsfjah(); // L: 584
 			}
 
 			if ((var4 & 512) != 0) { // L: 586
 				for (var6 = 0; var6 < 3; ++var6) { // L: 587
-					var3.actions[var6] = var0.readStringCp1252NullTerminated();
+					var3.actions[var6] = var0.asndbaeba();
 				}
 			}
 
@@ -274,7 +274,7 @@ public enum AttackOption implements MouseWheel {
 			}
 
 			if ((var4 & 16) != 0) { // L: 597
-				var3.overheadText = var0.readStringCp1252NullTerminated(); // L: 598
+				var3.overheadText = var0.asndbaeba(); // L: 598
 				if (var3.overheadText.charAt(0) == '~') { // L: 599
 					var3.overheadText = var3.overheadText.substring(1); // L: 600
 					LoginScreenAnimation.addGameMessage(2, var3.username.getName(), var3.overheadText); // L: 601

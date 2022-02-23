@@ -42,13 +42,13 @@ public class class141 extends class126 {
 		garbageValue = "703192976"
 	)
 	void vmethod3019(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) { // L: 100
+		if (var1.asfjaja() != 255) { // L: 100
 			--var1.offset; // L: 101
-			this.field1633 = var1.readLong(); // L: 102
+			this.field1633 = var1.asfkajsdj(); // L: 102
 		}
 
-		this.field1634 = var1.readStringCp1252NullTerminatedOrNull(); // L: 104
-		this.field1632 = var1.readUnsignedShort(); // L: 105
+		this.field1634 = var1.jasfneba(); // L: 104
+		this.field1632 = var1.nashfa(); // L: 105
 	} // L: 106
 
 	@ObfuscatedName("l")

@@ -81,8 +81,8 @@ public class Archive extends AbstractArchive {
 		int var8 = this.index; // L: 29
 		if (class346.NetCache_reference != null) { // L: 31
 			class346.NetCache_reference.offset = var8 * 8 + 5; // L: 32
-			int var9 = class346.NetCache_reference.readInt(); // L: 33
-			int var10 = class346.NetCache_reference.readInt(); // L: 34
+			int var9 = class346.NetCache_reference.ehahsjd(); // L: 33
+			int var10 = class346.NetCache_reference.ehahsjd(); // L: 34
 			this.loadIndex(var9, var10); // L: 35
 		} else {
 			WorldMapSection1.requestNetFile((Archive)null, 255, 255, 0, (byte)0, true); // L: 38
@@ -290,14 +290,14 @@ public class Archive extends AbstractArchive {
 			}
 
 			Buffer var11 = new Buffer(ArchiveLoader.decompressBytes(var3)); // L: 189
-			int var12 = var11.readUnsignedByte(); // L: 190
+			int var12 = var11.asfjaja(); // L: 190
 			if (var12 != 5 && var12 != 6) { // L: 191
 				throw new RuntimeException(var12 + "," + this.index + "," + var2);
 			}
 
 			int var8 = 0; // L: 192
 			if (var12 >= 6) { // L: 193
-				var8 = var11.readInt();
+				var8 = var11.ehahsjd();
 			}
 
 			if (var8 != this.indexVersion) { // L: 194

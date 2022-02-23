@@ -80,11 +80,11 @@ public final class BoundaryObject {
 		try {
 			AccessFile var2 = new AccessFile(JagexCache.JagexCache_locationFile, "rw", 10000L); // L: 265
 			Buffer var3 = new Buffer(500); // L: 266
-			var3.writeByte(3); // L: 267
-			var3.writeByte(var1 != null ? 1 : 0); // L: 268
-			var3.writeCESU8(var0.getPath()); // L: 269
+			var3.asfag(3); // L: 267
+			var3.asfag(var1 != null ? 1 : 0); // L: 268
+			var3.ekakakf(var0.getPath()); // L: 269
 			if (var1 != null) {
-				var3.writeCESU8(""); // L: 270
+				var3.ekakakf(""); // L: 270
 			}
 
 			var2.write(var3.array, 0, var3.offset); // L: 271

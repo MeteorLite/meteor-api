@@ -40,11 +40,11 @@ public class class134 extends class142 {
 		garbageValue = "-103"
 	)
 	void vmethod3014(Buffer var1) {
-		this.field1573 = var1.readUnsignedShort(); // L: 87
-		var1.readUnsignedByte(); // L: 88
-		if (var1.readUnsignedByte() != 255) { // L: 89
+		this.field1573 = var1.nashfa(); // L: 87
+		var1.asfjaja(); // L: 88
+		if (var1.asfjaja() != 255) { // L: 89
 			--var1.offset; // L: 90
-			var1.readLong(); // L: 91
+			var1.asfkajsdj(); // L: 91
 		}
 
 	} // L: 93

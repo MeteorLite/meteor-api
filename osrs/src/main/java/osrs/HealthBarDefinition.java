@@ -116,7 +116,7 @@ public class HealthBarDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 48
+			int var2 = var1.asfjaja(); // L: 48
 			if (var2 == 0) { // L: 49
 				return; // L: 52
 			}
@@ -133,27 +133,27 @@ public class HealthBarDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 55
-			var1.readUnsignedShort(); // L: 56
+			var1.nashfa(); // L: 56
 		} else if (var2 == 2) { // L: 58
-			this.int1 = var1.readUnsignedByte();
+			this.int1 = var1.asfjaja();
 		} else if (var2 == 3) { // L: 59
-			this.int2 = var1.readUnsignedByte();
+			this.int2 = var1.asfjaja();
 		} else if (var2 == 4) { // L: 60
 			this.int3 = 0;
 		} else if (var2 == 5) { // L: 61
-			this.int5 = var1.readUnsignedShort();
+			this.int5 = var1.nashfa();
 		} else if (var2 == 6) { // L: 62
-			var1.readUnsignedByte(); // L: 63
+			var1.asfjaja(); // L: 63
 		} else if (var2 == 7) { // L: 65
 			this.frontSpriteID = var1.method7352();
 		} else if (var2 == 8) { // L: 66
 			this.backSpriteID = var1.method7352();
 		} else if (var2 == 11) { // L: 67
-			this.int3 = var1.readUnsignedShort();
+			this.int3 = var1.nashfa();
 		} else if (var2 == 14) {
-			this.width = var1.readUnsignedByte();
+			this.width = var1.asfjaja();
 		} else if (var2 == 15) {
-			this.widthPadding = var1.readUnsignedByte();
+			this.widthPadding = var1.asfjaja();
 		}
 
 	} // L: 71
@@ -246,11 +246,11 @@ public class HealthBarDefinition extends DualNode {
 			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method2982()) { // L: 11971
 				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1); // L: 11972
 				PacketBufferNode var4 = class135.getPacketBufferNode(ClientPacket.field2880, Client.packetWriter.isaacCipher); // L: 11973
-				var4.packetBuffer.writeByte(4 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var3.username.getName())); // L: 11974
-				var4.packetBuffer.writeByte(var0); // L: 11975
-				var4.packetBuffer.writeShort(var1); // L: 11976
-				var4.packetBuffer.writeBoolean(var2); // L: 11977
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName()); // L: 11978
+				var4.packetBuffer.asfag(4 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var3.username.getName())); // L: 11974
+				var4.packetBuffer.asfag(var0); // L: 11975
+				var4.packetBuffer.gaf(var1); // L: 11976
+				var4.packetBuffer.ekekaksd(var2); // L: 11977
+				var4.packetBuffer.aaa(var3.username.getName()); // L: 11978
 				Client.packetWriter.addNode(var4); // L: 11979
 			}
 		}

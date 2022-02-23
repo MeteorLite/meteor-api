@@ -69,7 +69,7 @@ public class EnumComposition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 40
+			int var2 = var1.asfjaja(); // L: 40
 			if (var2 == 0) { // L: 41
 				return; // L: 44
 			}
@@ -86,32 +86,32 @@ public class EnumComposition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 47
-			this.inputType = (char)var1.readUnsignedByte();
+			this.inputType = (char)var1.asfjaja();
 		} else if (var2 == 2) { // L: 48
-			this.outputType = (char)var1.readUnsignedByte();
+			this.outputType = (char)var1.asfjaja();
 		} else if (var2 == 3) { // L: 49
-			this.defaultStr = var1.readStringCp1252NullTerminated();
+			this.defaultStr = var1.asndbaeba();
 		} else if (var2 == 4) { // L: 50
-			this.defaultInt = var1.readInt();
+			this.defaultInt = var1.ehahsjd();
 		} else {
 			int var3;
 			if (var2 == 5) { // L: 51
-				this.outputCount = var1.readUnsignedShort(); // L: 52
+				this.outputCount = var1.nashfa(); // L: 52
 				this.keys = new int[this.outputCount]; // L: 53
 				this.strVals = new String[this.outputCount]; // L: 54
 
 				for (var3 = 0; var3 < this.outputCount; ++var3) { // L: 55
-					this.keys[var3] = var1.readInt(); // L: 56
-					this.strVals[var3] = var1.readStringCp1252NullTerminated(); // L: 57
+					this.keys[var3] = var1.ehahsjd(); // L: 56
+					this.strVals[var3] = var1.asndbaeba(); // L: 57
 				}
 			} else if (var2 == 6) { // L: 60
-				this.outputCount = var1.readUnsignedShort(); // L: 61
+				this.outputCount = var1.nashfa(); // L: 61
 				this.keys = new int[this.outputCount]; // L: 62
 				this.intVals = new int[this.outputCount]; // L: 63
 
 				for (var3 = 0; var3 < this.outputCount; ++var3) { // L: 64
-					this.keys[var3] = var1.readInt(); // L: 65
-					this.intVals[var3] = var1.readInt(); // L: 66
+					this.keys[var3] = var1.ehahsjd(); // L: 65
+					this.intVals[var3] = var1.ehahsjd(); // L: 66
 				}
 			}
 		}

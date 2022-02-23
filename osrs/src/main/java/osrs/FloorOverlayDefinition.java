@@ -121,7 +121,7 @@ public class FloorOverlayDefinition extends DualNode {
 	@Export("decode")
 	public void decode(Buffer var1, int var2) {
 		while (true) {
-			int var3 = var1.readUnsignedByte(); // L: 35
+			int var3 = var1.asfjaja(); // L: 35
 			if (var3 == 0) { // L: 36
 				return; // L: 39
 			}
@@ -138,13 +138,13 @@ public class FloorOverlayDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2, int var3) {
 		if (var2 == 1) { // L: 42
-			this.primaryRgb = var1.readMedium();
+			this.primaryRgb = var1.asfjahsn();
 		} else if (var2 == 2) {
-			this.texture = var1.readUnsignedByte(); // L: 43
+			this.texture = var1.asfjaja(); // L: 43
 		} else if (var2 == 5) { // L: 44
 			this.hideUnderlay = false;
 		} else if (var2 == 7) {
-			this.secondaryRgb = var1.readMedium(); // L: 45
+			this.secondaryRgb = var1.asfjahsn(); // L: 45
 		} else if (var2 == 8) { // L: 46
 		}
 

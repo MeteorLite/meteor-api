@@ -1025,81 +1025,81 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 					PacketBufferNode var7;
 					if (var0 == 1) { // L: 9221
 						var7 = class135.getPacketBufferNode(ClientPacket.field2857, Client.packetWriter.isaacCipher); // L: 9223
-						var7.packetBuffer.writeInt(var1); // L: 9224
-						var7.packetBuffer.writeShort(var2); // L: 9225
-						var7.packetBuffer.writeShort(var3); // L: 9226
+						var7.packetBuffer.lakak(var1); // L: 9224
+						var7.packetBuffer.gaf(var2); // L: 9225
+						var7.packetBuffer.gaf(var3); // L: 9226
 						Client.packetWriter.addNode(var7); // L: 9227
 					}
 
 					if (var0 == 2) { // L: 9229
 						var7 = class135.getPacketBufferNode(ClientPacket.field2887, Client.packetWriter.isaacCipher); // L: 9231
-						var7.packetBuffer.writeInt(var1); // L: 9232
-						var7.packetBuffer.writeShort(var2); // L: 9233
-						var7.packetBuffer.writeShort(var3); // L: 9234
+						var7.packetBuffer.lakak(var1); // L: 9232
+						var7.packetBuffer.gaf(var2); // L: 9233
+						var7.packetBuffer.gaf(var3); // L: 9234
 						Client.packetWriter.addNode(var7); // L: 9235
 					}
 
 					if (var0 == 3) { // L: 9237
 						var7 = class135.getPacketBufferNode(ClientPacket.field2895, Client.packetWriter.isaacCipher); // L: 9239
-						var7.packetBuffer.writeInt(var1); // L: 9240
-						var7.packetBuffer.writeShort(var2); // L: 9241
-						var7.packetBuffer.writeShort(var3); // L: 9242
+						var7.packetBuffer.lakak(var1); // L: 9240
+						var7.packetBuffer.gaf(var2); // L: 9241
+						var7.packetBuffer.gaf(var3); // L: 9242
 						Client.packetWriter.addNode(var7); // L: 9243
 					}
 
 					if (var0 == 4) { // L: 9245
 						var7 = class135.getPacketBufferNode(ClientPacket.field2923, Client.packetWriter.isaacCipher); // L: 9247
-						var7.packetBuffer.writeInt(var1); // L: 9248
-						var7.packetBuffer.writeShort(var2); // L: 9249
-						var7.packetBuffer.writeShort(var3); // L: 9250
+						var7.packetBuffer.lakak(var1); // L: 9248
+						var7.packetBuffer.gaf(var2); // L: 9249
+						var7.packetBuffer.gaf(var3); // L: 9250
 						Client.packetWriter.addNode(var7); // L: 9251
 					}
 
 					if (var0 == 5) { // L: 9253
 						var7 = class135.getPacketBufferNode(ClientPacket.field2874, Client.packetWriter.isaacCipher); // L: 9255
-						var7.packetBuffer.writeInt(var1); // L: 9256
-						var7.packetBuffer.writeShort(var2); // L: 9257
-						var7.packetBuffer.writeShort(var3); // L: 9258
+						var7.packetBuffer.lakak(var1); // L: 9256
+						var7.packetBuffer.gaf(var2); // L: 9257
+						var7.packetBuffer.gaf(var3); // L: 9258
 						Client.packetWriter.addNode(var7); // L: 9259
 					}
 
 					if (var0 == 6) { // L: 9261
 						var7 = class135.getPacketBufferNode(ClientPacket.field2899, Client.packetWriter.isaacCipher); // L: 9263
-						var7.packetBuffer.writeInt(var1); // L: 9264
-						var7.packetBuffer.writeShort(var2); // L: 9265
-						var7.packetBuffer.writeShort(var3); // L: 9266
+						var7.packetBuffer.lakak(var1); // L: 9264
+						var7.packetBuffer.gaf(var2); // L: 9265
+						var7.packetBuffer.gaf(var3); // L: 9266
 						Client.packetWriter.addNode(var7); // L: 9267
 					}
 
 					if (var0 == 7) { // L: 9269
 						var7 = class135.getPacketBufferNode(ClientPacket.field2871, Client.packetWriter.isaacCipher); // L: 9271
-						var7.packetBuffer.writeInt(var1); // L: 9272
-						var7.packetBuffer.writeShort(var2); // L: 9273
-						var7.packetBuffer.writeShort(var3); // L: 9274
+						var7.packetBuffer.lakak(var1); // L: 9272
+						var7.packetBuffer.gaf(var2); // L: 9273
+						var7.packetBuffer.gaf(var3); // L: 9274
 						Client.packetWriter.addNode(var7); // L: 9275
 					}
 
 					if (var0 == 8) { // L: 9277
 						var7 = class135.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher); // L: 9279
-						var7.packetBuffer.writeInt(var1); // L: 9280
-						var7.packetBuffer.writeShort(var2); // L: 9281
-						var7.packetBuffer.writeShort(var3); // L: 9282
+						var7.packetBuffer.lakak(var1); // L: 9280
+						var7.packetBuffer.gaf(var2); // L: 9281
+						var7.packetBuffer.gaf(var3); // L: 9282
 						Client.packetWriter.addNode(var7); // L: 9283
 					}
 
 					if (var0 == 9) { // L: 9285
 						var7 = class135.getPacketBufferNode(ClientPacket.field2928, Client.packetWriter.isaacCipher); // L: 9287
-						var7.packetBuffer.writeInt(var1); // L: 9288
-						var7.packetBuffer.writeShort(var2); // L: 9289
-						var7.packetBuffer.writeShort(var3); // L: 9290
+						var7.packetBuffer.lakak(var1); // L: 9288
+						var7.packetBuffer.gaf(var2); // L: 9289
+						var7.packetBuffer.gaf(var3); // L: 9290
 						Client.packetWriter.addNode(var7); // L: 9291
 					}
 
 					if (var0 == 10) { // L: 9293
 						var7 = class135.getPacketBufferNode(ClientPacket.field2886, Client.packetWriter.isaacCipher); // L: 9295
-						var7.packetBuffer.writeInt(var1); // L: 9296
-						var7.packetBuffer.writeShort(var2); // L: 9297
-						var7.packetBuffer.writeShort(var3); // L: 9298
+						var7.packetBuffer.lakak(var1); // L: 9296
+						var7.packetBuffer.gaf(var2); // L: 9297
+						var7.packetBuffer.gaf(var3); // L: 9298
 						Client.packetWriter.addNode(var7); // L: 9299
 					}
 

@@ -68,7 +68,7 @@ public class ParamComposition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 35
+			int var2 = var1.asfjaja(); // L: 35
 			if (var2 == 0) { // L: 36
 				return; // L: 39
 			}
@@ -85,7 +85,7 @@ public class ParamComposition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) { // L: 42
-			byte var4 = var1.readByte(); // L: 44
+			byte var4 = var1.ajsfjah(); // L: 44
 			int var5 = var4 & 255; // L: 46
 			if (var5 == 0) { // L: 47
 				throw new IllegalArgumentException("" + Integer.toString(var5, 16));
@@ -103,11 +103,11 @@ public class ParamComposition extends DualNode {
 			char var3 = (char)var5; // L: 53
 			this.type = var3; // L: 55
 		} else if (var2 == 2) { // L: 57
-			this.defaultInt = var1.readInt();
+			this.defaultInt = var1.ehahsjd();
 		} else if (var2 == 4) { // L: 58
 			this.autoDisable = false;
 		} else if (var2 == 5) { // L: 59
-			this.defaultStr = var1.readStringCp1252NullTerminated();
+			this.defaultStr = var1.asndbaeba();
 		}
 
 	} // L: 61

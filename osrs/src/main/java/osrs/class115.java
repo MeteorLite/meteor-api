@@ -80,23 +80,23 @@ public class class115 {
 		garbageValue = "-1427192972"
 	)
 	int method2619(Buffer var1, int var2) {
-		int var3 = var1.readUnsignedShort(); // L: 29
-		class334.method6128(var1.readUnsignedByte()); // L: 30
-		int var5 = var1.readUnsignedByte(); // L: 32
+		int var3 = var1.nashfa(); // L: 29
+		class334.method6128(var1.asfjaja()); // L: 30
+		int var5 = var1.asfjaja(); // L: 32
 		class114 var6 = (class114)class140.findEnumerated(UrlRequester.method2418(), var5); // L: 34
 		if (var6 == null) { // L: 35
 			var6 = class114.field1408;
 		}
 
 		this.field1422 = var6; // L: 38
-		int var7 = var1.readUnsignedByte(); // L: 40
+		int var7 = var1.asfjaja(); // L: 40
 		class114 var8 = (class114)class140.findEnumerated(UrlRequester.method2418(), var7); // L: 42
 		if (var8 == null) { // L: 43
 			var8 = class114.field1408;
 		}
 
 		this.field1420 = var8; // L: 46
-		this.field1434 = var1.readUnsignedByte() != 0; // L: 47
+		this.field1434 = var1.asfjaja() != 0; // L: 47
 		this.field1430 = new class111[var3]; // L: 48
 		class111 var11 = null; // L: 49
 
@@ -293,7 +293,7 @@ public class class115 {
 				}
 
 				PacketBufferNode var14 = class135.getPacketBufferNode(ClientPacket.field2893, Client.packetWriter.isaacCipher); // L: 1430
-				var14.packetBuffer.writeInt(var16); // L: 1431
+				var14.packetBuffer.lakak(var16); // L: 1431
 				Client.packetWriter.addNode(var14); // L: 1432
 				return 1; // L: 1433
 			} else {
@@ -301,15 +301,15 @@ public class class115 {
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--BufferedNetSocket.Interpreter_stringStackSize]; // L: 1436
 					var12 = class135.getPacketBufferNode(ClientPacket.field2894, Client.packetWriter.isaacCipher); // L: 1438
-					var12.packetBuffer.writeByte(var7.length() + 1); // L: 1439
-					var12.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1440
+					var12.packetBuffer.asfag(var7.length() + 1); // L: 1439
+					var12.packetBuffer.aaa(var7); // L: 1440
 					Client.packetWriter.addNode(var12); // L: 1441
 					return 1; // L: 1442
 				} else if (var0 == ScriptOpcodes.RESUME_STRINGDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--BufferedNetSocket.Interpreter_stringStackSize]; // L: 1445
 					var12 = class135.getPacketBufferNode(ClientPacket.field2853, Client.packetWriter.isaacCipher); // L: 1447
-					var12.packetBuffer.writeByte(var7.length() + 1); // L: 1448
-					var12.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1449
+					var12.packetBuffer.asfag(var7.length() + 1); // L: 1448
+					var12.packetBuffer.aaa(var7); // L: 1449
 					Client.packetWriter.addNode(var12); // L: 1450
 					return 1; // L: 1451
 				} else {
@@ -353,7 +353,7 @@ public class class115 {
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var10 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]; // L: 1496
 						var12 = class135.getPacketBufferNode(ClientPacket.field2906, Client.packetWriter.isaacCipher); // L: 1498
-						var12.packetBuffer.writeShort(var10); // L: 1499
+						var12.packetBuffer.gaf(var10); // L: 1499
 						Client.packetWriter.addNode(var12); // L: 1500
 						return 1; // L: 1501
 					} else if (var0 == ScriptOpcodes.BUG_REPORT) {
@@ -367,9 +367,9 @@ public class class115 {
 							return 1;
 						} else {
 							PacketBufferNode var6 = class135.getPacketBufferNode(ClientPacket.field2879, Client.packetWriter.isaacCipher); // L: 1510
-							var6.packetBuffer.writeShort(1 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4) + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var5)); // L: 1511
-							var6.packetBuffer.writeStringCp1252NullTerminated(var5); // L: 1512
-							var6.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 1513
+							var6.packetBuffer.gaf(1 + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var4) + GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var5)); // L: 1511
+							var6.packetBuffer.aaa(var5); // L: 1512
+							var6.packetBuffer.aaa(var4); // L: 1513
 							var6.packetBuffer.method7458(var10); // L: 1514
 							Client.packetWriter.addNode(var6); // L: 1515
 							return 1; // L: 1516

@@ -22,7 +22,7 @@ public class class194 {
 	)
 	class194(Buffer var1, int var2) {
 		this.field2285 = new class113[var2]; // L: 13
-		this.field2287 = var1.readUnsignedByte(); // L: 14
+		this.field2287 = var1.asfjaja(); // L: 14
 
 		for (int var3 = 0; var3 < this.field2285.length; ++var3) { // L: 15
 			class113 var4 = new class113(this.field2287, var1, false); // L: 16

@@ -28,7 +28,7 @@ final class class415 implements class410 {
 		garbageValue = "1"
 	)
 	public Object vmethod7281(Buffer var1) {
-		return var1.readStringCp1252NullTerminated(); // L: 45
+		return var1.asndbaeba(); // L: 45
 	}
 
 	@ObfuscatedName("v")
@@ -37,6 +37,6 @@ final class class415 implements class410 {
 		garbageValue = "2036524718"
 	)
 	void method7282(String var1, Buffer var2) {
-		var2.writeStringCp1252NullTerminated(var1); // L: 40
+		var2.aaa(var1); // L: 40
 	} // L: 41
 }

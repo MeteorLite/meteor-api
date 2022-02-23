@@ -488,7 +488,7 @@ public class PcmPlayer {
 		garbageValue = "27127"
 	)
 	public static class160 method744(int var0, Buffer var1) {
-		int var2 = var1.readUnsignedByte();
+		int var2 = var1.asfjaja();
 		boolean var3 = (var2 & 1) != 0;
 		boolean var4 = (var2 & 2) != 0;
 		class160 var5 = new class160(var0);
@@ -498,13 +498,13 @@ public class PcmPlayer {
 		int var9;
 		short var10;
 		if (var3) {
-			var6 = var1.readUnsignedByte();
+			var6 = var1.asfjaja();
 			var7 = new int[]{var6 & 15, var6 >> 4 & 15}; // L: 30 31 32
 			var8 = var5.field1745 != null && var7.length == var5.field1745.length; // L: 33
 
 			for (var9 = 0; var9 < 2; ++var9) { // L: 34
 				if (var7[var9] != 15) {
-					var10 = (short)var1.readUnsignedShort();
+					var10 = (short)var1.nashfa();
 					if (var8) { // L: 37
 						var5.field1745[var7[var9]] = var10; // L: 38
 					}
@@ -513,13 +513,13 @@ public class PcmPlayer {
 		}
 
 		if (var4) { // L: 43
-			var6 = var1.readUnsignedByte(); // L: 44
+			var6 = var1.asfjaja(); // L: 44
 			var7 = new int[]{var6 & 15, var6 >> 4 & 15}; // L: 45 46 47
 			var8 = var5.field1746 != null && var7.length == var5.field1746.length;
 
 			for (var9 = 0; var9 < 2; ++var9) {
 				if (var7[var9] != 15) {
-					var10 = (short)var1.readUnsignedShort(); // L: 51
+					var10 = (short)var1.nashfa(); // L: 51
 					if (var8) { // L: 52
 						var5.field1746[var7[var9]] = var10;
 					}

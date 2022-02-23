@@ -41,7 +41,7 @@ public class class111 {
 		garbageValue = "-2016120567"
 	)
 	void method2526(Buffer var1, int var2) {
-		this.field1377 = var1.readShort(); // L: 17
+		this.field1377 = var1.asfhasd(); // L: 17
 		this.field1384 = var1.method7374(); // L: 18
 		this.field1379 = var1.method7374(); // L: 19
 		this.field1380 = var1.method7374(); // L: 20

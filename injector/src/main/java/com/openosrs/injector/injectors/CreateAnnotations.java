@@ -60,13 +60,15 @@ public class CreateAnnotations extends AbstractInjector {
 
   private void injectFields(ClassFile deobClass) {
     for (Field deobField : deobClass.getFields()) {
-      deobField.addAnnotation(DeobAnnotations.EXPORT, deobField.getName());
+      if (deobField.getAnnotations().get(DeobAnnotations.EXPORT) == null)
+        deobField.addAnnotation(DeobAnnotations.EXPORT, deobField.getName());
     }
   }
 
   private void injectMethods(ClassFile deobClass) {
     for (Method deobMethod : deobClass.getMethods()) {
-      deobMethod.addAnnotation(DeobAnnotations.EXPORT, deobMethod.getName());
+      if (deobMethod.getAnnotations().get(DeobAnnotations.EXPORT) == null)
+        deobMethod.addAnnotation(DeobAnnotations.EXPORT, deobMethod.getName());
     }
   }
 }

@@ -149,39 +149,39 @@ public class class372 {
 	public static void SpriteBuffer_decode(byte[] var0) {
 		Buffer var1 = new Buffer(var0); // L: 152
 		var1.offset = var0.length - 2; // L: 153
-		class434.SpriteBuffer_spriteCount = var1.readUnsignedShort(); // L: 154
+		class434.SpriteBuffer_spriteCount = var1.nashfa(); // L: 154
 		class434.SpriteBuffer_xOffsets = new int[class434.SpriteBuffer_spriteCount]; // L: 155
 		class434.SpriteBuffer_yOffsets = new int[class434.SpriteBuffer_spriteCount]; // L: 156
 		class434.SpriteBuffer_spriteWidths = new int[class434.SpriteBuffer_spriteCount]; // L: 157
 		Fonts.SpriteBuffer_spriteHeights = new int[class434.SpriteBuffer_spriteCount]; // L: 158
 		WorldMapLabelSize.SpriteBuffer_pixels = new byte[class434.SpriteBuffer_spriteCount][]; // L: 159
 		var1.offset = var0.length - 7 - class434.SpriteBuffer_spriteCount * 8; // L: 160
-		class434.SpriteBuffer_spriteWidth = var1.readUnsignedShort(); // L: 161
-		class434.SpriteBuffer_spriteHeight = var1.readUnsignedShort(); // L: 162
-		int var2 = (var1.readUnsignedByte() & 255) + 1; // L: 163
+		class434.SpriteBuffer_spriteWidth = var1.nashfa(); // L: 161
+		class434.SpriteBuffer_spriteHeight = var1.nashfa(); // L: 162
+		int var2 = (var1.asfjaja() & 255) + 1; // L: 163
 
 		int var3;
 		for (var3 = 0; var3 < class434.SpriteBuffer_spriteCount; ++var3) { // L: 164
-			class434.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
+			class434.SpriteBuffer_xOffsets[var3] = var1.nashfa();
 		}
 
 		for (var3 = 0; var3 < class434.SpriteBuffer_spriteCount; ++var3) { // L: 165
-			class434.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+			class434.SpriteBuffer_yOffsets[var3] = var1.nashfa();
 		}
 
 		for (var3 = 0; var3 < class434.SpriteBuffer_spriteCount; ++var3) { // L: 166
-			class434.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+			class434.SpriteBuffer_spriteWidths[var3] = var1.nashfa();
 		}
 
 		for (var3 = 0; var3 < class434.SpriteBuffer_spriteCount; ++var3) { // L: 167
-			Fonts.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+			Fonts.SpriteBuffer_spriteHeights[var3] = var1.nashfa();
 		}
 
 		var1.offset = var0.length - 7 - class434.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3; // L: 168
 		HealthBarUpdate.SpriteBuffer_spritePalette = new int[var2]; // L: 169
 
 		for (var3 = 1; var3 < var2; ++var3) { // L: 170
-			HealthBarUpdate.SpriteBuffer_spritePalette[var3] = var1.readMedium(); // L: 171
+			HealthBarUpdate.SpriteBuffer_spritePalette[var3] = var1.asfjahsn(); // L: 171
 			if (HealthBarUpdate.SpriteBuffer_spritePalette[var3] == 0) { // L: 172
 				HealthBarUpdate.SpriteBuffer_spritePalette[var3] = 1;
 			}
@@ -195,16 +195,16 @@ public class class372 {
 			int var6 = var5 * var4; // L: 178
 			byte[] var7 = new byte[var6]; // L: 179
 			WorldMapLabelSize.SpriteBuffer_pixels[var3] = var7; // L: 180
-			int var8 = var1.readUnsignedByte(); // L: 181
+			int var8 = var1.asfjaja(); // L: 181
 			int var9;
 			if (var8 == 0) { // L: 182
 				for (var9 = 0; var9 < var6; ++var9) { // L: 183
-					var7[var9] = var1.readByte();
+					var7[var9] = var1.ajsfjah();
 				}
 			} else if (var8 == 1) { // L: 185
 				for (var9 = 0; var9 < var4; ++var9) { // L: 186
 					for (int var10 = 0; var10 < var5; ++var10) { // L: 187
-						var7[var9 + var4 * var10] = var1.readByte(); // L: 188
+						var7[var9 + var4 * var10] = var1.ajsfjah(); // L: 188
 					}
 				}
 			}

@@ -141,36 +141,36 @@ public class PlatformInfo extends Node {
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		var1.writeByte(8); // L: 95
-		var1.writeByte(this.field4310); // L: 96
-		var1.writeByte(this.field4315 ? 1 : 0); // L: 97
-		var1.writeShort(this.field4332); // L: 98
-		var1.writeByte(this.field4327); // L: 99
-		var1.writeByte(this.field4318); // L: 100
-		var1.writeByte(this.field4321); // L: 101
-		var1.writeByte(this.field4320); // L: 102
-		var1.writeByte(this.field4339 ? 1 : 0); // L: 103
-		var1.writeShort(this.field4322); // L: 104
-		var1.writeByte(this.field4338); // L: 105
-		var1.writeMedium(this.field4323); // L: 106
-		var1.writeShort(this.field4325); // L: 107
-		var1.writeStringCp1252NullCircumfixed(this.field4326); // L: 108
-		var1.writeStringCp1252NullCircumfixed(this.field4333); // L: 109
-		var1.writeStringCp1252NullCircumfixed(this.field4328); // L: 110
-		var1.writeStringCp1252NullCircumfixed(this.field4319); // L: 111
-		var1.writeByte(this.field4331); // L: 112
-		var1.writeShort(this.field4330); // L: 113
-		var1.writeStringCp1252NullCircumfixed(this.field4334); // L: 114
-		var1.writeStringCp1252NullCircumfixed(this.field4335); // L: 115
-		var1.writeByte(this.field4311); // L: 116
-		var1.writeByte(this.field4329); // L: 117
+		var1.asfag(8); // L: 95
+		var1.asfag(this.field4310); // L: 96
+		var1.asfag(this.field4315 ? 1 : 0); // L: 97
+		var1.gaf(this.field4332); // L: 98
+		var1.asfag(this.field4327); // L: 99
+		var1.asfag(this.field4318); // L: 100
+		var1.asfag(this.field4321); // L: 101
+		var1.asfag(this.field4320); // L: 102
+		var1.asfag(this.field4339 ? 1 : 0); // L: 103
+		var1.gaf(this.field4322); // L: 104
+		var1.asfag(this.field4338); // L: 105
+		var1.gasgag(this.field4323); // L: 106
+		var1.gaf(this.field4325); // L: 107
+		var1.aaaa(this.field4326); // L: 108
+		var1.aaaa(this.field4333); // L: 109
+		var1.aaaa(this.field4328); // L: 110
+		var1.aaaa(this.field4319); // L: 111
+		var1.asfag(this.field4331); // L: 112
+		var1.gaf(this.field4330); // L: 113
+		var1.aaaa(this.field4334); // L: 114
+		var1.aaaa(this.field4335); // L: 115
+		var1.asfag(this.field4311); // L: 116
+		var1.asfag(this.field4329); // L: 117
 
 		for (int var2 = 0; var2 < this.field4336.length; ++var2) { // L: 118
-			var1.writeInt(this.field4336[var2]);
+			var1.lakak(this.field4336[var2]);
 		}
 
-		var1.writeInt(this.field4337); // L: 119
-		var1.writeStringCp1252NullCircumfixed(this.field4309); // L: 120
+		var1.lakak(this.field4337); // L: 119
+		var1.aaaa(this.field4309); // L: 120
 	} // L: 121
 
 	@ObfuscatedName("l")

@@ -146,7 +146,7 @@ public abstract class AbstractWorldMapData {
 	)
 	@Export("readTile")
 	void readTile(int var1, int var2, Buffer var3) {
-		int var4 = var3.readUnsignedByte(); // L: 56
+		int var4 = var3.asfjaja(); // L: 56
 		if (var4 != 0) { // L: 57
 			if ((var4 & 1) != 0) { // L: 60
 				this.method4727(var1, var2, var3, var4); // L: 61
@@ -165,10 +165,10 @@ public abstract class AbstractWorldMapData {
 	void method4727(int var1, int var2, Buffer var3, int var4) {
 		boolean var5 = (var4 & 2) != 0; // L: 69
 		if (var5) { // L: 70
-			this.floorOverlayIds[0][var1][var2] = (short)var3.readUnsignedByte(); // L: 71
+			this.floorOverlayIds[0][var1][var2] = (short)var3.asfjaja(); // L: 71
 		}
 
-		this.floorUnderlayIds[0][var1][var2] = (short)var3.readUnsignedByte(); // L: 73
+		this.floorUnderlayIds[0][var1][var2] = (short)var3.asfjaja(); // L: 73
 	} // L: 74
 
 	@ObfuscatedName("t")
@@ -180,18 +180,18 @@ public abstract class AbstractWorldMapData {
 		int var5 = ((var4 & 24) >> 3) + 1; // L: 77
 		boolean var6 = (var4 & 2) != 0; // L: 78
 		boolean var7 = (var4 & 4) != 0; // L: 79
-		this.floorUnderlayIds[0][var1][var2] = (short)var3.readUnsignedByte(); // L: 80
+		this.floorUnderlayIds[0][var1][var2] = (short)var3.asfjaja(); // L: 80
 		int var8;
 		int var9;
 		int var11;
 		if (var6) { // L: 81
-			var8 = var3.readUnsignedByte(); // L: 82
+			var8 = var3.asfjaja(); // L: 82
 
 			for (var9 = 0; var9 < var8; ++var9) { // L: 83
-				int var14 = var3.readUnsignedByte(); // L: 84
+				int var14 = var3.asfjaja(); // L: 84
 				if (var14 != 0) { // L: 85
 					this.floorOverlayIds[var9][var1][var2] = (short)var14; // L: 86
-					var11 = var3.readUnsignedByte(); // L: 87
+					var11 = var3.asfjaja(); // L: 87
 					this.field2736[var9][var1][var2] = (byte)(var11 >> 2); // L: 88
 					this.field2731[var9][var1][var2] = (byte)(var11 & 3); // L: 89
 				}
@@ -200,13 +200,13 @@ public abstract class AbstractWorldMapData {
 
 		if (var7) { // L: 93
 			for (var8 = 0; var8 < var5; ++var8) { // L: 94
-				var9 = var3.readUnsignedByte(); // L: 95
+				var9 = var3.asfjaja(); // L: 95
 				if (var9 != 0) { // L: 96
 					WorldMapDecoration[] var10 = this.decorations[var8][var1][var2] = new WorldMapDecoration[var9]; // L: 99
 
 					for (var11 = 0; var11 < var9; ++var11) { // L: 100
 						int var12 = var3.method7352(); // L: 101
-						int var13 = var3.readUnsignedByte(); // L: 102
+						int var13 = var3.asfjaja(); // L: 102
 						var10[var11] = new WorldMapDecoration(var12, var13 >> 2, var13 & 3); // L: 103
 					}
 				}

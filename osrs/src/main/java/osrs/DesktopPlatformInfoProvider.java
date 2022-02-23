@@ -219,9 +219,9 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 	)
 	static void method6847() {
 		PacketBufferNode var0 = class135.getPacketBufferNode(ClientPacket.field2865, Client.packetWriter.isaacCipher); // L: 4152
-		var0.packetBuffer.writeByte(class339.getWindowedMode()); // L: 4153
-		var0.packetBuffer.writeShort(DirectByteArrayCopier.canvasWidth); // L: 4154
-		var0.packetBuffer.writeShort(NPC.canvasHeight); // L: 4155
+		var0.packetBuffer.asfag(class339.getWindowedMode()); // L: 4153
+		var0.packetBuffer.gaf(DirectByteArrayCopier.canvasWidth); // L: 4154
+		var0.packetBuffer.gaf(NPC.canvasHeight); // L: 4155
 		Client.packetWriter.addNode(var0); // L: 4156
 	} // L: 4157
 }

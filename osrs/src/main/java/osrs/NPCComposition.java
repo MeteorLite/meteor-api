@@ -238,7 +238,7 @@ public class NPCComposition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 77
+			int var2 = var1.asfjaja(); // L: 77
 			if (var2 == 0) { // L: 78
 				return; // L: 81
 			}
@@ -257,79 +257,79 @@ public class NPCComposition extends DualNode {
 		int var3;
 		int var4;
 		if (var2 == 1) { // L: 84
-			var3 = var1.readUnsignedByte(); // L: 85
+			var3 = var1.asfjaja(); // L: 85
 			this.models = new int[var3]; // L: 86
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 87
-				this.models[var4] = var1.readUnsignedShort();
+				this.models[var4] = var1.nashfa();
 			}
 		} else if (var2 == 2) { // L: 89
-			this.name = var1.readStringCp1252NullTerminated();
+			this.name = var1.asndbaeba();
 		} else if (var2 == 12) { // L: 90
-			this.size = var1.readUnsignedByte();
+			this.size = var1.asfjaja();
 		} else if (var2 == 13) { // L: 91
-			this.idleSequence = var1.readUnsignedShort();
+			this.idleSequence = var1.nashfa();
 		} else if (var2 == 14) { // L: 92
-			this.walkSequence = var1.readUnsignedShort();
+			this.walkSequence = var1.nashfa();
 		} else if (var2 == 15) { // L: 93
-			this.turnLeftSequence = var1.readUnsignedShort();
+			this.turnLeftSequence = var1.nashfa();
 		} else if (var2 == 16) { // L: 94
-			this.turnRightSequence = var1.readUnsignedShort();
+			this.turnRightSequence = var1.nashfa();
 		} else if (var2 == 17) { // L: 95
-			this.walkSequence = var1.readUnsignedShort(); // L: 96
-			this.walkBackSequence = var1.readUnsignedShort(); // L: 97
-			this.walkLeftSequence = var1.readUnsignedShort(); // L: 98
-			this.walkRightSequence = var1.readUnsignedShort(); // L: 99
+			this.walkSequence = var1.nashfa(); // L: 96
+			this.walkBackSequence = var1.nashfa(); // L: 97
+			this.walkLeftSequence = var1.nashfa(); // L: 98
+			this.walkRightSequence = var1.nashfa(); // L: 99
 		} else if (var2 == 18) { // L: 101
-			var1.readUnsignedShort(); // L: 102
+			var1.nashfa(); // L: 102
 		} else if (var2 >= 30 && var2 < 35) { // L: 104
-			this.actions[var2 - 30] = var1.readStringCp1252NullTerminated(); // L: 105
+			this.actions[var2 - 30] = var1.asndbaeba(); // L: 105
 			if (this.actions[var2 - 30].equalsIgnoreCase("Hidden")) { // L: 106
 				this.actions[var2 - 30] = null;
 			}
 		} else if (var2 == 40) { // L: 108
-			var3 = var1.readUnsignedByte(); // L: 109
+			var3 = var1.asfjaja(); // L: 109
 			this.recolorFrom = new short[var3]; // L: 110
 			this.recolorTo = new short[var3]; // L: 111
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 112
-				this.recolorFrom[var4] = (short)var1.readUnsignedShort(); // L: 113
-				this.recolorTo[var4] = (short)var1.readUnsignedShort(); // L: 114
+				this.recolorFrom[var4] = (short)var1.nashfa(); // L: 113
+				this.recolorTo[var4] = (short)var1.nashfa(); // L: 114
 			}
 		} else if (var2 == 41) { // L: 117
-			var3 = var1.readUnsignedByte(); // L: 118
+			var3 = var1.asfjaja(); // L: 118
 			this.retextureFrom = new short[var3]; // L: 119
 			this.retextureTo = new short[var3]; // L: 120
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 121
-				this.retextureFrom[var4] = (short)var1.readUnsignedShort(); // L: 122
-				this.retextureTo[var4] = (short)var1.readUnsignedShort(); // L: 123
+				this.retextureFrom[var4] = (short)var1.nashfa(); // L: 122
+				this.retextureTo[var4] = (short)var1.nashfa(); // L: 123
 			}
 		} else if (var2 == 60) { // L: 126
-			var3 = var1.readUnsignedByte(); // L: 127
+			var3 = var1.asfjaja(); // L: 127
 			this.field1873 = new int[var3]; // L: 128
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 129
-				this.field1873[var4] = var1.readUnsignedShort();
+				this.field1873[var4] = var1.nashfa();
 			}
 		} else if (var2 == 93) { // L: 131
 			this.drawMapDot = false;
 		} else if (var2 == 95) { // L: 132
-			this.combatLevel = var1.readUnsignedShort();
+			this.combatLevel = var1.nashfa();
 		} else if (var2 == 97) { // L: 133
-			this.widthScale = var1.readUnsignedShort();
+			this.widthScale = var1.nashfa();
 		} else if (var2 == 98) { // L: 134
-			this.heightScale = var1.readUnsignedShort();
+			this.heightScale = var1.nashfa();
 		} else if (var2 == 99) { // L: 135
 			this.isVisible = true;
 		} else if (var2 == 100) { // L: 136
-			this.ambient = var1.readByte();
+			this.ambient = var1.ajsfjah();
 		} else if (var2 == 101) { // L: 137
-			this.contrast = var1.readByte() * 5;
+			this.contrast = var1.ajsfjah() * 5;
 		} else if (var2 == 102) { // L: 138
-			this.headIconPrayer = var1.readUnsignedShort();
+			this.headIconPrayer = var1.nashfa();
 		} else if (var2 == 103) { // L: 139
-			this.rotation = var1.readUnsignedShort();
+			this.rotation = var1.nashfa();
 		} else if (var2 != 106 && var2 != 118) { // L: 140
 			if (var2 == 107) { // L: 158
 				this.isInteractable = false;
@@ -341,29 +341,29 @@ public class NPCComposition extends DualNode {
 				this.params = class297.readStringIntParameters(var1, this.params);
 			}
 		} else {
-			this.transformVarbit = var1.readUnsignedShort(); // L: 141
+			this.transformVarbit = var1.nashfa(); // L: 141
 			if (this.transformVarbit == 65535) { // L: 142
 				this.transformVarbit = -1;
 			}
 
-			this.transformVarp = var1.readUnsignedShort(); // L: 143
+			this.transformVarp = var1.nashfa(); // L: 143
 			if (this.transformVarp == 65535) { // L: 144
 				this.transformVarp = -1;
 			}
 
 			var3 = -1; // L: 145
 			if (var2 == 118) { // L: 146
-				var3 = var1.readUnsignedShort(); // L: 147
+				var3 = var1.nashfa(); // L: 147
 				if (var3 == 65535) { // L: 148
 					var3 = -1;
 				}
 			}
 
-			var4 = var1.readUnsignedByte(); // L: 150
+			var4 = var1.asfjaja(); // L: 150
 			this.transforms = new int[var4 + 2]; // L: 151
 
 			for (int var5 = 0; var5 <= var4; ++var5) { // L: 152
-				this.transforms[var5] = var1.readUnsignedShort(); // L: 153
+				this.transforms[var5] = var1.nashfa(); // L: 153
 				if (this.transforms[var5] == 65535) { // L: 154
 					this.transforms[var5] = -1;
 				}

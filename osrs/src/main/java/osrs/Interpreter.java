@@ -167,25 +167,25 @@ public class Interpreter {
 					}
 
 					var11.offset = 0; // L: 85
-					var12 = var11.readUnsignedByte(); // L: 86
+					var12 = var11.asfjaja(); // L: 86
 					if (var12 < 1 || var12 > 3) { // L: 87
 						throw new IOException("" + var12);
 					}
 
 					int var13 = 0; // L: 88
 					if (var12 > 1) { // L: 89
-						var13 = var11.readUnsignedByte();
+						var13 = var11.asfjaja();
 					}
 
 					if (var12 <= 2) { // L: 90
-						var7 = var11.readStringCp1252NullCircumfixed(); // L: 91
+						var7 = var11.asnfaebabsfd(); // L: 91
 						if (var13 == 1) { // L: 92
-							var8 = var11.readStringCp1252NullCircumfixed();
+							var8 = var11.asnfaebabsfd();
 						}
 					} else {
-						var7 = var11.readCESU8(); // L: 95
+						var7 = var11.asnfabsfba(); // L: 95
 						if (var13 == 1) { // L: 96
-							var8 = var11.readCESU8();
+							var8 = var11.asnfabsfba();
 						}
 					}
 

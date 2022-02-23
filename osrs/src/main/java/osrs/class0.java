@@ -30,6 +30,6 @@ public class class0 implements class3 {
 		for (var5 = 0L; !var4.method17(var3.method58(), var3.method59(), var5); ++var5) { // L: 20 21 22
 		}
 
-		var2.writeLong(var5); // L: 24
+		var2.asofoa(var5); // L: 24
 	} // L: 25
 }

@@ -813,39 +813,39 @@ public class Widget extends Node {
 	@Export("decodeLegacy")
 	void decodeLegacy(Buffer var1) {
 		this.isIf3 = false; // L: 247
-		this.type = var1.readUnsignedByte(); // L: 248
-		this.buttonType = var1.readUnsignedByte(); // L: 249
-		this.contentType = var1.readUnsignedShort(); // L: 250
-		this.rawX = var1.readShort(); // L: 251
-		this.rawY = var1.readShort(); // L: 252
-		this.rawWidth = var1.readUnsignedShort(); // L: 253
-		this.rawHeight = var1.readUnsignedShort(); // L: 254
-		this.transparencyTop = var1.readUnsignedByte(); // L: 255
-		this.parentId = var1.readUnsignedShort(); // L: 256
+		this.type = var1.asfjaja(); // L: 248
+		this.buttonType = var1.asfjaja(); // L: 249
+		this.contentType = var1.nashfa(); // L: 250
+		this.rawX = var1.asfhasd(); // L: 251
+		this.rawY = var1.asfhasd(); // L: 252
+		this.rawWidth = var1.nashfa(); // L: 253
+		this.rawHeight = var1.nashfa(); // L: 254
+		this.transparencyTop = var1.asfjaja(); // L: 255
+		this.parentId = var1.nashfa(); // L: 256
 		if (this.parentId == 65535) { // L: 257
 			this.parentId = -1;
 		} else {
 			this.parentId += this.id & -65536; // L: 258
 		}
 
-		this.mouseOverRedirect = var1.readUnsignedShort(); // L: 259
+		this.mouseOverRedirect = var1.nashfa(); // L: 259
 		if (this.mouseOverRedirect == 65535) { // L: 260
 			this.mouseOverRedirect = -1;
 		}
 
-		int var2 = var1.readUnsignedByte(); // L: 261
+		int var2 = var1.asfjaja(); // L: 261
 		int var3;
 		if (var2 > 0) { // L: 262
 			this.cs1Comparisons = new int[var2]; // L: 263
 			this.cs1ComparisonValues = new int[var2]; // L: 264
 
 			for (var3 = 0; var3 < var2; ++var3) { // L: 265
-				this.cs1Comparisons[var3] = var1.readUnsignedByte(); // L: 266
-				this.cs1ComparisonValues[var3] = var1.readUnsignedShort(); // L: 267
+				this.cs1Comparisons[var3] = var1.asfjaja(); // L: 266
+				this.cs1ComparisonValues[var3] = var1.nashfa(); // L: 267
 			}
 		}
 
-		var3 = var1.readUnsignedByte(); // L: 270
+		var3 = var1.asfjaja(); // L: 270
 		int var4;
 		int var5;
 		int var6;
@@ -853,11 +853,11 @@ public class Widget extends Node {
 			this.cs1Instructions = new int[var3][]; // L: 272
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 273
-				var5 = var1.readUnsignedShort(); // L: 274
+				var5 = var1.nashfa(); // L: 274
 				this.cs1Instructions[var4] = new int[var5]; // L: 275
 
 				for (var6 = 0; var6 < var5; ++var6) { // L: 276
-					this.cs1Instructions[var4][var6] = var1.readUnsignedShort(); // L: 277
+					this.cs1Instructions[var4][var6] = var1.nashfa(); // L: 277
 					if (this.cs1Instructions[var4][var6] == 65535) { // L: 278
 						this.cs1Instructions[var4][var6] = -1;
 					}
@@ -866,51 +866,51 @@ public class Widget extends Node {
 		}
 
 		if (this.type == 0) { // L: 282
-			this.scrollHeight = var1.readUnsignedShort(); // L: 283
-			this.isHidden = var1.readUnsignedByte() == 1; // L: 284
+			this.scrollHeight = var1.nashfa(); // L: 283
+			this.isHidden = var1.asfjaja() == 1; // L: 284
 		}
 
 		if (this.type == 1) { // L: 286
-			var1.readUnsignedShort(); // L: 287
-			var1.readUnsignedByte(); // L: 288
+			var1.nashfa(); // L: 287
+			var1.asfjaja(); // L: 288
 		}
 
 		if (this.type == 2) { // L: 290
 			this.itemIds = new int[this.rawWidth * this.rawHeight]; // L: 291
 			this.itemQuantities = new int[this.rawWidth * this.rawHeight]; // L: 292
-			var4 = var1.readUnsignedByte(); // L: 293
+			var4 = var1.asfjaja(); // L: 293
 			if (var4 == 1) { // L: 294
 				this.flags |= 268435456;
 			}
 
-			var5 = var1.readUnsignedByte(); // L: 295
+			var5 = var1.asfjaja(); // L: 295
 			if (var5 == 1) { // L: 296
 				this.flags |= 1073741824;
 			}
 
-			var6 = var1.readUnsignedByte(); // L: 297
+			var6 = var1.asfjaja(); // L: 297
 			if (var6 == 1) { // L: 298
 				this.flags |= Integer.MIN_VALUE;
 			}
 
-			int var7 = var1.readUnsignedByte(); // L: 299
+			int var7 = var1.asfjaja(); // L: 299
 			if (var7 == 1) { // L: 300
 				this.flags |= 536870912;
 			}
 
-			this.paddingX = var1.readUnsignedByte(); // L: 301
-			this.paddingY = var1.readUnsignedByte(); // L: 302
+			this.paddingX = var1.asfjaja(); // L: 301
+			this.paddingY = var1.asfjaja(); // L: 302
 			this.inventoryXOffsets = new int[20]; // L: 303
 			this.inventoryYOffsets = new int[20]; // L: 304
 			this.inventorySprites = new int[20]; // L: 305
 
 			int var8;
 			for (var8 = 0; var8 < 20; ++var8) { // L: 306
-				int var11 = var1.readUnsignedByte(); // L: 307
+				int var11 = var1.asfjaja(); // L: 307
 				if (var11 == 1) { // L: 308
-					this.inventoryXOffsets[var8] = var1.readShort(); // L: 309
-					this.inventoryYOffsets[var8] = var1.readShort(); // L: 310
-					this.inventorySprites[var8] = var1.readInt(); // L: 311
+					this.inventoryXOffsets[var8] = var1.asfhasd(); // L: 309
+					this.inventoryYOffsets[var8] = var1.asfhasd(); // L: 310
+					this.inventorySprites[var8] = var1.ehahsjd(); // L: 311
 				} else {
 					this.inventorySprites[var8] = -1; // L: 313
 				}
@@ -919,7 +919,7 @@ public class Widget extends Node {
 			this.itemActions = new String[5]; // L: 315
 
 			for (var8 = 0; var8 < 5; ++var8) { // L: 316
-				String var9 = var1.readStringCp1252NullTerminated(); // L: 317
+				String var9 = var1.asndbaeba(); // L: 317
 				if (var9.length() > 0) { // L: 318
 					this.itemActions[var8] = var9; // L: 319
 					this.flags |= 1 << var8 + 23; // L: 320
@@ -928,83 +928,83 @@ public class Widget extends Node {
 		}
 
 		if (this.type == 3) { // L: 324
-			this.fill = var1.readUnsignedByte() == 1; // L: 325
+			this.fill = var1.asfjaja() == 1; // L: 325
 		}
 
 		if (this.type == 4 || this.type == 1) { // L: 327
-			this.textXAlignment = var1.readUnsignedByte(); // L: 328
-			this.textYAlignment = var1.readUnsignedByte(); // L: 329
-			this.textLineHeight = var1.readUnsignedByte(); // L: 330
-			this.fontId = var1.readUnsignedShort(); // L: 331
+			this.textXAlignment = var1.asfjaja(); // L: 328
+			this.textYAlignment = var1.asfjaja(); // L: 329
+			this.textLineHeight = var1.asfjaja(); // L: 330
+			this.fontId = var1.nashfa(); // L: 331
 			if (this.fontId == 65535) { // L: 332
 				this.fontId = -1;
 			}
 
-			this.textShadowed = var1.readUnsignedByte() == 1; // L: 333
+			this.textShadowed = var1.asfjaja() == 1; // L: 333
 		}
 
 		if (this.type == 4) { // L: 335
-			this.text = var1.readStringCp1252NullTerminated(); // L: 336
-			this.text2 = var1.readStringCp1252NullTerminated(); // L: 337
+			this.text = var1.asndbaeba(); // L: 336
+			this.text2 = var1.asndbaeba(); // L: 337
 		}
 
 		if (this.type == 1 || this.type == 3 || this.type == 4) { // L: 339
-			this.color = var1.readInt();
+			this.color = var1.ehahsjd();
 		}
 
 		if (this.type == 3 || this.type == 4) { // L: 340
-			this.color2 = var1.readInt(); // L: 341
-			this.mouseOverColor = var1.readInt(); // L: 342
-			this.mouseOverColor2 = var1.readInt(); // L: 343
+			this.color2 = var1.ehahsjd(); // L: 341
+			this.mouseOverColor = var1.ehahsjd(); // L: 342
+			this.mouseOverColor2 = var1.ehahsjd(); // L: 343
 		}
 
 		if (this.type == 5) { // L: 345
-			this.spriteId2 = var1.readInt(); // L: 346
-			this.spriteId = var1.readInt(); // L: 347
+			this.spriteId2 = var1.ehahsjd(); // L: 346
+			this.spriteId = var1.ehahsjd(); // L: 347
 		}
 
 		if (this.type == 6) { // L: 349
 			this.modelType = 1; // L: 350
-			this.modelId = var1.readUnsignedShort(); // L: 351
+			this.modelId = var1.nashfa(); // L: 351
 			if (this.modelId == 65535) { // L: 352
 				this.modelId = -1;
 			}
 
 			this.modelType2 = 1; // L: 353
-			this.modelId2 = var1.readUnsignedShort(); // L: 354
+			this.modelId2 = var1.nashfa(); // L: 354
 			if (this.modelId2 == 65535) { // L: 355
 				this.modelId2 = -1;
 			}
 
-			this.sequenceId = var1.readUnsignedShort(); // L: 356
+			this.sequenceId = var1.nashfa(); // L: 356
 			if (this.sequenceId == 65535) { // L: 357
 				this.sequenceId = -1;
 			}
 
-			this.sequenceId2 = var1.readUnsignedShort(); // L: 358
+			this.sequenceId2 = var1.nashfa(); // L: 358
 			if (this.sequenceId2 == 65535) { // L: 359
 				this.sequenceId2 = -1;
 			}
 
-			this.modelZoom = var1.readUnsignedShort(); // L: 360
-			this.modelAngleX = var1.readUnsignedShort(); // L: 361
-			this.modelAngleY = var1.readUnsignedShort(); // L: 362
+			this.modelZoom = var1.nashfa(); // L: 360
+			this.modelAngleX = var1.nashfa(); // L: 361
+			this.modelAngleY = var1.nashfa(); // L: 362
 		}
 
 		if (this.type == 7) { // L: 364
 			this.itemIds = new int[this.rawHeight * this.rawWidth]; // L: 365
 			this.itemQuantities = new int[this.rawWidth * this.rawHeight]; // L: 366
-			this.textXAlignment = var1.readUnsignedByte(); // L: 367
-			this.fontId = var1.readUnsignedShort(); // L: 368
+			this.textXAlignment = var1.asfjaja(); // L: 367
+			this.fontId = var1.nashfa(); // L: 368
 			if (this.fontId == 65535) { // L: 369
 				this.fontId = -1;
 			}
 
-			this.textShadowed = var1.readUnsignedByte() == 1; // L: 370
-			this.color = var1.readInt(); // L: 371
-			this.paddingX = var1.readShort(); // L: 372
-			this.paddingY = var1.readShort(); // L: 373
-			var4 = var1.readUnsignedByte(); // L: 374
+			this.textShadowed = var1.asfjaja() == 1; // L: 370
+			this.color = var1.ehahsjd(); // L: 371
+			this.paddingX = var1.asfhasd(); // L: 372
+			this.paddingY = var1.asfhasd(); // L: 373
+			var4 = var1.asfjaja(); // L: 374
 			if (var4 == 1) {
 				this.flags |= 1073741824; // L: 375
 			}
@@ -1012,7 +1012,7 @@ public class Widget extends Node {
 			this.itemActions = new String[5]; // L: 376
 
 			for (var5 = 0; var5 < 5; ++var5) { // L: 377
-				String var10 = var1.readStringCp1252NullTerminated(); // L: 378
+				String var10 = var1.asndbaeba(); // L: 378
 				if (var10.length() > 0) { // L: 379
 					this.itemActions[var5] = var10; // L: 380
 					this.flags |= 1 << var5 + 23; // L: 381
@@ -1021,18 +1021,18 @@ public class Widget extends Node {
 		}
 
 		if (this.type == 8) { // L: 385
-			this.text = var1.readStringCp1252NullTerminated(); // L: 386
+			this.text = var1.asndbaeba(); // L: 386
 		}
 
 		if (this.buttonType == 2 || this.type == 2) { // L: 388
-			this.spellActionName = var1.readStringCp1252NullTerminated(); // L: 389
-			this.spellName = var1.readStringCp1252NullTerminated(); // L: 390
-			var4 = var1.readUnsignedShort() & 63; // L: 391
+			this.spellActionName = var1.asndbaeba(); // L: 389
+			this.spellName = var1.asndbaeba(); // L: 390
+			var4 = var1.nashfa() & 63; // L: 391
 			this.flags |= var4 << 11; // L: 392
 		}
 
 		if (this.buttonType == 1 || this.buttonType == 4 || this.buttonType == 5 || this.buttonType == 6) { // L: 394
-			this.buttonText = var1.readStringCp1252NullTerminated(); // L: 395
+			this.buttonText = var1.asndbaeba(); // L: 395
 			if (this.buttonText.length() == 0) { // L: 396
 				if (this.buttonType == 1) { // L: 397
 					this.buttonText = "Ok";
@@ -1069,118 +1069,118 @@ public class Widget extends Node {
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
-		var1.readUnsignedByte(); // L: 412
+		var1.asfjaja(); // L: 412
 		this.isIf3 = true; // L: 413
-		this.type = var1.readUnsignedByte(); // L: 414
-		this.contentType = var1.readUnsignedShort(); // L: 415
-		this.rawX = var1.readShort(); // L: 416
-		this.rawY = var1.readShort(); // L: 417
-		this.rawWidth = var1.readUnsignedShort(); // L: 418
+		this.type = var1.asfjaja(); // L: 414
+		this.contentType = var1.nashfa(); // L: 415
+		this.rawX = var1.asfhasd(); // L: 416
+		this.rawY = var1.asfhasd(); // L: 417
+		this.rawWidth = var1.nashfa(); // L: 418
 		if (this.type == 9) { // L: 419
-			this.rawHeight = var1.readShort();
+			this.rawHeight = var1.asfhasd();
 		} else {
-			this.rawHeight = var1.readUnsignedShort(); // L: 420
+			this.rawHeight = var1.nashfa(); // L: 420
 		}
 
-		this.widthAlignment = var1.readByte(); // L: 421
-		this.heightAlignment = var1.readByte(); // L: 422
-		this.xAlignment = var1.readByte(); // L: 423
-		this.yAlignment = var1.readByte(); // L: 424
-		this.parentId = var1.readUnsignedShort(); // L: 425
+		this.widthAlignment = var1.ajsfjah(); // L: 421
+		this.heightAlignment = var1.ajsfjah(); // L: 422
+		this.xAlignment = var1.ajsfjah(); // L: 423
+		this.yAlignment = var1.ajsfjah(); // L: 424
+		this.parentId = var1.nashfa(); // L: 425
 		if (this.parentId == 65535) { // L: 426
 			this.parentId = -1;
 		} else {
 			this.parentId += this.id & -65536; // L: 427
 		}
 
-		this.isHidden = var1.readUnsignedByte() == 1; // L: 428
+		this.isHidden = var1.asfjaja() == 1; // L: 428
 		if (this.type == 0) { // L: 429
-			this.scrollWidth = var1.readUnsignedShort(); // L: 430
-			this.scrollHeight = var1.readUnsignedShort(); // L: 431
-			this.noClickThrough = var1.readUnsignedByte() == 1; // L: 432
+			this.scrollWidth = var1.nashfa(); // L: 430
+			this.scrollHeight = var1.nashfa(); // L: 431
+			this.noClickThrough = var1.asfjaja() == 1; // L: 432
 		}
 
 		if (this.type == 5) { // L: 434
-			this.spriteId2 = var1.readInt(); // L: 435
-			this.spriteAngle = var1.readUnsignedShort(); // L: 436
-			this.spriteTiling = var1.readUnsignedByte() == 1; // L: 437
-			this.transparencyTop = var1.readUnsignedByte(); // L: 438
-			this.outline = var1.readUnsignedByte(); // L: 439
-			this.spriteShadow = var1.readInt(); // L: 440
-			this.spriteFlipV = var1.readUnsignedByte() == 1; // L: 441
-			this.spriteFlipH = var1.readUnsignedByte() == 1; // L: 442
+			this.spriteId2 = var1.ehahsjd(); // L: 435
+			this.spriteAngle = var1.nashfa(); // L: 436
+			this.spriteTiling = var1.asfjaja() == 1; // L: 437
+			this.transparencyTop = var1.asfjaja(); // L: 438
+			this.outline = var1.asfjaja(); // L: 439
+			this.spriteShadow = var1.ehahsjd(); // L: 440
+			this.spriteFlipV = var1.asfjaja() == 1; // L: 441
+			this.spriteFlipH = var1.asfjaja() == 1; // L: 442
 		}
 
 		if (this.type == 6) { // L: 444
 			this.modelType = 1; // L: 445
-			this.modelId = var1.readUnsignedShort(); // L: 446
+			this.modelId = var1.nashfa(); // L: 446
 			if (this.modelId == 65535) { // L: 447
 				this.modelId = -1;
 			}
 
-			this.modelOffsetX = var1.readShort(); // L: 448
-			this.modelOffsetY = var1.readShort(); // L: 449
-			this.modelAngleX = var1.readUnsignedShort(); // L: 450
-			this.modelAngleY = var1.readUnsignedShort(); // L: 451
-			this.modelAngleZ = var1.readUnsignedShort(); // L: 452
-			this.modelZoom = var1.readUnsignedShort(); // L: 453
-			this.sequenceId = var1.readUnsignedShort(); // L: 454
+			this.modelOffsetX = var1.asfhasd(); // L: 448
+			this.modelOffsetY = var1.asfhasd(); // L: 449
+			this.modelAngleX = var1.nashfa(); // L: 450
+			this.modelAngleY = var1.nashfa(); // L: 451
+			this.modelAngleZ = var1.nashfa(); // L: 452
+			this.modelZoom = var1.nashfa(); // L: 453
+			this.sequenceId = var1.nashfa(); // L: 454
 			if (this.sequenceId == 65535) { // L: 455
 				this.sequenceId = -1;
 			}
 
-			this.modelOrthog = var1.readUnsignedByte() == 1; // L: 456
-			var1.readUnsignedShort(); // L: 457
+			this.modelOrthog = var1.asfjaja() == 1; // L: 456
+			var1.nashfa(); // L: 457
 			if (this.widthAlignment != 0) { // L: 458
-				this.field3310 = var1.readUnsignedShort();
+				this.field3310 = var1.nashfa();
 			}
 
 			if (this.heightAlignment != 0) { // L: 459
-				var1.readUnsignedShort(); // L: 460
+				var1.nashfa(); // L: 460
 			}
 		}
 
 		if (this.type == 4) { // L: 463
-			this.fontId = var1.readUnsignedShort(); // L: 464
+			this.fontId = var1.nashfa(); // L: 464
 			if (this.fontId == 65535) { // L: 465
 				this.fontId = -1;
 			}
 
-			this.text = var1.readStringCp1252NullTerminated(); // L: 466
-			this.textLineHeight = var1.readUnsignedByte(); // L: 467
-			this.textXAlignment = var1.readUnsignedByte(); // L: 468
-			this.textYAlignment = var1.readUnsignedByte(); // L: 469
-			this.textShadowed = var1.readUnsignedByte() == 1; // L: 470
-			this.color = var1.readInt(); // L: 471
+			this.text = var1.asndbaeba(); // L: 466
+			this.textLineHeight = var1.asfjaja(); // L: 467
+			this.textXAlignment = var1.asfjaja(); // L: 468
+			this.textYAlignment = var1.asfjaja(); // L: 469
+			this.textShadowed = var1.asfjaja() == 1; // L: 470
+			this.color = var1.ehahsjd(); // L: 471
 		}
 
 		if (this.type == 3) { // L: 473
-			this.color = var1.readInt(); // L: 474
-			this.fill = var1.readUnsignedByte() == 1; // L: 475
-			this.transparencyTop = var1.readUnsignedByte(); // L: 476
+			this.color = var1.ehahsjd(); // L: 474
+			this.fill = var1.asfjaja() == 1; // L: 475
+			this.transparencyTop = var1.asfjaja(); // L: 476
 		}
 
 		if (this.type == 9) { // L: 478
-			this.lineWid = var1.readUnsignedByte(); // L: 479
-			this.color = var1.readInt(); // L: 480
-			this.field3298 = var1.readUnsignedByte() == 1; // L: 481
+			this.lineWid = var1.asfjaja(); // L: 479
+			this.color = var1.ehahsjd(); // L: 480
+			this.field3298 = var1.asfjaja() == 1; // L: 481
 		}
 
-		this.flags = var1.readMedium(); // L: 483
-		this.dataText = var1.readStringCp1252NullTerminated(); // L: 484
-		int var2 = var1.readUnsignedByte(); // L: 485
+		this.flags = var1.asfjahsn(); // L: 483
+		this.dataText = var1.asndbaeba(); // L: 484
+		int var2 = var1.asfjaja(); // L: 485
 		if (var2 > 0) { // L: 486
 			this.actions = new String[var2]; // L: 487
 
 			for (int var3 = 0; var3 < var2; ++var3) { // L: 488
-				this.actions[var3] = var1.readStringCp1252NullTerminated();
+				this.actions[var3] = var1.asndbaeba();
 			}
 		}
 
-		this.dragZoneSize = var1.readUnsignedByte(); // L: 490
-		this.dragThreshold = var1.readUnsignedByte(); // L: 491
-		this.isScrollBar = var1.readUnsignedByte() == 1; // L: 492
-		this.spellActionName = var1.readStringCp1252NullTerminated(); // L: 493
+		this.dragZoneSize = var1.asfjaja(); // L: 490
+		this.dragThreshold = var1.asfjaja(); // L: 491
+		this.isScrollBar = var1.asfjaja() == 1; // L: 492
+		this.spellActionName = var1.asndbaeba(); // L: 493
 		this.onLoad = this.readListener(var1); // L: 494
 		this.onMouseOver = this.readListener(var1); // L: 495
 		this.onMouseLeave = this.readListener(var1); // L: 496
@@ -1211,18 +1211,18 @@ public class Widget extends Node {
 	)
 	@Export("readListener")
 	Object[] readListener(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 518
+		int var2 = var1.asfjaja(); // L: 518
 		if (var2 == 0) { // L: 519
 			return null;
 		} else {
 			Object[] var3 = new Object[var2]; // L: 520
 
 			for (int var4 = 0; var4 < var2; ++var4) { // L: 521
-				int var5 = var1.readUnsignedByte(); // L: 522
+				int var5 = var1.asfjaja(); // L: 522
 				if (var5 == 0) {
-					var3[var4] = new Integer(var1.readInt()); // L: 523
+					var3[var4] = new Integer(var1.ehahsjd()); // L: 523
 				} else if (var5 == 1) { // L: 524
-					var3[var4] = var1.readStringCp1252NullTerminated();
+					var3[var4] = var1.asndbaeba();
 				}
 			}
 
@@ -1238,14 +1238,14 @@ public class Widget extends Node {
 	)
 	@Export("readListenerTriggers")
 	int[] readListenerTriggers(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 531
+		int var2 = var1.asfjaja(); // L: 531
 		if (var2 == 0) { // L: 532
 			return null;
 		} else {
 			int[] var3 = new int[var2]; // L: 533
 
 			for (int var4 = 0; var4 < var2; ++var4) { // L: 534
-				var3[var4] = var1.readInt(); // L: 535
+				var3[var4] = var1.ehahsjd(); // L: 535
 			}
 
 			return var3; // L: 537

@@ -380,7 +380,7 @@ public class Instrument {
 		this.pitch.decode(var1); // L: 191
 		this.volume = new SoundEnvelope(); // L: 192
 		this.volume.decode(var1); // L: 193
-		int var2 = var1.readUnsignedByte(); // L: 194
+		int var2 = var1.asfjaja(); // L: 194
 		if (var2 != 0) { // L: 195
 			--var1.offset; // L: 196
 			this.pitchModifier = new SoundEnvelope(); // L: 197
@@ -389,7 +389,7 @@ public class Instrument {
 			this.pitchModifierAmplitude.decode(var1); // L: 200
 		}
 
-		var2 = var1.readUnsignedByte(); // L: 202
+		var2 = var1.asfjaja(); // L: 202
 		if (var2 != 0) { // L: 203
 			--var1.offset; // L: 204
 			this.volumeMultiplier = new SoundEnvelope(); // L: 205
@@ -398,7 +398,7 @@ public class Instrument {
 			this.volumeMultiplierAmplitude.decode(var1); // L: 208
 		}
 
-		var2 = var1.readUnsignedByte(); // L: 210
+		var2 = var1.asfjaja(); // L: 210
 		if (var2 != 0) { // L: 211
 			--var1.offset; // L: 212
 			this.release = new SoundEnvelope(); // L: 213
@@ -408,20 +408,20 @@ public class Instrument {
 		}
 
 		for (int var3 = 0; var3 < 10; ++var3) { // L: 218
-			int var4 = var1.readUShortSmart(); // L: 219
+			int var4 = var1.asfmaenansd(); // L: 219
 			if (var4 == 0) { // L: 220
 				break;
 			}
 
 			this.oscillatorVolume[var3] = var4; // L: 221
-			this.oscillatorPitch[var3] = var1.readShortSmart(); // L: 222
-			this.oscillatorDelays[var3] = var1.readUShortSmart(); // L: 223
+			this.oscillatorPitch[var3] = var1.asfnaebabsf(); // L: 222
+			this.oscillatorDelays[var3] = var1.asfmaenansd(); // L: 223
 		}
 
-		this.delayTime = var1.readUShortSmart(); // L: 225
-		this.delayDecay = var1.readUShortSmart(); // L: 226
-		this.duration = var1.readUnsignedShort(); // L: 227
-		this.offset = var1.readUnsignedShort(); // L: 228
+		this.delayTime = var1.asfmaenansd(); // L: 225
+		this.delayDecay = var1.asfmaenansd(); // L: 226
+		this.duration = var1.nashfa(); // L: 227
+		this.offset = var1.nashfa(); // L: 228
 		this.filter = new AudioFilter(); // L: 229
 		this.filterEnvelope = new SoundEnvelope(); // L: 230
 		this.filter.method1053(var1, this.filterEnvelope); // L: 231

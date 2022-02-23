@@ -152,7 +152,7 @@ public class SequenceDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 64
+			int var2 = var1.asfjaja(); // L: 64
 			if (var2 == 0) { // L: 65
 				return; // L: 68
 			}
@@ -171,81 +171,81 @@ public class SequenceDefinition extends DualNode {
 		int var3;
 		int var4;
 		if (var2 == 1) { // L: 71
-			var3 = var1.readUnsignedShort(); // L: 72
+			var3 = var1.nashfa(); // L: 72
 			this.frameLengths = new int[var3]; // L: 73
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 74
-				this.frameLengths[var4] = var1.readUnsignedShort();
+				this.frameLengths[var4] = var1.nashfa();
 			}
 
 			this.frameIds = new int[var3]; // L: 75
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 76
-				this.frameIds[var4] = var1.readUnsignedShort();
+				this.frameIds[var4] = var1.nashfa();
 			}
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 77
-				this.frameIds[var4] += var1.readUnsignedShort() << 16;
+				this.frameIds[var4] += var1.nashfa() << 16;
 			}
 		} else if (var2 == 2) { // L: 79
-			this.frameCount = var1.readUnsignedShort();
+			this.frameCount = var1.nashfa();
 		} else if (var2 == 3) { // L: 80
-			var3 = var1.readUnsignedByte(); // L: 81
+			var3 = var1.asfjaja(); // L: 81
 			this.field2100 = new int[var3 + 1]; // L: 82
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 83
-				this.field2100[var4] = var1.readUnsignedByte();
+				this.field2100[var4] = var1.asfjaja();
 			}
 
 			this.field2100[var3] = 9999999; // L: 84
 		} else if (var2 == 4) { // L: 86
 			this.field2102 = true;
 		} else if (var2 == 5) { // L: 87
-			this.field2095 = var1.readUnsignedByte();
+			this.field2095 = var1.asfjaja();
 		} else if (var2 == 6) { // L: 88
-			this.shield = var1.readUnsignedShort();
+			this.shield = var1.nashfa();
 		} else if (var2 == 7) { // L: 89
-			this.weapon = var1.readUnsignedShort();
+			this.weapon = var1.nashfa();
 		} else if (var2 == 8) { // L: 90
-			this.field2108 = var1.readUnsignedByte();
+			this.field2108 = var1.asfjaja();
 		} else if (var2 == 9) { // L: 91
-			this.field2107 = var1.readUnsignedByte();
+			this.field2107 = var1.asfjaja();
 		} else if (var2 == 10) { // L: 92
-			this.field2099 = var1.readUnsignedByte();
+			this.field2099 = var1.asfjaja();
 		} else if (var2 == 11) { // L: 93
-			this.field2109 = var1.readUnsignedByte();
+			this.field2109 = var1.asfjaja();
 		} else if (var2 == 12) { // L: 94
-			var3 = var1.readUnsignedByte(); // L: 95
+			var3 = var1.asfjaja(); // L: 95
 			this.chatFrameIds = new int[var3]; // L: 96
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 97
-				this.chatFrameIds[var4] = var1.readUnsignedShort();
+				this.chatFrameIds[var4] = var1.nashfa();
 			}
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 98
-				this.chatFrameIds[var4] += var1.readUnsignedShort() << 16;
+				this.chatFrameIds[var4] += var1.nashfa() << 16;
 			}
 		} else if (var2 == 13) { // L: 100
-			var3 = var1.readUnsignedByte(); // L: 101
+			var3 = var1.asfjaja(); // L: 101
 			this.soundEffects = new int[var3]; // L: 102
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 103
-				this.soundEffects[var4] = var1.readMedium();
+				this.soundEffects[var4] = var1.asfjahsn();
 			}
 		} else if (var2 == 14) { // L: 105
-			this.field2091 = var1.readInt(); // L: 106
+			this.field2091 = var1.ehahsjd(); // L: 106
 		} else if (var2 == 15) { // L: 108
-			var3 = var1.readUnsignedShort(); // L: 109
+			var3 = var1.nashfa(); // L: 109
 			this.field2092 = new HashMap(); // L: 110
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 111
-				int var5 = var1.readUnsignedShort(); // L: 112
-				int var6 = var1.readMedium(); // L: 113
+				int var5 = var1.nashfa(); // L: 112
+				int var6 = var1.asfjahsn(); // L: 113
 				this.field2092.put(var5, var6); // L: 114
 			}
 		} else if (var2 == 16) { // L: 117
-			this.field2097 = var1.readUnsignedShort(); // L: 118
-			this.field2094 = var1.readUnsignedShort(); // L: 119
+			this.field2097 = var1.nashfa(); // L: 118
+			this.field2094 = var1.nashfa(); // L: 119
 		} else if (var2 == 17) { // L: 121
 			this.field2101 = new boolean[256]; // L: 122
 
@@ -253,10 +253,10 @@ public class SequenceDefinition extends DualNode {
 				this.field2101[var3] = false; // L: 124
 			}
 
-			var3 = var1.readUnsignedByte(); // L: 126
+			var3 = var1.asfjaja(); // L: 126
 
 			for (var4 = 0; var4 < var3; ++var4) { // L: 127
-				this.field2101[var1.readUnsignedByte()] = true; // L: 128
+				this.field2101[var1.asfjaja()] = true; // L: 128
 			}
 		}
 

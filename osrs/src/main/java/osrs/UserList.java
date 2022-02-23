@@ -377,8 +377,8 @@ public abstract class UserList {
 	static final void clanKickUser(String var0) {
 		if (class67.friendsChat != null) { // L: 11919
 			PacketBufferNode var1 = class135.getPacketBufferNode(ClientPacket.field2878, Client.packetWriter.isaacCipher); // L: 11920
-			var1.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 11921
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 11922
+			var1.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 11921
+			var1.packetBuffer.aaa(var0); // L: 11922
 			Client.packetWriter.addNode(var1); // L: 11923
 		}
 	} // L: 11924

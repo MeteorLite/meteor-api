@@ -56,8 +56,8 @@ public class class120 extends DualNode {
 		this.field1471 = var3; // L: 23
 		byte[] var5 = var1.takeFile(this.field1471 >> 16 & 65535, this.field1471 & 65535); // L: 24
 		Buffer var6 = new Buffer(var5); // L: 25
-		int var7 = var6.readUnsignedByte(); // L: 26
-		int var8 = var6.readUnsignedShort(); // L: 27
+		int var7 = var6.asfjaja(); // L: 26
+		int var8 = var6.nashfa(); // L: 27
 		byte[] var9 = var2.getFile(var8, 0); // L: 30
 		this.field1478 = new Skeleton(var8, var9); // L: 31
 		this.method2660(var6, var7); // L: 32
@@ -69,17 +69,17 @@ public class class120 extends DualNode {
 		garbageValue = "79"
 	)
 	void method2660(Buffer var1, int var2) {
-		this.field1473 = var1.readUnsignedShort(); // L: 36
-		this.field1474 = var1.readUnsignedShort(); // L: 37
-		this.field1476 = var1.readUnsignedByte(); // L: 38
-		int var3 = var1.readUnsignedShort(); // L: 39
+		this.field1473 = var1.nashfa(); // L: 36
+		this.field1474 = var1.nashfa(); // L: 37
+		this.field1476 = var1.asfjaja(); // L: 38
+		int var3 = var1.nashfa(); // L: 39
 		this.field1472 = new class115[this.field1478.method3887().method3871()][]; // L: 40
 		this.field1470 = new class115[this.field1478.method3886()][]; // L: 41
 
 		for (int var4 = 0; var4 < var3; ++var4) { // L: 42
-			class116 var5 = class113.method2600(var1.readUnsignedByte()); // L: 43
-			int var6 = var1.readShortSmart(); // L: 44
-			int var8 = var1.readUnsignedByte(); // L: 46
+			class116 var5 = class113.method2600(var1.asfjaja()); // L: 43
+			int var6 = var1.asfnaebabsf(); // L: 44
+			int var8 = var1.asfjaja(); // L: 46
 			class117 var9 = (class117)class140.findEnumerated(SoundCache.method792(), var8); // L: 48
 			if (var9 == null) { // L: 49
 				var9 = class117.field1457;

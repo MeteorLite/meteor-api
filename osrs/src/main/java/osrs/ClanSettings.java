@@ -637,9 +637,9 @@ public class ClanSettings {
 		garbageValue = "777712617"
 	)
 	void method2865(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 326
+		int var2 = var1.asfjaja(); // L: 326
 		if (var2 >= 1 && var2 <= 6) { // L: 327
-			int var3 = var1.readUnsignedByte(); // L: 328
+			int var3 = var1.asfjaja(); // L: 328
 			if ((var3 & 1) != 0) { // L: 329
 				this.useHashes = true;
 			}
@@ -658,24 +658,24 @@ public class ClanSettings {
 				this.bannedMemberNames = null; // L: 337
 			}
 
-			this.field1589 = var1.readInt(); // L: 339
-			this.field1601 = var1.readInt(); // L: 340
+			this.field1589 = var1.ehahsjd(); // L: 339
+			this.field1601 = var1.ehahsjd(); // L: 340
 			if (var2 <= 3 && this.field1601 != 0) { // L: 341
 				this.field1601 += 16912800;
 			}
 
-			this.memberCount = var1.readUnsignedShort(); // L: 342
-			this.bannedMemberCount = var1.readUnsignedByte(); // L: 343
-			this.name = var1.readStringCp1252NullTerminated(); // L: 344
+			this.memberCount = var1.nashfa(); // L: 342
+			this.bannedMemberCount = var1.asfjaja(); // L: 343
+			this.name = var1.asndbaeba(); // L: 344
 			if (var2 >= 4) { // L: 345
-				var1.readInt(); // L: 346
+				var1.ehahsjd(); // L: 346
 			}
 
-			this.allowGuests = var1.readUnsignedByte() == 1; // L: 348
-			this.field1593 = var1.readByte(); // L: 349
-			this.field1594 = var1.readByte(); // L: 350
-			this.field1595 = var1.readByte(); // L: 351
-			this.field1596 = var1.readByte(); // L: 352
+			this.allowGuests = var1.asfjaja() == 1; // L: 348
+			this.field1593 = var1.ajsfjah(); // L: 349
+			this.field1594 = var1.ajsfjah(); // L: 350
+			this.field1595 = var1.ajsfjah(); // L: 351
+			this.field1596 = var1.ajsfjah(); // L: 352
 			int var4;
 			if (this.memberCount > 0) { // L: 353
 				if (this.useHashes && (this.memberHashes == null || this.memberHashes.length < this.memberCount)) { // L: 354
@@ -704,26 +704,26 @@ public class ClanSettings {
 
 				for (var4 = 0; var4 < this.memberCount; ++var4) { // L: 360
 					if (this.useHashes) { // L: 361
-						this.memberHashes[var4] = var1.readLong();
+						this.memberHashes[var4] = var1.asfkajsdj();
 					}
 
 					if (this.useNames) { // L: 362
-						this.memberNames[var4] = var1.readStringCp1252NullTerminatedOrNull();
+						this.memberNames[var4] = var1.jasfneba();
 					}
 
-					this.memberRanks[var4] = var1.readByte(); // L: 363
+					this.memberRanks[var4] = var1.ajsfjah(); // L: 363
 					if (var2 >= 2) { // L: 364
-						this.field1585[var4] = var1.readInt();
+						this.field1585[var4] = var1.ehahsjd();
 					}
 
 					if (var2 >= 5) { // L: 365
-						this.field1602[var4] = var1.readUnsignedShort();
+						this.field1602[var4] = var1.nashfa();
 					} else {
 						this.field1602[var4] = 0; // L: 366
 					}
 
 					if (var2 >= 6) { // L: 367
-						this.field1611[var4] = var1.readUnsignedByte() == 1;
+						this.field1611[var4] = var1.asfjaja() == 1;
 					} else {
 						this.field1611[var4] = false; // L: 368
 					}
@@ -743,32 +743,32 @@ public class ClanSettings {
 
 				for (var4 = 0; var4 < this.bannedMemberCount; ++var4) { // L: 375
 					if (this.useHashes) { // L: 376
-						this.bannedMemberHashes[var4] = var1.readLong();
+						this.bannedMemberHashes[var4] = var1.asfkajsdj();
 					}
 
 					if (this.useNames) { // L: 377
-						this.bannedMemberNames[var4] = var1.readStringCp1252NullTerminatedOrNull();
+						this.bannedMemberNames[var4] = var1.jasfneba();
 					}
 				}
 			}
 
 			if (var2 >= 3) { // L: 380
-				var4 = var1.readUnsignedShort(); // L: 381
+				var4 = var1.nashfa(); // L: 381
 				if (var4 > 0) { // L: 382
 					this.parameters = new IterableNodeHashTable(var4 < 16 ? GrandExchangeOfferNameComparator.method5702(var4) : 16); // L: 383
 
 					while (var4-- > 0) { // L: 384
-						int var5 = var1.readInt(); // L: 385
+						int var5 = var1.ehahsjd(); // L: 385
 						int var6 = var5 & 1073741823; // L: 386
 						int var7 = var5 >>> 30; // L: 387
 						if (var7 == 0) { // L: 388
-							int var12 = var1.readInt(); // L: 389
+							int var12 = var1.ehahsjd(); // L: 389
 							this.parameters.put(new IntegerNode(var12), (long)var6); // L: 390
 						} else if (var7 == 1) { // L: 392
-							long var10 = var1.readLong(); // L: 393
+							long var10 = var1.asfkajsdj(); // L: 393
 							this.parameters.put(new class389(var10), (long)var6); // L: 394
 						} else if (var7 == 2) { // L: 396
-							String var8 = var1.readStringCp1252NullTerminated(); // L: 397
+							String var8 = var1.asndbaeba(); // L: 397
 							this.parameters.put(new ObjectNode(var8), (long)var6); // L: 398
 						}
 					}

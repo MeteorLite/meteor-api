@@ -39,27 +39,27 @@ public class Skeleton extends Node {
 	public Skeleton(int var1, byte[] var2) {
 		this.id = var1; // L: 19
 		Buffer var3 = new Buffer(var2); // L: 20
-		this.count = var3.readUnsignedByte(); // L: 21
+		this.count = var3.asfjaja(); // L: 21
 		this.transformTypes = new int[this.count]; // L: 22
 		this.labels = new int[this.count][]; // L: 23
 
 		int var4;
 		for (var4 = 0; var4 < this.count; ++var4) { // L: 24
-			this.transformTypes[var4] = var3.readUnsignedByte();
+			this.transformTypes[var4] = var3.asfjaja();
 		}
 
 		for (var4 = 0; var4 < this.count; ++var4) { // L: 25
-			this.labels[var4] = new int[var3.readUnsignedByte()];
+			this.labels[var4] = new int[var3.asfjaja()];
 		}
 
 		for (var4 = 0; var4 < this.count; ++var4) { // L: 26
 			for (int var5 = 0; var5 < this.labels[var4].length; ++var5) { // L: 27
-				this.labels[var4][var5] = var3.readUnsignedByte();
+				this.labels[var4][var5] = var3.asfjaja();
 			}
 		}
 
 		if (var3.offset < var3.array.length) { // L: 29
-			var4 = var3.readUnsignedShort(); // L: 30
+			var4 = var3.nashfa(); // L: 30
 			if (var4 > 0) { // L: 31
 				this.field2295 = new class194(var3, var4); // L: 32
 			}

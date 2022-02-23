@@ -45,13 +45,13 @@ public class class139 extends class142 {
 		garbageValue = "-103"
 	)
 	void vmethod3014(Buffer var1) {
-		var1.readUnsignedByte(); // L: 133
-		this.field1618 = var1.readUnsignedShort(); // L: 134
-		this.field1620 = var1.readByte(); // L: 135
-		this.field1623 = var1.readUnsignedShort(); // L: 136
-		var1.readLong(); // L: 137
-		this.field1621 = var1.readStringCp1252NullTerminated(); // L: 138
-		var1.readUnsignedByte(); // L: 139
+		var1.asfjaja(); // L: 133
+		this.field1618 = var1.nashfa(); // L: 134
+		this.field1620 = var1.ajsfjah(); // L: 135
+		this.field1623 = var1.nashfa(); // L: 136
+		var1.asfkajsdj(); // L: 137
+		this.field1621 = var1.asndbaeba(); // L: 138
+		var1.asfjaja(); // L: 139
 	} // L: 140
 
 	@ObfuscatedName("l")

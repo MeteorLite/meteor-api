@@ -59,14 +59,14 @@ public class Animation {
 		Buffer var3 = new Buffer(var1); // L: 22
 		Buffer var4 = new Buffer(var1); // L: 23
 		var3.offset = 2; // L: 24
-		int var5 = var3.readUnsignedByte(); // L: 25
+		int var5 = var3.asfjaja(); // L: 25
 		int var6 = -1; // L: 26
 		int var7 = 0; // L: 27
 		var4.offset = var5 + var3.offset; // L: 28
 
 		int var8;
 		for (var8 = 0; var8 < var5; ++var8) { // L: 29
-			int var9 = var3.readUnsignedByte(); // L: 30
+			int var9 = var3.asfjaja(); // L: 30
 			if (var9 > 0) { // L: 31
 				if (this.skeleton.transformTypes[var8] != 0) { // L: 32
 					for (int var10 = var8 - 1; var10 > var6; --var10) { // L: 33
@@ -88,19 +88,19 @@ public class Animation {
 				}
 
 				if ((var9 & 1) != 0) { // L: 47
-					field2221[var7] = var4.readShortSmart();
+					field2221[var7] = var4.asfnaebabsf();
 				} else {
 					field2221[var7] = var11; // L: 48
 				}
 
 				if ((var9 & 2) != 0) { // L: 49
-					field2231[var7] = var4.readShortSmart();
+					field2231[var7] = var4.asfnaebabsf();
 				} else {
 					field2231[var7] = var11; // L: 50
 				}
 
 				if ((var9 & 4) != 0) { // L: 51
-					field2224[var7] = var4.readShortSmart();
+					field2224[var7] = var4.asfnaebabsf();
 				} else {
 					field2224[var7] = var11; // L: 52
 				}

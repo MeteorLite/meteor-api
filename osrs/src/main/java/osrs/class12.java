@@ -161,9 +161,9 @@ class class12 extends SSLSocket {
 	)
 	static final void method158(String var0, int var1) {
 		PacketBufferNode var2 = class135.getPacketBufferNode(ClientPacket.field2907, Client.packetWriter.isaacCipher); // L: 222
-		var2.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0) + 1); // L: 223
-		var2.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 224
-		var2.packetBuffer.writeByte(var1); // L: 225
+		var2.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0) + 1); // L: 223
+		var2.packetBuffer.aaa(var0); // L: 224
+		var2.packetBuffer.asfag(var1); // L: 225
 		Client.packetWriter.addNode(var2); // L: 226
 	} // L: 227
 

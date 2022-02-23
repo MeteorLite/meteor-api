@@ -52,20 +52,20 @@ public class class91 {
 					int var11 = var9 + WorldMapSprite.localPlayer.x >> 7; // L: 3550
 					int var12 = WorldMapSprite.localPlayer.y - var10 >> 7; // L: 3551
 					PacketBufferNode var13 = class135.getPacketBufferNode(ClientPacket.field2926, Client.packetWriter.isaacCipher); // L: 3553
-					var13.packetBuffer.writeByte(18); // L: 3554
+					var13.packetBuffer.asfag(18); // L: 3554
 					var13.packetBuffer.method7403(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0); // L: 3555
 					var13.packetBuffer.method7555(var11 + Canvas.baseX); // L: 3556
 					var13.packetBuffer.method7555(var12 + class118.baseY); // L: 3557
-					var13.packetBuffer.writeByte(var4); // L: 3558
-					var13.packetBuffer.writeByte(var5); // L: 3559
-					var13.packetBuffer.writeShort(Client.camAngleY); // L: 3560
-					var13.packetBuffer.writeByte(57); // L: 3561
-					var13.packetBuffer.writeByte(0); // L: 3562
-					var13.packetBuffer.writeByte(0); // L: 3563
-					var13.packetBuffer.writeByte(89); // L: 3564
-					var13.packetBuffer.writeShort(WorldMapSprite.localPlayer.x); // L: 3565
-					var13.packetBuffer.writeShort(WorldMapSprite.localPlayer.y); // L: 3566
-					var13.packetBuffer.writeByte(63); // L: 3567
+					var13.packetBuffer.asfag(var4); // L: 3558
+					var13.packetBuffer.asfag(var5); // L: 3559
+					var13.packetBuffer.gaf(Client.camAngleY); // L: 3560
+					var13.packetBuffer.asfag(57); // L: 3561
+					var13.packetBuffer.asfag(0); // L: 3562
+					var13.packetBuffer.asfag(0); // L: 3563
+					var13.packetBuffer.asfag(89); // L: 3564
+					var13.packetBuffer.gaf(WorldMapSprite.localPlayer.x); // L: 3565
+					var13.packetBuffer.gaf(WorldMapSprite.localPlayer.y); // L: 3566
+					var13.packetBuffer.asfag(63); // L: 3567
 					Client.packetWriter.addNode(var13); // L: 3568
 					Client.destinationX = var11; // L: 3569
 					Client.destinationY = var12; // L: 3570

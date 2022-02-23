@@ -43,22 +43,22 @@ public class Texture extends Node {
 	)
 	Texture(Buffer var1) {
 		this.isLoaded = false; // L: 25
-		this.averageRGB = var1.readUnsignedShort(); // L: 29
-		this.field2211 = var1.readUnsignedByte() == 1; // L: 30
-		int var2 = var1.readUnsignedByte(); // L: 31
+		this.averageRGB = var1.nashfa(); // L: 29
+		this.field2211 = var1.asfjaja() == 1; // L: 30
+		int var2 = var1.asfjaja(); // L: 31
 		if (var2 >= 1 && var2 <= 4) { // L: 32
 			this.fileIds = new int[var2]; // L: 35
 
 			int var3;
 			for (var3 = 0; var3 < var2; ++var3) { // L: 36
-				this.fileIds[var3] = var1.readUnsignedShort();
+				this.fileIds[var3] = var1.nashfa();
 			}
 
 			if (var2 > 1) { // L: 37
 				this.field2219 = new int[var2 - 1]; // L: 38
 
 				for (var3 = 0; var3 < var2 - 1; ++var3) { // L: 39
-					this.field2219[var3] = var1.readUnsignedByte();
+					this.field2219[var3] = var1.asfjaja();
 				}
 			}
 
@@ -66,18 +66,18 @@ public class Texture extends Node {
 				this.field2214 = new int[var2 - 1]; // L: 42
 
 				for (var3 = 0; var3 < var2 - 1; ++var3) { // L: 43
-					this.field2214[var3] = var1.readUnsignedByte();
+					this.field2214[var3] = var1.asfjaja();
 				}
 			}
 
 			this.field2215 = new int[var2]; // L: 45
 
 			for (var3 = 0; var3 < var2; ++var3) { // L: 46
-				this.field2215[var3] = var1.readInt();
+				this.field2215[var3] = var1.ehahsjd();
 			}
 
-			this.animationDirection = var1.readUnsignedByte(); // L: 47
-			this.animationSpeed = var1.readUnsignedByte(); // L: 48
+			this.animationDirection = var1.asfjaja(); // L: 47
+			this.animationSpeed = var1.asfjaja(); // L: 48
 			this.pixels = null; // L: 49
 		} else {
 			throw new RuntimeException(); // L: 33

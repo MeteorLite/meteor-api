@@ -1655,4 +1655,7 @@ public interface RSClient extends RSGameEngine, Client {
   Deque<AmbientSoundEffect> getAmbientSoundEffects();
 
   long getUnlockedFpsTarget();
+
+  @Construct
+  RSClientPacket createClientPacket(int opcode, int length);
 }

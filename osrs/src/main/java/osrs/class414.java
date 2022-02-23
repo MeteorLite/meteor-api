@@ -152,8 +152,8 @@ public class class414 implements MouseWheel {
 	)
 	static final void method7279(String var0) {
 		PacketBufferNode var1 = class135.getPacketBufferNode(ClientPacket.field2921, Client.packetWriter.isaacCipher); // L: 177
-		var1.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 178
-		var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 179
+		var1.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 178
+		var1.packetBuffer.aaa(var0); // L: 179
 		Client.packetWriter.addNode(var1); // L: 180
 	} // L: 181
 

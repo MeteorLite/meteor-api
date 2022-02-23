@@ -142,11 +142,11 @@ public class Coord {
 		ReflectionCheck var1 = (ReflectionCheck)class33.reflectionChecks.last(); // L: 35
 		if (var1 != null) { // L: 36
 			int var2 = var0.offset; // L: 37
-			var0.writeInt(var1.id); // L: 38
+			var0.lakak(var1.id); // L: 38
 
 			for (int var3 = 0; var3 < var1.size; ++var3) { // L: 39
 				if (var1.creationErrors[var3] != 0) { // L: 40
-					var0.writeByte(var1.creationErrors[var3]); // L: 41
+					var0.asfag(var1.creationErrors[var3]); // L: 41
 				} else {
 					try {
 						int var4 = var1.operations[var3]; // L: 45
@@ -155,17 +155,17 @@ public class Coord {
 						if (var4 == 0) { // L: 46
 							var5 = var1.fields[var3]; // L: 47
 							var6 = Reflection.getInt(var5, (Object)null); // L: 48
-							var0.writeByte(0); // L: 49
-							var0.writeInt(var6); // L: 50
+							var0.asfag(0); // L: 49
+							var0.lakak(var6); // L: 50
 						} else if (var4 == 1) { // L: 52
 							var5 = var1.fields[var3]; // L: 53
 							Reflection.setInt(var5, (Object)null, var1.intReplaceValues[var3]); // L: 54
-							var0.writeByte(0); // L: 55
+							var0.asfag(0); // L: 55
 						} else if (var4 == 2) { // L: 57
 							var5 = var1.fields[var3]; // L: 58
 							var6 = var5.getModifiers(); // L: 59
-							var0.writeByte(0); // L: 60
-							var0.writeInt(var6); // L: 61
+							var0.asfag(0); // L: 60
+							var0.lakak(var6); // L: 61
 						}
 
 						Method var25;
@@ -173,8 +173,8 @@ public class Coord {
 							if (var4 == 4) { // L: 83
 								var25 = var1.methods[var3]; // L: 84
 								var6 = var25.getModifiers(); // L: 85
-								var0.writeByte(0); // L: 86
-								var0.writeInt(var6); // L: 87
+								var0.asfag(0); // L: 86
+								var0.lakak(var6); // L: 87
 							}
 						} else {
 							var25 = var1.methods[var3]; // L: 64
@@ -188,46 +188,46 @@ public class Coord {
 
 							Object var11 = Reflection.invoke(var25, (Object)null, var7); // L: 71
 							if (var11 == null) { // L: 72
-								var0.writeByte(0);
+								var0.asfag(0);
 							} else if (var11 instanceof Number) { // L: 73
-								var0.writeByte(1); // L: 74
-								var0.writeLong(((Number)var11).longValue()); // L: 75
+								var0.asfag(1); // L: 74
+								var0.asofoa(((Number)var11).longValue()); // L: 75
 							} else if (var11 instanceof String) { // L: 77
-								var0.writeByte(2); // L: 78
-								var0.writeStringCp1252NullTerminated((String)var11); // L: 79
+								var0.asfag(2); // L: 78
+								var0.aaa((String)var11); // L: 79
 							} else {
-								var0.writeByte(4); // L: 81
+								var0.asfag(4); // L: 81
 							}
 						}
 					} catch (ClassNotFoundException var13) { // L: 90
-						var0.writeByte(-10); // L: 91
+						var0.asfag(-10); // L: 91
 					} catch (InvalidClassException var14) { // L: 93
-						var0.writeByte(-11); // L: 94
+						var0.asfag(-11); // L: 94
 					} catch (StreamCorruptedException var15) { // L: 96
-						var0.writeByte(-12); // L: 97
+						var0.asfag(-12); // L: 97
 					} catch (OptionalDataException var16) { // L: 99
-						var0.writeByte(-13); // L: 100
+						var0.asfag(-13); // L: 100
 					} catch (IllegalAccessException var17) { // L: 102
-						var0.writeByte(-14); // L: 103
+						var0.asfag(-14); // L: 103
 					} catch (IllegalArgumentException var18) { // L: 105
-						var0.writeByte(-15); // L: 106
+						var0.asfag(-15); // L: 106
 					} catch (InvocationTargetException var19) { // L: 108
-						var0.writeByte(-16); // L: 109
+						var0.asfag(-16); // L: 109
 					} catch (SecurityException var20) { // L: 111
-						var0.writeByte(-17); // L: 112
+						var0.asfag(-17); // L: 112
 					} catch (IOException var21) { // L: 114
-						var0.writeByte(-18); // L: 115
+						var0.asfag(-18); // L: 115
 					} catch (NullPointerException var22) { // L: 117
-						var0.writeByte(-19); // L: 118
+						var0.asfag(-19); // L: 118
 					} catch (Exception var23) { // L: 120
-						var0.writeByte(-20); // L: 121
+						var0.asfag(-20); // L: 121
 					} catch (Throwable var24) { // L: 123
-						var0.writeByte(-21); // L: 124
+						var0.asfag(-21); // L: 124
 					}
 				}
 			}
 
-			var0.writeCrc(var2); // L: 127
+			var0.lsfnman(var2); // L: 127
 			var1.remove(); // L: 128
 		}
 	} // L: 129

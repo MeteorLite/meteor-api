@@ -51,12 +51,12 @@ public class GrandExchangeOffer {
 		garbageValue = "0"
 	)
 	public GrandExchangeOffer(Buffer var1, boolean var2) {
-		this.state = var1.readByte(); // L: 16
-		this.id = var1.readUnsignedShort(); // L: 17
-		this.unitPrice = var1.readInt(); // L: 18
-		this.totalQuantity = var1.readInt(); // L: 19
-		this.currentQuantity = var1.readInt(); // L: 20
-		this.currentPrice = var1.readInt(); // L: 21
+		this.state = var1.ajsfjah(); // L: 16
+		this.id = var1.nashfa(); // L: 17
+		this.unitPrice = var1.ehahsjd(); // L: 18
+		this.totalQuantity = var1.ehahsjd(); // L: 19
+		this.currentQuantity = var1.ehahsjd(); // L: 20
+		this.currentPrice = var1.ehahsjd(); // L: 21
 	} // L: 22
 
 	@ObfuscatedName("l")

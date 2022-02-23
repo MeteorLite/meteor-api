@@ -136,12 +136,12 @@ public class WorldMapSection1 implements WorldMapSection {
 	)
 	@Export("read")
 	public void read(Buffer var1) {
-		this.minPlane = var1.readUnsignedByte();
-		this.planes = var1.readUnsignedByte();
-		this.regionStartX = var1.readUnsignedShort();
-		this.regionStartY = var1.readUnsignedShort();
-		this.regionEndX = var1.readUnsignedShort();
-		this.regionEndY = var1.readUnsignedShort();
+		this.minPlane = var1.asfjaja();
+		this.planes = var1.asfjaja();
+		this.regionStartX = var1.nashfa();
+		this.regionStartY = var1.nashfa();
+		this.regionEndX = var1.nashfa();
+		this.regionEndY = var1.nashfa();
 		this.postRead();
 	}
 

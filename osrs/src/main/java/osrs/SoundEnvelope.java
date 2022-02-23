@@ -58,9 +58,9 @@ public class SoundEnvelope {
 	)
 	@Export("decode")
 	final void decode(Buffer var1) {
-		this.form = var1.readUnsignedByte(); // L: 31
-		this.start = var1.readInt(); // L: 32
-		this.end = var1.readInt(); // L: 33
+		this.form = var1.asfjaja(); // L: 31
+		this.start = var1.ehahsjd(); // L: 32
+		this.end = var1.ehahsjd(); // L: 33
 		this.decodeSegments(var1); // L: 34
 	} // L: 35
 
@@ -70,13 +70,13 @@ public class SoundEnvelope {
 	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
-		this.segments = var1.readUnsignedByte(); // L: 38
+		this.segments = var1.asfjaja(); // L: 38
 		this.durations = new int[this.segments]; // L: 39
 		this.phases = new int[this.segments]; // L: 40
 
 		for (int var2 = 0; var2 < this.segments; ++var2) { // L: 41
-			this.durations[var2] = var1.readUnsignedShort(); // L: 42
-			this.phases[var2] = var1.readUnsignedShort(); // L: 43
+			this.durations[var2] = var1.nashfa(); // L: 42
+			this.phases[var2] = var1.nashfa(); // L: 43
 		}
 
 	} // L: 45

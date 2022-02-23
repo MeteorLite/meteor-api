@@ -50,7 +50,7 @@ public class VarpDefinition extends DualNode {
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 34
+			int var2 = var1.asfjaja(); // L: 34
 			if (var2 == 0) { // L: 35
 				return; // L: 38
 			}
@@ -67,7 +67,7 @@ public class VarpDefinition extends DualNode {
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 5) { // L: 41
-			this.type = var1.readUnsignedShort();
+			this.type = var1.nashfa();
 		}
 
 	} // L: 43

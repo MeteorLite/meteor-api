@@ -126,7 +126,7 @@ public class ClanChannel extends Node {
 		garbageValue = "-336394177"
 	)
 	void method2991(Buffer var1) {
-		int var2 = var1.readUnsignedByte(); // L: 68
+		int var2 = var1.asfjaja(); // L: 68
 		if ((var2 & 1) != 0) { // L: 69
 			this.field1663 = true;
 		}
@@ -137,33 +137,33 @@ public class ClanChannel extends Node {
 
 		int var3 = 2; // L: 71
 		if ((var2 & 4) != 0) { // L: 72
-			var3 = var1.readUnsignedByte();
+			var3 = var1.asfjaja();
 		}
 
-		super.key = var1.readLong(); // L: 73
-		this.field1660 = var1.readLong(); // L: 74
-		this.name = var1.readStringCp1252NullTerminated(); // L: 75
-		var1.readBoolean(); // L: 76
-		this.field1658 = var1.readByte(); // L: 77
-		this.field1656 = var1.readByte(); // L: 78
-		int var4 = var1.readUnsignedShort(); // L: 79
+		super.key = var1.asfkajsdj(); // L: 73
+		this.field1660 = var1.asfkajsdj(); // L: 74
+		this.name = var1.asndbaeba(); // L: 75
+		var1.asfjwean(); // L: 76
+		this.field1658 = var1.ajsfjah(); // L: 77
+		this.field1656 = var1.ajsfjah(); // L: 78
+		int var4 = var1.nashfa(); // L: 79
 		if (var4 > 0) { // L: 80
 			this.members = new ArrayList(var4); // L: 81
 
 			for (int var5 = 0; var5 < var4; ++var5) { // L: 82
 				ClanChannelMember var6 = new ClanChannelMember(); // L: 83
 				if (this.field1663) { // L: 84
-					var1.readLong(); // L: 85
+					var1.asfkajsdj(); // L: 85
 				}
 
 				if (this.field1657) { // L: 87
-					var6.username = new Username(var1.readStringCp1252NullTerminated());
+					var6.username = new Username(var1.asndbaeba());
 				}
 
-				var6.rank = var1.readByte(); // L: 88
-				var6.world = var1.readUnsignedShort(); // L: 89
+				var6.rank = var1.ajsfjah(); // L: 88
+				var6.world = var1.nashfa(); // L: 89
 				if (var3 >= 3) { // L: 90
-					var1.readBoolean(); // L: 91
+					var1.asfjwean(); // L: 91
 				}
 
 				this.members.add(var5, var6); // L: 94

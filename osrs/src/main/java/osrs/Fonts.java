@@ -77,8 +77,8 @@ public class Fonts {
 	static final void Clan_joinChat(String var0) {
 		if (!var0.equals("")) { // L: 11927
 			PacketBufferNode var1 = class135.getPacketBufferNode(ClientPacket.field2860, Client.packetWriter.isaacCipher); // L: 11929
-			var1.packetBuffer.writeByte(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 11930
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 11931
+			var1.packetBuffer.asfag(GrandExchangeEvents.stringCp1252NullTerminatedByteSize(var0)); // L: 11930
+			var1.packetBuffer.aaa(var0); // L: 11931
 			Client.packetWriter.addNode(var1); // L: 11932
 		}
 	} // L: 11933

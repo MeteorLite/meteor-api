@@ -117,16 +117,16 @@ public class VorbisSample extends Node {
 	@Export("read")
 	void read(byte[] var1) {
 		Buffer var2 = new Buffer(var1); // L: 89
-		this.sampleRate = var2.readInt(); // L: 90
-		this.sampleCount = var2.readInt(); // L: 91
-		this.start = var2.readInt(); // L: 92
-		this.end = var2.readInt(); // L: 93
+		this.sampleRate = var2.ehahsjd(); // L: 90
+		this.sampleCount = var2.ehahsjd(); // L: 91
+		this.start = var2.ehahsjd(); // L: 92
+		this.end = var2.ehahsjd(); // L: 93
 		if (this.end < 0) { // L: 94
 			this.end = ~this.end; // L: 95
 			this.field386 = true; // L: 96
 		}
 
-		int var3 = var2.readInt(); // L: 98
+		int var3 = var2.ehahsjd(); // L: 98
 		this.field398 = new byte[var3][]; // L: 99
 
 		for (int var4 = 0; var4 < var3; ++var4) { // L: 100
@@ -134,12 +134,12 @@ public class VorbisSample extends Node {
 
 			int var6;
 			do {
-				var6 = var2.readUnsignedByte(); // L: 103
+				var6 = var2.asfjaja(); // L: 103
 				var5 += var6; // L: 104
 			} while(var6 >= 255); // L: 105
 
 			byte[] var7 = new byte[var5]; // L: 107
-			var2.readBytes(var7, 0, var5); // L: 108
+			var2.asfneabab(var7, 0, var5); // L: 108
 			this.field398[var4] = var7; // L: 109
 		}
 

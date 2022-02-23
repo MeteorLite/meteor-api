@@ -199,9 +199,9 @@ public final class Player extends Actor {
 	@Export("read")
 	final void read(Buffer var1) {
 		var1.offset = 0; // L: 57
-		int var2 = var1.readUnsignedByte(); // L: 58
-		this.headIconPk = var1.readByte(); // L: 59
-		this.headIconPrayer = var1.readByte(); // L: 60
+		int var2 = var1.asfjaja(); // L: 58
+		this.headIconPk = var1.ajsfjah(); // L: 59
+		this.headIconPrayer = var1.ajsfjah(); // L: 60
 		int var3 = -1; // L: 61
 		this.team = 0; // L: 62
 		int[] var4 = new int[12]; // L: 63
@@ -210,14 +210,14 @@ public final class Player extends Actor {
 		int var7;
 		int var8;
 		for (int var5 = 0; var5 < 12; ++var5) { // L: 64
-			var6 = var1.readUnsignedByte(); // L: 65
+			var6 = var1.asfjaja(); // L: 65
 			if (var6 == 0) { // L: 66
 				var4[var5] = 0; // L: 67
 			} else {
-				var7 = var1.readUnsignedByte(); // L: 70
+				var7 = var1.asfjaja(); // L: 70
 				var4[var5] = var7 + (var6 << 8); // L: 71
 				if (var5 == 0 && var4[0] == 65535) { // L: 72
-					var3 = var1.readUnsignedShort(); // L: 73
+					var3 = var1.nashfa(); // L: 73
 					break;
 				}
 
@@ -233,7 +233,7 @@ public final class Player extends Actor {
 		int[] var11 = new int[5]; // L: 81
 
 		for (var6 = 0; var6 < 5; ++var6) { // L: 82
-			var7 = var1.readUnsignedByte(); // L: 83
+			var7 = var1.asfjaja(); // L: 83
 			if (var7 < 0 || var7 >= class1.field8[var6].length) { // L: 84
 				var7 = 0;
 			}
@@ -241,43 +241,43 @@ public final class Player extends Actor {
 			var11[var6] = var7; // L: 85
 		}
 
-		super.idleSequence = var1.readUnsignedShort(); // L: 87
+		super.idleSequence = var1.nashfa(); // L: 87
 		if (super.idleSequence == 65535) { // L: 88
 			super.idleSequence = -1;
 		}
 
-		super.turnLeftSequence = var1.readUnsignedShort(); // L: 89
+		super.turnLeftSequence = var1.nashfa(); // L: 89
 		if (super.turnLeftSequence == 65535) { // L: 90
 			super.turnLeftSequence = -1;
 		}
 
 		super.turnRightSequence = super.turnLeftSequence; // L: 91
-		super.walkSequence = var1.readUnsignedShort(); // L: 92
+		super.walkSequence = var1.nashfa(); // L: 92
 		if (super.walkSequence == 65535) { // L: 93
 			super.walkSequence = -1;
 		}
 
-		super.walkBackSequence = var1.readUnsignedShort(); // L: 94
+		super.walkBackSequence = var1.nashfa(); // L: 94
 		if (super.walkBackSequence == 65535) { // L: 95
 			super.walkBackSequence = -1;
 		}
 
-		super.walkLeftSequence = var1.readUnsignedShort(); // L: 96
+		super.walkLeftSequence = var1.nashfa(); // L: 96
 		if (super.walkLeftSequence == 65535) { // L: 97
 			super.walkLeftSequence = -1;
 		}
 
-		super.walkRightSequence = var1.readUnsignedShort(); // L: 98
+		super.walkRightSequence = var1.nashfa(); // L: 98
 		if (super.walkRightSequence == 65535) { // L: 99
 			super.walkRightSequence = -1;
 		}
 
-		super.runSequence = var1.readUnsignedShort(); // L: 100
+		super.runSequence = var1.nashfa(); // L: 100
 		if (super.runSequence == 65535) { // L: 101
 			super.runSequence = -1;
 		}
 
-		this.username = new Username(var1.readStringCp1252NullTerminated(), VarcInt.loginType); // L: 102
+		this.username = new Username(var1.asndbaeba(), VarcInt.loginType); // L: 102
 		this.clearIsFriend(); // L: 103
 		this.clearIsInFriendsChat(); // L: 104
 		this.method2105(); // L: 105
@@ -285,9 +285,9 @@ public final class Player extends Actor {
 			RunException.localPlayerName = this.username.getName();
 		}
 
-		this.combatLevel = var1.readUnsignedByte(); // L: 107
-		this.skillLevel = var1.readUnsignedShort(); // L: 108
-		this.isHidden = var1.readUnsignedByte() == 1; // L: 109
+		this.combatLevel = var1.asfjaja(); // L: 107
+		this.skillLevel = var1.nashfa(); // L: 108
+		this.isHidden = var1.asfjaja() == 1; // L: 109
 		if (Client.gameBuild == 0 && Client.staffModLevel >= 2) { // L: 110
 			this.isHidden = false;
 		}
@@ -295,7 +295,7 @@ public final class Player extends Actor {
 		class160[] var12 = null; // L: 111
 		boolean var13 = false; // L: 112
 		if (var1.offset < var1.array.length) { // L: 113
-			var8 = var1.readUnsignedShort(); // L: 114
+			var8 = var1.nashfa(); // L: 114
 			var13 = (var8 >> 15 & 1) == 1; // L: 115
 			if (var8 > 0 && var8 != 32768) { // L: 116
 				var12 = new class160[12]; // L: 117

@@ -44,16 +44,16 @@ public abstract class class376 extends class242 implements class427 {
 		garbageValue = "1706426985"
 	)
 	public class428 method6784(Buffer var1) {
-		int var2 = var1.readUnsignedShort(); // L: 30
+		int var2 = var1.nashfa(); // L: 30
 		class378 var3 = this.vmethod7211(var2); // L: 31
 		class428 var4 = new class428(var2); // L: 32
 		Class var5 = var3.field4270.field4492; // L: 33
 		if (var5 == Integer.class) { // L: 34
-			var4.field4575 = var1.readInt();
+			var4.field4575 = var1.ehahsjd();
 		} else if (var5 == Long.class) {
-			var4.field4575 = var1.readLong(); // L: 35
+			var4.field4575 = var1.asfkajsdj(); // L: 35
 		} else if (var5 == String.class) { // L: 36
-			var4.field4575 = var1.readStringCp1252NullCircumfixed();
+			var4.field4575 = var1.asnfaebabsfd();
 		} else {
 			if (!class423.class.isAssignableFrom(var5)) { // L: 37
 				throw new IllegalStateException(); // L: 46

@@ -629,12 +629,12 @@ public class Decimator {
 		if (!Client.isInInstance) { // L: 5277
 			var2 = var1.method7408(); // L: 5278
 			var3 = var1.method7408(); // L: 5279
-			int var4 = var1.readUnsignedShort(); // L: 5280
+			int var4 = var1.nashfa(); // L: 5280
 			UserComparator8.xteaKeys = new int[var4][4]; // L: 5281
 
 			for (var5 = 0; var5 < var4; ++var5) { // L: 5282
 				for (var6 = 0; var6 < 4; ++var6) { // L: 5283
-					UserComparator8.xteaKeys[var5][var6] = var1.readInt(); // L: 5284
+					UserComparator8.xteaKeys[var5][var6] = var1.ehahsjd(); // L: 5284
 				}
 			}
 
@@ -673,7 +673,7 @@ public class Decimator {
 			var2 = var1.method7562(); // L: 5311
 			var3 = var1.method7562(); // L: 5312
 			boolean var15 = var1.method7398() == 1; // L: 5313
-			var5 = var1.readUnsignedShort(); // L: 5314
+			var5 = var1.nashfa(); // L: 5314
 			var1.importIndex(); // L: 5315
 
 			int var9;
@@ -695,7 +695,7 @@ public class Decimator {
 
 			for (var6 = 0; var6 < var5; ++var6) { // L: 5327
 				for (var7 = 0; var7 < 4; ++var7) { // L: 5328
-					UserComparator8.xteaKeys[var6][var7] = var1.readInt(); // L: 5329
+					UserComparator8.xteaKeys[var6][var7] = var1.ehahsjd(); // L: 5329
 				}
 			}
 

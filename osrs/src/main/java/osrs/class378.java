@@ -28,7 +28,7 @@ public abstract class class378 implements class241 {
 	)
 	public void method6797(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 17
+			int var2 = var1.asfjaja(); // L: 17
 			if (var2 == 0) { // L: 18
 				return; // L: 39
 			}
@@ -37,10 +37,10 @@ public abstract class class378 implements class241 {
 			if (var3 != null) { // L: 20
 				switch(var3.field4265) { // L: 21
 				case 0:
-					class140.findEnumerated(WorldMapData_1.method4638(), var1.readUnsignedByte()); // L: 33
+					class140.findEnumerated(WorldMapData_1.method4638(), var1.asfjaja()); // L: 33
 					break; // L: 34
 				case 1:
-					int var4 = var1.readUnsignedByte(); // L: 23
+					int var4 = var1.asfjaja(); // L: 23
 					this.field4270 = class14.method178(var4); // L: 24
 					if (this.field4270 != null) { // L: 25
 						break;
@@ -51,7 +51,7 @@ public abstract class class378 implements class241 {
 				default:
 					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var3); // L: 31
 				case 3:
-					var1.readStringCp1252NullCircumfixed(); // L: 28
+					var1.asnfaebabsfd(); // L: 28
 				}
 			} else {
 				this.vmethod6802(var1, var2); // L: 37

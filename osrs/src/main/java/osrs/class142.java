@@ -49,10 +49,10 @@ public abstract class class142 extends Node {
 		for (int var1 = 0; var1 < Client.field548; ++var1) { // L: 7727
 			int var2 = Client.field549[var1]; // L: 7728
 			NPC var3 = Client.npcs[var2]; // L: 7729
-			int var4 = var0.readUnsignedByte(); // L: 7730
+			int var4 = var0.asfjaja(); // L: 7730
 			int var5;
 			if (HealthBarUpdate.field1178 && (var4 & 16) != 0) { // L: 7731
-				var5 = var0.readUnsignedByte(); // L: 7732
+				var5 = var0.asfjaja(); // L: 7732
 				var4 += var5 << 8; // L: 7733
 			}
 
@@ -71,7 +71,7 @@ public abstract class class142 extends Node {
 
 			if ((var4 & 128) != 0) { // L: 7747
 				var3.spotAnimation = var0.method7562(); // L: 7748
-				var5 = var0.readInt(); // L: 7749
+				var5 = var0.ehahsjd(); // L: 7749
 				var3.spotAnimationHeight = var5 >> 16; // L: 7750
 				var3.field1177 = (var5 & 65535) + Client.cycle; // L: 7751
 				var3.spotAnimationFrame = 0; // L: 7752
@@ -90,13 +90,13 @@ public abstract class class142 extends Node {
 			}
 
 			if (HealthBarUpdate.field1178 && (var4 & 1024) != 0 || !HealthBarUpdate.field1178 && (var4 & 16) != 0) { // L: 7760
-				var3.field1153 = var0.readByte(); // L: 7761
-				var3.field1144 = var0.readByte(); // L: 7762
+				var3.field1153 = var0.ajsfjah(); // L: 7761
+				var3.field1144 = var0.ajsfjah(); // L: 7762
 				var3.field1147 = var0.method7365(); // L: 7763
 				var3.field1156 = var0.method7400(); // L: 7764
 				var3.field1157 = var0.method7408() + Client.cycle; // L: 7765
 				var3.field1158 = var0.method7562() + Client.cycle; // L: 7766
-				var3.field1159 = var0.readUnsignedShort(); // L: 7767
+				var3.field1159 = var0.nashfa(); // L: 7767
 				var3.pathLength = 1; // L: 7768
 				var3.field1176 = 0; // L: 7769
 				var3.field1153 += var3.pathX[0]; // L: 7770
@@ -107,10 +107,10 @@ public abstract class class142 extends Node {
 
 			if ((var4 & 256) != 0) { // L: 7775
 				var3.field1162 = Client.cycle + var0.method7562(); // L: 7776
-				var3.field1163 = Client.cycle + var0.readUnsignedShort(); // L: 7777
+				var3.field1163 = Client.cycle + var0.nashfa(); // L: 7777
 				var3.field1164 = var0.method7401(); // L: 7778
 				var3.field1155 = var0.method7400(); // L: 7779
-				var3.field1166 = var0.readByte(); // L: 7780
+				var3.field1166 = var0.ajsfjah(); // L: 7780
 				var3.field1167 = (byte)var0.method7399(); // L: 7781
 			}
 
@@ -134,30 +134,30 @@ public abstract class class142 extends Node {
 						var8 = -1; // L: 7792
 						var9 = -1; // L: 7793
 						var10 = -1; // L: 7794
-						var7 = var0.readUShortSmart(); // L: 7795
+						var7 = var0.asfmaenansd(); // L: 7795
 						if (var7 == 32767) { // L: 7796
-							var7 = var0.readUShortSmart(); // L: 7797
-							var9 = var0.readUShortSmart(); // L: 7798
-							var8 = var0.readUShortSmart(); // L: 7799
-							var10 = var0.readUShortSmart(); // L: 7800
+							var7 = var0.asfmaenansd(); // L: 7797
+							var9 = var0.asfmaenansd(); // L: 7798
+							var8 = var0.asfmaenansd(); // L: 7799
+							var10 = var0.asfmaenansd(); // L: 7800
 						} else if (var7 != 32766) { // L: 7802
-							var9 = var0.readUShortSmart(); // L: 7803
+							var9 = var0.asfmaenansd(); // L: 7803
 						} else {
 							var7 = -1; // L: 7805
 						}
 
-						var11 = var0.readUShortSmart(); // L: 7806
+						var11 = var0.asfmaenansd(); // L: 7806
 						var3.addHitSplat(var7, var9, var8, var10, Client.cycle, var11); // L: 7807
 					}
 				}
 
-				var6 = var0.readUnsignedByte(); // L: 7810
+				var6 = var0.asfjaja(); // L: 7810
 				if (var6 > 0) { // L: 7811
 					for (var7 = 0; var7 < var6; ++var7) { // L: 7812
-						var8 = var0.readUShortSmart(); // L: 7813
-						var9 = var0.readUShortSmart(); // L: 7814
+						var8 = var0.asfmaenansd(); // L: 7813
+						var9 = var0.asfmaenansd(); // L: 7814
 						if (var9 != 32767) { // L: 7815
-							var10 = var0.readUShortSmart(); // L: 7816
+							var10 = var0.asfmaenansd(); // L: 7816
 							var11 = var0.method7398(); // L: 7817
 							int var12 = var9 > 0 ? var0.method7467() : var11; // L: 7818
 							var3.addHealthBar(var8, Client.cycle, var9, var10, var11, var12); // L: 7819
@@ -174,7 +174,7 @@ public abstract class class142 extends Node {
 					var5 = -1;
 				}
 
-				var6 = var0.readUnsignedByte(); // L: 7828
+				var6 = var0.asfjaja(); // L: 7828
 				if (var5 == var3.sequence && var5 != -1) { // L: 7829
 					var7 = class78.SequenceDefinition_get(var5).field2109; // L: 7830
 					if (var7 == 1) { // L: 7831
@@ -198,15 +198,15 @@ public abstract class class142 extends Node {
 			}
 
 			if ((var4 & 2) != 0) { // L: 7851
-				var3.overheadText = var0.readStringCp1252NullTerminated(); // L: 7852
+				var3.overheadText = var0.asndbaeba(); // L: 7852
 				var3.overheadTextCyclesRemaining = 100; // L: 7853
 			}
 
 			if ((var4 & 8) != 0) { // L: 7855
-				var5 = var0.readUnsignedShort(); // L: 7856
+				var5 = var0.nashfa(); // L: 7856
 				var6 = var0.method7562(); // L: 7857
 				if (HealthBarUpdate.field1178) { // L: 7858
-					var3.field1139 = var0.readUnsignedByte() == 1; // L: 7859
+					var3.field1139 = var0.asfjaja() == 1; // L: 7859
 				}
 
 				var7 = var3.x - (var5 - Canvas.baseX - Canvas.baseX) * 64; // L: 7861

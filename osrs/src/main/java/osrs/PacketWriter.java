@@ -134,7 +134,7 @@ public class PacketWriter {
 					break;
 				}
 
-				this.buffer.writeBytes(var1.packetBuffer.array, 0, var1.index); // L: 43
+				this.buffer.asdd(var1.packetBuffer.array, 0, var1.index); // L: 43
 				this.bufferSize -= var1.index; // L: 44
 				var1.remove(); // L: 45
 				var1.packetBuffer.releaseArray(); // L: 46

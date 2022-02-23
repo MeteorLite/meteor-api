@@ -83,21 +83,21 @@ public class FriendsList extends UserList {
 	public void read(Buffer var1, int var2) {
 		while (true) {
 			if (var1.offset < var2) { // L: 40
-				boolean var3 = var1.readUnsignedByte() == 1; // L: 41
-				Username var4 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 42
-				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.loginType); // L: 43
-				int var6 = var1.readUnsignedShort(); // L: 44
-				int var7 = var1.readUnsignedByte();
-				int var8 = var1.readUnsignedByte();
+				boolean var3 = var1.asfjaja() == 1; // L: 41
+				Username var4 = new Username(var1.asndbaeba(), this.loginType); // L: 42
+				Username var5 = new Username(var1.asndbaeba(), this.loginType); // L: 43
+				int var6 = var1.nashfa(); // L: 44
+				int var7 = var1.asfjaja();
+				int var8 = var1.asfjaja();
 				boolean var9 = (var8 & 2) != 0;
 				boolean var10 = (var8 & 1) != 0;
 				if (var6 > 0) {
-					var1.readStringCp1252NullTerminated(); // L: 50
-					var1.readUnsignedByte(); // L: 51
-					var1.readInt(); // L: 52
+					var1.asndbaeba(); // L: 50
+					var1.asfjaja(); // L: 51
+					var1.ehahsjd(); // L: 52
 				}
 
-				var1.readStringCp1252NullTerminated(); // L: 54
+				var1.asndbaeba(); // L: 54
 				if (var4 != null && var4.hasCleanName()) { // L: 55
 					Friend var11 = (Friend)this.getByCurrentUsername(var4); // L: 56
 					if (var3) { // L: 57

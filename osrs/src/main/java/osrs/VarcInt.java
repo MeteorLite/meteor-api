@@ -47,7 +47,7 @@ public class VarcInt extends DualNode {
 	)
 	void method3202(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 32
+			int var2 = var1.asfjaja(); // L: 32
 			if (var2 == 0) { // L: 33
 				return; // L: 36
 			}

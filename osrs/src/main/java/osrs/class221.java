@@ -153,16 +153,16 @@ public class class221 implements WorldMapSection {
 	)
 	@Export("read")
 	public void read(Buffer var1) {
-		this.field2690 = var1.readUnsignedByte(); // L: 64
-		this.field2687 = var1.readUnsignedByte(); // L: 65
-		this.field2681 = var1.readUnsignedShort(); // L: 66
-		this.field2685 = var1.readUnsignedByte(); // L: 67
-		this.field2679 = var1.readUnsignedShort(); // L: 68
-		this.field2683 = var1.readUnsignedByte(); // L: 69
-		this.field2688 = var1.readUnsignedShort(); // L: 70
-		this.field2686 = var1.readUnsignedByte(); // L: 71
-		this.field2684 = var1.readUnsignedShort(); // L: 72
-		this.field2682 = var1.readUnsignedByte(); // L: 73
+		this.field2690 = var1.asfjaja(); // L: 64
+		this.field2687 = var1.asfjaja(); // L: 65
+		this.field2681 = var1.nashfa(); // L: 66
+		this.field2685 = var1.asfjaja(); // L: 67
+		this.field2679 = var1.nashfa(); // L: 68
+		this.field2683 = var1.asfjaja(); // L: 69
+		this.field2688 = var1.nashfa(); // L: 70
+		this.field2686 = var1.asfjaja(); // L: 71
+		this.field2684 = var1.nashfa(); // L: 72
+		this.field2682 = var1.asfjaja(); // L: 73
 		this.method4647(); // L: 74
 	} // L: 75
 

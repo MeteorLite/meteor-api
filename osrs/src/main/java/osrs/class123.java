@@ -54,10 +54,10 @@ public class class123 extends class126 {
 		garbageValue = "703192976"
 	)
 	void vmethod3019(Buffer var1) {
-		this.field1505 = var1.readUnsignedShort(); // L: 166
-		this.field1506 = var1.readInt(); // L: 167
-		this.field1504 = var1.readUnsignedByte(); // L: 168
-		this.field1507 = var1.readUnsignedByte(); // L: 169
+		this.field1505 = var1.nashfa(); // L: 166
+		this.field1506 = var1.ehahsjd(); // L: 167
+		this.field1504 = var1.asfjaja(); // L: 168
+		this.field1507 = var1.asfjaja(); // L: 169
 	} // L: 170
 
 	@ObfuscatedName("l")
