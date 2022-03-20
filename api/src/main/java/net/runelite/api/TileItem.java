@@ -70,6 +70,8 @@ public interface TileItem extends Renderable, SceneEntity {
   }
 
   default WorldPoint getWorldLocation() {
+    if (getTile() == null)
+      return null;
     return getTile().getWorldLocation();
   }
 
