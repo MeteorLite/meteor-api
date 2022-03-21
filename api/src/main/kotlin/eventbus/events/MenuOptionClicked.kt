@@ -24,7 +24,7 @@
  */
 package eventbus.events
 
-import meteor.Event
+import lombok.Data
 import net.runelite.api.MenuAction
 import net.runelite.api.MenuEntry
 
@@ -41,25 +41,47 @@ import net.runelite.api.MenuEntry
  * By default, when there is no action performed when left-clicking,
  * it seems that this event still triggers with the "Cancel" action.
  */
-class MenuOptionClicked(var actionParam: Int, var menuOption: String?, var menuTarget: String, var menuAction: MenuAction,
-                        var id: Int,var selectedItemIndex: Int, var canvasX: Int, var canvasY: Int) : Event() {
-
-
-    private val consumed: Boolean
-        get() = isConsumed
+@Data
+class MenuOptionClicked {
+    /**
+     * Action parameter 0. Its value depends on the menuAction.
+     */
+    var param0 = 0
 
     /**
      * Action parameter 1. Its value depends on the menuAction.
      */
-    @get:Deprecated("")
-    @set:Deprecated("")
-    var widgetId = 0
+    var param1 = 0
 
+    /**
+     * The option text added to the menu.
+     */
+    var menuOption: String? = null
+
+    /**
+     * The target of the action.
+     */
+    var menuTarget: String? = null
+
+    /**
+     * The action performed.
+     */
+    var menuAction: MenuAction? = null
+
+    /**
+     * The ID of the object, actor, or item that the interaction targets.
+     */
+    var id = 0
+
+    /**
+     * The selected item index at the time of the option click.
+     */
+    var selectedItemIndex = 0
 
     /**
      * Whether or not the event has been consumed by a subscriber.
      */
-    var isConsumed = false
+    var consumed = false
 
     /**
      * Marks the event as having been consumed.
@@ -70,17 +92,15 @@ class MenuOptionClicked(var actionParam: Int, var menuOption: String?, var menuT
      * for handling by vanilla client code.
      */
     fun consume() {
-        isConsumed = true
+        consumed = true
     }
 
     fun setMenuEntry(entry: MenuEntry) {
         this.menuOption = (entry.option)
         this.menuTarget = (entry.target)
-        this.id = (entry.id)
-        this.menuAction = (MenuAction.of(entry.opcode))
-        this.canvasX = (entry.param0)
-        this.canvasY = (entry.param1)
+        this.id = (entry.identifier)
+        this.menuAction = (entry.type)
+        this.param0 = (entry.param0)
+        this.param1 = (entry.param1)
     }
-
-    val isAutomated = false
 }

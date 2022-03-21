@@ -28,36 +28,42 @@ package net.runelite.deob.deobfuscators.mapping;
 import java.util.Collection;
 import net.runelite.asm.Method;
 
-public class ExecutionMapper {
-  // method1 maps to one of methods2, find out based on mappings
+public class ExecutionMapper
+{
+	// method1 maps to one of methods2, find out based on mappings
+	
+	private Method method1;
+	private Collection<Method> methods2;
 
-  private Method method1;
-  private Collection<Method> methods2;
+	public ExecutionMapper(Method method1, Collection<Method> methods2)
+	{
+		this.method1 = method1;
+		this.methods2 = methods2;
+	}
 
-  public ExecutionMapper(Method method1, Collection<Method> methods2) {
-    this.method1 = method1;
-    this.methods2 = methods2;
-  }
+	public ParallelExecutorMapping run()
+	{
+		ParallelExecutorMapping highest = null;
+		boolean multiple = false;
 
-  public ParallelExecutorMapping run() {
-    ParallelExecutorMapping highest = null;
-    boolean multiple = false;
+		for (Method m : methods2)
+		{
+			ParallelExecutorMapping mapping = MappingExecutorUtil.map(method1, m);
 
-    for (Method m : methods2) {
-      ParallelExecutorMapping mapping = MappingExecutorUtil.map(method1, m);
+			if (highest == null || mapping.same > highest.same)
+			{
+				highest = mapping;
+				multiple = false;
+			}
+			else if (mapping.same == highest.same)
+			{
+				multiple = true;
+			}
+		}
 
-      if (highest == null || mapping.same > highest.same) {
-        highest = mapping;
-        multiple = false;
-      } else if (mapping.same == highest.same) {
-        multiple = true;
-      }
-    }
+		if (multiple)
+			return null;
 
-    if (multiple) {
-      return null;
-    }
-
-    return highest;
-  }
+		return highest;
+	}
 }

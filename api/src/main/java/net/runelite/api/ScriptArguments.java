@@ -24,24 +24,19 @@
  */
 package net.runelite.api;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.SOURCE)
 @Documented
 @Target(ElementType.FIELD)
 @interface ScriptArguments {
+    /**
+     * The number of int arguments the script takes
+     */
+    int integer() default 0;
 
-  /**
-   * The number of int arguments the script takes
-   */
-  int integer() default 0;
-
-  /**
-   * The number of string arguments the script takes
-   */
-  int string() default 0;
+    /**
+     * The number of string arguments the script takes
+     */
+    int string() default 0;
 }

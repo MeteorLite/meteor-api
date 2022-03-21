@@ -30,4 +30,4 @@ import net.runelite.api.Skill
 /**
  * An event where the experience, level, or boosted level of a [Skill] has been modified.
  */
-class StatChanged(var skill: Skill, var xp: Int, var level: Int, var boostedLevel: Int, var xpChange: Int) : Event()
+class StatChanged(var skill: Skill, var xp: Int, var level: Int, var boostedLevel: Int) : Event()

@@ -24,42 +24,49 @@ import org.objectweb.asm.Opcodes;
 
 @Getter
 @Setter
-public class RSApiMethod extends MethodVisitor implements Annotated, Named {
+public class RSApiMethod extends MethodVisitor implements Annotated, Named
+{
+	private final Method method;
+	private final int accessFlags;
+	private final Map<Type, Annotation> annotations = new HashMap<>();
+	private boolean injected;
 
-  private final Method method;
-  private final int accessFlags;
-  private final Map<Type, Annotation> annotations = new HashMap<>();
-  private boolean injected;
+	RSApiMethod(Method method, int accesFlags)
+	{
+		super(Opcodes.ASM5);
+		this.method = method;
+		this.accessFlags = accesFlags;
+	}
 
-  RSApiMethod(Method method, int accesFlags) {
-    super(Opcodes.ASM5);
-    this.method = method;
-    this.accessFlags = accesFlags;
-  }
+	public Class getClazz()
+	{
+		return method.getClazz();
+	}
 
-  public Class getClazz() {
-    return method.getClazz();
-  }
+	public String getName()
+	{
+		return method.getName();
+	}
 
-  public String getName() {
-    return method.getName();
-  }
+	public Signature getSignature()
+	{
+		return method.getType();
+	}
 
-  public Signature getSignature() {
-    return method.getType();
-  }
+	public boolean isSynthetic()
+	{
+		return (accessFlags & Opcodes.ACC_SYNTHETIC) != 0;
+	}
 
-  public boolean isSynthetic() {
-    return (accessFlags & Opcodes.ACC_SYNTHETIC) != 0;
-  }
+	public boolean isDefault()
+	{
+		return (accessFlags & (Opcodes.ACC_ABSTRACT | Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC)) == 1;
+	}
 
-  public boolean isDefault() {
-    return (accessFlags & (Opcodes.ACC_ABSTRACT | Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC)) == 1;
-  }
-
-  public AnnotationVisitor visitAnnotation(String descriptor, boolean visible) {
-    final Annotation annotation = new Annotation(new Type(descriptor), visible);
-    this.addAnnotation(annotation);
-    return annotation;
-  }
+	public AnnotationVisitor visitAnnotation(String descriptor, boolean visible)
+	{
+		final var annotation = new Annotation(new Type(descriptor), visible);
+		this.addAnnotation(annotation);
+		return annotation;
+	}
 }

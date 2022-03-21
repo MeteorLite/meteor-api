@@ -35,85 +35,97 @@ import net.runelite.asm.attributes.code.Label;
 import net.runelite.asm.attributes.code.instructions.Goto;
 import net.runelite.deob.Deobfuscator;
 
-public class ControlFlowDeobfuscator implements Deobfuscator {
+public class ControlFlowDeobfuscator implements Deobfuscator
+{
+	private int insertedJump;
+	private int placedBlocks;
+	private int removedJumps;
 
-  private int insertedJump;
-  private int placedBlocks;
-  private int removedJumps;
+	@Override
+	public void run(ClassGroup group)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				Code code = m.getCode();
 
-  @Override
-  public void run(ClassGroup group) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        Code code = m.getCode();
+				if (code == null || !code.getExceptions().getExceptions().isEmpty())
+				{
+					continue;
+				}
 
-        if (code == null || !code.getExceptions().getExceptions().isEmpty()) {
-          continue;
-        }
+				run(code);
+				runJumpLabel(code);
+			}
+		}
+	}
 
-        run(code);
-        runJumpLabel(code);
-      }
-    }
+	private void run(Code code)
+	{
+		Instructions ins = code.getInstructions();
 
+		ControlFlowGraph graph = new ControlFlowGraph(code);
 
-  }
+		// Clear existing instructions as we are going to rebuild them
+		ins.clear();
+		final List<Block> sorted = graph.topologicalSort();
+		for (Block b : sorted)
+		{
+			++placedBlocks;
+			for (Instruction i : b.getInstructions())
+			{
+				ins.addInstruction(i);
+				i.setInstructions(ins);
+			}
+			if (b.getSucc() != null && b.getInstructions().size() > 0)
+			{
+				final var i = b.getInstructions().get(b.getInstructions().size() - 1);
+				if (!i.isTerminal())
+				{
+					final var next = b.getSucc();
+					var maybeLabel = next.getInstructions().get(0);
+					if (!(maybeLabel instanceof Label))
+					{
+						maybeLabel = new Label(ins);
+						next.getInstructions().add(0, maybeLabel);
+					}
+					ins.addInstruction(new Goto(ins, (Label) maybeLabel));
+					++insertedJump;
+				}
+			}
+		}
+	}
 
-  private void run(Code code) {
-    Instructions ins = code.getInstructions();
+	/**
+	 * remove jumps followed immediately by the label they are jumping to
+	 */
+	private void runJumpLabel(Code code)
+	{
+		Instructions ins = code.getInstructions();
+		List<Instruction> instructions = ins.getInstructions();
 
-    ControlFlowGraph graph = new ControlFlowGraph(code);
+		for (int i = 0; i < instructions.size() - 1; ++i)
+		{
+			Instruction i1 = instructions.get(i),
+				i2 = instructions.get(i + 1);
 
-    // Clear existing instructions as we are going to rebuild them
-    ins.clear();
-    final List<Block> sorted = graph.topologicalSort();
-    for (Block b : sorted) {
-      ++placedBlocks;
-      for (Instruction i : b.getInstructions()) {
-        ins.addInstruction(i);
-        i.setInstructions(ins);
-      }
-      if (b.getSucc() != null && b.getInstructions().size() > 0) {
-        final Instruction i = b.getInstructions().get(b.getInstructions().size() - 1);
-        if (!i.isTerminal()) {
-          final Block next = b.getSucc();
-          Instruction maybeLabel = next.getInstructions().get(0);
-          if (!(maybeLabel instanceof Label)) {
-            maybeLabel = new Label(ins);
-            next.getInstructions().add(0, maybeLabel);
-          }
-          ins.addInstruction(new Goto(ins, (Label) maybeLabel));
-          ++insertedJump;
-        }
-      }
-    }
-  }
+			if (!(i1 instanceof Goto))
+			{
+				continue;
+			}
 
-  /**
-   * remove jumps followed immediately by the label they are jumping to
-   */
-  private void runJumpLabel(Code code) {
-    Instructions ins = code.getInstructions();
-    List<Instruction> instructions = ins.getInstructions();
+			Goto g = (Goto) i1;
+			assert g.getJumps().size() == 1;
+			if (g.getJumps().get(0) != i2)
+			{
+				continue;
+			}
 
-    for (int i = 0; i < instructions.size() - 1; ++i) {
-      Instruction i1 = instructions.get(i),
-          i2 = instructions.get(i + 1);
+			ins.remove(i1); // remove jump
+			++removedJumps;
 
-      if (!(i1 instanceof Goto)) {
-        continue;
-      }
-
-      Goto g = (Goto) i1;
-      assert g.getJumps().size() == 1;
-      if (g.getJumps().get(0) != i2) {
-        continue;
-      }
-
-      ins.remove(i1); // remove jump
-      ++removedJumps;
-
-      // i now points to i2, so next loop we go to next instruction
-    }
-  }
+			// i now points to i2, so next loop we go to next instruction
+		}
+	}
 }

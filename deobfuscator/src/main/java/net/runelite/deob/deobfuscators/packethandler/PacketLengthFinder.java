@@ -35,98 +35,115 @@ import net.runelite.asm.attributes.code.instructions.GetStatic;
 import net.runelite.asm.attributes.code.instructions.IALoad;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
 
-public class PacketLengthFinder {
+public class PacketLengthFinder
+{
+	private final ClassGroup group;
+	private final PacketTypeFinder packetType;
 
-  private final ClassGroup group;
-  private final PacketTypeFinder packetType;
+	private Field packetLength;
+	private GetStatic getArray;
+	private GetStatic getType;
+	private IALoad load;
+	private PutStatic store;
 
-  private Field packetLength;
-  private GetStatic getArray;
-  private GetStatic getType;
-  private IALoad load;
-  private PutStatic store;
+	public PacketLengthFinder(ClassGroup group, PacketTypeFinder packetType)
+	{
+		this.group = group;
+		this.packetType = packetType;
+	}
 
-  public PacketLengthFinder(ClassGroup group, PacketTypeFinder packetType) {
-    this.group = group;
-    this.packetType = packetType;
-  }
+	public Field getPacketLength()
+	{
+		return packetLength;
+	}
 
-  public Field getPacketLength() {
-    return packetLength;
-  }
+	public GetStatic getGetArray()
+	{
+		return getArray;
+	}
 
-  public GetStatic getGetArray() {
-    return getArray;
-  }
+	public GetStatic getGetType()
+	{
+		return getType;
+	}
 
-  public GetStatic getGetType() {
-    return getType;
-  }
+	public IALoad getLoad()
+	{
+		return load;
+	}
 
-  public IALoad getLoad() {
-    return load;
-  }
+	public PutStatic getStore()
+	{
+		return store;
+	}
 
-  public PutStatic getStore() {
-    return store;
-  }
+	public void find()
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method method : cf.getMethods())
+			{
+				run(method.getCode());
+			}
+		}
+	}
 
-  public void find() {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method method : cf.getMethods()) {
-        run(method.getCode());
-      }
-    }
-  }
+	//   getstatic             class272/field3690 [I
+	//   getstatic             Client/packetType I
+	//   iaload
+	//   putstatic             Client/packetLength I
+	private void run(Code code)
+	{
+		if (code == null)
+		{
+			return;
+		}
 
-  //   getstatic             class272/field3690 [I
-  //   getstatic             Client/packetType I
-  //   iaload
-  //   putstatic             Client/packetLength I
-  private void run(Code code) {
-    if (code == null) {
-      return;
-    }
+		Instructions instructions = code.getInstructions();
+		Field type = packetType.getPacketType();
 
-    Instructions instructions = code.getInstructions();
-    Field type = packetType.getPacketType();
+		for (int i = 0; i < instructions.getInstructions().size() - 3; ++i)
+		{
+			Instruction i1 = instructions.getInstructions().get(i),
+				i2 = instructions.getInstructions().get(i + 1),
+				i3 = instructions.getInstructions().get(i + 2),
+				i4 = instructions.getInstructions().get(i + 3);
 
-    for (int i = 0; i < instructions.getInstructions().size() - 3; ++i) {
-      Instruction i1 = instructions.getInstructions().get(i),
-          i2 = instructions.getInstructions().get(i + 1),
-          i3 = instructions.getInstructions().get(i + 2),
-          i4 = instructions.getInstructions().get(i + 3);
+			if (!(i1 instanceof GetStatic))
+			{
+				continue;
+			}
 
-      if (!(i1 instanceof GetStatic)) {
-        continue;
-      }
+			if (!(i2 instanceof GetStatic))
+			{
+				continue;
+			}
 
-      if (!(i2 instanceof GetStatic)) {
-        continue;
-      }
+			GetStatic gs = (GetStatic) i2;
 
-      GetStatic gs = (GetStatic) i2;
+			if (gs.getMyField() != type)
+			{
+				continue;
+			}
 
-      if (gs.getMyField() != type) {
-        continue;
-      }
+			if (!(i3 instanceof IALoad))
+			{
+				continue;
+			}
 
-      if (!(i3 instanceof IALoad)) {
-        continue;
-      }
+			if (!(i4 instanceof PutStatic))
+			{
+				continue;
+			}
 
-      if (!(i4 instanceof PutStatic)) {
-        continue;
-      }
-
-      PutStatic ps = (PutStatic) i4;
-      assert packetLength == null : "packetLength already found";
-      packetLength = ps.getMyField();
-      getArray = (GetStatic) i1;
-      getType = gs;
-      load = (IALoad) i3;
-      store = ps;
-      return;
-    }
-  }
+			PutStatic ps = (PutStatic) i4;
+			assert packetLength == null : "packetLength already found";
+			packetLength = ps.getMyField();
+			getArray = (GetStatic) i1;
+			getType = gs;
+			load = (IALoad) i3;
+			store = ps;
+			return;
+		}
+	}
 }

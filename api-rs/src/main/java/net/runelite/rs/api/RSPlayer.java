@@ -27,49 +27,52 @@ package net.runelite.rs.api;
 import net.runelite.api.Player;
 import net.runelite.mapping.Import;
 
-public interface RSPlayer extends RSActor, Player {
+public interface RSPlayer extends RSActor, Player
+{
+	@Import("username")
+	RSUsername getRsName();
 
-  @Import("username")
-  RSUsername getRsName();
+	@Import("index")
+	int getPlayerId();
 
-  @Import("index")
-  int getPlayerId();
+	@Import("appearance")
+	@Override
+	RSPlayerComposition getPlayerComposition();
 
-  @Import("appearance")
-  @Override
-  RSPlayerComposition getPlayerComposition();
+	@Import("combatLevel")
+	@Override
+	int getCombatLevel();
 
-  @Import("combatLevel")
-  @Override
-  int getCombatLevel();
+	@Import("skillLevel")
+	int getTotalLevel();
 
-  @Import("skillLevel")
-  int getTotalLevel();
+	@Import("team")
+	@Override
+	int getTeam();
 
-  @Import("team")
-  @Override
-  int getTeam();
+	@Import("isFriendsChatMember")
+	@Override
+	boolean isFriendsChatMember();
 
-  @Import("isFriendsChatMember")
-  @Override
-  boolean isFriendsChatMember$api();
+	@Import("isClanMember")
+	@Override
+	boolean isClanMember();
 
-  @Import("isClanMember")
-  @Override
-  boolean isClanMember$api();
+	@Import("isFriend")
+	@Override
+	boolean isFriend();
 
-  @Import("isFriend")
-  @Override
-  boolean isFriend$api();
+	boolean isFriended();
 
-  boolean isFriended();
+	@Import("headIconPrayer")
+	int getRsOverheadIcon();
 
-  @Import("headIconPrayer")
-  int getRsOverheadIcon();
+	@Import("headIconPk")
+	int getRsSkullIcon();
 
-  @Import("headIconPk")
-  int getRsSkullIcon();
+	@Import("skillLevel")
+	int getRSSkillLevel();
 
-  @Import("skillLevel")
-  int getRSSkillLevel();
+	@Import("actions")
+	String[] getActions();
 }

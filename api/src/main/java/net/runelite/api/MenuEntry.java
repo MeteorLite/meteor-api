@@ -24,115 +24,102 @@
  */
 package net.runelite.api;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import meteor.Event;
+import java.util.function.Consumer;
 
 /**
  * A menu entry in a right-click menu.
  */
-@Data
-@NoArgsConstructor
-public class MenuEntry implements Cloneable {
+public interface MenuEntry {
+    /**
+     * The option text added to the menu. (ie. "Walk here", "Use")
+     */
+    String getOption();
 
-  /**
-   * The option text added to the menu. (ie. "Walk here", "Use")
-   */
-  public String option;
-  /**
-   * The target of the action. (ie. Item or Actor name)
-   * <p>
-   * If the option does not apply to any target, this field will be set to empty string.
-   */
-  public String target;
-  /**
-   * An identifier value for the target of the action.
-   */
-  public int identifier;
-  /**
-   * The action the entry will trigger. {@link MenuAction}
-   */
-  public int opcode;
-  /**
-   * An additional parameter for the action.
-   */
-  public int actionParam;
-  /**
-   * A second additional parameter for the action.
-   */
-  public int actionParam1;
-  /**
-   * If this field is true and you have single mouse button on and this entry is the top entry the
-   * right click menu will not be opened when you left click
-   * <p>
-   * This is used  for shift click
-   */
-  public boolean forceLeftClick;
+    MenuEntry setOption(String option);
 
-  public MenuEntry(String option, String target, int type, int opcode, int actionParam,
-      int actionParam1, boolean forceLeftClick) {
-    this.option = option;
-    this.target = target;
-    this.identifier = type;
-    this.opcode = opcode;
-    this.actionParam = actionParam;
-    this.actionParam1 = actionParam1;
-    this.forceLeftClick = forceLeftClick;
-  }
+    /**
+     * The target of the action. (ie. Item or Actor name)
+     * <p>
+     * If the option does not apply to any target, this field
+     * will be set to empty string.
+     */
+    String getTarget();
 
-  @Override
-  public MenuEntry clone() {
-    try {
-      return (MenuEntry) super.clone();
-    } catch (CloneNotSupportedException ex) {
-      throw new RuntimeException(ex);
-    }
-  }
+    MenuEntry setTarget(String target);
 
-  public int getActionParam0() {
-    return this.actionParam;
-  }
+    /**
+     * An identifier value for the target of the action.
+     */
+    int getIdentifier();
 
-  public void setActionParam0(int i) {
-    this.actionParam = i;
-  }
+    MenuEntry setIdentifier(int identifier);
 
-  public int getParam0() {
-    return this.actionParam;
-  }
+    /**
+     * The action the entry will trigger.
+     */
+    MenuAction getType();
 
-  public void setParam0(int i) {
-    this.actionParam = i;
-  }
+    MenuEntry setType(MenuAction type);
 
-  public int getParam1() {
-    return this.actionParam1;
-  }
+    /**
+     * An additional parameter for the action.
+     */
+    int getParam0();
 
-  public void setParam1(int i) {
-    this.actionParam1 = i;
-  }
+    MenuEntry setParam0(int param0);
 
-  public int getType() {
-    return this.opcode;
-  }
+    /**
+     * A second additional parameter for the action.
+     */
+    int getParam1();
 
-  public void setType(int i) {
-    this.opcode = i;
-  }
+    MenuEntry setParam1(int param1);
 
-  public int getId() {
-    return this.identifier;
-  }
+    /**
+     * If this is true and you have single mouse button on and this entry is
+     * the top entry the right click menu will not be opened when you left click
+     * <p>
+     * This is used  for shift click
+     */
+    boolean isForceLeftClick();
 
-  public void setId(int i) {
-    this.identifier = i;
-  }
+    MenuEntry setForceLeftClick(boolean forceLeftClick);
 
-  /**
-   * Get opcode, but as it's enum counterpart
-   */
-  public MenuAction getMenuAction() {
-    return MenuAction.of(getOpcode());
-  }
+    /**
+     * Deprioritized menus are sorted in the menu to be below the other menu entries.
+     *
+     * @return
+     */
+    boolean isDeprioritized();
+
+    MenuEntry setDeprioritized(boolean deprioritized);
+
+    /**
+     * Set a callback to be called when this menu option is clicked
+     *
+     * @param callback
+     * @return
+     */
+    MenuEntry onClick(Consumer<MenuEntry> callback);
+
+    @Deprecated
+    int getOpcode();
+
+    @Deprecated
+    void setOpcode(int opcode);
+
+    @Deprecated
+    int getActionParam0();
+
+    @Deprecated
+    void setActionParam0(int param0);
+
+    @Deprecated
+    int getActionParam1();
+
+    @Deprecated
+    void setActionParam1(int param0);
+
+    @Deprecated
+    MenuAction getMenuAction();
 }

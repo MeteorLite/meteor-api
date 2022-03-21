@@ -24,60 +24,21 @@
  */
 package net.runelite.mixins;
 
-import eventbus.Events;
-import net.runelite.api.mixins.*;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSKeyHandler;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
+@Mixin(RSClient.class)
+public abstract class KeyPressedMixin implements RSClient
+{
+	@Shadow("client")
+	private static RSClient client;
 
-@Mixin(RSKeyHandler.class)
-public abstract class KeyPressedMixin implements RSKeyHandler {
-  @Shadow("client")
-  private static RSClient client;
-
-  @Override
-  @Copy("keyPressed")
-  @Replace("keyPressed")
-  public final synchronized void keyPressed(KeyEvent keyEvent)
-  {
-    client.getCallbacks().keyPressed(keyEvent);
-    if (!keyEvent.isConsumed())
-    {
-      keyPressed(keyEvent);
-    }
-  }
-
-  @Override
-  @Copy("keyReleased")
-  @Replace("keyReleased")
-  public final synchronized void keyReleased(KeyEvent keyEvent)
-  {
-    client.getCallbacks().keyReleased(keyEvent);
-    if (!keyEvent.isConsumed())
-    {
-      keyReleased(keyEvent);
-    }
-  }
-
-  @Override
-  @Copy("keyTyped")
-  @Replace("keyTyped")
-  public final void keyTyped(KeyEvent keyEvent)
-  {
-    client.getCallbacks().keyTyped(keyEvent);
-    if (!keyEvent.isConsumed())
-    {
-      keyTyped(keyEvent);
-    }
-  }
-
-  @Inject
-  @MethodHook("focusLost")
-  public void onFocusLost(FocusEvent focusEvent)
-  {
-    final eventbus.events.FocusChanged focusChanged = new eventbus.events.FocusChanged(false);
-    client.getCallbacks().post(Events.FOCUS_CHANGED, focusChanged);
-  }
+	@Inject
+	public boolean isKeyPressed(int keycode)
+	{
+		boolean[] pressedKeys = client.getPressedKeys();
+		return pressedKeys[keycode];
+	}
 }

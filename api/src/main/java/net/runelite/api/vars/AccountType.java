@@ -27,50 +27,47 @@ package net.runelite.api.vars;
 /**
  * An enumeration of possible account types.
  */
-public enum AccountType
-{
-  /**
-   * Normal account type.
-   */
-  NORMAL,
-  /**
-   * Ironman account type.
-   */
-  IRONMAN,
-  /**
-   * Ultimate ironman account type.
-   */
-  ULTIMATE_IRONMAN,
-  /**
-   * Hardcore ironman account type.
-   */
-  HARDCORE_IRONMAN,
-  /**
-   * Group ironman account type
-   */
-  GROUP_IRONMAN,
-  /**
-   * Hardcore group ironman account type
-   */
-  HARDCORE_GROUP_IRONMAN;
+public enum AccountType {
+    /**
+     * Normal account type.
+     */
+    NORMAL,
+    /**
+     * Ironman account type.
+     */
+    IRONMAN,
+    /**
+     * Ultimate ironman account type.
+     */
+    ULTIMATE_IRONMAN,
+    /**
+     * Hardcore ironman account type.
+     */
+    HARDCORE_IRONMAN,
+    /**
+     * Group ironman account type
+     */
+    GROUP_IRONMAN,
+    /**
+     * Hardcore group ironman account type
+     */
+    HARDCORE_GROUP_IRONMAN;
 
-  /**
-   * Checks whether this type is a non-group ironman.
-   *
-   * @return {@code true} if the type is any of the non-group ironman types.
-   */
-  public boolean isIronman()
-  {
-    return this.ordinal() >= IRONMAN.ordinal() && this.ordinal() <= HARDCORE_IRONMAN.ordinal();
-  }
+    /**
+     * Checks whether this type is a non-group ironman.
+     *
+     * @return {@code true} if the type is any of the non-group ironman types.
+     */
+    public boolean isIronman() {
+        return this.ordinal() >= IRONMAN.ordinal() && this.ordinal() <= HARDCORE_IRONMAN.ordinal();
+    }
 
-  /**
-   * Checks whether this type is a group ironman.
-   *
-   * @return {@code true} if the type is either of the group ironman types.
-   */
-  public boolean isGroupIronman()
-  {
-    return this.ordinal() >= GROUP_IRONMAN.ordinal() && this.ordinal() <= HARDCORE_GROUP_IRONMAN.ordinal();
-  }
+    /**
+     * Checks whether this type is a group ironman.
+     *
+     * @return {@code true} if the type is either of the group ironman types.
+     */
+    public boolean isGroupIronman() {
+        return this.ordinal() >= GROUP_IRONMAN.ordinal() && this.ordinal() <= HARDCORE_GROUP_IRONMAN.ordinal();
+    }
 }

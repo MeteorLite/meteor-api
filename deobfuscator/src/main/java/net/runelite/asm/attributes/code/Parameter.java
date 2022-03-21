@@ -24,30 +24,35 @@
  */
 package net.runelite.asm.attributes.code;
 
-public class Parameter {
+public class Parameter
+{
+	private final String name;
+	private final int access;
+	private LocalVariable localVariable;
 
-  private final String name;
-  private final int access;
-  private LocalVariable localVariable;
+	public Parameter(String name, int access)
+	{
+		this.name = name;
+		this.access = access;
+	}
 
-  public Parameter(String name, int access) {
-    this.name = name;
-    this.access = access;
-  }
+	public String getName()
+	{
+		return name;
+	}
 
-  public String getName() {
-    return name;
-  }
+	public int getAccess()
+	{
+		return access;
+	}
 
-  public int getAccess() {
-    return access;
-  }
+	public LocalVariable getLocalVariable()
+	{
+		return localVariable;
+	}
 
-  public LocalVariable getLocalVariable() {
-    return localVariable;
-  }
-
-  public void setLocalVariable(LocalVariable localVariable) {
-    this.localVariable = localVariable;
-  }
+	public void setLocalVariable(LocalVariable localVariable)
+	{
+		this.localVariable = localVariable;
+	}
 }

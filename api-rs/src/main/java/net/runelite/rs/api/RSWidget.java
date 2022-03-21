@@ -31,576 +31,589 @@ package net.runelite.rs.api;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Import;
 
-public interface RSWidget extends Widget {
+public interface RSWidget extends Widget
+{
+	@Import("children")
+	@Override
+	RSWidget[] getChildren();
 
-  @Import("children")
-  @Override
-  RSWidget[] getChildren();
+	@Import("children")
+	@Override
+	void setChildren(Widget[] children);
 
-  @Import("children")
-  @Override
-  void setChildren(Widget[] children);
+	@Import("id")
+	@Override
+	int getId();
 
-  @Import("id")
-  @Override
-  int getId();
+	void setRenderParentId(int parentId);
 
-  @Import("id")
-  void setId(int id);
+	void setRenderX(int x);
 
-  void setRenderParentId(int parentId);
+	void setRenderY(int y);
 
-  void setRenderX(int x);
+	@Import("id")
+	void setId(int id);
 
-  void setRenderY(int y);
+	@Import("parentId")
+	int getRSParentId();
 
-  @Import("parentId")
-  int getRSParentId();
+	@Import("parentId")
+	void setParentId(int id);
 
-  @Import("parentId")
-  void setParentId(int id);
+	@Import("flags")
+	int getClickMask();
 
-  @Import("flags")
-  int getClickMask();
+	@Import("flags")
+	@Override
+	RSWidget setClickMask(int mask);
 
-  @Import("flags")
-  void setClickMask(int mask);
+	//@Import("boundsIndex") -- unused for now
+	//int getBoundsIndex();
 
-  //@Import("boundsIndex") -- unused for now
-  //int getBoundsIndex();
+	@Import("modelId")
+	@Override
+	int getModelId();
 
-  @Import("modelId")
-  @Override
-  int getModelId();
+	@Import("modelId")
+	@Override
+	RSWidget setModelId(int modelId);
 
-  @Import("modelId")
-  @Override
-  void setModelId(int modelId);
+	@Import("itemIds")
+	int[] getItemIds();
 
-  @Import("itemIds")
-  int[] getItemIds();
+	@Import("itemQuantities")
+	int[] getItemQuantities();
 
-  @Import("itemQuantities")
-  int[] getItemQuantities();
+	@Import("modelType")
+	int getModelType();
 
-  @Import("modelType")
-  int getModelType();
+	@Import("modelType")
+	@Override
+	RSWidget setModelType(int modelType);
 
-  @Import("modelType")
-  void setModelType(int modelType);
+	@Import("sequenceId")
+	int getAnimationId();
 
-  @Import("sequenceId")
-  int getAnimationId();
+	@Import("sequenceId")
+	@Override
+	RSWidget setAnimationId(int animationId);
 
-  @Import("sequenceId")
-  void setAnimationId(int animationId);
+	@Import("actions")
+	@Override
+	String[] getActions();
 
-  @Import("actions")
-  @Override
-  String[] getRawActions();
+	@Import("itemActions")
+	@Override
+	String[] getItemActions();
 
-  @Import("itemActions")
-  @Override
-  String[] getItemActions();
+	@Import("spellName")
+	String getSpellName();
 
-  @Import("spellName")
-  String getSpellName();
+	@Import("buttonText")
+	String getRSButtonText();
 
-  @Import("buttonText")
-  String getRSButtonText();
+	@Import("text")
+	String getRSText();
 
-  @Import("text")
-  String getRSText();
+	@Import("dataText")
+	String getRSName();
 
-  @Import("dataText")
-  String getRSName();
+	@Import("dataText")
+	void setRSName(String name);
 
-  @Import("dataText")
-  void setRSName(String name);
+	@Import("text")
+	@Override
+	RSWidget setText(String text);
 
-  @Import("text")
-  @Override
-  void setText(String text);
+	@Import("color")
+	@Override
+	int getTextColor();
 
-  @Import("color")
-  @Override
-  int getTextColor();
+	@Import("color")
+	@Override
+	RSWidget setTextColor(int textColor);
 
-  @Import("color")
-  @Override
-  void setTextColor(int textColor);
+	@Import("transparencyTop")
+	@Override
+	int getOpacity();
 
-  @Import("transparencyTop")
-  @Override
-  int getOpacity();
+	@Import("transparencyTop")
+	@Override
+	RSWidget setOpacity(int opacity);
 
-  @Import("transparencyTop")
-  @Override
-  void setOpacity(int opacity);
+	@Import("x")
+	@Override
+	int getRelativeX();
 
-  @Import("x")
-  @Override
-  int getRelativeX();
+	@Import("x")
+	@Override
+	void setRelativeX(int x);
 
-  @Import("x")
-  @Override
-  void setRelativeX(int x);
+	@Import("y")
+	@Override
+	int getRelativeY();
 
-  @Import("y")
-  @Override
-  int getRelativeY();
+	@Import("y")
+	@Override
+	void setRelativeY(int y);
 
-  @Import("y")
-  @Override
-  void setRelativeY(int y);
+	@Import("width")
+	@Override
+	int getWidth();
 
-  @Import("width")
-  @Override
-  int getWidth();
+	@Import("width")
+	@Override
+	void setWidth(int width);
 
-  @Import("width")
-  @Override
-  void setWidth(int width);
+	@Import("height")
+	@Override
+	int getHeight();
 
-  @Import("height")
-  @Override
-  int getHeight();
+	@Import("height")
+	@Override
+	void setHeight(int height);
 
-  @Import("height")
-  @Override
-  void setHeight(int height);
+	@Import("isHidden")
+	@Override
+	boolean isSelfHidden();
 
-  @Import("isHidden")
-  @Override
-  boolean isSelfHidden();
+	@Import("isHidden")
+	@Override
+	RSWidget setHidden(boolean hidden);
 
-  @Import("isHidden")
-  void setHidden(boolean hidden);
+	@Import("childIndex")
+	int getIndex();
 
-  @Import("childIndex")
-  int getIndex();
+	@Import("childIndex")
+	void setIndex(int index);
 
-  @Import("childIndex")
-  void setIndex(int index);
+	@Import("modelAngleX")
+	@Override
+	int getRotationX();
 
-  @Import("modelAngleX")
-  @Override
-  int getRotationX();
+	@Import("modelAngleX")
+	@Override
+	RSWidget setRotationX(int rotationX);
 
-  @Import("modelAngleX")
-  @Override
-  void setRotationX(int rotationX);
+	@Import("modelAngleZ") // Do not change
+	@Override
+	int getRotationY();
 
-  @Import("modelAngleY")
-  @Override
-  int getRotationY();
+	@Import("modelAngleZ") // Do not change
+	@Override
+	RSWidget setRotationY(int rotationY);
 
-  @Import("modelAngleY")
-  @Override
-  void setRotationY(int rotationY);
+	@Import("modelAngleY") // Do not change
+	int getRotationZ();
 
-  @Import("modelAngleZ")
-  @Override
-  int getRotationZ();
+	@Import("modelAngleY") // Do not change
+	@Override
+	RSWidget setRotationZ(int rotationZ);
 
-  @Import("modelAngleZ")
-  @Override
-  void setRotationZ(int rotationZ);
+	@Import("modelZoom")
+	@Override
+	int getModelZoom();
 
-  @Import("modelZoom")
-  @Override
-  int getModelZoom();
+	@Import("modelZoom")
+	@Override
+	RSWidget setModelZoom(int modelZoom);
 
-  @Import("modelZoom")
-  @Override
-  void setModelZoom(int modelZoom);
+	@Import("contentType")
+	@Override
+	int getContentType();
 
-  @Import("contentType")
-  @Override
-  int getContentType();
+	@Import("contentType")
+	@Override
+	RSWidget setContentType(int contentType);
 
-  @Import("contentType")
-  @Override
-  void setContentType(int contentType);
+	@Import("type")
+	@Override
+	int getType();
 
-  @Import("type")
-  @Override
-  int getType();
+	@Import("type")
+	@Override
+	void setType(int type);
 
-  @Import("type")
-  @Override
-  void setType(int type);
+	@Import("buttonType")
+	@Override
+	int getButtonType();
 
-  @Import("buttonType")
-  @Override
-  int getButtonType();
+	@Import("scrollX")
+	@Override
+	int getScrollX();
 
-  @Import("scrollX")
-  @Override
-  int getScrollX();
+	@Import("scrollX")
+	@Override
+	RSWidget setScrollX(int scrollX);
 
-  @Import("scrollX")
-  @Override
-  void setScrollX(int scrollX);
+	@Import("scrollY")
+	@Override
+	int getScrollY();
 
-  @Import("scrollY")
-  @Override
-  int getScrollY();
+	@Import("scrollY")
+	@Override
+	RSWidget setScrollY(int scrollY);
 
-  @Import("scrollY")
-  @Override
-  void setScrollY(int scrollY);
+	@Import("scrollWidth")
+	@Override
+	int getScrollWidth();
 
-  @Import("scrollWidth")
-  @Override
-  int getScrollWidth();
+	@Import("scrollWidth")
+	@Override
+	RSWidget setScrollWidth(int width);
 
-  @Import("scrollWidth")
-  @Override
-  void setScrollWidth(int width);
+	@Import("scrollHeight")
+	@Override
+	int getScrollHeight();
 
-  @Import("scrollHeight")
-  @Override
-  int getScrollHeight();
+	@Import("scrollHeight")
+	@Override
+	RSWidget setScrollHeight(int height);
 
-  @Import("scrollHeight")
-  @Override
-  void setScrollHeight(int height);
+	@Import("spriteId2")
+	@Override
+	int getSpriteId();
 
-  @Import("spriteId2")
-  @Override
-  int getSpriteId();
+	@Import("spriteId2")
+	@Override
+	RSWidget setSpriteId(int spriteId);
 
-  @Import("spriteId2")
-  @Override
-  void setSpriteId(int spriteId);
+	@Import("spriteTiling")
+	@Override
+	boolean getSpriteTiling();
 
-  @Import("spriteTiling")
-  @Override
-  boolean getSpriteTiling();
+	@Import("spriteTiling")
+	@Override
+	RSWidget setSpriteTiling(boolean tiling);
 
-  @Import("spriteTiling")
-  @Override
-  void setSpriteTiling(boolean tiling);
+	@Import("outline")
+	@Override
+	int getBorderType();
 
-  @Import("outline")
-  @Override
-  int getBorderType();
+	@Import("outline")
+	@Override
+	void setBorderType(int type);
 
-  @Import("outline")
-  @Override
-  void setBorderType(int type);
+	@Import("itemId")
+	@Override
+	int getItemId();
 
-  @Import("itemId")
-  @Override
-  int getItemId();
+	@Import("itemId")
+	@Override
+	RSWidget setItemId(int itemId);
 
-  @Import("itemId")
-  @Override
-  void setItemId(int itemId);
+	@Import("itemQuantity")
+	@Override
+	int getItemQuantity();
 
-  @Import("itemQuantity")
-  @Override
-  int getItemQuantity();
+	@Import("itemQuantity")
+	@Override
+	RSWidget setItemQuantity(int quantity);
 
-  @Import("itemQuantity")
-  @Override
-  void setItemQuantity(int quantity);
+	@Import("rawX")
+	@Override
+	int getOriginalX();
 
-  @Import("rawX")
-  @Override
-  int getOriginalX();
+	@Import("rawX")
+	@Override
+	RSWidget setOriginalX(int originalX);
 
-  @Import("rawX")
-  @Override
-  void setOriginalX(int originalX);
+	@Import("rawY")
+	@Override
+	int getOriginalY();
 
-  @Import("rawY")
-  @Override
-  int getOriginalY();
+	@Import("rawY")
+	@Override
+	RSWidget setOriginalY(int originalY);
 
-  @Import("rawY")
-  @Override
-  void setOriginalY(int originalY);
+	@Import("rawHeight")
+	@Override
+	int getOriginalHeight();
 
-  @Import("rawHeight")
-  @Override
-  int getOriginalHeight();
+	@Import("rawHeight")
+	@Override
+	RSWidget setOriginalHeight(int originalHeight);
 
-  @Import("rawHeight")
-  @Override
-  void setOriginalHeight(int originalHeight);
+	@Import("rawWidth")
+	@Override
+	int getOriginalWidth();
 
-  @Import("rawWidth")
-  @Override
-  int getOriginalWidth();
+	@Import("rawWidth")
+	@Override
+	RSWidget setOriginalWidth(int originalWidth);
 
-  @Import("rawWidth")
-  @Override
-  void setOriginalWidth(int originalWidth);
+	@Import("paddingX")
+	int getPaddingX();
 
-  @Import("paddingX")
-  int getXPitch();
+	@Import("paddingY")
+	int getPaddingY();
 
-  @Import("paddingY")
-  int getYPitch();
+	@Import("paddingX")
+	@Override
+	void setPaddingX(int paddingX);
 
-  @Import("setAction")
-  @Override
-  void setAction$api(int idx, String action);
+	@Import("paddingY")
+	@Override
+	void setPaddingY(int paddingY);
 
-  @Import("isIf3")
-  @Override
-  boolean isIf3();
 
-  @Import("isIf3")
-  void setIsIf3(boolean isIf3);
+	@Import("onOp")
+	@Override
+	void setOnOpListener(Object... args);
 
-  @Import("hasListener")
-  @Override
-  boolean hasListener();
+	@Import("setAction")
+	@Override
+	void setAction(int idx, String action);
 
-  @Import("hasListener")
-  @Override
-  void setHasListener(boolean hasListener);
+	@Import("isIf3")
+	@Override
+	boolean isIf3();
 
-  @Import("onKey")
-  @Override
-  Object[] getOnKeyListener();
+	@Import("isIf3")
+	void setIsIf3(boolean isIf3);
 
-  @Import("onKey")
-  @Override
-  void setOnKeyListener(Object... args);
+	@Import("hasListener")
+	@Override
+	boolean hasListener();
 
-  @Import("onLoad")
-  @Override
-  Object[] getOnLoadListener();
+	@Import("hasListener")
+	@Override
+	RSWidget setHasListener(boolean hasListener);
 
-  @Import("onOp")
-  @Override
-  Object[] getOnOpListener();
+	@Import("onKey")
+	@Override
+	Object[] getOnKeyListener();
 
-  @Import("onOp")
-  @Override
-  void setOnOpListener(Object... args);
+	@Import("onLoad")
+	@Override
+	Object[] getOnLoadListener();
 
-  @Import("onDialogAbort")
-  @Override
-  void setOnDialogAbortListener(Object... args);
+	@Import("onOp")
+	@Override
+	Object[] getOnOpListener();
 
-  @Import("onMouseOver")
-  @Override
-  void setOnMouseOverListener(Object... args);
+	@Import("onDialogAbort")
+	@Override
+	void setOnDialogAbortListener(Object... args);
 
-  @Import("onMouseRepeat")
-  @Override
-  void setOnMouseRepeatListener(Object... args);
+	@Import("onKey")
+	@Override
+	void setOnKeyListener(Object... args);
 
-  @Import("onMouseLeave")
-  @Override
-  void setOnMouseLeaveListener(Object... args);
+	@Import("onMouseOver")
+	@Override
+	void setOnMouseOverListener(Object... args);
 
-  @Import("onTimer")
-  @Override
-  void setOnTimerListener(Object... args);
+	@Import("onMouseRepeat")
+	@Override
+	void setOnMouseRepeatListener(Object... args);
 
-  @Import("onTargetEnter")
-  @Override
-  void setOnTargetEnterListener(Object... args);
+	@Import("onMouseLeave")
+	@Override
+	void setOnMouseLeaveListener(Object... args);
 
-  @Import("onTargetLeave")
-  @Override
-  void setOnTargetLeaveListener(Object... args);
+	@Import("onTimer")
+	@Override
+	void setOnTimerListener(Object... args);
 
-  @Import("fontId")
-  @Override
-  int getFontId();
+	@Import("onTargetEnter")
+	@Override
+	void setOnTargetEnterListener(Object... args);
 
-  @Import("fontId")
-  @Override
-  void setFontId(int id);
+	@Import("onTargetLeave")
+	@Override
+	void setOnTargetLeaveListener(Object... args);
 
-  @Import("textShadowed")
-  @Override
-  boolean getTextShadowed();
+	@Import("fontId")
+	@Override
+	int getFontId();
 
-  @Import("textShadowed")
-  @Override
-  void setTextShadowed(boolean shadowed);
+	@Import("fontId")
+	@Override
+	RSWidget setFontId(int id);
 
-  @Import("dragZoneSize")
-  @Override
-  int getDragDeadZone();
+	@Import("textShadowed")
+	@Override
+	boolean getTextShadowed();
 
-  @Import("dragZoneSize")
-  @Override
-  void setDragDeadZone(int deadZone);
+	@Import("textShadowed")
+	@Override
+	RSWidget setTextShadowed(boolean shadowed);
 
-  @Import("dragThreshold")
-  @Override
-  int getDragDeadTime();
+	@Import("dragZoneSize")
+	@Override
+	int getDragDeadZone();
 
-  @Import("dragThreshold")
-  @Override
-  void setDragDeadTime(int deadTime);
+	@Import("dragZoneSize")
+	@Override
+	void setDragDeadZone(int deadZone);
 
-  @Import("itemQuantityMode")
-  @Override
-  int getItemQuantityMode();
+	@Import("dragThreshold")
+	@Override
+	int getDragDeadTime();
 
-  @Import("itemQuantityMode")
-  @Override
-  void setItemQuantityMode(int itemQuantityMode);
+	@Import("dragThreshold")
+	@Override
+	void setDragDeadTime(int deadTime);
 
-  @Import("xAlignment")
-  @Override
-  int getXPositionMode();
+	@Import("itemQuantityMode")
+	@Override
+	int getItemQuantityMode();
 
-  @Import("xAlignment")
-  @Override
-  void setXPositionMode(int xpm);
+	@Import("itemQuantityMode")
+	@Override
+	RSWidget setItemQuantityMode(int itemQuantityMode);
 
-  @Import("yAlignment")
-  @Override
-  int getYPositionMode();
+	@Import("xAlignment")
+	@Override
+	int getXPositionMode();
 
-  @Import("yAlignment")
-  @Override
-  void setYPositionMode(int ypm);
+	@Import("xAlignment")
+	@Override
+	RSWidget setXPositionMode(int xpm);
 
-  @Import("textXAlignment")
-  @Override
-  int getXTextAlignment();
+	@Import("yAlignment")
+	@Override
+	int getYPositionMode();
 
-  @Import("textXAlignment")
-  @Override
-  void setXTextAlignment(int xta);
+	@Import("yAlignment")
+	@Override
+	RSWidget setYPositionMode(int ypm);
 
-  @Import("textYAlignment")
-  @Override
-  int getYTextAlignment();
+	@Import("textXAlignment")
+	@Override
+	int getXTextAlignment();
 
-  @Import("textYAlignment")
-  @Override
-  void setYTextAlignment(int yta);
+	@Import("textXAlignment")
+	@Override
+	RSWidget setXTextAlignment(int xta);
 
-  @Import("widthAlignment")
-  @Override
-  int getWidthMode();
+	@Import("textYAlignment")
+	@Override
+	int getYTextAlignment();
 
-  @Import("widthAlignment")
-  @Override
-  void setWidthMode(int widthMode);
+	@Import("textYAlignment")
+	@Override
+	RSWidget setYTextAlignment(int yta);
 
-  @Import("heightAlignment")
-  @Override
-  int getHeightMode();
+	@Import("widthAlignment")
+	@Override
+	int getWidthMode();
 
-  @Import("heightAlignment")
-  @Override
-  void setHeightMode(int heightMode);
+	@Import("widthAlignment")
+	@Override
+	RSWidget setWidthMode(int widthMode);
 
-  @Import("getFont")
-  @Override
-  RSFont getFont$api();
+	@Import("heightAlignment")
+	@Override
+	int getHeightMode();
 
-  @Import("fill")
-  @Override
-  boolean isFilled();
+	@Import("heightAlignment")
+	@Override
+	RSWidget setHeightMode(int heightMode);
 
-  @Import("fill")
-  @Override
-  void setFilled(boolean filled);
+	@Import("getFont")
+	@Override
+	RSFont getFont();
 
-  @Import("spellActionName")
-  @Override
-  String getTargetVerb();
+	@Import("fill")
+	@Override
+	boolean isFilled();
 
-  @Import("spellActionName")
-  @Override
-  void setTargetVerb(String targetVerb);
+	@Import("fill")
+	@Override
+	RSWidget setFilled(boolean filled);
 
-  @Import("noClickThrough")
-  @Override
-  boolean getNoClickThrough();
+	@Import("spellActionName")
+	@Override
+	String getTargetVerb();
 
-  @Import("noClickThrough")
-  @Override
-  void setNoClickThrough(boolean noClickThrough);
+	@Import("spellActionName")
+	@Override
+	void setTargetVerb(String targetVerb);
 
-  @Import("noScrollThrough")
-  @Override
-  boolean getNoScrollThrough();
+	@Import("noClickThrough")
+	@Override
+	boolean getNoClickThrough();
 
-  @Import("noScrollThrough")
-  @Override
-  void setNoScrollThrough(boolean noScrollThrough);
+	@Import("noClickThrough")
+	@Override
+	void setNoClickThrough(boolean noClickThrough);
 
-  @Import("modelFrame")
-  int getModelFrame();
+	@Import("noScrollThrough")
+	@Override
+	boolean getNoScrollThrough();
 
-  @Import("modelFrameCycle")
-  int getModelFrameCycle();
+	@Import("noScrollThrough")
+	@Override
+	void setNoScrollThrough(boolean noScrollThrough);
 
-  @Import("onInvTransmit")
-  @Override
-  Object[] getOnInvTransmitListener();
+	@Import("modelFrame")
+	int getModelFrame();
 
-  @Import("containsMouse")
-  @Override
-  boolean containsMouse();
+	@Import("modelFrameCycle")
+	int getModelFrameCycle();
 
-  @Import("getSprite")
-  RSSpritePixels getSprite$api(boolean b);
+	@Import("onInvTransmit")
+	@Override
+	Object[] getOnInvTransmitListener();
 
-  @Import("onRelease")
-  @Override
-  void setOnReleaseListener(Object[] o);
+	@Import("containsMouse")
+	@Override
+	boolean containsMouse();
 
-  @Import("varTransmitTriggers")
-  @Override
-  void setVarTransmitTrigger(int[] i);
+	@Import("getSprite")
+	RSSpritePixels getSprite(boolean b);
 
-  @Import("onHold")
-  @Override
-  void setOnHoldListener(Object[] o);
+	@Import("onRelease")
+	@Override
+	void setOnReleaseListener(Object[] o);
 
-  @Import("onClick")
-  @Override
-  void setOnClickListener(Object[] o);
+	@Import("varTransmitTriggers")
+	@Override
+	void setVarTransmitTrigger(int[] i);
 
-  @Import("onDragComplete")
-  @Override
-  void setOnDragCompleteListener(Object[] o);
+	@Import("onHold")
+	@Override
+	void setOnHoldListener(Object[] o);
 
-  @Import("onDrag")
-  @Override
-  void setOnDragListener(Object[] o);
+	@Import("onClick")
+	@Override
+	void setOnClickListener(Object[] o);
 
-  @Import("parent")
-  @Override
-  RSWidget getDragParent();
+	@Import("onDragComplete")
+	@Override
+	void setOnDragCompleteListener(Object[] o);
 
-  @Import("parent")
-  @Override
-  void setDragParent(Widget dragParent);
+	@Import("onDrag")
+	@Override
+	void setOnDragListener(Object[] o);
 
-  @Import("onVarTransmit")
-  @Override
-  Object[] getOnVarTransmitListener();
+	@Import("parent")
+	@Override
+	RSWidget getDragParent();
 
-  @Import("onVarTransmit")
-  @Override
-  void setOnVarTransmitListener(Object[] o);
+	@Import("parent")
+	@Override
+	RSWidget setDragParent(Widget dragParent);
 
-  @Import("fillMode")
-  RSFillMode getFillMode();
+	@Import("onVarTransmit")
+	@Override
+	Object[] getOnVarTransmitListener();
 
-  @Import("textLineHeight")
-  int getLineHeight();
+	@Import("onVarTransmit")
+	@Override
+	void setOnVarTransmitListener(Object[] o);
 
-  @Import("textLineHeight")
-  void setLineHeight(int height);
+	@Import("fillMode")
+	RSFillMode getFillMode();
 
-  void broadcastHidden(boolean hidden);
+	@Import("textLineHeight")
+	int getLineHeight();
+
+	@Import("textLineHeight")
+	@Override
+	RSWidget setLineHeight(int height);
+
+	void broadcastHidden(boolean hidden);
 }

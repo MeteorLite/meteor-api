@@ -15,25 +15,28 @@ import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
 
 @RequiredArgsConstructor
-public abstract class InjectTransformer implements Named {
+public abstract class InjectTransformer implements Named
+{
+	protected final InjectData inject;
+	protected final Logger log = Logging.getLogger(this.getClass());
+	private Stopwatch stopwatch;
 
-  protected final InjectData inject;
-  protected final Logger log = Logging.getLogger(this.getClass());
-  private Stopwatch stopwatch;
+	public final void transform()
+	{
+		stopwatch = Stopwatch.createStarted();
+		transformImpl();
+	}
 
-  public final void transform() {
-    stopwatch = Stopwatch.createStarted();
-    transformImpl();
-  }
+	abstract void transformImpl();
 
-  abstract void transformImpl();
+	public final String getCompletionMsg()
+	{
+		return "finished in " + stopwatch.toString();
+	}
 
-  public final String getCompletionMsg() {
-    return "finished in " + stopwatch.toString();
-  }
-
-  @Override
-  public final String getName() {
-    return this.getClass().getSimpleName();
-  }
+	@Override
+	public final String getName()
+	{
+		return this.getClass().getSimpleName();
+	}
 }

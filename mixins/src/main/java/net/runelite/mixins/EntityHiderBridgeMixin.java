@@ -25,11 +25,13 @@
  */
 package net.runelite.mixins;
 
+import java.util.HashMap;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.rs.api.RSClient;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mixin(RSClient.class)
 public abstract class EntityHiderBridgeMixin implements RSClient
@@ -48,6 +50,9 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 
 	@Inject
 	public static boolean hideClanMates;
+
+	@Inject
+	public static boolean hideClanChatMembers;
 
 	@Inject
 	public static boolean hideIgnores;
@@ -86,10 +91,6 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 	public static List<Integer> hiddenNpcIndices = new ArrayList<>();
 
 	@Inject
-	public static Set<Integer> hiddenGraphicsObjects = new HashSet<>();
-
-
-	@Inject
 	@Override
 	public void setIsHidingEntities(boolean state)
 	{
@@ -122,6 +123,13 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 	public void setFriendsChatMembersHidden(boolean state)
 	{
 		hideClanMates = state;
+	}
+
+	@Inject
+	@Override
+	public void setClanChatMembersHidden(boolean state)
+	{
+		hideClanChatMembers = state;
 	}
 
 	@Inject
@@ -193,11 +201,6 @@ public abstract class EntityHiderBridgeMixin implements RSClient
 	{
 		hideDeadNPCs = state;
 	}
-
-	@Inject
-	@Override
-	public void setHiddenGraphicsObjects(Set<Integer> graphicsObject)
-	{ hiddenGraphicsObjects = graphicsObject; }
 
 	@Inject
 	@Override

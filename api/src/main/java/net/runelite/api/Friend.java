@@ -27,5 +27,5 @@ package net.runelite.api;
 /**
  * Represents a player in the friends list.
  */
-public interface Friend extends Nameable {
+public interface Friend extends ChatPlayer {
 }

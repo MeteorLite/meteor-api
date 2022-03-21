@@ -33,27 +33,32 @@ import net.runelite.asm.execution.Frame;
 import net.runelite.asm.execution.InstructionContext;
 
 
-public class VReturn extends Instruction implements ReturnInstruction {
+public class VReturn extends Instruction implements ReturnInstruction
+{
+	public VReturn(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
+	
+	public VReturn(Instructions instructions)
+	{
+		super(instructions, InstructionType.RETURN);
+	}
 
-  public VReturn(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
 
-  public VReturn(Instructions instructions) {
-    super(instructions, InstructionType.RETURN);
-  }
+		
+		frame.stop();
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-
-    frame.stop();
-
-    return ins;
-  }
-
-  @Override
-  public boolean isTerminal() {
-    return true;
-  }
+		return ins;
+	}
+	
+	@Override
+	public boolean isTerminal()
+	{
+		return true;
+	}
 }

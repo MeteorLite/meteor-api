@@ -24,49 +24,63 @@
  */
 package net.runelite.api;
 
-import java.awt.Shape;
+import java.awt.*;
 
 /**
- * Represents the wall of a tile, which is an un-passable boundary.
+ * Represents one or two walls on a tile
  */
 public interface WallObject extends TileObject {
+    /**
+     * A bitfield with the orientation of the first wall
+     * 1 = West
+     * 2 = North
+     * 4 = East
+     * 8 = South
+     * 16 = North-west
+     * 32 = North-east
+     * 64 = South-east
+     * 128 = South-west
+     */
+    int getOrientationA();
 
-  /**
-   * Gets the first orientation of the wall.
-   *
-   * @return the first orientation, 0-2048 where 0 is north
-   */
-  int getOrientationA();
+    /**
+     * A bitfield with the orientation of the second wall
+     * 1 = West
+     * 2 = North
+     * 4 = East
+     * 8 = South
+     * 16 = North-west
+     * 32 = North-east
+     * 64 = South-east
+     * 128 = South-west
+     */
+    int getOrientationB();
 
-  /**
-   * Gets the second orientation value of the wall.
-   *
-   * @return the second orientation, 0-2048 where 0 is north
-   */
-  int getOrientationB();
+    /**
+     * A bitfield containing various flags:
+     * <pre>{@code
+     * object type id = bits & 0x20
+     * orientation (0-3) = bits >>> 6 & 3
+     * supports items = bits >>> 8 & 1
+     * }</pre>
+     */
+    int getConfig();
 
-  /**
-   * Gets the boundary configuration of the wall.
-   *
-   * @return the boundary configuration
-   */
-  int getConfig();
+    /**
+     * Gets the convex hull of the objects model.
+     *
+     * @return the convex hull
+     * @see net.runelite.api.model.Jarvis
+     */
+    Shape getConvexHull();
 
-  Renderable getRenderable1();
+    Shape getConvexHull2();
 
-  Renderable getRenderable2();
+    Renderable getRenderable1();
 
-  Model getModelA();
+    Renderable getRenderable2();
 
-  Model getModelB();
+    Model getModelA();
 
-  /**
-   * Gets the convex hull of the objects model.
-   *
-   * @return the convex hull
-   * @see net.runelite.api.model.Jarvis
-   */
-  Shape getConvexHull();
-
-  Shape getConvexHull2();
+    Model getModelB();
 }

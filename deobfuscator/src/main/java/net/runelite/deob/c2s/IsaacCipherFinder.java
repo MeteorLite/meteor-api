@@ -31,71 +31,87 @@ import net.runelite.asm.Type;
 import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.instruction.types.PushConstantInstruction;
-public class IsaacCipherFinder {
 
-  private static final int GOLDEN_RATIO = 0x9E3779B9; // 2^32 / phi
-  private final ClassGroup group;
+public class IsaacCipherFinder
+{
 
-  private ClassFile isaacCipher;
-  private Method getNext;
+	private static final int GOLDEN_RATIO = 0x9E3779B9; // 2^32 / phi
+	private final ClassGroup group;
 
-  public IsaacCipherFinder(ClassGroup group) {
-    this.group = group;
-  }
+	private ClassFile isaacCipher;
+	private Method getNext;
 
-  public ClassFile getIsaacCipher() {
-    return isaacCipher;
-  }
+	public IsaacCipherFinder(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  public Method getGetNext() {
-    return getNext;
-  }
+	public ClassFile getIsaacCipher()
+	{
+		return isaacCipher;
+	}
 
-  public void find() {
-    Method highest = null;
-    int count = 0;
+	public Method getGetNext()
+	{
+		return getNext;
+	}
 
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        Code code = m.getCode();
+	public void find()
+	{
+		Method highest = null;
+		int count = 0;
 
-        int i = find(m, code);
-        if (i > count) {
-          count = i;
-          highest = m;
-        }
-      }
-    }
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				Code code = m.getCode();
 
-    assert highest != null;
-    isaacCipher = highest.getClassFile();
+				int i = find(m, code);
+				if (i > count)
+				{
+					count = i;
+					highest = m;
+				}
+			}
+		}
 
-    // find nextInt
-    for (Method method : isaacCipher.getMethods()) {
-      if (method.getDescriptor().size() == 0 && method.getDescriptor().getReturnValue()
-          .equals(Type.INT)) {
-        getNext = method;
-      }
-    }
-  }
+		assert highest != null;
+		isaacCipher = highest.getClassFile();
 
-  private int find(Method method, Code code) {
-    if (code == null) {
-      return 0;
-    }
+		// find nextInt
+		for (Method method : isaacCipher.getMethods())
+		{
+			if (method.getDescriptor().size() == 0 && method.getDescriptor().getReturnValue().equals(Type.INT))
+			{
+				getNext = method;
+			}
+		}
 
-    int gr = 0;
+	}
 
-    for (Instruction i : code.getInstructions().getInstructions()) {
-      if (i instanceof PushConstantInstruction) {
-        PushConstantInstruction pci = (PushConstantInstruction) i;
+	private int find(Method method, Code code)
+	{
+		if (code == null)
+		{
+			return 0;
+		}
 
-        if (pci.getConstant().equals(GOLDEN_RATIO)) {
-          ++gr;
-        }
-      }
-    }
+		int gr = 0;
 
-    return gr;
-  }
+		for (Instruction i : code.getInstructions().getInstructions())
+		{
+			if (i instanceof PushConstantInstruction)
+			{
+				PushConstantInstruction pci = (PushConstantInstruction) i;
+
+				if (pci.getConstant().equals(GOLDEN_RATIO))
+				{
+					++gr;
+				}
+			}
+		}
+
+		return gr;
+	}
 }

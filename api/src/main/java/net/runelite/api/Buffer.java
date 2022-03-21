@@ -27,67 +27,23 @@ package net.runelite.api;
 /**
  * Represents a byte buffer
  */
-public interface Buffer extends Node
-{
-  byte[] getPayload();
+public interface Buffer extends Node {
+    byte[] getPayload();
 
-  int getOffset();
+    int getOffset();
 
-  /**
-   * Use this api to write to byte buffers
-   */
+    /**
+     * Use this api to write to byte buffers
+     */
+    void writeByte(int var1);
 
-  void writeBoolean(boolean i);
+    void writeShort(int var1);
 
-  void writeBuffer(Buffer i);
+    void writeMedium(int var1);
 
-  void writeByte(int i);
+    void writeInt(int var1);
 
-  void writeByteAdd(int i);
+    void writeLong(long var1);
 
-  void writeByteNeg(int i);
-
-  void writeByteSub(int i);
-
-  void writeBytes(byte[] var1, int var2, int var3);
-
-  void writeCESU8(CharSequence i);
-
-  int writeCrc(int i);
-
-  void writeInt(int i);
-
-  void writeIntIME(int i);
-
-  void writeIntLE(int i);
-
-  void writeIntME(int i);
-
-  void writeLengthByte(int i);
-
-  void writeLengthInt(int i);
-
-  void writeLengthShort(long i);
-
-  void writeLong(long i);
-
-  void writeLongMedium(int i);
-
-  void writeMedium(int i);
-
-  void writeShort(int i);
-
-  void writeShortAdd(int i);
-
-  void writeShortAddLE(int i);
-
-  void writeShortLE(int i);
-
-  void writeSmartByteShort(int i);
-
-  void writeStringCp1252NullCircumfixed(String i);
-
-  void writeStringCp1252NullTerminated(String i);
-
-  void writeVarInt(int i);
+    void writeStringCp1252NullTerminated(String string);
 }

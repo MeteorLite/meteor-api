@@ -1,5 +1,7 @@
 package net.runelite.mixins;
 
+import java.util.HashMap;
+import java.util.Map;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.Inject;
@@ -8,9 +10,6 @@ import net.runelite.api.mixins.Replace;
 import net.runelite.rs.api.RSAbstractArchive;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSSpritePixels;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Mixin(RSClient.class)
 public abstract class SpriteMixin implements RSClient

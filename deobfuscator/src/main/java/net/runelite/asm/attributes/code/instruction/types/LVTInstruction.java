@@ -26,13 +26,13 @@ package net.runelite.asm.attributes.code.instruction.types;
 
 import net.runelite.asm.attributes.code.Instruction;
 
-public interface LVTInstruction {
+public interface LVTInstruction
+{
+	int getVariableIndex();
 
-  int getVariableIndex();
+	Instruction setVariableIndex(int idx);
 
-  Instruction setVariableIndex(int idx);
+	boolean store();
 
-  boolean store();
-
-  LVTInstructionType type();
+	LVTInstructionType type();
 }

@@ -30,36 +30,40 @@ import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 
-public class IfGe extends If0 {
+public class IfGe extends If0
+{
+	public IfGe(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-  public IfGe(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	{
+		if (!this.isSameField(thisIc, otherIc))
+			return false;
+		
+		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
+			return true;
 
-  @Override
-  public boolean isSame(InstructionContext thisIc, InstructionContext otherIc) {
-    if (!this.isSameField(thisIc, otherIc)) {
-      return false;
-    }
+		if (otherIc.getInstruction() instanceof IfLt)
+		{
+			return true;
+		}
+		
+		return false;
+	}
 
-    if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass()) {
-      return true;
-    }
-
-    if (otherIc.getInstruction() instanceof IfLt) {
-      return true;
-    }
-
-    return false;
-  }
-
-  @Override
-  public void map(ParallelExecutorMapping mapping, InstructionContext ctx,
-      InstructionContext other) {
-    if (other.getInstruction() instanceof IfLt) {
-      super.mapOtherBranch(mapping, ctx, other);
-    } else {
-      super.map(mapping, ctx, other);
-    }
-  }
+	@Override
+	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+	{
+		if (other.getInstruction() instanceof IfLt)
+		{
+			super.mapOtherBranch(mapping, ctx, other);
+		}
+		else
+		{
+			super.map(mapping, ctx, other);
+		}
+	}
 }

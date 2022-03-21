@@ -17,54 +17,59 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.BiPush;
 
-public class Occluder extends AbstractInjector {
+public class Occluder extends AbstractInjector
+{
+	private static final byte OLDVALUE = 25;
+	private static final byte NEWVALUE = 90;
 
-  private static final byte OLDVALUE = 25;
-  private static final byte NEWVALUE = 90;
+	public Occluder(InjectData inject)
+	{
+		super(inject);
+	}
 
-  public Occluder(InjectData inject) {
-    super(inject);
-  }
+	public void inject()
+	{
+		/*
+		 * This class the max view distance length, higher than this is useless though
+		 */
+		final Method occlude = inject.toVanilla(
+			inject.getDeobfuscated()
+				.findClass("Scene")
+				.findMethod("occlude")
+		);
 
-  public void inject() {
-    /*
-     * This class the max view distance length, higher than this is useless though
-     */
-    final Method occlude = inject.toVanilla(
-        inject.getDeobfuscated()
-            .findClass("Scene")
-            .findMethod("occlude")
-    );
+		int replaced = 0;
 
-    int replaced = 0;
+		final Code code = occlude.getCode();
+		final Instructions ins = code.getInstructions();
+		final ListIterator<Instruction> it = ins.listIterator();
 
-    final Code code = occlude.getCode();
-    final Instructions ins = code.getInstructions();
-    final ListIterator<Instruction> it = ins.listIterator();
+		while (it.hasNext())
+		{
+			Instruction i = it.next();
 
-    while (it.hasNext()) {
-      Instruction i = it.next();
+			if (!(i instanceof BiPush))
+			{
+				continue;
+			}
 
-      if (!(i instanceof BiPush)) {
-        continue;
-      }
+			boolean shouldChange = (byte) ((BiPush) i).getConstant() == OLDVALUE;
 
-      boolean shouldChange = (byte) ((BiPush) i).getConstant() == OLDVALUE;
+			if (!shouldChange)
+			{
+				continue;
+			}
 
-      if (!shouldChange) {
-        continue;
-      }
+			replaced++;
 
-      replaced++;
+			Instruction biPush = new BiPush(ins, NEWVALUE);
 
-      Instruction biPush = new BiPush(ins, NEWVALUE);
+			it.set(biPush);
+		}
 
-      it.set(biPush);
-    }
-
-    if (replaced != 10) {
-      throw new InjectException(
-          "Only found " + replaced + " 25's to replace in occlude instead of expected 10");
-    }
-  }
+		if (replaced != 10)
+		{
+			throw new InjectException("Only found " + replaced + " 25's to replace in occlude instead of expected 10");
+		}
+	}
 }

@@ -27,70 +27,83 @@ package net.runelite.asm.pool;
 import java.util.Objects;
 import net.runelite.asm.signature.Signature;
 
-public class Method {
+public class Method
+{
+	private final Class clazz;
+	private final String name;
+	private Signature type;
 
-  private final Class clazz;
-  private final String name;
-  private Signature type;
+	public Method(Class clazz, String name, Signature type)
+	{
+		this.clazz = clazz;
+		this.name = name;
+		this.type = type;
+	}
 
-  public Method(Class clazz, String name, Signature type) {
-    this.clazz = clazz;
-    this.name = name;
-    this.type = type;
-  }
+	@Override
+	public String toString()
+	{
+		return clazz.getName() + "." + name + type;
+	}
 
-  @Override
-  public String toString() {
-    return clazz.getName() + "." + name + type;
-  }
+	@Override
+	public int hashCode()
+	{
+		int hash = 7;
+		hash = 59 * hash + Objects.hashCode(this.clazz);
+		hash = 59 * hash + Objects.hashCode(this.name);
+		hash = 59 * hash + Objects.hashCode(this.type);
+		return hash;
+	}
 
-  @Override
-  public int hashCode() {
-    int hash = 7;
-    hash = 59 * hash + Objects.hashCode(this.clazz);
-    hash = 59 * hash + Objects.hashCode(this.name);
-    hash = 59 * hash + Objects.hashCode(this.type);
-    return hash;
-  }
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+		{
+			return true;
+		}
+		if (obj == null)
+		{
+			return false;
+		}
+		if (getClass() != obj.getClass())
+		{
+			return false;
+		}
+		final Method other = (Method) obj;
+		if (!Objects.equals(this.name, other.name))
+		{
+			return false;
+		}
+		if (!Objects.equals(this.clazz, other.clazz))
+		{
+			return false;
+		}
+		if (!Objects.equals(this.type, other.type))
+		{
+			return false;
+		}
+		return true;
+	}
 
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Method other = (Method) obj;
-    if (!Objects.equals(this.name, other.name)) {
-      return false;
-    }
-    if (!Objects.equals(this.clazz, other.clazz)) {
-      return false;
-    }
-    if (!Objects.equals(this.type, other.type)) {
-      return false;
-    }
-    return true;
-  }
+	public Class getClazz()
+	{
+		return clazz;
+	}
 
-  public Class getClazz() {
-    return clazz;
-  }
+	public String getName()
+	{
+		return name;
+	}
 
-  public String getName() {
-    return name;
-  }
+	public Signature getType()
+	{
+		return type;
+	}
 
-  public Signature getType() {
-    return type;
-  }
-
-  public void setType(Signature type)
-  {
-    this.type = type;
-  }
+	public void setType(Signature type)
+	{
+		this.type = type;
+	}
 }

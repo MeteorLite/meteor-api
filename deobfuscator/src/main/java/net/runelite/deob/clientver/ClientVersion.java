@@ -33,32 +33,35 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import org.objectweb.asm.ClassReader;
 
-public class ClientVersion {
+public class ClientVersion
+{
+	private final File jar;
 
-  private final File jar;
+	public ClientVersion(File jar)
+	{
+		this.jar = jar;
+	}
 
-  public ClientVersion(File jar) {
-    this.jar = jar;
-  }
+	public int getVersion() throws IOException
+	{
+		try (JarFile jar = new JarFile(this.jar))
+		{
+			for (Enumeration<JarEntry> it = jar.entries(); it.hasMoreElements();)
+			{
+				JarEntry entry = it.nextElement();
 
-  public int getVersion() throws IOException {
-    try (JarFile jar = new JarFile(this.jar)) {
-      for (Enumeration<JarEntry> it = jar.entries(); it.hasMoreElements(); ) {
-        JarEntry entry = it.nextElement();
+				if (!entry.getName().equals("client.class"))
+					continue;
 
-        if (!entry.getName().equals("client.class")) {
-          continue;
-        }
+				InputStream in = jar.getInputStream(entry);
 
-        InputStream in = jar.getInputStream(entry);
+				ClassReader reader = new ClassReader(in);
+				VersionClassVisitor v = new VersionClassVisitor();
+				reader.accept(v, 0);
+				return v.getVersion();
+			}
+		}
 
-        ClassReader reader = new ClassReader(in);
-        VersionClassVisitor v = new VersionClassVisitor();
-        reader.accept(v, 0);
-        return v.getVersion();
-      }
-    }
-
-    return -1;
-  }
+		return -1;
+	}
 }

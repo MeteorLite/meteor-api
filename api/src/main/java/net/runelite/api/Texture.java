@@ -25,20 +25,19 @@
 package net.runelite.api;
 
 public interface Texture extends Node {
+    int[] getPixels();
 
-  int[] getPixels();
+    int getAnimationDirection();
 
-  int getAnimationDirection();
+    int getAnimationSpeed();
 
-  int getAnimationSpeed();
+    boolean isLoaded();
 
-  boolean isLoaded();
+    float getU();
 
-  float getU();
+    void setU(float u);
 
-  void setU(float u);
+    float getV();
 
-  float getV();
-
-  void setV(float v);
+    void setV(float v);
 }

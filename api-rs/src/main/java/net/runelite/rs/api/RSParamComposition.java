@@ -2,17 +2,16 @@ package net.runelite.rs.api;
 
 import net.runelite.mapping.Import;
 
-public interface RSParamComposition {
+public interface RSParamComposition
+{
+	boolean isString();
 
-  @Import("isString")
-  boolean isString$api();
+	@Import("type")
+	char getType();
 
-  @Import("type")
-  char getType();
+	@Import("defaultInt")
+	int getDefaultInt();
 
-  @Import("defaultInt")
-  int getDefaultInt();
-
-  @Import("defaultStr")
-  String getDefaultStr();
+	@Import("defaultStr")
+	String getDefaultStr();
 }

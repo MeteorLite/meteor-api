@@ -28,43 +28,43 @@ package net.runelite.api;
  * Represents an paletted sprite.
  */
 public interface IndexedSprite {
+    /**
+     * The bitmap of this sprite. Each value is an index into {@link #getPalette()}.
+     * 0 is transparent
+     */
+    byte[] getPixels();
 
-  /**
-   * The bitmap of this sprite. Each value is an index into {@link #getPalette()}. 0 is transparent
-   */
-  byte[] getPixels();
+    void setPixels(byte[] pixels);
 
-  void setPixels(byte[] pixels);
+    /**
+     * The color palette in RGB. The zero index is unused.
+     */
+    int[] getPalette();
 
-  /**
-   * The color palette in RGB. The zero index is unused.
-   */
-  int[] getPalette();
+    void setPalette(int[] palette);
 
-  void setPalette(int[] palette);
+    int getOffsetX();
 
-  int getOffsetX();
+    void setOffsetX(int offsetX);
 
-  void setOffsetX(int offsetX);
+    int getOffsetY();
 
-  int getOffsetY();
+    void setOffsetY(int offsetY);
 
-  void setOffsetY(int offsetY);
+    int getWidth();
 
-  int getWidth();
-
-  void setWidth(int width);
+    void setWidth(int width);
 
 
-  int getHeight();
+    int getHeight();
 
-  void setHeight(int height);
+    void setHeight(int height);
 
-  int getOriginalWidth();
+    int getOriginalWidth();
 
-  void setOriginalWidth(int originalWidth);
+    void setOriginalWidth(int originalWidth);
 
-  int getOriginalHeight();
+    int getOriginalHeight();
 
-  void setOriginalHeight(int originalHeight);
+    void setOriginalHeight(int originalHeight);
 }

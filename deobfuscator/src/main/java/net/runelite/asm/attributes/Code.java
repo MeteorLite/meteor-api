@@ -35,92 +35,105 @@ import net.runelite.asm.attributes.code.Label;
 import net.runelite.asm.attributes.code.instruction.types.LVTInstruction;
 import net.runelite.asm.signature.Signature;
 
-public class Code {
+public class Code
+{
+	private Method method;
+	private int maxStack;
+	private Instructions instructions;
+	private final Exceptions exceptions;
 
-  private final Exceptions exceptions;
-  private Method method;
-  private int maxStack;
-  private Instructions instructions;
+	public Code(Method method)
+	{
+		this.method = method;
 
-  public Code(Method method) {
-    this.method = method;
+		exceptions = new Exceptions(this);
+		instructions = new Instructions(this);
+	}
 
-    exceptions = new Exceptions(this);
-    instructions = new Instructions(this);
-  }
+	public Method getMethod()
+	{
+		return method;
+	}
 
-  public Method getMethod() {
-    return method;
-  }
+	public int getMaxStack()
+	{
+		return maxStack;
+	}
 
-  public int getMaxStack() {
-    return maxStack;
-  }
+	public void setMaxStack(int maxStack)
+	{
+		this.maxStack = maxStack;
+	}
 
-  public void setMaxStack(int maxStack) {
-    this.maxStack = maxStack;
-  }
+	private int getMaxLocalsFromSig()
+	{
+		Method m = getMethod();
+		int num = m.isStatic() ? 0 : 1;
+		Signature sig = m.getDescriptor();
+		for (int i = 0; i < sig.size(); ++i)
+			num += sig.getTypeOfArg(i).getSize();
+		return num;
+	}
 
-  private int getMaxLocalsFromSig() {
-    Method m = getMethod();
-    int num = m.isStatic() ? 0 : 1;
-    Signature sig = m.getDescriptor();
-    for (int i = 0; i < sig.size(); ++i) {
-      num += sig.getTypeOfArg(i).getSize();
-    }
-    return num;
-  }
+	/**
+	 * calculates the size of the lvt required for this method
+	 */
+	public int getMaxLocals()
+	{
+		int max = -1;
 
-  /**
-   * calculates the size of the lvt required for this method
-   */
-  public int getMaxLocals() {
-    int max = -1;
+		for (Instruction ins : instructions.getInstructions())
+		{
+			if (ins instanceof LVTInstruction)
+			{
+				LVTInstruction lvt = (LVTInstruction) ins;
 
-    for (Instruction ins : instructions.getInstructions()) {
-      if (ins instanceof LVTInstruction) {
-        LVTInstruction lvt = (LVTInstruction) ins;
+				int sizeRequired = lvt.getVariableIndex() + lvt.type().getSlots();
+				if (sizeRequired > max)
+				{
+					max = sizeRequired;
+				}
+			}
+		}
 
-        int sizeRequired = lvt.getVariableIndex() + lvt.type().getSlots();
-        if (sizeRequired > max) {
-          max = sizeRequired;
-        }
-      }
-    }
+		int fromSig = getMaxLocalsFromSig();
+		if (fromSig > max)
+			max = fromSig;
 
-    int fromSig = getMaxLocalsFromSig();
-    if (fromSig > max) {
-      max = fromSig;
-    }
+		return max;
+	}
 
-    return max;
-  }
+	public Exceptions getExceptions()
+	{
+		return exceptions;
+	}
 
-  public Exceptions getExceptions() {
-    return exceptions;
-  }
+	public Instructions getInstructions()
+	{
+		return instructions;
+	}
 
-  public Instructions getInstructions() {
-    return instructions;
-  }
+	public List<Integer> getLineNumbers()
+	{
+		final List<Integer> lineNumbers = new ArrayList<>();
 
-  public List<Integer> getLineNumbers() {
-    final List<Integer> lineNumbers = new ArrayList<>();
+		for (Instruction i : instructions.getInstructions())
+		{
+			if (!(i instanceof Label))
+			{
+				continue;
+			}
 
-    for (Instruction i : instructions.getInstructions()) {
-      if (!(i instanceof Label)) {
-        continue;
-      }
+			Integer lineNumber = ((Label) i).getLineNumber();
+			if (lineNumber == null)
+			{
+				continue;
+			}
 
-      Integer lineNumber = ((Label) i).getLineNumber();
-      if (lineNumber == null) {
-        continue;
-      }
+			lineNumbers.add(lineNumber);
+		}
 
-      lineNumbers.add(lineNumber);
-    }
-
-    lineNumbers.sort(Integer::compareTo);
-    return lineNumbers;
-  }
+		lineNumbers.sort(Integer::compareTo);
+		return lineNumbers;
+	}
 }

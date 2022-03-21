@@ -28,38 +28,41 @@
 
 package net.runelite.rs.api;
 
-import net.runelite.api.ScriptEvent;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.ScriptEvent;
 import net.runelite.mapping.Import;
 
-public interface RSScriptEvent extends ScriptEvent {
+public interface RSScriptEvent extends ScriptEvent
+{
+	@Import("args")
+	Object[] getArguments();
 
-  @Import("args")
-  Object[] getArguments();
+	@Import("args")
+	void setArguments(Object[] args);
 
-  @Import("args")
-  void setArguments(Object[] args);
+	@Import("widget")
+	Widget getSource();
 
-  @Import("widget")
-  Widget getSource();
+	@Import("widget")
+	RSScriptEvent setSource(Widget widget);
 
-  @Import("widget")
-  RSScriptEvent setSource(Widget widget);
+	@Import("opIndex")
+	int getOp();
 
-  @Import("opIndex")
-  int getOp();
+	@Import("targetName")
+	String getOpbase();
 
-  @Import("targetName")
-  String getOpbase();
+	@Import("mouseX")
+	int getMouseX();
 
-  @Import("mouseX")
-  int getMouseX();
+	@Import("mouseY")
+	int getMouseY();
 
-  @Import("keyTyped")
-    // shit name
-  int getTypedKeyCode();
+	@Import("keyTyped")
+		// shit name
+	int getTypedKeyCode();
 
-  @Import("keyPressed")
-    // also a shit name
-  int getTypedKeyChar();
+	@Import("keyPressed")
+		// also a shit name
+	int getTypedKeyChar();
 }

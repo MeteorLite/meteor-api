@@ -29,25 +29,23 @@ import java.util.List;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.StackContext;
 
-public interface DupInstruction {
+public interface DupInstruction
+{
+	StackContext getOriginal(StackContext sctx);
+	
+	StackContext getOtherBranch(StackContext sctx);
 
-  StackContext getOriginal(StackContext sctx);
+	/**
+	 * get the duplicated stackcontexts (which is popped from this)
+	 * @param ictx instruction context for this instruction
+	 * @return
+	 */
+	List<StackContext> getDuplicated(InstructionContext ictx);
 
-  StackContext getOtherBranch(StackContext sctx);
-
-  /**
-   * get the duplicated stackcontexts (which is popped from this)
-   *
-   * @param ictx instruction context for this instruction
-   * @return
-   */
-  List<StackContext> getDuplicated(InstructionContext ictx);
-
-  /**
-   * get the copied stackcontexts (pushed from this)
-   *
-   * @param ictx
-   * @return
-   */
-  List<StackContext> getCopies(InstructionContext ictx);
+	/**
+	 * get the copied stackcontexts (pushed from this)
+	 * @param ictx
+	 * @return
+	 */
+	List<StackContext> getCopies(InstructionContext ictx);
 }

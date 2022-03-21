@@ -27,13 +27,13 @@ package net.runelite.asm.attributes.code.instruction.types;
 import java.util.List;
 import net.runelite.asm.Method;
 
-public interface InvokeInstruction extends MappableInstruction {
+public interface InvokeInstruction extends MappableInstruction
+{
+	void removeParameter(int idx);
 
-  void removeParameter(int idx);
+	net.runelite.asm.pool.Method getMethod();
 
-  net.runelite.asm.pool.Method getMethod();
+	void setMethod(net.runelite.asm.pool.Method method);
 
-  void setMethod(net.runelite.asm.pool.Method method);
-
-  List<Method> getMethods();
+	List<Method> getMethods();
 }

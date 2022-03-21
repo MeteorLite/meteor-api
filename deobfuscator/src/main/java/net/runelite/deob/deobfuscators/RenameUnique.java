@@ -36,70 +36,64 @@ import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.util.NameMappings;
 
-public class RenameUnique implements Deobfuscator {
+public class RenameUnique implements Deobfuscator
+{
+	private void generateClassNames(NameMappings map, ClassGroup group)
+	{
+		int i = 0;
+		for (ClassFile cf : group.getClasses())
+			if (cf.getName().length() <= Deob.OBFUSCATED_NAME_MAX_LEN)
+				map.map(cf.getPoolClass(), "class" + i++);
+		map.setClasses(i);
+	}
 
-  private void generateClassNames(NameMappings map, ClassGroup group) {
-    int i = 0;
-    for (ClassFile cf : group.getClasses()) {
-      if (cf.getName().length() <= Deob.OBFUSCATED_NAME_MAX_LEN) {
-        map.map(cf.getPoolClass(), "class" + i++);
-      }
-    }
-    map.setClasses(i);
-  }
+	private void generateFieldNames(NameMappings map, ClassGroup group)
+	{
+		int i = 0;
+		for (ClassFile cf : group.getClasses())
+			for (Field field : cf.getFields())
+				if (Deob.isObfuscated(field.getName()) && !field.getName().equals(DeobAnnotations.getExportedName(field)))
+					map.map(field.getPoolField(), "field" + i++);
+		map.setFields(i);
+	}
 
-  private void generateFieldNames(NameMappings map, ClassGroup group) {
-    int i = 0;
-    for (ClassFile cf : group.getClasses()) {
-      for (Field field : cf.getFields()) {
-        if (Deob.isObfuscated(field.getName()) && !field.getName()
-            .equals(DeobAnnotations.getExportedName(field))) {
-          map.map(field.getPoolField(), "field" + i++);
-        }
-      }
-    }
-    map.setFields(i);
-  }
+	private void generateMethodNames(NameMappings map, ClassGroup group)
+	{
+		int i = 0;
+		for (ClassFile cf : group.getClasses())
+			for (Method method : cf.getMethods())
+			{
+				if (!Deob.isObfuscated(method.getName()) || method.getName().equals(DeobAnnotations.getExportedName(method)))
+					continue;
 
-  private void generateMethodNames(NameMappings map, ClassGroup group) {
-    int i = 0;
-    for (ClassFile cf : group.getClasses()) {
-      for (Method method : cf.getMethods()) {
-        if (!Deob.isObfuscated(method.getName()) || method.getName()
-            .equals(DeobAnnotations.getExportedName(method))) {
-          continue;
-        }
+				List<Method> virtualMethods = VirtualMethods.getVirtualMethods(method);
+				assert !virtualMethods.isEmpty();
 
-        List<Method> virtualMethods = VirtualMethods.getVirtualMethods(method);
-        assert !virtualMethods.isEmpty();
+				String name;
+				if (virtualMethods.size() == 1)
+					name = "method" + i++;
+				else
+					name = "vmethod" + i++;
 
-        String name;
-        if (virtualMethods.size() == 1) {
-          name = "method" + i++;
-        } else {
-          name = "vmethod" + i++;
-        }
+				for (Method m : virtualMethods)
+					map.map(m.getPoolMethod(), name);
+			}
+		map.setMethods(i);
+	}
 
-        for (Method m : virtualMethods) {
-          map.map(m.getPoolMethod(), name);
-        }
-      }
-    }
-    map.setMethods(i);
-  }
+	@Override
+	public void run(ClassGroup group)
+	{
+		group.buildClassGraph();
+		group.lookup();
 
-  @Override
-  public void run(ClassGroup group) {
-    group.buildClassGraph();
-    group.lookup();
+		NameMappings mappings = new NameMappings();
 
-    NameMappings mappings = new NameMappings();
+		this.generateClassNames(mappings, group);
+		this.generateFieldNames(mappings, group);
+		this.generateMethodNames(mappings, group);
 
-    this.generateClassNames(mappings, group);
-    this.generateFieldNames(mappings, group);
-    this.generateMethodNames(mappings, group);
-
-    Renamer renamer = new Renamer(mappings);
-    renamer.run(group);
-  }
+		Renamer renamer = new Renamer(mappings);
+		renamer.run(group);
+	}
 }

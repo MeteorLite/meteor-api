@@ -25,11 +25,21 @@
 package net.runelite.mixins;
 
 import eventbus.Events;
-import net.runelite.api.SoundEffectVolume;
 import eventbus.events.AreaSoundEffectPlayed;
 import eventbus.events.SoundEffectPlayed;
-import net.runelite.api.mixins.*;
-import net.runelite.rs.api.*;
+import net.runelite.api.SoundEffectVolume;
+import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.FieldHook;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.rs.api.RSActor;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSPcmStream;
+import net.runelite.rs.api.RSRawPcmStream;
+import net.runelite.rs.api.RSRawSound;
+import net.runelite.rs.api.RSSoundEffect;
 
 @Mixin(RSClient.class)
 public abstract class SoundEffectMixin implements RSClient
@@ -43,18 +53,11 @@ public abstract class SoundEffectMixin implements RSClient
 	@Inject
 	private static RSActor lastSoundEffectSourceActor;
 
-	@Inject
-	private static int lastSoundEffectSourceNPCid;
-
 	@Copy("updateActorSequence")
 	@Replace("updateActorSequence")
 	@SuppressWarnings("InfiniteRecursion")
 	public static void copy$updateActorSequence(RSActor actor, int size)
 	{
-		if (actor instanceof RSNPC)
-		{
-			lastSoundEffectSourceNPCid = ((RSNPC) actor).getId();
-		}
 		lastSoundEffectSourceActor = actor;
 
 		copy$updateActorSequence(actor, size);
@@ -76,8 +79,9 @@ public abstract class SoundEffectMixin implements RSClient
 			if (packedLocation == 0)
 			{
 				// Regular sound effect
-				SoundEffectPlayed event = new SoundEffectPlayed(lastSoundEffectSourceActor, lastSoundEffectSourceNPCid,
-						client.getQueuedSoundEffectIDs()[soundIndex], client.getQueuedSoundEffectDelays()[soundIndex], false);
+				SoundEffectPlayed event = new SoundEffectPlayed(lastSoundEffectSourceActor,
+						client.getQueuedSoundEffectIDs()[soundIndex],
+						client.getQueuedSoundEffectDelays()[soundIndex]);
 				client.getCallbacks().post(Events.SOUND_EFFECT_PLAYED, event);
 				consumed = event.getConsumed();
 			}
@@ -89,8 +93,9 @@ public abstract class SoundEffectMixin implements RSClient
 				int y = (packedLocation >> 8) & 0xFF;
 				int range = (packedLocation) & 0xFF;
 
-				AreaSoundEffectPlayed event = new AreaSoundEffectPlayed(lastSoundEffectSourceActor, client.getQueuedSoundEffectIDs()[soundIndex],
-						x, y, range, client.getQueuedSoundEffectDelays()[soundIndex], false);
+				AreaSoundEffectPlayed event = new AreaSoundEffectPlayed(lastSoundEffectSourceActor,
+						client.getQueuedSoundEffectIDs()[soundIndex], x, y, range,
+						client.getQueuedSoundEffectDelays()[soundIndex]);
 				client.getCallbacks().post(Events.AREA_SOUND_EFFECT_PLAYED, event);
 				consumed = event.getConsumed();
 			}
@@ -164,7 +169,7 @@ public abstract class SoundEffectMixin implements RSClient
 
 		RSRawSound rawAudioNode = soundEffect.toRawAudioNode().applyResampler(getSoundEffectResampler());
 		RSRawPcmStream rawPcmStream = createRawPcmStream(rawAudioNode, 100, volume);
-		rawPcmStream.setNumLoops$api(1);
+		rawPcmStream.setNumLoops(1);
 
 		getSoundEffectAudioQueue().addSubStream((RSPcmStream) rawPcmStream);
 	}

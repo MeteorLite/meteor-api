@@ -47,229 +47,258 @@ import net.runelite.deob.deobfuscators.mapping.MappingExecutorUtil;
 import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.MethodVisitor;
 
-public class InvokeSpecial extends Instruction implements InvokeInstruction {
+public class InvokeSpecial extends Instruction implements InvokeInstruction
+{
+	private Method method;
+	private net.runelite.asm.Method myMethod;
 
-  private Method method;
-  private net.runelite.asm.Method myMethod;
+	public InvokeSpecial(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-  public InvokeSpecial(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	public InvokeSpecial(Instructions instructions, Method method)
+	{
+		super(instructions, InstructionType.INVOKESPECIAL);
 
-  public InvokeSpecial(Instructions instructions, Method method) {
-    super(instructions, InstructionType.INVOKESPECIAL);
+		this.method = method;
+	}
 
-    this.method = method;
-  }
+	public InvokeSpecial(Instructions instructions, net.runelite.asm.Method method)
+	{
+		super(instructions, InstructionType.INVOKESPECIAL);
+		this.method = method.getPoolMethod();
+		this.myMethod = method;
+	}
 
-  public InvokeSpecial(Instructions instructions, net.runelite.asm.Method method)
-  {
-    super(instructions, InstructionType.INVOKESPECIAL);
-    this.method = method.getPoolMethod();
-    this.myMethod = method;
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitMethodInsn(this.getType().getCode(),
+			method.getClazz().getName(),
+			method.getName(),
+			method.getType().toString(),
+			false);
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitMethodInsn(this.getType().getCode(),
-        method.getClazz().getName(),
-        method.getName(),
-        method.getType().toString(),
-        false);
-  }
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<net.runelite.asm.Method> getMethods()
+	{
+		return myMethod != null ? Arrays.asList(myMethod) : Collections.EMPTY_LIST;
+	}
 
-  @Override
-  @SuppressWarnings("unchecked")
-  public List<net.runelite.asm.Method> getMethods() {
-    return myMethod != null ? Arrays.asList(myMethod) : Collections.EMPTY_LIST;
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
+		Stack stack = frame.getStack();
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-    Stack stack = frame.getStack();
+		int count = method.getType().size();
 
-    int count = method.getType().size();
+		for (int i = 0; i < count; ++i)
+		{
+			StackContext arg = stack.pop();
+			ins.pop(arg);
+		}
 
-    for (int i = 0; i < count; ++i) {
-      StackContext arg = stack.pop();
-      ins.pop(arg);
-    }
+		StackContext object = stack.pop();
+		ins.pop(object);
 
-    StackContext object = stack.pop();
-    ins.pop(object);
+		if (!method.getType().isVoid())
+		{
+			StackContext ctx = new StackContext(ins,
+				method.getType().getReturnValue(),
+				Value.UNKNOWN
+			);
+			stack.push(ctx);
 
-    if (!method.getType().isVoid()) {
-      StackContext ctx = new StackContext(ins,
-          method.getType().getReturnValue(),
-          Value.UNKNOWN
-      );
-      stack.push(ctx);
+			ins.push(ctx);
+		}
 
-      ins.push(ctx);
-    }
+		if (myMethod != null)
+		{
+			ins.invoke(myMethod);
 
-    if (myMethod != null) {
-      ins.invoke(myMethod);
+			assert myMethod.getCode() != null;
 
-      assert myMethod.getCode() != null;
+			// add possible method call to execution
+			Execution execution = frame.getExecution();
+			execution.invoke(ins, myMethod);
 
-      // add possible method call to execution
-      Execution execution = frame.getExecution();
-      execution.invoke(ins, myMethod);
+			frame.getExecution().order(frame, myMethod);
+		}
 
-      frame.getExecution().order(frame, myMethod);
-    }
+		return ins;
+	}
 
-    return ins;
-  }
+	@Override
+	public String toString()
+	{
+		return "invokespecial " + method + " in " + this.getInstructions().getCode().getMethod();
+	}
 
-  @Override
-  public String toString() {
-    return "invokespecial " + method + " in " + this.getInstructions().getCode().getMethod();
-  }
+	@Override
+	public void removeParameter(int idx)
+	{
+		net.runelite.asm.pool.Class clazz = method.getClazz();
 
-  @Override
-  public void removeParameter(int idx) {
-    net.runelite.asm.pool.Class clazz = method.getClazz();
+		// create new signature
+		Signature sig = new Signature(method.getType());
+		sig.remove(idx);
 
-    // create new signature
-    Signature sig = new Signature(method.getType());
-    sig.remove(idx);
+		// create new method pool object
+		method = new Method(clazz, method.getName(), sig);
+	}
 
-    // create new method pool object
-    method = new Method(clazz, method.getName(), sig);
-  }
+	@Override
+	public Method getMethod()
+	{
+		return method;
+	}
 
-  @Override
-  public Method getMethod() {
-    return method;
-  }
+	@Override
+	public void setMethod(Method method)
+	{
+		this.method = method;
+	}
 
-  @Override
-  public void setMethod(Method method) {
-    this.method = method;
-  }
+	@Override
+	public void lookup()
+	{
+		myMethod = null;
+		ClassGroup group = this.getInstructions().getCode().getMethod().getClassFile().getGroup();
 
-  @Override
-  public void lookup() {
-    myMethod = null;
-    ClassGroup group = this.getInstructions().getCode().getMethod().getClassFile().getGroup();
+		ClassFile otherClass = group.findClass(method.getClazz().getName());
+		if (otherClass == null)
+		{
+			return; // not our class
+		}
 
-    ClassFile otherClass = group.findClass(method.getClazz().getName());
-    if (otherClass == null) {
-      return; // not our class
-    }
+		net.runelite.asm.Method other = otherClass.findMethod(method.getName(), method.getType());
+		if (other == null)
+		{
+			return;
+		}
 
-    net.runelite.asm.Method other = otherClass.findMethod(method.getName(), method.getType());
-    if (other == null) {
-      return;
-    }
+		myMethod = other;
+	}
 
-    myMethod = other;
-  }
+	@Override
+	public void regeneratePool()
+	{
+		if (myMethod != null)
+		{
+			method = myMethod.getPoolMethod();
+		}
+	}
 
-  @Override
-  public void regeneratePool() {
-    if (myMethod != null) {
-      method = myMethod.getPoolMethod();
-    }
-  }
+	@Override
+	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+	{
+		InvokeSpecial otherIv = (InvokeSpecial) other.getInstruction();
 
-  @Override
-  public void map(ParallelExecutorMapping mapping, InstructionContext ctx,
-      InstructionContext other) {
-    InvokeSpecial otherIv = (InvokeSpecial) other.getInstruction();
+		List<net.runelite.asm.Method> myMethods = this.getMethods(),
+			otherMethods = otherIv.getMethods();
 
-    List<net.runelite.asm.Method> myMethods = this.getMethods(),
-        otherMethods = otherIv.getMethods();
+		assert myMethods.size() == otherMethods.size();
 
-    assert myMethods.size() == otherMethods.size();
+		for (int i = 0; i < myMethods.size(); ++i)
+		{
+			mapping.map(this, myMethods.get(i), otherMethods.get(i));
+		}
 
-    for (int i = 0; i < myMethods.size(); ++i) {
-      mapping.map(this, myMethods.get(i), otherMethods.get(i));
-    }
+		for (int i = 0; i < ctx.getPops().size(); ++i)
+		{
+			StackContext s1 = ctx.getPops().get(i),
+				s2 = other.getPops().get(i);
 
-    for (int i = 0; i < ctx.getPops().size(); ++i) {
-      StackContext s1 = ctx.getPops().get(i),
-          s2 = other.getPops().get(i);
+			InstructionContext base1 = MappingExecutorUtil.resolve(s1.getPushed(), s1);
+			InstructionContext base2 = MappingExecutorUtil.resolve(s2.getPushed(), s2);
 
-      InstructionContext base1 = MappingExecutorUtil.resolve(s1.getPushed(), s1);
-      InstructionContext base2 = MappingExecutorUtil.resolve(s2.getPushed(), s2);
+			if (base1.getInstruction() instanceof GetFieldInstruction && base2.getInstruction() instanceof GetFieldInstruction)
+			{
+				GetFieldInstruction gf1 = (GetFieldInstruction) base1.getInstruction(),
+					gf2 = (GetFieldInstruction) base2.getInstruction();
 
-      if (base1.getInstruction() instanceof GetFieldInstruction && base2
-          .getInstruction() instanceof GetFieldInstruction) {
-        GetFieldInstruction gf1 = (GetFieldInstruction) base1.getInstruction(),
-            gf2 = (GetFieldInstruction) base2.getInstruction();
+				Field f1 = gf1.getMyField(),
+					f2 = gf2.getMyField();
 
-        Field f1 = gf1.getMyField(),
-            f2 = gf2.getMyField();
+				if (f1 != null && f2 != null)
+				{
+					mapping.map(this, f1, f2);
+				}
+			}
+		}
 
-        if (f1 != null && f2 != null) {
-          mapping.map(this, f1, f2);
-        }
-      }
-    }
+		/* map field that was invoked on */
+		StackContext object1 = ctx.getPops().get(method.getType().size()),
+			object2 = other.getPops().get(otherIv.method.getType().size());
 
-    /* map field that was invoked on */
-    StackContext object1 = ctx.getPops().get(method.getType().size()),
-        object2 = other.getPops().get(otherIv.method.getType().size());
+		InstructionContext base1 = MappingExecutorUtil.resolve(object1.getPushed(), object1);
+		InstructionContext base2 = MappingExecutorUtil.resolve(object2.getPushed(), object2);
 
-    InstructionContext base1 = MappingExecutorUtil.resolve(object1.getPushed(), object1);
-    InstructionContext base2 = MappingExecutorUtil.resolve(object2.getPushed(), object2);
+		if (base1.getInstruction() instanceof GetFieldInstruction && base2.getInstruction() instanceof GetFieldInstruction)
+		{
+			GetFieldInstruction gf1 = (GetFieldInstruction) base1.getInstruction(),
+				gf2 = (GetFieldInstruction) base2.getInstruction();
 
-    if (base1.getInstruction() instanceof GetFieldInstruction && base2
-        .getInstruction() instanceof GetFieldInstruction) {
-      GetFieldInstruction gf1 = (GetFieldInstruction) base1.getInstruction(),
-          gf2 = (GetFieldInstruction) base2.getInstruction();
+			Field f1 = gf1.getMyField(),
+				f2 = gf2.getMyField();
 
-      Field f1 = gf1.getMyField(),
-          f2 = gf2.getMyField();
+			if (f1 != null && f2 != null)
+			{
+				mapping.map(this, f1, f2);
+			}
+		}
+	}
 
-      if (f1 != null && f2 != null) {
-        mapping.map(this, f1, f2);
-      }
-    }
-  }
+	@Override
+	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	{
+		if (thisIc.getInstruction().getClass() != otherIc.getInstruction().getClass())
+		{
+			return false;
+		}
 
-  @Override
-  public boolean isSame(InstructionContext thisIc, InstructionContext otherIc) {
-    if (thisIc.getInstruction().getClass() != otherIc.getInstruction().getClass()) {
-      return false;
-    }
+		InvokeSpecial thisIi = (InvokeSpecial) thisIc.getInstruction(),
+			otherIi = (InvokeSpecial) otherIc.getInstruction();
 
-    InvokeSpecial thisIi = (InvokeSpecial) thisIc.getInstruction(),
-        otherIi = (InvokeSpecial) otherIc.getInstruction();
+		if (!MappingExecutorUtil.isMaybeEqual(thisIi.method.getType(), otherIi.method.getType()))
+		{
+			return false;
+		}
 
-    if (!MappingExecutorUtil.isMaybeEqual(thisIi.method.getType(), otherIi.method.getType())) {
-      return false;
-    }
+		List<net.runelite.asm.Method> thisMethods = thisIi.getMethods(),
+			otherMethods = otherIi.getMethods();
 
-    List<net.runelite.asm.Method> thisMethods = thisIi.getMethods(),
-        otherMethods = otherIi.getMethods();
+		if (thisMethods.size() != otherMethods.size())
+		{
+			return false;
+		}
 
-    if (thisMethods.size() != otherMethods.size()) {
-      return false;
-    }
+		for (int i = 0; i < thisMethods.size(); ++i)
+		{
+			net.runelite.asm.Method m1 = thisMethods.get(i);
+			net.runelite.asm.Method m2 = otherMethods.get(i);
 
-    for (int i = 0; i < thisMethods.size(); ++i) {
-      net.runelite.asm.Method m1 = thisMethods.get(i);
-      net.runelite.asm.Method m2 = otherMethods.get(i);
+			if (!MappingExecutorUtil.isMaybeEqual(m1.getClassFile(), m2.getClassFile()))
+			{
+				return false;
+			}
 
-      if (!MappingExecutorUtil.isMaybeEqual(m1.getClassFile(), m2.getClassFile())) {
-        return false;
-      }
+			if (!MappingExecutorUtil.isMaybeEqual(m1.getDescriptor(), m2.getDescriptor()))
+			{
+				return false;
+			}
+		}
 
-      if (!MappingExecutorUtil.isMaybeEqual(m1.getDescriptor(), m2.getDescriptor())) {
-        return false;
-      }
-    }
+		return true;
+	}
 
-    return true;
-  }
-
-  @Override
-  public boolean canMap(InstructionContext thisIc) {
-    return MappingExecutorUtil.isMappable(this);
-  }
+	@Override
+	public boolean canMap(InstructionContext thisIc)
+	{
+		return MappingExecutorUtil.isMappable(this);
+	}
 }

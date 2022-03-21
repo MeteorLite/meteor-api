@@ -26,18 +26,17 @@ package net.runelite.api;
 
 
 public interface FriendsChatManager extends NameableContainer<FriendsChatMember> {
+    /**
+     * Gets the owner of the currently joined friends chat
+     *
+     * @return
+     */
+    String getOwner();
 
-  /**
-   * Gets the owner of the currently joined friends chat
-   *
-   * @return
-   */
-  String getOwner();
-
-  /**
-   * Gets the name of the currently joined friends chat
-   *
-   * @return
-   */
-  String getName();
+    /**
+     * Gets the name of the currently joined friends chat
+     *
+     * @return
+     */
+    String getName();
 }

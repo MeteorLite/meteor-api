@@ -48,61 +48,70 @@ import net.runelite.asm.attributes.code.instructions.PutStatic;
 import net.runelite.asm.attributes.code.instructions.VReturn;
 import net.runelite.asm.signature.Signature;
 
-public class InjectSetter {
+public class InjectSetter
+{
+	public static void inject(ClassFile targetClass, RSApiMethod apiMethod, Field field, Number getter)
+	{
+		if (targetClass.findMethod(apiMethod.getName(), apiMethod.getSignature()) != null)
+		{
+			throw new InjectException("Duplicate setter method " + apiMethod.getMethod().toString());
+		}
 
-  public static void inject(ClassFile targetClass, RSApiMethod apiMethod, Field field,
-      Number getter) {
-    if (targetClass.findMethod(apiMethod.getName(), apiMethod.getSignature()) != null) {
-      throw new InjectException("Duplicate setter method " + apiMethod.getMethod().toString());
-    }
+		final String name = apiMethod.getName();
+		final Signature sig = apiMethod.getSignature();
 
-    final String name = apiMethod.getName();
-    final Signature sig = apiMethod.getSignature();
+		final Method method = new Method(targetClass, name, sig);
+		method.setPublic();
 
-    final Method method = new Method(targetClass, name, sig);
-    method.setPublic();
+		final Code code = new Code(method);
+		method.setCode(code);
 
-    final Code code = new Code(method);
-    method.setCode(code);
+		final Instructions instructions = code.getInstructions();
+		final List<Instruction> ins = instructions.getInstructions();
 
-    final Instructions instructions = code.getInstructions();
-    final List<Instruction> ins = instructions.getInstructions();
+		// load this
+		if (!field.isStatic())
+		{
+			ins.add(new ALoad(instructions, 0));
+		}
 
-    // load this
-    if (!field.isStatic()) {
-      ins.add(new ALoad(instructions, 0));
-    }
+		// load argument
+		final Type argumentType = sig.getTypeOfArg(0);
+		ins.add(InjectUtil.createLoadForTypeIndex(instructions, argumentType, 1));
 
-    // load argument
-    final Type argumentType = sig.getTypeOfArg(0);
-    ins.add(InjectUtil.createLoadForTypeIndex(instructions, argumentType, 1));
+		// cast argument to field type
+		final Type fieldType = field.getType();
+		if (!argumentType.equals(fieldType))
+		{
+			CheckCast checkCast = new CheckCast(instructions);
+			checkCast.setType(fieldType);
+			ins.add(checkCast);
+		}
 
-    // cast argument to field type
-    final Type fieldType = field.getType();
-    if (!argumentType.equals(fieldType)) {
-      CheckCast checkCast = new CheckCast(instructions);
-      checkCast.setType(fieldType);
-      ins.add(checkCast);
-    }
+		if (getter != null)
+		{
+			InjectUtil.injectObfuscatedSetter(getter, instructions, ins::add);
+		}
 
-    if (getter != null) {
-      InjectUtil.injectObfuscatedSetter(getter, instructions, ins::add);
-    }
+		if (field.isStatic())
+		{
+			ins.add(new PutStatic(instructions, field));
+		}
+		else
+		{
+			ins.add(new PutField(instructions, field));
+		}
 
-    if (field.isStatic()) {
-      ins.add(new PutStatic(instructions, field));
-    } else {
-      ins.add(new PutField(instructions, field));
-    }
+		if (!apiMethod.getSignature().getReturnValue().equals(Type.VOID))
+		{
+			ins.add(new ALoad(instructions, 0));
+			ins.add(InjectUtil.createReturnForType(instructions, apiMethod.getSignature().getReturnValue()));
+		}
+		else
+		{
+			ins.add(new VReturn(instructions));
+		}
 
-    if (!apiMethod.getSignature().getReturnValue().equals(Type.VOID)) {
-      ins.add(new ALoad(instructions, 0));
-      ins.add(
-          InjectUtil.createReturnForType(instructions, apiMethod.getSignature().getReturnValue()));
-    } else {
-      ins.add(new VReturn(instructions));
-    }
-
-    targetClass.addMethod(method);
-  }
+		targetClass.addMethod(method);
+	}
 }

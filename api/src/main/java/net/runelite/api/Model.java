@@ -24,105 +24,69 @@
  */
 package net.runelite.api;
 
-import net.runelite.api.model.Triangle;
-import net.runelite.api.model.Vertex;
-
-import java.util.List;
-
 /**
  * Represents the model of an object.
  */
-public interface Model extends Renderable {
-  /**
-   * Gets a list of all vertices of the model.
-   *
-   * @return the vertices
-   */
-  List<Vertex> getVertices();
+public interface Model extends Mesh, Renderable {
+    int[] getFaceColors1();
 
-  /**
-   * Gets a list of all triangles of the model.
-   *
-   * @return the triangle
-   */
-  List<Triangle> getTriangles();
+    int[] getFaceColors2();
 
-  int getVerticesCount();
+    int[] getFaceColors3();
 
-  int[] getVerticesX();
+    int getSceneId();
 
-  int[] getVerticesY();
+    void setSceneId(int sceneId);
 
-  int[] getVerticesZ();
+    int getBufferOffset();
 
-  int getTrianglesCount();
+    void setBufferOffset(int bufferOffset);
 
-  int[] getTrianglesX();
+    int getUvBufferOffset();
 
-  int[] getTrianglesY();
+    void setUvBufferOffset(int bufferOffset);
 
-  int[] getTrianglesZ();
+    int getBottomY();
 
-  int[] getFaceColors1();
+    void calculateBoundsCylinder();
 
-  int[] getFaceColors2();
+    byte[] getFaceRenderPriorities();
 
-  int[] getFaceColors3();
+    int getRadius();
 
-  byte[] getTriangleTransparencies();
+    float[] getFaceTextureUVCoordinates();
 
-  int getSceneId();
+    void calculateExtreme(int orientation);
 
-  void setSceneId(int sceneId);
+    int getCenterX();
 
-  int getBufferOffset();
+    int getCenterY();
 
-  void setBufferOffset(int bufferOffset);
+    int getCenterZ();
 
-  int getUvBufferOffset();
+    int getExtremeX();
 
-  void setUvBufferOffset(int bufferOffset);
+    int getExtremeY();
 
-  int getBottomY();
+    int getExtremeZ();
 
-  void calculateBoundsCylinder$api();
+    int getXYZMag();
 
-  byte[] getFaceRenderPriorities();
+    boolean isClickable();
 
-  int getRadius();
+    void drawFace(int face);
 
-  short[] getFaceTextures();
+    int[] getVertexNormalsX();
 
-  void calculateExtreme(int orientation);
+    int[] getVertexNormalsY();
 
-  int getCenterX();
+    int[] getVertexNormalsZ();
 
-  int getCenterY();
+    byte getOverrideAmount();
 
-  int getCenterZ();
+    byte getOverrideHue();
 
-  int getExtremeX();
+    byte getOverrideSaturation();
 
-  int getExtremeY();
-
-  int getExtremeZ();
-
-  int getXYZMag();
-
-  boolean isClickable();
-
-  void drawFace$api(int face);
-
-  void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates);
-
-  int[] getVertexNormalsX();
-  void setVertexNormalsX(int[] vertexNormalsX);
-
-  int[] getVertexNormalsY();
-  void setVertexNormalsY(int[] vertexNormalsY);
-
-  int[] getVertexNormalsZ();
-  void setVertexNormalsZ(int[] vertexNormalsZ);
-
-  float[] getFaceTextureUVCoordinates();
+    byte getOverrideLuminance();
 }

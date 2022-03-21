@@ -27,32 +27,41 @@ package net.runelite.deob.deobfuscators.transformers.buffer;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.Field;
 import net.runelite.asm.Type;
-public class BufferPayloadFinder {
 
-  private final ClassFile bufferClass;
+public class BufferPayloadFinder
+{
+	private final ClassFile bufferClass;
 
-  private Field offset;
-  private Field buffer;
+	private Field offset;
+	private Field buffer;
 
-  public BufferPayloadFinder(ClassFile bufferClass) {
-    this.bufferClass = bufferClass;
-  }
+	public BufferPayloadFinder(ClassFile bufferClass)
+	{
+		this.bufferClass = bufferClass;
+	}
 
-  public void find() {
-    for (Field field : bufferClass.getFields()) {
-      if (field.getType().equals(Type.INT)) {
-        offset = field;
-      } else if (field.getType().equals(new Type("[B"))) {
-        buffer = field;
-      }
-    }
-  }
+	public void find()
+	{
+		for (Field field : bufferClass.getFields())
+		{
+			if (field.getType().equals(Type.INT))
+			{
+				offset = field;
+			}
+			else if (field.getType().equals(new Type("[B")))
+			{
+				buffer = field;
+			}
+		}
+	}
 
-  public Field getOffset() {
-    return offset;
-  }
+	public Field getOffset()
+	{
+		return offset;
+	}
 
-  public Field getBuffer() {
-    return buffer;
-  }
+	public Field getBuffer()
+	{
+		return buffer;
+	}
 }

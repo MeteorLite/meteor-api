@@ -4,18 +4,17 @@ import net.runelite.api.IterableHashTable;
 import net.runelite.api.StructComposition;
 import net.runelite.mapping.Import;
 
-public interface RSStructComposition extends StructComposition {
+public interface RSStructComposition extends StructComposition
+{
+	int getId();
+	void setId(int id);
 
-  int getId();
+	@Import("params")
+	RSIterableNodeHashTable getParams();
 
-  void setId(int id);
+	@Import("params")
+	void setParams(IterableHashTable params);
 
-  @Import("params")
-  RSIterableNodeHashTable getParams();
-
-  @Import("params")
-  void setParams(IterableHashTable params);
-
-  @Import("params")
-  void setParams(RSIterableNodeHashTable params);
+	@Import("params")
+	void setParams(RSIterableNodeHashTable params);
 }

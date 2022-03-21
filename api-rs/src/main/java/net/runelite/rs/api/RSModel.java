@@ -30,159 +30,180 @@ import net.runelite.mapping.Import;
 
 public interface RSModel extends RSRenderable, Model
 {
-  @Import("verticesCount")
-  @Override
-  int getVerticesCount();
+	@Import("verticesCount")
+	@Override
+	int getVerticesCount();
 
-  @Import("verticesX")
-  @Override
-  int[] getVerticesX();
+	@Import("verticesX")
+	@Override
+	int[] getVerticesX();
 
-  @Import("verticesY")
-  @Override
-  int[] getVerticesY();
+	@Import("verticesY")
+	@Override
+	int[] getVerticesY();
 
-  @Import("verticesZ")
-  @Override
-  int[] getVerticesZ();
+	@Import("verticesZ")
+	@Override
+	int[] getVerticesZ();
 
-  @Import("indicesCount")
-  @Override
-  int getTrianglesCount();
+	@Import("indicesCount")
+	@Override
+	int getFaceCount();
 
-  @Import("indices1")
-  @Override
-  int[] getTrianglesX();
+	@Import("indices1")
+	@Override
+	int[] getFaceIndices1();
 
-  @Import("indices2")
-  @Override
-  int[] getTrianglesY();
+	@Import("indices2")
+	@Override
+	int[] getFaceIndices2();
 
-  @Import("indices3")
-  @Override
-  int[] getTrianglesZ();
+	@Import("indices3")
+	@Override
+	int[] getFaceIndices3();
 
-  @Import("faceColors1")
-  @Override
-  int[] getFaceColors1();
+	@Import("faceColors1")
+	@Override
+	int[] getFaceColors1();
 
-  @Import("faceColors2")
-  @Override
-  int[] getFaceColors2();
+	@Import("faceColors2")
+	@Override
+	int[] getFaceColors2();
 
-  @Import("faceColors3")
-  @Override
-  int[] getFaceColors3();
+	@Import("faceColors3")
+	@Override
+	int[] getFaceColors3();
 
-  @Import("faceAlphas")
-  @Override
-  byte[] getTriangleTransparencies();
+	@Import("faceAlphas")
+	@Override
+	byte[] getFaceTransparencies();
 
-  @Import("faceRenderPriorities")
-  @Override
-  byte[] getFaceRenderPriorities();
+	@Import("faceRenderPriorities")
+	@Override
+	byte[] getFaceRenderPriorities();
 
-  @Import("vertexLabels")
-  int[][] getVertexGroups();
+	@Import("vertexLabels")
+	int[][] getVertexGroups();
 
-  @Import("height")
-  @Override
-  int getModelHeight();
+	@Import("height")
+	@Override
+	int getModelHeight();
 
-  @Import("transform")
-  void animate(int type, int[] list, int x, int y, int z);
+	@Import("transform")
+	void animate(int type, int[] list, int x, int y, int z);
 
-  @Import("calculateBoundsCylinder")
-  @Override
-  void calculateBoundsCylinder$api();
+	@Import("calculateBoundsCylinder")
+	@Override
+	void calculateBoundsCylinder();
 
-  @Import("calculateBoundingBox")
-  @Override
-  void calculateExtreme(int orientation);
+	@Import("calculateBoundingBox")
+	@Override
+	void calculateExtreme(int orientation);
 
-  @Import("resetBounds")
-  void resetBounds$api();
+	@Import("resetBounds")
+	void resetBounds();
 
-  @Import("toSharedSequenceModel")
-  RSModel toSharedModel(boolean b);
+	@Import("toSharedSequenceModel")
+	RSModel toSharedModel(boolean b);
 
-  @Import("toSharedSpotAnimationModel")
-  RSModel toSharedSpotAnimModel(boolean b);
+	@Import("toSharedSpotAnimationModel")
+	RSModel toSharedSpotAnimModel(boolean b);
 
-  @Import("rotateY90Ccw")
-  void rotateY90Ccw$api();
+	@Import("rotateY90Ccw")
+	void rs$rotateY90Ccw();
 
-  @Import("rotateY180")
-  void rotateY180Ccw();
+	@Import("rotateY180")
+	void rs$rotateY180Ccw();
 
-  @Import("rotateY270Ccw")
-  void rotateY270Ccw$api();
+	@Import("rotateY270Ccw")
+	void rs$rotateY270Ccw();
 
-  @Import("radius")
-  @Override
-  int getRadius();
+	@Import("scale")
+	void rs$scale(int var1, int var2, int var3);
 
-  @Import("xMid")
-  @Override
-  int getCenterX();
+	@Import("offsetBy")
+	void rs$translate(int var1, int var2, int var3);
 
-  @Import("yMid")
-  @Override
-  int getCenterY();
+	@Import("radius")
+	@Override
+	int getRadius();
 
-  @Import("zMid")
-  @Override
-  int getCenterZ();
+	@Import("xMid")
+	@Override
+	int getCenterX();
 
-  @Import("xMidOffset")
-  @Override
-  int getExtremeX();
+	@Import("yMid")
+	@Override
+	int getCenterY();
 
-  @Import("yMidOffset")
-  @Override
-  int getExtremeY();
+	@Import("zMid")
+	@Override
+	int getCenterZ();
 
-  @Import("zMidOffset")
-  @Override
-  int getExtremeZ();
+	@Import("xMidOffset")
+	@Override
+	int getExtremeX();
 
-  @Import("faceTextures")
-  @Override
-  short[] getFaceTextures();
+	@Import("yMidOffset")
+	@Override
+	int getExtremeY();
 
-  @Import("xzRadius")
-  @Override
-  int getXYZMag();
+	@Import("zMidOffset")
+	@Override
+	int getExtremeZ();
 
-  @Import("isSingleTile")
-  @Override
-  boolean isClickable();
+	@Import("faceTextures")
+	@Override
+	short[] getFaceTextures();
 
-  @Import("drawFace")
-  @Override
-  void drawFace$api(int face);
+	@Import("xzRadius")
+	@Override
+	int getXYZMag();
 
-  void interpolateFrames(RSFrames frames, int frameId, RSFrames nextFrames, int nextFrameId, int interval, int intervalCount);
+	@Import("isSingleTile")
+	@Override
+	boolean isClickable();
 
-  /**
-   * Compute the convex hull of this model
-   */
-  Shape getConvexHull(int localX, int localY, int orientation, int tileHeight);
+	@Import("bottomY")
+	@Override
+	int getBottomY();;
+	
+	@Import("drawFace")
+	@Override
+	void drawFace(int face);
 
-  void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates);
+	void interpolateFrames(RSFrames frames, int frameId, RSFrames nextFrames, int nextFrameId, int interval, int intervalCount);
 
-  int[] getVertexNormalsX();
-  void setVertexNormalsX(int[] vertexNormalsX);
+	/**
+	 * Compute the convex hull of this model
+	 */
+	Shape getConvexHull(int localX, int localY, int orientation, int tileHeight);
 
-  int[] getVertexNormalsY();
-  void setVertexNormalsY(int[] vertexNormalsY);
+	float[] getFaceTextureUVCoordinates();
+	void setFaceTextureUVCoordinates(float[] faceTextureUVCoordinates);
 
-  int[] getVertexNormalsZ();
-  void setVertexNormalsZ(int[] vertexNormalsZ);
+	int[] getVertexNormalsX();
+	void setVertexNormalsX(int[] vertexNormalsX);
 
-  float[] getFaceTextureUVCoordinates();
+	int[] getVertexNormalsY();
+	void setVertexNormalsY(int[] vertexNormalsY);
 
-  @Import("bottomY")
-  @Override
-  int getBottomY();
+	int[] getVertexNormalsZ();
+	void setVertexNormalsZ(int[] vertexNormalsZ);
+
+	@Import("overrideAmount")
+	@Override
+	byte getOverrideAmount();
+
+	@Import("overrideHue")
+	@Override
+	byte getOverrideHue();
+
+	@Import("overrideSaturation")
+	@Override
+	byte getOverrideSaturation();
+
+	@Import("overrideLuminance")
+	@Override
+	byte getOverrideLuminance();
 }

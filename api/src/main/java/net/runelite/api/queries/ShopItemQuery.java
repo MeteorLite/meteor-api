@@ -24,42 +24,40 @@
  */
 package net.runelite.api.queries;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import net.runelite.api.Client;
 import net.runelite.api.QueryResults;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 public class ShopItemQuery extends WidgetItemQuery {
-
-  @Override
-  public QueryResults<WidgetItem> result(Client client) {
-    Collection<WidgetItem> widgetItems = getShopItems(client);
-    return new QueryResults<>(widgetItems.stream()
-        .filter(Objects::nonNull)
-        .filter(predicate)
-        .collect(Collectors.toList()));
-  }
-
-  private Collection<WidgetItem> getShopItems(Client client) {
-    Collection<WidgetItem> widgetItems = new ArrayList<>();
-    Widget shop = client.getWidget(300, 2);
-    if (shop != null && !shop.isHidden()) {
-      Widget[] children = shop.getDynamicChildren();
-      for (int i = 1; i < children.length; i++) {
-        Widget child = children[i];
-        // set bounds to same size as default inventory
-        Rectangle bounds = child.getBounds();
-        bounds.setBounds(bounds.x - 1, bounds.y - 1, 32, 32);
-        widgetItems.add(
-            new WidgetItem(client, child.getItemId(), child.getItemQuantity(), i - 1, bounds, child,
-                null)); // todo: maybe this shouldnt just be "false"
-      }
+    @Override
+    public QueryResults<WidgetItem> result(Client client) {
+        Collection<WidgetItem> widgetItems = getShopItems(client);
+        return new QueryResults<>(widgetItems.stream()
+                .filter(Objects::nonNull)
+                .filter(predicate)
+                .collect(Collectors.toList()));
     }
-    return widgetItems;
-  }
+
+    private Collection<WidgetItem> getShopItems(Client client) {
+        Collection<WidgetItem> widgetItems = new ArrayList<>();
+        Widget shop = client.getWidget(300, 2);
+        if (shop != null && !shop.isHidden()) {
+            Widget[] children = shop.getDynamicChildren();
+            for (int i = 1; i < children.length; i++) {
+                Widget child = children[i];
+                // set bounds to same size as default inventory
+                Rectangle bounds = child.getBounds();
+                bounds.setBounds(bounds.x - 1, bounds.y - 1, 32, 32);
+                widgetItems.add(new WidgetItem(child.getItemId(), child.getItemQuantity(), i - 1, bounds, child, null)); // todo: maybe this shouldnt just be "false"
+            }
+        }
+        return widgetItems;
+    }
 }

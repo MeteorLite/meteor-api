@@ -6,244 +6,244 @@ import net.runelite.mapping.Import;
 
 public interface RSObjectComposition extends ObjectComposition
 {
-  @Import("id")
-  @Override
-  int getId();
+	@Import("id")
+	@Override
+	int getId();
 
-  @Import("name")
-  @Override
-  String getName();
+	@Import("name")
+	@Override
+	String getName();
 
-  @Import("name")
-  void setName(String name);
+	@Import("name")
+	void setName(String name);
 
-  @Import("actions")
-  @Override
-  String[] getActions();
+	@Import("actions")
+	@Override
+	String[] getActions();
 
-  @Import("mapSceneId")
-  @Override
-  int getMapSceneId();
+	@Import("mapSceneId")
+	@Override
+	int getMapSceneId();
 
-  @Import("mapIconId")
-  @Override
-  int getMapIconId();
+	@Import("mapIconId")
+	@Override
+	int getMapIconId();
 
-  @Import("transforms")
-  @Override
-  int[] getImpostorIds();
+	@Import("transforms")
+	@Override
+	int[] getImpostorIds();
 
-  @Import("transform")
-  @Override
-  RSObjectComposition getImpostor();
+	@Import("transform")
+	@Override
+	RSObjectComposition getImpostor();
 
-  @Import("params")
-  RSIterableNodeHashTable getParams();
+	@Import("params")
+	RSIterableNodeHashTable getParams();
 
-  @Import("params")
-  void setParams(IterableHashTable params);
+	@Import("params")
+	void setParams(IterableHashTable params);
 
-  @Import("params")
-  void setParams(RSIterableNodeHashTable params);
+	@Import("params")
+	void setParams(RSIterableNodeHashTable params);
 
-  @Import("decodeNext")
-  void decodeNext(RSBuffer buffer, int opcode);
+	@Import("decodeNext")
+	void decodeNext(RSBuffer buffer, int opcode);
 
-  @Import("modelIds")
-  int[] getModelIds();
+	@Import("modelIds")
+	int[] getModelIds();
 
-  @Import("modelIds")
-  void setModelIds(int[] modelIds);
+	@Import("modelIds")
+	void setModelIds(int[] modelIds);
 
-  @Import("models")
-  int[] getModels();
+	@Import("models")
+	int[] getModels();
 
-  @Import("models")
-  void setModels(int[] models);
+	@Import("models")
+	void setModels(int[] models);
 
-  @Import("ObjectDefinition_isLowDetail")
-  boolean getObjectDefinitionIsLowDetail();
+	@Import("ObjectDefinition_isLowDetail")
+	boolean getObjectDefinitionIsLowDetail();
 
-  @Import("sizeX")
-  int getSizeX();
+	@Import("sizeX")
+	int getSizeX();
 
-  @Import("sizeX")
-  void setSizeX(int sizeX);
+	@Import("sizeX")
+	void setSizeX(int sizeX);
 
-  @Import("sizeY")
-  int getSizeY();
+	@Import("sizeY")
+	int getSizeY();
 
-  @Import("sizeY")
-  void setSizeY(int sizeY);
+	@Import("sizeY")
+	void setSizeY(int sizeY);
 
-  @Import("interactType")
-  int getInteractType();
+	@Import("interactType")
+	int getInteractType();
 
-  @Import("interactType")
-  void setInteractType(int interactType);
+	@Import("interactType")
+	void setInteractType(int interactType);
 
-  @Import("boolean1")
-  boolean getBoolean1();
+	@Import("boolean1")
+	boolean getBoolean1();
 
-  @Import("boolean1")
-  void setBoolean1(boolean boolean1);
+	@Import("boolean1")
+	void setBoolean1(boolean boolean1);
 
-  @Import("int1")
-  int getInt1();
+	@Import("int1")
+	int getInt1();
 
-  @Import("int1")
-  void setInt1(int int1);
+	@Import("int1")
+	void setInt1(int int1);
 
-  @Import("int2")
-  int getInt2();
+	@Import("int2")
+	int getInt2();
 
-  @Import("int2")
-  void setInt2(int int2);
+	@Import("int2")
+	void setInt2(int int2);
 
-  @Import("clipType")
-  int getClipType();
+	@Import("clipType")
+	int getClipType();
 
-  @Import("clipType")
-  void setClipType(int clipType);
+	@Import("clipType")
+	void setClipType(int clipType);
 
-  @Import("nonFlatShading")
-  boolean getNonFlatShading();
+	@Import("nonFlatShading")
+	boolean getNonFlatShading();
 
-  @Import("nonFlatShading")
-  void setNonFlatShading(boolean nonFlatShading);
+	@Import("nonFlatShading")
+	void setNonFlatShading(boolean nonFlatShading);
 
-  @Import("modelClipped")
-  void setModelClipped(boolean modelClipped);
+	@Import("modelClipped")
+	void setModelClipped(boolean modelClipped);
 
-  @Import("modelClipped")
-  boolean getModelClipped();
+	@Import("modelClipped")
+	boolean getModelClipped();
 
-  @Import("animationId")
-  int getAnimationId();
+	@Import("animationId")
+	int getAnimationId();
 
-  @Import("animationId")
-  void setAnimationId(int animationId);
+	@Import("animationId")
+	void setAnimationId(int animationId);
 
-  @Import("ambient")
-  int getAmbient();
+	@Import("ambient")
+	int getAmbient();
 
-  @Import("ambient")
-  void setAmbient(int ambient);
+	@Import("ambient")
+	void setAmbient(int ambient);
 
-  @Import("contrast")
-  int getContrast();
+	@Import("contrast")
+	int getContrast();
 
-  @Import("contrast")
-  void setContrast(int contrast);
+	@Import("contrast")
+	void setContrast(int contrast);
 
-  @Import("recolorFrom")
-  short[] getRecolorFrom();
+	@Import("recolorFrom")
+	short[] getRecolorFrom();
 
-  @Import("recolorFrom")
-  void setRecolorFrom(short[] recolorFrom);
+	@Import("recolorFrom")
+	void setRecolorFrom(short[] recolorFrom);
 
-  @Import("recolorTo")
-  short[] getRecolorTo();
+	@Import("recolorTo")
+	short[] getRecolorTo();
 
-  @Import("recolorTo")
-  void setRecolorTo(short[] recolorTo);
+	@Import("recolorTo")
+	void setRecolorTo(short[] recolorTo);
 
-  @Import("retextureFrom")
-  short[] getRetextureFrom();
+	@Import("retextureFrom")
+	short[] getRetextureFrom();
 
-  @Import("retextureFrom")
-  void setRetextureFrom(short[] retextureFrom);
+	@Import("retextureFrom")
+	void setRetextureFrom(short[] retextureFrom);
 
-  @Import("retextureTo")
-  short[] getRetextureTo();
+	@Import("retextureTo")
+	short[] getRetextureTo();
 
-  @Import("retextureTo")
-  void setRetextureTo(short[] retextureTo);
+	@Import("retextureTo")
+	void setRetextureTo(short[] retextureTo);
 
-  @Import("isRotated")
-  void setIsRotated(boolean rotated);
+	@Import("isRotated")
+	void setIsRotated(boolean rotated);
 
-  @Import("isRotated")
-  boolean getIsRotated();
+	@Import("isRotated")
+	boolean getIsRotated();
 
-  @Import("clipped")
-  void setClipped(boolean clipped);
+	@Import("clipped")
+	void setClipped(boolean clipped);
 
-  @Import("clipped")
-  boolean getClipped();
+	@Import("clipped")
+	boolean getClipped();
 
-  @Import("mapSceneId")
-  void setMapSceneId(int mapSceneId);
+	@Import("mapSceneId")
+	void setMapSceneId(int mapSceneId);
 
-  @Import("modelSizeX")
-  void setModelSizeX(int modelSizeX);
+	@Import("modelSizeX")
+	void setModelSizeX(int modelSizeX);
 
-  @Import("modelSizeX")
-  int getModelSizeX();
+	@Import("modelSizeX")
+	int getModelSizeX();
 
-  @Import("modelHeight")
-  void setModelHeight(int modelHeight);
+	@Import("modelHeight")
+	void setModelHeight(int modelHeight);
 
-  @Import("modelSizeY")
-  void setModelSizeY(int modelSizeY);
+	@Import("modelSizeY")
+	void setModelSizeY(int modelSizeY);
 
-  @Import("offsetX")
-  void setOffsetX(int modelSizeY);
+	@Import("offsetX")
+	void setOffsetX(int modelSizeY);
 
-  @Import("offsetHeight")
-  void setOffsetHeight(int offsetHeight);
+	@Import("offsetHeight")
+	void setOffsetHeight(int offsetHeight);
 
-  @Import("offsetY")
-  void setOffsetY(int offsetY);
+	@Import("offsetY")
+	void setOffsetY(int offsetY);
 
-  @Import("int3")
-  void setInt3(int int3);
+	@Import("int3")
+	void setInt3(int int3);
 
-  @Import("int5")
-  void setInt5(int int5);
+	@Import("int5")
+	void setInt5(int int5);
 
-  @Import("int6")
-  void setInt6(int int6);
+	@Import("int6")
+	void setInt6(int int6);
 
-  @Import("int7")
-  void setInt7(int int7);
+	@Import("int7")
+	void setInt7(int int7);
 
-  @Import("boolean2")
-  void setBoolean2(boolean boolean2);
+	@Import("boolean2")
+	void setBoolean2(boolean boolean2);
 
-  @Import("isSolid")
-  void setIsSolid(boolean isSolid);
+	@Import("isSolid")
+	void setIsSolid(boolean isSolid);
 
-  @Import("ambientSoundId")
-  void setAmbientSoundId(int ambientSoundId);
+	@Import("ambientSoundId")
+	void setAmbientSoundId(int ambientSoundId);
 
-  @Import("soundEffectIds")
-  void setSoundEffectIds(int[] soundEffectIds);
+	@Import("soundEffectIds")
+	void setSoundEffectIds(int[] soundEffectIds);
 
-  @Import("soundEffectIds")
-  int[] getSoundEffectIds();
+	@Import("soundEffectIds")
+	int[] getSoundEffectIds();
 
-  @Import("mapIconId")
-  void setMapIconId(int mapIconId);
+	@Import("mapIconId")
+	void setMapIconId(int mapIconId);
 
-  @Import("boolean3")
-  void setBoolean3(boolean boolean3);
+	@Import("boolean3")
+	void setBoolean3(boolean boolean3);
 
-  @Import("transformVarbit")
-  void setTransformVarbit(int transformVarbit);
+	@Import("transformVarbit")
+	void setTransformVarbit(int transformVarbit);
 
-  @Import("transformVarbit")
-  int getTransformVarbit();
+	@Import("transformVarbit")
+	int getTransformVarbit();
 
-  @Import("transformVarp")
-  void setTransformVarp(int transformVarp);
+	@Import("transformVarp")
+	void setTransformVarp(int transformVarp);
 
-  @Import("transformVarp")
-  int getTransformVarp();
+	@Import("transformVarp")
+	int getTransformVarp();
 
-  @Import("transforms")
-  void setTransforms(int[] transforms);
+	@Import("transforms")
+	void setTransforms(int[] transforms);
 
-  @Import("transforms")
-  int[] getTransforms();
+	@Import("transforms")
+	int[] getTransforms();
 }

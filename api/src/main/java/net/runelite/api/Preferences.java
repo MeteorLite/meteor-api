@@ -28,67 +28,50 @@ package net.runelite.api;
  * Stores the clients persisting preferences.
  */
 public interface Preferences {
+    /**
+     * Gets the remembered login username.
+     *
+     * @return the remembered username
+     */
+    String getRememberedUsername();
 
-  /**
-   * Gets the remembered login username.
-   *
-   * @return the remembered username
-   */
-  String getRememberedUsername();
+    /**
+     * Sets the remembered login username.
+     *
+     * @param username the new remembered username
+     */
+    void setRememberedUsername(String username);
 
-  /**
-   * Sets the remembered login username.
-   *
-   * @param username the new remembered username
-   */
-  void setRememberedUsername(String username);
+    /**
+     * Gets the sound effect volume
+     *
+     * @return volume 0-127 inclusive
+     */
+    int getSoundEffectVolume();
 
-  /**
-   * Gets the sound effect volume
-   *
-   * @return volume 0-127 inclusive
-   */
-  int getSoundEffectVolume();
+    /**
+     * Sets the sound effect volume
+     *
+     * @param volume 0-127 inclusive
+     */
+    void setSoundEffectVolume(int volume);
 
-  /**
-   * Sets the sound effect volume
-   *
-   * @param volume 0-127 inclusive
-   */
-  void setSoundEffectVolume(int volume);
+    /**
+     * Gets the area sound effect volume
+     *
+     * @return volume 0-127 inclusive
+     */
+    int getAreaSoundEffectVolume();
 
-  /**
-   * Gets the area sound effect volume
-   *
-   * @return volume 0-127 inclusive
-   */
-  int getAreaSoundEffectVolume();
+    /**
+     * Sets the area sound effect volume
+     *
+     * @param volume 0-127 inclusive
+     */
+    void setAreaSoundEffectVolume(int volume);
 
-  /**
-   * Sets the area sound effect volume
-   *
-   * @param volume 0-127 inclusive
-   */
-  void setAreaSoundEffectVolume(int volume);
-
-  /**
-   * Gets if the login name should be replaced with asterisks
-   */
-  boolean getHideUsername();
-
-  void setMusicVolume(int volume);
-
-  int getMusicVolume();
-
-  void setWindowMode(int mode);
-
-  int getWindowMode();
-
-  boolean isTitleMusicDisabled();
-
-  void setTitleMusicDisabled(boolean disabled);
-
-  void setHidingRoofs(boolean hidden);
-
-  boolean isHidingRoofs();
+    /**
+     * Gets if the login name should be replaced with asterisks
+     */
+    boolean getHideUsername();
 }

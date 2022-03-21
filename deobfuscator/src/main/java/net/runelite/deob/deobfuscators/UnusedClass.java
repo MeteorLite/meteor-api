@@ -29,35 +29,43 @@ import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.deob.Deobfuscator;
 
-public class UnusedClass implements Deobfuscator {
+public class UnusedClass implements Deobfuscator
+{
+	@Override
+	public void run(ClassGroup group)
+	{
+		int count = 0;
+		for (ClassFile cf : new ArrayList<>(group.getClasses()))
+		{
+			if (!cf.getFields().isEmpty())
+			{
+				continue;
+			}
 
-  @Override
-  public void run(ClassGroup group) {
-    int count = 0;
-    for (ClassFile cf : new ArrayList<>(group.getClasses())) {
-      if (!cf.getFields().isEmpty()) {
-        continue;
-      }
+			if (!cf.getMethods().isEmpty())
+			{
+				continue;
+			}
 
-      if (!cf.getMethods().isEmpty()) {
-        continue;
-      }
+			if (isImplemented(group, cf))
+			{
+				continue;
+			}
 
-      if (isImplemented(group, cf)) {
-        continue;
-      }
+			group.removeClass(cf);
+			++count;
+		}
+	}
 
-      group.removeClass(cf);
-      ++count;
-    }
-  }
-
-  private boolean isImplemented(ClassGroup group, ClassFile iface) {
-    for (ClassFile cf : group.getClasses()) {
-      if (cf.getInterfaces().getMyInterfaces().contains(iface)) {
-        return true;
-      }
-    }
-    return false;
-  }
+	private boolean isImplemented(ClassGroup group, ClassFile iface)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			if (cf.getInterfaces().getMyInterfaces().contains(iface))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

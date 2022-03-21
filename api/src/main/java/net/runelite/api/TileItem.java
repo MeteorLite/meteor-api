@@ -24,80 +24,20 @@
  */
 package net.runelite.api;
 
-import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.coords.WorldPoint;
-
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Represents an item inside an {@link ItemLayer}.
  */
-public interface TileItem extends Renderable, SceneEntity {
+public interface TileItem extends Renderable {
+    /**
+     * @return the ID of the item
+     * @see ItemID
+     */
+    int getId();
 
-  /**
-   * @return the ID of the item
-   * @see ItemID
-   */
-  int getId();
+    int getQuantity();
 
-  int getQuantity();
-
-  /**
-   * Time in game ticks when the item spawned (relative to us)
-   *
-   * @return
-   */
-  int getSpawnTime();
-
-  /**
-   * @return the tile this item is on
-   */
-  Tile getTile();
-
-  int getDistanceFromLocalPlayer();
-
-  void pickup();
-
-  String getName();
-
-  default int distanceTo(Locatable locatable) {
-    return getTile().distanceTo(locatable.getWorldLocation());
-  }
-
-  default int distanceTo(WorldPoint point) {
-    return getTile().distanceTo(point);
-  }
-
-  default WorldPoint getWorldLocation() {
-    if (getTile() == null)
-      return null;
-    return getTile().getWorldLocation();
-  }
-
-  default LocalPoint getLocalLocation() {
-    return getTile().getLocalLocation();
-  }
-
-  boolean isTradable();
-
-  boolean isStackable();
-
-  boolean isMembers();
-
-  int getNotedId();
-
-  boolean isNoted();
-
-  int getStorePrice();
-
-  String[] getInventoryActions();
-
-  default List<String> inventoryActions() {
-    return Arrays.asList(getInventoryActions());
-  }
-
-  default boolean hasInventoryAction(String action) {
-    return inventoryActions().contains(action);
-  }
+    /**
+     * @return the tile this item is on
+     */
+    Tile getTile();
 }

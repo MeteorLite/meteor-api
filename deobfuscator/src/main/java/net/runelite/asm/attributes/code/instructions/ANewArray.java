@@ -38,58 +38,66 @@ import net.runelite.asm.execution.StackContext;
 import net.runelite.asm.execution.Value;
 import org.objectweb.asm.MethodVisitor;
 
-public class ANewArray extends Instruction implements TypeInstruction {
+public class ANewArray extends Instruction implements TypeInstruction
+{
+	private Type type;
+	private ClassFile myClass;
 
-  private Type type;
-  private ClassFile myClass;
+	public ANewArray(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-  public ANewArray(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitTypeInsn(this.getType().getCode(), type.toAsmString());
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitTypeInsn(this.getType().getCode(), type.toAsmString());
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
+		Stack stack = frame.getStack();
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-    Stack stack = frame.getStack();
+		StackContext count = stack.pop();
 
-    StackContext count = stack.pop();
+		ins.pop(count);
 
-    ins.pop(count);
+		StackContext ctx = new StackContext(ins, type, Value.newArray(count.getValue()));
+		stack.push(ctx);
 
-    StackContext ctx = new StackContext(ins, type, Value.newArray(count.getValue()));
-    stack.push(ctx);
+		ins.push(ctx);
 
-    ins.push(ctx);
+		return ins;
+	}
 
-    return ins;
-  }
+	@Override
+	public void lookup()
+	{
+		ClassGroup group = this.getInstructions().getCode().getMethod().getClassFile().getGroup();
+		myClass = group.findClass(type.getInternalName());
+	}
 
-  @Override
-  public void lookup() {
-    ClassGroup group = this.getInstructions().getCode().getMethod().getClassFile().getGroup();
-    myClass = group.findClass(type.getInternalName());
-  }
+	@Override
+	public void regeneratePool()
+	{
+		if (myClass != null)
+		{
+			int dimms = type.getDimensions();
+			type = Type.getType("L" + myClass.getName() + ";", dimms);
+		}
+	}
 
-  @Override
-  public void regeneratePool() {
-    if (myClass != null) {
-      int dimms = type.getDimensions();
-      type = Type.getType("L" + myClass.getName() + ";", dimms);
-    }
-  }
+	@Override
+	public Type getType_()
+	{
+		return type;
+	}
 
-  @Override
-  public Type getType_() {
-    return type;
-  }
-
-  @Override
-  public void setType(Type type) {
-    this.type = type;
-  }
+	@Override
+	public void setType(Type type)
+	{
+		this.type = type;
+	}
 }

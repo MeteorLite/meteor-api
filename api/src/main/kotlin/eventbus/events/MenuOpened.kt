@@ -22,14 +22,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package eventbus.events
+package net.runelite.api.events
 
+import lombok.AccessLevel
+import lombok.Data
+import lombok.Setter
 import net.runelite.api.MenuEntry
 
 /**
  * An event where a menu has been opened.
  */
-class MenuOpened(var modified: Boolean = false, var menuEntries: Array<MenuEntry>) : Iterable<MenuEntry?> {
+@Data
+class MenuOpened(val menuEntries: Array<MenuEntry>) : Iterable<MenuEntry> {
+    /**
+     * This should be set to true if anything about the menu
+     * in menuEntries is changed, so the changes can be
+     * propagated through to the client.
+     */
+    var modified = false
 
     /**
      * Gets the entry that will be displayed first in the menu.
@@ -45,7 +55,7 @@ class MenuOpened(var modified: Boolean = false, var menuEntries: Array<MenuEntry
         modified = true
     }
 
-    override fun iterator(): MutableIterator<MenuEntry> {
+    override fun iterator(): Iterator<MenuEntry> {
         return object : MutableIterator<MenuEntry> {
             var index = 0
             override fun hasNext(): Boolean {
@@ -57,7 +67,6 @@ class MenuOpened(var modified: Boolean = false, var menuEntries: Array<MenuEntry
             }
 
             override fun remove() {
-                //TODO("Not yet implemented")
             }
         }
     }

@@ -27,11 +27,11 @@ package net.runelite.asm.attributes.code.instruction.types;
 import java.util.List;
 import net.runelite.asm.attributes.code.Label;
 
-public interface JumpingInstruction {
+public interface JumpingInstruction
+{
+	List<Label> getJumps();
 
-  List<Label> getJumps();
+	void setJumps(List<Label> labels);
 
-  void setJumps(List<Label> labels);
-
-  void setLabel(org.objectweb.asm.Label label);
+	void setLabel(org.objectweb.asm.Label label);
 }

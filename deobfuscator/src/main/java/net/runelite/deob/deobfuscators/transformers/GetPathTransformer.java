@@ -34,49 +34,60 @@ import net.runelite.asm.attributes.code.instructions.LDC;
 import net.runelite.asm.attributes.code.instructions.Pop;
 import net.runelite.deob.Transformer;
 
-public class GetPathTransformer implements Transformer {
+public class GetPathTransformer implements Transformer
+{
 
-  private boolean done = false;
+	private boolean done = false;
 
-  @Override
-  public void transform(ClassGroup group) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        transform(m);
-      }
-    }
-  }
+	@Override
+	public void transform(ClassGroup group)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				transform(m);
+			}
+		}
+	}
 
-  private void transform(Method m) {
-    int count = 0;
+	private void transform(Method m)
+	{
+		int count = 0;
 
-    if (m.getCode() == null) {
-      return;
-    }
+		if (m.getCode() == null)
+		{
+			return;
+		}
 
-    for (Instruction i : m.getCode().getInstructions().getInstructions()) {
-      if (i instanceof InvokeInstruction) {
-        InvokeInstruction ii = (InvokeInstruction) i;
+		for (Instruction i : m.getCode().getInstructions().getInstructions())
+		{
+			if (i instanceof InvokeInstruction)
+			{
+				InvokeInstruction ii = (InvokeInstruction) i;
 
-        if (ii.getMethod().getName().equals("getPath")) {
-          if (++count == 2) {
-            removeInvoke(i);
-            done = true;
-            break;
-          }
-        }
-      }
-    }
-  }
+				if (ii.getMethod().getName().equals("getPath"))
+				{
+					if (++count == 2)
+					{
+						removeInvoke(i);
+						done = true;
+						break;
+					}
+				}
+			}
+		}
+	}
 
-  private void removeInvoke(Instruction i) {
-    Instructions ins = i.getInstructions();
+	private void removeInvoke(Instruction i)
+	{
+		Instructions ins = i.getInstructions();
 
-    int idx = ins.getInstructions().indexOf(i);
+		int idx = ins.getInstructions().indexOf(i);
 
-    ins.remove(i);
-    ins.getInstructions().add(idx, new Pop(ins)); // pop File
-    ins.getInstructions().add(idx + 1, new LDC(ins, ""));
-  }
+		ins.remove(i);
+		ins.getInstructions().add(idx, new Pop(ins)); // pop File
+		ins.getInstructions().add(idx + 1, new LDC(ins, ""));
+	}
 
 }

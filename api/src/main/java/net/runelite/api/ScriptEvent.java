@@ -27,69 +27,81 @@ package net.runelite.api;
 import net.runelite.api.widgets.Widget;
 
 public interface ScriptEvent {
+    int MOUSE_X = -2147483647;
+    int MOUSE_Y = -2147483646;
+    int MENU_OP = -2147483644;
+    int WIDGET_ID = -2147483645;
+    int WIDGET_INDEX = -2147483643;
+    int WIDGET_TARGET_ID = -2147483642;
+    int WIDGET_TARGET_INDEX = -2147483641;
+    int KEY_CODE = -2147483640;
+    int KEY_CHAR = -2147483639;
+    String NAME = "event_opbase";
 
-  int MOUSE_X = -2147483647;
-  int MOUSE_Y = -2147483646;
-  int MENU_OP = -2147483644;
-  int WIDGET_ID = -2147483645;
-  int WIDGET_INDEX = -2147483643;
-  int WIDGET_TARGET_ID = -2147483642;
-  int WIDGET_TARGET_INDEX = -2147483641;
-  int KEY_CODE = -2147483640;
-  int KEY_CHAR = -2147483639;
-  String NAME = "event_opbase";
+    /**
+     * Gets the widget the {@link #WIDGET_ID} and {@link #WIDGET_INDEX} args
+     * are substituted with
+     */
+    Widget getSource();
 
-  /**
-   * Gets the widget the {@link #WIDGET_ID} and {@link #WIDGET_INDEX} args are substituted with
-   */
-  Widget getSource();
+    /**
+     * Sets the widget the {@link #WIDGET_ID} and {@link #WIDGET_INDEX} args
+     * are substituted with. This is useful for running widget listeners
+     *
+     * @see Widget#getOnLoadListener()
+     */
+    ScriptEvent setSource(Widget widget);
 
-  /**
-   * Sets the widget the {@link #WIDGET_ID} and {@link #WIDGET_INDEX} args are substituted with.
-   * This is useful for running widget listeners
-   *
-   * @see Widget#getOnLoadListener()
-   */
-  ScriptEvent setSource(Widget widget);
+    /**
+     * Arguments passed to the script. Index 0 is the script being run and is not an argument.
+     *
+     * @return
+     */
+    Object[] getArguments();
 
-  /**
-   * Gets the menu index of the event
-   *
-   * @return the index
-   */
-  int getOp();
+    /**
+     * Gets the menu index of the event
+     *
+     * @return the index
+     */
+    int getOp();
 
-  /**
-   * Gets the target of the menu option
-   *
-   * @return the target
-   * @see net.runelite.api.events.MenuOptionClicked
-   */
-  String getOpbase();
+    /**
+     * Gets the target of the menu option
+     *
+     * @return the target
+     * @see net.runelite.api.events.MenuOptionClicked
+     */
+    String getOpbase();
 
-  /**
-   * Parent relative x coordinate for mouse related events
-   */
-  int getMouseX();
+    /**
+     * Parent relative x coordinate for mouse related events
+     */
+    int getMouseX();
 
-  /**
-   * Jagex typed keycode
-   *
-   * @return
-   */
-  int getTypedKeyCode();
+    /**
+     * Parent relative y coordinate for mouse related events
+     */
+    int getMouseY();
 
-  /**
-   * Get the typed character, ascii.
-   *
-   * @return
-   */
-  int getTypedKeyChar();
+    /**
+     * Jagex typed keycode
+     *
+     * @return
+     */
+    int getTypedKeyCode();
 
-  /**
-   * Executes a cs2 script specified by this event
-   * <p>
-   * This method must be ran on the client thread and is not reentrant
-   */
-  void run();
+    /**
+     * Get the typed character, ascii.
+     *
+     * @return
+     */
+    int getTypedKeyChar();
+
+    /**
+     * Executes a cs2 script specified by this event
+     * <p>
+     * This method must be ran on the client thread and is not reentrant
+     */
+    void run();
 }

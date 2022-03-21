@@ -30,30 +30,33 @@ import net.runelite.api.coords.LocalPoint;
  * An ambient sound effect. These are loaded only at scene load and are used to play ambient
  * sound effects that are purely client side and not sent from the server.
  */
-public interface AmbientSoundEffect
-{
-	/**
-	 * The id of the sound effect
-	 * @see SoundEffectID
-	 * @return
-	 */
-	int getSoundEffectId();
+public interface AmbientSoundEffect {
+    /**
+     * The id of the sound effect
+     *
+     * @return
+     * @see SoundEffectID
+     */
+    int getSoundEffectId();
 
-	/**
-	 * The plane the sound effect is on
-	 * @return
-	 */
-	int getPlane();
+    /**
+     * The plane the sound effect is on
+     *
+     * @return
+     */
+    int getPlane();
 
-	/**
-	 * The min x/y position of the area this sound effect is at.
-	 * @return
-	 */
-	LocalPoint getMinPosition();
+    /**
+     * The min x/y position of the area this sound effect is at.
+     *
+     * @return
+     */
+    LocalPoint getMinPosition();
 
-	/**
-	 * The max x/y position of the area this sound effect is at
-	 * @return
-	 */
-	LocalPoint getMaxPosition();
+    /**
+     * The max x/y position of the area this sound effect is at
+     *
+     * @return
+     */
+    LocalPoint getMaxPosition();
 }

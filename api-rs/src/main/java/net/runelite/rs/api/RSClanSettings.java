@@ -27,24 +27,24 @@ package net.runelite.rs.api;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.mapping.Import;
 
-public interface RSClanSettings extends ClanSettings {
+public interface RSClanSettings extends ClanSettings
+{
+	@Import("name")
+	@Override
+	String getName();
 
-  @Import("name")
-  @Override
-  String getName();
+	@Import("memberCount")
+	int getMemberCount();
 
-  @Import("memberCount")
-  int getMemberCount();
+	@Import("memberNames")
+	String[] getMemberNames();
 
-  @Import("memberNames")
-  String[] getMemberNames();
+	@Import("memberRanks")
+	byte[] getMemberRanks();
 
-  @Import("memberRanks")
-  byte[] getMemberRanks();
+	@Import("getSortedMembers")
+	int[] getSortedMembers();
 
-  @Import("getSortedMembers")
-  int[] getSortedMembers$api();
-
-  @Import("getTitleGroupValue")
-  Integer getTitleGroupValue$api(int group);
+	@Import("getTitleGroupValue")
+	Integer getTitleGroupValue(int group);
 }

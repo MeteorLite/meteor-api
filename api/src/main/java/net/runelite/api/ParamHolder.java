@@ -25,34 +25,33 @@
 package net.runelite.api;
 
 /**
- * A composition that can hold `param` keys. This lets Jagex attach arbitrary constant data to
- * certain items, objects, npcs, or structs for use in cs2
+ * A composition that can hold `param` keys. This lets Jagex attach arbitrary constant
+ * data to certain items, objects, npcs, or structs for use in cs2
  *
  * @see ParamID
  */
 public interface ParamHolder {
+    IterableHashTable<Node> getParams();
 
-  IterableHashTable<Node> getParams();
+    void setParams(IterableHashTable<Node> params);
 
-  void setParams(IterableHashTable<Node> params);
+    /**
+     * Gets the value of a given {@link ParamID}, or its default if it is unset
+     */
+    int getIntValue(int paramID);
 
-  /**
-   * Gets the value of a given {@link ParamID}, or its default if it is unset
-   */
-  int getIntValue(int paramID);
+    /**
+     * Sets the value of a given {@link ParamID}
+     */
+    void setValue(int paramID, int value);
 
-  /**
-   * Sets the value of a given {@link ParamID}
-   */
-  void setValue(int paramID, int value);
+    /**
+     * Gets the value of a given {@link ParamID}, or its default if it is unset
+     */
+    String getStringValue(int paramID);
 
-  /**
-   * Gets the value of a given {@link ParamID}, or its default if it is unset
-   */
-  String getStringValue(int paramID);
-
-  /**
-   * Sets the value of a given {@link ParamID}
-   */
-  void setValue(int paramID, String value);
+    /**
+     * Sets the value of a given {@link ParamID}
+     */
+    void setValue(int paramID, String value);
 }

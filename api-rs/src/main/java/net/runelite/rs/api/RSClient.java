@@ -24,1638 +24,1576 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.*;
+import java.math.BigInteger;
+import java.util.Map;
+import net.runelite.api.AmbientSoundEffect;
+import net.runelite.api.Client;
+import net.runelite.api.Deque;
+import net.runelite.api.ModelData;
+import net.runelite.api.SpritePixels;
+import net.runelite.api.World;
 import net.runelite.api.clan.ClanRank;
-import net.runelite.api.packets.ClientPacket;
-import net.runelite.api.packets.IsaacCipher;
+import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.widgets.Widget;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
-import java.math.BigInteger;
-import java.util.Map;
+public interface RSClient extends RSGameEngine, Client
+{
+	@Import("cameraX")
+	@Override
+	int getCameraX();
 
-public interface RSClient extends RSGameEngine, Client {
+	@Import("cameraZ") // <--- This is correct!
+	@Override
+	int getCameraY();
 
-  @Import("cameraX")
-  @Override
-  int getCameraX$api();
+	@Import("cameraY") // <--- This is correct!
+	@Override
+	int getCameraZ();
 
-  @Import("cameraZ") // <--- This is correct!
-  @Override
-  int getCameraY$api();
+	@Import("Scene_cameraX")
+	@Override
+	int getCameraX2();
 
-  @Import("cameraY") // <--- This is correct!
-  @Override
-  int getCameraZ$api();
+	@Import("Scene_cameraY")
+	@Override
+	int getCameraY2();
 
-  @Import("Scene_cameraX")
-  @Override
-  int getCameraX2();
+	@Import("Scene_cameraZ")
+	@Override
+	int getCameraZ2();
 
-  @Import("Scene_cameraX")
-  void setCameraX2(int cameraX2);
+	@Import("Client_plane")
+	@Override
+	int getPlane();
 
-  @Import("Scene_cameraY")
-  @Override
-  int getCameraY2();
+	@Import("cameraPitch")
+	@Override
+	int getCameraPitch();
 
-  @Import("Scene_cameraY")
-  void setCameraY2(int cameraY2);
+	@Import("cameraPitch")
+	void setCameraPitch(int cameraPitch);
 
-  @Import("Scene_cameraZ")
-  @Override
-  int getCameraZ2();
+	@Import("cameraYaw")
+	@Override
+	int getCameraYaw();
 
-  @Import("Scene_cameraZ")
-  void setCameraZ2(int cameraZ2);
+	@Import("worldId")
+	int getWorld();
 
-  @Import("Client_plane")
-  @Override
-  int getPlane();
+	@Import("fps")
+	@Override
+	int getFPS();
 
-  @Import("cameraPitch")
-  @Override
-  int getCameraPitch();
+	@Import("camAngleY")
+	@Override
+	int getMapAngle();
 
-  @Import("cameraPitch")
-  void setCameraPitch(int cameraPitch);
+	@Import("camAngleY")
+	@Override
+	void setCameraYawTarget(int cameraYawTarget);
 
-  @Import("cameraYaw")
-  @Override
-  int getCameraYaw();
+	@Import("Tiles_heights")
+	@Override
+	int[][][] getTileHeights();
 
-  @Import("worldId")
-  int getWorld();
+	@Import("Tiles_renderFlags")
+	@Override
+	byte[][][] getTileSettings();
 
-  @Import("fps")
-  @Override
-  int getFPS();
+	@Import("Varps_main")
+	@Override
+	int[] getVarps();
 
-  @Import("camAngleY")
-  @Override
-  int getMapAngle();
+	@Import("varcs")
+	RSVarcs getVarcs();
 
-  @Import("camAngleY")
-  @Override
-  void setCameraYawTarget(int cameraYawTarget);
+	@Import("runEnergy")
+	@Override
+	int getEnergy();
 
-  @Import("Tiles_heights")
-  @Override
-  int[][][] getTileHeights();
+	@Import("weight")
+	@Override
+	int getWeight();
 
-  @Import("Tiles_renderFlags")
-  @Override
-  byte[][][] getTileSettings();
+	@Import("baseX")
+	@Override
+	int getBaseX();
 
-  @Import("Varps_main")
-  @Override
-  int[] getVarps();
+	@Import("baseY")
+	@Override
+	int getBaseY();
 
-  @Import("varcs")
-  RSVarcs getVarcs();
+	@Import("currentLevels")
+	@Override
+	int[] getBoostedSkillLevels();
 
-  @Import("runEnergy")
-  @Override
-  int getEnergy();
+	@Import("levels")
+	@Override
+	int[] getRealSkillLevels();
 
-  @Import("weight")
-  @Override
-  int getWeight();
+	@Import("experience")
+	@Override
+	int[] getSkillExperiences();
 
-  @Import("baseX")
-  @Override
-  int getBaseX();
+	@Import("changedSkills")
+	int[] getChangedSkills();
 
-  @Import("baseY")
-  @Override
-  int getBaseY();
+	@Import("changedSkillsCount")
+	int getChangedSkillsCount();
 
-  @Import("currentLevels")
-  @Override
-  int[] getBoostedSkillLevels();
+	@Import("changedSkillsCount")
+	void setChangedSkillsCount(int i);
 
-  @Import("levels")
-  @Override
-  int[] getRealSkillLevels();
+	@Import("gameState")
+	@Override
+	int getRSGameState();
 
-  @Import("experience")
-  @Override
-  int[] getSkillExperiences();
+	@Import("updateGameState")
+	void setRSGameState(int gameState);
 
-  @Import("changedSkills")
-  int[] getChangedSkills();
+	@Import("checkClick")
+	void setCheckClick(boolean checkClick);
 
-  @Import("changedSkillsCount")
-  int getChangedSkillsCount();
+	@Import("Scene_selectedScreenX")
+	void setMouseCanvasHoverPositionX(int x);
 
-  @Import("changedSkillsCount")
-  void setChangedSkillsCount(int i);
+	@Import("Scene_selectedScreenY")
+	void setMouseCanvasHoverPositionY(int y);
 
-  @Import("gameState")
-  @Override
-  int getRSGameState$api();
+	@Import("MouseHandler_currentButton")
+	@Override
+	int getMouseCurrentButton();
 
-  @Import("updateGameState")
-  void setRSGameState(int gameState);
+	@Import("Scene_selectedX")
+	int getSelectedSceneTileX();
 
-  @Import("Scene_selectedScreenX")
-  void setMouseCanvasHoverPositionX(int x);
+	@Import("Scene_selectedX")
+	void setSelectedSceneTileX(int selectedSceneTileX);
 
-  @Import("Scene_selectedScreenY")
-  void setMouseCanvasHoverPositionY(int y);
+	@Import("Scene_selectedY")
+	int getSelectedSceneTileY();
 
-  @Import("MouseHandler_currentButton")
-  @Override
-  int getMouseCurrentButton();
+	@Import("Scene_selectedY")
+	void setSelectedSceneTileY(int selectedSceneTileY);
 
-  @Import("Scene_selectedX")
-  int getSelectedSceneTileX();
+	@Import("isDraggingWidget")
+	@Override
+	boolean isDraggingWidget();
 
-  @Import("Scene_selectedX")
-  void setSelectedSceneTileX(int selectedSceneTileX);
+	@Import("clickedWidget")
+	@Override
+	RSWidget getDraggedWidget();
 
-  @Import("Scene_selectedY")
-  int getSelectedSceneTileY();
+	@Import("draggedOnWidget")
+	@Override
+	RSWidget getDraggedOnWidget();
 
-  @Import("Scene_selectedY")
-  void setSelectedSceneTileY(int selectedSceneTileY);
+	@Import("draggedOnWidget")
+	@Override
+	void setDraggedOnWidget(Widget widget);
 
-  @Import("isDraggingWidget")
-  @Override
-  boolean isDraggingWidget();
+	@Import("Widget_interfaceComponents")
+	RSWidget[][] getWidgets();
 
-  @Import("clickedWidget")
-  @Override
-  RSWidget getDraggedWidget();
+	/**
+	 * Gets an array of widgets that correspond to the passed group ID.
+	 *
+	 * @param groupId the group ID
+	 * @return the widget group
+	 * @see net.runelite.api.widgets.WidgetID
+	 */
+	RSWidget[] getGroup(int groupId);
 
-  @Import("draggedOnWidget")
-  @Override
-  RSWidget getDraggedOnWidget();
+	@Import("scene")
+	@Override
+	RSScene getScene();
 
-  @Import("draggedOnWidget")
-  @Override
-  void setDraggedOnWidget(Widget widget);
+	@Import("localPlayer")
+	@Override
+	RSPlayer getLocalPlayer();
 
-  @Import("Widget_interfaceComponents")
-  @Override
-  RSWidget[][] getWidgets();
+	@Import("localPlayerIndex")
+	@Override
+	int getLocalPlayerIndex();
 
-  /**
-   * Gets an array of widgets that correspond to the passed group ID.
-   *
-   * @param groupId the group ID
-   * @return the widget group
-   * @see net.runelite.api.widgets.WidgetID
-   */
-  RSWidget[] getGroup(int groupId);
+	@Import("npcCount")
+	int getNpcIndexesCount();
 
-  @Import("scene")
-  @Override
-  RSScene getScene();
+	@Import("npcIndices")
+	int[] getNpcIndices();
 
-  @Import("localPlayer")
-  @Override
-  RSPlayer getLocalPlayer();
+	@Import("npcs")
+	@Override
+	RSNPC[] getCachedNPCs();
 
-  @Import("localPlayerIndex")
-  @Override
-  int getLocalPlayerIndex();
+	@Import("collisionMaps")
+	RSCollisionMap[] getCollisionMaps();
 
-  @Import("npcCount")
-  int getNpcIndexesCount();
+	@Import("Players_count")
+	int getPlayerIndexesCount();
 
-  @Import("npcIndices")
-  int[] getNpcIndices();
+	@Import("Players_indices")
+	int[] getPlayerIndices();
 
-  @Import("npcs")
-  @Override
-  RSNPC[] getCachedNPCs();
+	@Import("players")
+	@Override
+	RSPlayer[] getCachedPlayers();
 
-  @Import("collisionMaps")
-  RSCollisionMap[] getCollisionMaps();
+	@Import("combatTargetPlayerIndex")
+	int getLocalInteractingIndex();
 
-  @Import("Players_count")
-  int getPlayerIndexesCount();
+	@Import("combatTargetPlayerIndex")
+	void setLocalInteractingIndex(int idx);
 
-  @Import("Players_indices")
-  int[] getPlayerIndices();
+	@Import("Scene_tilesDeque")
+	RSNodeDeque getTilesDeque();
 
-  @Import("players")
-  @Override
-  RSPlayer[] getCachedPlayers();
+	@Import("groundItems")
+	RSNodeDeque[][][] getGroundItemDeque();
 
-  @Import("combatTargetPlayerIndex")
-  int getLocalInteractingIndex();
+	@Import("projectiles")
+	RSNodeDeque getProjectilesDeque();
 
-  @Import("combatTargetPlayerIndex")
-  void setLocalInteractingIndex(int idx);
+	@Import("graphicsObjects")
+	RSNodeDeque getGraphicsObjectDeque();
 
-  @Import("groundItems")
-  RSNodeDeque[][][] getGroundItemDeque();
+	@Import("worldSelectOpen")
+	@Override
+	boolean isWorldSelectOpen();
 
-  @Import("projectiles")
-  RSNodeDeque getProjectilesDeque();
+	@Import("worldSelectOpen")
+	@Override
+	void setWorldSelectOpen(boolean open);
 
-  @Import("graphicsObjects")
-  RSNodeDeque getGraphicsObjectDeque();
+	@Import("Login_username")
+	@Override
+	String getUsername();
 
-  @Import("Login_username")
-  @Override
-  String getUsername();
+	@Import("Login_username")
+	@Override
+	void setUsername(String username);
 
-  @Import("Login_username")
-  @Override
-  void setUsername(String username);
+	@Import("Login_password")
+	@Override
+	void setPassword(String password);
 
-  @Import("Login_password")
-  @Override
-  void setPassword(String password);
+	@Import("otp")
+	@Override
+	void setOtp(String otp);
 
-  @Import("Login_response0")
-  String getLoginResponse0();
+	@Import("currentLoginField")
+	@Override
+	int getCurrentLoginField();
 
-  @Import("Login_response1")
-  String getLoginResponse1();
+	@Import("loginIndex")
+	@Override
+	int getLoginIndex();
 
-  @Import("Login_response2")
-  String getLoginResponse2();
+	@Import("loginIndex")
+	@Override
+	void setLoginIndex(int loginIndex);
 
-  @Import("Login_response3")
-  String getLoginResponse3();
+	@Import("playerMenuActions")
+	@Override
+	String[] getPlayerOptions();
 
-  @Import("Login_banType")
-  int getBanType();
+	@Import("playerOptionsPriorities")
+	@Override
+	boolean[] getPlayerOptionsPriorities();
 
-  @Import("otp")
-  @Override
-  void setOtp(String otp);
+	@Import("playerMenuOpcodes")
+	@Override
+	int[] getPlayerMenuTypes();
 
-  @Import("currentLoginField")
-  @Override
-  int getCurrentLoginField();
+	@Import("MouseHandler_xVolatile")
+	int getMouseX();
 
-  @Import("loginIndex")
-  @Override
-  int getLoginIndex();
+	@Import("MouseHandler_yVolatile")
+	int getMouseY();
 
-  @Import("loginIndex")
-  @Override
-  void setLoginIndex(int index);
+	@Import("Scene_selectedScreenX")
+	int getMouseX2();
 
-  @Import("playerMenuActions")
-  @Override
-  String[] getPlayerOptions();
+	@Import("Scene_selectedScreenY")
+	int getMouseY2();
 
-  @Import("playerOptionsPriorities")
-  @Override
-  boolean[] getPlayerOptionsPriorities();
+	@Import("containsBounds")
+	boolean containsBounds(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7);
 
-  @Import("playerMenuOpcodes")
-  @Override
-  int[] getPlayerMenuTypes();
+	@Import("checkClick")
+	boolean isCheckClick();
 
-  @Import("MouseHandler_xVolatile")
-  int getMouseX();
+	@Import("menuOptionsCount")
+	@Override
+	int getMenuOptionCount();
 
-  @Import("MouseHandler_yVolatile")
-  int getMouseY();
+	@Import("menuOptionsCount")
+	@Override
+	void setMenuOptionCount(int menuOptionCount);
 
-  @Import("Scene_selectedScreenX")
-  int getMouseX2();
+	@Import("menuActions")
+	String[] getMenuOptions();
 
-  @Import("Scene_selectedScreenY")
-  int getMouseY2();
+	@Import("menuTargets")
+	String[] getMenuTargets();
 
-  @Import("containsBounds")
-  boolean containsBounds(int var0, int var1, int var2, int var3, int var4, int var5, int var6,
-                         int var7);
+	@Import("menuIdentifiers")
+	int[] getMenuIdentifiers();
 
-  @Import("checkClick")
-  boolean isCheckClick();
+	@Import("menuOpcodes")
+	int[] getMenuOpcodes();
 
-  @Import("checkClick")
-  @Override
-  void setCheckClick(boolean checkClick);
+	@Import("menuArguments1")
+	int[] getMenuArguments1();
 
-  @Import("menuOptionsCount")
-  @Override
-  int getMenuOptionCount();
+	@Import("menuArguments2")
+	int[] getMenuArguments2();
 
-  @Import("menuOptionsCount")
-  @Override
-  void setMenuOptionCount(int menuOptionCount);
+	@Import("menuShiftClick")
+	boolean[] getMenuForceLeftClick();
 
-  @Import("menuActions")
-  String[] getMenuOptions();
+	@Import("World_worlds")
+	@Override
+	RSWorld[] getWorldList();
 
-  @Import("menuTargets")
-  String[] getMenuTargets();
+	@Import("addChatMessage")
+	void addRSChatMessage(int type, String name, String message, String sender);
 
-  @Import("menuIdentifiers")
-  int[] getMenuIdentifiers();
+	@Import("getObjectDefinition")
+	RSObjectComposition getRSObjectComposition(int objectId);
 
-  @Import("menuOpcodes")
-  int[] getMenuOpcodes();
+	@Import("getNpcDefinition")
+	RSNPCComposition getRSNpcComposition(int npcId);
 
-  @Import("menuArguments1")
-  int[] getMenuArguments1();
+	@Import("viewportZoom")
+	@Override
+	int getScale();
 
-  @Import("menuArguments2")
-  int[] getMenuArguments2();
+	@Import("canvasHeight")
+	@Override
+	int getCanvasHeight();
 
-  @Import("menuShiftClick")
-  boolean[] getMenuForceLeftClick();
+	@Import("canvasWidth")
+	@Override
+	int getCanvasWidth();
 
-  @Import("World_worlds")
-  @Override
-  RSWorld[] getWorldList();
+	@Import("viewportHeight")
+	@Override
+	int getViewportHeight();
 
-  @Import("addChatMessage")
-  void addRSChatMessage(int type, String name, String message, String sender);
+	@Import("viewportWidth")
+	@Override
+	int getViewportWidth();
 
-  @Import("getObjectDefinition")
-  RSObjectComposition getRSObjectComposition(int objectId);
+	@Import("viewportOffsetX")
+	@Override
+	int getViewportXOffset();
 
-  @Import("getNpcDefinition")
-  RSNPCComposition getRSNpcComposition(int npcId);
+	@Import("viewportOffsetY")
+	@Override
+	int getViewportYOffset();
 
-  @Import("viewportZoom")
-  @Override
-  int getScale();
+	@Import("isResizable")
+	@Override
+	boolean isResized();
 
-  @Import("canvasHeight")
-  @Override
-  int getCanvasHeight();
+	@Import("rootWidgetXs")
+	@Override
+	int[] getWidgetPositionsX();
 
-  @Import("canvasWidth")
-  @Override
-  int getCanvasWidth();
+	@Import("rootWidgetYs")
+	@Override
+	int[] getWidgetPositionsY();
 
-  @Import("viewportHeight")
-  @Override
-  int getViewportHeight();
+	@Import("mouseCam")
+	boolean isMouseCam();
 
-  @Import("viewportWidth")
-  @Override
-  int getViewportWidth();
+	@Import("camAngleDX")
+	int getCamAngleDX();
 
-  @Import("viewportOffsetX")
-  @Override
-  int getViewportXOffset();
+	@Import("camAngleDX")
+	void setCamAngleDX(int angle);
 
-  @Import("viewportOffsetY")
-  @Override
-  int getViewportYOffset();
+	@Import("camAngleDY")
+	int getCamAngleDY();
 
-  @Import("isResizable")
-  @Override
-  boolean isResized();
+	@Import("camAngleDY")
+	void setCamAngleDY(int angle);
 
-  @Import("rootWidgetXs")
-  @Override
-  int[] getWidgetPositionsX();
+	@Import("itemContainers")
+	RSNodeHashTable getItemContainers();
 
-  @Import("rootWidgetYs")
-  @Override
-  int[] getWidgetPositionsY();
+	@Import("ItemDefinition_get")
+	RSItemComposition getRSItemDefinition(int itemId);
 
-  @Import("mouseCam")
-  boolean isMouseCam();
+	@Import("getItemSprite")
+	RSSpritePixels createRSItemSprite(int itemId, int quantity, int thickness, int borderColor, int stackable, boolean noted);
 
-  @Import("camAngleDX")
-  int getCamAngleDX();
+	@Import("menuAction")
+	void sendMenuAction(int n2, int n3, int n4, int n5, String string, String string2, int n6, int n7);
 
-  @Import("camAngleDX")
-  void setCamAngleDX(int angle);
+	@Import("SpriteBuffer_decode")
+	void decodeSprite(byte[] data);
 
-  @Import("camAngleDY")
-  int getCamAngleDY();
+	@Import("SpriteBuffer_spriteCount")
+	int getIndexedSpriteCount();
 
-  @Import("camAngleDY")
-  void setCamAngleDY(int angle);
+	@Import("SpriteBuffer_spriteWidth")
+	int getIndexedSpriteWidth();
 
-  @Import("itemContainers")
-  RSNodeHashTable getItemContainers();
+	@Import("SpriteBuffer_spriteHeight")
+	int getIndexedSpriteHeight();
 
-  @Import("ItemDefinition_get")
-  RSItemComposition getRSItemDefinition(int itemId);
+	@Import("SpriteBuffer_xOffsets")
+	int[] getIndexedSpriteOffsetXs();
 
-  @Import("getItemSprite")
-  RSSpritePixels createRSItemSprite(int itemId, int quantity, int thickness, int borderColor,
-                                    int stackable, boolean noted);
+	@Import("SpriteBuffer_xOffsets")
+	void setIndexedSpriteOffsetXs(int[] indexedSpriteOffsetXs);
 
-  @Import("menuAction")
-  void sendMenuAction(int n2, int n3, int n4, int n5, String string, String string2, int n6,
-                      int n7);
+	@Import("SpriteBuffer_yOffsets")
+	int[] getIndexedSpriteOffsetYs();
 
-  @Import("SpriteBuffer_decode")
-  void decodeSprite(byte[] data);
+	@Import("SpriteBuffer_yOffsets")
+	void setIndexedSpriteOffsetYs(int[] indexedSpriteOffsetYs);
 
-  @Import("SpriteBuffer_spriteCount")
-  int getIndexedSpriteCount();
+	@Import("SpriteBuffer_spriteWidths")
+	int[] getIndexedSpriteWidths();
 
-  @Import("SpriteBuffer_spriteWidth")
-  int getIndexedSpriteWidth();
+	@Import("SpriteBuffer_spriteWidths")
+	void setIndexedSpriteWidths(int[] indexedSpriteWidths);
 
-  @Import("SpriteBuffer_spriteHeight")
-  int getIndexedSpriteHeight();
+	@Import("SpriteBuffer_spriteHeights")
+	int[] getIndexedSpriteHeights();
 
-  @Import("SpriteBuffer_xOffsets")
-  int[] getIndexedSpriteOffsetXs();
+	@Import("SpriteBuffer_spriteHeights")
+	void setIndexedSpriteHeights(int[] indexedSpriteHeights);
 
-  @Import("SpriteBuffer_xOffsets")
-  void setIndexedSpriteOffsetXs(int[] indexedSpriteOffsetXs);
+	@Import("SpriteBuffer_pixels")
+	byte[][] getSpritePixels();
 
-  @Import("SpriteBuffer_yOffsets")
-  int[] getIndexedSpriteOffsetYs();
+	@Import("SpriteBuffer_pixels")
+	void setSpritePixels(byte[][] spritePixels);
 
-  @Import("SpriteBuffer_yOffsets")
-  void setIndexedSpriteOffsetYs(int[] indexedSpriteOffsetYs);
+	@Import("SpriteBuffer_spritePalette")
+	int[] getIndexedSpritePalette();
 
-  @Import("SpriteBuffer_spriteWidths")
-  int[] getIndexedSpriteWidths();
+	@Import("SpriteBuffer_spritePalette")
+	void setIndexedSpritePalette(int[] indexedSpritePalette);
 
-  @Import("SpriteBuffer_spriteWidths")
-  void setIndexedSpriteWidths(int[] indexedSpriteWidths);
+	@Import("archive2")
+	@Override
+	RSArchive getIndexConfig();
 
-  @Import("SpriteBuffer_spriteHeights")
-  int[] getIndexedSpriteHeights();
+	@Import("archive6")
+	RSArchive getMusicTracks();
 
-  @Import("SpriteBuffer_spriteHeights")
-  void setIndexedSpriteHeights(int[] indexedSpriteHeights);
+	@Import("archive8")
+	@Override
+	RSArchive getIndexSprites();
 
-  @Import("SpriteBuffer_pixels")
-  byte[][] getSpritePixels();
+	@Import("archive12")
+	@Override
+	RSArchive getIndexScripts();
 
-  @Import("SpriteBuffer_pixels")
-  void setSpritePixels(byte[][] spritePixels);
+	@Import("widgetFlags")
+	@Override
+	RSNodeHashTable getWidgetFlags();
 
-  @Import("SpriteBuffer_spritePalette")
-  int[] getIndexedSpritePalette();
+	@Import("interfaceParents")
+	@Override
+	RSNodeHashTable getComponentTable();
 
-  @Import("SpriteBuffer_spritePalette")
-  void setIndexedSpritePalette(int[] indexedSpritePalette);
+	@Import("grandExchangeOffers")
+	RSGrandExchangeOffer[] getGrandExchangeOffers();
 
-  @Import("archive2")
-  @Override
-  RSArchive getIndexConfig();
+	@Import("foundItemIdCount")
+	@Override
+	void setGeSearchResultCount(int count);
 
-  @Import("archive6")
-  RSArchive getMusicTracks();
+	@Import("foundItemIds")
+	@Override
+	void setGeSearchResultIds(short[] ids);
 
-  @Import("archive8")
-  @Override
-  RSArchive getIndexSprites();
+	@Import("foundItemIndex")
+	@Override
+	void setGeSearchResultIndex(int index);
 
-  @Import("archive12")
-  @Override
-  RSArchive getIndexScripts();
+	@Import("isMenuOpen")
+	@Override
+	boolean isMenuOpen();
 
-  @Import("widgetFlags")
-  @Override
-  RSNodeHashTable getWidgetFlags();
+	@Import("cycle")
+	@Override
+	int getGameCycle();
 
-  @Import("interfaceParents")
-  @Override
-  RSNodeHashTable getComponentTable();
+	@Import("Messages_channels")
+	@Override
+	Map getChatLineMap();
 
-  @Import("grandExchangeOffers")
-  RSGrandExchangeOffer[] getGrandExchangeOffers();
+	@Import("Messages_hashTable")
+	@Override
+	RSIterableNodeHashTable getMessages();
 
-  @Import("foundItemIdCount")
-  @Override
-  void setGeSearchResultCount(int count);
+	@Import("RunException_revision")
+	@Override
+	int getRevision();
 
-  @Import("foundItemIds")
-  @Override
-  void setGeSearchResultIds(short[] ids);
+	@Import("regions")
+	@Override
+	int[] getMapRegions();
 
-  @Import("foundItemIndex")
-  @Override
-  void setGeSearchResultIndex(int index);
+	@Import("instanceChunkTemplates")
+	@Override
+	int[][][] getInstanceTemplateChunks();
 
-  @Import("isMenuOpen")
-  @Override
-  boolean isMenuOpen();
+	@Import("xteaKeys")
+	@Override
+	int[][] getXteaKeys();
 
-  @Import("cycle")
-  @Override
-  int getGameCycle();
+	@Import("cycleCntr")
+	int getCycleCntr();
 
-  @Import("Messages_channels")
-  @Override
-  Map getChatLineMap();
+	@Import("chatCycle")
+	void setChatCycle(int value);
 
-  @Import("Messages_hashTable")
-  @Override
-  RSIterableNodeHashTable getMessages();
+	/**
+	 * Get the widget top group. widgets[topGroup] contains widgets with
+	 * parentId -1, which are the widget roots.
+	 */
+	@Import("rootInterface")
+	int getTopLevelInterfaceId();
 
-  @Import("RunException_revision")
-  @Override
-  int getRevision();
+	@Import("WorldMapElement_cached")
+	@Override
+	RSWorldMapElement[] getMapElementConfigs();
 
-  @Import("regions")
-  @Override
-  int[] getMapRegions();
+	@Import("mapSceneSprites")
+	@Override
+	RSIndexedSprite[] getMapScene();
 
-  @Import("instanceChunkTemplates")
-  @Override
-  int[][][] getInstanceTemplateChunks();
+	@Import("mapIcons")
+	@Override
+	RSSpritePixels[] getMapIcons();
 
-  @Import("xteaKeys")
-  @Override
-  int[][] getXteaKeys();
+	@Import("mapDotSprites")
+	RSSpritePixels[] getMapDots();
 
-  @Import("gameDrawingMode")
-  @Override
-  int getGameDrawingMode();
+	@Import("AbstractFont_modIconSprites")
+	@Override
+	RSIndexedSprite[] getModIcons();
 
-  @Import("gameDrawingMode")
-  @Override
-  void setGameDrawingMode(int gameDrawingMode);
+	@Import("AbstractFont_modIconSprites")
+	void setRSModIcons(RSIndexedSprite[] modIcons);
 
-  @Import("cycleCntr")
-  int getCycleCntr();
+	@Construct
+	@Override
+	RSIndexedSprite createIndexedSprite();
 
-  @Import("chatCycle")
-  void setChatCycle(int value);
+	@Construct
+	@Override
+	RSSpritePixels createSpritePixels(int[] pixels, int width, int height);
 
-  /**
-   * Get the widget top group. widgets[topGroup] contains widgets with parentId -1, which are the
-   * widget roots.
-   */
-  @Import("rootInterface")
-  int getTopLevelInterfaceId();
+	@Import("destinationX")
+	int getDestinationX();
 
-  @Import("WorldMapElement_cached")
-  @Override
-  RSWorldMapElement[] getMapElementConfigs();
+	@Import("destinationY")
+	int getDestinationY();
 
-  @Import("mapSceneSprites")
-  @Override
-  RSIndexedSprite[] getMapScene();
+	@Import("soundEffects")
+	RSSoundEffect[] getAudioEffects();
 
-  @Import("mapIcons")
-  @Override
-  RSSpritePixels[] getMapIcons();
+	@Import("soundEffectIds")
+	int[] getQueuedSoundEffectIDs();
 
-  @Import("mapDotSprites")
-  RSSpritePixels[] getMapDots();
+	@Import("soundLocations")
+	int[] getSoundLocations();
 
-  @Import("AbstractFont_modIconSprites")
-  @Override
-  RSIndexedSprite[] getModIcons();
+	@Import("queuedSoundEffectLoops")
+	int[] getQueuedSoundEffectLoops();
 
-  @Import("AbstractFont_modIconSprites")
-  void setRSModIcons(RSIndexedSprite[] modIcons);
+	@Import("queuedSoundEffectDelays")
+	int[] getQueuedSoundEffectDelays();
 
-  @Construct
-  @Override
-  RSIndexedSprite createIndexedSprite();
+	@Import("soundEffectCount")
+	int getQueuedSoundEffectCount();
 
-  @Construct
-  @Override
-  RSSpritePixels createSpritePixels(int[] pixels, int width, int height);
+	@Import("soundEffectCount")
+	void setQueuedSoundEffectCount(int queuedSoundEffectCount);
 
-  @Import("destinationX")
-  int getDestinationX();
+	@Import("queueSoundEffect")
+	void queueSoundEffect(int id, int numLoops, int delay);
 
-  @Import("destinationY")
-  int getDestinationY();
+	@Import("rasterProvider")
+	@Override
+	RSAbstractRasterProvider getBufferProvider();
 
-  @Import("destinationX")
-  void setDestinationX(int sceneX);
+	@Import("MouseHandler_idleCycles")
+	@Override
+	int getMouseIdleTicks();
 
-  @Import("destinationY")
-  void setDestinationY(int sceneY);
+	@Import("MouseHandler_idleCycles")
+	@Override
+	void setMouseIdleTicks(int cycles);
 
-  @Import("soundEffects")
-  RSSoundEffect[] getAudioEffects();
+	@Import("MouseHandler_lastPressedTimeMillis")
+	@Override
+	long getMouseLastPressedMillis();
 
-  @Import("soundEffectIds")
-  int[] getQueuedSoundEffectIDs();
+	@Import("KeyHandler_idleCycles")
+	@Override
+	void setKeyboardIdleTicks(int cycles);
 
-  @Import("soundLocations")
-  int[] getSoundLocations();
+	@Import("KeyHandler_idleCycles")
+	@Override
+	int getKeyboardIdleTicks();
 
-  @Import("queuedSoundEffectLoops")
-  int[] getQueuedSoundEffectLoops();
+	@Import("KeyHandler_pressedKeys")
+	@Override
+	boolean[] getPressedKeys();
 
-  @Import("queuedSoundEffectDelays")
-  int[] getQueuedSoundEffectDelays();
+	@Import("isLowDetail")
+	void setLowMemory(boolean lowMemory);
 
-  @Import("soundEffectCount")
-  int getQueuedSoundEffectCount();
+	@Import("Scene_isLowDetail")
+	void setSceneLowMemory(boolean lowMemory);
 
-  @Import("soundEffectCount")
-  void setQueuedSoundEffectCount(int queuedSoundEffectCount);
+	@Import("PcmPlayer_stereo")
+	void setAudioHighMemory(boolean highMemory);
 
-  @Import("queueSoundEffect")
-  void queueSoundEffect(int id, int numLoops, int delay);
+	@Import("ObjectDefinition_isLowDetail")
+	void setObjectDefinitionLowDetail(boolean lowDetail);
 
-  @Import("rasterProvider")
-  @Override
-  RSAbstractRasterProvider getBufferProvider();
+	@Import("Interpreter_intStackSize")
+	@Override
+	int getIntStackSize();
 
-  @Import("MouseHandler_idleCycles")
-  @Override
-  int getMouseIdleTicks();
+	@Import("Interpreter_intStackSize")
+	@Override
+	void setIntStackSize(int stackSize);
 
-  @Import("MouseHandler_idleCycles")
-  @Override
-  void setMouseIdleTicks(int cycles);
+	@Import("Interpreter_intStack")
+	@Override
+	int[] getIntStack();
 
-  @Import("MouseHandler_lastPressedTimeMillis")
-  @Override
-  long getMouseLastPressedMillis();
+	@Import("Interpreter_stringStackSize")
+	@Override
+	int getStringStackSize();
 
-  @Import("MouseHandler_lastPressedTimeMillis")
-  @Override
-  void setMouseLastPressedMillis(long time);
+	@Import("Interpreter_stringStackSize")
+	@Override
+	void setStringStackSize(int stackSize);
 
-  @Import("KeyHandler_idleCycles")
-  @Override
-  int getKeyboardIdleTicks();
+	@Import("Interpreter_stringStack")
+	@Override
+	String[] getStringStack();
 
-  @Import("KeyHandler_idleCycles")
-  @Override
-  void setKeyboardIdleTicks(int cycles);
+	@Import("friendSystem")
+	RSFriendSystem getFriendManager();
 
-  @Import("KeyHandler_pressedKeys")
-  @Override
-  boolean[] getPressedKeys();
+	@Import("friendsChat")
+	RSFriendsChat getFriendsChatManager();
 
-  @Import("isLowDetail")
-  void setLowMemory(boolean lowMemory);
+	@Import("loginType")
+	RSLoginType getLoginType();
 
-  @Import("Scene_isLowDetail")
-  void setSceneLowMemory(boolean lowMemory);
+	@Construct
+	RSUsername createName(String name, RSLoginType type);
 
-  @Import("PcmPlayer_stereo")
-  void setAudioHighMemory(boolean highMemory);
+	@Import("getVarbit")
+	int rs$getVarbit(int varbitId);
 
-  @Import("ObjectDefinition_isLowDetail")
-  void setObjectDefinitionLowDetail(boolean lowDetail);
+	@Import("VarbitDefinition_cached")
+	RSEvictingDualNodeHashTable getVarbitCache();
 
-  @Import("Interpreter_intStackSize")
-  @Override
-  int getIntStackSize();
+	@Import("clientPreferences")
+	@Override
+	RSClientPreferences getPreferences();
 
-  @Import("Interpreter_intStackSize")
-  @Override
-  void setIntStackSize(int stackSize);
+	/**
+	 * This is the pitch the user has set the camera to.
+	 * It should be between 128 and (pitchUnlimiter?512:383) JAUs(1).
+	 * The difference between this and cameraPitch is that cameraPitch has a lower limit, imposed by the surrounding
+	 * terrain.
+	 * <p>
+	 * (1) JAU - Jagex Angle Unit; 1/1024 of a revolution
+	 */
+	@Import("camAngleX")
+	int getCameraPitchTarget();
 
-  @Import("Interpreter_intStack")
-  @Override
-  int[] getIntStack();
+	@Import("camAngleX")
+	void setCameraPitchTarget(int pitch);
 
-  @Import("Interpreter_stringStackSize")
-  @Override
-  int getStringStackSize();
+	@Import("Scene_cameraPitchSine")
+	void setPitchSin(int v);
 
-  @Import("Interpreter_stringStackSize")
-  @Override
-  void setStringStackSize(int stackSize);
+	@Import("Scene_cameraPitchCosine")
+	void setPitchCos(int v);
 
-  @Import("Interpreter_stringStack")
-  @Override
-  String[] getStringStack();
+	@Import("Scene_cameraYawSine")
+	void setYawSin(int v);
 
-  @Import("friendSystem")
-  RSFriendSystem getFriendManager();
+	@Import("Scene_cameraYawCosine")
+	void setYawCos(int v);
 
-  @Import("friendsChat")
-  RSFriendsChat getFriendsChatManager();
+	@Import("Rasterizer3D_zoom")
+	@Override
+	int get3dZoom();
 
-  @Import("loginType")
-  RSLoginType getLoginType();
+	@Import("Rasterizer3D_zoom")
+	void set3dZoom(int zoom);
 
-  @Construct
-  RSUsername createName(String name, RSLoginType type);
+	@Import("Rasterizer3D_clipMidX2")
+	@Override
+	int getRasterizer3D_clipMidX2();
 
-  @Import("getVarbit")
-  int rs$getVarbit(int varbitId);
+	@Import("Rasterizer3D_clipNegativeMidX")
+	@Override
+	int getRasterizer3D_clipNegativeMidX();
 
-  @Import("VarbitDefinition_cached")
-  RSEvictingDualNodeHashTable getVarbitCache();
+	@Import("Rasterizer3D_clipNegativeMidY")
+	@Override
+	int getRasterizer3D_clipNegativeMidY();
 
-  @Import("clientPreferences")
-  @Override
-  RSClientPreferences getPreferences();
+	@Import("Rasterizer3D_clipMidY2")
+	@Override
+	int getRasterizer3D_clipMidY2();
 
-  /**
-   * This is the pitch the user has set the camera to. It should be between 128 and
-   * (pitchUnlimiter?512:383) JAUs(1). The difference between this and cameraPitch is that
-   * cameraPitch has a lower limit, imposed by the surrounding terrain.
-   * <p>
-   * (1) JAU - Jagex Angle Unit; 1/1024 of a revolution
-   */
-  @Import("camAngleX")
-  int getCameraPitchTarget();
+	@Import("Rasterizer3D_clipMidX")
+	@Override
+	int getCenterX();
 
-  @Import("camAngleX")
-  void setCameraPitchTarget(int pitch);
+	@Import("Rasterizer3D_clipMidY")
+	@Override
+	int getCenterY();
 
-  @Import("Scene_cameraPitchSine")
-  void setPitchSin(int v);
+	@Import("getWorldMap")
+	RSWorldMap getRenderOverview();
 
-  @Import("Scene_cameraPitchCosine")
-  void setPitchCos(int v);
+	@Import("changeWorld")
+	@Override
+	void changeWorld(World world);
 
-  @Import("Scene_cameraYawSine")
-  void setYawSin(int v);
+	@Construct
+	@Override
+	RSWorld createWorld();
 
-  @Import("Scene_cameraYawCosine")
-  void setYawCos(int v);
+	@Import("Model_transformTempX")
+	void setAnimOffsetX(int animOffsetX);
 
-  @Import("Rasterizer3D_zoom")
-  @Override
-  int get3dZoom();
+	@Import("Model_transformTempY")
+	void setAnimOffsetY(int animOffsetY);
 
-  @Import("Rasterizer3D_zoom")
-  void set3dZoom(int zoom);
+	@Import("Model_transformTempZ")
+	void setAnimOffsetZ(int animOffsetZ);
 
-  @Import("Rasterizer3D_clipMidX2")
-  @Override
-  int getRasterizer3D_clipMidX2();
+	@Import("getFrames")
+	@Override
+	RSFrames getFrames(int frameId);
 
-  @Import("Rasterizer3D_clipNegativeMidX")
-  @Override
-  int getRasterizer3D_clipNegativeMidX();
+	@Import("sceneMinimapSprite")
+	RSSpritePixels getMinimapSprite();
 
-  @Import("Rasterizer3D_clipNegativeMidY")
-  @Override
-  int getRasterizer3D_clipNegativeMidY();
+	@Import("sceneMinimapSprite")
+	void setMinimapSprite(SpritePixels spritePixels);
 
-  @Import("Rasterizer3D_clipMidY2")
-  @Override
-  int getRasterizer3D_clipMidY2();
+	@Import("drawObject")
+	void drawObject(int z, int x, int y, int randomColor1, int randomColor2);
 
-  @Import("Rasterizer3D_clipMidX")
-  @Override
-  int getCenterX();
+	@Construct
+	RSScriptEvent createScriptEvent();
 
-  @Import("Rasterizer3D_clipMidY")
-  @Override
-  int getCenterY();
+	@Import("runScript")
+	void runScript(RSScriptEvent ev, int ex, int var2);
 
-  @Import("getWorldMap")
-  RSWorldMap getRenderOverview();
+	@Import("hintArrowType")
+	void setHintArrowTargetType(int value);
 
-  @Import("changeWorld")
-  @Override
-  void changeWorld(World world);
+	@Import("hintArrowType")
+	int getHintArrowTargetType();
 
-  @Construct
-  @Override
-  RSWorld createWorld();
+	@Import("hintArrowX")
+	void setHintArrowX(int value);
 
-  @Import("Model_transformTempX")
-  void setAnimOffsetX(int animOffsetX);
+	@Import("hintArrowX")
+	int getHintArrowX();
 
-  @Import("Model_transformTempY")
-  void setAnimOffsetY(int animOffsetY);
+	@Import("hintArrowY")
+	void setHintArrowY(int value);
 
-  @Import("Model_transformTempZ")
-  void setAnimOffsetZ(int animOffsetZ);
+	@Import("hintArrowY")
+	int getHintArrowY();
 
-  @Import("getFrames")
-  @Override
-  RSFrames getFrames(int frameId);
+	@Import("hintArrowSubX")
+	void setHintArrowOffsetX(int value);
 
-  @Import("sceneMinimapSprite")
-  RSSpritePixels getMinimapSprite();
+	@Import("hintArrowSubY")
+	void setHintArrowOffsetY(int value);
 
-  @Import("sceneMinimapSprite")
-  void setMinimapSprite(SpritePixels spritePixels);
+	@Import("hintArrowNpcIndex")
+	void setHintArrowNpcTargetIdx(int value);
 
-  @Import("drawObject")
-  void drawObject(int z, int x, int y, int randomColor1, int randomColor2);
+	@Import("hintArrowNpcIndex")
+	int getHintArrowNpcTargetIdx();
 
-  @Construct
-  RSScriptEvent createScriptEvent();
+	@Import("hintArrowPlayerIndex")
+	void setHintArrowPlayerTargetIdx(int value);
 
-  @Import("runScript")
-  void runScript(RSScriptEvent ev, int ex, int var2);
+	@Import("hintArrowPlayerIndex")
+	int getHintArrowPlayerTargetIdx();
 
-  @Import("hintArrowType")
-  int getHintArrowTargetType();
+	@Import("isInInstance")
+	@Override
+	boolean isInInstancedRegion();
 
-  @Import("hintArrowType")
-  void setHintArrowTargetType(int value);
+	@Import("itemDragDuration")
+	@Override
+	int getItemPressedDuration();
 
-  @Import("hintArrowX")
-  int getHintArrowX();
+	@Import("itemDragDuration")
+	void setItemPressedDuration(int duration);
 
-  @Import("hintArrowX")
-  void setHintArrowX(int value);
+	@Import("worldProperties")
+	int getFlags();
 
-  @Import("hintArrowY")
-  int getHintArrowY();
+	@Import("compass")
+	void setCompass(SpritePixels spritePixels);
 
-  @Import("hintArrowY")
-  void setHintArrowY(int value);
+	@Import("Widget_cachedSprites")
+	@Override
+	RSEvictingDualNodeHashTable getWidgetSpriteCache();
 
-  @Import("hintArrowSubX")
-  void setHintArrowOffsetX(int value);
+	@Import("ItemDefinition_cached")
+	@Override
+	RSEvictingDualNodeHashTable getItemCompositionCache();
 
-  @Import("hintArrowSubY")
-  void setHintArrowOffsetY(int value);
+	@Import("oculusOrbState")
+	@Override
+	int getOculusOrbState();
 
-  @Import("hintArrowNpcIndex")
-  int getHintArrowNpcTargetIdx();
+	@Import("oculusOrbState")
+	@Override
+	void setOculusOrbState(int state);
 
-  @Import("hintArrowNpcIndex")
-  void setHintArrowNpcTargetIdx(int value);
+	@Import("oculusOrbNormalSpeed")
+	@Override
+	void setOculusOrbNormalSpeed(int state);
 
-  @Import("hintArrowPlayerIndex")
-  int getHintArrowPlayerTargetIdx();
+	@Import("oculusOrbFocalPointX")
+	@Override
+	int getOculusOrbFocalPointX();
 
-  @Import("hintArrowPlayerIndex")
-  void setHintArrowPlayerTargetIdx(int value);
+	@Import("oculusOrbFocalPointY")
+	@Override
+	int getOculusOrbFocalPointY();
 
-  @Import("isInInstance")
-  @Override
-  boolean isInInstancedRegion();
+	@Import("oculusOrbFocalPointX")
+	@Override
+	void setOculusOrbFocalPointX(int state);
 
-  @Import("itemDragDuration")
-  @Override
-  int getItemPressedDuration();
+	@Import("oculusOrbFocalPointY")
+	@Override
+	void setOculusOrbFocalPointY(int state);
 
-  @Import("itemDragDuration")
-  void setItemPressedDuration(int duration);
+	RSTileItem getLastItemDespawn();
 
-  @Import("worldProperties")
-  int getFlags();
+	void setLastItemDespawn(RSTileItem lastItemDespawn);
 
-  @Import("compass")
-  void setCompass(SpritePixels spritePixels);
+	@Construct
+	RSWidget createWidget();
 
-  @Import("Widget_cachedSprites")
-  @Override
-  RSEvictingDualNodeHashTable getWidgetSpriteCache();
+	@Import("alignWidget")
+	void revalidateWidget(Widget w);
 
-  @Import("ItemDefinition_cached")
-  @Override
-  RSEvictingDualNodeHashTable getItemCompositionCache();
+	@Import("revalidateWidgetScroll")
+	void revalidateWidgetScroll(Widget[] group, Widget w, boolean postEvent);
 
-  @Import("oculusOrbState")
-  @Override
-  int getOculusOrbState();
+	@Import("ViewportMouse_entityCount")
+	int getEntitiesAtMouseCount();
 
-  @Import("oculusOrbState")
-  @Override
-  void setOculusOrbState(int state);
+	@Import("ViewportMouse_entityCount")
+	void setEntitiesAtMouseCount(int i);
 
-  @Import("oculusOrbNormalSpeed")
-  @Override
-  void setOculusOrbNormalSpeed(int state);
+	@Import("ViewportMouse_entityTags")
+	long[] getEntitiesAtMouse();
 
-  @Import("oculusOrbFocalPointX")
-  @Override
-  int getOculusOrbFocalPointX();
+	@Import("ViewportMouse_x")
+	int getViewportMouseX();
 
-  @Import("oculusOrbFocalPointY")
-  @Override
-  int getOculusOrbFocalPointY();
+	@Import("ViewportMouse_y")
+	int getViewportMouseY();
 
-  RSTileItem getLastItemDespawn();
+	@Import("textureProvider")
+	@Override
+	RSTextureProvider getTextureProvider();
 
-  void setLastItemDespawn(RSTileItem lastItemDespawn);
+	@Import("tileLastDrawnActor")
+	int[][] getOccupiedTilesTick();
 
-  @Construct
-  RSWidget createWidget();
+	@Import("ObjectDefinition_cachedModels")
+	RSEvictingDualNodeHashTable getObjectDefinitionModelsCache();
 
-  @Import("alignWidget")
-  void revalidateWidget(Widget w);
+	@Import("Scene_drawnCount")
+	int getCycle();
 
-  @Import("revalidateWidgetScroll")
-  void revalidateWidgetScroll(Widget[] group, Widget w, boolean postEvent);
+	@Import("Scene_drawnCount")
+	void setCycle(int cycle);
 
-  @Import("ViewportMouse_entityCount")
-  int getEntitiesAtMouseCount();
+	@Import("visibilityMap")
+	boolean[][][][] getVisibilityMaps();
 
-  @Import("ViewportMouse_entityCount")
-  void setEntitiesAtMouseCount(int i);
+	@Import("visibleTiles")
+	void setRenderArea(boolean[][] renderArea);
 
-  @Import("ViewportMouse_entityTags")
-  long[] getEntitiesAtMouse();
+	@Import("Scene_cameraX")
+	void setCameraX2(int cameraX2);
 
-  @Import("ViewportMouse_x")
-  int getViewportMouseX();
+	@Import("Scene_cameraY")
+	void setCameraY2(int cameraY2);
 
-  @Import("ViewportMouse_y")
-  int getViewportMouseY();
+	@Import("Scene_cameraZ")
+	void setCameraZ2(int cameraZ2);
 
-  @Import("textureProvider")
-  @Override
-  RSTextureProvider getTextureProvider();
+	@Import("Scene_cameraXTile")
+	void setScreenCenterX(int screenCenterX);
 
-  @Import("tileLastDrawnActor")
-  int[][] getOccupiedTilesTick();
+	@Import("Scene_cameraYTile")
+	void setScreenCenterZ(int screenCenterZ); // <-- This is correct!
 
-  @Import("ObjectDefinition_cachedModels")
-  RSEvictingDualNodeHashTable getCachedModels2();
+	@Import("Scene_plane")
+	void setScenePlane(int scenePlane);
 
-  @Import("Scene_drawnCount")
-  int getCycle();
+	@Import("Scene_cameraXTileMin")
+	void setMinTileX(int i);
 
-  @Import("Scene_drawnCount")
-  void setCycle(int cycle);
+	@Import("Scene_cameraYTileMin")
+	void setMinTileZ(int i); // <-- This is correct!
 
-  @Import("visibilityMap")
-  boolean[][][][] getVisibilityMaps();
+	@Import("Scene_cameraXTileMax")
+	void setMaxTileX(int i);
 
-  @Import("visibleTiles")
-  void setRenderArea(boolean[][] renderArea);
+	@Import("Scene_cameraYTileMax")
+	void setMaxTileZ(int i); // <-- This is correct!
 
-  @Import("Scene_cameraXTile")
-  void setScreenCenterX(int screenCenterX);
+	@Import("tileUpdateCount")
+	int getTileUpdateCount();
 
-  @Import("Scene_cameraYTile")
-  void setScreenCenterZ(int screenCenterZ); // <-- This is correct!
+	@Import("tileUpdateCount")
+	void setTileUpdateCount(int tileUpdateCount);
 
-  @Import("Scene_plane")
-  void setScenePlane(int scenePlane);
+	@Import("ViewportMouse_isInViewport")
+	boolean getViewportContainsMouse();
 
-  @Import("Scene_cameraXTileMin")
-  void setMinTileX(int i);
+	@Import("Rasterizer2D_pixels")
+	@Override
+	int[] getGraphicsPixels();
 
-  @Import("Scene_cameraYTileMin")
-  void setMinTileZ(int i); // <-- This is correct!
+	@Import("Rasterizer2D_width")
+	int getGraphicsPixelsWidth();
 
-  @Import("Scene_cameraXTileMax")
-  void setMaxTileX(int i);
+	@Import("Rasterizer2D_height")
+	int getGraphicsPixelsHeight();
 
-  @Import("Scene_cameraYTileMax")
-  void setMaxTileZ(int i); // <-- This is correct!
+	@Import("Rasterizer2D_fillRectangle")
+	void rasterizerFillRectangle(int x, int y, int w, int h, int rgb);
 
-  @Import("tileUpdateCount")
-  int getTileUpdateCount();
+	@Import("Rasterizer2D_xClipStart")
+	int getStartX();
 
-  @Import("tileUpdateCount")
-  void setTileUpdateCount(int tileUpdateCount);
+	@Import("Rasterizer2D_yClipStart")
+	int getStartY();
 
-  @Import("ViewportMouse_isInViewport")
-  boolean getViewportContainsMouse();
+	@Import("Rasterizer2D_xClipEnd")
+	int getEndX();
 
-  @Import("Rasterizer2D_pixels")
-  @Override
-  int[] getGraphicsPixels();
+	@Import("Rasterizer2D_yClipEnd")
+	int getEndY();
 
-  @Import("Rasterizer2D_width")
-  int getGraphicsPixelsWidth();
+	@Import("dragInventoryWidget")
+	@Override
+	RSWidget getIf1DraggedWidget();
 
-  @Import("Rasterizer2D_height")
-  int getGraphicsPixelsHeight();
+	@Import("dragItemSlotSource")
+	@Override
+	int getIf1DraggedItemIndex();
 
-  @Import("Rasterizer2D_fillRectangle")
-  void rasterizerFillRectangle(int x, int y, int w, int h, int rgb);
+	@Import("isSpellSelected")
+	@Override
+	void setSpellSelected(boolean selected);
 
-  @Import("Rasterizer2D_xClipStart")
-  int getStartX();
+	@Import("getEnum")
+	RSEnumComposition getRsEnum(int id);
 
-  @Import("Rasterizer2D_yClipStart")
-  int getStartY();
+	@Import("menuX")
+	int getMenuX();
 
-  @Import("Rasterizer2D_xClipEnd")
-  int getEndX();
+	@Import("menuY")
+	int getMenuY();
 
-  @Import("Rasterizer2D_yClipEnd")
-  int getEndY();
+	@Import("menuHeight")
+	int getMenuHeight();
 
-  @Import("dragInventoryWidget")
-  @Override
-  RSWidget getIf1DraggedWidget();
+	@Import("menuWidth")
+	int getMenuWidth();
 
-  @Import("dragItemSlotSource")
-  @Override
-  int getIf1DraggedItemIndex();
+	@Import("fontBold12")
+	RSFont getFontBold12();
 
-  @Import("getEnum")
-  RSEnumComposition getRsEnum(int id);
+	@Import("Rasterizer2D_drawHorizontalLine")
+	void rasterizerDrawHorizontalLine(int x, int y, int w, int rgb);
 
-  @Import("menuX")
-  int getMenuX();
+	@Import("Rasterizer2D_drawHorizontalLineAlpha")
+	void rasterizerDrawHorizontalLineAlpha(int x, int y, int w, int rgb, int a);
 
-  @Import("menuY")
-  int getMenuY();
+	@Import("Rasterizer2D_drawVerticalLine")
+	void rasterizerDrawVerticalLine(int x, int y, int h, int rgb);
 
-  @Import("menuHeight")
-  int getMenuHeight();
+	@Import("Rasterizer2D_drawVerticalLineAlpha")
+	void rasterizerDrawVerticalLineAlpha(int x, int y, int h, int rgb, int a);
 
-  @Import("menuWidth")
-  int getMenuWidth();
+	@Import("Rasterizer2D_fillRectangleGradient")
+	void rasterizerDrawGradient(int x, int y, int w, int h, int rgbTop, int rgbBottom);
 
-  @Import("fontBold12")
-  RSFont getFontBold12();
+	@Import("Rasterizer2D_fillRectangleGradientAlpha")
+	void rasterizerDrawGradientAlpha(int x, int y, int w, int h, int rgbTop, int rgbBottom, int alphaTop, int alphaBottom);
 
-  @Import("Rasterizer2D_drawHorizontalLine")
-  void rasterizerDrawHorizontalLine(int x, int y, int w, int rgb);
+	@Import("Rasterizer2D_fillRectangleAlpha")
+	void rasterizerFillRectangleAlpha(int x, int y, int w, int h, int rgb, int a);
 
-  @Import("Rasterizer2D_drawHorizontalLineAlpha")
-  void rasterizerDrawHorizontalLineAlpha(int x, int y, int w, int rgb, int a);
+	@Import("Rasterizer2D_drawRectangle")
+	void rasterizerDrawRectangle(int x, int y, int w, int h, int rgb);
 
-  @Import("Rasterizer2D_drawVerticalLine")
-  void rasterizerDrawVerticalLine(int x, int y, int h, int rgb);
+	@Import("Rasterizer2D_drawRectangleAlpha")
+	void rasterizerDrawRectangleAlpha(int x, int y, int w, int h, int rgb, int a);
 
-  @Import("Rasterizer2D_drawVerticalLineAlpha")
-  void rasterizerDrawVerticalLineAlpha(int x, int y, int h, int rgb, int a);
+	@Import("drawCircle")
+	void rasterizerDrawCircle(int x, int y, int r, int rgb);
 
-  @Import("Rasterizer2D_fillRectangleGradient")
-  void rasterizerDrawGradient(int x, int y, int w, int h, int rgbTop, int rgbBottom);
+	@Import("Rasterizer2D_drawCircleAlpha")
+	void rasterizerDrawCircleAlpha(int x, int y, int r, int rgb, int a);
 
-  @Import("Rasterizer2D_fillRectangleGradientAlpha")
-  void rasterizerDrawGradientAlpha(int x, int y, int w, int h, int rgbTop, int rgbBottom,
-                                   int alphaTop, int alphaBottom);
+	@Import("HealthBarDefinition_cached")
+	RSEvictingDualNodeHashTable getHealthBarCache();
 
-  @Import("Rasterizer2D_fillRectangleAlpha")
-  void rasterizerFillRectangleAlpha(int x, int y, int w, int h, int rgb, int a);
+	@Import("HealthBarDefinition_cachedSprites")
+	RSEvictingDualNodeHashTable getHealthBarSpriteCache();
 
-  @Import("Rasterizer2D_drawRectangle")
-  void rasterizerDrawRectangle(int x, int y, int w, int h, int rgb);
+	@Import("renderSelf")
+	@Override
+	boolean getRenderSelf();
 
-  @Import("Rasterizer2D_drawRectangleAlpha")
-  void rasterizerDrawRectangleAlpha(int x, int y, int w, int h, int rgb, int a);
+	@Import("renderSelf")
+	@Override
+	void setRenderSelf(boolean enabled);
 
-  @Import("drawCircle")
-  void rasterizerDrawCircle(int x, int y, int r, int rgb);
+	@Import("mouseRecorder")
+	RSMouseRecorder getMouseRecorder();
 
-  @Import("Rasterizer2D_drawCircleAlpha")
-  void rasterizerDrawCircleAlpha(int x, int y, int r, int rgb, int a);
+	@Import("selectedSpellName")
+	String getSelectedSpellName();
 
-  @Import("HealthBarDefinition_cached")
-  RSEvictingDualNodeHashTable getHealthBarCache();
+	@Import("selectedSpellName")
+	@Override
+	void setSelectedSpellName(String name);
 
-  @Import("HealthBarDefinition_cachedSprites")
-  RSEvictingDualNodeHashTable getHealthBarSpriteCache();
+	@Override
+	@Import("selectedSpellActionName")
+	String getSelectedSpellActionName();
 
-  @Import("renderSelf")
-  @Override
-  boolean getRenderSelf();
+	@Override
+	@Import("selectedSpellFlags")
+	int getSelectedSpellFlags();
 
-  @Import("renderSelf")
-  @Override
-  void setRenderSelf(boolean enabled);
+	@Import("isSpellSelected")
+	boolean getSpellSelected();
 
-  @Import("mouseRecorder")
-  RSMouseRecorder getMouseRecorder();
+	@Import("readSoundEffect")
+	RSSoundEffect getTrack(RSAbstractArchive indexData, int id, int var0);
 
-  @Import("selectedSpellName")
-  String getSelectedSpellName();
+	@Import("createRawPcmStream")
+	RSRawPcmStream createRawPcmStream(RSRawSound audioNode, int var0, int volume);
 
-  @Import("selectedSpellName")
-  @Override
-  void setSelectedSpellName(String name);
+	@Import("pcmStreamMixer")
+	RSPcmStreamMixer getSoundEffectAudioQueue();
 
-  @Override
-  @Import("selectedSpellActionName")
-  String getSelectedSpellActionName();
+	@Import("archive4")
+	RSArchive getIndexCache4();
 
-  @Override
-  @Import("selectedSpellFlags")
-  int getSelectedSpellFlags();
+	@Import("decimator")
+	RSDecimator getSoundEffectResampler();
 
-  @Import("isSpellSelected")
-  boolean getSpellSelected();
+	@Import("musicTrackVolume")
+	void setMusicTrackVolume(int volume);
 
-  @Import("isSpellSelected")
-  @Override
-  void setSpellSelected(boolean selected);
+	@Import("viewportWalking")
+	void setViewportWalking(boolean viewportWalking);
 
-  @Import("readSoundEffect")
-  RSSoundEffect getTrack(RSAbstractArchive indexData, int id, int var0);
+	void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5);
 
-  @Import("createRawPcmStream")
-  RSRawPcmStream createRawPcmStream(RSRawSound audioNode, int var0, int volume);
+	@Import("midiPcmStream")
+	RSMidiPcmStream getMidiPcmStream();
 
-  @Import("pcmStreamMixer")
-  RSPcmStreamMixer getSoundEffectAudioQueue();
+	@Import("currentTrackGroupId")
+	int getCurrentTrackGroupId();
 
-  @Import("archive4")
-  RSArchive getIndexCache4();
+	@Import("crossSprites")
+	@Override
+	RSSpritePixels[] getCrossSprites();
 
-  @Import("decimator")
-  RSDecimator getSoundEffectResampler();
+	void setModulus(BigInteger modulus);
 
-  @Import("musicTrackVolume")
-  void setMusicTrackVolume(int volume);
+	BigInteger getModulus();
 
-  @Import("viewportWalking")
-  @Override
-  void setViewportWalking(boolean viewportWalking);
+	@Import("ItemDefinition_fileCount")
+	int getItemCount();
 
-  void playMusicTrack(int var0, RSAbstractArchive var1, int var2, int var3, int var4, boolean var5);
+	@Import("insertMenuItem")
+	@Override
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
-  @Import("midiPcmStream")
-  RSMidiPcmStream getMidiPcmStream();
+	@Import("selectedItemId")
+	@Override
+	void setSelectedItemID(int id);
 
-  @Import("currentTrackGroupId")
-  int getCurrentTrackGroupId();
+	@Import("selectedItemSlot")
+	@Override
+	int getSelectedItemSlot();
 
-  @Import("crossSprites")
-  @Override
-  RSSpritePixels[] getCrossSprites();
+	@Import("selectedItemSlot")
+	@Override
+	void setSelectedItemSlot(int index);
 
-  void setModulus(BigInteger modulus);
+	@Import("selectedItemSlot")
+	@Override
+	int getSelectedItemIndex();
 
-  @Import("ItemDefinition_fileCount")
-  int getItemCount();
+	@Import("selectedItemWidget")
+	@Override
+	int getSelectedItemWidget();
 
-  @Import("insertMenuItem")
-  @Override
-  void insertMenuItem(String action, String target, int opcode, int identifier, int argument1,
-                      int argument2, boolean forceLeftClick);
+	@Import("selectedItemWidget")
+	@Override
+	void setSelectedItemWidget(int widgetID);
 
-  @Import("selectedItemId")
-  @Override
-  void setSelectedItemID(int id);
+	@Import("selectedSpellWidget")
+	@Override
+	int getSelectedSpellWidget();
 
-  @Import("selectedItemSlot")
-  @Override
-  int getSelectedItemSlot();
+	@Import("selectedSpellChildIndex")
+	@Override
+	int getSelectedSpellChildIndex();
 
-  @Import("selectedItemSlot")
-  @Override
-  void setSelectedItemSlot(int index);
+	@Import("selectedSpellWidget")
+	@Override
+	void setSelectedSpellWidget(int widgetID);
 
-  @Import("selectedItemWidget")
-  @Override
-  int getSelectedItemWidget();
+	@Import("selectedSpellChildIndex")
+	@Override
+	void setSelectedSpellChildIndex(int index);
 
-  @Import("selectedItemWidget")
-  @Override
-  void setSelectedItemWidget(int widgetID);
+	@Import("Sprite_drawScaled")
+	@Override
+	void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx, int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
 
-  @Import("selectedSpellWidget")
-  @Override
-  int getSelectedSpellWidget();
+	/**
+	 * This sets the login screen to where it asks for username/pass
+	 */
+	@Import("Login_promptCredentials")
+	void promptCredentials(boolean clearPass);
 
-  @Import("selectedSpellWidget")
-  @Override
-  void setSelectedSpellWidget(int widgetID);
+	@Import("VarpDefinition_get")
+	RSVarpDefinition getVarpDefinition(int id);
 
-  @Import("selectedSpellChildIndex")
-  @Override
-  int getSelectedSpellChildIndex();
+	@Construct
+	RSTileItem newTileItem();
 
-  @Import("selectedSpellChildIndex")
-  @Override
-  void setSelectedSpellChildIndex(int index);
+	@Construct
+	RSNodeDeque newNodeDeque();
 
-  @Import("Sprite_drawScaled")
-  @Override
-  void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx,
-                   int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
+	@Import("updateItemPile")
+	void updateItemPile(int localX, int localY);
 
-  /**
-   * This sets the login screen to where it asks for username/pass
-   */
-  @Import("Login_promptCredentials")
-  void promptCredentials(boolean clearPass);
+	@Import("showMouseCross")
+	@Override
+	void setShowMouseCross(boolean show);
 
-  @Import("VarpDefinition_get")
-  RSVarpDefinition getVarpDefinition(int id);
+	@Import("draggedWidgetX")
+	int getDraggedWidgetX(); // these should probably have if1 in their names somewhere
 
-  @Construct
-  RSTileItem newTileItem();
+	@Import("draggedWidgetY")
+	int getDraggedWidgetY();
 
-  @Construct
-  RSNodeDeque newNodeDeque();
+	@Import("changedSkills")
+	int[] getChangedSkillLevels();
 
-  @Import("updateItemPile")
-  void updateItemPile(int localX, int localY);
+	@Import("MouseHandler_lastPressedTimeMillis")
+	@Override
+	void setMouseLastPressedMillis(long time);
 
-  @Import("showMouseCross")
-  @Override
-  void setShowMouseCross(boolean show);
+	@Import("mouseLastLastPressedTimeMillis")
+	@Override
+	long getClientMouseLastPressedMillis();
 
-  @Import("draggedWidgetX")
-  int getDraggedWidgetX(); // these should probably have if1 in their names somewhere
+	@Import("mouseLastLastPressedTimeMillis")
+	@Override
+	void setClientMouseLastPressedMillis(long time);
 
-  @Import("draggedWidgetY")
-  int getDraggedWidgetY();
+	@Import("rootWidgetCount")
+	int getRootWidgetCount();
 
-  @Import("changedSkills")
-  int[] getChangedSkillLevels();
+	@Import("widgetClickX")
+	int getWidgetClickX();
 
-  @Import("mouseLastLastPressedTimeMillis")
-  @Override
-  long getClientMouseLastPressedMillis();
+	@Import("widgetClickY")
+	int getWidgetClickY();
 
-  @Import("mouseLastLastPressedTimeMillis")
-  @Override
-  void setClientMouseLastPressedMillis(long time);
+	@Import("staffModLevel")
+	int getStaffModLevel();
 
-  @Import("rootWidgetCount")
-  int getRootWidgetCount();
+	@Import("tradeChatMode")
+	int getTradeChatMode();
 
-  @Import("widgetClickX")
-  int getWidgetClickX();
+	@Import("publicChatMode")
+	int getPublicChatMode();
 
-  @Import("widgetClickY")
-  int getWidgetClickY();
+	@Import("clientType")
+	int getClientType();
 
-  @Import("staffModLevel")
-  int getStaffModLevel();
+	@Import("onMobile")
+	boolean isOnMobile();
 
-  @Import("tradeChatMode")
-  int getTradeChatMode();
+	@Import("hadFocus")
+	boolean hadFocus();
 
-  @Import("publicChatMode")
-  int getPublicChatMode();
+	@Import("mouseCrossColor")
+	int getMouseCrossColor();
 
-  @Import("clientType")
-  int getClientType();
+	@Import("mouseCrossColor")
+	void setMouseCrossColor(int color);
 
-  @Import("onMobile")
-  boolean isOnMobile();
+	@Import("leftClickOpensMenu")
+	int getLeftClickOpensMenu();
 
-  @Import("hadFocus")
-  boolean hadFocus();
+	@Import("showMouseOverText")
+	boolean getShowMouseOverText();
 
-  @Import("mouseCrossColor")
-  int getMouseCrossColor();
+	@Import("showMouseOverText")
+	void setShowMouseOverText(boolean showMouseOverText);
 
-  @Import("mouseCrossColor")
-  void setMouseCrossColor(int color);
+	@Import("defaultRotations")
+	int[] getDefaultRotations();
 
-  @Import("leftClickOpensMenu")
-  int getLeftClickOpensMenu();
+	@Import("showLoadingMessages")
+	boolean getShowLoadingMessages();
 
-  @Import("showMouseOverText")
-  boolean getShowMouseOverText();
+	@Import("showLoadingMessages")
+	void setShowLoadingMessages(boolean showLoadingMessages);
 
-  @Import("showMouseOverText")
-  void setShowMouseOverText(boolean showMouseOverText);
+	@Import("stopTimeMs")
+	void setStopTimeMs(long time);
 
-  @Import("defaultRotations")
-  int[] getDefaultRotations();
+	@Import("clearLoginScreen")
+	void clearLoginScreen(boolean shouldClear);
 
-  @Import("showLoadingMessages")
-  boolean getShowLoadingMessages();
+	@Import("leftTitleSprite")
+	void setLeftTitleSprite(SpritePixels background);
 
-  @Import("showLoadingMessages")
-  void setShowLoadingMessages(boolean showLoadingMessages);
+	@Import("rightTitleSprite")
+	void setRightTitleSprite(SpritePixels background);
 
-  @Import("stopTimeMs")
-  void setStopTimeMs(long time);
+	@Construct
+	RSBuffer newBuffer(byte[] bytes);
 
-  @Import("clearLoginScreen")
-  @Override
-  void clearLoginScreen(boolean shouldClear);
+	@Construct
+	RSVarbitComposition newVarbitDefinition();
 
-  @Import("leftTitleSprite")
-  void setLeftTitleSprite(SpritePixels background);
+	@Override
+	@Import("followerIndex")
+	int getFollowerIndex();
 
-  @Import("rightTitleSprite")
-  void setRightTitleSprite(SpritePixels background);
+	@Override
+	@Import("isItemSelected")
+	int isItemSelected();
 
-  @Construct
-  RSBuffer newBuffer(byte[] bytes);
+	@Override
+	@Import("isItemSelected")
+	int getSelectedItem();
 
-  @Construct
-  RSVarbitComposition newVarbitDefinition();
+	@Override
+	@Import("selectedItemName")
+	String getSelectedItemName();
 
-  @Override
-  @Import("followerIndex")
-  int getFollowerIndex();
+	@Import("meslayerContinueWidget")
+	Widget getMessageContinueWidget();
 
-  @Override
-  @Import("isItemSelected")
-  int isItemSelected();
+	@Import("musicPlayerStatus")
+	void setMusicPlayerStatus(int var0);
 
-  @Override
-  @Import("selectedItemName")
-  String getSelectedItemName();
+	@Import("musicTrackArchive")
+	void setMusicTrackArchive(RSAbstractArchive var0);
 
-  @Import("meslayerContinueWidget")
-  Widget getMessageContinueWidget();
+	@Import("musicTrackGroupId")
+	void setMusicTrackGroupId(int var0);
 
-  @Import("musicPlayerStatus")
-  void setMusicPlayerStatus(int var0);
+	@Import("musicTrackFileId")
+	void setMusicTrackFileId(int var0);
 
-  @Import("musicTrackArchive")
-  void setMusicTrackArchive(RSAbstractArchive var0);
+	@Import("musicTrackBoolean")
+	void setMusicTrackBoolean(boolean var0);
 
-  @Import("musicTrackGroupId")
-  void setMusicTrackGroupId(int var0);
+	@Import("pcmSampleLength")
+	void setPcmSampleLength(int var0);
 
-  @Import("musicTrackFileId")
-  void setMusicTrackFileId(int var0);
+	@Import("changedVarps")
+	int[] getChangedVarps();
 
-  @Import("musicTrackBoolean")
-  void setMusicTrackBoolean(boolean var0);
+	@Import("changedVarpCount")
+	int getChangedVarpCount();
 
-  @Import("pcmSampleLength")
-  void setPcmSampleLength(int var0);
+	@Import("changedVarpCount")
+	void setChangedVarpCount(int changedVarpCount);
 
-  @Import("changedVarps")
-  int[] getChangedVarps();
+	@Import("scriptActiveWidget")
+	RSWidget getScriptActiveWidget();
 
-  @Import("changedVarpCount")
-  int getChangedVarpCount();
+	@Import("scriptDotWidget")
+	RSWidget getScriptDotWidget();
 
-  @Import("changedVarpCount")
-  void setChangedVarpCount(int changedVarpCount);
+	RSScriptEvent createRSScriptEvent(Object... args);
 
-  @Import("scriptActiveWidget")
-  RSWidget getScriptActiveWidget();
+	void runScriptEvent(RSScriptEvent event);
 
-  @Import("scriptDotWidget")
-  RSWidget getScriptDotWidget();
+	@Import("Script_cached")
+	RSEvictingDualNodeHashTable getScriptCache();
 
-  RSScriptEvent createRSScriptEvent(Object... args);
+	@Import("StructDefinition_cached")
+	RSEvictingDualNodeHashTable getRSStructCompositionCache();
 
-  void runScriptEvent(RSScriptEvent event);
+	@Import("StructDefinition_getStructDefinition")
+	RSStructComposition getRSStructComposition(int id);
 
-  @Import("Script_cached")
-  RSEvictingDualNodeHashTable getScriptCache();
+	@Import("getParamDefinition")
+	RSParamComposition getRSParamComposition(int id);
 
-  @Import("StructDefinition_cached")
-  RSEvictingDualNodeHashTable getRSStructCompositionCache();
+	@Import("SequenceDefinition_get")
+	@Override
+	RSSequenceDefinition getSequenceDefinition(int id);
 
-  @Import("StructDefinition_getStructDefinition")
-  RSStructComposition getRSStructComposition(int id);
+	@Construct
+	RSIntegerNode newIntegerNode(int contents);
 
-  @Import("getParamDefinition")
-  RSParamComposition getRSParamComposition(int id);
+	@Construct
+	RSObjectNode newObjectNode(Object contents);
 
-  @Import("SequenceDefinition_get")
-  @Override
-  RSSequenceDefinition getSequenceDefinition(int id);
+	@Construct
+	RSIterableNodeHashTable newIterableNodeHashTable(int size);
 
-  @Construct
-  RSIntegerNode newIntegerNode(int contents);
+	RSVarbitComposition getVarbitComposition(int id);
 
-  @Construct
-  RSObjectNode newObjectNode(Object contents);
+	@Override
+	@Import("SequenceDefinition_skeletonsArchive")
+	RSAbstractArchive getSequenceDefinition_skeletonsArchive();
 
-  @Construct
-  RSIterableNodeHashTable newIterableNodeHashTable(int size);
+	@Override
+	@Import("SequenceDefinition_archive")
+	RSAbstractArchive getSequenceDefinition_archive();
 
-  RSVarbitComposition getVarbitComposition(int id);
+	@Override
+	@Import("SequenceDefinition_animationsArchive")
+	RSAbstractArchive getSequenceDefinition_animationsArchive();
 
-  @Override
-  @Import("SequenceDefinition_skeletonsArchive")
-  RSAbstractArchive getSequenceDefinition_skeletonsArchive();
+	@Override
+	@Import("NpcDefinition_archive")
+	RSAbstractArchive getNpcDefinition_archive();
 
-  @Override
-  @Import("SequenceDefinition_archive")
-  RSAbstractArchive getSequenceDefinition_archive();
+	@Override
+	@Import("ObjectDefinition_modelsArchive")
+	RSAbstractArchive getObjectDefinition_modelsArchive();
 
-  @Override
-  @Import("SequenceDefinition_animationsArchive")
-  RSAbstractArchive getSequenceDefinition_animationsArchive();
+	@Override
+	@Import("ObjectDefinition_archive")
+	RSAbstractArchive getObjectDefinition_archive();
 
-  @Override
-  @Import("NpcDefinition_archive")
-  RSAbstractArchive getNpcDefinition_archive();
+	@Override
+	@Import("ItemDefinition_archive")
+	RSAbstractArchive getItemDefinition_archive();
 
-  @Override
-  @Import("ObjectDefinition_modelsArchive")
-  RSAbstractArchive getObjectDefinition_modelsArchive();
+	@Override
+	@Import("KitDefinition_archive")
+	RSAbstractArchive getKitDefinition_archive();
 
-  @Override
-  @Import("ObjectDefinition_archive")
-  RSAbstractArchive getObjectDefinition_archive();
+	@Override
+	@Import("KitDefinition_modelsArchive")
+	RSAbstractArchive getKitDefinition_modelsArchive();
 
-  @Override
-  @Import("ItemDefinition_archive")
-  RSAbstractArchive getItemDefinition_archive();
+	@Override
+	@Import("SpotAnimationDefinition_archive")
+	RSAbstractArchive getSpotAnimationDefinition_archive();
 
-  @Override
-  @Import("KitDefinition_archive")
-  RSAbstractArchive getKitDefinition_archive();
+	@Override
+	@Import("SpotAnimationDefinition_modelArchive")
+	RSAbstractArchive getSpotAnimationDefinition_modelArchive();
 
-  @Override
-  @Import("KitDefinition_modelsArchive")
-  RSAbstractArchive getKitDefinition_modelsArchive();
+	@Construct
+	RSBuffer createBuffer(byte[] bytes);
 
-  @Override
-  @Import("SpotAnimationDefinition_archive")
-  RSAbstractArchive getSpotAnimationDefinition_archive();
+	@Construct
+	RSSceneTilePaint createSceneTilePaint(int swColor, int seColor, int neColor, int nwColor, int texture, int rgb, boolean isFlat);
 
-  @Override
-  @Import("SpotAnimationDefinition_modelArchive")
-  RSAbstractArchive getSpotAnimationDefinition_modelArchive();
+	@Import("crossWorldMessageIds")
+	long[] getCrossWorldMessageIds();
 
-  @Construct
-  RSBuffer createBuffer(byte[] bytes);
+	@Import("crossWorldMessageIdsIndex")
+	int getCrossWorldMessageIdsIndex();
 
-  @Construct
-  RSSceneTilePaint createSceneTilePaint(int swColor, int seColor, int neColor, int nwColor,
-                                        int texture, int rgb, boolean isFlat);
+	@Import("currentClanChannels")
+	RSClanChannel[] getCurrentClanChannels();
 
-  @Import("crossWorldMessageIds")
-  long[] getCrossWorldMessageIds();
+	@Import("currentClanSettings")
+	RSClanSettings[] getCurrentClanSettingsAry();
 
-  @Import("crossWorldMessageIdsIndex")
-  int getCrossWorldMessageIdsIndex();
+	@Import("guestClanChannel")
+	@Override
+	RSClanChannel getGuestClanChannel();
 
-  @Import("currentClanChannels")
-  RSClanChannel[] getCurrentClanChannels();
+	@Import("guestClanSettings")
+	@Override
+	RSClanSettings getGuestClanSettings();
 
-  @Import("currentClanSettings")
-  RSClanSettings[] getCurrentClanSettingsAry();
+	ClanRank getClanRankFromRs(int rank);
 
-  @Import("guestClanChannel")
-  @Override
-  RSClanChannel getGuestClanChannel();
+	@Import("readStringIntParameters")
+	RSIterableNodeHashTable readStringIntParameters(RSBuffer buffer, RSIterableNodeHashTable table);
 
-  @Import("guestClanSettings")
-  @Override
-  RSClanSettings getGuestClanSettings();
+	@Import("rndHue")
+	int getRndHue();
 
-  ClanRank getClanRankFromRs(int rank);
+	@Import("Tiles_underlays")
+	byte[][][] getTileUnderlays();
 
-  @Import("MouseHandler_lastPressedX")
-  @Override
-  int getMouseLastPressedX();
+	@Import("Tiles_overlays")
+	byte[][][] getTileOverlays();
 
-  @Import("MouseHandler_lastPressedX")
-  @Override
-  void setMouseLastPressedX(int x);
+	@Import("Tiles_shapes")
+	byte[][][] getTileShapes();
 
-  @Import("MouseHandler_lastPressedY")
-  @Override
-  int getMouseLastPressedY();
+	@Import("SpotAnimationDefinition_get")
+	RSSpotAnimationDefinition getSpotAnimationDefinition(int id);
 
-  @Import("MouseHandler_lastPressedY")
-  @Override
-  void setMouseLastPressedY(int y);
+	@Import("ModelData_get")
+	RSModelData getModelData(RSAbstractArchive var0, int var1, int var2);
 
-  @Import("packetWriter")
-  @Override
-  RSPacketWriter getPacketWriter();
+	@Import("isCameraLocked")
+	boolean isCameraLocked();
 
-  @Import("getPacketBufferNode")
-  @Override
-  RSPacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+	boolean getCameraPitchRelaxerEnabled();
 
-  @Import("loadWorlds")
-  @Override
-  boolean loadWorlds();
+	boolean isUnlockedFps();
 
-  @Import("logoSprite")
-  @Override
-  void setLogoSprite(IndexedSprite indexedSprite);
+	long getUnlockedFpsTarget();
 
-  @Import("titleboxSprite")
-  @Override
-  void setLoginBoxSprite(IndexedSprite indexedSprite);
+	void posToCameraAngle(int var0, int var1);
 
-  @Import("titlebuttonSprite")
-  @Override
-  void setLoginButtonSprite(IndexedSprite indexedSprite);
+	@Import("objectSounds")
+	Deque<AmbientSoundEffect> getAmbientSoundEffects();
 
-  @Import("loginWorldsButton")
-  @Override
-  void setLoginWorldsButtonSprite(IndexedSprite indexedSprite);
+	@Import("EnumDefinition_cached")
+	RSEvictingDualNodeHashTable getEnumDefinitionCache();
 
-  @Import("title_muteSprite")
-  @Override
-  RSIndexedSprite[] getTitleMuteSprites();
+	@Import("FloorUnderlayDefinition_cached")
+	RSEvictingDualNodeHashTable getFloorUnderlayDefinitionCache();
 
-  @Import("optionSprite")
-  @Override
-  void setOptionSprite(IndexedSprite indexedSprite);
+	@Import("FloorOverlayDefinition_cached")
+	RSEvictingDualNodeHashTable getFloorOverlayDefinitionCache();
 
-  @Import("options_buttons_0Sprite")
-  @Override
-  void setOptionSprite1(IndexedSprite indexedSprite);
+	@Import("HitSplatDefinition_cached")
+	RSEvictingDualNodeHashTable getHitSplatDefinitionCache();
 
-  @Import("options_buttons_2Sprite")
-  @Override
-  void setOptionSprite2(IndexedSprite indexedSprite);
+	@Import("HitSplatDefinition_cachedSprites")
+	RSEvictingDualNodeHashTable getHitSplatDefinitionSpritesCache();
 
-  @Import("optionEnabledSprite")
-  @Override
-  void setOptionSprite3(IndexedSprite indexedSprite);
+	@Import("HitSplatDefinition_cachedFonts")
+	RSEvictingDualNodeHashTable getHitSplatDefinitionDontsCache();
 
-  @Import("logoSprite")
-  @Override
-  RSIndexedSprite getLogoSprite();
+	@Import("InvDefinition_cached")
+	RSEvictingDualNodeHashTable getInvDefinitionCache();
 
-  @Import("titleboxSprite")
-  @Override
-  RSIndexedSprite getLoginBoxSprite();
+	@Import("ItemDefinition_cachedModels")
+	RSEvictingDualNodeHashTable getItemDefinitionModelsCache();
 
-  @Import("titlebuttonSprite")
-  @Override
-  RSIndexedSprite getLoginButtonSprite();
+	@Import("ItemDefinition_cachedSprites")
+	RSEvictingDualNodeHashTable getItemDefinitionSpritesCache();
 
-  @Import("loginWorldsButton")
-  @Override
-  RSIndexedSprite getLoginWorldsButtonSprite();
+	@Import("KitDefinition_cached")
+	RSEvictingDualNodeHashTable getKitDefinitionCache();
 
-  @Import("optionSprite")
-  @Override
-  RSIndexedSprite getOptionSprite();
+	@Import("NpcDefinition_cached")
+	RSEvictingDualNodeHashTable getNpcDefinitionCache();
 
-  @Import("options_buttons_0Sprite")
-  @Override
-  RSIndexedSprite getOptionSprite1();
+	@Import("NpcDefinition_cachedModels")
+	RSEvictingDualNodeHashTable getNpcDefinitionModelsCache();
 
-  @Import("options_buttons_2Sprite")
-  @Override
-  RSIndexedSprite getOptionSprite2();
+	@Import("ObjectDefinition_cached")
+	RSEvictingDualNodeHashTable getObjectDefinitionCache();
 
-  @Import("optionEnabledSprite")
-  @Override
-  RSIndexedSprite getOptionSprite3();
+	@Import("ObjectDefinition_cachedModelData")
+	RSEvictingDualNodeHashTable getObjectDefinitionModelDataCache();
 
-  @Import("resumePauseWidget")
-  @Override
-  void processDialog(int widgetUid, int menuIndex);
+	@Import("ObjectDefinition_cachedEntities")
+	RSEvictingDualNodeHashTable getObjectDefinitionEntitiesCache();
 
-  @Import("loginTitleColor")
-  void setLoginTitleColor(int colorHex);
+	@Import("ParamDefinition_cached")
+	RSEvictingDualNodeHashTable getParamDefinitionCache();
 
-  @Import("loginTitleMessage")
-  void setLoginTitleMessage(String message);
+	@Import("PlayerAppearance_cachedModels")
+	RSEvictingDualNodeHashTable getPlayerAppearanceModelsCache();
 
-  @Import("rndHue")
-  int getRndHue();
+	@Import("SequenceDefinition_cached")
+	RSEvictingDualNodeHashTable getSequenceDefinitionCache();
 
-  @Import("Tiles_underlays")
-  byte[][][] getTileUnderlays();
+	@Import("SequenceDefinition_cachedFrames")
+	RSEvictingDualNodeHashTable getSequenceDefinitionFramesCache();
 
-  @Import("Tiles_overlays")
-  byte[][][] getTileOverlays();
+	@Import("SequenceDefinition_cachedModel")
+	RSEvictingDualNodeHashTable getSequenceDefinitionModelsCache();
 
-  @Import("Tiles_shapes")
-  byte[][][] getTileShapes();
+	@Import("SpotAnimationDefinition_cached")
+	RSEvictingDualNodeHashTable getSpotAnimationDefinitionCache();
 
-  @Import("Scene_tilesDeque")
-  RSNodeDeque getTilesDeque();
+	@Import("SpotAnimationDefinition_cachedModels")
+	RSEvictingDualNodeHashTable getSpotAnimationDefinitionModlesCache();
 
-  @Import("worldSelectOpen")
-  @Override
-  boolean isWorldSelectOpen();
+	@Import("VarcInt_cached")
+	RSEvictingDualNodeHashTable getVarcIntCache();
 
-  @Import("worldSelectOpen")
-  @Override
-  void setWorldSelectOpen(boolean open);
+	@Import("VarpDefinition_cached")
+	RSEvictingDualNodeHashTable getVarpDefinitionCache();
 
-  @Import("setWindowedMode")
-  @Override
-  void setWindowedMode(int mode);
+	@Import("Widget_cachedModels")
+	RSEvictingDualNodeHashTable getModelsCache();
 
-  @Import("getWindowedMode")
-  @Override
-  int getWindowedMode();
+	@Import("Widget_cachedFonts")
+	RSEvictingDualNodeHashTable getFontsCache();
 
-  @Import("MouseHandler_instance")
-  @Override
-  RSMouseHandler getMouseHandler();
+	@Import("Widget_cachedSpriteMasks")
+	RSEvictingDualNodeHashTable getSpriteMasksCache();
 
-  @Import("getServerTime")
-  @Override
-  long getCurrentTime();
+	@Import("WorldMapElement_cachedSprites")
+	RSEvictingDualNodeHashTable getSpritesCache();
 
-  @Import("hasFocus")
-  @Override
-  boolean isFocused();
+	@Construct
+	RSIterableNodeHashTable createIterableNodeHashTable(int size);
 
-  @Import("volatileFocus")
-  @Override
-  void setFocused(boolean focused);
+	@Construct
+	RSRuneLiteClanMember runeliteClanMember(ClanSettings var1, int var2);
 
-  @Import("mouseCrossX")
-  @Override
-  void setClickCrossX(int x);
+	@Construct
+	RSProjectile newProjectile(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11);
 
-  @Import("mouseCrossY")
-  @Override
-  void setClickCrossY(int y);
+	@Construct
+	RSModelData newModelData(ModelData[] var1, int var2);
 
-  @Import("SpotAnimationDefinition_get")
-  RSSpotAnimationDefinition getSpotAnimationDefinition(int id);
-
-  @Import("ModelData_get")
-  RSModelData getModelData(RSAbstractArchive var0, int var1, int var2);
-
-  @Import("readStringIntParameters")
-  RSIterableNodeHashTable readStringIntParameters(RSBuffer buffer, RSIterableNodeHashTable table);
-
-  @Import("isCameraLocked")
-  boolean isCameraLocked();
-
-  @Import("oculusOrbFocalPointX")
-  @Override
-  void setOculusOrbFocalPointX(int state);
-
-  @Import("oculusOrbFocalPointY")
-  @Override
-  void setOculusOrbFocalPointY(int state);
-
-  @Import("objectSounds")
-  Deque<AmbientSoundEffect> getAmbientSoundEffects();
-
-  long getUnlockedFpsTarget();
-
-  @Construct
-  RSClientPacket createClientPacket(int opcode, int length);
+	@Construct
+	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
 }

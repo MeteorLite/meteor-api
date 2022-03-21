@@ -10,90 +10,90 @@ import net.runelite.api.Tile;
 import net.runelite.api.WallObject;
 import net.runelite.mapping.Import;
 
-public interface RSTile extends Tile {
+public interface RSTile extends Tile
+{
+	@Import("gameObjects")
+	@Override
+	GameObject[] getGameObjects();
 
-  @Import("gameObjects")
-  @Override
-  GameObject[] getGameObjects();
+	@Import("itemLayer")
+	@Override
+	ItemLayer getItemLayer();
 
-  @Import("itemLayer")
-  @Override
-  ItemLayer getItemLayer();
+	@Import("wallDecoration")
+	@Override
+	DecorativeObject getDecorativeObject();
 
-  @Import("wallDecoration")
-  @Override
-  DecorativeObject getDecorativeObject();
+	@Import("wallDecoration")
+	@Override
+	void setDecorativeObject(DecorativeObject object);
+	
+	@Import("floorDecoration")
+	@Override
+	GroundObject getGroundObject();
 
-  @Import("wallDecoration")
-  @Override
-  void setDecorativeObject(DecorativeObject object);
+	@Import("floorDecoration")
+	@Override
+	void setGroundObject(GroundObject object);
 
-  @Import("floorDecoration")
-  @Override
-  GroundObject getGroundObject();
+	@Import("boundaryObject")
+	@Override
+	WallObject getWallObject();
+	
+	@Import("boundaryObject")
+	@Override
+	void setWallObject(WallObject object);
 
-  @Import("floorDecoration")
-  @Override
-  void setGroundObject(GroundObject object);
+	@Import("paint")
+	@Override
+	SceneTilePaint getSceneTilePaint();
 
-  @Import("boundaryObject")
-  @Override
-  WallObject getWallObject();
+	@Import("paint")
+	void setSceneTilePaint(SceneTilePaint paint);
 
-  @Import("boundaryObject")
-  @Override
-  void setWallObject(WallObject object);
+	@Import("model")
+	@Override
+	SceneTileModel getSceneTileModel();
 
-  @Import("paint")
-  @Override
-  SceneTilePaint getSceneTilePaint();
+	@Import("x")
+	int getX();
 
-  @Import("paint")
-  void setSceneTilePaint(SceneTilePaint paint);
+	@Import("y")
+	int getY();
 
-  @Import("model")
-  @Override
-  SceneTileModel getSceneTileModel();
+	@Import("plane")
+	@Override
+	int getPlane();
 
-  @Import("x")
-  int getX();
+	@Import("originalPlane")
+	@Override
+	int getRenderLevel();
 
-  @Import("y")
-  int getY();
+	@Import("minPlane")
+	int getPhysicalLevel();
 
-  @Import("plane")
-  @Override
-  int getPlane();
+	@Import("gameObjectsEdgeMask")
+	int getFlags();
 
-  @Import("originalPlane")
-  @Override
-  int getRenderLevel();
+	@Import("linkedBelowTile")
+	@Override
+	RSTile getBridge();
 
-  @Import("minPlane")
-  int getPhysicalLevel();
+	@Import("drawPrimary")
+	boolean isDraw();
 
-  @Import("gameObjectsEdgeMask")
-  int getFlags();
+	@Import("drawPrimary")
+	void setDraw(boolean draw);
 
-  @Import("linkedBelowTile")
-  @Override
-  RSTile getBridge();
+	@Import("drawSecondary")
+	boolean isVisible();
 
-  @Import("drawPrimary")
-  boolean isDraw();
+	@Import("drawSecondary")
+	void setVisible(boolean visible);
 
-  @Import("drawPrimary")
-  void setDraw(boolean draw);
+	@Import("drawGameObjects")
+	void setDrawEntities(boolean drawEntities);
 
-  @Import("drawSecondary")
-  boolean isVisible();
-
-  @Import("drawSecondary")
-  void setVisible(boolean visible);
-
-  @Import("drawGameObjects")
-  void setDrawEntities(boolean drawEntities);
-
-  @Import("drawGameObjectEdges")
-  void setWallCullDirection(int wallCullDirection);
+	@Import("drawGameObjectEdges")
+	void setWallCullDirection(int wallCullDirection);
 }

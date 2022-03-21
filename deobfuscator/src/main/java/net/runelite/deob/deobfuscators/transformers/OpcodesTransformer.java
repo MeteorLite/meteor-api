@@ -35,35 +35,40 @@ import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Transformer;
 import org.objectweb.asm.Opcodes;
 
-public class OpcodesTransformer implements Transformer {
+public class OpcodesTransformer implements Transformer
+{
+	public static final String RUNELITE_OPCODES = "net/runelite/rs/Opcodes";
 
-  public static final String RUNELITE_OPCODES = "net/runelite/rs/Opcodes";
+	@Override
+	public void transform(ClassGroup group)
+	{
+		ClassFile runeliteOpcodes = group.findClass(RUNELITE_OPCODES);
+		if (runeliteOpcodes == null)
+		{
+			runeliteOpcodes = new ClassFile(group);
+			runeliteOpcodes.setName(RUNELITE_OPCODES);
+			runeliteOpcodes.setSuperName(Type.OBJECT.getInternalName());
+			runeliteOpcodes.setAccess(Opcodes.ACC_PUBLIC);
+			group.addClass(runeliteOpcodes);
+		}
+		else
+		{
+			runeliteOpcodes.getFields().clear();
+		}
 
-  @Override
-  public void transform(ClassGroup group) {
-    ClassFile runeliteOpcodes = group.findClass(RUNELITE_OPCODES);
-    if (runeliteOpcodes == null) {
-      runeliteOpcodes = new ClassFile(group);
-      runeliteOpcodes.setName(RUNELITE_OPCODES);
-      runeliteOpcodes.setSuperName(Type.OBJECT.getInternalName());
-      runeliteOpcodes.setAccess(Opcodes.ACC_PUBLIC);
-      group.addClass(runeliteOpcodes);
-    } else {
-      runeliteOpcodes.getFields().clear();
-    }
+		Method clinit = runeliteOpcodes.findMethod("<clinit>");
+		if (clinit == null)
+		{
+			clinit = new Method(runeliteOpcodes, "<clinit>", new Signature("()V"));
+			clinit.setStatic(true);
+			Code code = new Code(clinit);
+			code.setMaxStack(1);
+			clinit.setCode(code);
+			runeliteOpcodes.addMethod(clinit);
 
-    Method clinit = runeliteOpcodes.findMethod("<clinit>");
-    if (clinit == null) {
-      clinit = new Method(runeliteOpcodes, "<clinit>", new Signature("()V"));
-      clinit.setStatic(true);
-      Code code = new Code(clinit);
-      code.setMaxStack(1);
-      clinit.setCode(code);
-      runeliteOpcodes.addMethod(clinit);
-
-      Instructions instructions = code.getInstructions();
-      instructions.addInstruction(new VReturn(instructions));
-    }
-  }
+			Instructions instructions = code.getInstructions();
+			instructions.addInstruction(new VReturn(instructions));
+		}
+	}
 
 }

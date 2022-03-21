@@ -33,153 +33,181 @@ import java.util.Map;
 import net.runelite.asm.attributes.Code;
 import org.jetbrains.annotations.NotNull;
 
-public class Instructions implements Iterable<Instruction> {
+public class Instructions implements Iterable<Instruction>
+{
+	private final Code code;
+	private final List<Instruction> instructions = new ArrayList<>();
+	private final Map<org.objectweb.asm.Label, Label> labelMap = new HashMap<>();
 
-  private final Code code;
-  private final List<Instruction> instructions = new ArrayList<>();
-  private final Map<org.objectweb.asm.Label, Label> labelMap = new HashMap<>();
+	public Instructions(Code code)
+	{
+		this.code = code;
+	}
 
-  public Instructions(Code code) {
-    this.code = code;
-  }
+	public Label createLabelFor(Instruction target)
+	{
+		return createLabelFor(target, false);
+	}
 
-  public Label createLabelFor(Instruction target) {
-    return createLabelFor(target, false);
-  }
+	public Label createLabelFor(Instruction target, boolean forceCreate)
+	{
+		assert target.getInstructions() == this;
+		assert instructions.contains(target);
 
-  public Label createLabelFor(Instruction target, boolean forceCreate) {
-    assert target.getInstructions() == this;
-    assert instructions.contains(target);
+		if (target instanceof Label)
+		{
+			return (Label) target;
+		}
 
-    if (target instanceof Label) {
-      return (Label) target;
-    }
+		int i = instructions.indexOf(target);
+		if (i > 0)
+		{
+			Instruction before = instructions.get(i - 1);
 
-    int i = instructions.indexOf(target);
-    if (i > 0) {
-      Instruction before = instructions.get(i - 1);
+			if (!forceCreate && before instanceof Label)
+			{
+				return (Label) before;
+			}
+		}
 
-      if (!forceCreate && before instanceof Label) {
-        return (Label) before;
-      }
-    }
+		Label label = new Label(this);
+		label.setLabel(new org.objectweb.asm.Label());
+		instructions.add(i, label);
+		labelMap.put(label.getLabel(), label);
+		return label;
+	}
 
-    Label label = new Label(this);
-    label.setLabel(new org.objectweb.asm.Label());
-    instructions.add(i, label);
-    labelMap.put(label.getLabel(), label);
-    return label;
-  }
+	public Label findLabel(org.objectweb.asm.Label l)
+	{
+		Label label = labelMap.get(l);
+		assert label != null;
+		return label;
+	}
 
-  public Label findLabel(org.objectweb.asm.Label l) {
-    Label label = labelMap.get(l);
-    assert label != null;
-    return label;
-  }
+	public Label findOrCreateLabel(org.objectweb.asm.Label l)
+	{
+		Label label = labelMap.get(l);
+		if (label != null)
+		{
+			return label;
+		}
 
-  public Label findOrCreateLabel(org.objectweb.asm.Label l) {
-    Label label = labelMap.get(l);
-    if (label != null) {
-      return label;
-    }
+		label = new Label(this, l);
+		labelMap.put(l, label);
 
-    label = new Label(this, l);
-    labelMap.put(l, label);
+		return label;
+	}
 
-    return label;
-  }
+	public void rebuildLabels()
+	{
+		labelMap.clear();
 
-  public void rebuildLabels() {
-    labelMap.clear();
+		// ow2 asm requires new Labels each time you write out a class
+		// with ClassWriter, or else it crytpically fails
+		for (Instruction i : instructions)
+		{
+			if (i instanceof Label)
+			{
+				org.objectweb.asm.Label label = new org.objectweb.asm.Label();
+				((Label) i).setLabel(label);
 
-    // ow2 asm requires new Labels each time you write out a class
-    // with ClassWriter, or else it crytpically fails
-    for (Instruction i : instructions) {
-      if (i instanceof Label) {
-        org.objectweb.asm.Label label = new org.objectweb.asm.Label();
-        ((Label) i).setLabel(label);
+				labelMap.put(label, (Label) i);
+			}
+		}
+	}
 
-        labelMap.put(label, (Label) i);
-      }
-    }
-  }
+	public List<Instruction> getInstructions()
+	{
+		return instructions;
+	}
 
-  public List<Instruction> getInstructions() {
-    return instructions;
-  }
+	public void addInstruction(Instruction i)
+	{
+		assert i.getInstructions() == this;
+		instructions.add(i);
+	}
 
-  public void addInstruction(Instruction i) {
-    assert i.getInstructions() == this;
-    instructions.add(i);
-  }
+	public void addInstruction(int idx, Instruction i)
+	{
+		assert i.getInstructions() == this;
+		instructions.add(idx, i);
+	}
 
-  public void addInstruction(int idx, Instruction i) {
-    assert i.getInstructions() == this;
-    instructions.add(idx, i);
-  }
+	public void remove(Instruction ins)
+	{
+		assert ins.getInstructions() == this;
+		ins.remove();
+		instructions.remove(ins);
+		ins.setInstructions(null);
+	}
 
-  public void remove(Instruction ins) {
-    assert ins.getInstructions() == this;
-    ins.remove();
-    instructions.remove(ins);
-    ins.setInstructions(null);
-  }
+	public void clear()
+	{
+		for (Instruction ins : instructions)
+		{
+			ins.remove();
+			ins.setInstructions(null);
+		}
+		instructions.clear();
+	}
 
-  public void clear() {
-    for (Instruction ins : instructions) {
-      ins.remove();
-      ins.setInstructions(null);
-    }
-    instructions.clear();
-  }
+	public Code getCode()
+	{
+		return code;
+	}
 
-  public Code getCode() {
-    return code;
-  }
+	public void lookup()
+	{
+		for (Instruction i : instructions)
+		{
+			i.lookup();
+		}
+	}
 
-  public void lookup() {
-    for (Instruction i : instructions) {
-      i.lookup();
-    }
-  }
+	public void regeneratePool()
+	{
+		for (Instruction i : instructions)
+		{
+			i.regeneratePool();
+		}
+	}
 
-  public void regeneratePool() {
-    for (Instruction i : instructions) {
-      i.regeneratePool();
-    }
-  }
+	public int replace(Instruction oldi, Instruction newi)
+	{
+		assert oldi != newi;
 
-  public int replace(Instruction oldi, Instruction newi) {
-    assert oldi != newi;
+		assert oldi.getInstructions() == this;
+		assert newi.getInstructions() == this;
 
-    assert oldi.getInstructions() == this;
-    assert newi.getInstructions() == this;
+		assert instructions.contains(oldi);
+		assert !instructions.contains(newi);
 
-    assert instructions.contains(oldi);
-    assert !instructions.contains(newi);
+		int i = instructions.indexOf(oldi);
+		instructions.remove(oldi);
+		oldi.setInstructions(null);
+		instructions.add(i, newi);
 
-    int i = instructions.indexOf(oldi);
-    instructions.remove(oldi);
-    oldi.setInstructions(null);
-    instructions.add(i, newi);
+		return i;
+	}
 
-    return i;
-  }
+	public int size()
+	{
+		return this.instructions.size();
+	}
 
-  public int size() {
-    return this.instructions.size();
-  }
+	@NotNull
+	public Iterator<Instruction> iterator()
+	{
+		return this.instructions.iterator();
+	}
 
-  @NotNull
-  public Iterator<Instruction> iterator() {
-    return this.instructions.iterator();
-  }
+	public ListIterator<Instruction> listIterator()
+	{
+		return this.instructions.listIterator();
+	}
 
-  public ListIterator<Instruction> listIterator() {
-    return this.instructions.listIterator();
-  }
-
-  public ListIterator<Instruction> listIterator(int i) {
-    return this.instructions.listIterator(i);
-  }
+	public ListIterator<Instruction> listIterator(int i)
+	{
+		return this.instructions.listIterator(i);
+	}
 }

@@ -39,83 +39,99 @@ import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.deob.Deobfuscator;
 
-public class MultiplyZeroDeobfuscator implements Deobfuscator {
+public class MultiplyZeroDeobfuscator implements Deobfuscator
+{
 
+	private int count;
 
-  private int count;
+	private void visit(MethodContext mctx)
+	{
+		for (InstructionContext ictx : mctx.getInstructionContexts())
+		{
+			Instruction instruction = ictx.getInstruction();
+			Instructions ins = instruction.getInstructions();
+			if (ins == null)
+			{
+				continue;
+			}
 
-  private void visit(MethodContext mctx) {
-    for (InstructionContext ictx : mctx.getInstructionContexts()) {
-      Instruction instruction = ictx.getInstruction();
-      Instructions ins = instruction.getInstructions();
-      if (ins == null) {
-        continue;
-      }
+			if (!(instruction instanceof IMul) && !(instruction instanceof LMul))
+			{
+				continue;
+			}
 
-      if (!(instruction instanceof IMul) && !(instruction instanceof LMul)) {
-        continue;
-      }
+			List<Instruction> ilist = ins.getInstructions();
 
-      List<Instruction> ilist = ins.getInstructions();
+			StackContext one = ictx.getPops().get(0);
+			StackContext two = ictx.getPops().get(1);
 
-      StackContext one = ictx.getPops().get(0);
-      StackContext two = ictx.getPops().get(1);
+			Instruction ione = one.getPushed().getInstruction(),
+				itwo = two.getPushed().getInstruction();
 
-      Instruction ione = one.getPushed().getInstruction(),
-          itwo = two.getPushed().getInstruction();
+			boolean remove = false;
+			if (ione instanceof PushConstantInstruction)
+			{
+				PushConstantInstruction pci = (PushConstantInstruction) ione;
+				Number value = (Number) pci.getConstant();
 
-      boolean remove = false;
-      if (ione instanceof PushConstantInstruction) {
-        PushConstantInstruction pci = (PushConstantInstruction) ione;
-        Number value = (Number) pci.getConstant();
+				if (DMath.equals(value, 0))
+				{
+					remove = true;
+				}
+			}
+			if (itwo instanceof PushConstantInstruction)
+			{
+				PushConstantInstruction pci = (PushConstantInstruction) itwo;
+				Number value = (Number) pci.getConstant();
 
-        if (DMath.equals(value, 0)) {
-          remove = true;
-        }
-      }
-      if (itwo instanceof PushConstantInstruction) {
-        PushConstantInstruction pci = (PushConstantInstruction) itwo;
-        Number value = (Number) pci.getConstant();
+				if (DMath.equals(value, 0))
+				{
+					remove = true;
+				}
+			}
 
-        if (DMath.equals(value, 0)) {
-          remove = true;
-        }
-      }
+			if (remove == false)
+			{
+				continue;
+			}
 
-      if (remove == false) {
-        continue;
-      }
+			if (!ilist.contains(instruction))
+			{
+				continue; // already done
+			}
+			if (!MultiplicationDeobfuscator.isOnlyPath(ictx, null))
+			{
+				continue;
+			}
 
-      if (!ilist.contains(instruction)) {
-        continue; // already done
-      }
-      if (!MultiplicationDeobfuscator.isOnlyPath(ictx, null)) {
-        continue;
-      }
+			// remove both, remove imul, push 0
+			ictx.removeStack(1);
+			ictx.removeStack(0);
 
-      // remove both, remove imul, push 0
-      ictx.removeStack(1);
-      ictx.removeStack(0);
+			if (instruction instanceof IMul)
+			{
+				ins.replace(instruction, new LDC(ins, 0));
+			}
+			else if (instruction instanceof LMul)
+			{
+				ins.replace(instruction, new LDC(ins, 0L));
+			}
+			else
+			{
+				throw new IllegalStateException();
+			}
 
-      if (instruction instanceof IMul) {
-        ins.replace(instruction, new LDC(ins, 0));
-      } else if (instruction instanceof LMul) {
-        ins.replace(instruction, new LDC(ins, 0L));
-      } else {
-        throw new IllegalStateException();
-      }
+			++count;
 
-      ++count;
-
-    }
-  }
-
-  @Override
-  public void run(ClassGroup group) {
-    Execution e = new Execution(group);
-    e.addMethodContextVisitor(i -> visit(i));
-    e.populateInitialMethods();
-    e.run();
-
-  }
+		}
+	}
+	
+	@Override
+	public void run(ClassGroup group)
+	{
+		Execution e = new Execution(group);
+		e.addMethodContextVisitor(i -> visit(i));
+		e.populateInitialMethods();
+		e.run();
+	}
 }

@@ -24,8 +24,6 @@
  */
 package net.runelite.deob.deobfuscators.transformers;
 
-import static net.runelite.asm.attributes.code.InstructionType.RETURN;
-
 import java.io.IOException;
 import java.util.List;
 import net.runelite.asm.ClassFile;
@@ -35,6 +33,7 @@ import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
+import static net.runelite.asm.attributes.code.InstructionType.RETURN;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.Label;
 import net.runelite.asm.attributes.code.instructions.ALoad;
@@ -51,147 +50,161 @@ import net.runelite.deob.deobfuscators.transformers.buffer.BufferPayloadFinder;
 import net.runelite.deob.deobfuscators.transformers.buffer.PacketFlushFinder;
 import org.objectweb.asm.Opcodes;
 
-public class RuneliteBufferTransformer implements Transformer {
+public class RuneliteBufferTransformer implements Transformer
+{
+	private static final String RUNELITE_PACKET = "RUNELITE_PACKET";
+	private static final String RUNELITE_INIT_PACKET = "runeliteInitPacket";
+	private static final String RUNELITE_FINISH_PACKET = "runeliteFinishPacket";
 
-  private static final String RUNELITE_PACKET = "RUNELITE_PACKET";
-  private static final String RUNELITE_INIT_PACKET = "runeliteInitPacket";
-  private static final String RUNELITE_FINISH_PACKET = "runeliteFinishPacket";
+	@Override
+	public void transform(ClassGroup group)
+	{
+		injectRunelitePacket(group);
+		injectBufferMethods(group);
+		injectLengthHeader(group);
+		injectPacketFinish(group);
+	}
 
-  @Override
-  public void transform(ClassGroup group) {
-    injectRunelitePacket(group);
-    injectBufferMethods(group);
-    injectLengthHeader(group);
-    injectPacketFinish(group);
-  }
+	/**
+	 * inject RUNELITE_PACKET field
+	 *
+	 * @param group
+	 */
+	private void injectRunelitePacket(ClassGroup group)
+	{
+		ClassFile client = findClient(group);
+		assert client != null : "no client class";
 
-  /**
-   * inject RUNELITE_PACKET field
-   *
-   * @param group
-   */
-  private void injectRunelitePacket(ClassGroup group) {
-    ClassFile client = findClient(group);
-    assert client != null : "no client class";
+		if (client.findField(RUNELITE_PACKET) != null)
+		{
+			return;
+		}
 
-    if (client.findField(RUNELITE_PACKET) != null) {
-      return;
-    }
+		Field field = new Field(client, RUNELITE_PACKET, Type.BOOLEAN);
+		field.setAccessFlags(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC);
+		client.addField(field);
+	}
 
-    Field field = new Field(client, RUNELITE_PACKET, Type.BOOLEAN);
-    field.setAccessFlags(Opcodes.ACC_PUBLIC | Opcodes.ACC_STATIC);
-    client.addField(field);
-  }
+	private ClassFile findClient(ClassGroup group)
+	{
+		// "client" in vainlla but "Client" in deob..
+		ClassFile cf = group.findClass("client");
+		return cf != null ? cf : group.findClass("Client");
+	}
 
-  private ClassFile findClient(ClassGroup group) {
-    // "client" in vainlla but "Client" in deob..
-    ClassFile cf = group.findClass("client");
-    return cf != null ? cf : group.findClass("Client");
-  }
+	/**
+	 * inject runelite buffer methods
+	 *
+	 * @param group
+	 */
+	private void injectBufferMethods(ClassGroup group)
+	{
+		BufferFinder bf = new BufferFinder(group);
+		bf.find();
 
-  /**
-   * inject runelite buffer methods
-   *
-   * @param group
-   */
-  private void injectBufferMethods(ClassGroup group) {
-    BufferFinder bf = new BufferFinder(group);
-    bf.find();
+		BufferPayloadFinder bpf = new BufferPayloadFinder(bf.getBuffer());
+		bpf.find();
 
-    BufferPayloadFinder bpf = new BufferPayloadFinder(bf.getBuffer());
-    bpf.find();
+		BufferMethodInjector bmi = new BufferMethodInjector(bpf);
+		try
+		{
+			bmi.inject();
+		}
+		catch (IOException ex)
+		{
+		}
+	}
 
-    BufferMethodInjector bmi = new BufferMethodInjector(bpf);
-    try {
-      bmi.inject();
-    } catch (IOException ex) {
-    }
-  }
+	/**
+	 * inject the length header after the packet opcode
+	 *
+	 * @param group
+	 */
+	private void injectLengthHeader(ClassGroup group)
+	{
+		RWOpcodeFinder rw = new RWOpcodeFinder(group);
+		rw.find();
 
-  /**
-   * inject the length header after the packet opcode
-   *
-   * @param group
-   */
-  private void injectLengthHeader(ClassGroup group) {
-    RWOpcodeFinder rw = new RWOpcodeFinder(group);
-    rw.find();
+		Method writeOpcode = rw.getWriteOpcode();
+		Code code = writeOpcode.getCode();
+		Instructions instructions = code.getInstructions();
+		List<Instruction> ins = instructions.getInstructions();
 
-    Method writeOpcode = rw.getWriteOpcode();
-    Code code = writeOpcode.getCode();
-    Instructions instructions = code.getInstructions();
-    List<Instruction> ins = instructions.getInstructions();
+		Instruction start = ins.get(0);
+		Instruction end = ins.stream().filter(i -> i.getType() == RETURN).findFirst().get();
 
-    Instruction start = ins.get(0);
-    Instruction end = ins.stream().filter(i -> i.getType() == RETURN).findFirst().get();
+		Label labelForStart = instructions.createLabelFor(start);
+		Label labelForEnd = instructions.createLabelFor(end);
 
-    Label labelForStart = instructions.createLabelFor(start);
-    Label labelForEnd = instructions.createLabelFor(end);
+		final net.runelite.asm.pool.Field runelitePacketField = new net.runelite.asm.pool.Field(
+			new net.runelite.asm.pool.Class(findClient(group).getName()),
+			RUNELITE_PACKET,
+			Type.BOOLEAN
+		);
 
-    final net.runelite.asm.pool.Field runelitePacketField = new net.runelite.asm.pool.Field(
-        new net.runelite.asm.pool.Class(findClient(group).getName()),
-        RUNELITE_PACKET,
-        Type.BOOLEAN
-    );
+		int idx = ins.indexOf(labelForStart);
 
-    int idx = ins.indexOf(labelForStart);
+		instructions.addInstruction(idx++, new GetStatic(instructions, runelitePacketField));
+		instructions.addInstruction(idx++, new IfEq(instructions, labelForStart));
 
-    instructions.addInstruction(idx++, new GetStatic(instructions, runelitePacketField));
-    instructions.addInstruction(idx++, new IfEq(instructions, labelForStart));
+		net.runelite.asm.pool.Method method = new net.runelite.asm.pool.Method(
+			new net.runelite.asm.pool.Class(writeOpcode.getClassFile().getName()),
+			RUNELITE_FINISH_PACKET,
+			new Signature("()V")
+		);
+		instructions.addInstruction(idx++, new ALoad(instructions, 0));
+		instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
 
-    net.runelite.asm.pool.Method method = new net.runelite.asm.pool.Method(
-        new net.runelite.asm.pool.Class(writeOpcode.getClassFile().getName()),
-        RUNELITE_FINISH_PACKET,
-        new Signature("()V")
-    );
-    instructions.addInstruction(idx++, new ALoad(instructions, 0));
-    instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
+		idx = ins.indexOf(labelForEnd);
 
-    idx = ins.indexOf(labelForEnd);
+		instructions.addInstruction(idx++, new GetStatic(instructions, runelitePacketField));
+		instructions.addInstruction(idx++, new IfEq(instructions, labelForEnd));
 
-    instructions.addInstruction(idx++, new GetStatic(instructions, runelitePacketField));
-    instructions.addInstruction(idx++, new IfEq(instructions, labelForEnd));
+		method = new net.runelite.asm.pool.Method(
+			new net.runelite.asm.pool.Class(writeOpcode.getClassFile().getName()),
+			RUNELITE_INIT_PACKET,
+			new Signature("()V")
+		);
+		instructions.addInstruction(idx++, new ALoad(instructions, 0));
+		instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
+	}
 
-    method = new net.runelite.asm.pool.Method(
-        new net.runelite.asm.pool.Class(writeOpcode.getClassFile().getName()),
-        RUNELITE_INIT_PACKET,
-        new Signature("()V")
-    );
-    instructions.addInstruction(idx++, new ALoad(instructions, 0));
-    instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
-  }
+	private void injectPacketFinish(ClassGroup group)
+	{
+		PacketFlushFinder pff = new PacketFlushFinder(group);
+		pff.find();
 
-  private void injectPacketFinish(ClassGroup group) {
-    PacketFlushFinder pff = new PacketFlushFinder(group);
-    pff.find();
+		for (InstructionContext queueForWriteCtx : pff.getQueueForWrite())
+		{
+			Instruction before = queueForWriteCtx.getPops().get(3) // socket
+				.getPushed().getInstruction();
+			GetStatic getBuffer;
 
-    for (InstructionContext queueForWriteCtx : pff.getQueueForWrite()) {
-      Instruction before = queueForWriteCtx.getPops().get(3) // socket
-          .getPushed().getInstruction();
-      GetStatic getBuffer;
+			try
+			{
+				getBuffer = (GetStatic) queueForWriteCtx.getPops().get(2) // buffer
+					.getPushed().getPops().get(0) // getstatic
+					.getPushed().getInstruction();
+			}
+			catch (ClassCastException ex)
+			{
+				continue;
+			}
 
-      try {
-        getBuffer = (GetStatic) queueForWriteCtx.getPops().get(2) // buffer
-            .getPushed().getPops().get(0) // getstatic
-            .getPushed().getInstruction();
-      } catch (ClassCastException ex) {
-        continue;
-      }
+			Instructions instructions = before.getInstructions();
 
-      Instructions instructions = before.getInstructions();
+			int idx = instructions.getInstructions().indexOf(before);
+			assert idx != -1;
 
-      int idx = instructions.getInstructions().indexOf(before);
-      assert idx != -1;
+			instructions.addInstruction(idx++, getBuffer.clone());
 
-      instructions.addInstruction(idx++, getBuffer.clone());
-
-      net.runelite.asm.pool.Method method = new net.runelite.asm.pool.Method(
-          new net.runelite.asm.pool.Class(getBuffer.getField().getType().getInternalName()),
-          RUNELITE_FINISH_PACKET,
-          new Signature("()V")
-      );
-      instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
-    }
-  }
+			net.runelite.asm.pool.Method method = new net.runelite.asm.pool.Method(
+				new net.runelite.asm.pool.Class(getBuffer.getField().getType().getInternalName()),
+				RUNELITE_FINISH_PACKET,
+				new Signature("()V")
+			);
+			instructions.addInstruction(idx++, new InvokeVirtual(instructions, method));
+		}
+	}
 
 }

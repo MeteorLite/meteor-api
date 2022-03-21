@@ -15,8 +15,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import net.runelite.asm.Type;
@@ -25,102 +27,117 @@ import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.ClassReader;
 
 @NoArgsConstructor
-public class RSApi implements Iterable<RSApiClass> {
+public class RSApi implements Iterable<RSApiClass>
+{
+	public static final String API_BASE = "net/runelite/rs/api/RS";
+	public static final String RL_API_BASE = "net/runelite/api";
+	public static final Type CONSTRUCT = new Type("Lnet/runelite/mapping/Construct;");
+	public static final Type IMPORT = new Type("Lnet/runelite/mapping/Import;");
 
-  public static final String API_BASE = "net/runelite/rs/api/RS";
-  public static final String RL_API_BASE = "net/runelite/api";
-  public static final Type CONSTRUCT = new Type("Lnet/runelite/mapping/Construct;");
-  public static final Type IMPORT = new Type("Lnet/runelite/mapping/Import;");
+	private final List<RSApiClass> classes = new ArrayList<>();
 
-  private final List<RSApiClass> classes = new ArrayList<>();
+	@Getter
+	private final List<RSApiMethod> constructs = new ArrayList<>();
 
-  @Getter
-  private final List<RSApiMethod> constructs = new ArrayList<>();
+	private ImmutableMap<String, RSApiClass> map;
 
-  private ImmutableMap<String, RSApiClass> map;
+	public RSApi(File[] classes)
+	{
+		for (File file : classes)
+		{
+			if (!file.getName().startsWith("RS"))
+			{
+				continue;
+			}
 
-  public RSApi(File[] classes) {
-    for (File file : classes) {
-      if (!file.getName().startsWith("RS")) {
-        continue;
-      }
+			try (InputStream is = new FileInputStream(file))
+			{
+				final ClassReader reader = new ClassReader(is);
 
-      try (InputStream is = new FileInputStream(file)) {
-        final ClassReader reader = new ClassReader(is);
+				final RSApiClass apiClass = new RSApiClass();
 
-        final RSApiClass apiClass = new RSApiClass();
+				reader.accept(apiClass, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
 
-        reader.accept(apiClass,
-            ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
+				this.classes.add(apiClass);
+			}
+			catch (IOException e)
+			{
+				throw new InjectException(e);
+			}
+		}
 
-        this.classes.add(apiClass);
-      } catch (IOException e) {
-        throw new InjectException(e);
-      }
-    }
+		init();
+	}
 
-    init();
-  }
+	@VisibleForTesting
+	private void init()
+	{
+		final ImmutableMap.Builder<String, RSApiClass> builder = ImmutableMap.builder();
 
-  @VisibleForTesting
-  private void init() {
-    final ImmutableMap.Builder<String, RSApiClass> builder = ImmutableMap.builder();
+		for (RSApiClass clazz : this)
+		{
+			builder.put(clazz.getName(), clazz);
+		}
 
-    for (RSApiClass clazz : this) {
-      builder.put(clazz.getName(), clazz);
-    }
+		this.map = builder.build();
 
-    this.map = builder.build();
+		for (RSApiClass clazz : this)
+		{
+			final List<RSApiClass> intfs = clazz.getApiInterfaces();
+			for (Class intfPool : clazz.getInterfaces())
+			{
+				final RSApiClass intfApi = map.get(intfPool.getName());
+				if (intfApi != null)
+				{
+					intfs.add(intfApi);
+				}
+			}
 
-    for (RSApiClass clazz : this) {
-      final List<RSApiClass> intfs = clazz.getApiInterfaces();
-      for (Class intfPool : clazz.getInterfaces()) {
-        final RSApiClass intfApi = map.get(intfPool.getName());
-        if (intfApi != null) {
-          intfs.add(intfApi);
-        }
-      }
+			// Collect all @Constructs, and build @Import maps
+			clazz.init(constructs);
+		}
+	}
 
-      // Collect all @Constructs, and build @Import maps
-      clazz.init(constructs);
-    }
-  }
+	public int size()
+	{
+		return classes.size();
+	}
 
-  public int size() {
-    return classes.size();
-  }
+	public RSApiClass findClass(String name)
+	{
+		return map.get(name);
+	}
 
-  public RSApiClass findClass(String name) {
-    return map.get(name);
-  }
+	public boolean hasClass(String name)
+	{
+		return findClass(name) != null;
+	}
 
-  public boolean hasClass(String name) {
-    return findClass(name) != null;
-  }
+	public Set<RSApiClass> withInterface(Class interf)
+	{
+		Set<RSApiClass> classes = new HashSet<>();
 
-  public RSApiClass withInterface(Class interf) {
-    RSApiClass clazz = findClass(interf.getName());
-    if (clazz != null) {
-      return clazz;
-    }
+		for (RSApiClass apiC : this)
+		{
+			if (apiC.getInterfaces().contains(interf))
+			{
+				classes.add(apiC);
+			}
+		}
 
-    for (RSApiClass apiC : this) {
-      if (apiC.getInterfaces().contains(interf)) {
-        return apiC;
-      }
-    }
+		return classes;
+	}
 
-    return null;
-  }
+	@NotNull
+	public Iterator<RSApiClass> iterator()
+	{
+		return classes.iterator();
+	}
 
-  @NotNull
-  public Iterator<RSApiClass> iterator() {
-    return classes.iterator();
-  }
-
-  @VisibleForTesting
-  public List<RSApiClass> getClasses() {
-    return classes;
-  }
+	@VisibleForTesting
+	public List<RSApiClass> getClasses()
+	{
+		return classes;
+	}
 
 }

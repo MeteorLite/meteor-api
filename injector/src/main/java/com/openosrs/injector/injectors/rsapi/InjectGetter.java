@@ -30,6 +30,7 @@
  */
 package com.openosrs.injector.injectors.rsapi;
 
+import com.openosrs.injector.InjectException;
 import com.openosrs.injector.InjectUtil;
 import com.openosrs.injector.rsapi.RSApiMethod;
 import java.util.List;
@@ -43,42 +44,45 @@ import net.runelite.asm.attributes.code.instructions.ALoad;
 import net.runelite.asm.attributes.code.instructions.GetField;
 import net.runelite.asm.attributes.code.instructions.GetStatic;
 import net.runelite.asm.signature.Signature;
-import meteor.Logger;
 
-public class InjectGetter {
+public class InjectGetter
+{
+	public static void inject(ClassFile targetClass, RSApiMethod apiMethod, Field field, Number getter)
+	{
+		if (targetClass.findMethod(apiMethod.getName(), apiMethod.getSignature()) != null)
+		{
+			throw new InjectException("Duplicate getter method " + apiMethod.getMethod().toString());
+		}
 
-  public static void inject(ClassFile targetClass, RSApiMethod apiMethod, Field field,
-      Number getter) {
-    if (targetClass.findMethod(apiMethod.getName(), apiMethod.getSignature()) != null) {
-      Logger.Companion.getLogger(InjectGetter.class)
-          .debug("Duplicate getter method " + apiMethod.getMethod().toString());
-    }
+		final String name = apiMethod.getName();
+		final Signature sig = apiMethod.getSignature();
 
-    final String name = apiMethod.getName();
-    final Signature sig = apiMethod.getSignature();
+		final Method method = new Method(targetClass, name, sig);
+		method.setPublic();
 
-    final Method method = new Method(targetClass, name, sig);
-    method.setPublic();
+		final Code code = new Code(method);
+		method.setCode(code);
 
-    final Code code = new Code(method);
-    method.setCode(code);
+		final Instructions instructions = code.getInstructions();
+		final List<Instruction> ins = instructions.getInstructions();
 
-    final Instructions instructions = code.getInstructions();
-    final List<Instruction> ins = instructions.getInstructions();
+		if (field.isStatic())
+		{
+			ins.add(new GetStatic(instructions, field.getPoolField()));
+		}
+		else
+		{
+			ins.add(new ALoad(instructions, 0));
+			ins.add(new GetField(instructions, field.getPoolField()));
+		}
 
-    if (field.isStatic()) {
-      ins.add(new GetStatic(instructions, field.getPoolField()));
-    } else {
-      ins.add(new ALoad(instructions, 0));
-      ins.add(new GetField(instructions, field.getPoolField()));
-    }
+		if (getter != null)
+		{
+			InjectUtil.injectObfuscatedGetter(getter, instructions, ins::add);
+		}
 
-    if (getter != null) {
-      InjectUtil.injectObfuscatedGetter(getter, instructions, ins::add);
-    }
+		ins.add(InjectUtil.createReturnForType(instructions, field.getType()));
 
-    ins.add(InjectUtil.createReturnForType(instructions, field.getType()));
-
-    targetClass.addMethod(method);
-  }
+		targetClass.addMethod(method);
+	}
 }

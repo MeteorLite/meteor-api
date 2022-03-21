@@ -24,17 +24,15 @@
  */
 package net.runelite.api.coords;
 
-import static net.runelite.api.coords.Direction.EAST;
-import static net.runelite.api.coords.Direction.NORTH;
-import static net.runelite.api.coords.Direction.SOUTH;
-import static net.runelite.api.coords.Direction.WEST;
-
 import lombok.Value;
+
+import static net.runelite.api.coords.Direction.*;
 
 /**
  * Represents an in-game orientation that uses fixed point arithmetic.
  * <p>
- * Angles are represented as an int value ranging from 0-2047, where the following is true:
+ * Angles are represented as an int value ranging from 0-2047, where the
+ * following is true:
  * <ul>
  *     <li>0 is true South</li>
  *     <li>512 is true West</li>
@@ -44,38 +42,38 @@ import lombok.Value;
  */
 @Value
 public class Angle {
+    /**
+     * The raw angle value.
+     */
+    private final int angle;
 
-  /**
-   * The raw angle value.
-   */
-  private final int angle;
-
-  /**
-   * Converts the angle value to the nearest cardinal direction.
-   * <p>
-   * Each cardinal direction contains 512 angles, ranging between -256 and +256 of it's true value.
-   * Negative values and values above 2047 are wrapped accordingly.
-   *
-   * @return Nearest cardinal direction to the angle
-   */
-  public Direction getNearestDirection() {
-    int round = angle >>> 9;
-    int up = angle & 256;
-    if (up != 0) {
-      // round up
-      ++round;
+    /**
+     * Converts the angle value to the nearest cardinal direction.
+     * <p>
+     * Each cardinal direction contains 512 angles, ranging between
+     * -256 and +256 of it's true value. Negative values and values
+     * above 2047 are wrapped accordingly.
+     *
+     * @return Nearest cardinal direction to the angle
+     */
+    public Direction getNearestDirection() {
+        int round = angle >>> 9;
+        int up = angle & 256;
+        if (up != 0) {
+            // round up
+            ++round;
+        }
+        switch (round & 3) {
+            case 0:
+                return SOUTH;
+            case 1:
+                return WEST;
+            case 2:
+                return NORTH;
+            case 3:
+                return EAST;
+            default:
+                throw new IllegalStateException();
+        }
     }
-    switch (round & 3) {
-      case 0:
-        return SOUTH;
-      case 1:
-        return WEST;
-      case 2:
-        return NORTH;
-      case 3:
-        return EAST;
-      default:
-        throw new IllegalStateException();
-    }
-  }
 }

@@ -5,65 +5,65 @@ import net.runelite.mapping.Import;
 
 public interface RSGraphicsObject extends GraphicsObject, RSRenderable
 {
-  @Import("id")
-  @Override
-  int getId();
+	@Import("id")
+	@Override
+	int getId();
 
-  @Import("id")
-  void setId(int id);
+	@Import("id")
+	void setId(int id);
 
-  @Import("x")
-  int getX();
+	@Import("x")
+	int getX();
 
-  @Import("y")
-  int getY();
+	@Import("y")
+	int getY();
 
-  @Import("cycleStart")
-  @Override
-  int getStartCycle();
+	@Import("cycleStart")
+	@Override
+	int getStartCycle();
 
-  @Import("plane")
-  @Override
-  int getLevel();
+	@Import("plane")
+	@Override
+	int getLevel();
 
-  @Import("height")
-  @Override
-  int getHeight();
+	@Import("z")
+	@Override
+	int getZ();
 
-  @Import("isFinished")
-  @Override
-  boolean finished();
+	@Import("isFinished")
+	@Override
+	boolean finished();
 
-  @Import("frame")
-  int getFrame();
+	@Import("frame")
+	int getFrame();
 
-  @Import("frame")
-  void setFrame(int frame);
+	@Import("frame")
+	void setFrame(int frame);
 
-  @Import("frameCycle")
-  int getFrameCycle();
+	@Import("frameCycle")
+	int getFrameCycle();
 
-  @Import("frameCycle")
-  void setFrameCycle(int frameCycle);
+	@Import("frameCycle")
+	void setFrameCycle(int frameCycle);
 
-  @Import("isFinished")
-  void setFinished(boolean finished);
+	@Import("isFinished")
+	void setFinished(boolean finished);
 
-  @Import("plane")
-  void setLevel(int level);
+	@Import("plane")
+	void setLevel(int level);
 
-  @Import("x")
-  void setX(int x);
+	@Import("x")
+	void setX(int x);
 
-  @Import("y")
-  void setY(int y);
+	@Import("y")
+	void setY(int y);
 
-  @Import("height")
-  void setHeight(int height);
+	@Import("z")
+	void setZ(int height);
 
-  @Import("sequenceDefinition")
-  RSSequenceDefinition getSequenceDefinition();
+	@Import("sequenceDefinition")
+	RSSequenceDefinition getSequenceDefinition();
 
-  @Import("sequenceDefinition")
-  void setSequenceDefinition(RSSequenceDefinition sequenceDefinition);
+	@Import("sequenceDefinition")
+	void setSequenceDefinition(RSSequenceDefinition sequenceDefinition);
 }

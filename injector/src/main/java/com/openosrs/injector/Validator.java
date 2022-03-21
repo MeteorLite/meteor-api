@@ -9,11 +9,12 @@ package com.openosrs.injector;
 
 import net.runelite.asm.Named;
 
-public interface Validator extends Named {
+public interface Validator extends Named
+{
+	boolean validate();
 
-  boolean validate();
-
-  default String getName() {
-    return this.getClass().getSimpleName();
-  }
+	default String getName()
+	{
+		return this.getClass().getSimpleName();
+	}
 }

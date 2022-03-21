@@ -31,134 +31,148 @@ import java.util.List;
 import java.util.regex.Pattern;
 import net.runelite.asm.Type;
 
-public class Signature {
+public class Signature
+{
+	private static final Pattern RLAPITORSAPI = Pattern.compile("net/runelite/(rs/)?api/(RS)?");
 
-  private static final Pattern RLAPITORSAPI = Pattern.compile("net/runelite/(rs/)?api/(RS)?");
+	private final List<Type> arguments;
+	private final Type rv;
 
-  private final List<Type> arguments;
-  private final Type rv;
+	public Signature(List<Type> arguments, Type rv)
+	{
+		this.arguments = new ArrayList<>(arguments);
+		this.rv = rv;
+	}
 
-  public Signature(List<Type> arguments, Type rv) {
-    this.arguments = new ArrayList<>(arguments);
-    this.rv = rv;
-  }
+	public Signature(String str)
+	{
+		final int rvStart = str.indexOf(')');
+		if (rvStart == -1)
+			throw new IllegalArgumentException("Descriptor has no return value!");
 
-  public Signature(String str) {
-    final int rvStart = str.indexOf(')');
-    if (rvStart == -1) {
-      throw new IllegalArgumentException("Descriptor has no return value!");
-    }
+		rv = new Type(str.substring(rvStart + 1));
+		arguments = findArgs(str, new ArrayList<>(), str.indexOf('(') + 1, rvStart);
+	}
 
-    rv = new Type(str.substring(rvStart + 1));
-    arguments = findArgs(str, new ArrayList<>(), str.indexOf('(') + 1, rvStart);
-  }
+	public Signature(Signature other)
+	{
+		arguments = new ArrayList<>(other.arguments);
+		rv = other.rv;
+	}
 
-  public Signature(Signature other) {
-    arguments = new ArrayList<>(other.arguments);
-    rv = other.rv;
-  }
+	private static List<Type> findArgs(final String str, final List<Type> ret, final int from, final int to)
+	{
+		if (from >= to) return ret;
 
-  private static List<Type> findArgs(final String str, final List<Type> ret, final int from,
-      final int to) {
-    if (from >= to) {
-      return ret;
-    }
+		int i = from;
+		while (str.charAt(i) == '[') ++i;
 
-    int i = from;
-    while (str.charAt(i) == '[') {
-      ++i;
-    }
+		if (str.charAt(i) == 'L')
+			i = str.indexOf(';', i);
 
-    if (str.charAt(i) == 'L') {
-      i = str.indexOf(';', i);
-    }
+		ret.add(new Type(str.substring(from, ++i)));
 
-    ret.add(new Type(str.substring(from, ++i)));
+		return findArgs(str, ret, i, to);
+	}
 
-    return findArgs(str, ret, i, to);
-  }
+	@Override
+	public boolean equals(Object other)
+	{
+		if (!(other instanceof Signature))
+		{
+			return false;
+		}
 
-  @Override
-  public boolean equals(Object other) {
-    if (!(other instanceof Signature)) {
-      return false;
-    }
+		return this.toString().equals(other.toString());
+	}
 
-    return this.toString().equals(other.toString());
-  }
+	@Override
+	public int hashCode()
+	{
+		return this.toString().hashCode();
+	}
 
-  @Override
-  public int hashCode() {
-    return this.toString().hashCode();
-  }
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append('(');
+		for (Type a : arguments)
+		{
+			sb.append(a);
+		}
+		sb.append(')');
+		sb.append(rv);
+		return sb.toString();
+	}
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append('(');
-    for (Type a : arguments) {
-      sb.append(a);
-    }
-    sb.append(')');
-    sb.append(rv);
-    return sb.toString();
-  }
+	public int size()
+	{
+		return arguments.size();
+	}
 
-  public int size() {
-    return arguments.size();
-  }
+	public void remove(int i)
+	{
+		arguments.remove(i);
+	}
 
-  public void remove(int i) {
-    arguments.remove(i);
-  }
+	public Type getTypeOfArg(int i)
+	{
+		return arguments.get(i);
+	}
 
-  public Type getTypeOfArg(int i) {
-    return arguments.get(i);
-  }
+	public Type getReturnValue()
+	{
+		return rv;
+	}
 
-  public Type getReturnValue() {
-    return rv;
-  }
+	public List<Type> getArguments()
+	{
+		return Collections.unmodifiableList(arguments);
+	}
 
-  public List<Type> getArguments() {
-    return Collections.unmodifiableList(arguments);
-  }
+	public boolean isVoid()
+	{
+		return rv.equals(Type.VOID);
+	}
 
-  public boolean isVoid() {
-    return rv.equals(Type.VOID);
-  }
+	public static class Builder
+	{
+		private final List<Type> arguments = new ArrayList<>();
+		private Type rv;
 
-  public Signature rsApiToRsClient() {
-    return new Signature(RLAPITORSAPI.matcher(this.toString()).replaceAll(""));
-  }
+		public Builder setReturnType(Type type)
+		{
+			rv = type;
+			return this;
+		}
 
-  public static class Builder {
+		public Builder addArgument(Type type)
+		{
+			arguments.add(type);
+			return this;
+		}
 
-    private final List<Type> arguments = new ArrayList<>();
-    private Type rv;
+		public Builder addArgument(int idx, Type type)
+		{
+			arguments.add(idx, type);
+			return this;
+		}
 
-    public Builder setReturnType(Type type) {
-      rv = type;
-      return this;
-    }
+		public Builder addArguments(Collection<Type> types)
+		{
+			arguments.addAll(types);
+			return this;
+		}
 
-    public Builder addArgument(Type type) {
-      arguments.add(type);
-      return this;
-    }
+		public Signature build()
+		{
+			return new Signature(arguments, rv);
+		}
+	}
 
-    public Builder addArgument(int idx, Type type) {
-      arguments.add(idx, type);
-      return this;
-    }
-
-    public Builder addArguments(Collection<Type> types) {
-      arguments.addAll(types);
-      return this;
-    }
-
-    public Signature build() {
-      return new Signature(arguments, rv);
-    }
-  }
+	public Signature rsApiToRsClient()
+	{
+		return new Signature(RLAPITORSAPI.matcher(this.toString()).replaceAll(""));
+	}
 }

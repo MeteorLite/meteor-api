@@ -77,8 +77,23 @@ public abstract class LoginScreenMixin implements RSClient
 	}
 
 	@Inject
-	public SpritePixels getLoginScreen() {
-		return loginScreenBackground;
+	public void setLoginScreenBackground(SpritePixels background)
+	{
+		assert client.isClientThread() : "setLoginScreen must be called on client thread";
+		loginScreenBackground = background;
+		client.clearLoginScreen(false);
+	}
+
+	@Inject
+	public void setLoginScreenLeftTitleSprite()
+	{
+		setLeftTitleSprite(0);
+	}
+
+	@Inject
+	public void setLoginScreenRightTitleSprite()
+	{
+		setRightTitleSprite(0);
 	}
 
 	@Inject
@@ -104,5 +119,4 @@ public abstract class LoginScreenMixin implements RSClient
 			client.setRightTitleSprite(client.createSpritePixels(new int[]{loginscreen.getPixels()[383]}, 1, 1));
 		}
 	}
-
 }

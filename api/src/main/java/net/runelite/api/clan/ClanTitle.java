@@ -31,13 +31,12 @@ import lombok.Value;
  */
 @Value
 public class ClanTitle {
-
-  /**
-   * The id of the title
-   */
-  int id;
-  /**
-   * The name of the title
-   */
-  String name;
+    /**
+     * The id of the title
+     */
+    int id;
+    /**
+     * The name of the title
+     */
+    String name;
 }

@@ -24,10 +24,6 @@
  */
 package net.runelite.deob.deobfuscators.packetwrite;
 
-import static net.runelite.deob.deobfuscators.transformers.OpcodesTransformer.RUNELITE_OPCODES;
-import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
-import static org.objectweb.asm.Opcodes.ACC_STATIC;
-
 import java.util.Collection;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
@@ -40,50 +36,58 @@ import net.runelite.asm.attributes.code.instruction.types.PushConstantInstructio
 import net.runelite.asm.attributes.code.instructions.GetStatic;
 import net.runelite.asm.attributes.code.instructions.LDC;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
-class OpcodeReplacer {
+import static net.runelite.deob.deobfuscators.transformers.OpcodesTransformer.RUNELITE_OPCODES;
+import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
+import static org.objectweb.asm.Opcodes.ACC_STATIC;
 
-  public void run(ClassGroup group, Collection<PacketWrite> writes) {
-    int count = 0;
+class OpcodeReplacer
+{
+	public void run(ClassGroup group, Collection<PacketWrite> writes)
+	{
+		int count = 0;
 
-    ClassFile runeliteOpcodes = group.findClass(RUNELITE_OPCODES);
-    assert runeliteOpcodes != null : "Opcodes class must exist";
+		ClassFile runeliteOpcodes = group.findClass(RUNELITE_OPCODES);
+		assert runeliteOpcodes != null : "Opcodes class must exist";
 
-    for (PacketWrite wp : writes) {
-      Instructions ins = wp.getInstructions();
+		for (PacketWrite wp : writes)
+		{
+			Instructions ins = wp.getInstructions();
 
-      Instruction param = wp.getOpcodeIns();
-      if (!(param instanceof PushConstantInstruction)) {
-        continue;
-      }
+			Instruction param = wp.getOpcodeIns();
+			if (!(param instanceof PushConstantInstruction))
+			{
+				continue;
+			}
 
-      final String fieldName = "PACKET_CLIENT_" + wp.getOpcode();
+			final String fieldName = "PACKET_CLIENT_" + wp.getOpcode();
 
-      net.runelite.asm.pool.Field field = new net.runelite.asm.pool.Field(
-          new net.runelite.asm.pool.Class(RUNELITE_OPCODES),
-          fieldName,
-          Type.INT
-      );
-      ins.replace(param, new GetStatic(ins, field));
+			net.runelite.asm.pool.Field field = new net.runelite.asm.pool.Field(
+				new net.runelite.asm.pool.Class(RUNELITE_OPCODES),
+				fieldName,
+				Type.INT
+			);
+			ins.replace(param, new GetStatic(ins, field));
 
-      if (runeliteOpcodes.findField(fieldName) == null) {
-        Field opField = new Field(runeliteOpcodes, fieldName, Type.INT);
-        // ACC_FINAL causes javac to inline the fields, which prevents
-        // the mapper from doing field mapping
-        opField.setAccessFlags(ACC_PUBLIC | ACC_STATIC);
-        // setting a non-final static field value
-        // doesn't work with fernflower
-        opField.setValue(wp.getOpcode());
-        runeliteOpcodes.addField(opField);
+			if (runeliteOpcodes.findField(fieldName) == null)
+			{
+				Field opField = new Field(runeliteOpcodes, fieldName, Type.INT);
+				// ACC_FINAL causes javac to inline the fields, which prevents
+				// the mapper from doing field mapping
+				opField.setAccessFlags(ACC_PUBLIC | ACC_STATIC);
+				// setting a non-final static field value
+				// doesn't work with fernflower
+				opField.setValue(wp.getOpcode());
+				runeliteOpcodes.addField(opField);
 
-        // add initialization
-        Method clinit = runeliteOpcodes.findMethod("<clinit>");
-        assert clinit != null;
-        Instructions instructions = clinit.getCode().getInstructions();
-        instructions.addInstruction(0, new LDC(instructions, wp.getOpcode()));
-        instructions.addInstruction(1, new PutStatic(instructions, opField));
-      }
+				// add initialization
+				Method clinit = runeliteOpcodes.findMethod("<clinit>");
+				assert clinit != null;
+				Instructions instructions = clinit.getCode().getInstructions();
+				instructions.addInstruction(0, new LDC(instructions, wp.getOpcode()));
+				instructions.addInstruction(1, new PutStatic(instructions, opField));
+			}
 
-      ++count;
-    }
-  }
+			++count;
+		}
+	}
 }

@@ -66,305 +66,354 @@ import net.runelite.asm.pool.Class;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.DeobAnnotations;
 
-public class InjectHook extends AbstractInjector {
+public class InjectHook extends AbstractInjector
+{
+	private static final String CLINIT = "<clinit>";
+	private static final Type FIELDHOOK = new Type("Lnet/runelite/api/mixins/FieldHook;");
 
-  private static final String CLINIT = "<clinit>";
-  private static final Type FIELDHOOK = new Type("Lnet/runelite/api/mixins/FieldHook;");
+	private final Map<Field, HookInfo> hooked = new HashMap<>();
+	private final Map<Provider<ClassFile>, List<ClassFile>> mixinTargets;
 
-  private final Map<Field, HookInfo> hooked = new HashMap<>();
-  private final Map<Provider<ClassFile>, List<ClassFile>> mixinTargets;
+	private int injectedHooks;
 
-  private int injectedHooks;
+	InjectHook(final InjectData inject, final Map<Provider<ClassFile>, List<ClassFile>> mixinTargets)
+	{
+		super(inject);
+		this.mixinTargets = mixinTargets;
+	}
 
-  InjectHook(final InjectData inject,
-      final Map<Provider<ClassFile>, List<ClassFile>> mixinTargets) {
-    super(inject);
-    this.mixinTargets = mixinTargets;
-  }
+	@Override
+	public void inject()
+	{
+		for (Map.Entry<Provider<ClassFile>, List<ClassFile>> entry : mixinTargets.entrySet())
+		{
+			injectMethods(entry.getKey(), entry.getValue());
+		}
 
-  private static boolean isBefore(Annotation a) {
-    Object val = a.get("before");
-    return val instanceof Boolean && (Boolean) val;
-  }
+		injectHooks();
 
-  @Override
-  public void inject() {
-    for (Map.Entry<Provider<ClassFile>, List<ClassFile>> entry : mixinTargets.entrySet()) {
-      injectMethods(entry.getKey(), entry.getValue());
-    }
+		log.info("[INFO] Injected {} field hooks.", injectedHooks);
+	}
 
-    injectHooks();
+	private void injectMethods(Provider<ClassFile> mixinProvider, List<ClassFile> targetClasses)
+	{
+		final ClassFile mixinClass = mixinProvider.get();
 
-    //log.info("[INFO] Injected {} field hooks.", injectedHooks);
-  }
+		for (ClassFile targetClass : targetClasses)
+		{
+			for (Method mixinMethod : mixinClass.getMethods())
+			{
+				final Annotation fieldHook = mixinMethod.findAnnotation(FIELDHOOK);
+				if (fieldHook == null)
+				{
+					continue;
+				}
 
-  private void injectMethods(Provider<ClassFile> mixinProvider, List<ClassFile> targetClasses) {
-    final ClassFile mixinClass = mixinProvider.get();
+				final boolean before = isBefore(fieldHook);
+				if (!before && !mixinMethod.getDescriptor().toString().equals("(I)V"))
+				{
+					throw new InjectException(String.format("FieldHook method `%s` has a bad signature `%s` (expected `(I)V`)", mixinMethod.getName(), mixinMethod.getDescriptor().rsApiToRsClient()));
+				}
 
-    for (ClassFile targetClass : targetClasses) {
-      for (Method mixinMethod : mixinClass.getMethods()) {
-        final Annotation fieldHook = mixinMethod.findAnnotation(FIELDHOOK);
-        if (fieldHook == null) {
-          continue;
-        }
+				final String hookName = fieldHook.getValueString();
 
-        final boolean before = isBefore(fieldHook);
-        if (!before && !mixinMethod.getDescriptor().toString().equals("(I)V")) {
-          throw new InjectException(String
-              .format("FieldHook method `%s` has a bad signature `%s` (expected `(I)V`)",
-                  mixinMethod.getName(), mixinMethod.getDescriptor().rsApiToRsClient()));
-        }
+				final ClassFile deobTarget = inject.toDeob(targetClass.getName());
+				final Field deobField;
 
-        final String hookName = fieldHook.getValueString();
+				if (mixinMethod.isStatic())
+				{
+					deobField = InjectUtil.findStaticField(deobTarget.getGroup(), hookName);
+				}
+				else
+				{
+					deobField = InjectUtil.findFieldDeep(deobTarget, hookName);
+				}
 
-        final ClassFile deobTarget = inject.deobfuscated.findClass(targetClass.getName());
-        final Field deobField;
+				assert mixinMethod.isStatic() == deobField.isStatic() : "Mixin method isn't static but deob has a static method named the same as the hook, and I was too lazy to do something about this bug";
 
-        if (mixinMethod.isStatic()) {
-          deobField = InjectUtil.findStaticField(deobTarget.getGroup(), hookName);
-        } else {
-          deobField = InjectUtil.findFieldDeep(deobTarget, hookName);
-        }
+				final Number getter = DeobAnnotations.getObfuscatedGetter(deobField);
+				final Field obField = inject.toVanilla(deobField);
 
-        if (mixinMethod.isStatic() != deobField
-            .isStatic())
-        {
-          log.error("Mixin method isn't static but deob has a static method named the same as the hook, and I was too lazy to do something about this bug");
-          System.exit(-1);
-        }
+				final HookInfo info = new HookInfo(targetClass.getPoolClass(), mixinMethod, before, getter);
 
-        final Field obField = inject.toVanilla(deobField);
+				hooked.put(obField, info);
+			}
+		}
+	}
 
-        final HookInfo info = new HookInfo(targetClass.getPoolClass(), mixinMethod, before);
+	private void injectHooks()
+	{
+		Execution e = new Execution(inject.getVanilla());
+		e.populateInitialMethods();
 
-        hooked.put(obField, info);
-      }
-    }
-  }
+		Set<Instruction> done = new HashSet<>();
+		Set<Instruction> doneIh = new HashSet<>();
 
-  private void injectHooks() {
-    Execution e = new Execution(inject.getVanilla());
-    e.populateInitialMethods();
+		e.addExecutionVisitor((
+			InstructionContext ic) ->
+		{
+			Instruction i = ic.getInstruction();
+			Instructions ins = i.getInstructions();
+			Code code = ins.getCode();
+			Method method = code.getMethod();
 
-    Set<Instruction> done = new HashSet<>();
-    Set<Instruction> doneIh = new HashSet<>();
+			if (method.getName().equals(CLINIT))
+			{
+				return;
+			}
 
-    e.addExecutionVisitor((
-        InstructionContext ic) ->
-    {
-      Instruction i = ic.getInstruction();
-      Instructions ins = i.getInstructions();
-      Code code = ins.getCode();
-      Method method = code.getMethod();
+			if (!(i instanceof SetFieldInstruction))
+			{
+				return;
+			}
 
-      if (method.getName().equals(CLINIT)) {
-        return;
-      }
+			if (!done.add(i))
+			{
+				return;
+			}
 
-      if (!(i instanceof SetFieldInstruction)) {
-        return;
-      }
+			SetFieldInstruction sfi = (SetFieldInstruction) i;
+			Field fieldBeingSet = sfi.getMyField();
 
-      if (!done.add(i)) {
-        return;
-      }
+			if (fieldBeingSet == null)
+			{
+				return;
+			}
 
-      SetFieldInstruction sfi = (SetFieldInstruction) i;
-      Field fieldBeingSet = sfi.getMyField();
+			HookInfo hookInfo = hooked.get(fieldBeingSet);
+			if (hookInfo == null)
+			{
+				return;
+			}
 
-      if (fieldBeingSet == null) {
-        return;
-      }
+			log.trace("Found injection location for hook {} at instruction {}", hookInfo.method.getName(), sfi);
+			++injectedHooks;
 
-      HookInfo hookInfo = hooked.get(fieldBeingSet);
-      if (hookInfo == null) {
-        return;
-      }
+			StackContext value = ic.getPops().get(0);
 
-      //	log.trace("Found injection location for hook {} at instruction {}", hookInfo.method.getName(), sfi);
-      ++injectedHooks;
+			StackContext objectStackContext = null;
+			if (sfi instanceof PutField)
+			{
+				objectStackContext = ic.getPops().get(1);
+			}
 
-      StackContext value = ic.getPops().get(0);
+			int idx = ins.getInstructions().indexOf(sfi);
+			assert idx != -1;
 
-      StackContext objectStackContext = null;
-      if (sfi instanceof PutField) {
-        objectStackContext = ic.getPops().get(1);
-      }
+			try
+			{
+				if (hookInfo.before)
+				{
+					injectCallbackBefore(ins, idx, hookInfo, null, objectStackContext, value);
+				}
+				else
+				// idx + 1 to insert after the set
+				{
+					injectCallback(ins, idx + 1, hookInfo, null, objectStackContext);
+				}
+			}
+			catch (InjectException ex)
+			{
+				throw new RuntimeException(ex);
+			}
+		});
 
-      int idx = ins.getInstructions().indexOf(sfi);
-      if (idx == -1)
-      {
-        throw new RuntimeException("idx -1");
-      }
+		// these look like:
+		// getfield
+		// iload_0
+		// iconst_0
+		// iastore
+		e.addExecutionVisitor((InstructionContext ic) ->
+		{
+			Instruction i = ic.getInstruction();
+			Instructions ins = i.getInstructions();
+			Code code = ins.getCode();
+			Method method = code.getMethod();
 
-      try {
-        if (hookInfo.before) {
-          injectCallbackBefore(ins, idx, hookInfo, null, objectStackContext, value);
-        } else
-        // idx + 1 to insert after the set
-        {
-          injectCallback(ins, idx + 1, hookInfo, null, objectStackContext);
-        }
-      } catch (InjectException ex) {
-        throw new RuntimeException(ex);
-      }
-    });
+			if (method.getName().equals(CLINIT))
+			{
+				return;
+			}
 
-    // these look like:
-    // getfield
-    // iload_0
-    // iconst_0
-    // iastore
-    e.addExecutionVisitor((InstructionContext ic) ->
-    {
-      Instruction i = ic.getInstruction();
-      Instructions ins = i.getInstructions();
-      Code code = ins.getCode();
-      Method method = code.getMethod();
+			if (!(i instanceof ArrayStore))
+			{
+				return;
+			}
 
-      if (method.getName().equals(CLINIT)) {
-        return;
-      }
+			if (!doneIh.add(i))
+			{
+				return;
+			}
 
-      if (!(i instanceof ArrayStore)) {
-        return;
-      }
+			ArrayStore as = (ArrayStore) i;
 
-      if (!doneIh.add(i)) {
-        return;
-      }
+			Field fieldBeingSet = as.getMyField(ic);
+			if (fieldBeingSet == null)
+			{
+				return;
+			}
 
-      ArrayStore as = (ArrayStore) i;
+			HookInfo hookInfo = hooked.get(fieldBeingSet);
+			if (hookInfo == null)
+			{
+				return;
+			}
 
-      Field fieldBeingSet = as.getMyField(ic);
-      if (fieldBeingSet == null) {
-        return;
-      }
+			StackContext value = ic.getPops().get(0);
+			StackContext index = ic.getPops().get(1);
 
-      HookInfo hookInfo = hooked.get(fieldBeingSet);
-      if (hookInfo == null) {
-        return;
-      }
+			StackContext arrayReference = ic.getPops().get(2);
+			InstructionContext arrayReferencePushed = arrayReference.getPushed();
 
-      StackContext value = ic.getPops().get(0);
-      StackContext index = ic.getPops().get(1);
+			StackContext objectStackContext = null;
+			if (arrayReferencePushed.getInstruction().getType() == InstructionType.GETFIELD)
+			{
+				objectStackContext = arrayReferencePushed.getPops().get(0);
+			}
 
-      StackContext arrayReference = ic.getPops().get(2);
-      InstructionContext arrayReferencePushed = arrayReference.getPushed();
+			// inject hook after 'i'
+			log.debug("[DEBUG] Found array injection location for hook {} at instruction {}", hookInfo.method.getName(), i);
+			++injectedHooks;
 
-      StackContext objectStackContext = null;
-      if (arrayReferencePushed.getInstruction().getType() == InstructionType.GETFIELD) {
-        objectStackContext = arrayReferencePushed.getPops().get(0);
-      }
+			int idx = ins.getInstructions().indexOf(i);
+			assert idx != -1;
 
-      // inject hook after 'i'
-      //	log.debug("[DEBUG] Found array injection location for hook {} at instruction {}", hookInfo.method.getName(), i);
-      ++injectedHooks;
+			try
+			{
+				if (hookInfo.before)
+				{
+					injectCallbackBefore(ins, idx, hookInfo, index, objectStackContext, value);
+				}
+				else
+				{
+					injectCallback(ins, idx + 1, hookInfo, index, objectStackContext);
+				}
+			}
+			catch (InjectException ex)
+			{
+				throw new RuntimeException(ex);
+			}
+		});
 
-      int idx = ins.getInstructions().indexOf(i);
-      if (idx == -1)
-      {
-        throw new RuntimeException("idx -1");
-      }
+		e.run();
+	}
 
-      try {
-        if (hookInfo.before) {
-          injectCallbackBefore(ins, idx, hookInfo, index, objectStackContext, value);
-        } else {
-          injectCallback(ins, idx + 1, hookInfo, index, objectStackContext);
-        }
-      } catch (InjectException ex) {
-        throw new RuntimeException(ex);
-      }
-    });
+	private void injectCallbackBefore(Instructions ins, int idx, HookInfo hookInfo, StackContext index, StackContext object, StackContext value)
+	{
+		Signature signature = hookInfo.method.getDescriptor();
+		Type methodArgumentType = signature.getTypeOfArg(0);
 
-    e.run();
-  }
+		if (!hookInfo.method.isStatic())
+		{
+			if (object == null)
+			{
+				throw new InjectException("null object");
+			}
 
-  private void injectCallbackBefore(Instructions ins, int idx, HookInfo hookInfo,
-      StackContext index, StackContext object, StackContext value) {
-    Signature signature = hookInfo.method.getDescriptor();
-    Type methodArgumentType = signature.getTypeOfArg(0);
+			ins.getInstructions().add(idx++, new Dup(ins)); // dup value
+			idx = recursivelyPush(ins, idx, object);
+			ins.getInstructions().add(idx++, new Swap(ins));
 
-    if (!hookInfo.method.isStatic()) {
-      if (object == null) {
-        throw new InjectException("null object");
-      }
+			if (hookInfo.getter instanceof Integer)
+			{
+				ins.getInstructions().add(idx++, new LDC(ins, hookInfo.getter));
+				ins.getInstructions().add(idx++, new IMul(ins));
+			}
+			else if (hookInfo.getter instanceof Long)
+			{
+				ins.getInstructions().add(idx++, new LDC(ins, hookInfo.getter));
+				ins.getInstructions().add(idx++, new LMul(ins));
+			}
+		}
+		else
+		{
+			ins.getInstructions().add(idx++, new Dup(ins)); // dup value
+		}
 
-      ins.getInstructions().add(idx++, new Dup(ins)); // dup value
-      idx = recursivelyPush(ins, idx, object);
-      ins.getInstructions().add(idx++, new Swap(ins));
+		if (!value.type.equals(methodArgumentType))
+		{
+			CheckCast checkCast = new CheckCast(ins);
+			checkCast.setType(methodArgumentType);
+			ins.getInstructions().add(idx++, checkCast);
+		}
+		if (index != null)
+		{
+			idx = recursivelyPush(ins, idx, index);
+		}
 
-    } else {
-      ins.getInstructions().add(idx++, new Dup(ins)); // dup value
-    }
+		Instruction invoke = hookInfo.getInvoke(ins);
+		ins.getInstructions().add(idx, invoke);
+	}
 
-    if (!value.type.equals(methodArgumentType)) {
-      CheckCast checkCast = new CheckCast(ins);
-      checkCast.setType(methodArgumentType);
-      ins.getInstructions().add(idx++, checkCast);
-    }
-    if (index != null) {
-      idx = recursivelyPush(ins, idx, index);
-    }
+	private int recursivelyPush(Instructions ins, int idx, StackContext sctx)
+	{
+		InstructionContext ctx = sctx.getPushed();
+		if (ctx.getInstruction() instanceof DupInstruction)
+		{
+			DupInstruction dupInstruction = (DupInstruction) ctx.getInstruction();
+			sctx = dupInstruction.getOriginal(sctx);
+			ctx = sctx.getPushed();
+		}
 
-    Instruction invoke = hookInfo.getInvoke(ins);
-    ins.getInstructions().add(idx, invoke);
-  }
+		for (StackContext s : Lists.reverse(ctx.getPops()))
+		{
+			idx = recursivelyPush(ins, idx, s);
+		}
 
-  private int recursivelyPush(Instructions ins, int idx, StackContext sctx) {
-    InstructionContext ctx = sctx.getPushed();
-    if (ctx.getInstruction() instanceof DupInstruction) {
-      DupInstruction dupInstruction = (DupInstruction) ctx.getInstruction();
-      sctx = dupInstruction.getOriginal(sctx);
-      ctx = sctx.getPushed();
-    }
+		ins.getInstructions().add(idx++, ctx.getInstruction().clone());
+		return idx;
+	}
 
-    for (StackContext s : Lists.reverse(ctx.getPops())) {
-      idx = recursivelyPush(ins, idx, s);
-    }
+	private void injectCallback(Instructions ins, int idx, HookInfo hookInfo, StackContext index, StackContext objectPusher)
+	{
+		if (!hookInfo.method.isStatic())
+		{
+			if (objectPusher == null)
+			{
+				throw new InjectException("Null object pusher");
+			}
 
-    ins.getInstructions().add(idx++, ctx.getInstruction().clone());
-    return idx;
-  }
+			idx = recursivelyPush(ins, idx, objectPusher);
+		}
 
-  private void injectCallback(Instructions ins, int idx, HookInfo hookInfo, StackContext index,
-      StackContext objectPusher) {
-    if (!hookInfo.method.isStatic()) {
-      if (objectPusher == null) {
-        throw new InjectException("Null object pusher");
-      }
+		if (index != null)
+		{
+			idx = recursivelyPush(ins, idx, index);
+		}
+		else
+		{
+			ins.getInstructions().add(idx++, new LDC(ins, -1));
+		}
 
-      idx = recursivelyPush(ins, idx, objectPusher);
-    }
+		Instruction invoke = hookInfo.getInvoke(ins);
+		ins.getInstructions().add(idx, invoke);
+	}
 
-    if (index != null) {
-      idx = recursivelyPush(ins, idx, index);
-    } else {
-      ins.getInstructions().add(idx++, new LDC(ins, -1));
-    }
+	@AllArgsConstructor
+	static class HookInfo
+	{
+		final Class targetClass;
+		final Method method;
+		final boolean before;
+		final Number getter;
 
-    Instruction invoke = hookInfo.getInvoke(ins);
-    ins.getInstructions().add(idx, invoke);
-  }
+		Instruction getInvoke(Instructions instructions)
+		{
+			return InjectUtil.createInvokeFor(
+				instructions,
+				new net.runelite.asm.pool.Method(
+					targetClass,
+					method.getName(),
+					method.getDescriptor()
+				),
+				method.isStatic()
+			);
+		}
+	}
 
-  @AllArgsConstructor
-  static class HookInfo {
-
-    final Class targetClass;
-    final Method method;
-    final boolean before;
-
-    Instruction getInvoke(Instructions instructions) {
-      return InjectUtil.createInvokeFor(
-          instructions,
-          new net.runelite.asm.pool.Method(
-              targetClass,
-              method.getName(),
-              method.getDescriptor()
-          ),
-          method.isStatic()
-      );
-    }
-  }
+	private static boolean isBefore(Annotation a)
+	{
+		Object val = a.get("before");
+		return val instanceof Boolean && (Boolean) val;
+	}
 }

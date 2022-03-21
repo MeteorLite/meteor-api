@@ -1,10 +1,9 @@
 package net.runelite.deob.deobfuscators.transformers;
 
-import static org.objectweb.asm.Opcodes.ACC_FINAL;
-import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
-import static org.objectweb.asm.Opcodes.ACC_STATIC;
-
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.ListIterator;
+import java.util.Map;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -18,104 +17,144 @@ import net.runelite.asm.attributes.code.instructions.GetStatic;
 import net.runelite.asm.attributes.code.instructions.ILoad;
 import net.runelite.asm.attributes.code.instructions.IfICmpEq;
 import net.runelite.asm.attributes.code.instructions.IfICmpNe;
-import net.runelite.asm.attributes.code.instructions.LDC;
-import net.runelite.asm.attributes.code.instructions.PutStatic;
-import net.runelite.asm.attributes.code.instructions.VReturn;
 import net.runelite.asm.pool.Class;
-import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Transformer;
-import net.runelite.deob.deobfuscators.transformers.scriptopcodes.ScriptOpcode;
 import org.objectweb.asm.Opcodes;
+import static org.objectweb.asm.Opcodes.ACC_FINAL;
+import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
+import static org.objectweb.asm.Opcodes.ACC_STATIC;
 
 public class ScriptOpcodesTransformer implements Transformer // robots in disguise
 {
+	private static final String SCRIPT_OPCODES = "net/runelite/rs/ScriptOpcodes";
+	private static final HashMap<Integer, String> OPCODE_MAP = new HashMap<>();
 
-  private static final String SCRIPT_OPCODES = "net/runelite/rs/ScriptOpcodes";
+	static
+	{
+		for (java.lang.reflect.Field opcodeField : net.runelite.api.Opcodes.class.getDeclaredFields())
+		{
+			if (opcodeField.getType() != int.class || !opcodeField.canAccess(null))
+			{
+				continue;
+			}
 
-  private static void initializeOpcodesClassFile(ClassGroup group) {
-    ClassFile scriptOpcodes = group.findClass(SCRIPT_OPCODES);
-    if (scriptOpcodes == null) {
-      scriptOpcodes = new ClassFile(group);
-      scriptOpcodes.setName(SCRIPT_OPCODES);
-      scriptOpcodes.setSuperName(Type.OBJECT.getInternalName());
-      scriptOpcodes.setAccess(Opcodes.ACC_PUBLIC);
-      group.addClass(scriptOpcodes);
-    } else {
-      scriptOpcodes.getFields().clear();
-    }
+			String opcodeName = opcodeField.getName();
+			int opcode;
 
-    for (ScriptOpcode opcode : ScriptOpcode.values()) {
-      Field field = new Field(scriptOpcodes, opcode.name(), Type.INT);
-      field.setAccessFlags(ACC_PUBLIC | ACC_STATIC | ACC_FINAL);
-      field.setValue(opcode.opcode);
-      scriptOpcodes.addField(field);
-    }
-  }
+			try
+			{
+				opcode = opcodeField.getInt(null);
+			}
+			catch (IllegalAccessException e)
+			{
+				throw new RuntimeException(e);
+			}
 
-  @Override
-  public void transform(ClassGroup group) {
-    initializeOpcodesClassFile(group);
+			OPCODE_MAP.put(opcode, opcodeName);
+		}
+	}
 
-    for (ClassFile cf : group.getClasses()) {
-      if (cf.getName().startsWith("net/runelite/rs")) {
-        continue;
-      }
+	@Override
+	public void transform(ClassGroup group)
+	{
+		initializeOpcodesClassFile(group);
 
-      for (Method m : cf.getMethods()) {
-        if (!m.isStatic()) {
-          continue;
-        }
+		for (ClassFile cf : group.getClasses())
+		{
+			if (cf.getName().startsWith("net/runelite/rs"))
+			{
+				continue;
+			}
 
-        if (!m.getDescriptor().getArguments().contains(new Type("LScript;")) && !m.getDescriptor()
-            .getArguments().contains(new Type("LScriptEvent;"))) {
-          continue;
-        }
+			for (Method m : cf.getMethods())
+			{
+				if (!m.isStatic())
+				{
+					continue;
+				}
 
-        boolean varIndexIsKnownAnd0 = m.getDescriptor().getArguments()
-            .contains(new Type("LScript;"));
+				if (!m.getDescriptor().getArguments().contains(new Type("LScript;")) && !m.getDescriptor().getArguments().contains(new Type("LScriptEvent;")))
+				{
+					continue;
+				}
 
-        Code code = m.getCode();
-        Instructions ins = code.getInstructions();
-        ListIterator<Instruction> it = ins.getInstructions().listIterator();
+				boolean varIndexIsKnownAnd0 = m.getDescriptor().getArguments().contains(new Type("LScript;"));
 
-        Instruction i;
-        while (it.hasNext()) {
-          i = it.next();
+				Code code = m.getCode();
+				Instructions ins = code.getInstructions();
+				ListIterator<Instruction> it = ins.getInstructions().listIterator();
 
-          if (!(i instanceof ILoad) || (varIndexIsKnownAnd0
-              && ((ILoad) i).getVariableIndex() != 0)) {
-            continue;
-          }
+				Instruction i;
+				while (it.hasNext())
+				{
+					i = it.next();
 
-          i = it.next();
+					if (!(i instanceof ILoad) || (varIndexIsKnownAnd0 && ((ILoad) i).getVariableIndex() != 0))
+					{
+						continue;
+					}
 
-          if (!(i instanceof PushConstantInstruction) ||
-              !(((PushConstantInstruction) i).getConstant() instanceof Number)) {
-            continue;
-          }
+					i = it.next();
 
-          int val = ((Number) ((PushConstantInstruction) i).getConstant()).intValue();
-          String name = ScriptOpcode.nameFromID(val);
+					if (!(i instanceof PushConstantInstruction) ||
+						!(((PushConstantInstruction) i).getConstant() instanceof Number))
+					{
+						continue;
+					}
 
-          i = it.next();
+					int val = ((Number) ((PushConstantInstruction) i).getConstant()).intValue();
+					String name = OPCODE_MAP.get(val);
 
-          if (name == null || !(i instanceof IfICmpNe || i instanceof IfICmpEq)) {
-            continue;
-          }
+					i = it.next();
 
-          it.previous();
-          it.previous();
+					if (name == null || !(i instanceof IfICmpNe || i instanceof IfICmpEq))
+					{
+						continue;
+					}
 
-          net.runelite.asm.pool.Field pool = new net.runelite.asm.pool.Field(
-              new Class(SCRIPT_OPCODES),
-              name,
-              Type.INT
-          );
+					it.previous();
+					it.previous();
 
-          GetStatic getStatic = new GetStatic(ins, pool);
-          it.set(getStatic);
-        }
-      }
-    }
-  }
+					net.runelite.asm.pool.Field pool = new net.runelite.asm.pool.Field(
+						new Class(SCRIPT_OPCODES),
+						name,
+						Type.INT
+					);
+
+					GetStatic getStatic = new GetStatic(ins, pool);
+					it.set(getStatic);
+				}
+			}
+		}
+	}
+
+	private static void initializeOpcodesClassFile(ClassGroup group)
+	{
+		ClassFile scriptOpcodes = group.findClass(SCRIPT_OPCODES);
+		if (scriptOpcodes == null)
+		{
+			scriptOpcodes = new ClassFile(group);
+			scriptOpcodes.setName(SCRIPT_OPCODES);
+			scriptOpcodes.setSuperName(Type.OBJECT.getInternalName());
+			scriptOpcodes.setAccess(Opcodes.ACC_PUBLIC);
+			scriptOpcodes.setVersion(Opcodes.V1_8);
+			group.addClass(scriptOpcodes);
+		}
+		else
+		{
+			scriptOpcodes.getFields().clear();
+		}
+
+		ClassFile finalScriptOpcodes = scriptOpcodes;
+		OPCODE_MAP.entrySet().stream().sorted(Comparator.comparingInt(Map.Entry::getKey)).forEach((entry) ->
+		{
+			Integer opcode = entry.getKey();
+			String opcodeName = entry.getValue();
+
+			Field field = new Field(finalScriptOpcodes, opcodeName, Type.INT);
+			field.setAccessFlags(ACC_PUBLIC | ACC_STATIC | ACC_FINAL);
+			field.setValue(opcode);
+			finalScriptOpcodes.addField(field);
+		});
+	}
 }

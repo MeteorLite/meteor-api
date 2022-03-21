@@ -31,76 +31,83 @@ package net.runelite.rs.api;
 import net.runelite.api.Projectile;
 import net.runelite.mapping.Import;
 
-public interface RSProjectile extends RSRenderable, Projectile {
+public interface RSProjectile extends RSRenderable, Projectile
+{
+	@Import("id")
+	@Override
+	int getId();
 
-  @Import("id")
-  @Override
-  int getId();
+	@Import("targetIndex")
+	int getRsInteracting();
 
-  @Import("targetIndex")
-  int getRsInteracting();
+	@Import("sourceZ")
+	@Override
+	int getHeight();
 
-  @Import("sourceZ")
-  @Override
-  int getHeight();
+	@Import("endHeight")
+	@Override
+	int getEndHeight();
 
-  @Import("endHeight")
-  @Override
-  int getEndHeight();
+	@Import("sourceX")
+	@Override
+	int getX1();
 
-  @Import("sourceX")
-  @Override
-  int getX1();
+	@Import("sourceY")
+	@Override
+	int getY1();
 
-  @Import("sourceY")
-  @Override
-  int getY1();
+	@Import("plane")
+	@Override
+	int getFloor();
 
-  @Import("plane")
-  @Override
-  int getFloor();
+	@Import("cycleStart")
+	@Override
+	int getStartCycle();
 
-  @Import("cycleStart")
-  @Override
-  int getStartMovementCycle();
+	@Import("cycleEnd")
+	@Override
+	int getEndCycle();
 
-  @Import("cycleEnd")
-  @Override
-  int getEndCycle();
+	@Import("cycleEnd")
+	@Override
+	void setEndCycle(int cycle);
 
-  @Import("slope")
-  @Override
-  int getSlope();
+	@Import("slope")
+	@Override
+	int getSlope();
 
-  @Import("startHeight")
-  @Override
-  int getStartHeight();
+	@Import("startHeight")
+	@Override
+	int getStartHeight();
 
-  @Import("x")
-  @Override
-  double getX();
+	@Import("x")
+	@Override
+	double getX();
 
-  @Import("y")
-  @Override
-  double getY();
+	@Import("y")
+	@Override
+	double getY();
 
-  @Import("z")
-  @Override
-  double getZ();
+	@Import("z")
+	@Override
+	double getZ();
 
-  @Import("speed")
-  @Override
-  double getScalar();
+	@Import("speed")
+	@Override
+	double getScalar();
 
-  @Import("speedX")
-  @Override
-  double getVelocityX();
+	@Import("speedX")
+	@Override
+	double getVelocityX();
 
-  @Import("speedY")
-  @Override
-  double getVelocityY();
+	@Import("speedY")
+	@Override
+	double getVelocityY();
 
-  @Import("speedZ")
-  @Override
-  double getVelocityZ();
+	@Import("speedZ")
+	@Override
+	double getVelocityZ();
+
+	@Import("setDestination")
+	void setDestination(int targetX, int targetY, int targetZ, int cycle);
 }

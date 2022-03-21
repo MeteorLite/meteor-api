@@ -38,46 +38,50 @@ import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.deob.Deobfuscator;
 
-public class CastNull implements Deobfuscator {
-
-  private final List<Instruction> interesting = new ArrayList<>();
-  private final List<Instruction> notInteresting = new ArrayList<>();
-  private int removed;
-
-  private void visit(InstructionContext ictx) {
-    if (!(ictx.getInstruction() instanceof CheckCast)) {
-      return;
-    }
-
-    if (notInteresting.contains(ictx.getInstruction()) || interesting
-        .contains(ictx.getInstruction())) {
-      return;
-    }
-
-    StackContext sctx = ictx.getPops().get(0);
-    if (sctx.getPushed().getInstruction() instanceof AConstNull) {
-      interesting.add(ictx.getInstruction());
-    } else {
-      interesting.remove(ictx.getInstruction());
-      notInteresting.add(ictx.getInstruction());
-    }
-  }
-
-  private void visit(MethodContext ctx) {
-    Instructions ins = ctx.getMethod().getCode().getInstructions();
-    interesting.forEach(ins::remove);
-    removed += interesting.size();
-    interesting.clear();
-    notInteresting.clear();
-  }
-
-  @Override
-  public void run(ClassGroup group) {
-    Execution execution = new Execution(group);
-    execution.addExecutionVisitor(i -> visit(i));
-    execution.addMethodContextVisitor(i -> visit(i));
-    execution.populateInitialMethods();
-    execution.run();
-  }
+public class CastNull implements Deobfuscator
+{
+	private int removed;
+	
+	private final List<Instruction> interesting = new ArrayList<>();
+	private final List<Instruction> notInteresting = new ArrayList<>();
+	
+	private void visit(InstructionContext ictx)
+	{
+		if (!(ictx.getInstruction() instanceof CheckCast))
+			return;
+		
+		if (notInteresting.contains(ictx.getInstruction()) || interesting.contains(ictx.getInstruction()))
+			return;
+		
+		StackContext sctx = ictx.getPops().get(0);
+		if (sctx.getPushed().getInstruction() instanceof AConstNull)
+		{
+			interesting.add(ictx.getInstruction());
+		}
+		else
+		{
+			interesting.remove(ictx.getInstruction());
+			notInteresting.add(ictx.getInstruction());
+		}
+	}
+	
+	private void visit(MethodContext ctx)
+	{
+		Instructions ins = ctx.getMethod().getCode().getInstructions();
+		interesting.forEach(ins::remove);
+		removed += interesting.size();
+		interesting.clear();
+		notInteresting.clear();
+	}
+	
+	@Override
+	public void run(ClassGroup group)
+	{
+		Execution execution = new Execution(group);
+		execution.addExecutionVisitor(i -> visit(i));
+		execution.addMethodContextVisitor(i -> visit(i));
+		execution.populateInitialMethods();
+		execution.run();
+	}
 
 }

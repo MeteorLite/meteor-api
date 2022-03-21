@@ -13,24 +13,27 @@ import net.runelite.asm.ClassFile;
 /**
  * This class changes the java source file debug information to the rs-client file name
  */
-public class SourceChanger extends InjectTransformer {
+public class SourceChanger extends InjectTransformer
+{
+	private int n = 0;
 
-  private int n = 0;
+	public SourceChanger(InjectData inject)
+	{
+		super(inject);
+	}
 
-  public SourceChanger(InjectData inject) {
-    super(inject);
-  }
+	@Override
+	void transformImpl()
+	{
+		inject.forEachPair(this::rename);
+		log.info("[INFO] Changed source file debug information for {} classes", n);
+	}
 
-  @Override
-  void transformImpl() {
-    inject.forEachPair(this::rename);
-    log.info("[INFO] Changed source file debug information for {} classes", n);
-  }
-
-  private void rename(ClassFile rsclient, ClassFile vanilla) {
-    ++n;
-    final String newSrc = rsclient.getSource();
-    log.debug("[DEBUG] Changing src from {} to {}", vanilla.getSource(), newSrc);
-    vanilla.setSource(newSrc);
-  }
+	private void rename(ClassFile rsclient, ClassFile vanilla)
+	{
+		++n;
+		final String newSrc = rsclient.getSource();
+		log.debug("[DEBUG] Changing src from {} to {}", vanilla.getSource(), newSrc);
+		vanilla.setSource(newSrc);
+	}
 }

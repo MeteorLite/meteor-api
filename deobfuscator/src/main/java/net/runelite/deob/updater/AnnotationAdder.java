@@ -10,59 +10,68 @@ import net.runelite.asm.attributes.Annotated;
 import net.runelite.deob.Deob;
 import net.runelite.deob.DeobAnnotations;
 
-public class AnnotationAdder {
+public class AnnotationAdder
+{
+	AnnotationAdder(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  private final ClassGroup group;
-  AnnotationAdder(ClassGroup group) {
-    this.group = group;
-  }
+	private final ClassGroup group;
 
-  public void run() {
-    int impl = 0;
-    int meth = 0;
-    int field = 0;
+	public void run()
+	{
+		int impl = 0;
+		int meth = 0;
+		int field = 0;
 
-    for (ClassFile c : group.getClasses()) {
-      if (c.getName().contains("runelite")) {
-        continue;
-      }
+		for (ClassFile c : group.getClasses())
+		{
+			if (c.getName().contains("runelite"))
+			{
+				continue;
+			}
 
-      String implementingName = DeobAnnotations.getImplements(c);
-      if (!Strings.isNullOrEmpty(implementingName)) {
-        // Still error here cause I don't wanna call classes dumb shit
-        assert implementingName.equals(c.getClassName()) :
-            c + " implements " + implementingName + " but is called " + c.getClassName();
-      } else if (!Deob.isObfuscated(c.getClassName())) {
-        c.addAnnotation(DeobAnnotations.IMPLEMENTS, c.getClassName());
-        impl++;
-      }
+			String implementingName = DeobAnnotations.getImplements(c);
+			if (!Strings.isNullOrEmpty(implementingName))
+			{
+				// Still error here cause I don't wanna call classes dumb shit
+				assert implementingName.equals(c.getClassName()) : c + " implements " + implementingName + " but is called " + c.getClassName();
+			}
+			else if (!Deob.isObfuscated(c.getClassName()))
+			{
+				c.addAnnotation(DeobAnnotations.IMPLEMENTS, c.getClassName());
+				impl++;
+			}
 
-      for (Field f : c.getFields()) {
-        if (addExport(f)) {
-          field++;
-        }
-      }
+			for (Field f : c.getFields())
+			{
+				if (addExport(f))
+					field++;
+			}
 
-      for (Method m : c.getMethods()) {
-        if (addExport(m)) {
-          meth++;
-        }
-      }
-    }
-  }
+			for (Method m : c.getMethods())
+			{
+				if (addExport(m))
+					meth++;
+			}
+		}
+	}
 
-  private <T extends Annotated & Named> boolean addExport(T m) {
-    String methodName = m.getName();
-    String exportedName = DeobAnnotations.getExportedName(m);
+	private <T extends Annotated & Named> boolean addExport(T m)
+	{
+		String methodName = m.getName();
+		String exportedName = DeobAnnotations.getExportedName(m);
 
-    if (exportedName == null && Deob.isObfuscated(methodName)
-        || methodName.equals(DeobAnnotations.getObfuscatedName(m))
-        || DeobAnnotations.getObfuscatedName(m) == null
-        || methodName.equals(exportedName)) {
-      return false;
-    }
+		if (exportedName == null && Deob.isObfuscated(methodName)
+			|| methodName.equals(DeobAnnotations.getObfuscatedName(m))
+			|| DeobAnnotations.getObfuscatedName(m) == null
+			|| methodName.equals(exportedName))
+		{
+			return false;
+		}
 
-    m.findAnnotation(DeobAnnotations.EXPORT, true).setElement(methodName);
-    return true;
-  }
+		m.findAnnotation(DeobAnnotations.EXPORT, true).setElement(methodName);
+		return true;
+	}
 }

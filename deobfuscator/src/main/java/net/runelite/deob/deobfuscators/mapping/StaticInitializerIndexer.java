@@ -34,46 +34,55 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.InstructionType;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
+
 /**
  * Finds fields which are initialized in clinit
  *
  * @author Adam
  */
-public class StaticInitializerIndexer {
+public class StaticInitializerIndexer
+{
 
+	private final ClassGroup group;
+	private final Set<Field> fields = new HashSet<>();
 
-  private final ClassGroup group;
-  private final Set<Field> fields = new HashSet<>();
+	public StaticInitializerIndexer(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  public StaticInitializerIndexer(ClassGroup group) {
-    this.group = group;
-  }
+	public void index()
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			Method method = cf.findMethod("<clinit>");
+			if (method == null)
+			{
+				continue;
+			}
 
-  public void index() {
-    for (ClassFile cf : group.getClasses()) {
-      Method method = cf.findMethod("<clinit>");
-      if (method == null) {
-        continue;
-      }
+			Instructions instructions = method.getCode().getInstructions();
+			for (Instruction i : instructions.getInstructions())
+			{
+				if (i.getType() != InstructionType.PUTSTATIC)
+				{
+					continue;
+				}
 
-      Instructions instructions = method.getCode().getInstructions();
-      for (Instruction i : instructions.getInstructions()) {
-        if (i.getType() != InstructionType.PUTSTATIC) {
-          continue;
-        }
+				PutStatic putstatic = (PutStatic) i;
+				if (!putstatic.getField().getClazz().equals(cf.getPoolClass()) || putstatic.getMyField() == null)
+				{
+					continue;
+				}
 
-        PutStatic putstatic = (PutStatic) i;
-        if (!putstatic.getField().getClazz().equals(cf.getPoolClass())
-            || putstatic.getMyField() == null) {
-          continue;
-        }
+				fields.add(putstatic.getMyField());
+			}
+		}
 
-        fields.add(putstatic.getMyField());
-      }
-    }
-  }
+	}
 
-  public boolean isStatic(Field field) {
-    return fields.contains(field);
-  }
+	public boolean isStatic(Field field)
+	{
+		return fields.contains(field);
+	}
 }

@@ -16,18 +16,15 @@ import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.InstructionType;
 import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.attributes.code.instructions.ALoad;
 import net.runelite.asm.attributes.code.instructions.Dup;
 import net.runelite.asm.attributes.code.instructions.InvokeSpecial;
 import net.runelite.asm.attributes.code.instructions.New;
 import net.runelite.asm.attributes.code.instructions.Return;
-import net.runelite.asm.attributes.code.instructions.VReturn;
 import net.runelite.asm.signature.Signature;
-import org.objectweb.asm.Opcodes;
 
 public class RuneliteObject extends AbstractInjector
 {
-	private static final String RUNELITE_OBJECT = "osrs/RuneLiteObject";
+	private static final String RUNELITE_OBJECT = "RuneLiteObject";
 
 	public RuneliteObject(InjectData inject)
 	{
@@ -38,7 +35,10 @@ public class RuneliteObject extends AbstractInjector
 	{
 		ClassFile runeliteObjectVanilla = inject.vanilla.findClass(RUNELITE_OBJECT);
 
-		final ClassFile clientVanilla = inject.vanilla.findClass("osrs/Client");
+		final ClassFile clientVanilla = inject.toVanilla(
+			inject.getDeobfuscated()
+				.findClass("Client")
+		);
 
 		Method copy = new Method(clientVanilla, "createRuneLiteObject", new Signature("()Lnet/runelite/api/RuneLiteObject;"));
 		copy.setPublic();

@@ -38,102 +38,116 @@ import net.runelite.asm.execution.Stack;
 import net.runelite.asm.execution.StackContext;
 import org.objectweb.asm.MethodVisitor;
 
-public class LookupSwitch extends Instruction implements JumpingInstruction {
+public class LookupSwitch extends Instruction implements JumpingInstruction
+{
+	private List<Label> branchi = new ArrayList<>();
+	private Label defi;
 
-  private List<Label> branchi = new ArrayList<>();
-  private Label defi;
+	private int[] match;
 
-  private int[] match;
+	public LookupSwitch(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-  public LookupSwitch(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public Instruction clone()
+	{
+		LookupSwitch i = (LookupSwitch) super.clone();
+		i.branchi = new ArrayList<>(branchi);
+		return i;
+	}
 
-  @Override
-  public Instruction clone() {
-    LookupSwitch i = (LookupSwitch) super.clone();
-    i.branchi = new ArrayList<>(branchi);
-    return i;
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitLookupSwitchInsn(defi.getLabel(), match,
+			branchi.stream().map(l -> l.getLabel()).toArray(org.objectweb.asm.Label[]::new));
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitLookupSwitchInsn(defi.getLabel(), match,
-        branchi.stream().map(l -> l.getLabel()).toArray(org.objectweb.asm.Label[]::new));
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
+		Stack stack = frame.getStack();
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-    Stack stack = frame.getStack();
+		StackContext value = stack.pop();
+		ins.pop(value);
 
-    StackContext value = stack.pop();
-    ins.pop(value);
+		// N.B. lookupswitch isn't mappable, so frame.other is never mapped
+		// (the frames it creates are dropped from the pending execution list
+		// for other == null) - so the step executor won't map instructions
+		// from the non-default branch
+		for (Label i : branchi)
+		{
+			Frame other = frame.dup();
+			other.jump(ins, i);
 
-    // N.B. lookupswitch isn't mappable, so frame.other is never mapped
-    // (the frames it creates are dropped from the pending execution list
-    // for other == null) - so the step executor won't map instructions
-    // from the non-default branch
-    for (Label i : branchi) {
-      Frame other = frame.dup();
-      other.jump(ins, i);
+			ins.branch(other);
+		}
 
-      ins.branch(other);
-    }
+		frame.jump(ins, defi);
 
-    frame.jump(ins, defi);
+		return ins;
+	}
 
-    return ins;
-  }
+	@Override
+	public boolean isTerminal()
+	{
+		return true;
+	}
 
-  @Override
-  public boolean isTerminal() {
-    return true;
-  }
+	@Override
+	public List<Label> getJumps()
+	{
+		List<Label> list = new ArrayList<>();
+		for (Label i : branchi)
+		{
+			list.add(i);
+		}
+		list.add(defi);
+		return list.stream().distinct().collect(Collectors.toList());
+	}
 
-  @Override
-  public List<Label> getJumps() {
-    List<Label> list = new ArrayList<>();
-    for (Label i : branchi) {
-      list.add(i);
-    }
-    list.add(defi);
-    return list.stream().distinct().collect(Collectors.toList());
-  }
+	@Override
+	public void setJumps(List<Label> labels)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
-  @Override
-  public void setJumps(List<Label> labels) {
-    throw new UnsupportedOperationException(
-        "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+	@Override
+	public void setLabel(org.objectweb.asm.Label label)
+	{
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
-  @Override
-  public void setLabel(org.objectweb.asm.Label label) {
-    throw new UnsupportedOperationException(
-        "Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+	public List<Label> getBranchi()
+	{
+		return branchi;
+	}
 
-  public List<Label> getBranchi() {
-    return branchi;
-  }
+	public void setBranchi(List<Label> branchi)
+	{
+		this.branchi = branchi;
+	}
 
-  public void setBranchi(List<Label> branchi) {
-    this.branchi = branchi;
-  }
+	public Label getDefi()
+	{
+		return defi;
+	}
 
-  public Label getDefi() {
-    return defi;
-  }
+	public void setDefi(Label defi)
+	{
+		this.defi = defi;
+	}
 
-  public void setDefi(Label defi) {
-    this.defi = defi;
-  }
+	public int[] getMatch()
+	{
+		return match;
+	}
 
-  public int[] getMatch() {
-    return match;
-  }
-
-  public void setMatch(int[] match) {
-    this.match = match;
-  }
+	public void setMatch(int[] match)
+	{
+		this.match = match;
+	}
 }

@@ -4,14 +4,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import net.runelite.mapping.Import;
 
-public interface RSReflectionCheck {
+public interface RSReflectionCheck
+{
+	@Import("methods")
+	Method[] getMethods();
 
-  @Import("methods")
-  Method[] getMethods();
+	@Import("fields")
+	Field[] getFields();
 
-  @Import("fields")
-  Field[] getFields();
-
-  @Import("arguments")
-  byte[][][] getArgs();
+	@Import("arguments")
+	byte[][][] getArgs();
 }

@@ -37,131 +37,153 @@ import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Deobfuscator;
 
 /**
- * Sort fields and methods based first on the name order of the classes, and then based on the order
- * the executor encounters them.
+ * Sort fields and methods based first on the name order of the classes, and
+ * then based on the order the executor encounters them.
  *
  * @author Adam
  */
-public class Order implements Deobfuscator {
+public class Order implements Deobfuscator
+{
 
-  private final Map<String, Integer> nameIndices = new HashMap<>();
-  private Execution execution;
+	private Execution execution;
 
-  @Override
-  public void run(ClassGroup group) {
-    execution = new Execution(group);
-    execution.staticStep = true;
-    execution.populateInitialMethods();
-    execution.run();
+	private final Map<String, Integer> nameIndices = new HashMap<>();
 
-    for (int i = 0; i < group.getClasses().size(); i++) {
-      ClassFile cf = group.getClasses().get(i);
-      String className = DeobAnnotations.getObfuscatedName(cf);
-      nameIndices.put(className, i);
-    }
+	@Override
+	public void run(ClassGroup group)
+	{
+		execution = new Execution(group);
+		execution.staticStep = true;
+		execution.populateInitialMethods();
+		execution.run();
 
-    int sortedMethods = 0, sortedFields = 0;
+		for (int i = 0; i < group.getClasses().size(); i++)
+		{
+			ClassFile cf = group.getClasses().get(i);
+			String className = DeobAnnotations.getObfuscatedName(cf);
+			nameIndices.put(className, i);
+		}
 
-    for (ClassFile cf : group.getClasses()) {
-      List<Method> m = cf.getMethods();
-      m.sort(this::compare);
+		int sortedMethods = 0, sortedFields = 0;
 
-      sortedMethods += m.size();
+		for (ClassFile cf : group.getClasses())
+		{
+			List<Method> m = cf.getMethods();
+			m.sort(this::compare);
 
-      // field order of enums is mostly handled in EnumDeobfuscator
-      if (!cf.isEnum()) {
-        List<Field> f = cf.getFields();
-        f.sort(this::compare);
+			sortedMethods += m.size();
 
-        sortedFields += f.size();
-      }
-    }
-  }
+			// field order of enums is mostly handled in EnumDeobfuscator
+			if (!cf.isEnum())
+			{
+				List<Field> f = cf.getFields();
+				f.sort(this::compare);
 
-  // static fields, member fields, clinit, init, methods, static methods
-  private int compare(Annotated a, Annotated b) {
-    int i1 = getType(a), i2 = getType(b);
+				sortedFields += f.size();
+			}
+		}
+	}
 
-    if (i1 != i2) {
-      return Integer.compare(i1, i2);
-    }
+	// static fields, member fields, clinit, init, methods, static methods
+	private int compare(Annotated a, Annotated b)
+	{
+		int i1 = getType(a), i2 = getType(b);
 
-    int nameIdx1 = getNameIdx(a);
-    int nameIdx2 = getNameIdx(b);
+		if (i1 != i2)
+		{
+			return Integer.compare(i1, i2);
+		}
 
-    if (nameIdx1 != nameIdx2) {
-      return Integer.compare(nameIdx1, nameIdx2);
-    }
+		int nameIdx1 = getNameIdx(a);
+		int nameIdx2 = getNameIdx(b);
 
-    return compareOrder(a, b);
-  }
+		if (nameIdx1 != nameIdx2)
+		{
+			return Integer.compare(nameIdx1, nameIdx2);
+		}
 
-  private int getNameIdx(Annotated annotations) {
-    String name = DeobAnnotations.getObfuscatedName(annotations);
+		return compareOrder(a, b);
+	}
 
-    Integer nameIdx = nameIndices.get(name);
+	private int getNameIdx(Annotated annotations)
+	{
+		String name = DeobAnnotations.getObfuscatedName(annotations);
 
-    return nameIdx != null ? nameIdx : -1;
-  }
+		Integer nameIdx = nameIndices.get(name);
 
-  private int getType(Annotated a) {
-    if (a instanceof Method) {
-      return getType((Method) a);
-    } else if (a instanceof Field) {
-      return getType((Field) a);
-    }
-    throw new RuntimeException("kys");
-  }
+		return nameIdx != null ? nameIdx : -1;
+	}
 
-  private int getType(Method m) {
-    if (m.getName().equals("<clinit>")) {
-      return 1;
-    }
-    if (m.getName().equals("<init>")) {
-      return 2;
-    }
-    if (!m.isStatic()) {
-      return 3;
-    }
-    return 4;
-  }
+	private int getType(Annotated a)
+	{
+		if (a instanceof Method)
+			return getType((Method) a);
+		else if (a instanceof Field)
+			return getType((Field) a);
+		throw new RuntimeException("kys");
+	}
 
-  private int getType(Field f) {
-    if (f.isStatic()) {
-      return 1;
-    }
-    return 2;
-  }
+	private int getType(Method m)
+	{
+		if (m.getName().equals("<clinit>"))
+		{
+			return 1;
+		}
+		if (m.getName().equals("<init>"))
+		{
+			return 2;
+		}
+		if (!m.isStatic())
+		{
+			return 3;
+		}
+		return 4;
+	}
 
-  private int compareOrder(Object o1, Object o2) {
-    Integer i1, i2;
+	private int getType(Field f)
+	{
+		if (f.isStatic())
+		{
+			return 1;
+		}
+		return 2;
+	}
 
-    i1 = execution.getOrder(o1);
-    i2 = execution.getOrder(o2);
+	private int compareOrder(Object o1, Object o2)
+	{
+		Integer i1, i2;
 
-    if (i1 == null) {
-      i1 = Integer.MAX_VALUE;
-    }
-    if (i2 == null) {
-      i2 = Integer.MAX_VALUE;
-    }
+		i1 = execution.getOrder(o1);
+		i2 = execution.getOrder(o2);
 
-    if (!i1.equals(i2)) {
-      return Integer.compare(i1, i2);
-    }
+		if (i1 == null)
+		{
+			i1 = Integer.MAX_VALUE;
+		}
+		if (i2 == null)
+		{
+			i2 = Integer.MAX_VALUE;
+		}
 
-    // Fall back to number of accesses
-    i1 = execution.getAccesses(o1);
-    i2 = execution.getAccesses(o2);
+		if (!i1.equals(i2))
+		{
+			return Integer.compare(i1, i2);
+		}
 
-    if (i1 == null) {
-      i1 = Integer.MAX_VALUE;
-    }
-    if (i2 == null) {
-      i2 = Integer.MAX_VALUE;
-    }
+		// Fall back to number of accesses
+		i1 = execution.getAccesses(o1);
+		i2 = execution.getAccesses(o2);
 
-    return Integer.compare(i1, i2);
-  }
+		if (i1 == null)
+		{
+			i1 = Integer.MAX_VALUE;
+		}
+		if (i2 == null)
+		{
+			i2 = Integer.MAX_VALUE;
+		}
+
+		return Integer.compare(i1, i2);
+	}
 
 }

@@ -38,64 +38,73 @@ import net.runelite.asm.execution.VariableContext;
 import net.runelite.asm.execution.Variables;
 import org.objectweb.asm.MethodVisitor;
 
-public class IInc extends Instruction implements LVTInstruction {
+public class IInc extends Instruction implements LVTInstruction
+{
+	private short index;
+	private short inc;
 
-  private short index;
-  private short inc;
+	public IInc(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-  public IInc(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitIincInsn(index, inc);
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitIincInsn(index, inc);
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
+		Variables var = frame.getVariables();
+		
+		VariableContext vctx = var.get(index);
+		assert vctx.getType().isStackInt();
+		ins.read(vctx);
+		
+		Value value = vctx.getValue();
+		if (!vctx.getValue().isUnknownOrNull())
+		{
+			int i = (int) vctx.getValue().getValue();
+			i += inc;
+			value = new Value(i);
+		}
+		
+		vctx = new VariableContext(ins, Type.INT, value);
+		var.set(index, vctx);
+		
+		return ins;
+	}
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-    Variables var = frame.getVariables();
+	@Override
+	public int getVariableIndex()
+	{
+		return index;
+	}
 
-    VariableContext vctx = var.get(index);
-    assert vctx.getType().isStackInt();
-    ins.read(vctx);
+	@Override
+	public boolean store()
+	{
+		return false; // This is a get first
+	}
 
-    Value value = vctx.getValue();
-    if (!vctx.getValue().isUnknownOrNull()) {
-      int i = (int) vctx.getValue().getValue();
-      i += inc;
-      value = new Value(i);
-    }
+	@Override
+	public Instruction setVariableIndex(int idx)
+	{
+		index = (short) idx;
+		return this;
+	}
 
-    vctx = new VariableContext(ins, Type.INT, value);
-    var.set(index, vctx);
+	public void setIncrement(int inc)
+	{
+		this.inc = (short) inc;
+	}
 
-    return ins;
-  }
-
-  @Override
-  public int getVariableIndex() {
-    return index;
-  }
-
-  @Override
-  public boolean store() {
-    return false; // This is a get first
-  }
-
-  @Override
-  public Instruction setVariableIndex(int idx) {
-    index = (short) idx;
-    return this;
-  }
-
-  public void setIncrement(int inc) {
-    this.inc = (short) inc;
-  }
-
-  @Override
-  public LVTInstructionType type() {
-    return LVTInstructionType.INT;
-  }
+	@Override
+	public LVTInstructionType type()
+	{
+		return LVTInstructionType.INT;
+	}
 }

@@ -30,92 +30,127 @@ import net.runelite.api.coords.WorldPoint;
  * Represents the entire 3D scene
  */
 public interface Scene {
+    /**
+     * Gets the tiles in the scene
+     *
+     * @return the tiles in [plane][x][y]
+     */
+    Tile[][][] getTiles();
 
-  /**
-   * Gets the tiles in the scene
-   *
-   * @return the tiles in [plane][x][y]
-   */
-  Tile[][][] getTiles();
+    /**
+     * Adds an item to the scene
+     */
+    void addItem(int id, int quantity, WorldPoint point);
 
-  /**
-   * Adds an item to the scene
-   */
-  void addItem(int id, int quantity, WorldPoint point);
+    /**
+     * Removes an item from the scene
+     */
+    void removeItem(int id, int quantity, WorldPoint point);
 
-  /**
-   * Removes an item from the scene
-   */
-  void removeItem(int id, int quantity, WorldPoint point);
+    int getDrawDistance();
 
-  int getDrawDistance();
+    void setDrawDistance(int drawDistance);
 
-  void setDrawDistance(int drawDistance);
+    /**
+     * Get the minimum scene level which will be rendered
+     *
+     * @return the plane of the minimum level
+     */
+    int getMinLevel();
 
-  /**
-   * Get the minimum scene level which will be rendered
-   *
-   * @return the plane of the minimum level
-   */
-  int getMinLevel();
+    /**
+     * Set the minimum scene level which will be rendered
+     *
+     * @param minLevel the plane of the minimum level
+     */
+    void setMinLevel(int minLevel);
 
-  /**
-   * Set the minimum scene level which will be rendered
-   *
-   * @param minLevel the plane of the minimum level
-   */
-  void setMinLevel(int minLevel);
+    /**
+     * Remove a game object from the scene
+     *
+     * @param gameObject
+     */
+    void removeGameObject(GameObject gameObject);
 
-  /**
-   * Remove a game object from the scene
-   *
-   * @param gameObject
-   */
-  void removeGameObject(GameObject gameObject);
+    /**
+     * Remove a game object from the scene
+     *
+     * @param plane
+     * @param x
+     * @param y
+     */
+    void removeGameObject(int plane, int x, int y);
 
-  /**
-   * Remove a game object from the scene
-   * @param plane
-   * @param x
-   * @param y
-   */
-  void removeGameObject(int plane, int x, int y);
+    /**
+     * Remove a game object from the scene
+     *
+     * @param wallObject
+     */
+    void removeWallObject(WallObject wallObject);
 
-  /**
-   * Remove a wall object from the scene
-   * @param plane
-   * @param x
-   * @param y
-   */
-  void removeWallObject(int plane, int x, int y);
+    /**
+     * Remove a wall object from the scene
+     *
+     * @param plane
+     * @param x
+     * @param y
+     */
+    void removeWallObject(int plane, int x, int y);
 
-  /**
-   * Remove a decorative object from the scene
-   * @param plane
-   * @param x
-   * @param y
-   */
-  void removeDecorativeObject(int plane, int x, int y);
+    /**
+     * Remove a decorative object from the scene
+     *
+     * @param decorativeObject
+     */
+    void removeDecorativeObject(DecorativeObject decorativeObject);
 
-  /**
-   * Remove a ground object from the scene
-   * @param plane
-   * @param x
-   * @param y
-   */
-  void removeGroundObject(int plane, int x, int y);
+    /**
+     * Remove a decorative object from the scene
+     *
+     * @param plane
+     * @param x
+     * @param y
+     */
+    void removeDecorativeObject(int plane, int x, int y);
 
-  byte[][][] getUnderlayIds();
-  void setUnderlayIds(byte[][][] underlayIds);
+    /**
+     * Remove a ground object from the scene
+     *
+     * @param groundObject
+     */
+    void removeGroundObject(GroundObject groundObject);
 
-  byte[][][] getOverlayIds();
-  void setOverlayIds(byte[][][] overlayIds);
+    /**
+     * Remove a ground object from the scene
+     *
+     * @param plane
+     * @param x
+     * @param y
+     */
+    void removeGroundObject(int plane, int x, int y);
 
-  byte[][][] getTileShapes();
-  void setTileShapes(byte[][][] tileShapes);
+    void generateHouses();
 
-  void generateHouses();
+    void setRoofRemovalMode(int flags);
 
-  void setRoofRemovalMode(int flags);
+    /**
+     * Get the underlay ids for the scene. The value stored is id + 1, with 0 for no underlay.
+     *
+     * @return
+     */
+    byte[][][] getUnderlayIds();
 
+    /**
+     * Get the overlay ids for the scene. The value stored is id + 1, with 0 for no overlay.
+     *
+     * @return
+     */
+    byte[][][] getOverlayIds();
+
+    /**
+     * Get the shapes of the tiles for the scene.
+     *
+     * @return
+     */
+    byte[][][] getTileShapes();
 }

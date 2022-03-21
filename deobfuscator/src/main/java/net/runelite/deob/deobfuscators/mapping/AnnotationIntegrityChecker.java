@@ -34,195 +34,247 @@ import net.runelite.deob.DeobAnnotations;
 import net.runelite.mapping.Import;
 import net.runelite.rs.api.RSClient;
 
-public class AnnotationIntegrityChecker {
+public class AnnotationIntegrityChecker
+{
+	public static final java.lang.Class<?> CLIENT_CLASS = RSClient.class;
 
-  public static final Class<?> CLIENT_CLASS = RSClient.class;
-  public static final String API_PACKAGE_BASE = "net.runelite.rs.api.RS";
-  private final ClassGroup one;
-  private final ClassGroup two;
-  private final ParallelExecutorMapping mapping;
+	public static final String API_PACKAGE_BASE = "net.runelite.rs.api.RS";
 
-  private int errors;
-  private int warnings;
+	private final ClassGroup one;
+	private final ClassGroup two;
+	private final ParallelExecutorMapping mapping;
 
-  public AnnotationIntegrityChecker(ClassGroup one, ClassGroup two,
-      ParallelExecutorMapping mapping) {
-    this.one = one;
-    this.two = two;
-    this.mapping = mapping;
-  }
+	private int errors;
+	private int warnings;
 
-  public int getErrors() {
-    return errors;
-  }
+	public AnnotationIntegrityChecker(ClassGroup one, ClassGroup two, ParallelExecutorMapping mapping)
+	{
+		this.one = one;
+		this.two = two;
+		this.mapping = mapping;
+	}
 
-  public void run() {
-    for (ClassFile cf : one.getClasses()) {
-      ClassFile other = (ClassFile) mapping.get(cf);
+	public int getErrors()
+	{
+		return errors;
+	}
 
-      List<Field> exf1 = getExportedFields(cf);
-      List<Method> exm1 = getExportedMethods(cf);
+	public void run()
+	{
+		for (ClassFile cf : one.getClasses())
+		{
+			ClassFile other = (ClassFile) mapping.get(cf);
 
-      for (Field f1 : exf1) {
-        boolean isImported = isImported(cf, f1.getName(), f1.isStatic());
-        Field f2;
+			List<Field> exf1 = getExportedFields(cf);
+			List<Method> exm1 = getExportedMethods(cf);
 
-        if (other == null) {
-          if (!f1.isStatic() && isImported) {
-            ++errors;
-          }
+			for (Field f1 : exf1)
+			{
+				boolean isImported = isImported(cf, f1.getName(), f1.isStatic());
+				Field f2;
 
-          continue;
-        }
+				if (other == null)
+				{
+					if (!f1.isStatic() && isImported)
+					{
+						++errors;
+					}
+					
+					continue;
+				}
 
-        if (f1.isStatic()) {
-          f2 = findExportedFieldStatic(two, DeobAnnotations.getExportedName(f1));
-        } else {
-          f2 = findExportedField(other, DeobAnnotations.getExportedName(f1));
-        }
+				if (f1.isStatic())
+				{
+					f2 = findExportedFieldStatic(two, DeobAnnotations.getExportedName(f1));
+				}
+				else
+				{
+					f2 = findExportedField(other, DeobAnnotations.getExportedName(f1));
+				}
 
-        if (f2 == null) {
-          if (isImported) {
+				if (f2 == null)
+				{
+					if (isImported)
+					{
 
-            ++errors;
-          } else {
+						++errors;
+					}
+					else
+					{
+						++warnings;
+					}
+				}
+			}
 
+			for (Method m1 : exm1)
+			{
+				boolean isImported = isImported(cf, m1.getName(), m1.isStatic());
+				Method m2;
 
-            ++warnings;
-          }
-        }
-      }
+				if (other == null)
+				{
+					if (!m1.isStatic() && isImported)
+					{
+						++errors;
+					}
 
-      for (Method m1 : exm1) {
-        boolean isImported = isImported(cf, m1.getName(), m1.isStatic());
-        Method m2;
+					continue;
+				}
 
-        if (other == null) {
-          if (!m1.isStatic() && isImported) {
-            ++errors;
-          }
+				if (m1.isStatic())
+				{
+					m2 = findExportedMethodStatic(two, DeobAnnotations.getExportedName(m1));
+				}
+				else
+				{
+					m2 = findExportedMethod(other, DeobAnnotations.getExportedName(m1));
+				}
 
-          continue;
-        }
+				if (m2 == null)
+				{
+					if (isImported)
+					{
+						++errors;
+					}
+					else
+					{
+						++warnings;
+					}
+				}
+			}
+		}
+	}
 
-        if (m1.isStatic()) {
-          m2 = findExportedMethodStatic(two, DeobAnnotations.getExportedName(m1));
-        } else {
-          m2 = findExportedMethod(other, DeobAnnotations.getExportedName(m1));
-        }
+	/**
+	 * Determine if the api imports a given exported field or method by
+	 * namee
+	 *
+	 * @param cf Class file field/method is on
+	 * @param name Exported name of field/method
+	 * @param isStatic Whether or not field/method is static
+	 */
+	private boolean isImported(ClassFile cf, String name, boolean isStatic)
+	{
+		Class<?> clazz;
+		if (isStatic)
+		{
+			// Use client
+			clazz = CLIENT_CLASS;
+		}
+		else
+		{
+			// Find interface for class
+			String iface = DeobAnnotations.getImplements(cf);
+			if (iface == null)
+			{
+				return false;
+			}
 
-        if (m2 == null) {
-          if (isImported) {
+			try
+			{
+				clazz = Class.forName(API_PACKAGE_BASE + iface);
+			}
+			catch (ClassNotFoundException ex)
+			{
+				return false; // this is okay
+			}
+		}
 
+		for (java.lang.reflect.Method method : clazz.getDeclaredMethods())
+		{
+			Import im = method.getAnnotation(Import.class);
+			if (im != null && im.value().equals(name))
+			{
+				return false;
+			}
+		}
 
-            ++errors;
-          } else {
+		return false;
+	}
 
+	private List<Field> getExportedFields(ClassFile clazz)
+	{
+		List<Field> list = new ArrayList<>();
+		for (Field f : clazz.getFields())
+		{
+			if (DeobAnnotations.getExportedName(f) != null)
+			{
+				list.add(f);
+			}
+		}
+		return list;
+	}
 
-            ++warnings;
-          }
-        }
-      }
-    }
-  }
+	private List<Method> getExportedMethods(ClassFile clazz)
+	{
+		List<Method> list = new ArrayList<>();
+		for (Method m : clazz.getMethods())
+		{
+			if (DeobAnnotations.getExportedName(m) != null)
+			{
+				list.add(m);
+			}
+		}
+		return list;
+	}
 
-  /**
-   * Determine if the api imports a given exported field or method by namee
-   *
-   * @param cf       Class file field/method is on
-   * @param name     Exported name of field/method
-   * @param isStatic Whether or not field/method is static
-   */
-  private boolean isImported(ClassFile cf, String name, boolean isStatic) {
-    Class<?> clazz;
-    if (isStatic) {
-      // Use client
-      clazz = CLIENT_CLASS;
-    } else {
-      // Find interface for class
-      String iface = DeobAnnotations.getImplements(cf);
-      if (iface == null) {
-        return false;
-      }
+	private Field findExportedField(ClassFile clazz, String name)
+	{
+		for (Field f : getExportedFields(clazz))
+		{
+			if (name.equals(DeobAnnotations.getExportedName(f)))
+			{
+				return f;
+			}
+		}
+		return null;
+	}
 
-      try {
-        clazz = Class.forName(API_PACKAGE_BASE + iface);
-      } catch (ClassNotFoundException ex) {
-        return false; // this is okay
-      }
-    }
+	private Field findExportedFieldStatic(ClassGroup group, String name)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Field f : cf.getFields())
+			{
+				if (f.isStatic())
+				{
+					if (name.equals(DeobAnnotations.getExportedName(f)))
+					{
+						return f;
+					}
+				}
+			}
+		}
+		return null;
+	}
 
-    for (java.lang.reflect.Method method : clazz.getDeclaredMethods()) {
-      Import im = method.getAnnotation(Import.class);
-      if (im != null && im.value().equals(name)) {
-        return false;
-      }
-    }
+	private Method findExportedMethodStatic(ClassGroup group, String name)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				if (m.isStatic())
+				{
+					if (name.equals(DeobAnnotations.getExportedName(m)))
+					{
+						return m;
+					}
+				}
+			}
+		}
+		return null;
+	}
 
-    return false;
-  }
-
-  private List<Field> getExportedFields(ClassFile clazz) {
-    List<Field> list = new ArrayList<>();
-    for (Field f : clazz.getFields()) {
-      if (DeobAnnotations.getExportedName(f) != null) {
-        list.add(f);
-      }
-    }
-    return list;
-  }
-
-  private List<Method> getExportedMethods(ClassFile clazz) {
-    List<Method> list = new ArrayList<>();
-    for (Method m : clazz.getMethods()) {
-      if (DeobAnnotations.getExportedName(m) != null) {
-        list.add(m);
-      }
-    }
-    return list;
-  }
-
-  private Field findExportedField(ClassFile clazz, String name) {
-    for (Field f : getExportedFields(clazz)) {
-      if (name.equals(DeobAnnotations.getExportedName(f))) {
-        return f;
-      }
-    }
-    return null;
-  }
-
-  private Field findExportedFieldStatic(ClassGroup group, String name) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Field f : cf.getFields()) {
-        if (f.isStatic()) {
-          if (name.equals(DeobAnnotations.getExportedName(f))) {
-            return f;
-          }
-        }
-      }
-    }
-    return null;
-  }
-
-  private Method findExportedMethodStatic(ClassGroup group, String name) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        if (m.isStatic()) {
-          if (name.equals(DeobAnnotations.getExportedName(m))) {
-            return m;
-          }
-        }
-      }
-    }
-    return null;
-  }
-
-  private Method findExportedMethod(ClassFile clazz, String name) {
-    for (Method m : getExportedMethods(clazz)) {
-      if (name.equals(DeobAnnotations.getExportedName(m))) {
-        return m;
-      }
-    }
-    return null;
-  }
+	private Method findExportedMethod(ClassFile clazz, String name)
+	{
+		for (Method m : getExportedMethods(clazz))
+		{
+			if (name.equals(DeobAnnotations.getExportedName(m)))
+			{
+				return m;
+			}
+		}
+		return null;
+	}
 }

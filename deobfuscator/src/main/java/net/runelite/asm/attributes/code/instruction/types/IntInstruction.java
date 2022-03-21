@@ -25,9 +25,9 @@
 
 package net.runelite.asm.attributes.code.instruction.types;
 
-public interface IntInstruction {
+public interface IntInstruction
+{
+	int getOperand();
 
-  int getOperand();
-
-  void setOperand(int operand);
+	void setOperand(int operand);
 }

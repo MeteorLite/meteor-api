@@ -25,23 +25,23 @@
 package net.runelite.api;
 
 public interface TextureProvider {
+    double getBrightness();
 
-  double getBrightness();
+    /**
+     * Set the brightness for textures, clearing the texture cache.
+     * <p>
+     * .9 is the darkest value available in the standard options
+     * .6 is the brightest value
+     */
+    void setBrightness(double brightness);
 
-  /**
-   * Set the brightness for textures, clearing the texture cache.
-   * <p>
-   * .9 is the darkest value available in the standard options .6 is the brightest value
-   */
-  void setBrightness$api(double brightness);
+    /**
+     * Get all textures
+     */
+    Texture[] getTextures();
 
-  /**
-   * Get all textures
-   */
-  Texture[] getTextures();
-
-  /**
-   * Get the pixels for a texture
-   */
-  int[] load(int textureId);
+    /**
+     * Get the pixels for a texture
+     */
+    int[] load(int textureId);
 }

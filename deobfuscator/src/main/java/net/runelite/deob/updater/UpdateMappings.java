@@ -34,60 +34,66 @@ import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import net.runelite.deob.deobfuscators.transformers.GraphicsObjectTransformer;
 import net.runelite.deob.deobfuscators.transformers.ScriptOpcodesTransformer;
 import net.runelite.deob.util.JarUtil;
-public class UpdateMappings {
 
+public class UpdateMappings
+{
+	private final ClassGroup group1, group2;
 
-  private final ClassGroup group1, group2;
+	public UpdateMappings(ClassGroup group1, ClassGroup group2)
+	{
+		this.group1 = group1;
+		this.group2 = group2;
+	}
 
-  public UpdateMappings(ClassGroup group1, ClassGroup group2) {
-    this.group1 = group1;
-    this.group2 = group2;
-  }
+	public void update()
+	{
+		Mapper mapper = new Mapper(group1, group2);
+		mapper.run();
+		ParallelExecutorMapping mapping = mapper.getMapping();
 
-  public static void main(String[] args) throws IOException {
-    if (args.length < 3) {
-      System.exit(-1);
-    }
+		AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
+		amapper.run();
 
-    UpdateMappings u = new UpdateMappings(
-        JarUtil.load(new File(args[0])),
-        JarUtil.load(new File(args[1]))
-    );
-    u.update();
-    u.save(new File(args[2]));
-  }
+		AnnotationIntegrityChecker aic = new AnnotationIntegrityChecker(group1, group2, mapping);
+		aic.run();
 
-  public void update() {
-    Mapper mapper = new Mapper(group1, group2);
-    mapper.run();
-    ParallelExecutorMapping mapping = mapper.getMapping();
+		int errors = aic.getErrors();
 
-    AnnotationMapper amapper = new AnnotationMapper(group1, group2, mapping);
-    amapper.run();
+		if (errors > 0)
+		{
+			System.exit(-1);
+		}
 
-    AnnotationIntegrityChecker aic = new AnnotationIntegrityChecker(group1, group2, mapping);
-    aic.run();
+		AnnotationRenamer an = new AnnotationRenamer(group2);
+		an.run();
 
-    int errors = aic.getErrors();
+		ParameterRenamer pr = new ParameterRenamer(group1, group2, mapping);
+		pr.run();
 
-    if (errors > 0) {
-      System.exit(-1);
-    }
+		AnnotationAdder ad = new AnnotationAdder(group2);
+		ad.run();
 
-    AnnotationRenamer an = new AnnotationRenamer(group2);
-    an.run();
+		new ScriptOpcodesTransformer().transform(group2);
+		new GraphicsObjectTransformer().transform(group2);
+	}
 
-    ParameterRenamer pr = new ParameterRenamer(group1, group2, mapping);
-    pr.run();
+	public void save(File out) throws IOException
+	{
+		JarUtil.save(group2, out);
+	}
 
-    AnnotationAdder ad = new AnnotationAdder(group2);
-    ad.run();
+	public static void main(String[] args) throws IOException
+	{
+		if (args.length < 3)
+		{
+			System.exit(-1);
+		}
 
-    new ScriptOpcodesTransformer().transform(group2);
-    new GraphicsObjectTransformer().transform(group2);
-  }
-
-  public void save(File out) throws IOException {
-    JarUtil.save(group2, out);
-  }
+		UpdateMappings u = new UpdateMappings(
+			JarUtil.load(new File(args[0])),
+			JarUtil.load(new File(args[1]))
+		);
+		u.update();
+		u.save(new File(args[2]));
+	}
 }

@@ -31,140 +31,168 @@ import java.io.UnsupportedEncodingException;
  *
  * @author Adam
  */
-public class RuneliteBuffer {
+public class RuneliteBuffer
+{
+	// so that it compiles
+	private int offset;
+	private byte[] payload;
+	private int runeliteLengthOffset;
 
-  // so that it compiles
-  private int offset;
-  private byte[] payload;
-  private int runeliteLengthOffset;
+	public int getOffset()
+	{
+		return offset;
+	}
 
-  public int getOffset() {
-    return offset;
-  }
+	public void setOffset(int offset)
+	{
+		this.offset = offset;
+	}
 
-  public void setOffset(int offset) {
-    this.offset = offset;
-  }
+	public byte[] getPayload()
+	{
+		return payload;
+	}
 
-  public byte[] getPayload() {
-    return payload;
-  }
+	public void setPayload(byte[] payload)
+	{
+		this.payload = payload;
+	}
 
-  public void setPayload(byte[] payload) {
-    this.payload = payload;
-  }
+	public int getRuneliteLengthOffset()
+	{
+		return runeliteLengthOffset;
+	}
 
-  public int getRuneliteLengthOffset() {
-    return runeliteLengthOffset;
-  }
+	public void setRuneliteLengthOffset(int runeliteLengthOffset)
+	{
+		this.runeliteLengthOffset = runeliteLengthOffset;
+	}
 
-  public void setRuneliteLengthOffset(int runeliteLengthOffset) {
-    this.runeliteLengthOffset = runeliteLengthOffset;
-  }
+	public byte runeliteReadByte()
+	{
+		offset += 1;
+		return payload[offset - 1];
+	}
 
-  public byte runeliteReadByte() {
-    offset += 1;
-    return payload[offset - 1];
-  }
+	public short runeliteReadShort()
+	{
+		offset += 2;
+		return (short) (((payload[offset - 2] & 0xFF) << 8)
+			| (payload[offset - 1] & 0xFF));
+	}
 
-  public short runeliteReadShort() {
-    offset += 2;
-    return (short) (((payload[offset - 2] & 0xFF) << 8)
-        | (payload[offset - 1] & 0xFF));
-  }
+	public int runeliteReadInt()
+	{
+		offset += 4;
+		return ((payload[offset - 4] & 0xFF) << 24)
+			| ((payload[offset - 3] & 0xFF) << 16)
+			| ((payload[offset - 2] & 0xFF) << 8)
+			| (payload[offset - 1] & 0xFF);
+	}
 
-  public int runeliteReadInt() {
-    offset += 4;
-    return ((payload[offset - 4] & 0xFF) << 24)
-        | ((payload[offset - 3] & 0xFF) << 16)
-        | ((payload[offset - 2] & 0xFF) << 8)
-        | (payload[offset - 1] & 0xFF);
-  }
+	public long runeliteReadLong()
+	{
+		offset += 8;
+		return ((payload[offset - 8] & 0xFFL) << 56)
+			| ((payload[offset - 7] & 0xFFL) << 48)
+			| ((payload[offset - 6] & 0xFFL) << 40)
+			| ((payload[offset - 5] & 0xFFL) << 32)
+			| ((payload[offset - 4] & 0xFFL) << 24)
+			| ((payload[offset - 3] & 0xFFL) << 16)
+			| ((payload[offset - 2] & 0xFFL) << 8)
+			| (payload[offset - 1] & 0xFFL);
+	}
 
-  public long runeliteReadLong() {
-    offset += 8;
-    return ((payload[offset - 8] & 0xFFL) << 56)
-        | ((payload[offset - 7] & 0xFFL) << 48)
-        | ((payload[offset - 6] & 0xFFL) << 40)
-        | ((payload[offset - 5] & 0xFFL) << 32)
-        | ((payload[offset - 4] & 0xFFL) << 24)
-        | ((payload[offset - 3] & 0xFFL) << 16)
-        | ((payload[offset - 2] & 0xFFL) << 8)
-        | (payload[offset - 1] & 0xFFL);
-  }
+	public String runeliteReadString()
+	{
+		int length = runeliteReadShort();
+		if (length < 0)
+		{
+			throw new RuntimeException("length < 0");
+		}
 
-  public String runeliteReadString() {
-    int length = runeliteReadShort();
-    if (length < 0) {
-      throw new RuntimeException("length < 0");
-    }
+		offset += length;
+		try
+		{
+			return new String(payload, offset - length, length, "UTF-8");
+		}
+		catch (UnsupportedEncodingException ex)
+		{
+			throw new RuntimeException(ex);
+		}
+	}
 
-    offset += length;
-    try {
-      return new String(payload, offset - length, length, "UTF-8");
-    } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException(ex);
-    }
-  }
+	public void runeliteWriteByte(byte b)
+	{
+		payload[offset++] = b;
+	}
 
-  public void runeliteWriteByte(byte b) {
-    payload[offset++] = b;
-  }
+	public void runeliteWriteShort(short s)
+	{
+		payload[offset++] = (byte) (s >> 8);
+		payload[offset++] = (byte) s;
+	}
 
-  public void runeliteWriteShort(short s) {
-    payload[offset++] = (byte) (s >> 8);
-    payload[offset++] = (byte) s;
-  }
+	public void runeliteWriteInt(int i)
+	{
+		payload[offset++] = (byte) (i >> 24);
+		payload[offset++] = (byte) (i >> 16);
+		payload[offset++] = (byte) (i >> 8);
+		payload[offset++] = (byte) i;
+	}
 
-  public void runeliteWriteInt(int i) {
-    payload[offset++] = (byte) (i >> 24);
-    payload[offset++] = (byte) (i >> 16);
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) i;
-  }
+	public void runeliteWriteLong(long l)
+	{
+		payload[offset++] = (byte) (l >> 56);
+		payload[offset++] = (byte) (l >> 48);
+		payload[offset++] = (byte) (l >> 40);
+		payload[offset++] = (byte) (l >> 32);
+		payload[offset++] = (byte) (l >> 24);
+		payload[offset++] = (byte) (l >> 16);
+		payload[offset++] = (byte) (l >> 8);
+		payload[offset++] = (byte) l;
+	}
 
-  public void runeliteWriteLong(long l) {
-    payload[offset++] = (byte) (l >> 56);
-    payload[offset++] = (byte) (l >> 48);
-    payload[offset++] = (byte) (l >> 40);
-    payload[offset++] = (byte) (l >> 32);
-    payload[offset++] = (byte) (l >> 24);
-    payload[offset++] = (byte) (l >> 16);
-    payload[offset++] = (byte) (l >> 8);
-    payload[offset++] = (byte) l;
-  }
+	public void runeliteWriteString(String s)
+	{
+		byte[] bytes;
 
-  public void runeliteWriteString(String s) {
-    byte[] bytes;
+		try
+		{
+			bytes = s.getBytes("UTF-8");
+		}
+		catch (UnsupportedEncodingException ex)
+		{
+			throw new RuntimeException(ex);
+		}
 
-    try {
-      bytes = s.getBytes("UTF-8");
-    } catch (UnsupportedEncodingException ex) {
-      throw new RuntimeException(ex);
-    }
+		runeliteWriteShort((short) bytes.length);
+		for (byte b : bytes)
+		{
+			payload[offset++] = b;
+		}
+	}
 
-    runeliteWriteShort((short) bytes.length);
-    for (byte b : bytes) {
-      payload[offset++] = b;
-    }
-  }
+	public void runeliteInitPacket()
+	{
+		runeliteLengthOffset = offset;
+		runeliteWriteShort((short) 0); // flush() relies on default length of 0
+	}
 
-  public void runeliteInitPacket() {
-    runeliteLengthOffset = offset;
-    runeliteWriteShort((short) 0); // flush() relies on default length of 0
-  }
-
-  public void runeliteFinishPacket() {
-    if (runeliteLengthOffset > 0) {
-      int length = offset - runeliteLengthOffset - 2;
-      if (length < 0) {
-        // on flush() it sets offset = 0
-        // but runeliteLengthOffset remains >0
-        return;
-      }
-      payload[runeliteLengthOffset++] = (byte) (length >> 8);
-      payload[runeliteLengthOffset++] = (byte) length;
-      runeliteLengthOffset = 0;
-    }
-  }
+	public void runeliteFinishPacket()
+	{
+		if (runeliteLengthOffset > 0)
+		{
+			int length = offset - runeliteLengthOffset - 2;
+			if (length < 0)
+			{
+				// on flush() it sets offset = 0
+				// but runeliteLengthOffset remains >0
+				return;
+			}
+			payload[runeliteLengthOffset++] = (byte) (length >> 8);
+			payload[runeliteLengthOffset++] = (byte) length;
+			runeliteLengthOffset = 0;
+		}
+	}
 }

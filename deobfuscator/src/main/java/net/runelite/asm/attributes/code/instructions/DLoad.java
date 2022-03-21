@@ -39,61 +39,69 @@ import net.runelite.asm.execution.VariableContext;
 import net.runelite.asm.execution.Variables;
 import org.objectweb.asm.MethodVisitor;
 
-public class DLoad extends Instruction implements LVTInstruction {
+public class DLoad extends Instruction implements LVTInstruction
+{
+	private int index;
+	
+	public DLoad(Instructions instructions, int index)
+	{
+		super(instructions, InstructionType.DLOAD);
 
-  private int index;
+		this.index = index;
+	}
 
-  public DLoad(Instructions instructions, int index) {
-    super(instructions, InstructionType.DLOAD);
+	public DLoad(Instructions instructions, InstructionType type)
+	{
+		super(instructions, type);
+	}
 
-    this.index = index;
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitVarInsn(this.getType().getCode(), this.getVariableIndex());
+	}
 
-  public DLoad(Instructions instructions, InstructionType type) {
-    super(instructions, type);
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		InstructionContext ins = new InstructionContext(this, frame);
+		Stack stack = frame.getStack();
+		Variables variables = frame.getVariables();
+		
+		VariableContext vctx = variables.get(index);
+		assert vctx.getType().equals(Type.DOUBLE);
+		ins.read(vctx);
+		
+		StackContext ctx = new StackContext(ins, vctx);
+		stack.push(ctx);
+		
+		ins.push(ctx);
+		
+		return ins;
+	}
+	
+	@Override
+	public int getVariableIndex()
+	{
+		return index;
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitVarInsn(this.getType().getCode(), this.getVariableIndex());
-  }
+	@Override
+	public boolean store()
+	{
+		return false;
+	}
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    InstructionContext ins = new InstructionContext(this, frame);
-    Stack stack = frame.getStack();
-    Variables variables = frame.getVariables();
+	@Override
+	public Instruction setVariableIndex(int idx)
+	{
+		index = idx;
+		return this;
+	}
 
-    VariableContext vctx = variables.get(index);
-    assert vctx.getType().equals(Type.DOUBLE);
-    ins.read(vctx);
-
-    StackContext ctx = new StackContext(ins, vctx);
-    stack.push(ctx);
-
-    ins.push(ctx);
-
-    return ins;
-  }
-
-  @Override
-  public int getVariableIndex() {
-    return index;
-  }
-
-  @Override
-  public boolean store() {
-    return false;
-  }
-
-  @Override
-  public Instruction setVariableIndex(int idx) {
-    index = idx;
-    return this;
-  }
-
-  @Override
-  public LVTInstructionType type() {
-    return LVTInstructionType.DOUBLE;
-  }
+	@Override
+	public LVTInstructionType type()
+	{
+		return LVTInstructionType.DOUBLE;
+	}
 }

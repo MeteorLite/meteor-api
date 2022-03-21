@@ -24,7 +24,8 @@
  */
 package com.openosrs.injector;
 
-public enum OutputMode {
-  FILES,
-  JAR
+public enum OutputMode
+{
+	FILES,
+	JAR
 }

@@ -30,35 +30,35 @@ import lombok.Getter;
 /**
  * Represents an equipment slot in a players composition.
  * <p>
- * These values are intended for use with {PlayerAppearance} equipment slots. For obtaining
- * information about equipment in the local players equipment {net.runelite.api.ItemContainer}, use
+ * These values are intended for use with {PlayerAppearance} equipment
+ * slots. For obtaining information about equipment in the local players
+ * equipment {net.runelite.api.ItemContainer}, use
  * {net.runelite.api.EquipmentInventorySlot}.
  */
 @Getter
 @AllArgsConstructor
 public enum KitType {
-  HEAD("Head"),
-  CAPE("Cape"),
-  AMULET("Amulet"),
-  WEAPON("Weapon"),
-  TORSO("Torso"),
-  SHIELD("Shield"),
-  ARMS("Arms"),
-  LEGS("Legs"),
-  HAIR("Hair"),
-  HANDS("Hands"),
-  BOOTS("Boots"),
-  JAW("Jaw"),
-  ;
+    HEAD("Head"),
+    CAPE("Cape"),
+    AMULET("Amulet"),
+    WEAPON("Weapon"),
+    TORSO("Torso"),
+    SHIELD("Shield"),
+    ARMS("Arms"),
+    LEGS("Legs"),
+    HAIR("Hair"),
+    HANDS("Hands"),
+    BOOTS("Boots"),
+    JAW("Jaw");
 
-  private final String name;
+    private final String name;
 
-  /**
-   * Gets the raw equipment index for use in {@link net.runelite.api.PlayerComposition#getEquipmentIds()}.
-   *
-   * @return raw equipment index
-   */
-  public int getIndex() {
-    return ordinal();
-  }
+    /**
+     * Gets the raw equipment index for use in {@link net.runelite.api.PlayerComposition#getEquipmentIds()}.
+     *
+     * @return raw equipment index
+     */
+    public int getIndex() {
+        return ordinal();
+    }
 }

@@ -28,69 +28,74 @@ package net.runelite.deob.updater;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import net.runelite.asm.Annotation;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
 import net.runelite.asm.Method;
 import net.runelite.asm.Type;
+import net.runelite.asm.Annotation;
 import net.runelite.asm.attributes.Annotated;
 
-public class AnnotationCopier {
+public class AnnotationCopier
+{
+	private final ClassGroup group1, group2;
+	private final Set<Type> types;
 
-  private final ClassGroup group1, group2;
-  private final Set<Type> types;
+	public AnnotationCopier(ClassGroup group1, ClassGroup group2, Type... types)
+	{
+		this.group1 = group1;
+		this.group2 = group2;
+		this.types = new HashSet<>(Arrays.asList(types));
+	}
 
-  public AnnotationCopier(ClassGroup group1, ClassGroup group2, Type... types) {
-    this.group1 = group1;
-    this.group2 = group2;
-    this.types = new HashSet<>(Arrays.asList(types));
-  }
+	public void copy()
+	{
+		for (ClassFile cf1 : group1.getClasses())
+		{
+			ClassFile cf2 = group2.findClass(cf1.getName());
 
-  public void copy() {
-    for (ClassFile cf1 : group1.getClasses()) {
-      ClassFile cf2 = group2.findClass(cf1.getName());
+			assert cf2 != null;
 
-      assert cf2 != null;
+			copy(cf1, cf2);
 
-      copy(cf1, cf2);
+			for (Field f : cf1.getFields())
+			{
+				Field f2 = cf2.findField(f.getName(), f.getType());
 
-      for (Field f : cf1.getFields()) {
-        Field f2 = cf2.findField(f.getName(), f.getType());
+				assert f2 != null || f.getAnnotations().isEmpty();
 
-        assert f2 != null || f.getAnnotations().isEmpty();
+				if (f2 == null)
+					continue;
 
-        if (f2 == null) {
-          continue;
-        }
+				copy(f, f2);
+			}
 
-        copy(f, f2);
-      }
+			for (Method m : cf1.getMethods())
+			{
+				Method m2 = cf2.findMethod(m.getName(), m.getDescriptor());
 
-      for (Method m : cf1.getMethods()) {
-        Method m2 = cf2.findMethod(m.getName(), m.getDescriptor());
+				assert m2 != null || m == null;
 
-        assert m2 != null || m == null;
+				if (m2 == null)
+					continue;
 
-        if (m2 == null) {
-          continue;
-        }
+				copy(m, m2);
+			}
+		}
+	}
 
-        copy(m, m2);
-      }
-    }
-  }
+	private void copy(Annotated an, Annotated an2)
+	{
+		for (Annotation a : an.getAnnotations().values())
+		{
+			final var t = a.getType();
+			if (isType(t))
+				an2.getAnnotations().replace(t, a);
+		}
+	}
 
-  private void copy(Annotated an, Annotated an2) {
-    for (Annotation a : an.getAnnotations().values()) {
-      final Type t = a.getType();
-      if (isType(t)) {
-        an2.getAnnotations().replace(t, a);
-      }
-    }
-  }
-
-  private boolean isType(Type type) {
-    return types.contains(type);
-  }
+	private boolean isType(Type type)
+	{
+		return types.contains(type);
+	}
 }

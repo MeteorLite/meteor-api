@@ -34,52 +34,61 @@ import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.deobfuscators.lvt.Mappings;
 
 /**
- * This deobfuscator is only required for fernflower which has a difficult time when the same lvt
- * index is used for variables of differing types (like object and int), see IDEABKL-7230.
- *
+ * This deobfuscator is only required for fernflower which has a difficult time
+ * when the same lvt index is used for variables of differing types (like object
+ * and int), see IDEABKL-7230.
+ * 
  * @author Adam
  */
-public class Lvt implements Deobfuscator {
+public class Lvt implements Deobfuscator
+{
 
+	private int count = 0;
 
-  private int count = 0;
+	private void process(Method method)
+	{
+		Code code = method.getCode();
+		if (code == null)
+		{
+			return;
+		}
 
-  private void process(Method method) {
-    Code code = method.getCode();
-    if (code == null) {
-      return;
-    }
+		Mappings mappings = new Mappings(code.getMaxLocals());
 
-    Mappings mappings = new Mappings(code.getMaxLocals());
+		for (Instruction ins : code.getInstructions().getInstructions())
+		{
+			if (!(ins instanceof LVTInstruction))
+			{
+				continue;
+			}
 
-    for (Instruction ins : code.getInstructions().getInstructions()) {
-      if (!(ins instanceof LVTInstruction)) {
-        continue;
-      }
+			LVTInstruction lv = (LVTInstruction) ins;
+			Integer newIdx = mappings.remap(lv.getVariableIndex(), lv.type());
 
-      LVTInstruction lv = (LVTInstruction) ins;
-      Integer newIdx = mappings.remap(lv.getVariableIndex(), lv.type());
+			if (newIdx == null)
+			{
+				continue;
+			}
 
-      if (newIdx == null) {
-        continue;
-      }
+			assert newIdx != lv.getVariableIndex();
 
-      assert newIdx != lv.getVariableIndex();
+			Instruction newIns = lv.setVariableIndex(newIdx);
+			assert ins == newIns;
 
-      Instruction newIns = lv.setVariableIndex(newIdx);
-      assert ins == newIns;
+			++count;
+		}
+	}
 
-      ++count;
-    }
-  }
-
-  @Override
-  public void run(ClassGroup group) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        process(m);
-      }
-    }
-  }
+	@Override
+	public void run(ClassGroup group)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				process(m);
+			}
+		}
+	}
 
 }

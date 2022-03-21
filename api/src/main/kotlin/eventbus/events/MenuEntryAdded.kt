@@ -24,35 +24,48 @@
  */
 package eventbus.events
 
-import net.runelite.api.MenuEntry
+import lombok.Getter
+import lombok.Setter
+import net.runelite.api.MenuAction
 
 /**
  * An event when a new entry is added to a right-click menu.
  */
-class MenuEntryAdded : MenuEntry {
-    /**
-     * If this is set to true client mixin will update the menu entry with the modified values.
-     *
-     *
-     * Checks if count is the same, but doesn't check if there's been multiple changes
-     */
-    var isModified = false
-        private set
-
+class MenuEntryAdded(
+    val option: String?,
+    val target: String?,
+    val identifier: Int,
+    var opcode: Int,
+    var param0: Int,
+    var param1: Int,
+    val forceLeftClick: Boolean
+) {
     // Here for RuneLite compatibility (different parameter order)
     constructor(
-        option: String?, target: String?, type: Int, identifier: Int, actionParam0: Int,
+        option: String?,
+        target: String?,
+        type: Int,
+        identifier: Int,
+        actionParam0: Int,
         actionParam1: Int
-    ) : super(option, target, identifier, type, actionParam0, actionParam1, false) {
+    ) : this(option, target, identifier, type, actionParam0, actionParam1, false) {
     }
 
-    constructor(
-        option: String?, target: String?, identifier: Int, opcode: Int, param0: Int,
-        param1: Int, forceLeftClick: Boolean
-    ) : super(option, target, identifier, opcode, param0, param1, forceLeftClick) {
-    }
-
+    /**
+     * If this is set to true client mixin will update
+     * the menu entry with the modified values.
+     *
+     * Checks if count is the same, but doesn't check if there's
+     * been multiple changes
+     */
+    @Getter
+    @Setter
+    var modified = false
     fun setModified() {
-        isModified = true
+        modified = true
     }
+
+    @get:Deprecated("")
+    val menuAction: MenuAction
+        get() = MenuAction.of(opcode)
 }

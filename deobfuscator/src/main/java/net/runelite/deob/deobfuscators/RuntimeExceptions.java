@@ -26,46 +26,55 @@
 package net.runelite.deob.deobfuscators;
 
 import java.util.ArrayList;
+
+import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Method;
 import net.runelite.asm.attributes.Code;
 import net.runelite.deob.Deobfuscator;
 
-public class RuntimeExceptions implements Deobfuscator {
+public class RuntimeExceptions implements Deobfuscator
+{
+	private static final Logger logger = new Logger("deob");
+	@Override
+	public void run(ClassGroup group)
+	{
+		boolean foundInit = false;
 
-  @Override
-  public void run(ClassGroup group) {
-    boolean foundInit = false;
+		int i = 0;
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				Code c = m.getCode();
+				if (c == null)
+					continue;
 
-    int i = 0;
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        Code c = m.getCode();
-        if (c == null) {
-          continue;
-        }
+				// Keep one handler in the client so the deobfuscator
+				// keeps the client error handling related methods
+				if (cf.getName().equals("client") && m.getName().equals("init"))
+				{
+					foundInit = true;
+					continue;
+				}
+				
+				for (net.runelite.asm.attributes.code.Exception e : new ArrayList<>(c.getExceptions().getExceptions()))
+				{
+					if (e.getCatchType() != null && e.getCatchType().getName().equals("java/lang/RuntimeException"))
+					{
+						c.getExceptions().remove(e);
+						++i;
+					}
+				}
+			}
+		}
 
-        // Keep one handler in the client so the deobfuscator
-        // keeps the client error handling related methods
-        if (cf.getName().equals("client") && m.getName().equals("init")) {
-          foundInit = true;
-          continue;
-        }
+		if (!foundInit)
+		{
+			throw new IllegalStateException("client.init(...) method seems to be missing!");
+		}
 
-        for (net.runelite.asm.attributes.code.Exception e : new ArrayList<>(
-            c.getExceptions().getExceptions())) {
-          if (e.getCatchType() != null && e.getCatchType().getName()
-              .equals("java/lang/RuntimeException")) {
-            c.getExceptions().remove(e);
-            ++i;
-          }
-        }
-      }
-    }
-
-    if (!foundInit) {
-      throw new IllegalStateException("client.init(...) method seems to be missing!");
-    }
-  }
+		logger.info("Remove {} exception handlers", i);
+	}
 }

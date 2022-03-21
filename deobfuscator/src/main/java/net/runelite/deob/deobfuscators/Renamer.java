@@ -24,11 +24,10 @@
  */
 package net.runelite.deob.deobfuscators;
 
-import static net.runelite.deob.DeobAnnotations.OBFUSCATED_NAME;
-import static net.runelite.deob.DeobAnnotations.OBFUSCATED_SIGNATURE;
-
 import com.google.common.base.Strings;
 import java.util.List;
+
+import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -45,210 +44,252 @@ import net.runelite.asm.attributes.code.Parameter;
 import net.runelite.asm.signature.Signature;
 import net.runelite.asm.signature.util.VirtualMethods;
 import net.runelite.deob.DeobAnnotations;
+import static net.runelite.deob.DeobAnnotations.*;
 import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.util.NameMappings;
 
-public class Renamer implements Deobfuscator {
+public class Renamer implements Deobfuscator
+{
+	private static final Logger logger = new Logger("deob");
 
-  private final NameMappings mappings;
+	private final NameMappings mappings;
 
-  public Renamer(NameMappings mappings) {
-    this.mappings = mappings;
-  }
+	public Renamer(NameMappings mappings)
+	{
+		this.mappings = mappings;
+	}
 
-  private static <T extends Annotated & Named> void addObfuscatedName(T object) {
-    if (object.findAnnotation(OBFUSCATED_NAME) == null) {
-      object.findAnnotation(OBFUSCATED_NAME, true).setElement(object.getName());
-    }
-  }
+	private void renameClass(ClassFile on, ClassFile old, String name)
+	{
+		if (on.getParentClass().getName().equals(old.getName()))
+		{
+			on.setParentClass(new net.runelite.asm.pool.Class(name));
+		}
 
-  private void renameClass(ClassFile on, ClassFile old, String name) {
-    if (on.getParentClass().getName().equals(old.getName())) {
-      on.setParentClass(new net.runelite.asm.pool.Class(name));
-    }
+		Interfaces interfaces = on.getInterfaces();
+		List<net.runelite.asm.pool.Class> interfaceList = interfaces.getInterfaces();
+		for (net.runelite.asm.pool.Class inter : interfaceList)
+		{
+			if (inter.getName().equals(old.getName()))
+			{
+				int idx = interfaceList.indexOf(inter);
+				interfaceList.remove(idx);
+				interfaceList.add(idx, new net.runelite.asm.pool.Class(name));
+				break;
+			}
+		}
+	}
 
-    Interfaces interfaces = on.getInterfaces();
-    List<net.runelite.asm.pool.Class> interfaceList = interfaces.getInterfaces();
-    for (net.runelite.asm.pool.Class inter : interfaceList) {
-      if (inter.getName().equals(old.getName())) {
-        int idx = interfaceList.indexOf(inter);
-        interfaceList.remove(idx);
-        interfaceList.add(idx, new net.runelite.asm.pool.Class(name));
-        break;
-      }
-    }
-  }
+	private void renameClass(ClassGroup group, ClassFile cf, String name)
+	{
+		for (ClassFile c : group.getClasses())
+		{
+			// rename on child interfaces and classes
+			renameClass(c, cf, name);
 
-  private void renameClass(ClassGroup group, ClassFile cf, String name) {
-    for (ClassFile c : group.getClasses()) {
-      // rename on child interfaces and classes
-      renameClass(c, cf, name);
+			for (Method method : c.getMethods())
+			{
+				// rename on instructions. this includes method calls and field accesses.
+				if (method.getCode() != null)
+				{
+					Code code = method.getCode();
 
-      for (Method method : c.getMethods()) {
-        // rename on instructions. this includes method calls and field accesses.
-        if (method.getCode() != null) {
-          Code code = method.getCode();
+					// rename on instructions
+					for (Instruction i : code.getInstructions().getInstructions())
+					{
+						i.renameClass(cf.getName(), name);
+					}
 
-          // rename on instructions
-          for (Instruction i : code.getInstructions().getInstructions()) {
-            i.renameClass(cf.getName(), name);
-          }
+					// rename on exception handlers
+					Exceptions exceptions = code.getExceptions();
+					exceptions.renameClass(cf, name);
+				}
 
-          // rename on exception handlers
-          Exceptions exceptions = code.getExceptions();
-          exceptions.renameClass(cf, name);
-        }
+				// rename on parameters
+				Signature.Builder builder = new Signature.Builder();
+				Signature signature = method.getDescriptor();
+				for (int i = 0; i < signature.size(); ++i)
+				{
+					Type type = signature.getTypeOfArg(i);
 
-        // rename on parameters
-        Signature.Builder builder = new Signature.Builder();
-        Signature signature = method.getDescriptor();
-        for (int i = 0; i < signature.size(); ++i) {
-          Type type = signature.getTypeOfArg(i);
+					if (type.getInternalName().equals(cf.getName()))
+					{
+						builder.addArgument(Type.getType("L" + name + ";", type.getDimensions()));
+					}
+					else
+					{
+						builder.addArgument(type);
+					}
+				}
 
-          if (type.getInternalName().equals(cf.getName())) {
-            builder.addArgument(Type.getType("L" + name + ";", type.getDimensions()));
-          } else {
-            builder.addArgument(type);
-          }
-        }
+				// rename return type
+				if (signature.getReturnValue().getInternalName().equals(cf.getName()))
+				{
+					builder.setReturnType(Type.getType("L" + name + ";", signature.getReturnValue().getDimensions()));
+				}
+				else
+				{
+					builder.setReturnType(signature.getReturnValue());
+				}
 
-        // rename return type
-        if (signature.getReturnValue().getInternalName().equals(cf.getName())) {
-          builder.setReturnType(
-              Type.getType("L" + name + ";", signature.getReturnValue().getDimensions()));
-        } else {
-          builder.setReturnType(signature.getReturnValue());
-        }
+				Signature newSignature = builder.build();
 
-        Signature newSignature = builder.build();
+				if (!method.getDescriptor().equals(newSignature))
+				{
+					if (method.findAnnotation(OBFUSCATED_SIGNATURE) == null)
+					{
+						method.findAnnotation(OBFUSCATED_SIGNATURE, true).setElement("descriptor", method.getDescriptor().toString());
+					}
+				}
 
-        if (!method.getDescriptor().equals(newSignature)) {
-          if (method.findAnnotation(OBFUSCATED_SIGNATURE) == null) {
-            method.findAnnotation(OBFUSCATED_SIGNATURE, true)
-                .setElement("descriptor", method.getDescriptor().toString());
-          }
-        }
+				method.setDescriptor(newSignature);
 
-        method.setDescriptor(newSignature);
+				// rename on exceptions thrown
+				if (method.getExceptions() != null)
+				{
+					method.getExceptions().renameClass(cf, name);
+				}
+			}
 
-        // rename on exceptions thrown
-        if (method.getExceptions() != null) {
-          method.getExceptions().renameClass(cf, name);
-        }
-      }
+			// rename on fields
+			for (Field field : c.getFields())
+			{
+				if (field.getType().getInternalName().equals(cf.getName()))
+				{
+					if (field.findAnnotation(OBFUSCATED_SIGNATURE) == null)
+					{
+						field.findAnnotation(OBFUSCATED_SIGNATURE, true).setElement("descriptor", field.getType().toString());
+					}
+					field.setType(Type.getType("L" + name + ";", field.getType().getDimensions()));
+				}
+			}
+		}
 
-      // rename on fields
-      for (Field field : c.getFields()) {
-        if (field.getType().getInternalName().equals(cf.getName())) {
-          if (field.findAnnotation(OBFUSCATED_SIGNATURE) == null) {
-            field.findAnnotation(OBFUSCATED_SIGNATURE, true)
-                .setElement("descriptor", field.getType().toString());
-          }
-          field.setType(Type.getType("L" + name + ";", field.getType().getDimensions()));
-        }
-      }
-    }
+		addObfuscatedName(cf);
 
-    addObfuscatedName(cf);
+		group.renameClass(cf, name);
+	}
 
-    group.renameClass(cf, name);
-  }
+	private void regeneratePool(ClassGroup group)
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				if (m.getCode() != null)
+				{
+					m.getCode().getInstructions()
+						.regeneratePool();
+				}
+			}
+		}
+	}
 
-  private void regeneratePool(ClassGroup group) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        if (m.getCode() != null) {
-          m.getCode().getInstructions()
-              .regeneratePool();
-        }
-      }
-    }
-  }
+	@Override
+	public void run(ClassGroup group)
+	{
+		group.buildClassGraph();
+		group.lookup();
 
-  @Override
-  public void run(ClassGroup group) {
-    group.buildClassGraph();
-    group.lookup();
+		int classes = 0, fields = 0, methods = 0, parameters = 0;
 
-    int classes = 0, fields = 0, methods = 0, parameters = 0;
+		// rename fields
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Field field : cf.getFields())
+			{
+				String newName = mappings.get(field.getPoolField());
+				if (newName == null)
+				{
+					continue;
+				}
 
-    // rename fields
-    for (ClassFile cf : group.getClasses()) {
-      for (Field field : cf.getFields()) {
-        String newName = mappings.get(field.getPoolField());
-        if (newName == null) {
-          continue;
-        }
+				addObfuscatedName(field);
 
-        addObfuscatedName(field);
+				assert DeobAnnotations.getExportedName(field) == null || newName.equals(DeobAnnotations.getExportedName(field)) : "Tried changing field name to something other than the exported name!";
 
-        assert DeobAnnotations.getExportedName(field) == null || newName.equals(DeobAnnotations
-            .getExportedName(
-                field)) : "Tried changing field name to something other than the exported name!";
+				field.setName(newName);
+				++fields;
+			}
+		}
 
-        field.setName(newName);
-        ++fields;
-      }
-    }
+		// rename methods
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method method : cf.getMethods())
+			{
+				String newName = mappings.get(method.getPoolMethod());
+				String[] newParams = mappings.getP(method.getPoolMethod());
 
-    // rename methods
-    for (ClassFile cf : group.getClasses()) {
-      for (Method method : cf.getMethods()) {
-        String newName = mappings.get(method.getPoolMethod());
-        String[] newParams = mappings.getP(method.getPoolMethod());
+				if (newName == null)
+				{
+					continue;
+				}
 
-        if (newName == null) {
-          continue;
-        }
+				List<Method> virtualMethods = VirtualMethods.getVirtualMethods(method);
+				assert !virtualMethods.isEmpty();
 
-        List<Method> virtualMethods = VirtualMethods.getVirtualMethods(method);
-        assert !virtualMethods.isEmpty();
+				for (Method m : virtualMethods)
+				{
+					List<Parameter> oldParams = method.getParameters();
+					for (Parameter p : oldParams)
+					{
+						int index = oldParams.indexOf(p);
+						if (newParams == null)
+						{
+							break;
+						}
+						else if (newParams.length < 1 || index > newParams.length - 1 || Strings.isNullOrEmpty(newParams[index]))
+						{
+							break;
+						}
 
-        for (Method m : virtualMethods) {
-          List<Parameter> oldParams = method.getParameters();
-          for (Parameter p : oldParams) {
-            int index = oldParams.indexOf(p);
-            if (newParams == null) {
-              break;
-            } else if (newParams.length < 1 || index > newParams.length - 1 || Strings
-                .isNullOrEmpty(newParams[index])) {
-              break;
-            }
+						LocalVariable oldVar = p.getLocalVariable();
+						LocalVariable newVar = new LocalVariable(
+							newParams[index],
+							oldVar.getDesc(),
+							oldVar.getSignature(),
+							oldVar.getStart(),
+							oldVar.getEnd(),
+							oldVar.getIndex()
+						);
 
-            LocalVariable oldVar = p.getLocalVariable();
-            LocalVariable newVar = new LocalVariable(
-                newParams[index],
-                oldVar.getDesc(),
-                oldVar.getSignature(),
-                oldVar.getStart(),
-                oldVar.getEnd(),
-                oldVar.getIndex()
-            );
+						p.setLocalVariable(newVar);
 
-            p.setLocalVariable(newVar);
+						++parameters;
+					}
 
-            ++parameters;
-          }
+					addObfuscatedName(m);
 
-          addObfuscatedName(m);
+					m.setName(newName);
+				}
 
-          m.setName(newName);
-        }
+				methods += virtualMethods.size();
+			}
+		}
 
-        methods += virtualMethods.size();
-      }
-    }
+		for (ClassFile cf : group.getClasses())
+		{
+			String newName = mappings.get(cf.getPoolClass());
+			if (newName == null)
+			{
+				continue;
+			}
 
-    for (ClassFile cf : group.getClasses()) {
-      String newName = mappings.get(cf.getPoolClass());
-      if (newName == null) {
-        continue;
-      }
+			renameClass(group, cf, newName);
+			++classes;
+		}
 
-      renameClass(group, cf, newName);
-      ++classes;
-    }
+		this.regeneratePool(group);
 
-    this.regeneratePool(group);
-  }
+		logger.info("Renamed {} classes, {} fields, {} methods, and {} parameters", classes, fields, methods, parameters);
+	}
+
+	private static <T extends Annotated & Named> void addObfuscatedName(T object)
+	{
+		if (object.findAnnotation(OBFUSCATED_NAME) == null)
+		{
+			object.findAnnotation(OBFUSCATED_NAME, true).setElement(object.getName());
+		}
+	}
 }

@@ -24,96 +24,96 @@
  */
 package net.runelite.api;
 
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Shape;
-import java.util.List;
-import javax.annotation.Nullable;
 import net.runelite.api.coords.LocalPoint;
+
+import javax.annotation.Nullable;
+import java.awt.*;
 
 /**
  * Represents an object on a Tile
  */
-public interface TileObject extends SceneEntity {
+public interface TileObject extends Locatable {
+    long getHash();
 
-  long getHash();
+    /**
+     * Gets the x-axis coordinate of the object in local context.
+     *
+     * @see LocalPoint
+     */
+    int getX();
 
-  /**
-   * Gets the x-axis coordinate of the object in local context.
-   *
-   * @see LocalPoint
-   */
-  int getX();
+    /**
+     * Gets the y-axis coordinate of the object in local context.
+     *
+     * @see LocalPoint
+     */
+    int getY();
 
-  /**
-   * Gets the y-axis coordinate of the object in local context.
-   *
-   * @see LocalPoint
-   */
-  int getY();
+    /**
+     * Gets the vertical coordinate of this object
+     */
+    int getZ();
 
-  /**
-   * Gets the plane of the tile that the object is on.
-   */
-  int getPlane();
+    /**
+     * Gets the plane of the tile that the object is on.
+     */
+    int getPlane();
 
-  /**
-   * Gets the ID of the object.
-   *
-   * @see ObjectID
-   * @see NullObjectID
-   */
-  int getId();
+    /**
+     * Gets the ID of the object.
+     *
+     * @see ObjectID
+     * @see NullObjectID
+     */
+    int getId();
 
-  /**
-   * Calculates the position of the center of this tile on the canvas
-   */
-  Point getCanvasLocation();
+    /**
+     * Calculates the position of the center of this tile on the canvas
+     */
+    Point getCanvasLocation();
 
-  /**
-   * Calculates the position of the center of this tile on the canvas
-   *
-   * @param zOffset Vertical offset to apply before projection
-   */
-  Point getCanvasLocation(int zOffset);
+    /**
+     * Calculates the position of the center of this tile on the canvas
+     *
+     * @param zOffset Vertical offset to apply before projection
+     */
+    Point getCanvasLocation(int zOffset);
 
-  /**
-   * Creates a polygon outlining the tile this object is on
-   */
-  Polygon getCanvasTilePoly();
+    /**
+     * Creates a polygon outlining the tile this object is on
+     */
+    Polygon getCanvasTilePoly();
 
-  /**
-   * Calculates the canvas point to center {@code text} above the tile this object is on.
-   *
-   * @param graphics the graphics to use for font size calculation
-   * @param zOffset  Vertical offset to apply before projection
-   * @return the canvas point to draw the text at
-   */
-  Point getCanvasTextLocation(Graphics2D graphics, String text, int zOffset);
+    /**
+     * Calculates the canvas point to center {@code text} above the tile this object is on.
+     *
+     * @param graphics the graphics to use for font size calculation
+     * @param zOffset  Vertical offset to apply before projection
+     * @return the canvas point to draw the text at
+     */
+    Point getCanvasTextLocation(Graphics2D graphics, String text, int zOffset);
 
-  /**
-   * Gets a point on the canvas of where this objects mini-map indicator should appear.
-   *
-   * @return mini-map location on canvas
-   */
-  Point getMinimapLocation();
+    /**
+     * Gets a point on the canvas of where this objects mini-map indicator
+     * should appear.
+     *
+     * @return mini-map location on canvas
+     */
+    Point getMinimapLocation();
 
-  /**
-   * Calculate the on-screen clickable area of the object.
-   */
-  @Nullable
-  Shape getClickbox();
+    /**
+     * Calculate the on-screen clickable area of the object.
+     */
+    @Nullable
+    Shape getClickbox();
 
-  /**
-   * Gets the name of the object
-   */
-  String getName();
+    /**
+     * Gets the name of the object
+     */
+    String getName();
 
-  Point menuPoint();
-
-  ObjectComposition getDefinition();
-
-  ObjectComposition getCachedDefinition();
-
-  boolean isDefinitionCached();
+    /**
+     * Gets the menu actions of the object
+     */
+    String[] getActions();
 }

@@ -30,82 +30,96 @@ import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.asm.signature.Signature;
 
-public class ConstructorMapper {
+public class ConstructorMapper
+{
+
+	private final ClassGroup source, target;
+	private final ParallelExecutorMapping mapping;
+
+	public ConstructorMapper(ClassGroup source, ClassGroup target, ParallelExecutorMapping mapping)
+	{
+		this.source = source;
+		this.target = target;
+		this.mapping = mapping;
+	}
+
+	private Type toOtherType(Type type)
+	{
+		if (type.isPrimitive())
+		{
+			return type;
+		}
+
+		ClassFile cf = source.findClass(type.getInternalName());
+		if (cf == null)
+		{
+			return type;
+		}
+
+		ClassFile other = (ClassFile) mapping.get(cf);
+		if (other == null)
+		{
+			return null;
+		}
+
+		return new Type("L" + other.getName() + ";");
+	}
+
+	private Signature toOtherSignature(Signature s)
+	{
+		Signature.Builder builder = new Signature.Builder()
+			.setReturnType(toOtherType(s.getReturnValue()));
+		for (Type t : s.getArguments())
+		{
+			Type other = toOtherType(t);
+			if (other == null)
+			{
+				return null;
+			}
+			builder.addArgument(other);
+		}
+		return builder.build();
+	}
+
+	/**
+	 * Map constructors based on the class mappings of the given mapping
+	 */
+	public void mapConstructors()
+	{
+		for (ClassFile cf : source.getClasses())
+		{
+			ClassFile other = (ClassFile) mapping.get(cf);
+
+			if (other == null)
+			{
+				continue;
+			}
+
+			for (Method m : cf.getMethods())
+			{
+				if (!m.getName().equals("<init>"))
+				{
+					continue;
+				}
+
+				Signature otherSig = toOtherSignature(m.getDescriptor());
+				if (otherSig == null)
+				{
+					continue;
+				}
 
 
-  private final ClassGroup source, target;
-  private final ParallelExecutorMapping mapping;
+				Method m2 = other.findMethod(m.getName(), otherSig);
+				if (m2 == null)
+				{
+					continue;
+				}
 
-  public ConstructorMapper(ClassGroup source, ClassGroup target, ParallelExecutorMapping mapping) {
-    this.source = source;
-    this.target = target;
-    this.mapping = mapping;
-  }
+				ParallelExecutorMapping p = MappingExecutorUtil.map(m, m2);
+				p.map(null, m, m2);
 
-  private Type toOtherType(Type type) {
-    if (type.isPrimitive()) {
-      return type;
-    }
-
-    ClassFile cf = source.findClass(type.getInternalName());
-    if (cf == null) {
-      return type;
-    }
-
-    ClassFile other = (ClassFile) mapping.get(cf);
-    if (other == null) {
-      return null;
-    }
-
-    return new Type("L" + other.getName() + ";");
-  }
-
-  private Signature toOtherSignature(Signature s) {
-    Signature.Builder builder = new Signature.Builder()
-        .setReturnType(toOtherType(s.getReturnValue()));
-    for (Type t : s.getArguments()) {
-      Type other = toOtherType(t);
-      if (other == null) {
-        return null;
-      }
-      builder.addArgument(other);
-    }
-    return builder.build();
-  }
-
-  /**
-   * Map constructors based on the class mappings of the given mapping
-   */
-  public void mapConstructors() {
-    for (ClassFile cf : source.getClasses()) {
-      ClassFile other = (ClassFile) mapping.get(cf);
-
-      if (other == null) {
-        continue;
-      }
-
-      for (Method m : cf.getMethods()) {
-        if (!m.getName().equals("<init>")) {
-          continue;
-        }
-
-        Signature otherSig = toOtherSignature(m.getDescriptor());
-        if (otherSig == null) {
-          continue;
-        }
-
-
-        Method m2 = other.findMethod(m.getName(), otherSig);
-        if (m2 == null) {
-
-          continue;
-        }
-
-        ParallelExecutorMapping p = MappingExecutorUtil.map(m, m2);
-        p.map(null, m, m2);
-
-        mapping.merge(p);
-      }
-    }
-  }
+				mapping.merge(p);
+			}
+		}
+	}
 }

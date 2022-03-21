@@ -29,13 +29,13 @@ import net.runelite.mapping.Import;
 
 public interface RSClanChannelMember extends ClanChannelMember
 {
-  @Import("rank")
-  byte getRSRank();
+	@Import("rank")
+	byte getRSRank();
 
-  @Import("world")
-  @Override
-  int getWorld$api();
+	@Import("world")
+	@Override
+	int getWorld();
 
-  @Import("username")
-  RSUsername getUsername();
+	@Import("username")
+	RSUsername getUsername();
 }

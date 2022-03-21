@@ -37,70 +37,79 @@ import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.MethodVisitor;
 
-public class InvokeDynamic extends Instruction implements InvokeInstruction {
+public class InvokeDynamic extends Instruction implements InvokeInstruction
+{
+	private String name;
+	private String desc;
+	private Handle bsm;
+	private Object[] bsmArgs;
 
-  private String name;
-  private String desc;
-  private Handle bsm;
-  private Object[] bsmArgs;
+	public InvokeDynamic(Instructions instructions, String name, String desc, Handle bsm, Object[] bsmArgs)
+	{
+		super(instructions, InstructionType.INVOKEDYNAMIC);
+		this.name = name;
+		this.desc = desc;
+		this.bsm = bsm;
+		this.bsmArgs = bsmArgs;
+	}
 
-  public InvokeDynamic(Instructions instructions, String name, String desc, Handle bsm,
-      Object[] bsmArgs) {
-    super(instructions, InstructionType.INVOKEDYNAMIC);
-    this.name = name;
-    this.desc = desc;
-    this.bsm = bsm;
-    this.bsmArgs = bsmArgs;
-  }
+	@Override
+	public String toString()
+	{
+		return "invokedynamic in " + this.getInstructions().getCode().getMethod();
+	}
 
-  @Override
-  public String toString() {
-    return "invokedynamic in " + this.getInstructions().getCode().getMethod();
-  }
+	@Override
+	public void accept(MethodVisitor visitor)
+	{
+		visitor.visitInvokeDynamicInsn(name, desc, bsm, bsmArgs);
+	}
 
-  @Override
-  public void accept(MethodVisitor visitor) {
-    visitor.visitInvokeDynamicInsn(name, desc, bsm, bsmArgs);
-  }
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<net.runelite.asm.Method> getMethods()
+	{
+		return Collections.EMPTY_LIST;
+	}
 
-  @Override
-  @SuppressWarnings("unchecked")
-  public List<net.runelite.asm.Method> getMethods() {
-    return Collections.EMPTY_LIST;
-  }
+	@Override
+	public InstructionContext execute(Frame frame)
+	{
+		throw new UnsupportedOperationException("invokedynamic not supported");
+	}
 
-  @Override
-  public InstructionContext execute(Frame frame) {
-    throw new UnsupportedOperationException("invokedynamic not supported");
-  }
+	@Override
+	public void removeParameter(int idx)
+	{
+		throw new UnsupportedOperationException("invokedynamic not supported");
+	}
 
-  @Override
-  public void removeParameter(int idx) {
-    throw new UnsupportedOperationException("invokedynamic not supported");
-  }
+	@Override
+	public Method getMethod()
+	{
+		return null;
+	}
 
-  @Override
-  public Method getMethod() {
-    return null;
-  }
+	@Override
+	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+	{
+	}
 
-  @Override
-  public void setMethod(Method method) {
-    throw new UnsupportedOperationException("invokedynamic not supported");
-  }
+	@Override
+	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	{
+		throw new UnsupportedOperationException("invokedynamic not supported");
+	}
 
-  @Override
-  public void map(ParallelExecutorMapping mapping, InstructionContext ctx,
-      InstructionContext other) {
-  }
+	@Override
+	public boolean canMap(InstructionContext thisIc)
+	{
+		throw new UnsupportedOperationException("invokedynamic not supported");
+	}
 
-  @Override
-  public boolean isSame(InstructionContext thisIc, InstructionContext otherIc) {
-    throw new UnsupportedOperationException("invokedynamic not supported");
-  }
-
-  @Override
-  public boolean canMap(InstructionContext thisIc) {
-    throw new UnsupportedOperationException("invokedynamic not supported");
-  }
+	@Override
+	public void setMethod(Method method)
+	{
+		throw new UnsupportedOperationException("invokedynamic not supported");
+	}
 }

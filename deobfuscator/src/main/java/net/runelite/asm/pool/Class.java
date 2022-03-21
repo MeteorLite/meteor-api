@@ -24,47 +24,55 @@
  */
 package net.runelite.asm.pool;
 
-public class Class {
+public class Class
+{
+	private final String name;
 
-  private final String name;
+	public Class(String name)
+	{
+		assert !name.startsWith("L") || !name.endsWith(";");
+		this.name = name.replace('.', '/');
+	}
 
-  public Class(String name) {
-    assert !name.startsWith("L") || !name.endsWith(";");
-    this.name = name.replace('.', '/');
-  }
+	public Class(String name, int dimms)
+	{
+		assert !name.startsWith("L") && !name.endsWith(";");
+		name = name.replace('.', '/');
 
-  public Class(String name, int dimms) {
-    assert !name.startsWith("L") && !name.endsWith(";");
-    name = name.replace('.', '/');
+		while (dimms-- > 0)
+		{
+			name = "[" + name;
+		}
 
-    while (dimms-- > 0) {
-      name = "[" + name;
-    }
+		this.name = name;
+	}
 
-    this.name = name;
-  }
+	@Override
+	public String toString()
+	{
+		return name;
+	}
 
-  @Override
-  public String toString() {
-    return name;
-  }
+	@Override
+	public boolean equals(Object other)
+	{
+		if (!(other instanceof Class))
+		{
+			return false;
+		}
 
-  @Override
-  public boolean equals(Object other) {
-    if (!(other instanceof Class)) {
-      return false;
-    }
+		Class c = (Class) other;
+		return name.equals(c.name);
+	}
 
-    Class c = (Class) other;
-    return name.equals(c.name);
-  }
+	@Override
+	public int hashCode()
+	{
+		return name.hashCode();
+	}
 
-  @Override
-  public int hashCode() {
-    return name.hashCode();
-  }
-
-  public String getName() {
-    return name;
-  }
+	public String getName()
+	{
+		return name;
+	}
 }

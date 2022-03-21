@@ -17,7 +17,7 @@ publishing {
         create<MavenPublication>("mavenLocal") {
             artifactId = "injected"
             version = rootProject.extra.get("release") as String
-            artifact(file("./build/injected/injected-klient.jar"))
+            artifact(file("./build/injected/injected-client.jar"))
         }
     }
 }

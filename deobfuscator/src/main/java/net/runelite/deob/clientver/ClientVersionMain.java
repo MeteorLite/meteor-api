@@ -29,27 +29,32 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 
-public class ClientVersionMain {
+public class ClientVersionMain
+{
+	public static void main(String[] args) throws IOException
+	{
+		File jar = new File(args[0]);
+		ClientVersion cv = new ClientVersion(jar);
+		System.out.println(cv.getVersion());
+	}
 
-  public static void main(String[] args) throws IOException {
-    File jar = new File(args[0]);
-    ClientVersion cv = new ClientVersion(jar);
-    System.out.println(cv.getVersion());
-  }
+	public static int version(String loc)
+	{
+		File jar = new File(loc);
+		ClientVersion cv = new ClientVersion(jar);
+		try
+		{
+			int version = cv.getVersion();
 
-  public static int version(String loc) {
-    File jar = new File(loc);
-    ClientVersion cv = new ClientVersion(jar);
-    try {
-      int version = cv.getVersion();
+			Files.move(jar, new File(loc.replace("gamepack.jar", "gamepack-" + version + ".jar")));
 
-      Files.move(jar, new File(loc.replace("gamepack.jar", "gamepack-" + version + ".jar")));
+			return version;
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 
-      return version;
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    return -1;
-  }
+		return -1;
+	}
 }

@@ -28,171 +28,185 @@ package net.runelite.rs.api;
 import net.runelite.api.Actor;
 import net.runelite.mapping.Import;
 
-public interface RSActor extends RSRenderable, Actor {
+public interface RSActor extends RSRenderable, Actor
+{
+	@Import("targetIndex")
+	@Override
+	int getRSInteracting();
 
-  @Import("targetIndex")
-  @Override
-  int getRSInteracting();
+	// Overhead text
 
-  // Overhead text
+	@Import("overheadText")
+	@Override
+	String getOverheadText();
 
-  @Import("overheadText")
-  @Override
-  String getOverheadText();
+	@Import("overheadText")
+	@Override
+	void setOverheadText(String overheadText);
 
-  @Import("overheadText")
-  @Override
-  void setOverheadText(String overheadText);
+	// Coord stuff
 
-  // Coord stuff
+	@Import("x")
+	int getX();
 
-  @Import("x")
-  int getX();
+	@Import("y")
+	int getY();
 
-  @Import("y")
-  int getY();
+	@Import("pathX")
+	int[] getPathX();
 
-  @Import("pathX")
-  int[] getPathX();
+	@Import("pathY")
+	int[] getPathY();
 
-  @Import("pathY")
-  int[] getPathY();
+	// Animation
 
-  // Animation
+	@Import("sequence")
+	@Override
+	int getAnimation();
 
-  @Import("sequence")
-  @Override
-  int getAnimation();
+	@Import("sequence")
+	@Override
+	void setAnimation(int animation);
 
-  @Import("sequence")
-  @Override
-  void setAnimation(int animation);
+	@Import("sequenceFrame")
+	@Override
+	int getAnimationFrame();
 
-  @Import("sequenceFrame")
-  @Override
-  int getAnimationFrame();
+	@Import("sequenceFrame")
+	@Override
+	int getActionFrame();
 
-  @Import("sequenceFrame")
-  @Override
-  void setAnimationFrame(int frame);
+	@Import("sequenceFrame")
+	@Override
+	void setAnimationFrame(int frame);
 
-  @Import("sequenceFrame")
-  @Override
-  int getActionFrame();
+	@Import("sequenceFrame")
+	@Override
+	void setActionFrame(int frame);
 
-  @Import("sequenceFrame")
-  @Override
-  void setActionFrame(int frame);
+	@Import("sequenceFrameCycle")
+	@Override
+	int getActionFrameCycle();
 
-  @Import("sequenceFrameCycle")
-  @Override
-  int getActionFrameCycle();
+	// Spot animation (aka graphic)
 
-  // Spot animation (aka graphic)
+	@Import("spotAnimation")
+	@Override
+	int getGraphic();
 
-  @Import("spotAnimation")
-  @Override
-  int getGraphic();
+	@Import("spotAnimation")
+	@Override
+	void setGraphic(int id);
 
-  @Import("spotAnimation")
-  @Override
-  void setGraphic(int id);
+	@Import("spotAnimationHeight")
+	@Override
+	int getGraphicHeight();
 
-  @Import("spotAnimationFrame")
-  int getSpotAnimFrame();
+	@Import("spotAnimationHeight")
+	@Override
+	void setGraphicHeight(int id);
 
-  @Import("spotAnimationFrame")
-  @Override
-  void setSpotAnimFrame(int id);
+	@Import("spotAnimationFrame")
+	int getSpotAnimFrame();
 
-  @Import("spotAnimationFrameCycle")
-  int getSpotAnimationFrameCycle();
+	@Import("spotAnimationFrame")
+	@Override
+	void setSpotAnimFrame(int id);
 
-  // Idle animation
+	@Import("spotAnimationFrameCycle")
+	int getSpotAnimationFrameCycle();
 
-  @Import("idleSequence")
-  @Override
-  int getIdlePoseAnimation();
+	// Idle animation
 
-  @Import("idleSequence")
-  @Override
-  void setIdlePoseAnimation(int animation);
+	@Import("idleSequence")
+	@Override
+	int getIdlePoseAnimation();
 
-  // Movement animation (aka poseAnimation)
+	@Import("idleSequence")
+	@Override
+	void setIdlePoseAnimation(int animation);
 
-  @Import("movementSequence")
-  @Override
-  int getPoseAnimation();
+	// Movement animation (aka poseAnimation)
 
-  @Import("movementSequence")
-  @Override
-  void setPoseAnimation(int animation);
+	@Import("movementSequence")
+	@Override
+	int getPoseAnimation();
 
-  @Import("movementFrame")
-  int getPoseFrame();
+	@Import("movementSequence")
+	@Override
+	void setPoseAnimation(int animation);
 
-  @Import("movementFrame")
-  void setPoseFrame(int frame);
+	@Import("movementFrame")
+	int getPoseFrame();
 
-  @Import("movementFrameCycle")
-  int getPoseFrameCycle();
+	@Import("movementFrame")
+	void setPoseFrame(int frame);
 
-  @Import("defaultHeight")
-  @Override
-  int getLogicalHeight();
+	@Import("movementFrameCycle")
+	int getPoseFrameCycle();
 
-  @Import("orientation")
-  @Override
-  int getOrientation();
+	@Import("defaultHeight")
+	@Override
+	int getLogicalHeight();
 
-  @Import("rotation")
-  @Override
-  int getCurrentOrientation();
+	@Import("orientation")
+	@Override
+	int getOrientation();
 
-  // Health stuff
+	@Import("rotation")
+	@Override
+	int getCurrentOrientation();
 
-  @Import("healthBars")
-  RSIterableNodeDeque getHealthBars();
+	// Health stuff
 
-  @Import("hitSplatValues")
-  int[] getHitsplatValues();
+	@Import("healthBars")
+	RSIterableNodeDeque getHealthBars();
 
-  @Import("hitSplatTypes")
-  int[] getHitsplatTypes();
+	@Import("hitSplatValues")
+	int[] getHitsplatValues();
 
-  @Import("hitSplatCycles")
-  int[] getHitsplatCycles();
+	@Import("hitSplatTypes")
+	int[] getHitsplatTypes();
 
-  @Import("turnLeftSequence")
-  @Override
-  int getIdleRotateLeft();
+	@Import("hitSplatCycles")
+	int[] getHitsplatCycles();
 
-  @Import("turnRightSequence")
-  @Override
-  int getIdleRotateRight();
+	@Import("turnLeftSequence")
+	@Override
+	int getIdleRotateLeft();
 
-  @Import("walkSequence")
-  @Override
-  int getWalkAnimation();
+	@Import("turnRightSequence")
+	@Override
+	int getIdleRotateRight();
 
-  @Import("walkBackSequence")
-  @Override
-  int getWalkRotate180();
+	@Import("walkSequence")
+	@Override
+	int getWalkAnimation();
 
-  @Import("walkLeftSequence")
-  @Override
-  int getWalkRotateLeft();
+	@Import("walkBackSequence")
+	@Override
+	int getWalkRotate180();
 
-  @Import("walkRightSequence")
-  @Override
-  int getWalkRotateRight();
+	@Import("walkLeftSequence")
+	@Override
+	int getWalkRotateLeft();
 
-  @Import("runSequence")
-  @Override
-  int getRunAnimation();
+	@Import("walkRightSequence")
+	@Override
+	int getWalkRotateRight();
 
-  void setDead(boolean dead);
+	@Import("runSequence")
+	@Override
+	int getRunAnimation();
 
-  @Import("pathLength")
-  int getPathLength();
+	void setDead(boolean dead);
+
+	@Import("pathLength")
+	int getPathLength();
+
+	@Import("overheadTextCyclesRemaining")
+	int getOverheadCycle();
+
+	@Import("overheadTextCyclesRemaining")
+	void setOverheadCycle(int cycle);
 }

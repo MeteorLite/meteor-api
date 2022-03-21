@@ -30,46 +30,54 @@ import java.util.Collection;
 import net.runelite.asm.Method;
 import net.runelite.asm.attributes.code.Instruction;
 
-public class MethodContext {
+public class MethodContext
+{
+	private Execution execution;
+	private Method method;
+	private Multimap<InstructionContext, Instruction> visited = HashMultimap.create();
+	public Multimap<Instruction, InstructionContext> contexts = HashMultimap.create();
 
-  public Multimap<Instruction, InstructionContext> contexts = HashMultimap.create();
-  private Execution execution;
-  private Method method;
-  private Multimap<InstructionContext, Instruction> visited = HashMultimap.create();
+	public MethodContext(Execution execution, Method method)
+	{
+		this.execution = execution;
+		this.method = method;
+	}
 
-  public MethodContext(Execution execution, Method method) {
-    this.execution = execution;
-    this.method = method;
-  }
+	public Execution getExecution()
+	{
+		return execution;
+	}
 
-  public Execution getExecution() {
-    return execution;
-  }
+	public Method getMethod()
+	{
+		return method;
+	}
 
-  public Method getMethod() {
-    return method;
-  }
+	protected boolean hasJumped(InstructionContext from, Instruction to)
+	{
+		Collection<Instruction> i = visited.get(from);
+		if (i != null && i.contains(to))
+		{
+			return true;
+		}
 
-  protected boolean hasJumped(InstructionContext from, Instruction to) {
-    Collection<Instruction> i = visited.get(from);
-    if (i != null && i.contains(to)) {
-      return true;
-    }
+		visited.put(from, to);
+		return false;
+	}
 
-    visited.put(from, to);
-    return false;
-  }
+	public Collection<InstructionContext> getInstructonContexts(Instruction i)
+	{
+		return contexts.get(i);
+	}
 
-  public Collection<InstructionContext> getInstructonContexts(Instruction i) {
-    return contexts.get(i);
-  }
+	public Collection<InstructionContext> getInstructionContexts()
+	{
+		return contexts.values();
+	}
 
-  public Collection<InstructionContext> getInstructionContexts() {
-    return contexts.values();
-  }
-
-  public void reset() {
-    contexts.clear();
-    visited.clear();
-  }
+	public void reset()
+	{
+		contexts.clear();
+		visited.clear();
+	}
 }

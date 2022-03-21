@@ -24,9 +24,6 @@
  */
 package net.runelite.deob.deobfuscators.transformers.buffer;
 
-import static net.runelite.asm.attributes.code.InstructionType.GETFIELD;
-import static net.runelite.asm.attributes.code.InstructionType.INVOKEVIRTUAL;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -36,71 +33,83 @@ import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Method;
 import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
+import static net.runelite.asm.attributes.code.InstructionType.GETFIELD;
+import static net.runelite.asm.attributes.code.InstructionType.INVOKEVIRTUAL;
 import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
 import net.runelite.asm.execution.Execution;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.signature.Signature;
 
-public class PacketFlushFinder {
+public class PacketFlushFinder
+{
+	private final ClassGroup group;
 
-  private final ClassGroup group;
+	private final List<InstructionContext> queueForWrite = new ArrayList<>();
 
-  private final List<InstructionContext> queueForWrite = new ArrayList<>();
+	public PacketFlushFinder(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  public PacketFlushFinder(ClassGroup group) {
-    this.group = group;
-  }
+	public List<InstructionContext> getQueueForWrite()
+	{
+		return queueForWrite;
+	}
 
-  public List<InstructionContext> getQueueForWrite() {
-    return queueForWrite;
-  }
+	public void find()
+	{
+		ClassFile client = group.findClass("Client");
+		if (client == null)
+		{
+			client = group.findClass("client");
+		}
 
-  public void find() {
-    ClassFile client = group.findClass("Client");
-    if (client == null) {
-      client = group.findClass("client");
-    }
+		for (Method method : client.getMethods())
+		{
+			find(method);
+		}
+	}
 
-    for (Method method : client.getMethods()) {
-      find(method);
-    }
-  }
+	private void find(Method method)
+	{
+		Code code = method.getCode();
+		Set<Instruction> checked = new HashSet<>();
 
-  private void find(Method method) {
-    Code code = method.getCode();
-    Set<Instruction> checked = new HashSet<>();
+		Execution e = new Execution(group);
+		e.addMethod(method);
+		e.noInvoke = true;
+		e.noExceptions = true;
+		e.addExecutionVisitor(ic ->
+		{
+			Instruction i = ic.getInstruction();
 
-    Execution e = new Execution(group);
-    e.addMethod(method);
-    e.noInvoke = true;
-    e.noExceptions = true;
-    e.addExecutionVisitor(ic ->
-    {
-      Instruction i = ic.getInstruction();
+			if (checked.contains(i))
+			{
+				return;
+			}
+			checked.add(i);
 
-      if (checked.contains(i)) {
-        return;
-      }
-      checked.add(i);
+			if (i.getType() != INVOKEVIRTUAL)
+			{
+				return;
+			}
 
-      if (i.getType() != INVOKEVIRTUAL) {
-        return;
-      }
+			InvokeVirtual iv = (InvokeVirtual) i;
+			// queueForWrite
+			if (!iv.getMethod().getType().equals(new Signature("([BII)V")))
+			{
+				return;
+			}
 
-      InvokeVirtual iv = (InvokeVirtual) i;
-      // queueForWrite
-      if (!iv.getMethod().getType().equals(new Signature("([BII)V"))) {
-        return;
-      }
+			InstructionContext lengthCtx = ic.getPops().get(0).getPushed();
+			if (lengthCtx.getInstruction().getType() != GETFIELD)
+			{
+				return;
+			}
 
-      InstructionContext lengthCtx = ic.getPops().get(0).getPushed();
-      if (lengthCtx.getInstruction().getType() != GETFIELD) {
-        return;
-      }
-
-      queueForWrite.add(ic);
-    });
-    e.run();
-  }
+			queueForWrite.add(ic);
+		});
+		e.run();
+	}
 
 }

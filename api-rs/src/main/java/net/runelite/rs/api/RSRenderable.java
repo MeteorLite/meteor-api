@@ -27,21 +27,20 @@ package net.runelite.rs.api;
 import net.runelite.api.Renderable;
 import net.runelite.mapping.Import;
 
-public interface RSRenderable extends RSNode, Renderable {
+public interface RSRenderable extends RSNode, Renderable
+{
+	@Import("height")
+	int getModelHeight();
 
-  @Import("height")
-  int getModelHeight();
+	@Import("height")
+	@Override
+	void setModelHeight(int modelHeight);
 
-  @Import("height")
-  @Override
-  void setModelHeight(int modelHeight);
+	@Import("getModel")
+	@Override
+	RSModel getModel();
 
-  @Import("getModel")
-  @Override
-  RSModel getModel$api();
-
-  @Import("draw")
-  @Override
-  void draw$api(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y,
-      int z, long hash);
+	@Import("draw")
+	@Override
+	void draw(int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash);
 }

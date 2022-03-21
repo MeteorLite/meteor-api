@@ -18,4 +18,4 @@ import net.runelite.api.Actor
  *
  * @see net.runelite.api.AnimationID
  */
-class AnimationChanged(val actor: Actor) : Event()
+class AnimationChanged(var actor: Actor) : Event()

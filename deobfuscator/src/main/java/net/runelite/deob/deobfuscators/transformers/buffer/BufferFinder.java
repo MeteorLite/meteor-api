@@ -37,61 +37,73 @@ import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
  *
  * @author Adam
  */
-public class BufferFinder {
+public class BufferFinder
+{
+	private final ClassGroup group;
 
-  private final ClassGroup group;
+	private ClassFile buffer, packetBuffer;
 
-  private ClassFile buffer, packetBuffer;
+	public BufferFinder(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  public BufferFinder(ClassGroup group) {
-    this.group = group;
-  }
+	public ClassFile getBuffer()
+	{
+		return buffer;
+	}
 
-  public ClassFile getBuffer() {
-    return buffer;
-  }
+	public ClassFile getPacketBuffer()
+	{
+		return packetBuffer;
+	}
 
-  public ClassFile getPacketBuffer() {
-    return packetBuffer;
-  }
+	public void find()
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method m : cf.getMethods())
+			{
+				Code code = m.getCode();
 
-  public void find() {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        Code code = m.getCode();
+				if (findModPow(code))
+				{
+					buffer = cf;
 
-        if (findModPow(code)) {
-          buffer = cf;
+					// packetBuffer extends this
+					packetBuffer = group.getClasses().stream()
+						.filter(cl -> cl.getParent() == cf)
+						.findAny()
+						.get();
+				}
+			}
+		}
+	}
 
-          // packetBuffer extends this
-          packetBuffer = group.getClasses().stream()
-              .filter(cl -> cl.getParent() == cf)
-              .findAny()
-              .get();
-        }
-      }
-    }
-  }
+	// Find encryptRsa in buffer
+	private boolean findModPow(Code code)
+	{
+		if (code == null)
+		{
+			return false;
+		}
 
-  // Find encryptRsa in buffer
-  private boolean findModPow(Code code) {
-    if (code == null) {
-      return false;
-    }
+		Instructions instructions = code.getInstructions();
 
-    Instructions instructions = code.getInstructions();
+		for (Instruction i : instructions.getInstructions())
+		{
+			if (!(i instanceof InvokeVirtual))
+			{
+				continue;
+			}
 
-    for (Instruction i : instructions.getInstructions()) {
-      if (!(i instanceof InvokeVirtual)) {
-        continue;
-      }
-
-      InvokeVirtual iv = (InvokeVirtual) i;
-      net.runelite.asm.pool.Method method = iv.getMethod();
-      if (method.getName().equals("modPow")) {
-        return true;
-      }
-    }
-    return false;
-  }
+			InvokeVirtual iv = (InvokeVirtual) i;
+			net.runelite.asm.pool.Method method = iv.getMethod();
+			if (method.getName().equals("modPow"))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

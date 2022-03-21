@@ -38,60 +38,72 @@ import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instruction.types.PushConstantInstruction;
 import net.runelite.asm.attributes.code.instruction.types.SetFieldInstruction;
 
-public class PacketTypeFinder {
+public class PacketTypeFinder
+{
+	private final ClassGroup group;
 
+	private final Map<Field, Integer> sets = new HashMap<>();
+	private Field packetType;
 
-  private final ClassGroup group;
+	public PacketTypeFinder(ClassGroup group)
+	{
+		this.group = group;
+	}
 
-  private final Map<Field, Integer> sets = new HashMap<>();
-  private Field packetType;
+	public Field getPacketType()
+	{
+		return packetType;
+	}
 
-  public PacketTypeFinder(ClassGroup group) {
-    this.group = group;
-  }
+	public void find()
+	{
+		for (ClassFile cf : group.getClasses())
+		{
+			for (Method method : cf.getMethods())
+			{
+				run(method.getCode());
+			}
+		}
 
-  public Field getPacketType() {
-    return packetType;
-  }
+		packetType = sets.entrySet().stream()
+			.max((entry1, entry2) -> Integer.compare(entry1.getValue(), entry2.getValue()))
+			.get()
+			.getKey();
+	}
 
-  public void find() {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method method : cf.getMethods()) {
-        run(method.getCode());
-      }
-    }
+	private void run(Code code)
+	{
+		if (code == null)
+		{
+			return;
+		}
 
-    packetType = sets.entrySet().stream()
-        .max((entry1, entry2) -> Integer.compare(entry1.getValue(), entry2.getValue()))
-        .get()
-        .getKey();
-  }
+		Instructions instructions = code.getInstructions();
 
-  private void run(Code code) {
-    if (code == null) {
-      return;
-    }
+		for (int i = 0; i < instructions.getInstructions().size() - 1; ++i)
+		{
+			Instruction i1 = instructions.getInstructions().get(i),
+				i2 = instructions.getInstructions().get(i + 1);
 
-    Instructions instructions = code.getInstructions();
+			if (i1 instanceof PushConstantInstruction && i2.getType() == InstructionType.PUTSTATIC)
+			{
+				PushConstantInstruction pci = (PushConstantInstruction) i1;
+				SetFieldInstruction sfi = (SetFieldInstruction) i2;
+				Field field = sfi.getMyField();
 
-    for (int i = 0; i < instructions.getInstructions().size() - 1; ++i) {
-      Instruction i1 = instructions.getInstructions().get(i),
-          i2 = instructions.getInstructions().get(i + 1);
-
-      if (i1 instanceof PushConstantInstruction && i2.getType() == InstructionType.PUTSTATIC) {
-        PushConstantInstruction pci = (PushConstantInstruction) i1;
-        SetFieldInstruction sfi = (SetFieldInstruction) i2;
-        Field field = sfi.getMyField();
-
-        if (Objects.equal(-1, pci.getConstant()) && field != null) {
-          Integer count = sets.get(field);
-          if (count == null) {
-            sets.put(field, 1);
-          } else {
-            sets.put(field, count + 1);
-          }
-        }
-      }
-    }
-  }
+				if (Objects.equal(-1, pci.getConstant()) && field != null)
+				{
+					Integer count = sets.get(field);
+					if (count == null)
+					{
+						sets.put(field, 1);
+					}
+					else
+					{
+						sets.put(field, count + 1);
+					}
+				}
+			}
+		}
+	}
 }

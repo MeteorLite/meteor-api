@@ -28,69 +28,84 @@ package net.runelite.asm.attributes.code;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.pool.Class;
 
-public class Exception implements Cloneable {
+public class Exception implements Cloneable
+{
+	private Exceptions exceptions;
 
-  private Exceptions exceptions;
+	private Label start, end, handler;
+	private Class catchType;
 
-  private Label start, end, handler;
-  private Class catchType;
+	public Exception(Exceptions exceptions)
+	{
+		this.exceptions = exceptions;
+	}
+	
+	@Override
+	public Exception clone()
+	{
+		try
+		{
+			return (Exception) super.clone();
+		}
+		catch (CloneNotSupportedException ex)
+		{
+			throw new RuntimeException();
+		}
+	}
+	
+	public Exceptions getExceptions()
+	{
+		return exceptions;
+	}
+	
+	public void setExceptions(Exceptions exceptions)
+	{
+		this.exceptions = exceptions;
+	}
+	
+	public Label getStart()
+	{
+		return start;
+	}
+	
+	public void setStart(Label ins)
+	{
+		start = ins;
+	}
+	
+	public Label getEnd()
+	{
+		return end;
+	}
 
-  public Exception(Exceptions exceptions) {
-    this.exceptions = exceptions;
-  }
+	public void setEnd(Label end)
+	{
+		this.end = end;
+	}
+	
+	public Label getHandler()
+	{
+		return handler;
+	}
 
-  @Override
-  public Exception clone() {
-    try {
-      return (Exception) super.clone();
-    } catch (CloneNotSupportedException ex) {
-      throw new RuntimeException();
-    }
-  }
+	public void setHandler(Label handler)
+	{
+		this.handler = handler;
+	}
+	
+	public Class getCatchType()
+	{
+		return catchType;
+	}
 
-  public Exceptions getExceptions() {
-    return exceptions;
-  }
-
-  public void setExceptions(Exceptions exceptions) {
-    this.exceptions = exceptions;
-  }
-
-  public Label getStart() {
-    return start;
-  }
-
-  public void setStart(Label ins) {
-    start = ins;
-  }
-
-  public Label getEnd() {
-    return end;
-  }
-
-  public void setEnd(Label end) {
-    this.end = end;
-  }
-
-  public Label getHandler() {
-    return handler;
-  }
-
-  public void setHandler(Label handler) {
-    this.handler = handler;
-  }
-
-  public Class getCatchType() {
-    return catchType;
-  }
-
-  public void setCatchType(Class catchType) {
-    this.catchType = catchType;
-  }
-
-  public void renameClass(ClassFile cf, String name) {
-    if (catchType != null && cf.getName().equals(catchType.getName())) {
-      catchType = new Class(name);
-    }
-  }
+	public void setCatchType(Class catchType)
+	{
+		this.catchType = catchType;
+	}
+	
+	public void renameClass(ClassFile cf, String name)
+	{
+		if (catchType != null && cf.getName().equals(catchType.getName()))
+			catchType = new Class(name);
+	}
 }

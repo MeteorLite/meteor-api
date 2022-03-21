@@ -37,41 +37,43 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.instruction.types.FieldInstruction;
 import net.runelite.deob.Deobfuscator;
 
-public class UnusedFields implements Deobfuscator {
+public class UnusedFields implements Deobfuscator
+{
+	private final Set<Field> used = new HashSet<>();
 
-  private final Set<Field> used = new HashSet<>();
+	private void checkForFieldUsage(ClassGroup group)
+	{
+		for (ClassFile cf : group.getClasses())
+			for (Method m : cf.getMethods())
+			{
+				Code code = m.getCode();
+				if (code == null)
+					continue;
 
-  private void checkForFieldUsage(ClassGroup group) {
-    for (ClassFile cf : group.getClasses()) {
-      for (Method m : cf.getMethods()) {
-        Code code = m.getCode();
-        if (code == null) {
-          continue;
-        }
+				for (Instruction ins : code.getInstructions().getInstructions())
+				{
+					if (ins instanceof FieldInstruction)
+					{
+						FieldInstruction fi = (FieldInstruction) ins;
 
-        for (Instruction ins : code.getInstructions().getInstructions()) {
-          if (ins instanceof FieldInstruction) {
-            FieldInstruction fi = (FieldInstruction) ins;
-
-            used.add(fi.getMyField());
-          }
-        }
-      }
-    }
-  }
-
-  @Override
-  public void run(ClassGroup group) {
-    checkForFieldUsage(group);
-
-    int count = 0;
-    for (ClassFile cf : group.getClasses()) {
-      for (Field f : new ArrayList<>(cf.getFields())) {
-        if (!used.contains(f)) {
-          cf.removeField(f);
-          ++count;
-        }
-      }
-    }
-  }
+						used.add(fi.getMyField());
+					}
+				}
+			}
+	}
+	
+	@Override
+	public void run(ClassGroup group)
+	{
+		checkForFieldUsage(group);
+		
+		int count = 0;
+		for (ClassFile cf : group.getClasses())
+			for (Field f : new ArrayList<>(cf.getFields()))
+				if (!used.contains(f))
+				{
+					cf.removeField(f);
+					++count;
+				}
+	}
 }

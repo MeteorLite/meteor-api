@@ -30,50 +30,50 @@ import lombok.Getter;
 /**
  * Client side only, content-developer integers
  * <p>
- * VarCInts are stored entirely in memory, or locally on a user's machine in the preferences2.dat
- * file depending on how Jagex configured the variable
+ * VarCInts are stored entirely in memory, or locally on a user's
+ * machine in the preferences2.dat file depending on how Jagex
+ * configured the variable
  */
 @AllArgsConstructor
 @Getter
 public enum VarClientInt {
-  TOOLTIP_TIMEOUT(1),
+    TOOLTIP_TIMEOUT(1),
 
-  /**
-   * 0 = no tooltip displayed 1 = tooltip displaying
-   */
-  TOOLTIP_VISIBLE(2),
+    /**
+     * 0 = no tooltip displayed
+     * 1 = tooltip displaying
+     */
+    TOOLTIP_VISIBLE(2),
 
-  /**
-   * Current message layer mode
-   *
-   * @see net.runelite.api.vars.InputType
-   */
-  INPUT_TYPE(5),
+    /**
+     * Current message layer mode
+     *
+     * @see net.runelite.api.vars.InputType
+     */
+    INPUT_TYPE(5),
 
-  /**
-   * The game sets this to the same value as {@link #CAMERA_ZOOM_RESIZABLE_VIEWPORT}
-   */
-  CAMERA_ZOOM_FIXED_VIEWPORT(73),
-  CAMERA_ZOOM_RESIZABLE_VIEWPORT(74),
+    /**
+     * The game sets this to the same value as {@link #CAMERA_ZOOM_RESIZABLE_VIEWPORT}
+     */
+    CAMERA_ZOOM_FIXED_VIEWPORT(73),
+    CAMERA_ZOOM_RESIZABLE_VIEWPORT(74),
 
-  /**
-   * 0 = deadman/attackable 1 = guarded/safe
-   */
-  DMM_SAFEZONE(78),
+    /**
+     * 0 = deadman/attackable
+     * 1 = guarded/safe
+     */
+    DMM_SAFEZONE(78),
 
-  MEMBERSHIP_STATUS(103),
+    MEMBERSHIP_STATUS(103),
 
-  INVENTORY_TAB(171),
+    INVENTORY_TAB(171),
 
-  /**
-   * time to block keypresses til
-   */
-  BLOCK_KEYPRESS(187),
+    /**
+     * time to block keypresses til
+     */
+    BLOCK_KEYPRESS(187),
 
-  WORLD_MAP_SEARCH_FOCUSED(190),
+    WORLD_MAP_SEARCH_FOCUSED(190);
 
-  DISPLAY_NAME_INPUT(435),
-
-  ;
-  private final int index;
+    private final int index;
 }
