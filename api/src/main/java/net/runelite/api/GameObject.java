@@ -24,9 +24,9 @@
  */
 package net.runelite.api;
 
+import java.awt.Shape;
 import net.runelite.api.coords.Angle;
-
-import java.awt.*;
+import net.runelite.api.coords.WorldArea;
 
 /**
  * Represents a game object.
@@ -34,73 +34,76 @@ import java.awt.*;
  * Most object in the RuneScape world are considered as game objects. Things
  * such as trees, anvils, boxes, etc are all game objects.
  */
-public interface GameObject extends TileObject {
-    /**
-     * Get the size of this object, in tiles, on the x axis
-     *
-     * @return
-     */
-    int sizeX();
+public interface GameObject extends TileObject
+{
+	/**
+	 * Get the size of this object, in tiles, on the x axis
+	 *
+	 * @return
+	 */
+	int sizeX();
 
-    /**
-     * Get the size of this object, in tiles, on the y axis
-     *
-     * @return
-     */
-    int sizeY();
+	/**
+	 * Get the size of this object, in tiles, on the y axis
+	 *
+	 * @return
+	 */
+	int sizeY();
 
-    /**
-     * Gets the minimum x and y scene coordinate pair for this game object.
-     *
-     * @return the minimum scene coordinate
-     */
-    Point getSceneMinLocation();
+	/**
+	 * Gets the minimum x and y scene coordinate pair for this game object.
+	 *
+	 * @return the minimum scene coordinate
+	 */
+	Point getSceneMinLocation();
 
-    /**
-     * Gets the maximum x and y scene coordinate pair for this game object.
-     * <p>
-     * This value differs from {@link #getSceneMinLocation()} when the size
-     * of the object is more than 1 tile.
-     *
-     * @return the maximum scene coordinate
-     */
-    Point getSceneMaxLocation();
+	/**
+	 * Gets the maximum x and y scene coordinate pair for this game object.
+	 * <p>
+	 * This value differs from {@link #getSceneMinLocation()} when the size
+	 * of the object is more than 1 tile.
+	 *
+	 * @return the maximum scene coordinate
+	 */
+	Point getSceneMaxLocation();
 
-    /**
-     * Gets the convex hull of the object's model.
-     *
-     * @return the convex hull
-     * @see //net.runelite.api.model.Jarvis
-     */
-    Shape getConvexHull();
+	/**
+	 * Gets the convex hull of the object's model.
+	 *
+	 * @return the convex hull
+	 * @see //net.runelite.api.model.Jarvis
+	 */
+	Shape getConvexHull();
 
-    /**
-     * Gets the orientation of the object.
-     *
-     * @return the orientation
-     */
-    Angle getOrientation();
+	/**
+	 * Gets the orientation of the object.
+	 *
+	 * @return the orientation
+	 */
+	Angle getOrientation();
 
-    Renderable getRenderable();
+	Renderable getRenderable();
 
-    /**
-     * Gets the orientation of the model in JAU.
-     * This is typically 0 for non-actors, since
-     * most object's models are oriented prior to
-     * lighting during scene loading. See {@link #getOrientation()}
-     * instead for object orientation.
-     *
-     * @see net.runelite.api.coords.Angle
-     */
-    int getModelOrientation();
+	/**
+	 * Gets the orientation of the model in JAU.
+	 * This is typically 0 for non-actors, since
+	 * most object's models are oriented prior to
+	 * lighting during scene loading. See {@link #getOrientation()}
+	 * instead for object orientation.
+	 *
+	 * @see net.runelite.api.coords.Angle
+	 */
+	int getModelOrientation();
 
-    /**
-     * A bitfield containing various flags:
-     * <pre>{@code
-     * object type id = bits & 0x20
-     * orientation (0-3) = bits >>> 6 & 3
-     * supports items = bits >>> 8 & 1
-     * }</pre>
-     */
-    int getConfig();
+	/**
+	 * A bitfield containing various flags:
+	 * <pre>{@code
+	 * object type id = bits & 0x20
+	 * orientation (0-3) = bits >>> 6 & 3
+	 * supports items = bits >>> 8 & 1
+	 * }</pre>
+	 */
+	int getConfig();
+	
+	WorldArea getWorldArea();
 }

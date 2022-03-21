@@ -27,11 +27,11 @@ package net.runelite.api;
 /**
  * A nameable container of friends
  */
-public interface FriendContainer extends NameableContainer<Friend> {
-    /**
-     * Get the recent logins/logouts of friends from the last few seconds
-     *
-     * @return
-     */
-    Deque<PendingLogin> getPendingLogins();
+public interface FriendContainer extends NameableContainer<Friend>
+{
+	/**
+	 * Get the recent logins/logouts of friends from the last few seconds
+	 * @return
+	 */
+	Deque<PendingLogin> getPendingLogins();
 }

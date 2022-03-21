@@ -22,6 +22,7 @@ dependencies {
     implementation(group = "org.ow2.asm", name = "asm", version = "9.0")
     implementation(group = "org.ow2.asm", name = "asm-util", version = "9.0")
     implementation(group = "net.runelite", name = "fernflower", version = "07082019")
+    implementation(group = "net.runelite", name = "cache", version = "1.8.4")
     implementation(group = "com.google.code.gson", name = "gson", version = "2.8.6")
     implementation(group = "com.google.guava", name = "guava", version = "23.2-jre")
     compileOnly("org.projectlombok:lombok:_")

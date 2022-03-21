@@ -7,6 +7,10 @@ import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
@@ -37,19 +41,12 @@ public abstract class RSTileObjectMixin implements TileObject
 		long hash = getHash();
 		return (int) (hash >>> 17 & 4294967295L);
 	}
-	
-	@Override
-	@Inject
-	public String getName()
-	{
-		return client.getObjectDefinition(getId()).getName();
-	}
 
 	@Override
 	@Inject
-	public String[] getActions()
+	public List<String> getActions()
 	{
-		return client.getObjectDefinition(getId()).getActions();
+		return new ArrayList<>(Arrays.asList(client.getObjectDefinition(getId()).getActions()));
 	}
 
 	@Override

@@ -24,33 +24,31 @@
  */
 package net.runelite.api.clan;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /**
  * A clan channel.
  */
-public interface ClanChannel {
-    /**
-     * The name of the channel
-     *
-     * @return
-     */
-    String getName();
+public interface ClanChannel
+{
+	/**
+	 * The name of the channel
+	 * @return
+	 */
+	String getName();
 
-    /**
-     * The members currently online in the channel.
-     *
-     * @return
-     */
-    List<ClanChannelMember> getMembers();
+	/**
+	 * The members currently online in the channel.
+	 * @return
+	 */
+	List<ClanChannelMember> getMembers();
 
-    /**
-     * Find a clan member by name
-     *
-     * @param name
-     * @return
-     */
-    @Nullable
-    ClanChannelMember findMember(String name);
+	/**
+	 * Find a clan member by name
+	 * @param name
+	 * @return
+	 */
+	@Nullable
+	ClanChannelMember findMember(String name);
 }

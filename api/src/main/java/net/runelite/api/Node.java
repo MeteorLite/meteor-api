@@ -27,30 +27,31 @@ package net.runelite.api;
 /**
  * Represents a doubly linked node.
  */
-public interface Node {
-    /**
-     * Gets the next node.
-     *
-     * @return the next node
-     */
-    Node getNext();
+public interface Node
+{
+	/**
+	 * Gets the next node.
+	 *
+	 * @return the next node
+	 */
+	Node getNext();
 
-    /**
-     * Gets the previous node.
-     *
-     * @return the previous node
-     */
-    Node getPrevious();
+	/**
+	 * Gets the previous node.
+	 *
+	 * @return the previous node
+	 */
+	Node getPrevious();
 
-    /**
-     * Unlink.
-     */
-    void unlink();
+	/**
+	 * Unlink.
+	 */
+	void unlink();
 
-    /**
-     * Gets the hash value of the node.
-     *
-     * @return the hash value
-     */
-    long getHash();
+	/**
+	 * Gets the hash value of the node.
+	 *
+	 * @return the hash value
+	 */
+	long getHash();
 }

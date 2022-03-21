@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
 
 import eventbus.Events;
 import eventbus.events.*;
-import meteor.Event;
 import net.runelite.api.Actor;
 import net.runelite.api.Animation;
 import net.runelite.api.ChatMessageType;
@@ -1241,26 +1240,6 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@FieldHook("experience")
-	@Inject
-	public static void experiencedChanged(int idx)
-	{
-		Skill[] possibleSkills = Skill.values();
-
-		// We subtract one here because 'Overall' isn't considered a skill that's updated.
-		if (idx < possibleSkills.length - 1)
-		{
-			Skill updatedSkill = possibleSkills[idx];
-			StatChanged statChanged = new StatChanged(
-				updatedSkill,
-				client.getSkillExperience(updatedSkill),
-				client.getRealSkillLevel(updatedSkill),
-				client.getBoostedSkillLevel(updatedSkill)
-			);
-			client.getCallbacks().post(Events.STAT_CHANGED, statChanged);
-		}
-	}
-
 	@FieldHook("changedSkills")
 	@Inject
 	public static void boostedSkillLevelsChanged(int idx)
@@ -1624,69 +1603,6 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return null;
-	}
-
-	@Copy("menuAction")
-	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
-	{
-		RSRuneLiteMenuEntry menuEntry = null;
-
-		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
-		{
-			if (client.getMenuOptions()[i] == option && client.getMenuTargets()[i] == target && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
-			{
-				menuEntry = rl$menuEntries[i];
-				break;
-			}
-		}
-
-		/*
-		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
-		 * undo it here so we can get the correct opcode
-		 */
-		boolean decremented = false;
-		if (opcode >= 2000)
-		{
-			decremented = true;
-			opcode -= 2000;
-		}
-
-		final MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
-		menuOptionClicked.setParam0((param0));
-		menuOptionClicked.setMenuOption(option);
-		menuOptionClicked.setMenuTarget(target);
-		menuOptionClicked.setMenuAction(MenuAction.of(opcode));
-		menuOptionClicked.setId(id);
-		menuOptionClicked.setParam1(param1);
-		menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
-
-		client.getCallbacks().post(Events.MENU_OPTION_CLICKED, menuOptionClicked);
-
-		if (menuEntry != null && menuEntry.getConsumer() != null)
-		{
-			menuEntry.getConsumer().accept(menuEntry);
-		}
-
-		if (menuOptionClicked.getConsumed())
-		{
-			return;
-		}
-
-		if (printMenuActions)
-		{
-			client.getLogger().info(
-				"|MenuAction|: MenuOption={} MenuTarget={} Id={} Opcode={}/{} Param0={} Param1={} CanvasX={} CanvasY={}",
-				menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(), menuOptionClicked.getId(),
-				menuOptionClicked.getMenuAction(), opcode + (decremented ? 2000 : 0),
-				menuOptionClicked.getParam0(), menuOptionClicked.getParam1(), canvasX, canvasY
-			);
-		}
-
-		copy$menuAction(menuOptionClicked.getParam0(), menuOptionClicked.getParam1(),
-			menuOptionClicked.getMenuAction() == UNKNOWN ? opcode : menuOptionClicked.getMenuAction().getId(),
-			menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
-			canvasX, canvasY);
 	}
 
 	@Override
@@ -2332,15 +2248,6 @@ public abstract class RSClientMixin implements RSClient
 	{
 		assert this.isClientThread() : "getObjectDefinition must be called on client thread";
 		return getRSObjectComposition(objectId);
-	}
-
-	@Inject
-	@Override
-	@Nonnull
-	public ItemComposition getItemComposition(int id)
-	{
-		assert this.isClientThread() : "getItemComposition must be called on client thread";
-		return getRSItemDefinition(id);
 	}
 
 	@Inject

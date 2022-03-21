@@ -31,7 +31,7 @@ public class ScriptOpcodesTransformer implements Transformer // robots in disgui
 
 	static
 	{
-		for (java.lang.reflect.Field opcodeField : net.runelite.api.Opcodes.class.getDeclaredFields())
+		for (java.lang.reflect.Field opcodeField : net.runelite.cache.script.RuneLiteOpcodes.class.getDeclaredFields())
 		{
 			if (opcodeField.getType() != int.class || !opcodeField.canAccess(null))
 			{

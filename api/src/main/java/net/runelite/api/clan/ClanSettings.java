@@ -24,43 +24,40 @@
  */
 package net.runelite.api.clan;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import javax.annotation.Nullable;
 
 /**
  * A clan's settings.
  */
-public interface ClanSettings {
-    /**
-     * The clan name
-     *
-     * @return
-     */
-    String getName();
+public interface ClanSettings
+{
+	/**
+	 * The clan name
+	 * @return
+	 */
+	String getName();
 
-    /**
-     * The members of the clan. This includes all members, whether online or offline.
-     *
-     * @return
-     */
-    List<ClanMember> getMembers();
+	/**
+	 * The members of the clan. This includes all members, whether online or offline.
+	 * @return
+	 */
+	List<ClanMember> getMembers();
 
-    /**
-     * Find a member of the clan.
-     *
-     * @param name
-     * @return
-     */
-    @Nullable
-    ClanMember findMember(String name);
+	/**
+	 * Find a member of the clan.
+	 * @param name
+	 * @return
+	 */
+	@Nullable
+	ClanMember findMember(String name);
 
-    /**
-     * Get the clan title for a clan rank.
-     *
-     * @param clanRank the rank
-     * @return
-     * @see ClanRank
-     */
-    @Nullable
-    ClanTitle titleForRank(ClanRank clanRank);
+	/**
+	 * Get the clan title for a clan rank.
+	 * @param clanRank the rank
+	 * @see ClanRank
+	 * @return
+	 */
+	@Nullable
+	ClanTitle titleForRank(ClanRank clanRank);
 }

@@ -84,6 +84,16 @@ class MenuOptionClicked {
     var consumed = false
 
     /**
+     * Canvas Y
+     */
+    var canvasX = 0
+
+    /**
+     * Canvas X
+     */
+    var canvasY = 0
+
+    /**
      * Marks the event as having been consumed.
      *
      *

@@ -24,10 +24,10 @@
  */
 package net.runelite.mixins;
 
+import dev.hoot.api.widgets.DialogOption;
 import eventbus.Events;
 import eventbus.events.DialogProcessed;
 import eventbus.events.DynamicObjectAnimationChanged;
-import net.runelite.api.DialogOption;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
@@ -109,7 +109,7 @@ public abstract class RSDynamicObjectMixin implements RSDynamicObject
 		DialogOption dialogOption = DialogOption.of(widgetUid, menuIndex);
 		if (dialogOption != null)
 		{
-			client.getCallbacks().post(Events.DIALOG_PROCESSED, new DialogProcessed(widgetUid, menuIndex));
+			client.getCallbacks().post(Events.DIALOG_PROCESSED, new DialogProcessed(dialogOption));
 		}
 		else
 		{

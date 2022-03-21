@@ -3,7 +3,6 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-
 @ObfuscatedName("hc")
 @Implements("WallDecoration")
 public final class WallDecoration {
@@ -79,18 +78,15 @@ public final class WallDecoration {
 	@Export("flags")
 	int flags;
 
-	WallDecoration() {
-		this.tag = 0L; // L: 13
-		this.flags = 0; // L: 14
-	} // L: 16
+    WallDecoration() {
+        this.tag = 0L;
+        this.flags = 0;
+    }
 
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lkq;Lkq;B)V",
-		garbageValue = "45"
-	)
-	public static void method4296(AbstractArchive var0, AbstractArchive var1) {
-		NPCComposition.NpcDefinition_archive = var0; // L: 57
-		NPCComposition.NpcDefinition_modelArchive = var1; // L: 58
-	} // L: 59
+    @ObfuscatedName("c")
+    @ObfuscatedSignature(descriptor = "(Lkq;Lkq;B)V", garbageValue = "45")
+    public static void method4296(AbstractArchive var0, AbstractArchive var1) {
+        NPCComposition.NpcDefinition_archive = var0;
+        NPCComposition.NpcDefinition_modelArchive = var1;
+    }
 }

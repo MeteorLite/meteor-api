@@ -29,18 +29,17 @@ package net.runelite.api;
  * by buffering the pending logins to try to match a pending logout with a pending
  * login and cancel both.
  */
-public interface PendingLogin {
-    /**
-     * The name of the player
-     *
-     * @return
-     */
-    String getName();
+public interface PendingLogin
+{
+	/**
+	 * The name of the player
+	 * @return
+	 */
+	String getName();
 
-    /**
-     * The world the player logged into, or 0 if a logout.
-     *
-     * @return
-     */
-    short getWorld();
+	/**
+	 * The world the player logged into, or 0 if a logout.
+	 * @return
+	 */
+	short getWorld();
 }

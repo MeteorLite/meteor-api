@@ -30,28 +30,36 @@ import lombok.Value;
  * A two-dimensional coordinate on the canvas.
  */
 @Value
-public class Point {
-    private final int x;
-    private final int y;
+public class Point
+{
+	private final int x;
+	private final int y;
 
-    /**
-     * Gets the distance between this point and another.
-     *
-     * @param other other point
-     * @return the distance
-     */
-    public int distanceTo(Point other) {
-        return (int) Math.hypot(getX() - other.getX(), getY() - other.getY());
-    }
+	/**
+	 * Gets the distance between this point and another.
+	 *
+	 * @param other other point
+	 * @return the distance
+	 */
+	public int distanceTo(Point other)
+	{
+		return (int) Math.hypot(getX() - other.getX(), getY() - other.getY());
+	}
 
-    /**
-     * Returns a new point offset by xOff and yOff
-     *
-     * @param xOff X offset to apply
-     * @param yOff Y offset to apply
-     * @return A new instance of Point, offset by x + xOff and y + yOff
-     */
-    public Point offset(int xOff, int yOff) {
-        return new Point(x + xOff, y + yOff);
-    }
+	/**
+	 * Returns a new point offset by xOff and yOff
+	 *
+	 * @param xOff X offset to apply
+	 * @param yOff Y offset to apply
+	 * @return A new instance of Point, offset by x + xOff and y + yOff
+	 */
+	public Point offset(int xOff, int yOff)
+	{
+		return new Point(x + xOff, y + yOff);
+	}
+
+	public java.awt.Point getAwtPoint()
+	{
+		return new java.awt.Point(getX(), getY());
+	}
 }

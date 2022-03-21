@@ -27,66 +27,53 @@ package net.runelite.api;
 /**
  * Represents the model of an object.
  */
-public interface Model extends Mesh, Renderable {
-    int[] getFaceColors1();
+public interface Model extends Mesh, Renderable
+{
+	int[] getFaceColors1();
 
-    int[] getFaceColors2();
+	int[] getFaceColors2();
 
-    int[] getFaceColors3();
+	int[] getFaceColors3();
 
-    int getSceneId();
+	int getSceneId();
+	void setSceneId(int sceneId);
 
-    void setSceneId(int sceneId);
+	int getBufferOffset();
+	void setBufferOffset(int bufferOffset);
 
-    int getBufferOffset();
+	int getUvBufferOffset();
+	void setUvBufferOffset(int bufferOffset);
 
-    void setBufferOffset(int bufferOffset);
+	int getBottomY();
 
-    int getUvBufferOffset();
+	void calculateBoundsCylinder();
 
-    void setUvBufferOffset(int bufferOffset);
+	byte[] getFaceRenderPriorities();
 
-    int getBottomY();
+	int getRadius();
 
-    void calculateBoundsCylinder();
+	float[] getFaceTextureUVCoordinates();
 
-    byte[] getFaceRenderPriorities();
+	void calculateExtreme(int orientation);
 
-    int getRadius();
+	int getCenterX();
+	int getCenterY();
+	int getCenterZ();
+	int getExtremeX();
+	int getExtremeY();
+	int getExtremeZ();
 
-    float[] getFaceTextureUVCoordinates();
+	int getXYZMag();
+	boolean isClickable();
+	
+	void drawFace(int face);
 
-    void calculateExtreme(int orientation);
+	int[] getVertexNormalsX();
+	int[] getVertexNormalsY();
+	int[] getVertexNormalsZ();
 
-    int getCenterX();
-
-    int getCenterY();
-
-    int getCenterZ();
-
-    int getExtremeX();
-
-    int getExtremeY();
-
-    int getExtremeZ();
-
-    int getXYZMag();
-
-    boolean isClickable();
-
-    void drawFace(int face);
-
-    int[] getVertexNormalsX();
-
-    int[] getVertexNormalsY();
-
-    int[] getVertexNormalsZ();
-
-    byte getOverrideAmount();
-
-    byte getOverrideHue();
-
-    byte getOverrideSaturation();
-
-    byte getOverrideLuminance();
+	byte getOverrideAmount();
+	byte getOverrideHue();
+	byte getOverrideSaturation();
+	byte getOverrideLuminance();
 }

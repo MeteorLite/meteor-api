@@ -1,3 +1,5 @@
 package eventbus.events
 
-class DialogProcessed(var widgetUid: Int, var index: Int)
+import dev.hoot.api.widgets.DialogOption
+
+class DialogProcessed(var option: DialogOption)

@@ -29,6 +29,7 @@ dependencies {
     implementation(group = "com.google.code.findbugs", name = "jsr305", version = "3.0.2")
     compileOnly("org.projectlombok:lombok:_")
     annotationProcessor("org.projectlombok:lombok:_")
+    implementation("org.jetbrains:annotations:23.0.0")
 }
 
 tasks.test {

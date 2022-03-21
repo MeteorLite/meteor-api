@@ -32,6 +32,11 @@ import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
+
+import net.runelite.api.hooks.Callbacks;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.packets.ClientPacket;
+import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
 import net.runelite.api.clan.ClanSettings;
 import net.runelite.api.widgets.Widget;
@@ -197,7 +202,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
 
-	/**
+    /**
 	 * Gets an array of widgets that correspond to the passed group ID.
 	 *
 	 * @param groupId the group ID
@@ -290,10 +295,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("loginIndex")
 	@Override
 	int getLoginIndex();
-
-	@Import("loginIndex")
-	@Override
-	void setLoginIndex(int loginIndex);
 
 	@Import("playerMenuActions")
 	@Override
@@ -1596,4 +1597,115 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
+	
+	/*
+	Unethical
+	 */
+
+	@Import("Login_response0")
+	String getLoginResponse0();
+
+	@Import("Login_response1")
+	String getLoginResponse1();
+
+	@Import("Login_response2")
+	String getLoginResponse2();
+
+	@Import("Login_response3")
+	String getLoginResponse3();
+
+	@Import("Login_banType")
+	int getBanType();
+
+	@Import("MouseHandler_lastPressedX")
+	@Override
+	int getMouseLastPressedX();
+
+	@Import("MouseHandler_lastPressedX")
+	@Override
+	void setMouseLastPressedX(int x);
+
+	@Import("MouseHandler_lastPressedY")
+	@Override
+	int getMouseLastPressedY();
+
+	@Import("MouseHandler_lastPressedY")
+	@Override
+	void setMouseLastPressedY(int y);
+
+	@Import("packetWriter")
+	@Override
+	RSPacketWriter getPacketWriter();
+
+	@Import("getPacketBufferNode")
+	@Override
+	RSPacketBufferNode preparePacket(ClientPacket packet, IsaacCipher isaac);
+
+	@Import("loadWorlds")
+	@Override
+	boolean loadWorlds();
+
+	@Import("resumePauseWidget")
+	@Override
+	void processDialog(int widgetUid, int menuIndex);
+
+	@Import("destinationX")
+	void setDestinationX(int sceneX);
+
+	@Import("destinationY")
+	void setDestinationY(int sceneY);
+
+	@Import("setWindowedMode")
+	@Override
+	void setWindowedMode(int mode);
+
+	@Import("getWindowedMode")
+	@Override
+	int getWindowedMode();
+
+	@Import("MouseHandler_instance")
+	@Override
+	RSMouseHandler getMouseHandler();
+
+	@Import("getServerTime")
+	@Override
+	long getCurrentTime();
+
+	@Import("hasFocus")
+	@Override
+	boolean isFocused();
+
+	@Import("volatileFocus")
+	@Override
+	void setFocused(boolean focused);
+
+	@Import("mouseCrossX")
+	@Override
+	void setClickCrossX(int x);
+
+	@Import("mouseCrossY")
+	@Override
+	void setClickCrossY(int y);
+
+	@Import("loginIndex")
+	@Override
+	void setLoginIndex(int index);
+
+	@Construct
+	RSClientPacket createClientPacket(int opcode, int length);
+
+	@Import("Login_password")
+	@Override
+	String getPassword();
+
+	@Import("calculateTag")
+	long calculateTag(int var0, int var1, int var2, boolean var3, int var4);
+
+	@Import("isMenuOpen")
+	@Override
+	void setMenuOpen(boolean open);
+
+	@Import("selectedItemId")
+	@Override
+	int getSelectedItemID();
 }

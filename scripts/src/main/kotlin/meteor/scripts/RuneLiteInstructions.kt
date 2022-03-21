@@ -24,12 +24,12 @@
  */
 package meteor.scripts
 
-import net.runelite.api.Opcodes
 import net.runelite.cache.script.Instructions
+import net.runelite.cache.script.RuneLiteOpcodes.RUNELITE_EXECUTE
 
 class RuneLiteInstructions : Instructions() {
     override fun init() {
         super.init()
-        add(Opcodes.RUNELITE_EXECUTE, "runelite_callback")
+        add(RUNELITE_EXECUTE, "runelite_callback")
     }
 }

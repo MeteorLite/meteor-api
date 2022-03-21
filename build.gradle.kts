@@ -7,7 +7,7 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.1.0" }
+val release by rootProject.extra { "1.1.1" }
 
 repositories{
     mavenCentral()
@@ -17,6 +17,8 @@ dependencies{
     testImplementation("org.junit.jupiter:junit-jupiter-api:_")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains:annotations:23.0.0")
+
 }
 
 publishing {

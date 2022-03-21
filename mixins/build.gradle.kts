@@ -1,6 +1,5 @@
 plugins {
      java
-    id("org.jetbrains.kotlin.jvm")
 }
 
 group = "org.meteorlite"
@@ -12,6 +11,7 @@ java {
 }
 repositories {
     mavenCentral()
+    maven { url = uri("https://repo.runelite.net")}
 }
 
 dependencies {
@@ -24,20 +24,10 @@ dependencies {
     compileOnly(project(":osrs"))
     compileOnly(project(":api"))
     compileOnly(project(":logger"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("net.runelite:cache:1.8.0")
 }
 tasks{
 test {
     useJUnitPlatform()
-}
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 }

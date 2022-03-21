@@ -27,98 +27,96 @@ package net.runelite.api;
 /**
  * Represents the model of a tile in the current scene.
  */
-public interface SceneTileModel {
-    /**
-     * Gets the underlay color of the tile.
-     *
-     * @return the underlay color
-     */
-    int getModelUnderlay();
+public interface SceneTileModel
+{
+	/**
+	 * Gets the underlay color of the tile.
+	 *
+	 * @return the underlay color
+	 */
+	int getModelUnderlay();
 
-    /**
-     * Gets the overlay color of the tile.
-     *
-     * @return the overlay color
-     */
-    int getModelOverlay();
+	/**
+	 * Gets the overlay color of the tile.
+	 *
+	 * @return the overlay color
+	 */
+	int getModelOverlay();
 
-    /**
-     * Gets the shape mask type.
-     *
-     * @return the shape mask
-     */
-    int getShape();
+	/**
+	 * Gets the shape mask type.
+	 *
+	 * @return the shape mask
+	 */
+	int getShape();
 
-    /**
-     * Gets the rotation of the tile.
-     *
-     * @return the rotation
-     */
-    int getRotation();
+	/**
+	 * Gets the rotation of the tile.
+	 *
+	 * @return the rotation
+	 */
+	int getRotation();
 
-    int[] getFaceX();
+	int[] getFaceX();
 
-    int[] getFaceY();
+	int[] getFaceY();
 
-    int[] getFaceZ();
+	int[] getFaceZ();
 
-    int[] getVertexX();
+	int[] getVertexX();
 
-    int[] getVertexY();
+	int[] getVertexY();
 
-    int[] getVertexZ();
+	int[] getVertexZ();
 
-    int[] getTriangleColorA();
+	int[] getTriangleColorA();
 
-    int[] getTriangleColorB();
+	int[] getTriangleColorB();
 
-    int[] getTriangleColorC();
+	int[] getTriangleColorC();
 
-    int[] getTriangleTextureId();
+	int[] getTriangleTextureId();
 
-    int getBufferOffset();
+	int getBufferOffset();
+	void setBufferOffset(int bufferOffset);
 
-    void setBufferOffset(int bufferOffset);
+	int getUvBufferOffset();
+	void setUvBufferOffset(int bufferOffset);
 
-    int getUvBufferOffset();
+	int getBufferLen();
+	void setBufferLen(int bufferLen);
 
-    void setUvBufferOffset(int bufferOffset);
+	int getUnderlaySwColor();
 
-    int getBufferLen();
+	void setUnderlaySwColor(int color);
 
-    void setBufferLen(int bufferLen);
+	int getUnderlaySeColor();
 
-    int getUnderlaySwColor();
+	void setUnderlaySeColor(int color);
 
-    void setUnderlaySwColor(int color);
+	int getUnderlayNeColor();
 
-    int getUnderlaySeColor();
+	void setUnderlayNeColor(int color);
 
-    void setUnderlaySeColor(int color);
+	int getUnderlayNwColor();
 
-    int getUnderlayNeColor();
+	void setUnderlayNwColor(int color);
 
-    void setUnderlayNeColor(int color);
+	int getOverlaySwColor();
 
-    int getUnderlayNwColor();
+	void setOverlaySwColor(int color);
 
-    void setUnderlayNwColor(int color);
+	int getOverlaySeColor();
 
-    int getOverlaySwColor();
+	void setOverlaySeColor(int color);
 
-    void setOverlaySwColor(int color);
+	int getOverlayNeColor();
 
-    int getOverlaySeColor();
+	void setOverlayNeColor(int color);
 
-    void setOverlaySeColor(int color);
+	int getOverlayNwColor();
 
-    int getOverlayNeColor();
+	void setOverlayNwColor(int color);
 
-    void setOverlayNeColor(int color);
-
-    int getOverlayNwColor();
-
-    void setOverlayNwColor(int color);
-
-    boolean getIsFlat();
+	boolean getIsFlat();
 }

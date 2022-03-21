@@ -42,7 +42,7 @@ import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSScript;
 import net.runelite.rs.api.RSScriptEvent;
 
-import static net.runelite.api.Opcodes.RUNELITE_EXECUTE;
+import static net.runelite.cache.script.RuneLiteOpcodes.RUNELITE_EXECUTE;
 import static net.runelite.rs.ScriptOpcodes.*;
 
 @Mixin(RSClient.class)

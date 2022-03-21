@@ -24,13 +24,14 @@
  */
 package net.runelite.api.clan;
 
-public final class ClanID {
-    /**
-     * The primary clan.
-     */
-    public static final int CLAN = 0;
-    /**
-     * The group ironman clan.
-     */
-    public static final int GROUP_IRONMAN = 1;
+public final class ClanID
+{
+	/**
+	 * The primary clan.
+	 */
+	public static final int CLAN = 0;
+	/**
+	 * The group ironman clan.
+	 */
+	public static final int GROUP_IRONMAN = 1;
 }

@@ -29,97 +29,85 @@ import java.util.function.Consumer;
 /**
  * A menu entry in a right-click menu.
  */
-public interface MenuEntry {
-    /**
-     * The option text added to the menu. (ie. "Walk here", "Use")
-     */
-    String getOption();
+public interface MenuEntry
+{
+	/**
+	 * The option text added to the menu. (ie. "Walk here", "Use")
+	 */
+	String getOption();
+	MenuEntry setOption(String option);
 
-    MenuEntry setOption(String option);
+	/**
+	 * The target of the action. (ie. Item or Actor name)
+	 * <p>
+	 * If the option does not apply to any target, this field
+	 * will be set to empty string.
+	 */
+	String getTarget();
+	MenuEntry setTarget(String target);
 
-    /**
-     * The target of the action. (ie. Item or Actor name)
-     * <p>
-     * If the option does not apply to any target, this field
-     * will be set to empty string.
-     */
-    String getTarget();
+	/**
+	 * An identifier value for the target of the action.
+	 */
+	int getIdentifier();
+	MenuEntry setIdentifier(int identifier);
 
-    MenuEntry setTarget(String target);
+	/**
+	 * The action the entry will trigger.
+	 */
+	MenuAction getType();
+	MenuEntry setType(MenuAction type);
 
-    /**
-     * An identifier value for the target of the action.
-     */
-    int getIdentifier();
+	/**
+	 * An additional parameter for the action.
+	 */
+	int getParam0();
+	MenuEntry setParam0(int param0);
 
-    MenuEntry setIdentifier(int identifier);
+	/**
+	 * A second additional parameter for the action.
+	 */
+	int getParam1();
+	MenuEntry setParam1(int param1);
 
-    /**
-     * The action the entry will trigger.
-     */
-    MenuAction getType();
+	/**
+	 * If this is true and you have single mouse button on and this entry is
+	 * the top entry the right click menu will not be opened when you left click
+	 *
+	 * This is used  for shift click
+	 */
+	boolean isForceLeftClick();
+	MenuEntry setForceLeftClick(boolean forceLeftClick);
 
-    MenuEntry setType(MenuAction type);
+	/**
+	 * Deprioritized menus are sorted in the menu to be below the other menu entries.
+	 * @return
+	 */
+	boolean isDeprioritized();
+	MenuEntry setDeprioritized(boolean deprioritized);
 
-    /**
-     * An additional parameter for the action.
-     */
-    int getParam0();
+	/**
+	 * Set a callback to be called when this menu option is clicked
+	 * @param callback
+	 * @return
+	 */
+	MenuEntry onClick(Consumer<MenuEntry> callback);
 
-    MenuEntry setParam0(int param0);
+	@Deprecated
+	int getOpcode();
+	@Deprecated
+	void setOpcode(int opcode);
 
-    /**
-     * A second additional parameter for the action.
-     */
-    int getParam1();
+	@Deprecated
+	int getActionParam0();
+	@Deprecated
+	void setActionParam0(int param0);
 
-    MenuEntry setParam1(int param1);
+	@Deprecated
+	int getActionParam1();
+	@Deprecated
+	void setActionParam1(int param0);
 
-    /**
-     * If this is true and you have single mouse button on and this entry is
-     * the top entry the right click menu will not be opened when you left click
-     * <p>
-     * This is used  for shift click
-     */
-    boolean isForceLeftClick();
-
-    MenuEntry setForceLeftClick(boolean forceLeftClick);
-
-    /**
-     * Deprioritized menus are sorted in the menu to be below the other menu entries.
-     *
-     * @return
-     */
-    boolean isDeprioritized();
-
-    MenuEntry setDeprioritized(boolean deprioritized);
-
-    /**
-     * Set a callback to be called when this menu option is clicked
-     *
-     * @param callback
-     * @return
-     */
-    MenuEntry onClick(Consumer<MenuEntry> callback);
-
-    @Deprecated
-    int getOpcode();
-
-    @Deprecated
-    void setOpcode(int opcode);
-
-    @Deprecated
-    int getActionParam0();
-
-    @Deprecated
-    void setActionParam0(int param0);
-
-    @Deprecated
-    int getActionParam1();
-
-    @Deprecated
-    void setActionParam1(int param0);
-
-    @Deprecated
-    MenuAction getMenuAction();
+	@Deprecated
+	MenuAction getMenuAction();
 }
