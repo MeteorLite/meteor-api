@@ -93,6 +93,8 @@ class MenuOptionClicked {
      */
     var canvasY = 0
 
+    var automated = false
+
     /**
      * Marks the event as having been consumed.
      *
