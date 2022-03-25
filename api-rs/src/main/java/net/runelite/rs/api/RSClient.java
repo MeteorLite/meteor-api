@@ -33,8 +33,6 @@ import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
 
-import net.runelite.api.hooks.Callbacks;
-import net.runelite.api.mixins.Inject;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
@@ -202,7 +200,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
 
-    /**
+	/**
 	 * Gets an array of widgets that correspond to the passed group ID.
 	 *
 	 * @param groupId the group ID
