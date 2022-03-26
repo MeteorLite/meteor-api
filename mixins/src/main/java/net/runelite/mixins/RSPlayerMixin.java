@@ -275,7 +275,7 @@ public abstract class RSPlayerMixin implements RSPlayer
 	@MethodHook(value = "read", end = true)
 	void postRead(RSBuffer var1)
 	{
-		client.getCallbacks().post(Events.PLAYER_SPAWNED, new PlayerChanged(this));
+		client.getCallbacks().post(Events.PLAYER_CHANGED, new PlayerChanged(this));
 	}
 
 	@Copy("read")

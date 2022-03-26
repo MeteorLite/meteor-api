@@ -600,7 +600,7 @@ public abstract class RSTileMixin implements RSTile
 		if (current == null && previous != null)
 		{
 			GroundObjectDespawned groundObjectDespawned = new GroundObjectDespawned(this, previous);
-			client.getCallbacks().post(Events.GROUND_OBJECT_CHANGED, groundObjectDespawned);
+			client.getCallbacks().post(Events.GROUND_OBJECT_DESPAWNED, groundObjectDespawned);
 		}
 		else if (current != null && previous == null)
 		{
