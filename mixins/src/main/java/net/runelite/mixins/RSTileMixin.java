@@ -30,6 +30,7 @@ import java.util.List;
 
 import eventbus.Events;
 import eventbus.events.*;
+import meteor.Logger;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
 import net.runelite.api.Constants;
@@ -62,7 +63,6 @@ import net.runelite.rs.api.RSProjectile;
 import net.runelite.rs.api.RSTile;
 import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSWallDecoration;
-import org.slf4j.Logger;
 
 @Mixin(RSTile.class)
 public abstract class RSTileMixin implements RSTile
@@ -680,8 +680,6 @@ public abstract class RSTileMixin implements RSTile
 				return;
 			}
 
-			logger.trace("Game object despawn: {}", previous.getId());
-
 			GameObjectDespawned gameObjectDespawned = new GameObjectDespawned(this, previous);
 			client.getCallbacks().post(Events.GAME_OBJECT_DESPAWNED, gameObjectDespawned);
 		}
@@ -692,8 +690,6 @@ public abstract class RSTileMixin implements RSTile
 				return;
 			}
 
-			logger.trace("Game object spawn: {}", current.getId());
-
 			GameObjectSpawned gameObjectSpawned = new GameObjectSpawned(this, current);
 			client.getCallbacks().post(Events.GAME_OBJECT_SPAWNED, gameObjectSpawned);
 		}
@@ -703,8 +699,6 @@ public abstract class RSTileMixin implements RSTile
 			{
 				return;
 			}
-
-			logger.trace("Game object change: {} -> {}", previous.getId(), current.getId());
 
 			GameObjectChanged gameObjectsChanged = new GameObjectChanged(this, previous, current);
 			client.getCallbacks().post(Events.GAME_OBJECT_CHANGED, gameObjectsChanged);

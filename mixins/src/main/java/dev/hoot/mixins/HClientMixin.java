@@ -1,7 +1,6 @@
 package dev.hoot.mixins;
 
 import dev.hoot.api.events.AutomatedMenu;
-import dev.hoot.api.events.ExperienceGained;
 import dev.hoot.api.events.MenuActionProcessed;
 import dev.hoot.api.events.ResumePauseSent;
 import dev.hoot.api.widgets.DialogOption;

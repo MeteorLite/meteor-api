@@ -515,8 +515,6 @@ public abstract class RSWidgetMixin implements RSWidget
 
 		rl$widgetLastPosChanged = tick;
 
-		client.getLogger().trace("Posting widget position changed");
-
 		WidgetPositioned widgetPositioned = WidgetPositioned.INSTANCE;
 		client.getCallbacks().postDeferred(Events.WIDGET_POSITIONED, widgetPositioned);
 	}

@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
 
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.events.AutomatedMenu;
-import net.runelite.api.mixins.Inject;
+import meteor.Logger;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -54,7 +54,6 @@ import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.ItemQuantityMode;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import org.slf4j.Logger;
 import org.intellij.lang.annotations.MagicConstant;
 
 /**
@@ -80,6 +79,7 @@ public interface Client extends GameEngine
 	/**
 	 * Retrieve a global logger for the client.
 	 * This is most useful for mixins which can't have their own.
+	 * @return
 	 */
 	Logger getLogger();
 

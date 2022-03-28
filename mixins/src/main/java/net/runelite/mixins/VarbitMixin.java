@@ -64,7 +64,6 @@ public abstract class VarbitMixin implements RSClient
 
 		if (varbit == null)
 		{
-			client.getLogger().trace("Cache miss for varbit {}", id);
 			client.rs$getVarbit(id); // preload varbit
 			varbit = (RSVarbitComposition) getVarbitCache().get(id);
 			varbitCache.put(id, varbit);

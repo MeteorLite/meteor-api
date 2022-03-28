@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
 
 import eventbus.Events;
 import eventbus.events.*;
+import meteor.Logger;
 import net.runelite.api.Actor;
 import net.runelite.api.Animation;
 import net.runelite.api.ChatMessageType;
@@ -68,7 +69,6 @@ import static net.runelite.api.MenuAction.PLAYER_SECOND_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_SEVENTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_SIXTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_THIRD_OPTION;
-import static net.runelite.api.MenuAction.UNKNOWN;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.MessageNode;
 import net.runelite.api.Model;
@@ -149,8 +149,6 @@ import net.runelite.rs.api.RSTileItem;
 import net.runelite.rs.api.RSUsername;
 import net.runelite.rs.api.RSWidget;
 import net.runelite.rs.api.RSWorld;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 @Mixin(RSClient.class)
@@ -160,7 +158,7 @@ public abstract class RSClientMixin implements RSClient
 	private static RSClient client;
 
 	@Inject
-	public static Logger rl$logger = LoggerFactory.getLogger("injected-client");
+	public static Logger rl$logger = new meteor.Logger("");
 
 	@Inject
 	@javax.inject.Inject
@@ -597,10 +595,6 @@ public abstract class RSClientMixin implements RSClient
 		copy$addChatMessage(tmpType.getType(), name, tmpMessage, sender);
 
 		Logger logger = client.getLogger();
-		if (logger.isDebugEnabled())
-		{
-			logger.debug("Chat message type {}: {}", type.name(), message);
-		}
 
 		// Get the message node which was added
 		@SuppressWarnings("unchecked") Map<Integer, RSChatChannel> chatLineMap = client.getChatLineMap();
@@ -1706,11 +1700,6 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		Logger logger = client.getLogger();
-		if (logger.isDebugEnabled())
-		{
-			ChatMessageType msgType = ChatMessageType.of(type);
-			logger.debug("Chat message type {}: {}", msgType == ChatMessageType.UNKNOWN ? String.valueOf(type) : tmpType.name(), message);
-		}
 
 		final ChatMessage chatMessage = new ChatMessage(messageNode, tmpType, name, message, sender, messageNode.getTimestamp());
 		client.getCallbacks().post(Events.CHAT_MESSAGE, chatMessage);
@@ -2670,11 +2659,6 @@ public abstract class RSClientMixin implements RSClient
 		dualNodeHashTable.setThreshold(dualNodeHashTable.getThreshold() * 0.92F + (var3 ? 0.07999998F : 0.0F));
 		if (var3)
 		{
-			if (dualNodeHashTable.getThreshold() > 0.2F)
-			{
-				client.getLogger().trace("cache {} is thrashing", name);
-			}
-
 			if (dualNodeHashTable.getThreshold() > 0.9F && dualNodeHashTable.getCapacity() < dualNodeHashTable.getTmpCapacity() * 8)
 			{
 				dualNodeHashTable.increaseCapacity(dualNodeHashTable.getCapacity() * 2);

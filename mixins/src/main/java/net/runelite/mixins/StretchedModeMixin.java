@@ -180,6 +180,7 @@ public abstract class StretchedModeMixin implements RSClient
 	@Override
 	public void invalidateStretching(boolean resize)
 	{
+		getLogger().debug("Stretching invalidated");
 		cachedRealDimensions = null;
 		cachedStretchedDimensions = null;
 

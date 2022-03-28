@@ -1,9 +1,9 @@
 package dev.hoot.mixins;
 
-import dev.hoot.api.events.InventoryChanged;
-import dev.hoot.api.events.ItemObtained;
 import eventbus.Events;
+import eventbus.events.InventoryChanged;
 import eventbus.events.ItemContainerChanged;
+import eventbus.events.ItemObtained;
 import net.runelite.api.Item;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
