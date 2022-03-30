@@ -29,6 +29,7 @@ dependencies{
     annotationProcessor("org.projectlombok:lombok:_")
     implementation(gradleApi())
 
+    implementation(project(":annotations"))
     implementation(project(":deobfuscator"))
     implementation(project(":api-rs"))
     implementation(project(":osrs"))

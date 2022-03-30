@@ -202,7 +202,7 @@ public class class154 extends class166 {
 		} else if (var1 == 3) {
 			try {
 				Applet var3 = class29.field168;
-				JSObject.getWindow(var3).call("loggedout", ((Object[]) (null)));
+				//JSObject.getWindow(var3).call("loggedout", ((Object[]) (null)));
 			} catch (Throwable var9) {
 			}
 

@@ -29,6 +29,7 @@ import com.openosrs.injector.injectors.raw.RuneliteMenuEntry;
 import com.openosrs.injector.injectors.raw.RuneliteObject;
 import com.openosrs.injector.injectors.raw.ScriptVM;
 import com.openosrs.injector.rsapi.RSApi;
+import com.openosrs.injector.transformers.DecodeNet;
 import com.openosrs.injector.transformers.InjectTransformer;
 import com.openosrs.injector.transformers.Java8Ifier;
 import com.openosrs.injector.transformers.SourceChanger;
@@ -105,6 +106,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		injector.initToVanilla();
 		injector.injectVanilla();
 		save(injector.getVanilla(), injected, OutputMode.JAR, vanillaFile);
+		save(injector.getDeobfuscated(), new File("./deob-test.jar"), OutputMode.JAR, vanillaFile);
 	}
 
 	public void injectVanilla()
@@ -114,6 +116,8 @@ public class Injector extends InjectData implements InjectTaskHandler
 		transform(new Java8Ifier(this));
 
 		inject(new CreateAnnotations(this));
+
+		inject(new DecodeNet(this));
 
 		inject(new GraphicsObject(this));
 
@@ -159,6 +163,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		validate(new InjectorValidator(this));
 
 		transform(new SourceChanger(this));
+
 	}
 
 	private void inject(com.openosrs.injector.injectors.Injector injector)

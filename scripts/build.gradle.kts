@@ -22,12 +22,21 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:_")
 }
 
+
+
 tasks{
+    jar {
+        from("build") {
+            include( "scripts/runelite/**" )
+        }
+    }
+    processResources {
+        dependsOn(":injector:inject")
+    }
     test{
         useJUnitPlatform()
     }
     register<JavaExec>("assembleScripts"){
-        outputs.cacheIf{true}
         classpath(sourceSets["main"].runtimeClasspath)
         mainClass.set("meteor.scripts.AssembleScripts")
     }

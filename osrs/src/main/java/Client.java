@@ -5593,27 +5593,27 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 		if (FloorDecoration.dragInventoryWidget == null) {
 			if (clickedWidget == null) {
 				int var2;
-				int var4;
-				int var5;
+				int param1;
+				int opcode;
 				label281 : {
 					int var1 = MouseHandler.MouseHandler_lastButton;
-					int var3;
+					int param0;
 					int var8;
-					int var14;
+					int id;
 					if (isMenuOpen) {
 						int var18;
 						if ((var1 != 1) && (UserComparator5.mouseCam || (var1 != 4))) {
 							var2 = MouseHandler.MouseHandler_x;
-							var3 = MouseHandler.MouseHandler_y;
-							if ((((var2 < (class307.menuX - 10)) || (var2 > ((class307.menuX + class11.menuWidth) + 10))) || (var3 < (ArchiveDiskActionHandler.menuY - 10))) || (var3 > ((ArchiveDiskActionHandler.menuY + UrlRequester.menuHeight) + 10))) {
+							param0 = MouseHandler.MouseHandler_y;
+							if ((((var2 < (class307.menuX - 10)) || (var2 > ((class307.menuX + class11.menuWidth) + 10))) || (param0 < (ArchiveDiskActionHandler.menuY - 10))) || (param0 > ((ArchiveDiskActionHandler.menuY + UrlRequester.menuHeight) + 10))) {
 								isMenuOpen = false;
-								var4 = class307.menuX;
-								var5 = ArchiveDiskActionHandler.menuY;
-								var14 = class11.menuWidth;
+								param1 = class307.menuX;
+								opcode = ArchiveDiskActionHandler.menuY;
+								id = class11.menuWidth;
 								var18 = UrlRequester.menuHeight;
 
 								for (var8 = 0; var8 < rootWidgetCount; ++var8) {
-									if (((((rootWidgetXs[var8] + rootWidgetWidths[var8]) > var4) && (rootWidgetXs[var8] < (var14 + var4))) && ((rootWidgetHeights[var8] + rootWidgetYs[var8]) > var5)) && (rootWidgetYs[var8] < (var18 + var5))) {
+									if (((((rootWidgetXs[var8] + rootWidgetWidths[var8]) > param1) && (rootWidgetXs[var8] < (id + param1))) && ((rootWidgetHeights[var8] + rootWidgetYs[var8]) > opcode)) && (rootWidgetYs[var8] < (var18 + opcode))) {
 										field564[var8] = true;
 									}
 								}
@@ -5622,16 +5622,16 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 
 						if ((var1 == 1) || ((!UserComparator5.mouseCam) && (var1 == 4))) {
 							var2 = class307.menuX;
-							var3 = ArchiveDiskActionHandler.menuY;
-							var4 = class11.menuWidth;
-							var5 = MouseHandler.MouseHandler_lastPressedX;
-							var14 = MouseHandler.MouseHandler_lastPressedY;
+							param0 = ArchiveDiskActionHandler.menuY;
+							param1 = class11.menuWidth;
+							opcode = MouseHandler.MouseHandler_lastPressedX;
+							id = MouseHandler.MouseHandler_lastPressedY;
 							var18 = -1;
 
 							int var9;
 							for (var8 = 0; var8 < menuOptionsCount; ++var8) {
-								var9 = (var3 + (((menuOptionsCount - 1) - var8) * 15)) + 31;
-								if ((((var5 > var2) && (var5 < (var4 + var2))) && (var14 > (var9 - 13))) && (var14 < (var9 + 3))) {
+								var9 = (param0 + (((menuOptionsCount - 1) - var8) * 15)) + 31;
+								if ((((opcode > var2) && (opcode < (param1 + var2))) && (id > (var9 - 13))) && (id < (var9 + 3))) {
 									var18 = var8;
 								}
 							}
@@ -5663,11 +5663,11 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 					} else {
 						var2 = class168.method3324();
 						if (((var1 == 1) || ((!UserComparator5.mouseCam) && (var1 == 4))) && (var2 >= 0)) {
-							var3 = menuOpcodes[var2];
-							if ((((((((((((var3 == 39) || (var3 == 40)) || (var3 == 41)) || (var3 == 42)) || (var3 == 43)) || (var3 == 33)) || (var3 == 34)) || (var3 == 35)) || (var3 == 36)) || (var3 == 37)) || (var3 == 38)) || (var3 == 1005)) {
-								var4 = menuArguments1[var2];
-								var5 = menuArguments2[var2];
-								Widget var6 = HorizontalAlignment.getWidget(var5);
+							param0 = menuOpcodes[var2];
+							if ((((((((((((param0 == 39) || (param0 == 40)) || (param0 == 41)) || (param0 == 42)) || (param0 == 43)) || (param0 == 33)) || (param0 == 34)) || (param0 == 35)) || (param0 == 36)) || (param0 == 37)) || (param0 == 38)) || (param0 == 1005)) {
+								param1 = menuArguments1[var2];
+								opcode = menuArguments2[var2];
+								Widget var6 = HorizontalAlignment.getWidget(opcode);
 								var8 = WorldMapSection2.getWidgetFlags(var6);
 								boolean var7 = ((var8 >> 28) & 1) != 0;
 								if (var7) {
@@ -5686,13 +5686,13 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 						}
 
 						if ((((var1 == 1) || ((!UserComparator5.mouseCam) && (var1 == 4))) && (menuOptionsCount > 0)) && (var2 >= 0)) {
-							var3 = menuArguments1[var2];
-							var4 = menuArguments2[var2];
-							var5 = menuOpcodes[var2];
-							var14 = menuIdentifiers[var2];
-							String var15 = menuActions[var2];
-							String var16 = menuTargets[var2];
-							SoundCache.menuAction(var3, var4, var5, var14, var15, var16, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+							param0 = menuArguments1[var2];
+							param1 = menuArguments2[var2];
+							opcode = menuOpcodes[var2];
+							id = menuIdentifiers[var2];
+							String action = menuActions[var2];
+							String target = menuTargets[var2];
+							SoundCache.menuAction(param0, param1, opcode, id, action, target, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 						}
 
 						if ((var1 == 2) && (menuOptionsCount > 0)) {
@@ -5713,8 +5713,8 @@ public final class Client extends GameEngine implements Usernamed , OAuthApi {
 					class290.invalidateWidget(FloorDecoration.dragInventoryWidget);
 				}
 
-				FloorDecoration.dragInventoryWidget = HorizontalAlignment.getWidget(var5);
-				dragItemSlotSource = var4;
+				FloorDecoration.dragInventoryWidget = HorizontalAlignment.getWidget(opcode);
+				dragItemSlotSource = param1;
 				draggedWidgetX = MouseHandler.MouseHandler_lastPressedX;
 				draggedWidgetY = MouseHandler.MouseHandler_lastPressedY;
 				if (var2 >= 0) {
