@@ -120,22 +120,47 @@ public class DecodeNet extends AbstractInjector {
         log.warn("Deobfuscated " + deobfuscatedPackets.size() + "/" + expected + " client packets");
     }
 
-    private String transformParamater(String s) {
-        if (s.contains("baseX") && s.contains("param0"))
+    private String transformParamater(String packetName, String paramaterName) {
+        // transform param0, param1
+        switch (packetName) {
+            case "OPHELD1":
+            case "OPHELD2":
+            case "OPHELD3":
+            case "OPHELD4":
+            case "OPHELD5":
+                if (paramaterName.contains("param0"))
+                    return "itemSlot";
+                else if (paramaterName.contains("param1"))
+                    return "itemWidgetId";
+                break;
+            case "OPHELDU":
+                if (paramaterName.contains("param0"))
+                    return "itemSlot";
+                else if (paramaterName.contains("param1"))
+                    return "itemWidgetId";
+                break;
+            case "OPHELDT":
+                if (paramaterName.contains("param0"))
+                    return "itemSlot";
+                else if (paramaterName.contains("param1"))
+                    return "itemWidgetId";
+                break;
+        }
+        if (paramaterName.contains("baseX") && paramaterName.contains("param0"))
             return "worldX";
-        if (s.contains("baseY") && s.contains("param1"))
+        if (paramaterName.contains("baseY") && paramaterName.contains("param1"))
             return "worldY";
-        if (s.contains("KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0"))
+        if (paramaterName.contains("KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0"))
             return "ctrlPressed";
-        if (s.contains("selectedItemSlot"))
+        if (paramaterName.contains("selectedItemSlot"))
             return "selectedItemSlot";
-        if (s.contains("selectedItemWidget"))
+        if (paramaterName.contains("selectedItemWidget"))
             return "selectedItemWidget";
-        if (s.contains("selectedSpellWidget"))
+        if (paramaterName.contains("selectedSpellWidget"))
             return "selectedSpellWidget";
-        if (s.contains("selectedSpellChildIndex"))
+        if (paramaterName.contains("selectedSpellChildIndex"))
             return "selectedSpellChildIndex";
-        return s;
+        return paramaterName;
     }
 
     private void scanMethods(ClassFile deobClass) {
@@ -233,8 +258,10 @@ public class DecodeNet extends AbstractInjector {
             } else {
                 obfPacket.append(",");
             }
-            obfPacket.append(s.split(".write")[1].split("\\(")[0]).append(" ").append(
-                    transformParamater(s.split(".write")[1].split("\\(")[1].replace(");", "")));
+            String methodCallName = s.split(".write")[1].split("\\(")[0];
+            String paramaterName = s.split(".write")[1].split("\\(")[1].replace(");", "");
+            obfPacket.append(methodCallName).append(" ").append(
+                    transformParamater(packetFieldName, paramaterName));
         }
         return obfPacket.toString();
     }
