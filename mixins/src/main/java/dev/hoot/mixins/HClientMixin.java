@@ -285,7 +285,7 @@ public abstract class HClientMixin implements RSClient
 			opcode -= 2000;
 		}
 
-		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
+		MenuOptionClicked menuOptionClicked;
 		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
@@ -294,15 +294,8 @@ public abstract class HClientMixin implements RSClient
 		}
 		else
 		{
-			menuOptionClicked.setParam0(param0);
-			menuOptionClicked.setMenuOption(option);
-			menuOptionClicked.setMenuTarget(target);
-			menuOptionClicked.setMenuAction(MenuAction.of(opcode));
-			menuOptionClicked.setId(id);
-			menuOptionClicked.setParam1(param1);
-			menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
-			menuOptionClicked.setCanvasX(canvasX);
-			menuOptionClicked.setCanvasY(canvasY);
+			menuOptionClicked = new MenuOptionClicked(param0, param1, option, target, MenuAction.of(opcode), id, client.getSelectedItemSlot(),
+					false, canvasX, canvasY, false);
 		}
 
 		client.getCallbacks().post(Events.MENU_OPTION_CLICKED, menuOptionClicked);

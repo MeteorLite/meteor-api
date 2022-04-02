@@ -99,15 +99,7 @@ public class AutomatedMenu
 
 	public MenuOptionClicked toMenuOptionClicked()
 	{
-		MenuOptionClicked event = new MenuOptionClicked();
-		event.setMenuOption(option);
-		event.setMenuTarget(target);
-		event.setMenuAction(opcode);
-		event.setId(identifier);
-		event.setParam0(param0);
-		event.setParam1(param1);
-		event.setCanvasX(clickX);
-		event.setCanvasY(clickY);
-		return event;
+		return new MenuOptionClicked(param0, param1, option, target, opcode, identifier, -1,
+				false, clickX, clickY, false);
 	}
 }

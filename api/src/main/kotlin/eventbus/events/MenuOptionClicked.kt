@@ -42,58 +42,9 @@ import net.runelite.api.MenuEntry
  * it seems that this event still triggers with the "Cancel" action.
  */
 @Data
-class MenuOptionClicked {
-    /**
-     * Action parameter 0. Its value depends on the menuAction.
-     */
-    var param0 = 0
-
-    /**
-     * Action parameter 1. Its value depends on the menuAction.
-     */
-    var param1 = 0
-
-    /**
-     * The option text added to the menu.
-     */
-    var menuOption: String? = null
-
-    /**
-     * The target of the action.
-     */
-    var menuTarget: String? = null
-
-    /**
-     * The action performed.
-     */
-    var menuAction: MenuAction? = null
-
-    /**
-     * The ID of the object, actor, or item that the interaction targets.
-     */
-    var id = 0
-
-    /**
-     * The selected item index at the time of the option click.
-     */
-    var selectedItemIndex = 0
-
-    /**
-     * Whether or not the event has been consumed by a subscriber.
-     */
-    var consumed = false
-
-    /**
-     * Canvas Y
-     */
-    var canvasX = 0
-
-    /**
-     * Canvas X
-     */
-    var canvasY = 0
-
-    var automated = false
+class MenuOptionClicked(var param0: Int, var param1: Int, var menuOption: String, var menuTarget: String,
+                            var menuAction: MenuAction, var id: Int, var selectedItemIndex: Int = -1, var consumed: Boolean = false,
+                            var canvasX: Int, var canvasY: Int, var automated: Boolean = false) {
 
     /**
      * Marks the event as having been consumed.
