@@ -31,4 +31,4 @@ import net.runelite.api.Tile
 /**
  * An event where a [GameObject] is added to a [Tile].
  */
-class GameObjectSpawned(var tile: Tile, var gameObject: GameObject) : Event()
+class GameObjectSpawned(var tile: Tile?, var gameObject: GameObject) : Event()
