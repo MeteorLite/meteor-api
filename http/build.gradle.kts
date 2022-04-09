@@ -34,3 +34,8 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.compileJava {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
+}

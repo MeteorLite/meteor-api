@@ -23,20 +23,19 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 }
-tasks{
-    compileKotlin{
-        kotlinOptions{
-            jvmTarget = "1.8"
-        }
-    }
-    compileTestKotlin{
-        kotlinOptions{
-            jvmTarget = "1.8"
-        }
-    }
 
+tasks.compileJava {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
+}
 
-    test{
-        useJUnitPlatform()
+tasks.compileKotlin {
+    sourceCompatibility = JavaVersion.VERSION_17.toString()
+    targetCompatibility = JavaVersion.VERSION_17.toString()
+
+    kotlinOptions {
+        jvmTarget = "17"
+        apiVersion = "1.6"
+        languageVersion = "1.6"
     }
 }
