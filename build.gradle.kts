@@ -7,7 +7,7 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.2.1" }
+val release by rootProject.extra { "1.2.2" }
 
 repositories{
     mavenCentral()
