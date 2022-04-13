@@ -15,13 +15,9 @@ publishing {
         create<MavenPublication>("mavenLocal") {
             artifactId = "logger"
             version = rootProject.extra.get("release") as String
-            from(components["java"])
+            from(components["kotlin"])
         }
     }
-}
-
-dependencies {
-
 }
 
 tasks.test {
