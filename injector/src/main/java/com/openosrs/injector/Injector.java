@@ -15,19 +15,7 @@ import com.openosrs.injector.injectors.InjectConstruct;
 import com.openosrs.injector.injectors.InterfaceInjector;
 import com.openosrs.injector.injectors.MixinInjector;
 import com.openosrs.injector.injectors.RSApiInjector;
-import com.openosrs.injector.injectors.raw.AddPlayerToMenu;
-import com.openosrs.injector.injectors.raw.ClearColorBuffer;
-import com.openosrs.injector.injectors.raw.DrawMenu;
-import com.openosrs.injector.injectors.raw.GameDrawingMode;
-import com.openosrs.injector.injectors.raw.GraphicsObject;
-import com.openosrs.injector.injectors.raw.Occluder;
-import com.openosrs.injector.injectors.raw.RasterizerAlpha;
-import com.openosrs.injector.injectors.raw.RenderDraw;
-import com.openosrs.injector.injectors.raw.CopyRuneLiteClasses;
-import com.openosrs.injector.injectors.raw.RuneLiteIterables;
-import com.openosrs.injector.injectors.raw.RuneliteMenuEntry;
-import com.openosrs.injector.injectors.raw.RuneliteObject;
-import com.openosrs.injector.injectors.raw.ScriptVM;
+import com.openosrs.injector.injectors.raw.*;
 import com.openosrs.injector.rsapi.RSApi;
 import com.openosrs.injector.transformers.DecodeNet;
 import com.openosrs.injector.transformers.InjectTransformer;
@@ -87,7 +75,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		OptionSet options = parser.parse(args);
 		String oprsVer = "1.0-SNAPSHOT";
 
-		File vanillaFile = new File("./vanilla.jar");
+		File vanillaFile = new File("./vanilla-204.6.jar");
 		injector.vanilla = load(vanillaFile);
 		injector.deobfuscated = load(
 			new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));
@@ -160,7 +148,9 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 		inject(new RuneliteMenuEntry(this));
 
-		validate(new InjectorValidator(this));
+		inject(new RuneliteMenuEntryTwo(this));
+
+		//validate(new InjectorValidator(this));
 
 		transform(new SourceChanger(this));
 

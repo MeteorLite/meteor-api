@@ -21,7 +21,7 @@ public interface RSClientPacket extends ClientPacket
 	@Override
 	RSClientPacket OPNPCT();
 
-	@Import("EVENT_MOUSE_CLICK")
+	@Import("BUTTON_CLICK")
 	@Override
 	RSClientPacket EVENT_MOUSE_CLICK();
 

@@ -2,17 +2,18 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins{
     java
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.6.20"
     `maven-publish`
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.2.4" }
+val release by rootProject.extra { "1.2.5" }
 
 repositories{
     mavenCentral()
     mavenLocal()
 }
+
 dependencies{
     testImplementation("org.junit.jupiter:junit-jupiter-api:_")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
@@ -40,7 +41,7 @@ tasks {
     }
     compileKotlin{
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = "17"
         }
     }
 }
