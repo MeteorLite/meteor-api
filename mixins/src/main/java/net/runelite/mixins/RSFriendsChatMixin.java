@@ -4,6 +4,7 @@ import eventbus.Events;
 import eventbus.events.FriendsChatMemberJoined;
 import eventbus.events.FriendsChatMemberLeft;
 import net.runelite.api.FriendsChatMember;
+import net.runelite.api.FriendsChatRank;
 import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Shadow;
@@ -44,5 +45,19 @@ public abstract class RSFriendsChatMixin implements RSFriendsChat
 
 		FriendsChatMemberLeft event = new FriendsChatMemberLeft(member);
 		client.getCallbacks().postDeferred(Events.FRIENDS_CHAT_MEMBER_LEFT, event);
+	}
+
+	@Inject
+	@Override
+	public FriendsChatRank getMyRank()
+	{
+		return FriendsChatRank.valueOf(this.getRank());
+	}
+
+	@Inject
+	@Override
+	public FriendsChatRank getKickRank()
+	{
+		return FriendsChatRank.valueOf(this.getMinKickRank());
 	}
 }

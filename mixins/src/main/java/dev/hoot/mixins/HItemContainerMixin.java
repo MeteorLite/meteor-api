@@ -16,9 +16,6 @@ import net.runelite.rs.api.RSNodeHashTable;
 @Mixin(RSItemContainer.class)
 public abstract class HItemContainerMixin implements RSItemContainer
 {
-	@Shadow("client")
-	private static RSClient client;
-
 	@Shadow("changedItemContainers")
 	private static int[] changedItemContainers;
 
@@ -43,7 +40,6 @@ public abstract class HItemContainerMixin implements RSItemContainer
 					stackSizes[i]
 			);
 
-			item.setClient(client);
 			item.setSlot(i);
 			items[i] = item;
 		}
@@ -64,7 +60,6 @@ public abstract class HItemContainerMixin implements RSItemContainer
 					stackSizes[slot]
 			);
 
-			item.setClient(client);
 			item.setSlot(slot);
 			return item;
 		}
@@ -81,7 +76,7 @@ public abstract class HItemContainerMixin implements RSItemContainer
 			int changedId = idx - 1 & 31;
 			int containerId = changedItemContainers[changedId];
 
-			RSNodeHashTable itemContainers = client.getItemContainers();
+			RSNodeHashTable itemContainers = (RSNodeHashTable) Item.client.getItemContainers();
 
 			RSItemContainer changedContainer = (RSItemContainer) itemContainers.get(containerId);
 			RSItemContainer changedContainerInvOther = (RSItemContainer) itemContainers.get(containerId | 0x8000);
@@ -104,7 +99,7 @@ public abstract class HItemContainerMixin implements RSItemContainer
 							if (oldStack > newStack)
 							{
 								InventoryChanged inventoryChanged = new InventoryChanged(InventoryChanged.ChangeType.ITEM_REMOVED, newId, Math.abs(oldStack - newStack));
-								client.getCallbacks().postDeferred(Events.INVENTORY_CHANGED, inventoryChanged);
+								Item.client.getCallbacks().postDeferred(Events.INVENTORY_CHANGED, inventoryChanged);
 								continue;
 							}
 
@@ -112,8 +107,8 @@ public abstract class HItemContainerMixin implements RSItemContainer
 							{
 								int amount = Math.abs(oldStack - newStack);
 								InventoryChanged inventoryChanged = new InventoryChanged(InventoryChanged.ChangeType.ITEM_ADDED, newId, amount);
-								client.getCallbacks().postDeferred(Events.INVENTORY_CHANGED, inventoryChanged);
-								client.getCallbacks().postDeferred(Events.ITEM_OBTAINED, new ItemObtained(newId, amount));
+								Item.client.getCallbacks().postDeferred(Events.INVENTORY_CHANGED, inventoryChanged);
+								Item.client.getCallbacks().postDeferred(Events.ITEM_OBTAINED, new ItemObtained(newId, amount));
 								continue;
 							}
 						}
@@ -123,27 +118,27 @@ public abstract class HItemContainerMixin implements RSItemContainer
 							if (oldId > 0)
 							{
 								InventoryChanged itemRemoved = new InventoryChanged(InventoryChanged.ChangeType.ITEM_REMOVED, oldId, oldStack);
-								client.getCallbacks().postDeferred(Events.ITEM_REMOVED, itemRemoved);
+								Item.client.getCallbacks().postDeferred(Events.ITEM_REMOVED, itemRemoved);
 							}
 
 							if (newId > 0 && oldId != 0)
 							{
 								InventoryChanged itemAdded = new InventoryChanged(InventoryChanged.ChangeType.ITEM_ADDED, newId, newStack);
-								client.getCallbacks().postDeferred(Events.ITEM_ADDED, itemAdded);
-								client.getCallbacks().postDeferred(Events.ITEM_OBTAINED, new ItemObtained(newId, newStack));
+								Item.client.getCallbacks().postDeferred(Events.ITEM_ADDED, itemAdded);
+								Item.client.getCallbacks().postDeferred(Events.ITEM_OBTAINED, new ItemObtained(newId, newStack));
 							}
 						}
 					}
 				}
 
 				ItemContainerChanged event = new ItemContainerChanged(containerId, changedContainer);
-				client.getCallbacks().postDeferred(Events.ITEM_CONTAINER_CHANGED, event);
+				Item.client.getCallbacks().postDeferred(Events.ITEM_CONTAINER_CHANGED, event);
 			}
 
 			if (changedContainerInvOther != null)
 			{
 				ItemContainerChanged event = new ItemContainerChanged(containerId | 0x8000, changedContainerInvOther);
-				client.getCallbacks().postDeferred(Events.ITEM_CONTAINER_CHANGED, event);
+				Item.client.getCallbacks().postDeferred(Events.ITEM_CONTAINER_CHANGED, event);
 			}
 		}
 	}

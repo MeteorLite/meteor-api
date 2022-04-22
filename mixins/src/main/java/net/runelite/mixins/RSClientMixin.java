@@ -117,38 +117,8 @@ import net.runelite.api.widgets.WidgetType;
 import static net.runelite.mixins.CameraMixin.NEW_PITCH_MAX;
 import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MAX;
 import static net.runelite.mixins.CameraMixin.STANDARD_PITCH_MIN;
-import net.runelite.rs.api.RSAbstractArchive;
-import net.runelite.rs.api.RSArchive;
-import net.runelite.rs.api.RSChatChannel;
-import net.runelite.rs.api.RSClanChannel;
-import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSDualNode;
-import net.runelite.rs.api.RSEnumComposition;
-import net.runelite.rs.api.RSEvictingDualNodeHashTable;
-import net.runelite.rs.api.RSFriendSystem;
-import net.runelite.rs.api.RSIndexedSprite;
-import net.runelite.rs.api.RSInterfaceParent;
-import net.runelite.rs.api.RSItemComposition;
-import net.runelite.rs.api.RSItemContainer;
-import net.runelite.rs.api.RSModelData;
-import net.runelite.rs.api.RSNPC;
-import net.runelite.rs.api.RSNode;
-import net.runelite.rs.api.RSNodeDeque;
-import net.runelite.rs.api.RSNodeHashTable;
-import net.runelite.rs.api.RSPacketBuffer;
-import net.runelite.rs.api.RSPlayer;
-import net.runelite.rs.api.RSProjectile;
-import net.runelite.rs.api.RSRuneLiteClanMember;
-import net.runelite.rs.api.RSRuneLiteMenuEntry;
-import net.runelite.rs.api.RSScene;
-import net.runelite.rs.api.RSScriptEvent;
-import net.runelite.rs.api.RSSpritePixels;
-import net.runelite.rs.api.RSStructComposition;
-import net.runelite.rs.api.RSTile;
-import net.runelite.rs.api.RSTileItem;
-import net.runelite.rs.api.RSUsername;
-import net.runelite.rs.api.RSWidget;
-import net.runelite.rs.api.RSWorld;
+
+import net.runelite.rs.api.*;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 @Mixin(RSClient.class)
@@ -291,6 +261,18 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	private static int tmpMenuOptionsCount;
+
+	@Inject
+	@Override
+	public int getTmpMenuOptionsCount() {
+		return tmpMenuOptionsCount;
+	}
+
+	@Inject
+	@Override
+	public void setTmpMenuOptionsCount(int count) {
+		tmpMenuOptionsCount = count;
+	}
 
 	@Inject
 	@Override
@@ -469,7 +451,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public AccountType getAccountType()
 	{
-		int varbit = getVar(Varbits.ACCOUNT_TYPE);
+		int varbit = getVarbitValue(Varbits.ACCOUNT_TYPE.getId());
 
 		switch (varbit)
 		{
@@ -744,7 +726,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public boolean isPrayerActive(Prayer prayer)
 	{
-		return getVar(prayer.getVarbit()) == 1;
+		return getVarbitValue(prayer.getVarbit().getId()) == 1;
 	}
 
 	/**
@@ -922,6 +904,17 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public void setMenuEntries(MenuEntry[] menuEntries)
 	{
+		boolean var2 = false;
+
+		if (client.getTempMenuAction() != null && client.getMenuOptionCount() > 0)
+		{
+			var2 = client.getTempMenuAction().getParam0() == client.getMenuArguments1()[client.getMenuOptionCount() - 1] &&
+					client.getTempMenuAction().getParam1() == client.getMenuArguments2()[client.getMenuOptionCount() - 1] &&
+					client.getTempMenuAction().getOption().equals(client.getMenuOptions()[client.getMenuOptionCount() - 1]) &&
+					client.getTempMenuAction().getIdentifier() == client.getMenuIdentifiers()[client.getMenuOptionCount() - 1] &&
+					client.getTempMenuAction().getOpcode() == client.getMenuOpcodes()[client.getMenuOptionCount() - 1];
+		}
+
 		for (int i = 0; i < menuEntries.length; ++i)
 		{
 			RSRuneLiteMenuEntry menuEntry = (RSRuneLiteMenuEntry) menuEntries[i];
@@ -933,6 +926,15 @@ public abstract class RSClientMixin implements RSClient
 
 		client.setMenuOptionCount(menuEntries.length);
 		tmpMenuOptionsCount = menuEntries.length;
+
+		if (var2 && client.getMenuOptionCount() > 0)
+		{
+			client.getTempMenuAction().setParam0(client.getMenuArguments1()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setParam1(client.getMenuArguments2()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setOption(client.getMenuOptions()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setIdentifier(client.getMenuIdentifiers()[client.getMenuOptionCount() - 1]);
+			client.getTempMenuAction().setOpcode(client.getMenuOpcodes()[client.getMenuOptionCount() - 1]);
+		}
 	}
 
 	@Inject
@@ -2747,6 +2749,93 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return modelData.newModelData(modelData, true, true, true, true);
+	}
+
+	@Inject
+	@Override
+	@Nonnull
+	public ItemComposition getItemComposition(int id)
+	{
+		assert this.isClientThread() : "getItemComposition must be called on client thread";
+		return getRSItemDefinition(id);
+	}
+
+	@Inject
+	public static RSFloorOverlayDefinition loadFloorOverlay(int var0)
+	{
+		RSFloorOverlayDefinition var1 = (RSFloorOverlayDefinition) client.getFloorOverlayDefinitionCache().get(var0);
+
+		if (var1 == null)
+		{
+			byte[] var2 = client.getFloorOverlayDefinitionArchive().loadData(4, var0);
+			var1 = client.newFloorOverlayDefinition();
+			if (var2 != null)
+			{
+				RSBuffer var3 = client.newBuffer(var2);
+				var1.decode(var3, var0);
+			}
+
+			var1.postDecode();
+			client.getFloorOverlayDefinitionCache().put((RSDualNode) var1, (long) var0);
+		}
+
+		return var1;
+	}
+
+	@Copy("addObjects")
+	@Replace("addObjects")
+	@SuppressWarnings("InfiniteRecursion")
+	public static void copy$addObjects(int var0, int var1, int var2, int var3, int var4, int var5, RSScene var6, RSCollisionMap var7)
+	{
+		boolean resetLowMemory = false;
+
+		byte tileSetting = client.getTileSettings()[var0][var1][var2];
+
+		if (client.isLowMemory())
+		{
+			byte[] var10000 = client.getTileSettings()[var0][var1];
+			var10000[var2] &= -17;
+			if (var5 == 22)
+			{
+				int TileOverlay = client.getTileOverlays()[var0][var1][var2] & 255;
+
+				if (TileOverlay > 0)
+				{
+					RSFloorOverlayDefinition floorOverlayDefinition = loadFloorOverlay(TileOverlay - 1);
+					if (floorOverlayDefinition.getTexture() < 0 && floorOverlayDefinition.getPrimaryRgb() == 16711935)
+					{
+						client.setLowMemory(false);
+						resetLowMemory = true;
+					}
+				}
+			}
+		}
+
+		copy$addObjects(var0, var1, var2, var3, var4, var5, var6, var7);
+
+		client.getTileSettings()[var0][var1][var2] = tileSetting;
+
+		if (resetLowMemory)
+		{
+			client.setLowMemory(true);
+		}
+	}
+
+	@Inject
+	@Override
+	public Widget getSelectedWidget()
+	{
+		int selectedSpellWidget = client.getSelectedSpellWidget();
+		int selectedSpellChildIndex = client.getSelectedSpellChildIndex();
+
+		Widget widget = client.getWidget(selectedSpellWidget);
+
+		if (widget != null && selectedSpellChildIndex > -1)
+		{
+			return widget.getChild(selectedSpellChildIndex);
+		}
+
+		return null;
 	}
 }
 

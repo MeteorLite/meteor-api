@@ -33,6 +33,7 @@ import dev.hoot.api.util.Randomizer;
 import net.runelite.api.util.Text;
 import net.runelite.api.widgets.*;
 
+import javax.inject.Inject;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,7 +46,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	private final int id;
 	private final int quantity;
 
-	private Client client;
+	public static Client client;
 	private int slot;
 
 	// Interaction

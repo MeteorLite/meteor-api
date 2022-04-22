@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
 import dev.hoot.api.MouseHandler;
 import dev.hoot.api.events.AutomatedMenu;
 import meteor.Logger;
+import net.runelite.api.annotations.Varbit;
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.packets.PacketBufferNode;
@@ -79,7 +80,6 @@ public interface Client extends GameEngine
 	/**
 	 * Retrieve a global logger for the client.
 	 * This is most useful for mixins which can't have their own.
-	 * @return
 	 */
 	Logger getLogger();
 
@@ -189,11 +189,6 @@ public interface Client extends GameEngine
 	 */
 	void setGameState(int gameState);
 
-	/**
-	 * Causes the client to shutdown. It is faster than
-	 * {@link java.applet.Applet#stop()} because it doesn't wait for 4000ms.
-	 * This will call {@link System#exit} when it is done
-	 */
 	void stopNow();
 
 	/**
@@ -209,10 +204,13 @@ public interface Client extends GameEngine
 	void setWorldSelectOpen(boolean open);
 
 	/**
+	 * DEPRECATED. See getAccountHash instead.
 	 * Gets the current logged in username.
 	 *
 	 * @return the logged in username
+	 * @see
 	 */
+	@Deprecated
 	String getUsername();
 
 	/**
@@ -402,6 +400,16 @@ public interface Client extends GameEngine
 	 * @return the plane
 	 */
 	int getPlane();
+
+	/**
+	 * Gets the max plane the client can render.
+	 * <p>
+	 * Unlike the plane, the ScenePlane is affected the current status of roof visibility.
+	 * <p>
+	 *
+	 * @return the plane
+	 */
+	int getScenePlane();
 
 	/**
 	 * Gets the current scene
@@ -858,12 +866,22 @@ public interface Client extends GameEngine
 	int getVar(VarPlayer varPlayer);
 
 	/**
-	 * Gets a value corresponding to the passed variable.
+	 * Gets a value corresponding to the passed varbit.
 	 *
-	 * @param varbit the variable
+	 * @param varbit the varbit id
+	 * @return the value
+	 * @see Client#getVarbitValue(int)
+	 */
+	@Deprecated
+	int getVar(@Varbit int varbit);
+
+	/**
+	 * Gets a value corresponding to the passed varbit.
+	 *
+	 * @param varbit the varbit id
 	 * @return the value
 	 */
-	int getVar(Varbits varbit);
+	int getVarbitValue(@Varbit int varbit);
 
 	/**
 	 * Gets an int value corresponding to the passed variable.
@@ -880,15 +898,6 @@ public interface Client extends GameEngine
 	 * @return the value
 	 */
 	String getVar(VarClientStr varClientStr);
-
-	/**
-	 * Gets the value of a given Varbit.
-	 *
-	 * @param varbitId the varbit id
-	 * @return the value
-	 */
-	@VisibleForExternalPlugins
-	int getVarbitValue(int varbitId);
 
 	/**
 	 * Gets the value of a given VarClientInt
@@ -919,12 +928,12 @@ public interface Client extends GameEngine
 	void setVar(VarClientInt varClientStr, int value);
 
 	/**
-	 * Sets the value of a given variable.
+	 * Sets the value of a varbit
 	 *
-	 * @param varbit the variable
+	 * @param varbit the varbit id
 	 * @param value  the new value
 	 */
-	void setVarbit(Varbits varbit, int value);
+	void setVarbit(@Varbit int varbit, int value);
 
 	/**
 	 * Gets the varbit composition for a given varbit id
@@ -943,7 +952,7 @@ public interface Client extends GameEngine
 	 * @return the value
 	 * @see Varbits
 	 */
-	int getVarbitValue(int[] varps, int varbitId);
+	int getVarbitValue(int[] varps, @Varbit int varbitId);
 
 	/**
 	 * Gets the value of a given VarPlayer.
@@ -965,7 +974,7 @@ public interface Client extends GameEngine
 	 * @param value  the value
 	 * @see Varbits
 	 */
-	void setVarbitValue(int[] varps, int varbit, int value);
+	void setVarbitValue(int[] varps, @Varbit int varbit, int value);
 
 	/**
 	 * Mark the given varp as changed, causing var listeners to be
@@ -1161,7 +1170,7 @@ public interface Client extends GameEngine
 	 * @return the new projectile
 	 */
 	Projectile createProjectile(int id, int plane, int startX, int startY, int startZ, int startCycle, int endCycle,
-		int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
+								int slope, int startHeight, int endHeight, @Nullable Actor target, int targetX, int targetY);
 
 	/**
 	 * Gets a list of all projectiles currently spawned.
@@ -2075,16 +2084,23 @@ public interface Client extends GameEngine
 	void setSpellSelected(boolean selected);
 
 	/**
-	 * Get if an item is selected with "Use"
-	 * @return 1 if selected, else 0
+	 * @deprecated use {@link #getSelectedWidget()} instead.
 	 */
+	@Deprecated
 	int getSelectedItem();
 
 	/**
-	 * If an item is selected, this is the item index in the inventory.
-	 * @return
+	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
 	 */
+	@Deprecated
 	int getSelectedItemIndex();
+
+	/**
+	 * Get the selected widget, such as a selected spell or selected item (eg. "Use")
+	 * @return the selected widget
+	 */
+	@Nullable
+	Widget getSelectedWidget();
 
 	/**
 	 * Returns client item composition cache
@@ -2123,13 +2139,7 @@ public interface Client extends GameEngine
 
 	void setRenderSelf(boolean enabled);
 
-	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
-	{
-		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
-	}
-
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY);
+	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1);
 
 	MouseRecorder getMouseRecorder();
 
@@ -2144,6 +2154,12 @@ public interface Client extends GameEngine
 	String getSelectedSpellActionName();
 
 	int getSelectedSpellFlags();
+
+	void setSelectedSpellFlags(int var0);
+
+	int getSelectedSpellItemId();
+
+	void setSelectedSpellItemId(int itemId);
 
 	/**
 	 * Set whether or not player attack options will be hidden for friends
@@ -2199,9 +2215,6 @@ public interface Client extends GameEngine
 	 */
 	int getItemCount();
 
-	/**
-	 * Makes all widgets behave as if they are {@link WidgetConfig#WIDGET_USE_TARGET}
-	 */
 	void setAllWidgetsAreOpTargetable(boolean value);
 
 	/**
@@ -2209,14 +2222,34 @@ public interface Client extends GameEngine
 	 */
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellItemId(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemID(int id);
 
+	/**
+	 * @deprecated use {@link #getSelectedSpellWidget()} instead.
+	 */
+	@Deprecated
 	int getSelectedItemWidget();
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellWidget(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemWidget(int widgetID);
 
+	/**
+	 * @deprecated use {@link #getSelectedSpellChildIndex()} instead.
+	 */
+	@Deprecated
 	int getSelectedItemSlot();
 
+	/**
+	 * @deprecated use {@link #setSelectedSpellChildIndex(int)} instead.
+	 */
+	@Deprecated
 	void setSelectedItemSlot(int idx);
 
 	int getSelectedSpellWidget();
@@ -2227,23 +2260,7 @@ public interface Client extends GameEngine
 
 	void setSelectedSpellChildIndex(int index);
 
-	/**
-	 * Scales values from pixels onto canvas
-	 *
-	 * @param canvas       the array we're writing to
-	 * @param pixels       pixels to draw
-	 * @param color        should be 0
-	 * @param pixelX       x index
-	 * @param pixelY       y index
-	 * @param canvasIdx    index in canvas (canvas[canvasIdx])
-	 * @param canvasOffset x offset
-	 * @param newWidth     new width
-	 * @param newHeight    new height
-	 * @param pixelWidth   pretty much horizontal scale
-	 * @param pixelHeight  pretty much vertical scale
-	 * @param oldWidth     old width
-	 * @see net.runelite.client.util.ImageUtil#resizeSprite(Client, SpritePixels, int, int)
-	 */
+
 	void scaleSprite(int[] canvas, int[] pixels, int color, int pixelX, int pixelY, int canvasIdx, int canvasOffset, int newWidth, int newHeight, int pixelWidth, int pixelHeight, int oldWidth);
 
 	/**
@@ -2304,13 +2321,6 @@ public interface Client extends GameEngine
 	 */
 	boolean isComparingAppearance();
 
-	/**
-	 * Setting this to true will allow the client to compare
-	 * player appearance hashes and dispatch when one changes
-	 * via the {@link PlayerChanged} event.
-	 * <p>
-	 * WARNING - THIS METHOD IS CPU-INTENSE.
-	 */
 	void setComparingAppearance(boolean comparingAppearance);
 
 	/**
@@ -2468,10 +2478,6 @@ public interface Client extends GameEngine
 	 */
 	Deque<AmbientSoundEffect> getAmbientSoundEffects();
 
-	boolean getCameraPitchRelaxerEnabled();
-
-	void posToCameraAngle(int var0, int var1);
-
 	/*
 	 * Unethical
 	 */
@@ -2488,7 +2494,7 @@ public interface Client extends GameEngine
 	}
 
 	default void interact(int identifier, int opcode, int param0, int param1, int clickX, int clickY,
-				  long entityTag)
+						  long entityTag)
 	{
 		interact(new AutomatedMenu(identifier, opcode, param0, param1, clickX, clickY, entityTag));
 	}
@@ -2612,4 +2618,8 @@ public interface Client extends GameEngine
 	Instant getLastInteractionTime();
 
 	int getSelectedItemID();
+
+	int getTmpMenuOptionsCount();
+	void setTmpMenuOptionsCount(int i);
+
 }

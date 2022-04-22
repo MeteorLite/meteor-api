@@ -65,26 +65,23 @@ public abstract class RuneLiteMenuEntryMixin implements RSRuneLiteMenuEntry
 	@Override
 	public Widget getWidget()
 	{
-		int param1 = this.getParam1();
-		int param0 = this.getParam0();
-
-		Widget widget = client.getWidget(param1);
-
-		if (widget == null)
+		MenuAction menuAction = this.getType();
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
 		{
-			return null;
-		}
-
-		if (param0 != -1)
-		{
-			Widget child = widget.getChild(param0);
-
-			if (child != null)
+			int param1 = this.getParam1();
+			int param0 = this.getParam0();
+			if (param1 == 9764864)
 			{
-				return child;
+				Widget widget = client.getWidget(param1);
+				if (param0 != -1)
+				{
+					widget = widget.getChild(param0);
+				}
+
+				return widget;
 			}
 		}
 
-		return widget;
+		return null;
 	}
 }
