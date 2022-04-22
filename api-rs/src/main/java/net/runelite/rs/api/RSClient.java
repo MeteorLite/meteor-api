@@ -32,7 +32,6 @@ import net.runelite.api.Deque;
 import net.runelite.api.ModelData;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.World;
-
 import net.runelite.api.packets.ClientPacket;
 import net.runelite.api.packets.IsaacCipher;
 import net.runelite.api.clan.ClanRank;
@@ -197,6 +196,10 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	void setDraggedOnWidget(Widget widget);
 
+	@Import("widgetDragDuration")
+	@Override
+	int getDragTime();
+
 	@Import("Widget_interfaceComponents")
 	RSWidget[][] getWidgets();
 
@@ -331,6 +334,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("menuOptionsCount")
 	@Override
 	void setMenuOptionCount(int menuOptionCount);
+
+	@Import("tempMenuAction")
+	RSMenuAction getTempMenuAction();
 
 	@Import("menuActions")
 	String[] getMenuOptions();
@@ -653,6 +659,9 @@ public interface RSClient extends RSGameEngine, Client
 	boolean[] getPressedKeys();
 
 	@Import("isLowDetail")
+	boolean isLowMemory();
+
+	@Import("isLowDetail")
 	void setLowMemory(boolean lowMemory);
 
 	@Import("Scene_isLowDetail")
@@ -963,6 +972,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Scene_plane")
 	void setScenePlane(int scenePlane);
 
+	@Import("Scene_plane")
+	int getScenePlane();
+
 	@Import("Scene_cameraXTileMin")
 	void setMinTileX(int i);
 
@@ -1203,6 +1215,9 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("VarpDefinition_get")
 	RSVarpDefinition getVarpDefinition(int id);
+
+	@Construct
+	RSFloorOverlayDefinition newFloorOverlayDefinition();
 
 	@Construct
 	RSTileItem newTileItem();
@@ -1503,6 +1518,9 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("FloorUnderlayDefinition_cached")
 	RSEvictingDualNodeHashTable getFloorUnderlayDefinitionCache();
 
+	@Import("FloorOverlayDefinition_archive")
+	RSAbstractArchive getFloorOverlayDefinitionArchive();
+
 	@Import("FloorOverlayDefinition_cached")
 	RSEvictingDualNodeHashTable getFloorOverlayDefinitionCache();
 
@@ -1595,7 +1613,7 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Construct
 	RSEvictingDualNodeHashTable newEvictingDualNodeHashTable(int var1);
-	
+
 	/*
 	Unethical
 	 */
