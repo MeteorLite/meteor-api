@@ -27,6 +27,7 @@ package eventbus.events
 import lombok.Data
 import net.runelite.api.MenuAction
 import net.runelite.api.MenuEntry
+import net.runelite.api.widgets.Widget
 
 /**
  * An event where a menu option has been clicked.
@@ -42,9 +43,90 @@ import net.runelite.api.MenuEntry
  * it seems that this event still triggers with the "Cancel" action.
  */
 @Data
-class MenuOptionClicked(var param0: Int, var param1: Int, var menuOption: String, var menuTarget: String,
-                            var menuAction: MenuAction, var id: Int, var selectedItemIndex: Int = -1, var consumed: Boolean = false,
-                            var canvasX: Int, var canvasY: Int, var automated: Boolean = false) {
+class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -1, var canvasX: Int, var canvasY: Int, var automated: Boolean = false) {
+
+    /**
+     * Whether or not the event has been consumed by a subscriber.
+     */
+    var consumed = false
+
+    /**
+     * Action parameter 0. Its value depends on the menuAction.
+     */
+    fun getParam0(): Int {
+        return menuEntry.param0
+    }
+
+    /**
+     * Action parameter 1. Its value depends on the menuAction.
+     */
+    fun getParam1(): Int {
+        return menuEntry.param1
+    }
+
+    /**
+     * The option text added to the menu.
+     */
+    fun getMenuOption(): String? {
+        return menuEntry.option
+    }
+
+    /**
+     * The target of the action.
+     */
+    fun getMenuTarget(): String? {
+        return menuEntry.target
+    }
+
+    /**
+     * The action performed.
+     */
+    fun getMenuAction(): MenuAction? {
+        return menuEntry.type
+    }
+
+    /**
+     * The ID of the object, actor, or item that the interaction targets.
+     */
+    fun getId(): Int {
+        return menuEntry.identifier
+    }
+
+    /**
+     * Test if this menu entry is an item op. "Use" and "Examine" are not considered item ops.
+     * @return
+     */
+    fun isItemOp(): Boolean {
+        return menuEntry.isItemOp
+    }
+
+    /**
+     * If this menu entry is an item op, get the item op id
+     * @return 1-5
+     */
+    fun getItemOp(): Int {
+        return menuEntry.itemOp
+    }
+
+    /**
+     * If this menu entry is an item op, get the item id
+     * @return
+     * @see net.runelite.api.ItemID
+     *
+     * @see net.runelite.api.NullItemID
+     */
+    fun getItemId(): Int {
+        return menuEntry.itemId
+    }
+
+    /**
+     * Get the widget this menu entry is on, if this is a menu entry
+     * with an associated widget. Such as eg, CC_OP.
+     * @return
+     */
+    fun getWidget(): Widget? {
+        return menuEntry.widget
+    }
 
     /**
      * Marks the event as having been consumed.
@@ -55,15 +137,16 @@ class MenuOptionClicked(var param0: Int, var param1: Int, var menuOption: String
      * for handling by vanilla client code.
      */
     fun consume() {
-        consumed = true
+        this.consumed = true
     }
 
-    fun setMenuEntry(entry: MenuEntry) {
-        this.menuOption = (entry.option)
-        this.menuTarget = (entry.target)
-        this.id = (entry.identifier)
-        this.menuAction = (entry.type)
-        this.param0 = (entry.param0)
-        this.param1 = (entry.param1)
+    @Deprecated("")
+    fun getActionParam(): Int {
+        return menuEntry.param0
+    }
+
+    @Deprecated("")
+    fun getWidgetId(): Int {
+        return menuEntry.param1
     }
 }

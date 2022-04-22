@@ -125,7 +125,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 	public void drop()
 	{
-		interact(4);
+		interact(7);
 	}
 
 	@Override

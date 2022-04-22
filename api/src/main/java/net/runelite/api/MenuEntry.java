@@ -24,6 +24,9 @@
  */
 package net.runelite.api;
 
+import net.runelite.api.widgets.Widget;
+
+import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
 /**
@@ -93,21 +96,31 @@ public interface MenuEntry
 	 */
 	MenuEntry onClick(Consumer<MenuEntry> callback);
 
-	@Deprecated
-	int getOpcode();
-	@Deprecated
-	void setOpcode(int opcode);
+	/**
+	 * Test if this menu entry is an item op. "Use" and "Examine" are not considered item ops.
+	 * @return
+	 */
+	boolean isItemOp();
 
-	@Deprecated
-	int getActionParam0();
-	@Deprecated
-	void setActionParam0(int param0);
+	/**
+	 * If this menu entry is an item op, get the item op id
+	 * @return 1-5
+	 */
+	int getItemOp();
 
-	@Deprecated
-	int getActionParam1();
-	@Deprecated
-	void setActionParam1(int param0);
+	/**
+	 * If this menu entry is an item op, get the item id
+	 * @return
+	 * @see ItemID
+	 * @see NullItemID
+	 */
+	int getItemId();
 
-	@Deprecated
-	MenuAction getMenuAction();
+	/**
+	 * Get the widget this menu entry is on, if this is a menu entry
+	 * with an associated widget. Such as eg, CC_OP.
+	 * @return
+	 */
+	@Nullable
+	Widget getWidget();
 }

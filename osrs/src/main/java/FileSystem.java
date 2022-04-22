@@ -12,9 +12,9 @@ public class FileSystem {
 	@ObfuscatedName("h")
 	@Export("FileSystem_cacheFiles")
 	static Hashtable FileSystem_cacheFiles;
-	static 
-	{
-		FileSystem_hasPermissions = false;
+
+	static {
+		FileSystem_hasPermissions = false; // L: 7
 		FileSystem_cacheFiles = new Hashtable(16);
-	}
+	} // L: 9
 }

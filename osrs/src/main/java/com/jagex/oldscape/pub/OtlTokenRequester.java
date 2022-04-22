@@ -6,4 +6,5 @@ import net.runelite.mapping.Implements;
 
 @Implements("OtlTokenRequester")
 public interface OtlTokenRequester {
-	Future request(URL var1);}
+	Future request(URL var1);
+}
