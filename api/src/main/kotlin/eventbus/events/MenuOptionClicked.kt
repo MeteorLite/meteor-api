@@ -43,8 +43,12 @@ import net.runelite.api.widgets.Widget
  * it seems that this event still triggers with the "Cancel" action.
  */
 @Data
-class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -1, var canvasX: Int, var canvasY: Int, var automated: Boolean = false) {
-
+class MenuOptionClicked() {
+    var menuEntry: MenuEntry? = null
+    var selectedItemIndex: Int = -1
+    var canvasX: Int = -1
+    var canvasY: Int = -1
+    var automated: Boolean = false
     /**
      * Whether or not the event has been consumed by a subscriber.
      */
@@ -54,42 +58,42 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
      * Action parameter 0. Its value depends on the menuAction.
      */
     fun getParam0(): Int {
-        return menuEntry.param0
+        return menuEntry!!.param0
     }
 
     /**
      * Action parameter 1. Its value depends on the menuAction.
      */
     fun getParam1(): Int {
-        return menuEntry.param1
+        return menuEntry!!.param1
     }
 
     /**
      * The option text added to the menu.
      */
     fun getMenuOption(): String? {
-        return menuEntry.option
+        return menuEntry!!.option
     }
 
     /**
      * The target of the action.
      */
     fun getMenuTarget(): String? {
-        return menuEntry.target
+        return menuEntry!!.target
     }
 
     /**
      * The action performed.
      */
     fun getMenuAction(): MenuAction? {
-        return menuEntry.type
+        return menuEntry!!.type
     }
 
     /**
      * The ID of the object, actor, or item that the interaction targets.
      */
     fun getId(): Int {
-        return menuEntry.identifier
+        return menuEntry!!.identifier
     }
 
     /**
@@ -97,7 +101,7 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
      * @return
      */
     fun isItemOp(): Boolean {
-        return menuEntry.isItemOp
+        return menuEntry!!.isItemOp
     }
 
     /**
@@ -105,7 +109,7 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
      * @return 1-5
      */
     fun getItemOp(): Int {
-        return menuEntry.itemOp
+        return menuEntry!!.itemOp
     }
 
     /**
@@ -116,7 +120,7 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
      * @see net.runelite.api.NullItemID
      */
     fun getItemId(): Int {
-        return menuEntry.itemId
+        return menuEntry!!.itemId
     }
 
     /**
@@ -125,7 +129,7 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
      * @return
      */
     fun getWidget(): Widget? {
-        return menuEntry.widget
+        return menuEntry!!.widget
     }
 
     /**
@@ -142,11 +146,11 @@ class MenuOptionClicked(val menuEntry: MenuEntry, var selectedItemIndex: Int = -
 
     @Deprecated("")
     fun getActionParam(): Int {
-        return menuEntry.param0
+        return menuEntry!!.param0
     }
 
     @Deprecated("")
     fun getWidgetId(): Int {
-        return menuEntry.param1
+        return menuEntry!!.param1
     }
 }

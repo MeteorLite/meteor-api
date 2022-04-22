@@ -99,6 +99,12 @@ public class AutomatedMenu
 
 	public MenuOptionClicked toMenuOptionClicked(Client client)
 	{
-		return new MenuOptionClicked(toEntry(client), -1, clickX, clickY, false);
+		MenuOptionClicked clicked = new MenuOptionClicked();
+		clicked.setMenuEntry(toEntry(client));
+		clicked.setSelectedItemIndex(-1);
+		clicked.setCanvasY(clickY);
+		clicked.setCanvasX(clickX);
+		clicked.setAutomated(false);
+		return clicked;
 	}
 }

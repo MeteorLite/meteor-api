@@ -6,10 +6,7 @@ import dev.hoot.api.events.ResumePauseSent;
 import dev.hoot.api.widgets.DialogOption;
 import eventbus.Events;
 import eventbus.events.*;
-import net.runelite.api.ItemComposition;
-import net.runelite.api.Skill;
-import net.runelite.api.Tile;
-import net.runelite.api.TileObject;
+import net.runelite.api.*;
 import net.runelite.api.mixins.Copy;
 import net.runelite.api.mixins.FieldHook;
 import net.runelite.api.mixins.Inject;
@@ -260,7 +257,7 @@ public abstract class HClientMixin implements RSClient
 
 		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
 		{
-			if (client.getMenuOptions()[i] == option && client.getMenuTargets()[i] == target && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
+			if (client.getMenuOptions()[i].equals(option) && client.getMenuTargets()[i].equals(target)  && client.getMenuIdentifiers()[i] == id && client.getMenuOpcodes()[i] == opcode)
 			{
 				menuEntry = rl$menuEntries[i];
 				break;
@@ -271,12 +268,23 @@ public abstract class HClientMixin implements RSClient
 		 * The RuneScape client may deprioritize an action in the menu by incrementing the opcode with 2000,
 		 * undo it here so we can get the correct opcode
 		 */
+		boolean decremented = false;
 		if (opcode >= 2000)
 		{
+			decremented = true;
 			opcode -= 2000;
 		}
 
-		MenuOptionClicked menuOptionClicked;
+		MenuOptionClicked menuOptionClicked = new MenuOptionClicked();
+		menuOptionClicked.setMenuEntry(menuEntry);
+		menuOptionClicked.getMenuEntry().setParam0(param0);
+		menuOptionClicked.getMenuEntry().setOption(option);
+		menuOptionClicked.getMenuEntry().setTarget(target);
+		menuOptionClicked.getMenuEntry().setType(MenuAction.of(opcode));
+		menuOptionClicked.getMenuEntry().setIdentifier(id);
+		menuOptionClicked.getMenuEntry().setParam1(param1);
+		menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+
 		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
@@ -285,7 +293,11 @@ public abstract class HClientMixin implements RSClient
 		}
 		else
 		{
-			menuOptionClicked = new MenuOptionClicked(menuEntry, client.getSelectedItemSlot(), canvasX, canvasY, false);
+			menuOptionClicked = new MenuOptionClicked();
+			menuOptionClicked.setMenuEntry(menuEntry);
+			menuOptionClicked.setSelectedItemIndex(client.getSelectedItemSlot());
+			menuOptionClicked.setCanvasX(canvasX);
+			menuOptionClicked.setCanvasY(canvasY);
 		}
 
 		client.getCallbacks().post(Events.MENU_OPTION_CLICKED, menuOptionClicked);
@@ -306,16 +318,6 @@ public abstract class HClientMixin implements RSClient
 				menuOptionClicked.getId(), menuOptionClicked.getMenuOption(), menuOptionClicked.getMenuTarget(),
 				canvasX, canvasY);
 		automatedMenu.set(null);
-		client.getCallbacks().post(Events.MENU_ACTION_PROCESSED, new MenuActionProcessed(
-				menuOptionClicked.getMenuOption(),
-				menuOptionClicked.getMenuTarget(),
-				menuOptionClicked.getId(),
-				menuOptionClicked.getMenuAction(),
-				menuOptionClicked.getParam0(),
-				menuOptionClicked.getParam1(),
-				canvasX,
-				canvasY
-		));
 	}
 
 	@Inject

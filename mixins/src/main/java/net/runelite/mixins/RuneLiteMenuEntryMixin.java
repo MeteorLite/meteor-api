@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2018, OpenOSRS
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,60 +22,69 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package net.runelite.mixins;
 
-import javax.annotation.Nullable;
+import net.runelite.api.MenuAction;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.api.widgets.Widget;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSRuneLiteMenuEntry;
 
-/**
- * Represents a non-player character in the game.
- */
-public interface NPC extends Actor
+@Mixin(RSRuneLiteMenuEntry.class)
+public abstract class RuneLiteMenuEntryMixin implements RSRuneLiteMenuEntry
 {
-	/**
-	 * Gets the ID of the NPC.
-	 *
-	 * @return the ID of the NPC
-	 * //@see NpcID
-	 */
-	int getId();
+	@Shadow("client")
+	private static RSClient client;
 
+	@Inject
 	@Override
-	String getName();
+	public int getItemId()
+	{
+		MenuAction menuAction = this.getType();
+		if (menuAction == MenuAction.CC_OP || menuAction == MenuAction.CC_OP_LOW_PRIORITY)
+		{
+			int param1 = this.getParam1();
+			int param0 = this.getParam0();
+			if (param1 == 9764864)
+			{
+				Widget widget = client.getWidget(param1);
+				if (param0 != -1)
+				{
+					widget = widget.getChild(param0);
+					return widget.getItemId();
+				}
+			}
+		}
 
+		return -1;
+	}
+
+	@Inject
 	@Override
-	int getCombatLevel();
+	public Widget getWidget()
+	{
+		int param1 = this.getParam1();
+		int param0 = this.getParam0();
 
-	/**
-	 * Gets the index position of this NPC in the clients cached
-	 * NPC array.
-	 *
-	 * @return the NPC index
-	 * @see Client#getCachedNPCs()
-	 */
-	int getIndex();
+		Widget widget = client.getWidget(param1);
 
-	/**
-	 * Gets the composition of this NPC.
-	 *
-	 * @return the composition
-	 */
-	NPCComposition getComposition();
+		if (widget == null)
+		{
+			return null;
+		}
 
-	/**
-	 * Get the composition for this NPC and transform it if required
-	 *
-	 * @return the transformed NPC
-	 */
-	@Nullable
-	NPCComposition getTransformedComposition();
+		if (param0 != -1)
+		{
+			Widget child = widget.getChild(param0);
 
-	void setTransformedComposition(NPCComposition composition);
+			if (child != null)
+			{
+				return child;
+			}
+		}
 
-	int getTransformedId();
-
-	String getTransformedName();
-
-	int getTransformedLevel();
-
-	void setComposition(NPCComposition composition);
+		return widget;
+	}
 }
