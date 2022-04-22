@@ -31,18 +31,18 @@ public class class221 {
 		int var13;
 		int var14;
 		if (class263.field3013 == var0) { // L: 7068
-			var2 = var1.method7789() * 4; // L: 7069
+			var2 = var1.readUnsignedByteAdd() * 4; // L: 7069
 			var3 = var1.method7935(); // L: 7070
 			var4 = var1.method7802(); // L: 7071
-			var5 = var1.method7790(); // L: 7072
+			var5 = var1.readUnsignedByteNeg(); // L: 7072
 			var6 = (var5 >> 4 & 7) + FriendSystem.field803; // L: 7073
 			var7 = (var5 & 7) + class9.field34; // L: 7074
 			var8 = var1.method7935(); // L: 7075
-			byte var41 = var1.method7955(); // L: 7076
-			var10 = var1.method7927(); // L: 7077
-			byte var42 = var1.method7925(); // L: 7078
+			byte var41 = var1.readByteNeg(); // L: 7076
+			var10 = var1.readUnsignedByteSub(); // L: 7077
+			byte var42 = var1.readByteSub(); // L: 7078
 			var12 = var1.readUnsignedByte() * 4; // L: 7079
-			var13 = var1.method7790(); // L: 7080
+			var13 = var1.readUnsignedByteNeg(); // L: 7080
 			var14 = var1.method7935(); // L: 7081
 			var9 = var41 + var6; // L: 7082
 			var11 = var42 + var7; // L: 7083
@@ -57,7 +57,7 @@ public class class221 {
 			}
 
 		} else if (class263.field3011 == var0) { // L: 7095
-			var2 = var1.method7927(); // L: 7096
+			var2 = var1.readUnsignedByteSub(); // L: 7096
 			var3 = (var2 >> 4 & 7) + FriendSystem.field803; // L: 7097
 			var4 = (var2 & 7) + class9.field34; // L: 7098
 			var5 = var1.readUnsignedByte(); // L: 7099
@@ -91,11 +91,11 @@ public class class221 {
 
 		} else if (class263.field3004 == var0) { // L: 7131
 			var2 = var1.method7935(); // L: 7132
-			var3 = var1.method7790(); // L: 7133
+			var3 = var1.readUnsignedByteNeg(); // L: 7133
 			var4 = var3 >> 2; // L: 7134
 			var5 = var3 & 3; // L: 7135
 			var6 = Client.field711[var4]; // L: 7136
-			var7 = var1.method7789(); // L: 7137
+			var7 = var1.readUnsignedByteAdd(); // L: 7137
 			var8 = (var7 >> 4 & 7) + FriendSystem.field803; // L: 7138
 			var9 = (var7 & 7) + class9.field34; // L: 7139
 			if (var8 >= 0 && var9 >= 0 && var8 < 103 && var9 < 103) { // L: 7140
@@ -152,11 +152,11 @@ public class class221 {
 
 		} else {
 			if (class263.field3010 == var0) { // L: 7177
-				var2 = var1.method7927(); // L: 7178
-				var3 = var1.method7789(); // L: 7179
+				var2 = var1.readUnsignedByteSub(); // L: 7178
+				var3 = var1.readUnsignedByteAdd(); // L: 7179
 				var4 = (var3 >> 4 & 7) + FriendSystem.field803; // L: 7180
 				var5 = (var3 & 7) + class9.field34; // L: 7181
-				var6 = var1.method7927(); // L: 7182
+				var6 = var1.readUnsignedByteSub(); // L: 7182
 				var7 = var6 >> 4 & 15; // L: 7183
 				var8 = var6 & 7; // L: 7184
 				var9 = var1.method7798(); // L: 7185
@@ -196,16 +196,16 @@ public class class221 {
 				if (class263.field3009 == var0) { // L: 7216
 					byte var37 = var1.readByte(); // L: 7217
 					var3 = var1.readUnsignedShort(); // L: 7218
-					byte var38 = var1.method7792(); // L: 7219
+					byte var38 = var1.readByteAdd(); // L: 7219
 					byte var39 = var1.readByte(); // L: 7220
 					var6 = var1.method7971(); // L: 7221
-					byte var40 = var1.method7792(); // L: 7222
+					byte var40 = var1.readByteAdd(); // L: 7222
 					var8 = var1.method7935(); // L: 7223
-					var9 = var1.method7790(); // L: 7224
+					var9 = var1.readUnsignedByteNeg(); // L: 7224
 					var10 = var9 >> 2; // L: 7225
 					var11 = var9 & 3; // L: 7226
 					var12 = Client.field711[var10]; // L: 7227
-					var13 = var1.method7790(); // L: 7228
+					var13 = var1.readUnsignedByteNeg(); // L: 7228
 					var14 = (var13 >> 4 & 7) + FriendSystem.field803; // L: 7229
 					int var15 = (var13 & 7) + class9.field34; // L: 7230
 					int var16 = var1.method7935(); // L: 7231
@@ -267,10 +267,10 @@ public class class221 {
 				}
 
 				if (class263.field3005 == var0) { // L: 7281
-					var2 = var1.method7790(); // L: 7282
+					var2 = var1.readUnsignedByteNeg(); // L: 7282
 					var3 = var1.readUnsignedShort(); // L: 7283
 					var4 = var1.method7971(); // L: 7284
-					var5 = var1.method7789(); // L: 7285
+					var5 = var1.readUnsignedByteAdd(); // L: 7285
 					var6 = (var5 >> 4 & 7) + FriendSystem.field803; // L: 7286
 					var7 = (var5 & 7) + class9.field34; // L: 7287
 					if (var6 >= 0 && var7 >= 0 && var6 < 104 && var7 < 104) { // L: 7288
@@ -281,10 +281,10 @@ public class class221 {
 					}
 
 				} else if (class263.field3012 == var0) { // L: 7296
-					var2 = var1.method7927(); // L: 7297
+					var2 = var1.readUnsignedByteSub(); // L: 7297
 					var3 = (var2 >> 4 & 7) + FriendSystem.field803; // L: 7298
 					var4 = (var2 & 7) + class9.field34; // L: 7299
-					var5 = var1.method7927(); // L: 7300
+					var5 = var1.readUnsignedByteSub(); // L: 7300
 					var6 = var5 >> 2; // L: 7301
 					var7 = var5 & 3; // L: 7302
 					var8 = Client.field711[var6]; // L: 7303
@@ -294,7 +294,7 @@ public class class221 {
 					}
 
 				} else if (class263.field3008 == var0) { // L: 7310
-					var2 = var1.method7789(); // L: 7311
+					var2 = var1.readUnsignedByteAdd(); // L: 7311
 					var3 = (var2 >> 4 & 7) + FriendSystem.field803; // L: 7312
 					var4 = (var2 & 7) + class9.field34; // L: 7313
 					var5 = var1.method7935(); // L: 7314

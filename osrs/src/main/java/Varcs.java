@@ -281,7 +281,7 @@ public class Varcs {
 		}
 
 		this.unwrittenChanges = false; // L: 201
-		this.field1307 = WorldMapSprite.method4989(); // L: 202
+		this.field1307 = WorldMapSprite.getServerTime(); // L: 202
 	} // L: 203
 
 	@ObfuscatedName("r")
@@ -384,7 +384,7 @@ public class Varcs {
 	)
 	@Export("tryWrite")
 	void tryWrite() {
-		if (this.unwrittenChanges && this.field1307 < WorldMapSprite.method4989() - 60000L) { // L: 262
+		if (this.unwrittenChanges && this.field1307 < WorldMapSprite.getServerTime() - 60000L) { // L: 262
 			this.write(); // L: 263
 		}
 
@@ -725,11 +725,11 @@ public class Varcs {
 											var22 = var9.method5686(); // L: 10790
 											if (var22 != null) { // L: 10791
 												PacketBufferNode var23 = ItemContainer.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher); // L: 10792
-												var23.packetBuffer.writeIntME(var22[0]); // L: 10793
-												var23.packetBuffer.method7795(var9.childIndex); // L: 10794
-												var23.packetBuffer.method7806(var22[1]); // L: 10795
+												var23.packetBuffer.writeIntIME(var22[0]); // L: 10793
+												var23.packetBuffer.writeShortLE(var9.childIndex); // L: 10794
+												var23.packetBuffer.writeIntLE(var22[1]); // L: 10795
 												var23.packetBuffer.method7746(var9.method5699()); // L: 10796
-												var23.packetBuffer.method7806(var22[2]); // L: 10797
+												var23.packetBuffer.writeIntLE(var22[2]); // L: 10797
 												var23.packetBuffer.writeInt(var9.id); // L: 10798
 												Client.packetWriter.addNode(var23); // L: 10799
 											}

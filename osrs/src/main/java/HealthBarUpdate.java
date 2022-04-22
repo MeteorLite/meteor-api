@@ -86,14 +86,14 @@ public class HealthBarUpdate extends Node {
 		if ((var3 & 8192) != 0) { // L: 454
 			var2.field1133 = Client.cycle + var0.method7935(); // L: 455
 			var2.field1185 = Client.cycle + var0.method7798(); // L: 456
-			var2.field1146 = var0.method7955(); // L: 457
-			var2.field1187 = var0.method7955(); // L: 458
-			var2.field1188 = var0.method7925(); // L: 459
-			var2.field1189 = (byte)var0.method7790(); // L: 460
+			var2.field1146 = var0.readByteNeg(); // L: 457
+			var2.field1187 = var0.readByteNeg(); // L: 458
+			var2.field1188 = var0.readByteSub(); // L: 459
+			var2.field1189 = (byte)var0.readUnsignedByteNeg(); // L: 460
 		}
 
 		if ((var3 & 256) != 0) { // L: 462
-			var4 = var0.method7925(); // L: 463
+			var4 = var0.readByteSub(); // L: 463
 		}
 
 		int var5;
@@ -103,8 +103,8 @@ public class HealthBarUpdate extends Node {
 		if ((var3 & 1) != 0) { // L: 465
 			var5 = var0.method7798(); // L: 466
 			PlayerType var6 = (PlayerType)ChatChannel.findEnumerated(HitSplatDefinition.PlayerType_values(), var0.readUnsignedByte()); // L: 467
-			boolean var7 = var0.method7927() == 1; // L: 468
-			var8 = var0.method7927(); // L: 469
+			boolean var7 = var0.readUnsignedByteSub() == 1; // L: 468
+			var8 = var0.readUnsignedByteSub(); // L: 469
 			var9 = var0.offset; // L: 470
 			if (var2.username != null && var2.appearance != null) { // L: 471
 				boolean var10 = false; // L: 472
@@ -163,7 +163,7 @@ public class HealthBarUpdate extends Node {
 		}
 
 		if ((var3 & 128) != 0) { // L: 509
-			var5 = var0.method7927(); // L: 510
+			var5 = var0.readUnsignedByteSub(); // L: 510
 			byte[] var17 = new byte[var5]; // L: 511
 			Buffer var13 = new Buffer(var17); // L: 512
 			var0.method7812(var17, 0, var5); // L: 513
@@ -172,10 +172,10 @@ public class HealthBarUpdate extends Node {
 		}
 
 		if ((var3 & 512) != 0) { // L: 517
-			var2.field1175 = var0.method7792(); // L: 518
+			var2.field1175 = var0.readByteAdd(); // L: 518
 			var2.field1177 = var0.readByte(); // L: 519
-			var2.field1176 = var0.method7925(); // L: 520
-			var2.field1178 = var0.method7955(); // L: 521
+			var2.field1176 = var0.readByteSub(); // L: 520
+			var2.field1178 = var0.readByteNeg(); // L: 521
 			var2.field1179 = var0.method7935() + Client.cycle; // L: 522
 			var2.field1180 = var0.method7971() + Client.cycle; // L: 523
 			var2.field1181 = var0.method7798(); // L: 524
@@ -226,12 +226,12 @@ public class HealthBarUpdate extends Node {
 				var5 = -1;
 			}
 
-			var14 = var0.method7927(); // L: 565
+			var14 = var0.readUnsignedByteSub(); // L: 565
 			KeyHandler.performPlayerAnimation(var2, var5, var14); // L: 566
 		}
 
 		if ((var3 & 16384) != 0) { // L: 568
-			Players.field1285[var1] = (class193)ChatChannel.findEnumerated(class124.method2801(), var0.method7955()); // L: 569
+			Players.field1285[var1] = (class193)ChatChannel.findEnumerated(class124.method2801(), var0.readByteNeg()); // L: 569
 		}
 
 		if ((var3 & 32) != 0) { // L: 571
@@ -242,7 +242,7 @@ public class HealthBarUpdate extends Node {
 		}
 
 		if ((var3 & 4) != 0) { // L: 575
-			var5 = var0.method7790(); // L: 576
+			var5 = var0.readUnsignedByteNeg(); // L: 576
 			int var16;
 			int var18;
 			int var19;
@@ -276,7 +276,7 @@ public class HealthBarUpdate extends Node {
 					if (var9 != 32767) { // L: 603
 						var19 = var0.readUShortSmart(); // L: 604
 						var16 = var0.readUnsignedByte(); // L: 605
-						var12 = var9 > 0 ? var0.method7790() : var16; // L: 606
+						var12 = var9 > 0 ? var0.readUnsignedByteNeg() : var16; // L: 606
 						var2.addHealthBar(var8, Client.cycle, var9, var19, var16, var12); // L: 607
 					} else {
 						var2.removeHealthBar(var8); // L: 609

@@ -97,9 +97,8 @@ public class AutomatedMenu
 		return toEntry(client, null);
 	}
 
-	public MenuOptionClicked toMenuOptionClicked()
+	public MenuOptionClicked toMenuOptionClicked(Client client)
 	{
-		return new MenuOptionClicked(param0, param1, option, target, opcode, identifier, -1,
-				false, clickX, clickY, false);
+		return new MenuOptionClicked(toEntry(client), -1, clickX, clickY, false);
 	}
 }

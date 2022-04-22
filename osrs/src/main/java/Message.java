@@ -294,7 +294,7 @@ public class Message extends DualNode {
 				if (class142.method3004(WorldMapSection2.getWidgetFlags(var5), var0 - 1)) { // L: 9095
 					PacketBufferNode var7;
 					if (var0 == 1) { // L: 9098
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2908, Client.packetWriter.isaacCipher); // L: 9100
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON1, Client.packetWriter.isaacCipher); // L: 9100
 						var7.packetBuffer.writeInt(var1); // L: 9101
 						var7.packetBuffer.writeShort(var2); // L: 9102
 						var7.packetBuffer.writeShort(var3); // L: 9103
@@ -302,7 +302,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 2) { // L: 9106
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2945, Client.packetWriter.isaacCipher); // L: 9108
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON2, Client.packetWriter.isaacCipher); // L: 9108
 						var7.packetBuffer.writeInt(var1); // L: 9109
 						var7.packetBuffer.writeShort(var2); // L: 9110
 						var7.packetBuffer.writeShort(var3); // L: 9111
@@ -310,7 +310,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 3) { // L: 9114
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2941, Client.packetWriter.isaacCipher); // L: 9116
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON3, Client.packetWriter.isaacCipher); // L: 9116
 						var7.packetBuffer.writeInt(var1); // L: 9117
 						var7.packetBuffer.writeShort(var2); // L: 9118
 						var7.packetBuffer.writeShort(var3); // L: 9119
@@ -318,7 +318,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 4) { // L: 9122
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2980, Client.packetWriter.isaacCipher); // L: 9124
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON4, Client.packetWriter.isaacCipher); // L: 9124
 						var7.packetBuffer.writeInt(var1); // L: 9125
 						var7.packetBuffer.writeShort(var2); // L: 9126
 						var7.packetBuffer.writeShort(var3); // L: 9127
@@ -326,7 +326,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 5) { // L: 9130
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2995, Client.packetWriter.isaacCipher); // L: 9132
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON5, Client.packetWriter.isaacCipher); // L: 9132
 						var7.packetBuffer.writeInt(var1); // L: 9133
 						var7.packetBuffer.writeShort(var2); // L: 9134
 						var7.packetBuffer.writeShort(var3); // L: 9135
@@ -334,7 +334,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 6) { // L: 9138
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2944, Client.packetWriter.isaacCipher); // L: 9140
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher); // L: 9140
 						var7.packetBuffer.writeInt(var1); // L: 9141
 						var7.packetBuffer.writeShort(var2); // L: 9142
 						var7.packetBuffer.writeShort(var3); // L: 9143
@@ -342,7 +342,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 7) { // L: 9146
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2982, Client.packetWriter.isaacCipher); // L: 9148
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher); // L: 9148
 						var7.packetBuffer.writeInt(var1); // L: 9149
 						var7.packetBuffer.writeShort(var2); // L: 9150
 						var7.packetBuffer.writeShort(var3); // L: 9151
@@ -350,7 +350,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 8) { // L: 9154
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher); // L: 9156
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher); // L: 9156
 						var7.packetBuffer.writeInt(var1); // L: 9157
 						var7.packetBuffer.writeShort(var2); // L: 9158
 						var7.packetBuffer.writeShort(var3); // L: 9159
@@ -358,7 +358,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 9) { // L: 9162
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2970, Client.packetWriter.isaacCipher); // L: 9164
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher); // L: 9164
 						var7.packetBuffer.writeInt(var1); // L: 9165
 						var7.packetBuffer.writeShort(var2); // L: 9166
 						var7.packetBuffer.writeShort(var3); // L: 9167
@@ -366,7 +366,7 @@ public class Message extends DualNode {
 					}
 
 					if (var0 == 10) { // L: 9170
-						var7 = ItemContainer.getPacketBufferNode(ClientPacket.field2929, Client.packetWriter.isaacCipher); // L: 9172
+						var7 = ItemContainer.getPacketBufferNode(ClientPacket.IF_BUTTON10, Client.packetWriter.isaacCipher); // L: 9172
 						var7.packetBuffer.writeInt(var1); // L: 9173
 						var7.packetBuffer.writeShort(var2); // L: 9174
 						var7.packetBuffer.writeShort(var3); // L: 9175

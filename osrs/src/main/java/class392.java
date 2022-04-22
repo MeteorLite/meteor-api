@@ -86,9 +86,9 @@ public abstract class class392 extends class250 implements class444 {
 	public static void method7191(int var0, int var1, int var2, boolean var3) {
 		PacketBufferNode var4 = ItemContainer.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher); // L: 11893
 		var4.packetBuffer.writeShort(var0); // L: 11894
-		var4.packetBuffer.method7796(var1); // L: 11895
-		var4.packetBuffer.method7788(var2); // L: 11896
-		var4.packetBuffer.method7806(var3 ? Client.field571 * 1761289457 * 34294801 : 0); // L: 11897
+		var4.packetBuffer.writeShortAdd(var1); // L: 11895
+		var4.packetBuffer.writeByteSub(var2); // L: 11896
+		var4.packetBuffer.writeIntLE(var3 ? Client.field571 * 1761289457 * 34294801 : 0); // L: 11897
 		Client.packetWriter.addNode(var4); // L: 11898
 	} // L: 11899
 }

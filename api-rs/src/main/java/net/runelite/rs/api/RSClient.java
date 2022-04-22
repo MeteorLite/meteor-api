@@ -1630,9 +1630,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("Login_response3")
 	String getLoginResponse3();
 
-	@Import("Login_banType")
-	int getBanType();
-
 	@Import("MouseHandler_lastPressedX")
 	@Override
 	int getMouseLastPressedX();

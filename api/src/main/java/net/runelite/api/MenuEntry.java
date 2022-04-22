@@ -24,10 +24,9 @@
  */
 package net.runelite.api;
 
-import net.runelite.api.widgets.Widget;
-
-import javax.annotation.Nullable;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.runelite.api.widgets.Widget;
 
 /**
  * A menu entry in a right-click menu.
@@ -123,4 +122,22 @@ public interface MenuEntry
 	 */
 	@Nullable
 	Widget getWidget();
+
+	@Deprecated
+	int getOpcode();
+	@Deprecated
+	void setOpcode(int opcode);
+
+	@Deprecated
+	int getActionParam0();
+	@Deprecated
+	void setActionParam0(int param0);
+
+	@Deprecated
+	int getActionParam1();
+	@Deprecated
+	void setActionParam1(int param0);
+
+	@Deprecated
+	MenuAction getMenuAction();
 }

@@ -224,7 +224,7 @@ public class DynamicObject extends Renderable {
 		PacketBufferNode var2 = ItemContainer.getPacketBufferNode(ClientPacket.field2924, Client.packetWriter.isaacCipher); // L: 228
 		var2.packetBuffer.writeByte(ItemLayer.stringCp1252NullTerminatedByteSize(var0) + 1); // L: 229
 		var2.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 230
-		var2.packetBuffer.method7787(var1); // L: 231
+		var2.packetBuffer.writeByteNeg(var1); // L: 231
 		Client.packetWriter.addNode(var2); // L: 232
 	} // L: 233
 
@@ -259,7 +259,7 @@ public class DynamicObject extends Renderable {
 				var6 = var1.readUnsignedShort(); // L: 7701
 				var7 = var1.method7971(); // L: 7702
 				if (class162.field1768) { // L: 7703
-					var4.field1183 = var1.method7789() == 1; // L: 7704
+					var4.field1183 = var1.readUnsignedByteAdd() == 1; // L: 7704
 				}
 
 				var8 = var4.x - (var6 - ApproximateRouteStrategy.baseX - ApproximateRouteStrategy.baseX) * 64; // L: 7706
@@ -316,7 +316,7 @@ public class DynamicObject extends Renderable {
 					}
 				}
 
-				var7 = var1.method7790(); // L: 7746
+				var7 = var1.readUnsignedByteNeg(); // L: 7746
 				if (var7 > 0) { // L: 7747
 					for (var8 = 0; var8 < var7; ++var8) { // L: 7748
 						var9 = var1.readUShortSmart(); // L: 7749
@@ -324,7 +324,7 @@ public class DynamicObject extends Renderable {
 						if (var10 != 32767) { // L: 7751
 							var11 = var1.readUShortSmart(); // L: 7752
 							var12 = var1.readUnsignedByte(); // L: 7753
-							int var13 = var10 > 0 ? var1.method7789() : var12; // L: 7754
+							int var13 = var10 > 0 ? var1.readUnsignedByteAdd() : var12; // L: 7754
 							var4.addHealthBar(var9, Client.cycle, var10, var11, var12, var13); // L: 7755
 						} else {
 							var4.removeHealthBar(var9); // L: 7757
@@ -334,8 +334,8 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (class162.field1768 && (var5 & 256) != 0 || !class162.field1768 && (var5 & 64) != 0) { // L: 7761
-				var4.field1175 = var1.method7925(); // L: 7762
-				var4.field1177 = var1.method7792(); // L: 7763
+				var4.field1175 = var1.readByteSub(); // L: 7762
+				var4.field1177 = var1.readByteAdd(); // L: 7763
 				var4.field1176 = var1.readByte(); // L: 7764
 				var4.field1178 = var1.readByte(); // L: 7765
 				var4.field1179 = var1.method7971() + Client.cycle; // L: 7766
@@ -353,9 +353,9 @@ public class DynamicObject extends Renderable {
 				var4.field1133 = Client.cycle + var1.method7798(); // L: 7777
 				var4.field1185 = Client.cycle + var1.method7935(); // L: 7778
 				var4.field1146 = var1.readByte(); // L: 7779
-				var4.field1187 = var1.method7792(); // L: 7780
-				var4.field1188 = var1.method7792(); // L: 7781
-				var4.field1189 = (byte)var1.method7927(); // L: 7782
+				var4.field1187 = var1.readByteAdd(); // L: 7780
+				var4.field1188 = var1.readByteAdd(); // L: 7781
+				var4.field1189 = (byte)var1.readUnsignedByteSub(); // L: 7782
 			}
 
 			if ((var5 & 2) != 0) { // L: 7784
@@ -389,7 +389,7 @@ public class DynamicObject extends Renderable {
 					var6 = -1; // L: 7807
 				}
 
-				var7 = var1.method7789(); // L: 7809
+				var7 = var1.readUnsignedByteAdd(); // L: 7809
 				if (var6 == var4.sequence && var6 != -1) { // L: 7810
 					var8 = ItemContainer.SequenceDefinition_get(var6).field2172; // L: 7811
 					if (var8 == 1) { // L: 7812

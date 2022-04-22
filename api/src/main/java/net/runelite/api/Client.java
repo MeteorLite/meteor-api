@@ -569,6 +569,14 @@ public interface Client extends GameEngine
 	void setDraggedOnWidget(Widget widget);
 
 	/**
+	 * Get the number of client cycles the current dragged widget
+	 * has been dragged for.
+	 *
+	 * @return
+	 */
+	int getDragTime();
+
+	/**
 	 * Gets Interface ID of the root widget
 	 */
 	int getTopLevelInterfaceId();

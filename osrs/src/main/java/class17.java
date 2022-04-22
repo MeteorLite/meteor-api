@@ -148,7 +148,7 @@ class class17 implements SSLSession {
 					var15 = class16.method217(var7);
 				}
 
-				PacketBufferNode var13 = ItemContainer.getPacketBufferNode(ClientPacket.field2939, Client.packetWriter.isaacCipher); // L: 1491
+				PacketBufferNode var13 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_COUNTDIALOG, Client.packetWriter.isaacCipher); // L: 1491
 				var13.packetBuffer.writeInt(var15); // L: 1492
 				Client.packetWriter.addNode(var13); // L: 1493
 				return 1; // L: 1494
@@ -156,7 +156,7 @@ class class17 implements SSLSession {
 				PacketBufferNode var11;
 				if (var0 == ScriptOpcodes.RESUME_NAMEDIALOG) {
 					var7 = Interpreter.Interpreter_stringStack[--ChatChannel.Interpreter_stringStackSize]; // L: 1497
-					var11 = ItemContainer.getPacketBufferNode(ClientPacket.field2910, Client.packetWriter.isaacCipher); // L: 1499
+					var11 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_NAMEDIALOG, Client.packetWriter.isaacCipher); // L: 1499
 					var11.packetBuffer.writeByte(var7.length() + 1); // L: 1500
 					var11.packetBuffer.writeStringCp1252NullTerminated(var7); // L: 1501
 					Client.packetWriter.addNode(var11); // L: 1502
@@ -207,7 +207,7 @@ class class17 implements SSLSession {
 						return 1; // L: 1553
 					} else if (var0 == ScriptOpcodes.RESUME_OBJDIALOG) {
 						var10 = Interpreter.Interpreter_intStack[--class295.Interpreter_intStackSize]; // L: 1556
-						var11 = ItemContainer.getPacketBufferNode(ClientPacket.field2962, Client.packetWriter.isaacCipher); // L: 1558
+						var11 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_OBJDIALOG, Client.packetWriter.isaacCipher); // L: 1558
 						var11.packetBuffer.writeShort(var10); // L: 1559
 						Client.packetWriter.addNode(var11); // L: 1560
 						return 1; // L: 1561
@@ -225,7 +225,7 @@ class class17 implements SSLSession {
 							var6.packetBuffer.writeShort(1 + ItemLayer.stringCp1252NullTerminatedByteSize(var4) + ItemLayer.stringCp1252NullTerminatedByteSize(var5)); // L: 1571
 							var6.packetBuffer.writeStringCp1252NullTerminated(var5); // L: 1572
 							var6.packetBuffer.writeStringCp1252NullTerminated(var4); // L: 1573
-							var6.packetBuffer.method7788(var10); // L: 1574
+							var6.packetBuffer.writeByteSub(var10); // L: 1574
 							Client.packetWriter.addNode(var6); // L: 1575
 							return 1; // L: 1576
 						}

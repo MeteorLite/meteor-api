@@ -99,7 +99,7 @@ public class class291 {
 		garbageValue = "-35"
 	)
 	static void method5589() {
-		Client.packetWriter.addNode(ItemContainer.getPacketBufferNode(ClientPacket.field2989, Client.packetWriter.isaacCipher)); // L: 11906
+		Client.packetWriter.addNode(ItemContainer.getPacketBufferNode(ClientPacket.OPHELDT, Client.packetWriter.isaacCipher)); // L: 11906
 		Client.oculusOrbState = 0; // L: 11907
 	} // L: 11908
 }

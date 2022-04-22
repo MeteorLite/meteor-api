@@ -326,7 +326,7 @@ public class class9 implements MouseWheel {
 		garbageValue = "-117"
 	)
 	static final void method85() {
-		PacketBufferNode var0 = ItemContainer.getPacketBufferNode(ClientPacket.field2905, Client.packetWriter.isaacCipher); // L: 11486
+		PacketBufferNode var0 = ItemContainer.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher); // L: 11486
 		Client.packetWriter.addNode(var0); // L: 11487
 		Interpreter.field838 = true; // L: 11488
 

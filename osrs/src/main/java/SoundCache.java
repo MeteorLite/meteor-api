@@ -220,14 +220,14 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8253
 			Client.destinationX = var0; // L: 8254
 			Client.destinationY = var1; // L: 8255
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2994, Client.packetWriter.isaacCipher); // L: 8257
-			var8.packetBuffer.method7795(class19.selectedItemSlot); // L: 8258
-			var8.packetBuffer.method7795(selectedItemId); // L: 8259
-			var8.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8260
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOCU, Client.packetWriter.isaacCipher); // L: 8257
+			var8.packetBuffer.writeShortLE(class19.selectedItemSlot); // L: 8258
+			var8.packetBuffer.writeShortLE(selectedItemId); // L: 8259
+			var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8260
 			var8.packetBuffer.writeShort(var0 + ApproximateRouteStrategy.baseX); // L: 8261
 			var8.packetBuffer.writeShort(var3); // L: 8262
 			var8.packetBuffer.method7746(PendingSpawn.selectedItemWidget); // L: 8263
-			var8.packetBuffer.method7796(class250.baseY + var1); // L: 8264
+			var8.packetBuffer.writeShortAdd(class250.baseY + var1); // L: 8264
 			Client.packetWriter.addNode(var8); // L: 8265
 		} else if (var2 == 2) {
 			Client.mouseCrossX = var6; // L: 8712
@@ -236,14 +236,14 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8715
 			Client.destinationX = var0; // L: 8716
 			Client.destinationY = var1; // L: 8717
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2894, Client.packetWriter.isaacCipher); // L: 8718
-			var8.packetBuffer.method7796(Client.field688); // L: 8719
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher); // L: 8718
+			var8.packetBuffer.writeShortAdd(Client.field688); // L: 8719
 			var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8720
-			var8.packetBuffer.method7791(class250.baseY + var1); // L: 8721
-			var8.packetBuffer.method7796(Client.selectedSpellChildIndex); // L: 8722
-			var8.packetBuffer.method7796(var0 + ApproximateRouteStrategy.baseX); // L: 8723
+			var8.packetBuffer.writeShortAddLE(class250.baseY + var1); // L: 8721
+			var8.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex); // L: 8722
+			var8.packetBuffer.writeShortAdd(var0 + ApproximateRouteStrategy.baseX); // L: 8723
 			var8.packetBuffer.method7746(class92.selectedSpellWidget); // L: 8724
-			var8.packetBuffer.method7795(var3); // L: 8725
+			var8.packetBuffer.writeShortLE(var3); // L: 8725
 			Client.packetWriter.addNode(var8); // L: 8726
 		} else if (var2 == 3) {
 			Client.mouseCrossX = var6; // L: 8339
@@ -252,11 +252,11 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8342
 			Client.destinationX = var0; // L: 8343
 			Client.destinationY = var1; // L: 8344
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2978, Client.packetWriter.isaacCipher); // L: 8346
-			var8.packetBuffer.method7796(class250.baseY + var1); // L: 8347
-			var8.packetBuffer.method7795(var0 + ApproximateRouteStrategy.baseX); // L: 8348
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher); // L: 8346
+			var8.packetBuffer.writeShortAdd(class250.baseY + var1); // L: 8347
+			var8.packetBuffer.writeShortLE(var0 + ApproximateRouteStrategy.baseX); // L: 8348
 			var8.packetBuffer.writeShort(var3); // L: 8349
-			var8.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8350
+			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8350
 			Client.packetWriter.addNode(var8); // L: 8351
 		} else if (var2 == 4) {
 			Client.mouseCrossX = var6; // L: 8884
@@ -265,11 +265,11 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8887
 			Client.destinationX = var0; // L: 8888
 			Client.destinationY = var1; // L: 8889
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2901, Client.packetWriter.isaacCipher); // L: 8891
-			var8.packetBuffer.method7788(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8892
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher); // L: 8891
+			var8.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8892
 			var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8893
-			var8.packetBuffer.method7791(var3); // L: 8894
-			var8.packetBuffer.method7795(var0 + ApproximateRouteStrategy.baseX); // L: 8895
+			var8.packetBuffer.writeShortAddLE(var3); // L: 8894
+			var8.packetBuffer.writeShortLE(var0 + ApproximateRouteStrategy.baseX); // L: 8895
 			Client.packetWriter.addNode(var8); // L: 8896
 		} else if (var2 == 5) {
 			Client.mouseCrossX = var6; // L: 8279
@@ -278,11 +278,11 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8282
 			Client.destinationX = var0; // L: 8283
 			Client.destinationY = var1; // L: 8284
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2927, Client.packetWriter.isaacCipher); // L: 8286
-			var8.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8287
-			var8.packetBuffer.method7796(var0 + ApproximateRouteStrategy.baseX); // L: 8288
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher); // L: 8286
+			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8287
+			var8.packetBuffer.writeShortAdd(var0 + ApproximateRouteStrategy.baseX); // L: 8288
 			var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8289
-			var8.packetBuffer.method7796(var3); // L: 8290
+			var8.packetBuffer.writeShortAdd(var3); // L: 8290
 			Client.packetWriter.addNode(var8); // L: 8291
 		} else if (var2 == 6) {
 			Client.mouseCrossX = var6; // L: 8811
@@ -291,11 +291,11 @@ public class SoundCache {
 			Client.mouseCrossState = 0; // L: 8814
 			Client.destinationX = var0; // L: 8815
 			Client.destinationY = var1; // L: 8816
-			var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher); // L: 8818
-			var8.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8819
-			var8.packetBuffer.method7791(var0 + ApproximateRouteStrategy.baseX); // L: 8820
-			var8.packetBuffer.method7796(var3); // L: 8821
-			var8.packetBuffer.method7796(class250.baseY + var1); // L: 8822
+			var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher); // L: 8818
+			var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8819
+			var8.packetBuffer.writeShortAddLE(var0 + ApproximateRouteStrategy.baseX); // L: 8820
+			var8.packetBuffer.writeShortAdd(var3); // L: 8821
+			var8.packetBuffer.writeShortAdd(class250.baseY + var1); // L: 8822
 			Client.packetWriter.addNode(var8); // L: 8823
 		} else {
 			PacketBufferNode var9;
@@ -309,12 +309,12 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8685
 					Client.destinationX = var0; // L: 8686
 					Client.destinationY = var1; // L: 8687
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2947, Client.packetWriter.isaacCipher); // L: 8689
-					var9.packetBuffer.method7795(var3); // L: 8690
-					var9.packetBuffer.writeIntME(PendingSpawn.selectedItemWidget); // L: 8691
-					var9.packetBuffer.method7791(selectedItemId); // L: 8692
-					var9.packetBuffer.method7788(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8693
-					var9.packetBuffer.method7796(class19.selectedItemSlot); // L: 8694
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPCU, Client.packetWriter.isaacCipher); // L: 8689
+					var9.packetBuffer.writeShortLE(var3); // L: 8690
+					var9.packetBuffer.writeIntIME(PendingSpawn.selectedItemWidget); // L: 8691
+					var9.packetBuffer.writeShortAddLE(selectedItemId); // L: 8692
+					var9.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8693
+					var9.packetBuffer.writeShortAdd(class19.selectedItemSlot); // L: 8694
 					Client.packetWriter.addNode(var9); // L: 8695
 				}
 			} else if (var2 == 8) {
@@ -326,12 +326,12 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8667
 					Client.destinationX = var0; // L: 8668
 					Client.destinationY = var1; // L: 8669
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2985, Client.packetWriter.isaacCipher); // L: 8670
-					var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8671
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher); // L: 8670
+					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8671
 					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 8672
-					var9.packetBuffer.method7795(var3); // L: 8673
-					var9.packetBuffer.method7806(class92.selectedSpellWidget); // L: 8674
-					var9.packetBuffer.method7796(Client.field688); // L: 8675
+					var9.packetBuffer.writeShortLE(var3); // L: 8673
+					var9.packetBuffer.writeIntLE(class92.selectedSpellWidget); // L: 8674
+					var9.packetBuffer.writeShortAdd(Client.field688); // L: 8675
 					Client.packetWriter.addNode(var9); // L: 8676
 				}
 			} else if (var2 == 9) {
@@ -343,9 +343,9 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8578
 					Client.destinationX = var0; // L: 8579
 					Client.destinationY = var1; // L: 8580
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2981, Client.packetWriter.isaacCipher); // L: 8582
-					var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8583
-					var9.packetBuffer.method7795(var3); // L: 8584
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher); // L: 8582
+					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8583
+					var9.packetBuffer.writeShortLE(var3); // L: 8584
 					Client.packetWriter.addNode(var9); // L: 8585
 				}
 			} else if (var2 == 10) {
@@ -357,7 +357,7 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8221
 					Client.destinationX = var0; // L: 8222
 					Client.destinationY = var1; // L: 8223
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2925, Client.packetWriter.isaacCipher); // L: 8225
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher); // L: 8225
 					var9.packetBuffer.writeShort(var3); // L: 8226
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8227
 					Client.packetWriter.addNode(var9); // L: 8228
@@ -371,9 +371,9 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8529
 					Client.destinationX = var0; // L: 8530
 					Client.destinationY = var1; // L: 8531
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2902, Client.packetWriter.isaacCipher); // L: 8533
-					var9.packetBuffer.method7795(var3); // L: 8534
-					var9.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8535
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher); // L: 8533
+					var9.packetBuffer.writeShortLE(var3); // L: 8534
+					var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8535
 					Client.packetWriter.addNode(var9); // L: 8536
 				}
 			} else if (var2 == 12) {
@@ -385,9 +385,9 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8328
 					Client.destinationX = var0; // L: 8329
 					Client.destinationY = var1; // L: 8330
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2893, Client.packetWriter.isaacCipher); // L: 8332
-					var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8333
-					var9.packetBuffer.method7795(var3); // L: 8334
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher); // L: 8332
+					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8333
+					var9.packetBuffer.writeShortLE(var3); // L: 8334
 					Client.packetWriter.addNode(var9); // L: 8335
 				}
 			} else if (var2 == 13) {
@@ -399,9 +399,9 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8765
 					Client.destinationX = var0; // L: 8766
 					Client.destinationY = var1; // L: 8767
-					var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2916, Client.packetWriter.isaacCipher); // L: 8769
-					var9.packetBuffer.method7795(var3); // L: 8770
-					var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8771
+					var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher); // L: 8769
+					var9.packetBuffer.writeShortLE(var3); // L: 8770
+					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8771
 					Client.packetWriter.addNode(var9); // L: 8772
 				}
 			} else {
@@ -415,12 +415,12 @@ public class SoundCache {
 						Client.mouseCrossState = 0; // L: 8467
 						Client.destinationX = var0; // L: 8468
 						Client.destinationY = var1; // L: 8469
-						var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2933, Client.packetWriter.isaacCipher); // L: 8471
-						var9.packetBuffer.method7791(selectedItemId); // L: 8472
+						var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYERU, Client.packetWriter.isaacCipher); // L: 8471
+						var9.packetBuffer.writeShortAddLE(selectedItemId); // L: 8472
 						var9.packetBuffer.writeShort(var3); // L: 8473
 						var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8474
-						var9.packetBuffer.method7796(class19.selectedItemSlot); // L: 8475
-						var9.packetBuffer.writeIntME(PendingSpawn.selectedItemWidget); // L: 8476
+						var9.packetBuffer.writeShortAdd(class19.selectedItemSlot); // L: 8475
+						var9.packetBuffer.writeIntIME(PendingSpawn.selectedItemWidget); // L: 8476
 						Client.packetWriter.addNode(var9); // L: 8477
 					}
 				} else if (var2 == 15) {
@@ -432,10 +432,10 @@ public class SoundCache {
 						Client.mouseCrossState = 0; // L: 8237
 						Client.destinationX = var0; // L: 8238
 						Client.destinationY = var1; // L: 8239
-						var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2917, Client.packetWriter.isaacCipher); // L: 8240
-						var9.packetBuffer.method7795(Client.selectedSpellChildIndex); // L: 8241
-						var9.packetBuffer.method7796(var3); // L: 8242
-						var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8243
+						var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher); // L: 8240
+						var9.packetBuffer.writeShortLE(Client.selectedSpellChildIndex); // L: 8241
+						var9.packetBuffer.writeShortAdd(var3); // L: 8242
+						var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8243
 						var9.packetBuffer.writeInt(class92.selectedSpellWidget); // L: 8244
 						var9.packetBuffer.writeShort(Client.field688); // L: 8245
 						Client.packetWriter.addNode(var9); // L: 8246
@@ -447,13 +447,13 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8962
 					Client.destinationX = var0; // L: 8963
 					Client.destinationY = var1; // L: 8964
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2900, Client.packetWriter.isaacCipher); // L: 8966
-					var8.packetBuffer.method7788(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8967
-					var8.packetBuffer.method7796(class19.selectedItemSlot); // L: 8968
-					var8.packetBuffer.method7796(var3); // L: 8969
-					var8.packetBuffer.method7796(var0 + ApproximateRouteStrategy.baseX); // L: 8970
-					var8.packetBuffer.method7791(class250.baseY + var1); // L: 8971
-					var8.packetBuffer.writeIntME(PendingSpawn.selectedItemWidget); // L: 8972
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJU, Client.packetWriter.isaacCipher); // L: 8966
+					var8.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8967
+					var8.packetBuffer.writeShortAdd(class19.selectedItemSlot); // L: 8968
+					var8.packetBuffer.writeShortAdd(var3); // L: 8969
+					var8.packetBuffer.writeShortAdd(var0 + ApproximateRouteStrategy.baseX); // L: 8970
+					var8.packetBuffer.writeShortAddLE(class250.baseY + var1); // L: 8971
+					var8.packetBuffer.writeIntIME(PendingSpawn.selectedItemWidget); // L: 8972
 					var8.packetBuffer.writeShort(selectedItemId); // L: 8973
 					Client.packetWriter.addNode(var8); // L: 8974
 				} else if (var2 == 17) {
@@ -463,14 +463,14 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8779
 					Client.destinationX = var0; // L: 8780
 					Client.destinationY = var1; // L: 8781
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2942, Client.packetWriter.isaacCipher); // L: 8782
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher); // L: 8782
 					var8.packetBuffer.writeShort(Client.field688); // L: 8783
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8784
-					var8.packetBuffer.method7795(var3); // L: 8785
+					var8.packetBuffer.writeShortLE(var3); // L: 8785
 					var8.packetBuffer.writeInt(class92.selectedSpellWidget); // L: 8786
 					var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8787
 					var8.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 8788
-					var8.packetBuffer.method7796(var0 + ApproximateRouteStrategy.baseX); // L: 8789
+					var8.packetBuffer.writeShortAdd(var0 + ApproximateRouteStrategy.baseX); // L: 8789
 					Client.packetWriter.addNode(var8); // L: 8790
 				} else if (var2 == 18) {
 					Client.mouseCrossX = var6; // L: 8305
@@ -479,11 +479,11 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8308
 					Client.destinationX = var0; // L: 8309
 					Client.destinationY = var1; // L: 8310
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2971, Client.packetWriter.isaacCipher); // L: 8312
-					var8.packetBuffer.method7788(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8313
-					var8.packetBuffer.method7791(var3); // L: 8314
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher); // L: 8312
+					var8.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8313
+					var8.packetBuffer.writeShortAddLE(var3); // L: 8314
 					var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8315
-					var8.packetBuffer.method7795(var0 + ApproximateRouteStrategy.baseX); // L: 8316
+					var8.packetBuffer.writeShortLE(var0 + ApproximateRouteStrategy.baseX); // L: 8316
 					Client.packetWriter.addNode(var8); // L: 8317
 				} else if (var2 == 19) {
 					Client.mouseCrossX = var6; // L: 8420
@@ -492,11 +492,11 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8423
 					Client.destinationX = var0; // L: 8424
 					Client.destinationY = var1; // L: 8425
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2915, Client.packetWriter.isaacCipher); // L: 8427
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher); // L: 8427
 					var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8428
-					var8.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8429
+					var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8429
 					var8.packetBuffer.writeShort(var3); // L: 8430
-					var8.packetBuffer.method7795(var0 + ApproximateRouteStrategy.baseX); // L: 8431
+					var8.packetBuffer.writeShortLE(var0 + ApproximateRouteStrategy.baseX); // L: 8431
 					Client.packetWriter.addNode(var8); // L: 8432
 				} else if (var2 == 20) {
 					Client.mouseCrossX = var6; // L: 8201
@@ -505,11 +505,11 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8204
 					Client.destinationX = var0; // L: 8205
 					Client.destinationY = var1; // L: 8206
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2951, Client.packetWriter.isaacCipher); // L: 8208
-					var8.packetBuffer.method7795(var0 + ApproximateRouteStrategy.baseX); // L: 8209
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher); // L: 8208
+					var8.packetBuffer.writeShortLE(var0 + ApproximateRouteStrategy.baseX); // L: 8209
 					var8.packetBuffer.writeShort(var3); // L: 8210
-					var8.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8211
-					var8.packetBuffer.method7796(class250.baseY + var1); // L: 8212
+					var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8211
+					var8.packetBuffer.writeShortAdd(class250.baseY + var1); // L: 8212
 					Client.packetWriter.addNode(var8); // L: 8213
 				} else if (var2 == 21) {
 					Client.mouseCrossX = var6; // L: 8911
@@ -518,11 +518,11 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8914
 					Client.destinationX = var0; // L: 8915
 					Client.destinationY = var1; // L: 8916
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher); // L: 8918
-					var8.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8919
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher); // L: 8918
+					var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8919
 					var8.packetBuffer.writeShort(var0 + ApproximateRouteStrategy.baseX); // L: 8920
-					var8.packetBuffer.method7791(class250.baseY + var1); // L: 8921
-					var8.packetBuffer.method7791(var3); // L: 8922
+					var8.packetBuffer.writeShortAddLE(class250.baseY + var1); // L: 8921
+					var8.packetBuffer.writeShortAddLE(var3); // L: 8922
 					Client.packetWriter.addNode(var8); // L: 8923
 				} else if (var2 == 22) {
 					Client.mouseCrossX = var6; // L: 8926
@@ -531,10 +531,10 @@ public class SoundCache {
 					Client.mouseCrossState = 0; // L: 8929
 					Client.destinationX = var0; // L: 8930
 					Client.destinationY = var1; // L: 8931
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2909, Client.packetWriter.isaacCipher); // L: 8933
-					var8.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8934
-					var8.packetBuffer.method7791(var0 + ApproximateRouteStrategy.baseX); // L: 8935
-					var8.packetBuffer.method7795(class250.baseY + var1); // L: 8936
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher); // L: 8933
+					var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8934
+					var8.packetBuffer.writeShortAddLE(var0 + ApproximateRouteStrategy.baseX); // L: 8935
+					var8.packetBuffer.writeShortLE(class250.baseY + var1); // L: 8936
 					var8.packetBuffer.writeShort(var3); // L: 8937
 					Client.packetWriter.addNode(var8); // L: 8938
 				} else if (var2 == 23) {
@@ -554,7 +554,7 @@ public class SoundCache {
 						}
 
 						if (var11) { // L: 8271
-							var10 = ItemContainer.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher); // L: 8273
+							var10 = ItemContainer.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 8273
 							var10.packetBuffer.writeInt(var1); // L: 8274
 							Client.packetWriter.addNode(var10); // L: 8275
 						}
@@ -586,7 +586,7 @@ public class SoundCache {
 							int var12;
 							Widget var14;
 							if (var2 == 28) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher); // L: 8942
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 8942
 								var8.packetBuffer.writeInt(var1); // L: 8943
 								Client.packetWriter.addNode(var8); // L: 8944
 								var14 = HorizontalAlignment.getWidget(var1); // L: 8945
@@ -596,7 +596,7 @@ public class SoundCache {
 									class78.changeGameOptions(var12); // L: 8949
 								}
 							} else if (var2 == 29) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher); // L: 8379
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.WIDGET_TYPE_1, Client.packetWriter.isaacCipher); // L: 8379
 								var8.packetBuffer.writeInt(var1); // L: 8380
 								Client.packetWriter.addNode(var8); // L: 8381
 								var14 = HorizontalAlignment.getWidget(var1); // L: 8382
@@ -614,22 +614,22 @@ public class SoundCache {
 									class290.invalidateWidget(Client.meslayerContinueWidget); // L: 8807
 								}
 							} else if (var2 == 31) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2954, Client.packetWriter.isaacCipher); // L: 8560
-								var8.packetBuffer.writeIntME(PendingSpawn.selectedItemWidget); // L: 8561
-								var8.packetBuffer.method7795(class19.selectedItemSlot); // L: 8562
-								var8.packetBuffer.method7806(var1); // L: 8563
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELDU, Client.packetWriter.isaacCipher); // L: 8560
+								var8.packetBuffer.writeIntIME(PendingSpawn.selectedItemWidget); // L: 8561
+								var8.packetBuffer.writeShortLE(class19.selectedItemSlot); // L: 8562
+								var8.packetBuffer.writeIntLE(var1); // L: 8563
 								var8.packetBuffer.writeShort(var3); // L: 8564
 								var8.packetBuffer.writeShort(var0); // L: 8565
-								var8.packetBuffer.method7795(selectedItemId); // L: 8566
+								var8.packetBuffer.writeShortLE(selectedItemId); // L: 8566
 								Client.packetWriter.addNode(var8); // L: 8567
 								Client.field595 = 0; // L: 8568
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8569
 								Client.field741 = var0; // L: 8570
 							} else if (var2 == 32) {
 								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher); // L: 8636
-								var8.packetBuffer.method7796(var3); // L: 8637
-								var8.packetBuffer.writeIntME(class92.selectedSpellWidget); // L: 8638
-								var8.packetBuffer.method7796(var0); // L: 8639
+								var8.packetBuffer.writeShortAdd(var3); // L: 8637
+								var8.packetBuffer.writeIntIME(class92.selectedSpellWidget); // L: 8638
+								var8.packetBuffer.writeShortAdd(var0); // L: 8639
 								var8.packetBuffer.writeShort(Client.selectedSpellChildIndex); // L: 8640
 								var8.packetBuffer.writeInt(var1); // L: 8641
 								Client.packetWriter.addNode(var8); // L: 8642
@@ -637,17 +637,17 @@ public class SoundCache {
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8644
 								Client.field741 = var0; // L: 8645
 							} else if (var2 == 33) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher); // L: 8410
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELD1, Client.packetWriter.isaacCipher); // L: 8410
 								var8.packetBuffer.writeShort(var3); // L: 8411
 								var8.packetBuffer.writeShort(var0); // L: 8412
-								var8.packetBuffer.method7806(var1); // L: 8413
+								var8.packetBuffer.writeIntLE(var1); // L: 8413
 								Client.packetWriter.addNode(var8); // L: 8414
 								Client.field595 = 0; // L: 8415
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8416
 								Client.field741 = var0; // L: 8417
 							} else if (var2 == 34) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2969, Client.packetWriter.isaacCipher); // L: 8590
-								var8.packetBuffer.method7806(var1); // L: 8591
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELD2, Client.packetWriter.isaacCipher); // L: 8590
+								var8.packetBuffer.writeIntLE(var1); // L: 8591
 								var8.packetBuffer.writeShort(var0); // L: 8592
 								var8.packetBuffer.writeShort(var3); // L: 8593
 								Client.packetWriter.addNode(var8); // L: 8594
@@ -655,28 +655,28 @@ public class SoundCache {
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8596
 								Client.field741 = var0; // L: 8597
 							} else if (var2 == 35) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2918, Client.packetWriter.isaacCipher); // L: 8436
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELD3, Client.packetWriter.isaacCipher); // L: 8436
 								var8.packetBuffer.writeShort(var3); // L: 8437
 								var8.packetBuffer.writeShort(var0); // L: 8438
-								var8.packetBuffer.method7806(var1); // L: 8439
+								var8.packetBuffer.writeIntLE(var1); // L: 8439
 								Client.packetWriter.addNode(var8); // L: 8440
 								Client.field595 = 0; // L: 8441
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8442
 								Client.field741 = var0; // L: 8443
 							} else if (var2 == 36) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2948, Client.packetWriter.isaacCipher); // L: 8514
-								var8.packetBuffer.method7795(var3); // L: 8515
-								var8.packetBuffer.method7806(var1); // L: 8516
-								var8.packetBuffer.method7791(var0); // L: 8517
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELD4, Client.packetWriter.isaacCipher); // L: 8514
+								var8.packetBuffer.writeShortLE(var3); // L: 8515
+								var8.packetBuffer.writeIntLE(var1); // L: 8516
+								var8.packetBuffer.writeShortAddLE(var0); // L: 8517
 								Client.packetWriter.addNode(var8); // L: 8518
 								Client.field595 = 0; // L: 8519
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8520
 								Client.field741 = var0; // L: 8521
 							} else if (var2 == 37) {
-								var8 = ItemContainer.getPacketBufferNode(ClientPacket.field3002, Client.packetWriter.isaacCipher); // L: 8295
-								var8.packetBuffer.writeIntME(var1); // L: 8296
+								var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPHELD5, Client.packetWriter.isaacCipher); // L: 8295
+								var8.packetBuffer.writeIntIME(var1); // L: 8296
 								var8.packetBuffer.writeShort(var3); // L: 8297
-								var8.packetBuffer.method7791(var0); // L: 8298
+								var8.packetBuffer.writeShortAddLE(var0); // L: 8298
 								Client.packetWriter.addNode(var8); // L: 8299
 								Client.field595 = 0; // L: 8300
 								class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8301
@@ -699,45 +699,45 @@ public class SoundCache {
 								}
 
 								if (var2 == 39) {
-									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2974, Client.packetWriter.isaacCipher); // L: 8837
+									var8 = ItemContainer.getPacketBufferNode(ClientPacket.IF1_BUTTON1, Client.packetWriter.isaacCipher); // L: 8837
 									var8.packetBuffer.writeInt(var1); // L: 8838
-									var8.packetBuffer.method7796(var0); // L: 8839
-									var8.packetBuffer.method7795(var3); // L: 8840
+									var8.packetBuffer.writeShortAdd(var0); // L: 8839
+									var8.packetBuffer.writeShortLE(var3); // L: 8840
 									Client.packetWriter.addNode(var8); // L: 8841
 									Client.field595 = 0; // L: 8842
 									class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8843
 									Client.field741 = var0; // L: 8844
 								} else if (var2 == 40) {
-									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2931, Client.packetWriter.isaacCipher); // L: 8368
-									var8.packetBuffer.writeIntME(var1); // L: 8369
+									var8 = ItemContainer.getPacketBufferNode(ClientPacket.IF1_BUTTON2, Client.packetWriter.isaacCipher); // L: 8368
+									var8.packetBuffer.writeIntIME(var1); // L: 8369
 									var8.packetBuffer.writeShort(var0); // L: 8370
-									var8.packetBuffer.method7796(var3); // L: 8371
+									var8.packetBuffer.writeShortAdd(var3); // L: 8371
 									Client.packetWriter.addNode(var8); // L: 8372
 									Client.field595 = 0; // L: 8373
 									class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8374
 									Client.field741 = var0; // L: 8375
 								} else if (var2 == 41) {
-									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2922, Client.packetWriter.isaacCipher); // L: 8864
-									var8.packetBuffer.method7796(var3); // L: 8865
-									var8.packetBuffer.method7806(var1); // L: 8866
-									var8.packetBuffer.method7791(var0); // L: 8867
+									var8 = ItemContainer.getPacketBufferNode(ClientPacket.IF1_BUTTON3, Client.packetWriter.isaacCipher); // L: 8864
+									var8.packetBuffer.writeShortAdd(var3); // L: 8865
+									var8.packetBuffer.writeIntLE(var1); // L: 8866
+									var8.packetBuffer.writeShortAddLE(var0); // L: 8867
 									Client.packetWriter.addNode(var8); // L: 8868
 									Client.field595 = 0; // L: 8869
 									class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8870
 									Client.field741 = var0; // L: 8871
 								} else if (var2 == 42) {
 									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher); // L: 8617
-									var8.packetBuffer.method7791(var0); // L: 8618
+									var8.packetBuffer.writeShortAddLE(var0); // L: 8618
 									var8.packetBuffer.writeInt(var1); // L: 8619
-									var8.packetBuffer.method7795(var3); // L: 8620
+									var8.packetBuffer.writeShortLE(var3); // L: 8620
 									Client.packetWriter.addNode(var8); // L: 8621
 									Client.field595 = 0; // L: 8622
 									class12.field64 = HorizontalAlignment.getWidget(var1); // L: 8623
 									Client.field741 = var0; // L: 8624
 								} else if (var2 == 43) {
 									var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2895, Client.packetWriter.isaacCipher); // L: 8794
-									var8.packetBuffer.method7791(var0); // L: 8795
-									var8.packetBuffer.method7791(var3); // L: 8796
+									var8.packetBuffer.writeShortAddLE(var0); // L: 8795
+									var8.packetBuffer.writeShortAddLE(var3); // L: 8796
 									var8.packetBuffer.writeInt(var1); // L: 8797
 									Client.packetWriter.addNode(var8); // L: 8798
 									Client.field595 = 0; // L: 8799
@@ -752,9 +752,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8605
 										Client.destinationX = var0; // L: 8606
 										Client.destinationY = var1; // L: 8607
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher); // L: 8609
-										var9.packetBuffer.method7795(var3); // L: 8610
-										var9.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8611
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 8609
+										var9.packetBuffer.writeShortLE(var3); // L: 8610
+										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8611
 										Client.packetWriter.addNode(var9); // L: 8612
 									}
 								} else if (var2 == 45) {
@@ -766,9 +766,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8749
 										Client.destinationX = var0; // L: 8750
 										Client.destinationY = var1; // L: 8751
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2957, Client.packetWriter.isaacCipher); // L: 8753
-										var9.packetBuffer.method7795(var3); // L: 8754
-										var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8755
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher); // L: 8753
+										var9.packetBuffer.writeShortLE(var3); // L: 8754
+										var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8755
 										Client.packetWriter.addNode(var9); // L: 8756
 									}
 								} else if (var2 == 46) {
@@ -780,9 +780,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8502
 										Client.destinationX = var0; // L: 8503
 										Client.destinationY = var1; // L: 8504
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2964, Client.packetWriter.isaacCipher); // L: 8506
-										var9.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8507
-										var9.packetBuffer.method7796(var3); // L: 8508
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher); // L: 8506
+										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8507
+										var9.packetBuffer.writeShortAdd(var3); // L: 8508
 										Client.packetWriter.addNode(var9); // L: 8509
 									}
 								} else if (var2 == 47) {
@@ -794,8 +794,8 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8545
 										Client.destinationX = var0; // L: 8546
 										Client.destinationY = var1; // L: 8547
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher); // L: 8549
-										var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8550
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 8549
+										var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8550
 										var9.packetBuffer.writeShort(var3); // L: 8551
 										Client.packetWriter.addNode(var9); // L: 8552
 									}
@@ -808,9 +808,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8852
 										Client.destinationX = var0; // L: 8853
 										Client.destinationY = var1; // L: 8854
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2972, Client.packetWriter.isaacCipher); // L: 8856
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher); // L: 8856
 										var9.packetBuffer.writeShort(var3); // L: 8857
-										var9.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8858
+										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8858
 										Client.packetWriter.addNode(var9); // L: 8859
 									}
 								} else if (var2 == 49) {
@@ -822,8 +822,8 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8486
 										Client.destinationX = var0; // L: 8487
 										Client.destinationY = var1; // L: 8488
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2903, Client.packetWriter.isaacCipher); // L: 8490
-										var9.packetBuffer.method7791(var3); // L: 8491
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 8490
+										var9.packetBuffer.writeShortAddLE(var3); // L: 8491
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8492
 										Client.packetWriter.addNode(var9); // L: 8493
 									}
@@ -836,9 +836,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8982
 										Client.destinationX = var0; // L: 8983
 										Client.destinationY = var1; // L: 8984
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2898, Client.packetWriter.isaacCipher); // L: 8986
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 8986
 										var9.packetBuffer.writeShort(var3); // L: 8987
-										var9.packetBuffer.method7786(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8988
+										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8988
 										Client.packetWriter.addNode(var9); // L: 8989
 									}
 								} else if (var2 == 51) {
@@ -850,9 +850,9 @@ public class SoundCache {
 										Client.mouseCrossState = 0; // L: 8451
 										Client.destinationX = var0; // L: 8452
 										Client.destinationY = var1; // L: 8453
-										var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2912, Client.packetWriter.isaacCipher); // L: 8455
-										var9.packetBuffer.method7791(var3); // L: 8456
-										var9.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8457
+										var9 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher); // L: 8455
+										var9.packetBuffer.writeShortAddLE(var3); // L: 8456
+										var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8457
 										Client.packetWriter.addNode(var9); // L: 8458
 									}
 								} else {
@@ -863,11 +863,11 @@ public class SoundCache {
 												if (var16 != null) { // L: 8649
 													var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher); // L: 8651
 													var9.packetBuffer.writeShort(Client.field688); // L: 8652
-													var9.packetBuffer.writeIntME(class92.selectedSpellWidget); // L: 8653
-													var9.packetBuffer.method7796(var16.itemId); // L: 8654
-													var9.packetBuffer.method7791(Client.selectedSpellChildIndex); // L: 8655
+													var9.packetBuffer.writeIntIME(class92.selectedSpellWidget); // L: 8653
+													var9.packetBuffer.writeShortAdd(var16.itemId); // L: 8654
+													var9.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex); // L: 8655
 													var9.packetBuffer.writeInt(var1); // L: 8656
-													var9.packetBuffer.method7796(var0); // L: 8657
+													var9.packetBuffer.writeShortAdd(var0); // L: 8657
 													Client.packetWriter.addNode(var9); // L: 8658
 												}
 												break label638;
@@ -880,10 +880,10 @@ public class SoundCache {
 												Client.mouseCrossState = 0; // L: 8732
 												Client.destinationX = var0; // L: 8733
 												Client.destinationY = var1; // L: 8734
-												var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2976, Client.packetWriter.isaacCipher); // L: 8736
-												var8.packetBuffer.method7795(var3); // L: 8737
-												var8.packetBuffer.method7796(var0 + ApproximateRouteStrategy.baseX); // L: 8738
-												var8.packetBuffer.method7787(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8739
+												var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher); // L: 8736
+												var8.packetBuffer.writeShortLE(var3); // L: 8737
+												var8.packetBuffer.writeShortAdd(var0 + ApproximateRouteStrategy.baseX); // L: 8738
+												var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0); // L: 8739
 												var8.packetBuffer.writeShort(class250.baseY + var1); // L: 8740
 												Client.packetWriter.addNode(var8); // L: 8741
 												break label638;
@@ -895,7 +895,7 @@ public class SoundCache {
 												Client.mouseCrossColor = 2; // L: 8876
 												Client.mouseCrossState = 0; // L: 8877
 												var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2949, Client.packetWriter.isaacCipher); // L: 8879
-												var8.packetBuffer.method7791(var3); // L: 8880
+												var8.packetBuffer.writeShortAddLE(var3); // L: 8880
 												Client.packetWriter.addNode(var8); // L: 8881
 												break label638;
 											}
@@ -914,7 +914,7 @@ public class SoundCache {
 
 													if (var17 != null) { // L: 8400
 														var10 = ItemContainer.getPacketBufferNode(ClientPacket.field2958, Client.packetWriter.isaacCipher); // L: 8402
-														var10.packetBuffer.method7795(var17.id); // L: 8403
+														var10.packetBuffer.writeShortLE(var17.id); // L: 8403
 														Client.packetWriter.addNode(var10); // L: 8404
 													}
 												}
@@ -926,8 +926,8 @@ public class SoundCache {
 												Client.mouseCrossY = var7; // L: 8827
 												Client.mouseCrossColor = 2; // L: 8828
 												Client.mouseCrossState = 0; // L: 8829
-												var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher); // L: 8831
-												var8.packetBuffer.method7796(var3); // L: 8832
+												var8 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher); // L: 8831
+												var8.packetBuffer.writeShortAdd(var3); // L: 8832
 												Client.packetWriter.addNode(var8); // L: 8833
 												break label638;
 											}
@@ -937,8 +937,8 @@ public class SoundCache {
 												if (var16 != null && var16.itemQuantities[var0] >= 100000) { // L: 8700
 													Login.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + class67.ItemDefinition_get(var3).name);
 												} else {
-													var9 = ItemContainer.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher); // L: 8703
-													var9.packetBuffer.method7796(var3); // L: 8704
+													var9 = ItemContainer.getPacketBufferNode(ClientPacket.RESUME_P_STRINGDIALOG, Client.packetWriter.isaacCipher); // L: 8703
+													var9.packetBuffer.writeShortAdd(var3); // L: 8704
 													Client.packetWriter.addNode(var9); // L: 8705
 												}
 

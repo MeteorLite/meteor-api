@@ -7,7 +7,6 @@ import dev.hoot.api.widgets.DialogOption;
 import eventbus.Events;
 import eventbus.events.*;
 import net.runelite.api.ItemComposition;
-import net.runelite.api.MenuAction;
 import net.runelite.api.Skill;
 import net.runelite.api.Tile;
 import net.runelite.api.TileObject;
@@ -67,15 +66,7 @@ public abstract class HClientMixin implements RSClient
 	{
 		if (getLoginIndex() == 14)
 		{
-			if (getBanType() == 0)
-			{
-				return "Your account has been disabled. Please visit the support page for assistance.";
-			}
 
-			if (getBanType() == 1)
-			{
-				return "Account locked as we suspect it has been stolen. Please visit the support page for assistance.";
-			}
 		}
 
 		if (getLoginIndex() == 3)
@@ -289,13 +280,12 @@ public abstract class HClientMixin implements RSClient
 		AutomatedMenu replacement = automatedMenu.get();
 		if (replacement != null)
 		{
-			menuOptionClicked = replacement.toMenuOptionClicked();
+			menuOptionClicked = replacement.toMenuOptionClicked(client);
 			lastInteractionTime = Instant.now();
 		}
 		else
 		{
-			menuOptionClicked = new MenuOptionClicked(param0, param1, option, target, MenuAction.of(opcode), id, client.getSelectedItemSlot(),
-					false, canvasX, canvasY, false);
+			menuOptionClicked = new MenuOptionClicked(menuEntry, client.getSelectedItemSlot(), canvasX, canvasY, false);
 		}
 
 		client.getCallbacks().post(Events.MENU_OPTION_CLICKED, menuOptionClicked);

@@ -95,24 +95,24 @@ public class VertexNormal {
 			if (var7 != null && var7 != class19.localPlayer && var7.username != null && var7.username.equals(var5)) { // L: 9007
 				PacketBufferNode var8;
 				if (var0 == 1) { // L: 9008
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2913, Client.packetWriter.isaacCipher); // L: 9010
-					var8.packetBuffer.method7795(var3[var6]); // L: 9011
-					var8.packetBuffer.method7786(0); // L: 9012
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher); // L: 9010
+					var8.packetBuffer.writeShortLE(var3[var6]); // L: 9011
+					var8.packetBuffer.writeByteAdd(0); // L: 9012
 					Client.packetWriter.addNode(var8); // L: 9013
 				} else if (var0 == 4) { // L: 9015
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2904, Client.packetWriter.isaacCipher); // L: 9017
-					var8.packetBuffer.method7787(0); // L: 9018
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher); // L: 9017
+					var8.packetBuffer.writeByteNeg(0); // L: 9018
 					var8.packetBuffer.writeShort(var3[var6]); // L: 9019
 					Client.packetWriter.addNode(var8); // L: 9020
 				} else if (var0 == 6) { // L: 9022
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2903, Client.packetWriter.isaacCipher); // L: 9024
-					var8.packetBuffer.method7791(var3[var6]); // L: 9025
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher); // L: 9024
+					var8.packetBuffer.writeShortAddLE(var3[var6]); // L: 9025
 					var8.packetBuffer.writeByte(0); // L: 9026
 					Client.packetWriter.addNode(var8); // L: 9027
 				} else if (var0 == 7) { // L: 9029
-					var8 = ItemContainer.getPacketBufferNode(ClientPacket.field2898, Client.packetWriter.isaacCipher); // L: 9031
+					var8 = ItemContainer.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher); // L: 9031
 					var8.packetBuffer.writeShort(var3[var6]); // L: 9032
-					var8.packetBuffer.method7786(0); // L: 9033
+					var8.packetBuffer.writeByteAdd(0); // L: 9033
 					Client.packetWriter.addNode(var8); // L: 9034
 				}
 
