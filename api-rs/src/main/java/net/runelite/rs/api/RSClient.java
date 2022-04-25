@@ -1721,4 +1721,12 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("selectedItemId")
 	@Override
 	int getSelectedItemID();
+
+	@Import("selectedSpellItemId")
+	@Override
+	int getSelectedSpellItemId();
+
+	@Import("selectedSpellItemId")
+	@Override
+	void setSelectedSpellItemId(int itemId);
 }

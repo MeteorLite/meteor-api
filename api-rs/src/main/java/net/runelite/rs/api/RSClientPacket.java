@@ -232,4 +232,24 @@ public interface RSClientPacket extends ClientPacket
 	@Import("OPPLAYER8")
 	@Override
 	RSClientPacket OPPLAYER8();
+
+	@Import("IF3_CLICK1")
+	@Override
+	RSClientPacket IF3_CLICK1();
+
+	@Import("IF3_CLICK2")
+	@Override
+	RSClientPacket IF3_CLICK2();
+
+	@Import("IF3_CLICK3")
+	@Override
+	RSClientPacket IF3_CLICK3();
+
+	@Import("IF3_CLICK4")
+	@Override
+	RSClientPacket IF3_CLICK4();
+
+	@Import("IF3_CLICK5")
+	@Override
+	RSClientPacket IF3_CLICK5();
 }

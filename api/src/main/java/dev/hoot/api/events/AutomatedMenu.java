@@ -10,17 +10,18 @@ import net.runelite.api.MenuEntry;
 import java.util.function.Consumer;
 
 @Getter
+@Setter
 public class AutomatedMenu
 {
-	private final String option;
-	private final String target;
-	private final int identifier;
-	private final MenuAction opcode;
-	private final int param0;
-	private final int param1;
-	private final int clickX;
-	private final int clickY;
-	private final long entityTag;
+	private String option;
+	private String target;
+	private int identifier;
+	private MenuAction opcode;
+	private int param0;
+	private int param1;
+	private int clickX;
+	private int clickY;
+	private long entityTag;
 
 	@Setter
 	private long timestamp;
@@ -75,14 +76,24 @@ public class AutomatedMenu
 		this.timestamp = System.currentTimeMillis();
 	}
 
-	public MenuEntry toEntry(Client client, Consumer<MenuEntry> consumer)
+	public MenuEntry toEntry(Client client, int idx)
 	{
-		return toEntry(client, option, target, consumer);
+		return toEntry(client, idx, null);
 	}
 
-	public MenuEntry toEntry(Client client, String option, String target, Consumer<MenuEntry> consumer)
+	public MenuEntry toEntry(Client client, int idx, Consumer<MenuEntry> consumer)
 	{
-		return client.createMenuEntry(-1)
+		return toEntry(client, idx, option, target, consumer);
+	}
+
+	public MenuEntry toEntry(Client client, int idx, String option, String target)
+	{
+		return toEntry(client, idx, option, target, null);
+	}
+
+	public MenuEntry toEntry(Client client, int idx, String option, String target, Consumer<MenuEntry> consumer)
+	{
+		return client.createMenuEntry(idx)
 				.setOption(option)
 				.setTarget(target)
 				.setIdentifier(identifier)
@@ -97,14 +108,45 @@ public class AutomatedMenu
 		return toEntry(client, null);
 	}
 
-	public MenuOptionClicked toMenuOptionClicked(Client client)
+	public MenuEntry toEntry(Client client, Consumer<MenuEntry> consumer)
 	{
-		MenuOptionClicked clicked = new MenuOptionClicked();
-		clicked.setMenuEntry(toEntry(client));
-		clicked.setSelectedItemIndex(-1);
-		clicked.setCanvasY(clickY);
-		clicked.setCanvasX(clickX);
-		clicked.setAutomated(false);
-		return clicked;
+		return toEntry(client, option, target, consumer);
+	}
+
+	public MenuEntry toEntry(Client client, String option, String target)
+	{
+		return toEntry(client, option, target, null);
+	}
+
+	public MenuEntry toEntry(Client client, String option, String target, Consumer<MenuEntry> consumer)
+	{
+		return toEntry(client, -1, option, target, consumer);
+	}
+
+	public MenuEntry toBareEntry(Client client)
+	{
+		return client.createMenuEntry(
+				option,
+				target,
+				identifier,
+				opcode.getId(),
+				param0,
+				param1,
+				false
+		);
+	}
+
+	public MenuOptionClicked toMenuOptionClicked()
+	{
+		MenuOptionClicked event = new MenuOptionClicked();
+		event.getMenuEntry().setOption(option);
+		event.getMenuEntry().setTarget(target);
+		event.getMenuEntry().setType(opcode);
+		event.getMenuEntry().setIdentifier(identifier);
+		event.getMenuEntry().setParam0(param0);
+		event.getMenuEntry().setParam1(param1);
+		event.setCanvasX(clickX);
+		event.setCanvasY(clickY);
+		return event;
 	}
 }

@@ -1,9 +1,11 @@
 package dev.hoot.api;
 
 import dev.hoot.api.events.AutomatedMenu;
+import net.runelite.api.Item;
 import net.runelite.api.Point;
 import net.runelite.api.util.Text;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -52,8 +54,15 @@ public interface Interactable
 		{
 			return;
 		}
-
-		int index = getActions().indexOf(action);
+		ArrayList<String> validActions = new ArrayList<>();
+		for (String s : getActions())
+		{
+			if (s != null) {
+				if (s.length() > 0)
+					validActions.add(s);
+			}
+		}
+		int index = validActions.indexOf(action);
 		if (index == -1)
 		{
 			return;
@@ -101,6 +110,10 @@ public interface Interactable
 		{
 			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY(),
 					((SceneEntity) this).getTag());
+		}
+		if (this instanceof Item)
+		{
+			return new AutomatedMenu(identifier, opcode, ((Item) this).getSlot(), param1, clickPoint.getX(), clickPoint.getY());
 		}
 		else
 		{
