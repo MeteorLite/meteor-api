@@ -3597,7 +3597,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 															if (Scene.shouldSendWalk()) { // L: 3421
 																var3 = Scene.Scene_selectedX; // L: 3422
 																var4 = Scene.Scene_selectedY; // L: 3423
-																var40 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2911, packetWriter.isaacCipher); // L: 3425
+																var40 = WorldMapSprite.getPacketBufferNode(ClientPacket.MOVE_GAMECLICK, packetWriter.isaacCipher); // L: 3425
 																var40.packetBuffer.writeByte(5); // L: 3426
 																var40.packetBuffer.writeShortLE(var3 + GrandExchangeOfferOwnWorldComparator.baseX); // L: 3427
 																var40.packetBuffer.writeShort(var4 + VarcInt.baseY); // L: 3428

@@ -107,7 +107,7 @@ public class ClientPacket implements class261 {
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
 	)
-	public static final ClientPacket field2911;
+	public static final ClientPacket MOVE_GAMECLICK;
 	@ObfuscatedName("x")
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
@@ -586,7 +586,7 @@ public class ClientPacket implements class261 {
 		IF3_CLICK1 = new ClientPacket(15, 8); // L: 20
 		IF1_BUTTON2 = new ClientPacket(16, 8); // L: 21
 		field2910 = new ClientPacket(17, -1); // L: 22
-		field2911 = new ClientPacket(18, -1); // L: 23
+		MOVE_GAMECLICK = new ClientPacket(18, -1); // L: 23
 		field2912 = new ClientPacket(19, -1); // L: 24
 		OPPLAYER1 = new ClientPacket(20, 3); // L: 25
 		OPLOC1 = new ClientPacket(21, 7); // L: 26
