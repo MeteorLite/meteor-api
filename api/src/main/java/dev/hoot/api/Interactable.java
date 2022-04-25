@@ -4,6 +4,8 @@ import dev.hoot.api.events.AutomatedMenu;
 import net.runelite.api.Item;
 import net.runelite.api.Point;
 import net.runelite.api.util.Text;
+import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetItem;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,20 +106,18 @@ public interface Interactable
 
 	default AutomatedMenu getMenu(int identifier, int opcode, int param0, int param1)
 	{
-		Point clickPoint = getClickPoint();
-
 		if (this instanceof SceneEntity)
 		{
-			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY(),
+			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1,
 					((SceneEntity) this).getTag());
 		}
 		if (this instanceof Item)
 		{
-			return new AutomatedMenu(identifier, opcode, ((Item) this).getSlot(), param1, clickPoint.getX(), clickPoint.getY());
+			return new AutomatedMenu(identifier, opcode, ((Item) this).getSlot(), param1, -1, -1);
 		}
 		else
 		{
-			return new AutomatedMenu(identifier, opcode, param0, param1, clickPoint.getX(), clickPoint.getY());
+			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1);
 		}
 	}
 }
