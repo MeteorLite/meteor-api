@@ -54,15 +54,15 @@ public interface Interactable
 		{
 			return;
 		}
-		ArrayList<String> validActions = new ArrayList<>();
-		for (String s : getActions())
+
+		ArrayList<String> actions = new ArrayList<>();
+		for (String s : getRawActions())
 		{
-			if (s != null) {
-				if (s.length() > 0)
-					validActions.add(s);
-			}
+			if (s == null)
+				s = "null";
+			actions.add(s);
 		}
-		int index = validActions.indexOf(action);
+		int index = actions.indexOf(action);
 		if (index == -1)
 		{
 			return;

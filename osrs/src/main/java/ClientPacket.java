@@ -267,12 +267,12 @@ public class ClientPacket implements class261 {
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
 	)
-	public static final ClientPacket field2943;
+	public static final ClientPacket IF_BUTTON9;
 	@ObfuscatedName("aa")
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
 	)
-	public static final ClientPacket field2944;
+	public static final ClientPacket IF_BUTTON6;
 	@ObfuscatedName("bj")
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
@@ -352,7 +352,7 @@ public class ClientPacket implements class261 {
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
 	)
-	public static final ClientPacket field2960;
+	public static final ClientPacket IF_BUTTON8;
 	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
@@ -462,7 +462,7 @@ public class ClientPacket implements class261 {
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
 	)
-	public static final ClientPacket field2982;
+	public static final ClientPacket IF_BUTTON7;
 	@ObfuscatedName("ci")
 	@ObfuscatedSignature(
 		descriptor = "Ljl;"
@@ -618,8 +618,8 @@ public class ClientPacket implements class261 {
 		OPNPC4 = new ClientPacket(47, 3); // L: 52
 		IF3_CLICK3 = new ClientPacket(48, 8); // L: 53
 		OPOBJ4 = new ClientPacket(49, 7); // L: 54
-		field2943 = new ClientPacket(50, 8); // L: 55
-		field2944 = new ClientPacket(51, 8); // L: 56
+		IF_BUTTON9 = new ClientPacket(50, 8); // L: 55
+		IF_BUTTON6 = new ClientPacket(51, 8); // L: 56
 		IF3_CLICK2 = new ClientPacket(52, 8); // L: 57
 		field2946 = new ClientPacket(53, -1); // L: 58
 		OPNPCU = new ClientPacket(54, 11); // L: 59
@@ -635,7 +635,7 @@ public class ClientPacket implements class261 {
 		OPPLAYER2 = new ClientPacket(64, 3); // L: 69
 		field2952 = new ClientPacket(65, 6); // L: 70
 		OPHELDT = new ClientPacket(66, 14); // L: 71
-		field2960 = new ClientPacket(67, 8); // L: 72
+		IF_BUTTON8 = new ClientPacket(67, 8); // L: 72
 		field2961 = new ClientPacket(68, -1); // L: 73
 		field2962 = new ClientPacket(69, 2); // L: 74
 		field2963 = new ClientPacket(70, -1); // L: 75
@@ -657,7 +657,7 @@ public class ClientPacket implements class261 {
 		field2979 = new ClientPacket(86, 0); // L: 91
 		field2937 = new ClientPacket(87, 4); // L: 92
 		OPNPC1 = new ClientPacket(88, 3); // L: 93
-		field2982 = new ClientPacket(89, 8); // L: 94
+		IF_BUTTON7 = new ClientPacket(89, 8); // L: 94
 		field2983 = new ClientPacket(90, 10); // L: 95
 		field2984 = new ClientPacket(91, 13); // L: 96
 		OPPLAYERU = new ClientPacket(92, 11); // L: 97

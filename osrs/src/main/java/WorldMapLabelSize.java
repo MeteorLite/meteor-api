@@ -183,7 +183,7 @@ public class WorldMapLabelSize {
 					}
 
 					if (opcode == 6) { // L: 9750
-						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2944, Client.packetWriter.isaacCipher); // L: 9752
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF_BUTTON6, Client.packetWriter.isaacCipher); // L: 9752
 						var10.packetBuffer.writeInt(group); // L: 9753
 						var10.packetBuffer.writeShort(slot); // L: 9754
 						var10.packetBuffer.writeShort(id); // L: 9755
@@ -191,7 +191,7 @@ public class WorldMapLabelSize {
 					}
 
 					if (opcode == 7) { // L: 9758
-						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2982, Client.packetWriter.isaacCipher); // L: 9760
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF_BUTTON7, Client.packetWriter.isaacCipher); // L: 9760
 						var10.packetBuffer.writeInt(group); // L: 9761
 						var10.packetBuffer.writeShort(slot); // L: 9762
 						var10.packetBuffer.writeShort(id); // L: 9763
@@ -199,7 +199,7 @@ public class WorldMapLabelSize {
 					}
 
 					if (opcode == 8) { // L: 9766
-						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2960, Client.packetWriter.isaacCipher); // L: 9768
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF_BUTTON8, Client.packetWriter.isaacCipher); // L: 9768
 						var10.packetBuffer.writeInt(group); // L: 9769
 						var10.packetBuffer.writeShort(slot); // L: 9770
 						var10.packetBuffer.writeShort(id); // L: 9771
@@ -207,7 +207,7 @@ public class WorldMapLabelSize {
 					}
 
 					if (opcode == 9) { // L: 9774
-						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.field2943, Client.packetWriter.isaacCipher); // L: 9776
+						var10 = WorldMapSprite.getPacketBufferNode(ClientPacket.IF_BUTTON9, Client.packetWriter.isaacCipher); // L: 9776
 						var10.packetBuffer.writeInt(group); // L: 9777
 						var10.packetBuffer.writeShort(slot); // L: 9778
 						var10.packetBuffer.writeShort(id); // L: 9779
