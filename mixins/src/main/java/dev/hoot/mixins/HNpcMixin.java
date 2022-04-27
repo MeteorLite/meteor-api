@@ -22,33 +22,9 @@ public abstract class HNpcMixin implements RSNPC
 
 	@Inject
 	@Override
-	public int getId()
-	{
-		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? -1 : composition.getId();
-	}
-
-	@Inject
-	@Override
-	public String getName()
-	{
-		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? "null" : Text.removeTags(Text.sanitize(composition.getName()));
-	}
-
-	@Inject
-	@Override
-	public int getCombatLevel()
-	{
-		RSNPCComposition composition = getTransformedComposition();
-		return composition == null ? -1 : composition.getCombatLevel();
-	}
-
-	@Inject
-	@Override
 	public String[] getRawActions()
 	{
-		RSNPCComposition composition = getTransformedComposition();
+		RSNPCComposition composition = (RSNPCComposition) getTransformedComposition();
 		return composition == null ? null : composition.getActions();
 	}
 
@@ -111,18 +87,6 @@ public abstract class HNpcMixin implements RSNPC
 	public long getTag()
 	{
 		return client.calculateTag(0, 0, 1, getComposition().isInteractible(), getIndex());
-	}
-
-	@Inject
-	public void setTransformedComposition(NPCComposition composition)
-	{
-		transformedComposition = (RSNPCComposition) composition;
-	}
-
-	@Inject
-	public RSNPCComposition getTransformedComposition()
-	{
-		return transformedComposition == null ? getComposition() : transformedComposition;
 	}
 
 	@Inject

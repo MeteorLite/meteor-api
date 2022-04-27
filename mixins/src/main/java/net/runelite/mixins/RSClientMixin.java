@@ -2752,15 +2752,6 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
-	@Override
-	@Nonnull
-	public ItemComposition getItemComposition(int id)
-	{
-		assert this.isClientThread() : "getItemComposition must be called on client thread";
-		return getRSItemDefinition(id);
-	}
-
-	@Inject
 	public static RSFloorOverlayDefinition loadFloorOverlay(int var0)
 	{
 		RSFloorOverlayDefinition var1 = (RSFloorOverlayDefinition) client.getFloorOverlayDefinitionCache().get(var0);

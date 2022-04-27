@@ -47,22 +47,6 @@ public abstract class HTileObjectMixin implements TileObject
 		return new Point(getLocalLocation().getSceneX(), getLocalLocation().getSceneY());
 	}
 
-	@Inject
-	@Override
-	public String getName()
-	{
-		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? "null" : Text.removeTags(Text.sanitize(def.getName()));
-	}
-
-	@Inject
-	@Override
-	public String[] getRawActions()
-	{
-		RSObjectComposition def = (RSObjectComposition) getTransformedComposition();
-		return def == null ? null : def.getActions();
-	}
-
 	@Override
 	@Inject
 	public int getActionOpcode(int action)
