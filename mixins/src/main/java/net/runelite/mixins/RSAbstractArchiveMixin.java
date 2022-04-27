@@ -29,11 +29,11 @@ public abstract class RSAbstractArchiveMixin implements RSAbstractArchive
 	@Shadow("client")
 	private static RSClient client;
 
-	@Inject
-	private boolean overlayOutdated;
+	@Shadow("customClientScripts")
+	private static Map<Integer, byte[]> customClientScripts;
 
 	@Inject
-	private Map<String, String> scriptNames;
+	private boolean overlayOutdated;
 
 	@Inject
 	@Override
@@ -53,34 +53,6 @@ public abstract class RSAbstractArchiveMixin implements RSAbstractArchive
 		if (!OverlayIndex.hasOverlay(archiveId, groupId))
 		{
 			return rsData;
-		}
-
-		if (scriptNames == null)
-		try
-		{
-			scriptNames = new HashMap<>();
-			InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("scripts/");
-			if (is != null)
-			{
-				List<String> files = IOUtils.readLines(is, Charsets.UTF_8);
-				for (String s : files)
-				{
-					if (s.endsWith(".rs2asm"))
-						continue;
-
-					String scriptName = s.replace(".hash", "");
-					InputStream hashStream = ClassLoader.getSystemClassLoader().getResourceAsStream("scripts/" + scriptName + ".hash");
-					if (hashStream != null)
-					{
-						String scriptHash = (String) IOUtils.readLines(hashStream, Charsets.UTF_8).toArray()[0];
-						scriptNames.put(scriptHash, scriptName);
-					}
-				}
-			}
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
 		}
 
 		final Logger log = client.getLogger();
@@ -106,10 +78,14 @@ public abstract class RSAbstractArchiveMixin implements RSAbstractArchive
 			if (!overlayHash.equalsIgnoreCase(originalHash))
 			{
 				log.error("Script " + groupId + " is invalid, and will not be overlaid. This will break plugin(s)!");
-				client.setOutdatedScript(scriptNames.get(overlayHash));
 				overlayOutdated = true;
 				return rsData;
 			}
+		}
+
+		if (customClientScripts.containsKey(archiveId << 16 | groupId))
+		{
+			return customClientScripts.get(archiveId << 16 | groupId);
 		}
 
 		try (final InputStream ovlIn = getClass().getResourceAsStream(path))

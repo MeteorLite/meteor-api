@@ -29,14 +29,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.primitives.Doubles;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -108,6 +101,7 @@ import net.runelite.api.mixins.MethodHook;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Replace;
 import net.runelite.api.mixins.Shadow;
+import net.runelite.api.overlay.OverlayIndex;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetConfig;
@@ -261,6 +255,9 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	private static int tmpMenuOptionsCount;
+
+	@Inject
+	private static final Map<Integer, byte[]> customClientScripts = new HashMap<>();
 
 	@Inject
 	@Override
@@ -897,7 +894,22 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public MenuEntry[] getMenuEntries()
 	{
-		return Arrays.copyOf(rl$menuEntries, client.getMenuOptionCount());
+		RSRuneLiteMenuEntry[] menuEntries = Arrays.copyOf(rl$menuEntries, client.getMenuOptionCount());
+
+		for (RSRuneLiteMenuEntry menuEntry : menuEntries)
+		{
+			if (menuEntry.getOption() == null)
+			{
+				menuEntry.setOption("null");
+			}
+
+			if (menuEntry.getTarget() == null)
+			{
+				menuEntry.setTarget("null");
+			}
+		}
+
+		return menuEntries;
 	}
 
 	@Inject
@@ -1007,6 +1019,16 @@ public abstract class RSClientMixin implements RSClient
 		}
 		else if (optionCount == tmpOptionsCount + 1)
 		{
+			if (client.getMenuOptions()[tmpOptionsCount] == null)
+			{
+				client.getMenuOptions()[tmpOptionsCount] = "null";
+			}
+
+			if (client.getMenuTargets()[tmpOptionsCount] == null)
+			{
+				client.getMenuTargets()[tmpOptionsCount] = "null";
+			}
+
 			String menuOption = client.getMenuOptions()[tmpOptionsCount];
 			String menuTarget = client.getMenuTargets()[tmpOptionsCount];
 			int menuOpcode = client.getMenuOpcodes()[tmpOptionsCount];
@@ -1722,19 +1744,12 @@ public abstract class RSClientMixin implements RSClient
 	@Inject
 	public static void preRenderWidgetLayer(Widget[] widgets, int parentId, int minX, int minY, int maxX, int maxY, int x, int y, int var8)
 	{
-		@SuppressWarnings("unchecked") HashTable<WidgetNode> componentTable = client.getComponentTable();
-
-		for (int i = 0; i < widgets.length; i++)
+		for (Widget value : widgets)
 		{
-			RSWidget widget = (RSWidget) widgets[i];
+			RSWidget widget = (RSWidget) value;
 			if (widget == null || widget.getRSParentId() != parentId || widget.isSelfHidden())
 			{
 				continue;
-			}
-
-			if (parentId != -1)
-			{
-				widget.setRenderParentId(parentId);
 			}
 
 			final int renderX = x + widget.getRelativeX();
@@ -1756,24 +1771,6 @@ public abstract class RSClientMixin implements RSClient
 				viewportColor = outAlpha << 24 | c1 + c2;
 				widget.setHidden(true);
 				hiddenWidgets.add(widget);
-			}
-			else
-			{
-				WidgetNode childNode = componentTable.get(widget.getId());
-				if (childNode != null)
-				{
-					int widgetId = widget.getId();
-					int groupId = childNode.getId();
-					RSWidget[] children = client.getWidgets()[groupId];
-
-					for (RSWidget child : children)
-					{
-						if (child.getRSParentId() == -1)
-						{
-							child.setRenderParentId(widgetId);
-						}
-					}
-				}
 			}
 		}
 	}
@@ -2010,19 +2007,6 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return false;
-	}
-
-	@Copy("menu")
-	@Replace("menu")
-	void copy$menu()
-	{
-		Menu menu = Menu.Companion.getMENU();
-		menu.reset();
-		getCallbacks().post(Events.MENU, menu);
-		if (menu.shouldRun())
-		{
-			copy$menu();
-		}
 	}
 
 	@Inject
@@ -2827,6 +2811,38 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return null;
+	}
+
+	@Inject
+	@Override
+	public int addClientScript(byte[] script)
+	{
+		assert this.isClientThread() : "addClientScript must be called on client thread";
+
+		int highestUsedScript = -1;
+		for (int index : OverlayIndex.getOverlays())
+		{
+			if ((index >> 16) != 12)
+			{
+				continue;
+			}
+
+			int scriptId = index & 0xFFFF;
+			if (scriptId > highestUsedScript)
+			{
+				highestUsedScript = scriptId;
+			}
+		}
+
+		if (highestUsedScript == -1)
+		{
+			highestUsedScript = 10000;
+		}
+
+		int newScriptId = highestUsedScript + 1;
+		OverlayIndex.getOverlays().add((12 << 16) | newScriptId);
+		customClientScripts.put((12 << 16) | newScriptId, script);
+		return newScriptId;
 	}
 }
 

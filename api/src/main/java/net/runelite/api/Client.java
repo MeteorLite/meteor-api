@@ -2622,4 +2622,11 @@ public interface Client extends GameEngine
 	int getTmpMenuOptionsCount();
 	void setTmpMenuOptionsCount(int i);
 
+	/**
+	 * Adds a custom clientscript to the list of available clientscripts.
+	 *
+	 * @param script compiled clientscript code
+	 * @return the id of the newly-added script
+	 */
+	int addClientScript(byte[] script);
 }
