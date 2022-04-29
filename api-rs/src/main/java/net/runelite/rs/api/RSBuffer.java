@@ -68,6 +68,9 @@ public interface RSBuffer extends Buffer, RSNode
 	@Import("writeIntLE")
 	void writeIntLE(int i);
 
+	@Import("writeIntME")
+	void writeIntME(int i);
+
 	@Import("writeLengthByte")
 	void writeLengthByte(int i);
 
