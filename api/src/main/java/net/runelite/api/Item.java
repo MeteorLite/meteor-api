@@ -48,11 +48,12 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	private final int quantity;
 
 	public static Client client;
-	private int slot;
 
 	// Interaction
 	private int actionParam;
 	private int widgetId;
+
+	public InventoryID container;
 
 	@Override
 	public String getName()
@@ -103,10 +104,26 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 	}
 
+	public int getSlot() {
+		ItemContainer itemContainer = Item.client.getItemContainer(container);
+
+		if (itemContainer != null) {
+			Item[] slots = itemContainer.getItems();
+			int idx = 0;
+			for (Item item : slots) {
+				if (item.id == getId()) {
+					return idx;
+				}
+				idx++;
+			}
+		}
+		return -1;
+	}
+
 	public void use()
 	{
 		client.setSelectedSpellWidget(widgetId);
-		client.setSelectedSpellChildIndex(slot);
+		client.setSelectedSpellChildIndex(getSlot());
 		client.setSelectedSpellItemId(id);
 	}
 
@@ -228,7 +245,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				return widget.getRawActions();
 			}
 
-			Widget itemChild = widget.getChild(slot);
+			Widget itemChild = widget.getChild(getSlot());
 			if (itemChild != null)
 			{
 				return itemChild.getRawActions();
@@ -275,7 +292,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 	@Override
 	public void interact(int identifier, int opcode, int param0, int param1)
 	{
-		client.interact(getMenu(identifier, opcode, param0, param1));
+		client.interact(getMenu(identifier, opcode, actionParam, param1));
 	}
 
 	@Override
@@ -288,7 +305,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				Widget widget = client.getWidget(widgetId);
 				if (widget != null)
 				{
-					Widget itemChild = widget.getChild(slot);
+					Widget itemChild = widget.getChild(getSlot());
 					if (itemChild != null)
 					{
 						return itemChild.getMenu(actionIndex);
@@ -326,9 +343,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 				return itemWidget.getMenu(actionIndex, opcode);
 			case EQUIPMENT:
-				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
 			case INVENTORY:
-				return getMenu(actionIndex + 1, opcode, slot, widgetId);
+				return getMenu(actionIndex + 1, opcode, getSlot(), widgetId);
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:

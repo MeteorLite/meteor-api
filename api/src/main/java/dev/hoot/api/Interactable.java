@@ -111,10 +111,6 @@ public interface Interactable
 			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1,
 					((SceneEntity) this).getTag());
 		}
-		if (this instanceof Item)
-		{
-			return new AutomatedMenu(identifier, opcode, ((Item) this).getSlot(), param1, -1, -1);
-		}
 		else
 		{
 			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1);
