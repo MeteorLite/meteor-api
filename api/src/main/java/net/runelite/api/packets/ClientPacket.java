@@ -119,14 +119,4 @@ public interface ClientPacket
 	ClientPacket MOUSERECORDER_DATA();
 
 	ClientPacket OPLOCT();
-
-	ClientPacket IF3_CLICK1();
-
-	ClientPacket IF3_CLICK2();
-
-	ClientPacket IF3_CLICK3();
-
-	ClientPacket IF3_CLICK4();
-
-	ClientPacket IF3_CLICK5();
 }
