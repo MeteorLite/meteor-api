@@ -11,13 +11,11 @@ import net.runelite.api.mixins.Inject;
 import net.runelite.api.mixins.Mixin;
 import net.runelite.api.mixins.Mixins;
 import net.runelite.api.mixins.Shadow;
-import net.runelite.api.util.Text;
 import net.runelite.rs.api.RSBoundaryObject;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSFloorDecoration;
 import net.runelite.rs.api.RSGameObject;
 import net.runelite.rs.api.RSItemLayer;
-import net.runelite.rs.api.RSObjectComposition;
 import net.runelite.rs.api.RSWallDecoration;
 
 import java.awt.*;
@@ -83,10 +81,10 @@ public abstract class HTileObjectMixin implements TileObject
 	}
 
 	@Inject
-	public Point getClickPoint()
+	public java.awt.Point getClickPoint()
 	{
 		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return new java.awt.Point(point.x, point.y);
 	}
 
 	@Inject

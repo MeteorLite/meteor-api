@@ -84,10 +84,10 @@ public abstract class HWidgetMixin implements RSWidget
 	}
 
 	@Inject
-	public Point getClickPoint()
+	public java.awt.Point getClickPoint()
 	{
 		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return new java.awt.Point(point.x, point.y);
 	}
 
 	@Inject

@@ -28,10 +28,7 @@ import java.awt.Canvas;
 import java.awt.Dimension;
 import java.math.BigInteger;
 import java.time.Instant;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -62,7 +59,7 @@ import org.intellij.lang.annotations.MagicConstant;
  */
 public interface Client extends GameEngine
 {
-	/**
+    /**
 	 * The injected client invokes these callbacks to send events to us
 	 */
 	Callbacks getCallbacks();

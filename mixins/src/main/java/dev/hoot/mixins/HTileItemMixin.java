@@ -134,10 +134,10 @@ public abstract class HTileItemMixin implements RSTileItem
 	}
 
 	@Inject
-	public Point getClickPoint()
+	public java.awt.Point getClickPoint()
 	{
 		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return new java.awt.Point(point.x, point.y);
 	}
 
 	@Inject
@@ -157,6 +157,19 @@ public abstract class HTileItemMixin implements RSTileItem
 			}
 			return new Rectangle(-1, -1, 0, 0);
 		}
+	}
+
+	@Inject
+	@Override
+	public String getName()
+	{
+		String name = getComposition().getName();
+		if (name == null)
+		{
+			return "null";
+		}
+
+		return Text.removeTags(Text.sanitize(name));
 	}
 
 	@Inject

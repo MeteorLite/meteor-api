@@ -119,4 +119,6 @@ public interface ClientPacket
 	ClientPacket MOUSERECORDER_DATA();
 
 	ClientPacket OPLOCT();
+
+	ClientPacket IF_BUTTONT();
 }

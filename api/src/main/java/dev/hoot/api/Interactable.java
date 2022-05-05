@@ -1,12 +1,9 @@
 package dev.hoot.api;
 
 import dev.hoot.api.events.AutomatedMenu;
-import net.runelite.api.Item;
-import net.runelite.api.Point;
 import net.runelite.api.util.Text;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetItem;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

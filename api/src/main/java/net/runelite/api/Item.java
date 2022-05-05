@@ -26,7 +26,7 @@ package net.runelite.api;
 
 import dev.hoot.api.EntityNameable;
 import dev.hoot.api.Identifiable;
-import dev.hoot.api.Interactable;
+import dev.hoot.api.SceneEntity;
 import dev.hoot.api.events.AutomatedMenu;
 import dev.hoot.api.util.Randomizer;
 import lombok.Data;
@@ -36,24 +36,26 @@ import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 
 import java.awt.*;
+import java.awt.Point;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 @Data
-public class Item implements Interactable, Identifiable, EntityNameable
+public class Item implements Identifiable, EntityNameable
 {
 	private static final ThreadLocalRandom random = ThreadLocalRandom.current();
 
+	private final Client client;
 	private final int id;
 	private final int quantity;
 
-	public static Client client;
+	private int slot;
 
 	// Interaction
 	private int actionParam;
 	private int widgetId;
-
-	public InventoryID container;
 
 	@Override
 	public String getName()
@@ -65,97 +67,6 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		}
 
 		return Text.removeTags(Text.sanitize(name));
-	}
-
-	public void drop()
-	{
-		interact("Drop");
-	}
-
-	public void useOn(Interactable entity)
-	{
-		if (entity instanceof TileItem)
-		{
-			useOn((TileItem) entity);
-			return;
-		}
-
-		if (entity instanceof TileObject)
-		{
-			useOn((TileObject) entity);
-			return;
-		}
-
-		if (entity instanceof Item)
-		{
-			useOn((Item) entity);
-			return;
-		}
-
-		if (entity instanceof Actor)
-		{
-			useOn((Actor) entity);
-			return;
-		}
-
-		if (entity instanceof Widget)
-		{
-			useOn((Widget) entity);
-		}
-	}
-
-	public int getSlot() {
-		ItemContainer itemContainer = Item.client.getItemContainer(container);
-
-		if (itemContainer != null) {
-			Item[] slots = itemContainer.getItems();
-			int idx = 0;
-			for (Item item : slots) {
-				if (item.id == getId()) {
-					return idx;
-				}
-				idx++;
-			}
-		}
-		return -1;
-	}
-
-	public void use()
-	{
-		client.setSelectedSpellWidget(widgetId);
-		client.setSelectedSpellChildIndex(getSlot());
-		client.setSelectedSpellItemId(id);
-	}
-
-	public void useOn(TileItem object)
-	{
-		use();
-		object.interact(0, MenuAction.WIDGET_TARGET_ON_GROUND_ITEM.getId());
-	}
-
-	public void useOn(TileObject object)
-	{
-		use();
-		object.interact(0, MenuAction.WIDGET_TARGET_ON_GAME_OBJECT.getId());
-	}
-
-	public void useOn(Item item)
-	{
-		use();
-		item.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
-	}
-
-	public void useOn(Actor actor)
-	{
-		MenuAction menuAction = actor instanceof NPC ? MenuAction.WIDGET_TARGET_ON_NPC : MenuAction.WIDGET_TARGET_ON_PLAYER;
-		use();
-		actor.interact(0, menuAction.getId());
-	}
-
-	public void useOn(Widget widget)
-	{
-		use();
-		widget.interact(0, MenuAction.WIDGET_TARGET_ON_WIDGET.getId());
 	}
 
 	public Type getType()
@@ -227,14 +138,11 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return getComposition().getPrice();
 	}
 
-	@Override
 	public Point getClickPoint()
 	{
-		java.awt.Point point = Randomizer.getRandomPointIn(getBounds());
-		return new Point(point.x, point.y);
+		return Randomizer.getRandomPointIn(getBounds());
 	}
 
-	@Override
 	public String[] getRawActions()
 	{
 		Widget widget = client.getWidget(widgetId);
@@ -245,7 +153,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				return widget.getRawActions();
 			}
 
-			Widget itemChild = widget.getChild(getSlot());
+			Widget itemChild = widget.getChild(slot);
 			if (itemChild != null)
 			{
 				return itemChild.getRawActions();
@@ -257,14 +165,8 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return null;
 	}
 
-	@Override
 	public int getActionOpcode(int action)
 	{
-		int i = 0;
-		for (String s : getRawActions())
-		{
-			System.out.println("[" + i + "] " + s);
-		}
 		if (action == 0)
 		{
 			if (getRawActions()[0] == null)
@@ -277,25 +179,6 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				: MenuAction.CC_OP.getId();
 	}
 
-	@Override
-	public void interact(int index)
-	{
-		client.interact(getMenu(index));
-	}
-
-	@Override
-	public void interact(int index, int opcode)
-	{
-		client.interact(getMenu(index, opcode));
-	}
-
-	@Override
-	public void interact(int identifier, int opcode, int param0, int param1)
-	{
-		client.interact(getMenu(identifier, opcode, actionParam, param1));
-	}
-
-	@Override
 	public AutomatedMenu getMenu(int actionIndex)
 	{
 		switch (getType())
@@ -305,7 +188,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 				Widget widget = client.getWidget(widgetId);
 				if (widget != null)
 				{
-					Widget itemChild = widget.getChild(getSlot());
+					Widget itemChild = widget.getChild(slot);
 					if (itemChild != null)
 					{
 						return itemChild.getMenu(actionIndex);
@@ -328,7 +211,29 @@ public class Item implements Interactable, Identifiable, EntityNameable
 		return null;
 	}
 
-	@Override
+	AutomatedMenu getMenu(int identifier, int opcode, int param0, int param1)
+	{
+		if (this instanceof SceneEntity)
+		{
+			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1,
+					((SceneEntity) this).getTag());
+		}
+		else
+		{
+			return new AutomatedMenu(identifier, opcode, param0, param1, -1, -1);
+		}
+	}
+
+	public List<String> getActions()
+	{
+		if (getRawActions() == null)
+		{
+			return null;
+		}
+
+		return Arrays.stream(getRawActions()).map(Text::removeTags).collect(Collectors.toList());
+	}
+
 	public AutomatedMenu getMenu(int actionIndex, int opcode)
 	{
 		switch (getType())
@@ -343,8 +248,9 @@ public class Item implements Interactable, Identifiable, EntityNameable
 
 				return itemWidget.getMenu(actionIndex, opcode);
 			case EQUIPMENT:
+				return getMenu(actionIndex + 1, opcode, actionParam, widgetId);
 			case INVENTORY:
-				return getMenu(actionIndex + 1, opcode, getSlot(), widgetId);
+				return getMenu(actionIndex == 0 ? 0 : actionIndex + 1, opcode, slot, widgetId);
 			case BANK:
 				return getMenu(actionIndex, opcode, getSlot(), WidgetInfo.BANK_ITEM_CONTAINER.getPackedId());
 			case BANK_INVENTORY:
@@ -380,6 +286,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			Rectangle itemBounds = widget.getWidgetItem(getSlot()).getCanvasBounds();
 			return itemBounds != null ? itemBounds : new Rectangle(-1, -1, 0, 0);
 		}
+
 		return bounds;
 	}
 
@@ -400,7 +307,7 @@ public class Item implements Interactable, Identifiable, EntityNameable
 			this.inventoryID = inventoryID;
 		}
 
-		private static Type get(int widgetId)
+		static Type get(int widgetId)
 		{
 			switch (WidgetInfo.TO_GROUP(widgetId))
 			{

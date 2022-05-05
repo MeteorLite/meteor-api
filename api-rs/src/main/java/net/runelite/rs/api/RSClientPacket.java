@@ -232,4 +232,8 @@ public interface RSClientPacket extends ClientPacket
 	@Import("OPPLAYER8")
 	@Override
 	RSClientPacket OPPLAYER8();
+
+	@Import("IF_BUTTONT")
+	@Override
+	RSClientPacket IF_BUTTONT();
 }

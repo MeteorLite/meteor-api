@@ -63,9 +63,11 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 		for (int i = 0; i < itemIds.length; ++i)
 		{
 			Item item = new Item(
+				client,
 				itemIds[i],
 				stackSizes[i]
 			);
+			item.setSlot(i);
 			items[i] = item;
 		}
 
@@ -80,7 +82,9 @@ public abstract class RSItemContainerMixin implements RSItemContainer
 		int[] stackSizes = getStackSizes();
 		if (slot >= 0 && slot < itemIds.length && itemIds[slot] != -1)
 		{
-			return new Item(itemIds[slot], stackSizes[slot]);
+			Item item = new Item(client, itemIds[slot], stackSizes[slot]);
+			item.setSlot(slot);
+			return item;
 		}
 
 		return null;

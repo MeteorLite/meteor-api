@@ -122,6 +122,9 @@ public abstract class RSClientMixin implements RSClient
 	private static RSClient client;
 
 	@Inject
+	private static RSClient instance;
+
+	@Inject
 	public static Logger rl$logger = new meteor.Logger("");
 
 	@Inject
