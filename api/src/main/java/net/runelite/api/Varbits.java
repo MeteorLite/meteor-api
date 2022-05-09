@@ -675,7 +675,11 @@ public enum Varbits
 	 */
 	SHOW_PVP_KDR_STATS(4143),
 	;
-
+	public static final int THEATRE_OF_BLOOD_ORB1 = 6442;
+	public static final int THEATRE_OF_BLOOD_ORB2 = 6443;
+	public static final int THEATRE_OF_BLOOD_ORB3 = 6444;
+	public static final int THEATRE_OF_BLOOD_ORB4 = 6445;
+	public static final int THEATRE_OF_BLOOD_ORB5 = 6446;
 	/**
 	 * The raw varbit ID.
 	 */
