@@ -383,7 +383,9 @@ public abstract class HClientMixin implements RSClient
 				return;
 			}
 		}
-
+		if (event.getMenuEntry() == null) {
+			return;
+		}
 		copy$menuAction(event.getParam0(), event.getParam1(),
 				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
 				event.getId(), event.getMenuOption(), event.getMenuTarget(),
