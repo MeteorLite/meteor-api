@@ -129,9 +129,9 @@ public final class PendingSpawn extends Node {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;III)V",
 		garbageValue = "373101383"
 	)
-	public static void method2160(String var0, String var1, int var2, int var3) throws IOException {
-		UserComparator6.idxCount = var3; // L: 40
-		class11.cacheGamebuild = var2; // L: 41
+	public static void initCache(String cacheName, String gameBuildName, int build, int cacheSize) throws IOException {
+		UserComparator6.idxCount = cacheSize; // L: 40
+		class11.cacheGamebuild = build; // L: 41
 
 		try {
 			JagexCache.operatingSystemName = System.getProperty("os.name");
@@ -176,7 +176,7 @@ public final class PendingSpawn extends Node {
 		File var8;
 		label141:
 		while (var12 < 4) {
-			JagexCache.cacheDir = SequenceDefinition.method3717(var0, var1, var12); // L: 68
+			JagexCache.cacheDir = SequenceDefinition.getCacheDirectory(cacheName, gameBuildName, var12); // L: 68
 			if (!JagexCache.cacheDir.exists()) { // L: 69
 				JagexCache.cacheDir.mkdirs();
 			}

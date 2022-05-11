@@ -4154,7 +4154,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			try {
 				Client var3 = class82.client; // L: 4387
 				Object[] var4 = new Object[]{ClanChannelMember.getWindowedMode()}; // L: 4388
-				JSObject.getWindow(var3).call("resize", var4); // L: 4391
+				//JSObject.getWindow(var3).call("resize", var4); // L: 4391
 			} catch (Throwable var5) { // L: 4394
 			}
 		}
@@ -6639,7 +6639,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 				byte var6 = 0; // L: 799
 
 				try {
-					PendingSpawn.method2160("oldschool", var5, var6, 21); // L: 801
+					PendingSpawn.initCache("oldschool", var5, var6, 21); // L: 801
 				} catch (Exception var7) { // L: 803
 					ArchiveDiskActionHandler.RunException_sendStackTrace((String)null, var7); // L: 804
 				}

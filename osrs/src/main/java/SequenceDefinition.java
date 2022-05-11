@@ -591,9 +591,9 @@ public class SequenceDefinition extends DualNode {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;II)Ljava/io/File;",
 		garbageValue = "-1646829162"
 	)
-	static File method3717(String var0, String var1, int var2) {
-		String var3 = var2 == 0 ? "" : "" + var2; // L: 144
-		JagexCache.JagexCache_locationFile = new File(BufferedSource.userHomeDirectory, "jagex_cl_" + var0 + "_" + var1 + var3 + ".dat"); // L: 145
+	static File getCacheDirectory(String cacheName, String gameBuildName, int idx) {
+		String var3 = idx == 0 ? "" : "" + idx; // L: 144
+		JagexCache.JagexCache_locationFile = new File(BufferedSource.userHomeDirectory, "jagex_cl_" + cacheName + "_" + gameBuildName + var3 + ".dat"); // L: 145
 		String var4 = null; // L: 146
 		String var5 = null; // L: 147
 		boolean var6 = false; // L: 148
@@ -670,11 +670,11 @@ public class SequenceDefinition extends DualNode {
 			}
 		}
 
-		if (var4 == null && var2 == 0) { // L: 206
+		if (var4 == null && idx == 0) { // L: 206
 			label137:
 			for (int var16 = 0; var16 < class83.cacheSubPaths.length; ++var16) { // L: 207
 				for (int var17 = 0; var17 < SecureRandomCallable.cacheParentPaths.length; ++var17) { // L: 208
-					File var18 = new File(SecureRandomCallable.cacheParentPaths[var17] + class83.cacheSubPaths[var16] + File.separatorChar + var0 + File.separatorChar); // L: 209
+					File var18 = new File(SecureRandomCallable.cacheParentPaths[var17] + class83.cacheSubPaths[var16] + File.separatorChar + cacheName + File.separatorChar); // L: 209
 					if (var18.exists()) { // L: 210
 						File var19 = new File(var18, "test.dat"); // L: 212
 
@@ -703,7 +703,7 @@ public class SequenceDefinition extends DualNode {
 		}
 
 		if (var4 == null) { // L: 237
-			var4 = BufferedSource.userHomeDirectory + File.separatorChar + "jagexcache" + var3 + File.separatorChar + var0 + File.separatorChar + var1 + File.separatorChar; // L: 238
+			var4 = BufferedSource.userHomeDirectory + File.separatorChar + "jagexcache" + var3 + File.separatorChar + cacheName + File.separatorChar + gameBuildName + File.separatorChar; // L: 238
 			var6 = true; // L: 239
 		}
 
