@@ -2,9 +2,9 @@ import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.EventQueue;
-import java.awt.FontMetrics; import java.awt.Frame;
+import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.Image; import java.awt.Insets;
+import java.awt.Insets;
 import java.awt.LayoutManager;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -18,7 +18,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.ImageObserver;
 import java.net.URL;
-import javax.accessibility.Accessible; import net.runelite.mapping.Export;
+
+import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
@@ -241,7 +242,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 	@Export("setMaxCanvasSize")
 	protected final void setMaxCanvasSize(int var1, int var2) {
 		if ((this.maxCanvasWidth != var1) || (var2 != this.maxCanvasHeight)) {
-			this.method466();
+			this.setResizeCanvasNextFrame();
 		}
 
 		this.maxCanvasWidth = var1;
@@ -448,7 +449,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 			this.mouseWheelHandler.addTo(this.canvas);
 		}
 
-		this.method466();
+		this.setResizeCanvasNextFrame();
 	}
 
 	@ObfuscatedName("d")
@@ -624,7 +625,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 			this.replaceCanvas();
 		}
 
-		this.method438();
+		this.expandCanvas();
 		this.draw(this.fullRedraw);
 		if (this.fullRedraw) {
 			this.clearBackground();
@@ -638,7 +639,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 	"(B)V", garbageValue = 
 	"-20")
 
-	final void method438() {
+	final void expandCanvas() {
 		Bounds var1 = this.getFrameContentBounds();
 		if (((var1.highX != this.contentWidth) || (this.contentHeight != var1.highY)) || this.resizeCanvasNextFrame) {
 			this.resizeCanvas();
@@ -652,7 +653,7 @@ public abstract class GameEngine extends Applet implements Runnable , FocusListe
 	"(I)V", garbageValue = 
 	"-1741244290")
 
-	final void method466() {
+	final void setResizeCanvasNextFrame() {
 		this.resizeCanvasNextFrame = true;
 	}
 
