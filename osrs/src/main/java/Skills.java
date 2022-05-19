@@ -61,7 +61,7 @@ public class Skills {
 			try {
 				Applet var7 = class29.field170; // L: 81
 				Object[] var5 = new Object[]{(new URL(class29.field170.getCodeBase(), var0)).toString()}; // L: 82
-				Object var3 = JSObject.getWindow(var7).call(var2, var5); // L: 85
+				Object var3 = null; // L: 85
 				return var3 != null; // L: 88
 			} catch (Throwable var9) { // L: 90
 				return false; // L: 91
