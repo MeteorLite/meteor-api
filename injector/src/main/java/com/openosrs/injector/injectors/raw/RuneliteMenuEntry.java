@@ -7,6 +7,7 @@
  */
 package com.openosrs.injector.injectors.raw;
 
+//import com.openosrs.injector.InjectUtil;
 import com.openosrs.injector.InjectUtil;
 import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injectors.AbstractInjector;
@@ -19,7 +20,14 @@ import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.InstructionType;
 import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.attributes.code.instructions.*;
+import net.runelite.asm.attributes.code.instructions.BAStore;
+import net.runelite.asm.attributes.code.instructions.Dup;
+import net.runelite.asm.attributes.code.instructions.GetStatic;
+import net.runelite.asm.attributes.code.instructions.ILoad;
+import net.runelite.asm.attributes.code.instructions.InvokeSpecial;
+import net.runelite.asm.attributes.code.instructions.InvokeStatic;
+import net.runelite.asm.attributes.code.instructions.New;
+import net.runelite.asm.attributes.code.instructions.Return;
 import net.runelite.asm.signature.Signature;
 
 public class RuneliteMenuEntry extends AbstractInjector
@@ -35,7 +43,6 @@ public class RuneliteMenuEntry extends AbstractInjector
 	{
 		addInvoke("newRuneliteMenuEntry", true);
 		addInvoke("newBareRuneliteMenuEntry", false);
-		//addSwap(InjectUtil.findMethod(inject, "incrementMenuEntries"));
 		addSwap(InjectUtil.findMethod(inject, "menu"), InjectUtil.findField(inject, "menuShiftClick", "Client"));
 	}
 
@@ -74,8 +81,8 @@ public class RuneliteMenuEntry extends AbstractInjector
 	private void addSwap(Method method, Field field)
 	{
 		final ClassFile clientVanilla = inject.toVanilla(
-				inject.getDeobfuscated()
-						.findClass("Client")
+			inject.getDeobfuscated()
+				.findClass("Client")
 		);
 
 		Instructions ins = method.getCode().getInstructions();
