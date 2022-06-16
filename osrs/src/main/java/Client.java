@@ -4158,7 +4158,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			try {
 				Client var3 = class353.client; // L: 4406
 				Object[] var4 = new Object[]{class9.getWindowedMode()}; // L: 4407
-				JSObject.getWindow(var3).call("resize", var4); // L: 4410
+				//JSObject.getWindow(var3).call("resize", var4); // L: 4410
 			} catch (Throwable var5) { // L: 4413
 			}
 		}
