@@ -27,6 +27,8 @@ package net.runelite.mixins;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import net.runelite.api.NPC;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.*;
 
@@ -236,5 +238,25 @@ public abstract class EntityHiderMixin implements RSScene
 		}
 
 		return true;
+	}
+
+	@Copy("addPlayerToMenu")
+	@Replace("addPlayerToMenu")
+	static void copy$addPlayerToMenu(RSPlayer var0, int var1, int var2, int var3)
+	{
+		if (client.getCallbacks().draw(var0, false))
+		{
+			copy$addPlayerToMenu(var0, var1, var2, var3);
+		}
+	}
+
+	@Copy("addNpcToMenu")
+	@Replace("addNpcToMenu")
+	static void copy$addNpcToMenu(NPC var0, int var1, int var2, int var3)
+	{
+		if (client.getCallbacks().draw(var0, false))
+		{
+			copy$addNpcToMenu(var0, var1, var2, var3);
+		}
 	}
 }

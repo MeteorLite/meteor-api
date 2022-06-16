@@ -2847,5 +2847,13 @@ public abstract class RSClientMixin implements RSClient
 		customClientScripts.put((12 << 16) | newScriptId, script);
 		return newScriptId;
 	}
+
+	@Inject
+	public static boolean drawMenu()
+	{
+		BeforeMenuRender event = new BeforeMenuRender();
+		client.getCallbacks().post(Events.BEFORE_MENU_RENDER, event);
+		return event.getConsumed();
+	}
 }
 
