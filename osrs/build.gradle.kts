@@ -9,10 +9,11 @@ repositories{
 }
 dependencies{
     implementation(project(":api"))
+    implementation(project(":api-rs"))
     implementation(project(":annotations"))
     implementation(project(":logger"))
-    implementation("org.bouncycastle:bcprov-jdk15on:1.52")
-    compileOnly("org.projectlombok:lombok:1.18.20")
+    implementation(group = "org.bouncycastle", name = "bcprov-jdk15on", version = "1.52")
+    implementation(group = "org.json", name = "json", version = "20220320")
     implementation(group = "org.json", name = "json", version = "20220320")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:_")

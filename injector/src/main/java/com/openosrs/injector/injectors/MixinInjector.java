@@ -116,7 +116,6 @@ public class MixinInjector extends AbstractInjector
 
 		for (Map.Entry<Provider<ClassFile>, List<ClassFile>> entry : mixinTargets.entrySet())
 		{
-			System.out.println(entry.getKey().get().getName());
 			injectFields(entry.getKey(), entry.getValue());
 		}
 
@@ -149,11 +148,10 @@ public class MixinInjector extends AbstractInjector
 		{
 			for (ClassFile mixinClass : inject.getMixins())
 			{
-				System.out.println(mixinClass.getName());
 				final List<ClassFile> ret = getMixins(mixinClass);
 				builder.put(
-						(ret.size() > 1 ? mixinProvider(mixinClass) : () -> mixinClass),
-						ret
+					(ret.size() > 1 ? mixinProvider(mixinClass) : () -> mixinClass),
+					ret
 				);
 			}
 		}
@@ -199,7 +197,7 @@ public class MixinInjector extends AbstractInjector
 				for (Field field : mixinClass.getFields())
 				{
 					if (field.findAnnotation(INJECT) == null &&
-							(!ASSERTION_FIELD.equals(field.getName()) || targetClass.findField(ASSERTION_FIELD, Type.BOOLEAN) != null))
+						(!ASSERTION_FIELD.equals(field.getName()) || targetClass.findField(ASSERTION_FIELD, Type.BOOLEAN) != null))
 					{
 						continue;
 					}
@@ -280,8 +278,8 @@ public class MixinInjector extends AbstractInjector
 			}
 
 			shadowFields.put(
-					field.getPoolField(),
-					new ShadowField(targetField, getter)
+				field.getPoolField(),
+				new ShadowField(targetField, getter)
 			);
 		}
 	}
@@ -341,7 +339,7 @@ public class MixinInjector extends AbstractInjector
 				 * care of the garbage parameter itself.
 				 */
 				boolean hasGarbageValue = mixinMethod.getDescriptor().size() != sourceMethod.getDescriptor().size()
-						&& deobSourceMethod.getDescriptor().size() < copy.getDescriptor().size();
+					&& deobSourceMethod.getDescriptor().size() < copy.getDescriptor().size();
 
 				copiedMethods.put(mixinMethod.getPoolMethod(), new CopiedMethod(copy, !hasGarbageValue ? null : Integer.valueOf(DeobAnnotations.getDecoder(deobSourceMethod))));
 			}
@@ -362,8 +360,8 @@ public class MixinInjector extends AbstractInjector
 					}
 
 					Method[] originalMethods = targetClass.getMethods().stream()
-							.filter(m -> m.getName().equals(mixinMethod.getName()))
-							.toArray(Method[]::new);
+						.filter(m -> m.getName().equals(mixinMethod.getName()))
+						.toArray(Method[]::new);
 
 					String name = mixinMethod.getName();
 
@@ -459,17 +457,22 @@ public class MixinInjector extends AbstractInjector
 						}
 					}*/
 
-					Method copy = new Method(targetClass, mixinMethod.getName(), mixinMethod.getDescriptor());
-					moveCode(copy, mixinMethod.getCode());
-					copy.setAccessFlags(mixinMethod.getAccessFlags());
-					copy.setPublic();
+					Method method = targetClass.findMethod(mixinMethod.getName(), mixinMethod.getDescriptor());
+
+					if (method == null)
+					{
+						method = new Method(targetClass, mixinMethod.getName(), mixinMethod.getDescriptor());
+						targetClass.addMethod(method);
+					}
+
+					moveCode(method, mixinMethod.getCode());
+					method.setAccessFlags(mixinMethod.getAccessFlags());
+					method.setPublic();
 					assert mixinMethod.getExceptions().getExceptions().isEmpty();
 
-					setOwnersToTargetClass(mixinClass, targetClass, copy, copiedMethods);
+					setOwnersToTargetClass(mixinClass, targetClass, method, copiedMethods);
 
-					targetClass.addMethod(copy);
-
-					log.debug("[DEBUG] Injected mixin method {} to {}", copy, targetClass);
+					log.debug("[DEBUG] Injected mixin method {} to {}", method, targetClass);
 					++injected;
 				}
 				else if (mixinMethod.findAnnotation(REPLACE) != null)
@@ -488,7 +491,7 @@ public class MixinInjector extends AbstractInjector
 					if (mixinMethod.isStatic() != deobMethod.isStatic())
 					{
 						throw new InjectException("Mixin method " + mixinMethod + " should be "
-								+ (deobMethod.isStatic() ? "static" : "non-static"));
+							+ (deobMethod.isStatic() ? "static" : "non-static"));
 					}
 
 					String obReplacedName = InjectUtil.getObfuscatedName(deobMethod);
@@ -510,7 +513,7 @@ public class MixinInjector extends AbstractInjector
 					if (!returnType.equals(deobReturnType))
 					{
 						ClassFile deobReturnTypeClassFile = inject.getDeobfuscated()
-								.findClass(deobReturnType.getInternalName());
+							.findClass(deobReturnType.getInternalName());
 						if (deobReturnTypeClassFile != null)
 						{
 							ClassFile obReturnTypeClass = inject.toVanilla(deobReturnTypeClassFile);
@@ -535,13 +538,13 @@ public class MixinInjector extends AbstractInjector
 					moveCode(obMethod, mixinMethod.getCode());
 
 					boolean hasGarbageValue = mixinMethod.getDescriptor().size() != obMethod.getDescriptor().size()
-							&& deobMethod.getDescriptor().size() < obMethodSignature.size();
+						&& deobMethod.getDescriptor().size() < obMethodSignature.size();
 
 					if (hasGarbageValue)
 					{
 						int garbageIndex = obMethod.isStatic()
-								? obMethod.getDescriptor().size() - 1
-								: obMethod.getDescriptor().size();
+							? obMethod.getDescriptor().size() - 1
+							: obMethod.getDescriptor().size();
 
 					/*
 						If the mixin method doesn't have the garbage parameter,
@@ -624,9 +627,9 @@ public class MixinInjector extends AbstractInjector
 				else if (ii.getMethod().getClazz().getName().equals(mixinCf.getName()))
 				{
 					ii.setMethod(new net.runelite.asm.pool.Method(
-							new net.runelite.asm.pool.Class(cf.getName()),
-							ii.getMethod().getName(),
-							ii.getMethod().getType()
+						new net.runelite.asm.pool.Class(cf.getName()),
+						ii.getMethod().getName(),
+						ii.getMethod().getType()
 					));
 				}
 			}
@@ -658,9 +661,9 @@ public class MixinInjector extends AbstractInjector
 				else if (fi.getField().getClazz().getName().equals(mixinCf.getName()))
 				{
 					fi.setField(new net.runelite.asm.pool.Field(
-							new net.runelite.asm.pool.Class(cf.getName()),
-							fi.getField().getName(),
-							fi.getField().getType()
+						new net.runelite.asm.pool.Class(cf.getName()),
+						fi.getField().getName(),
+						fi.getField().getType()
 					));
 				}
 			}
@@ -703,7 +706,7 @@ public class MixinInjector extends AbstractInjector
 			InvokeStatic is = (InvokeStatic) i;
 
 			if (is.getMethod().getClazz() != mixinCf.getPoolClass()
-					&& is.getMethod().getClazz().getName().startsWith(MIXIN_BASE))
+				&& is.getMethod().getClazz().getName().startsWith(MIXIN_BASE))
 			{
 				throw new InjectException("Invoking static methods of other mixins is not supported");
 			}
@@ -775,8 +778,8 @@ public class MixinInjector extends AbstractInjector
 		if (mixins != null)
 		{
 			return ((List<Annotation>) mixins.getValue()).stream()
-					.map(mix -> InjectUtil.getVanillaClassFromAnnotationString(inject, mix))
-					.collect(Collectors.toUnmodifiableList());
+				.map(mix -> InjectUtil.getVanillaClassFromAnnotationString(inject, mix))
+				.collect(Collectors.toUnmodifiableList());
 		}
 		throw new IllegalArgumentException("No MIXIN or MIXINS found on " + from.toString());
 	}

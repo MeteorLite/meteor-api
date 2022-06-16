@@ -30,7 +30,6 @@ import net.runelite.asm.signature.Signature;
 @NoArgsConstructor
 public abstract class InjectData
 {
-	public static final String HOOKS = "meteor/Hooks";
 	public static final String CALLBACKS = "net/runelite/api/hooks/Callbacks";
 
 	@Getter

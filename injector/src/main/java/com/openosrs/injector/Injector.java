@@ -17,7 +17,6 @@ import com.openosrs.injector.injectors.MixinInjector;
 import com.openosrs.injector.injectors.RSApiInjector;
 import com.openosrs.injector.injectors.raw.*;
 import com.openosrs.injector.rsapi.RSApi;
-import com.openosrs.injector.transformers.DecodeNet;
 import com.openosrs.injector.transformers.InjectTransformer;
 import com.openosrs.injector.transformers.Java8Ifier;
 import com.openosrs.injector.transformers.SourceChanger;
@@ -75,7 +74,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		OptionSet options = parser.parse(args);
 		String oprsVer = "1.0-SNAPSHOT";
 
-		File vanillaFile = new File("./vanilla-205.jar");
+		File vanillaFile = new File("./vanilla-206.jar");
 		injector.vanilla = load(vanillaFile);
 		injector.deobfuscated = load(
 			new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));
@@ -105,7 +104,6 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 		inject(new CreateAnnotations(this));
 
-		inject(new DecodeNet(this));
 
 		inject(new GraphicsObject(this));
 
@@ -147,8 +145,6 @@ public class Injector extends InjectData implements InjectTaskHandler
 		inject(new AddPlayerToMenu(this));
 
 		inject(new RuneliteMenuEntry(this));
-
-		inject(new RuneliteMenuEntryTwo(this));
 
 		//validate(new InjectorValidator(this));
 
