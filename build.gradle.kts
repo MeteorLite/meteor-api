@@ -2,14 +2,34 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins{
     java
-    kotlin("jvm") version "1.6.20"
+    kotlin("jvm") version "1.7.0"
     `maven-publish`
 }
 
 group = "meteor"
 val release by rootProject.extra { "1.5.7" }
 
+allprojects {
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute(module("org.jetbrains.compose.compiler:compiler")).apply {
+                using(module("androidx.compose.compiler:compiler:1.2.0-dev-k1.7.0-53370d83bb1"))
+            }
+        }
+    }
+
+    tasks.withType<KotlinCompile>().all {
+        kotlinOptions {
+            jvmTarget = "17"
+            apiVersion = "1.7"
+            languageVersion = "1.7"
+            freeCompilerArgs += "-Xuse-k2"
+        }
+    }
+}
+
 repositories{
+    maven {url = uri("https://androidx.dev/storage/compose-compiler/repository")}
     mavenCentral()
     mavenLocal()
 }
