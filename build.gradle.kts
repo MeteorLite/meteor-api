@@ -7,7 +7,7 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.5.7" }
+val release by rootProject.extra { "1.5.8" }
 
 allprojects {
     configurations.all {
@@ -23,7 +23,8 @@ allprojects {
             jvmTarget = "17"
             apiVersion = "1.7"
             languageVersion = "1.7"
-            freeCompilerArgs += "-Xuse-k2"
+            // K2 unsupported until Compose plugin is K2 compatible
+            //freeCompilerArgs += "-Xuse-k2"
         }
     }
 }
