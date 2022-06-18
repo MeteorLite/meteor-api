@@ -41,10 +41,3 @@ tasks{
         mainClass.set("meteor.scripts.AssembleScripts")
     }
 }
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs += "-Xuse-k2"
-    }
-}
