@@ -24,7 +24,7 @@ allprojects {
             apiVersion = "1.7"
             languageVersion = "1.7"
             // K2 unsupported until Compose plugin is K2 compatible
-            //freeCompilerArgs += "-Xuse-k2"
+            freeCompilerArgs += "-Xuse-k2"
         }
     }
 }
