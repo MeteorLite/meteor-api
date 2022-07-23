@@ -35,9 +35,12 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.instruction.types.InvokeInstruction;
 import net.runelite.deob.Deob;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UnusedMethods implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(UnusedMethods.class);
 
 	private final Set<Method> methods = new HashSet<>();
 
@@ -72,6 +75,7 @@ public class UnusedMethods implements Deobfuscator
 
 				if (!methods.contains(method))
 				{
+					logger.debug("Removing unused method {}", method);
 
 					cf.removeMethod(method);
 					++count;
@@ -79,6 +83,7 @@ public class UnusedMethods implements Deobfuscator
 			}
 		}
 
+		logger.info("Removed {} methods", count);
 	}
 
 	private void run(Method method)

@@ -1,42 +1,55 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.Reflection;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ij")
 @Implements("WorldMapRectangle")
 public final class WorldMapRectangle {
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = -1451061377)
+	@ObfuscatedGetter(
+		intValue = -1451061377
+	)
 	@Export("width")
 	int width;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -216115115)
+	@ObfuscatedGetter(
+		intValue = -216115115
+	)
 	@Export("height")
 	int height;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -90003499)
+	@ObfuscatedGetter(
+		intValue = -90003499
+	)
 	@Export("x")
 	int x;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -1498862133)
+	@ObfuscatedGetter(
+		intValue = -1498862133
+	)
 	@Export("y")
 	int y;
-
-	@ObfuscatedSignature(descriptor = "Lhm;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lhm;"
+	)
 	final WorldMapManager this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lhm;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lhm;)V"
+	)
 	WorldMapRectangle(WorldMapManager var1) {
 		this.this$0 = var1;
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;", garbageValue = "-2108490134")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
+		garbageValue = "-2108490134"
+	)
 	@Export("loadClassFromDescriptor")
 	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
 		if (var0.equals("B")) {
@@ -61,12 +74,16 @@ public final class WorldMapRectangle {
 	}
 
 	@ObfuscatedName("li")
-	@ObfuscatedSignature(descriptor = "(IB)Lps;", garbageValue = "46")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lps;",
+		garbageValue = "46"
+	)
 	static class436 method4988(int var0) {
-		class436 var1 = ((class436) (Client.Widget_cachedFonts.get(((long) (var0)))));
+		class436 var1 = (class436)Client.Widget_cachedFonts.get((long)var0);
 		if (var1 == null) {
 			var1 = new class436(class132.field1588, var0);
 		}
+
 		return var1;
 	}
 }

@@ -1,15 +1,18 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("ot")
 public class class397 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lot;")
+	@ObfuscatedSignature(
+		descriptor = "Lot;"
+	)
 	public static final class397 field4431;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lot;")
+	@ObfuscatedSignature(
+		descriptor = "Lot;"
+	)
 	static final class397 field4430;
-
 	@ObfuscatedName("q")
 	String field4432;
 
@@ -23,7 +26,10 @@ public class class397 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "-851015132")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "-851015132"
+	)
 	public String method7086() {
 		return this.field4432;
 	}

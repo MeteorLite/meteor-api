@@ -1,9 +1,13 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("kf")
 public class class289 {
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(BS)C", garbageValue = "3465")
+	@ObfuscatedSignature(
+		descriptor = "(BS)C",
+		garbageValue = "3465"
+	)
 	public static char method5560(byte var0) {
 		int var1 = var0 & 255;
 		if (var1 == 0) {
@@ -14,9 +18,11 @@ public class class289 {
 				if (var2 == 0) {
 					var2 = '?';
 				}
+
 				var1 = var2;
 			}
-			return ((char) (var1));
+
+			return (char)var1;
 		}
 	}
 }

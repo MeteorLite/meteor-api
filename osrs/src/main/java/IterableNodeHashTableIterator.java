@@ -1,31 +1,37 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Iterator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("pw")
 @Implements("IterableNodeHashTableIterator")
 public class IterableNodeHashTableIterator implements Iterator {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lpb;")
+	@ObfuscatedSignature(
+		descriptor = "Lpb;"
+	)
 	@Export("hashTable")
 	IterableNodeHashTable hashTable;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Loh;")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
 	@Export("head")
 	Node head;
-
 	@ObfuscatedName("q")
 	@Export("index")
 	int index;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Loh;")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
 	@Export("last")
 	Node last;
 
-	@ObfuscatedSignature(descriptor = "(Lpb;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lpb;)V"
+	)
 	IterableNodeHashTableIterator(IterableNodeHashTable var1) {
 		this.last = null;
 		this.hashTable = var1;
@@ -52,8 +58,10 @@ public class IterableNodeHashTableIterator implements Iterator {
 				if (this.index >= this.hashTable.size) {
 					return null;
 				}
+
 				var1 = this.hashTable.buckets[this.index++].previous;
-			} while (var1 == this.hashTable.buckets[this.index - 1] );
+			} while(var1 == this.hashTable.buckets[this.index - 1]);
+
 			this.head = var1.previous;
 			this.last = var1;
 			return var1;
@@ -69,8 +77,10 @@ public class IterableNodeHashTableIterator implements Iterator {
 					this.head = this.hashTable.buckets[this.index - 1].previous;
 					return true;
 				}
+
 				this.head = this.hashTable.buckets[this.index - 1];
-			} 
+			}
+
 			return false;
 		}
 	}

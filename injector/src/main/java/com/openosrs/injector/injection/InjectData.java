@@ -7,15 +7,14 @@
  */
 package com.openosrs.injector.injection;
 
+import com.google.common.collect.ImmutableMap;
 import com.openosrs.injector.InjectUtil;
 import com.openosrs.injector.injectors.Injector;
 import com.openosrs.injector.rsapi.RSApi;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -24,132 +23,111 @@ import net.runelite.asm.Type;
 import net.runelite.asm.signature.Signature;
 
 /**
- * Abstract class meant as the interface of {@link com.openosrs.injector.Injector injection} for injectors
+ * Abstract class meant as the interface of {@link com.openosrs.injector.Injector injection} for
+ * injectors
  */
-@AllArgsConstructor
-@NoArgsConstructor
-public abstract class InjectData
-{
-	public static final String CALLBACKS = "net/runelite/api/hooks/Callbacks";
+public abstract class InjectData {
 
-	@Getter
-	public ClassGroup vanilla;
+  public static String HOOKS = "meteor/callback/Hooks";
+  public static final String CALLBACKS = "net/runelite/api/hooks/Callbacks";
+  /**
+   * Strings -> Deobfuscated ClassFiles keys: - Obfuscated name - RSApi implementing name
+   */
+  private final Map<String, ClassFile> toDeob = new HashMap<>();
+  @Getter
+  public ClassGroup vanilla;
+  @Getter
+  public ClassGroup deobfuscated;
+  @Getter
+  public ClassGroup mixins;
+  @Getter
+  public RSApi rsApi;
+  /**
+   * Deobfuscated ClassFiles -> Vanilla ClassFiles
+   */
+  public Map<ClassFile, ClassFile> toVanilla;
 
-	@Getter
-	public ClassGroup deobfuscated;
+  public abstract void runChildInjector(Injector injector);
 
-	@Getter
-	public ClassGroup mixins;
+  public ClassFile reflectionClass = null;
 
-	@Getter
-	public RSApi rsApi;
+  public void initToVanilla() {
+    ImmutableMap.Builder<ClassFile, ClassFile> toVanillaB = ImmutableMap.builder();
 
-	/**
-	 * Deobfuscated ClassFiles -> Vanilla ClassFiles
-	 */
-	public final Map<ClassFile, ClassFile> toVanilla = new HashMap<>();
+    for (final ClassFile deobClass : deobfuscated) {
+      if (deobClass.getName().startsWith("net/runelite/")) {
+        continue;
+      }
 
-	/**
-	 * Strings -> Deobfuscated ClassFiles
-	 * keys:
-	 * - Obfuscated name
-	 * - RSApi implementing name
-	 */
-	public final Map<String, ClassFile> toDeob = new HashMap<>();
+      final String obName = InjectUtil.getObfuscatedName(deobClass);
+      if (obName != null) {
+        toDeob.put(obName, deobClass);
 
-	public abstract void runChildInjector(Injector injector);
+        // Can't be null
+        final ClassFile obClass = this.vanilla.findClass(deobClass.getName());
+        toVanillaB.put(deobClass, obClass);
+      }
+    }
 
-	public void initToVanilla()
-	{
-		for (final ClassFile deobClass : deobfuscated)
-		{
-			if (deobClass.getName().startsWith("net/runelite/") || deobClass.getName().startsWith("netscape"))
-			{
-				continue;
-			}
+    this.toVanilla = toVanillaB.build();
+  }
 
-			final String obName = InjectUtil.getObfuscatedName(deobClass);
-			if (obName != null)
-			{
-				toDeob.put(obName, deobClass);
+  /**
+   * Deobfuscated ClassFile -> Vanilla ClassFile
+   */
+  public ClassFile toVanilla(ClassFile deobClass) {
 
-				final ClassFile obClass = this.vanilla.findClass(obName);
+    return toVanilla.get(deobClass);
+  }
 
-				if (obClass != null)
-				{
-					toVanilla.put(deobClass, obClass);
-				}
-			}
-		}
-	}
+  /**
+   * Deobfuscated Method -> Vanilla Method
+   */
+  public Method toVanilla(Method deobMeth) {
+    final ClassFile obC = vanilla.findClass(deobMeth.getClassFile().getName());
 
-	/**
-	 * Deobfuscated ClassFile -> Vanilla ClassFile
-	 */
-	public ClassFile toVanilla(ClassFile deobClass)
-	{
+    String name = deobMeth.getName();
 
-		return toVanilla.get(deobClass);
-	}
+    Signature sig = deobMeth.getDescriptor();
 
-	/**
-	 * Deobfuscated Method -> Vanilla Method
-	 */
-	public Method toVanilla(Method deobMeth)
-	{
-		final ClassFile obC = toVanilla(deobMeth.getClassFile());
+    return obC.findMethod(name, sig);
+  }
 
-		String name = InjectUtil.getObfuscatedName(deobMeth);
+  /**
+   * Deobfuscated Field -> Vanilla Field
+   */
+  public Field toVanilla(Field deobField) {
+    final ClassFile obC = vanilla.findClass(deobField.getClassFile().getName());
 
-		Signature sig = deobMeth.getObfuscatedSignature();
-		if (sig == null)
-		{
-			sig = deobMeth.getDescriptor();
-		}
+    String name = deobField.getName();
 
-		return obC.findMethod(name, sig);
-	}
+    Type type = deobField.getType();
 
-	/**
-	 * Deobfuscated Field -> Vanilla Field
-	 */
-	public Field toVanilla(Field deobField)
-	{
-		final ClassFile obC = toVanilla(deobField.getClassFile());
+    return obC.findField(name, type);
+  }
 
-		String name = InjectUtil.getObfuscatedName(deobField);
+  /**
+   * Vanilla ClassFile -> Deobfuscated ClassFile
+   */
+  public ClassFile toDeob(String str) {
+    return this.toDeob.get(str);
+  }
 
-		Type type = deobField.getObfuscatedType();
+  /**
+   * Adds a string mapping for a deobfuscated class
+   */
+  public void addToDeob(String key, ClassFile value) {
+    toDeob.put(key, value);
+  }
 
-		return obC.findField(name, type);
-	}
-
-	/**
-	 * Vanilla ClassFile -> Deobfuscated ClassFile
-	 */
-	public ClassFile toDeob(String str)
-	{
-		return this.toDeob.get(str);
-	}
-
-	/**
-	 * Adds a string mapping for a deobfuscated class
-	 */
-	public void addToDeob(String key, ClassFile value)
-	{
-		toDeob.put(key, value);
-	}
-
-	/**
-	 * Do something with all paired classes.
-	 * <p>
-	 * Key = deobfuscated, Value = vanilla
-	 */
-	public void forEachPair(BiConsumer<ClassFile, ClassFile> action)
-	{
-		for (Map.Entry<ClassFile, ClassFile> pair : toVanilla.entrySet())
-		{
-			action.accept(pair.getKey(), pair.getValue());
-		}
-	}
+  /**
+   * Do something with all paired classes.
+   * <p>
+   * Key = deobfuscated, Value = vanilla
+   */
+  public void forEachPair(BiConsumer<ClassFile, ClassFile> action) {
+    for (Map.Entry<ClassFile, ClassFile> pair : toVanilla.entrySet()) {
+      action.accept(pair.getKey(), pair.getValue());
+    }
+  }
 }

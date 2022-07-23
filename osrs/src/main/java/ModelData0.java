@@ -1,21 +1,24 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("hx")
 @Implements("ModelData0")
 public class ModelData0 {
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -2071887987)
+	@ObfuscatedGetter(
+		intValue = -2071887987
+	)
 	@Export("SpriteBuffer_spriteWidth")
 	static int SpriteBuffer_spriteWidth;
-
 	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "Law;")
+	@ObfuscatedSignature(
+		descriptor = "Law;"
+	)
 	@Export("pcmPlayerProvider")
 	static class47 pcmPlayerProvider;
-
 	@ObfuscatedName("az")
 	@Export("hasFocus")
 	protected static boolean hasFocus;
@@ -24,7 +27,10 @@ public class ModelData0 {
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lpq;II)Z", garbageValue = "215126751")
+	@ObfuscatedSignature(
+		descriptor = "(Lpq;II)Z",
+		garbageValue = "215126751"
+	)
 	@Export("updateExternalPlayer")
 	static boolean updateExternalPlayer(PacketBuffer var0, int var1) {
 		int var2 = var0.readBits(2);
@@ -38,12 +44,14 @@ public class ModelData0 {
 			if (var0.readBits(1) != 0) {
 				updateExternalPlayer(var0, var1);
 			}
+
 			var3 = var0.readBits(13);
 			var4 = var0.readBits(13);
 			boolean var12 = var0.readBits(1) == 1;
 			if (var12) {
 				Players.Players_pendingUpdateIndices[++Players.Players_pendingUpdateCount - 1] = var1;
 			}
+
 			if (Client.players[var1] != null) {
 				throw new RuntimeException();
 			} else {
@@ -52,6 +60,7 @@ public class ModelData0 {
 				if (Players.field1307[var1] != null) {
 					var11.read(Players.field1307[var1]);
 				}
+
 				var11.orientation = Players.Players_orientations[var1];
 				var11.targetIndex = Players.Players_targetIndices[var1];
 				var7 = Players.Players_regions[var1];
@@ -59,7 +68,7 @@ public class ModelData0 {
 				var9 = var7 >> 14 & 255;
 				var10 = var7 & 255;
 				var11.pathTraversed[0] = Players.field1304[var1];
-				var11.plane = ((byte) (var8));
+				var11.plane = (byte)var8;
 				var11.resetPath((var9 << 13) + var3 - class28.baseX, (var10 << 13) + var4 - WorldMapLabelSize.baseY);
 				var11.field1088 = false;
 				return true;
@@ -84,30 +93,38 @@ public class ModelData0 {
 					--var8;
 					--var9;
 				}
+
 				if (var5 == 1) {
 					--var9;
 				}
+
 				if (var5 == 2) {
 					++var8;
 					--var9;
 				}
+
 				if (var5 == 3) {
 					--var8;
 				}
+
 				if (var5 == 4) {
 					++var8;
 				}
+
 				if (var5 == 5) {
 					--var8;
 					++var9;
 				}
+
 				if (var5 == 6) {
 					++var9;
 				}
+
 				if (var5 == 7) {
 					++var8;
 					++var9;
 				}
+
 				Players.Players_regions[var1] = (var8 << 14) + var9 + (var7 << 28);
 				return false;
 			} else {
@@ -126,7 +143,10 @@ public class ModelData0 {
 	}
 
 	@ObfuscatedName("fs")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "1")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "1"
+	)
 	static final void method4532() {
 		for (int var0 = 0; var0 < Client.soundEffectCount; ++var0) {
 			int var10002 = Client.queuedSoundEffectDelays[var0]--;
@@ -138,10 +158,12 @@ public class ModelData0 {
 					if (var1 == null) {
 						continue;
 					}
+
 					int[] var13 = Client.queuedSoundEffectDelays;
 					var13[var0] += var1.calculateDelay();
 					Client.soundEffects[var0] = var1;
 				}
+
 				if (Client.queuedSoundEffectDelays[var0] < 0) {
 					int var2;
 					if (Client.soundLocations[var0] != 0) {
@@ -151,33 +173,40 @@ public class ModelData0 {
 						if (var5 < 0) {
 							var5 = -var5;
 						}
+
 						int var6 = Client.soundLocations[var0] >> 8 & 255;
 						int var7 = var6 * 128 + 64 - class101.localPlayer.y;
 						if (var7 < 0) {
 							var7 = -var7;
 						}
+
 						int var8 = var7 + var5 - 128;
 						if (var8 > var3) {
 							Client.queuedSoundEffectDelays[var0] = -100;
 							continue;
 						}
+
 						if (var8 < 0) {
 							var8 = 0;
 						}
+
 						var2 = (var3 - var8) * class19.clientPreferences.method2262() / var3;
 					} else {
 						var2 = class19.clientPreferences.method2241();
 					}
+
 					if (var2 > 0) {
 						RawSound var9 = var1.toRawSound().resample(WorldMapRegion.decimator);
 						RawPcmStream var10 = RawPcmStream.createRawPcmStream(var9, 100, var2);
 						var10.setNumLoops(Client.queuedSoundEffectLoops[var0] - 1);
 						class21.pcmStreamMixer.addSubStream(var10);
 					}
+
 					Client.queuedSoundEffectDelays[var0] = -100;
 				}
 			} else {
 				--Client.soundEffectCount;
+
 				for (int var11 = var0; var11 < Client.soundEffectCount; ++var11) {
 					Client.soundEffectIds[var11] = Client.soundEffectIds[var11 + 1];
 					Client.soundEffects[var11] = Client.soundEffects[var11 + 1];
@@ -185,9 +214,11 @@ public class ModelData0 {
 					Client.queuedSoundEffectDelays[var11] = Client.queuedSoundEffectDelays[var11 + 1];
 					Client.soundLocations[var11] = Client.soundLocations[var11 + 1];
 				}
+
 				--var0;
 			}
 		}
+
 		if (Client.playingJingle) {
 			boolean var12;
 			if (class272.musicPlayerStatus != 0) {
@@ -195,12 +226,15 @@ public class ModelData0 {
 			} else {
 				var12 = class272.midiPcmStream.isReady();
 			}
+
 			if (!var12) {
 				if (class19.clientPreferences.method2258() != 0 && Client.currentTrackGroupId != -1) {
 					AttackOption.method2410(class121.archive6, Client.currentTrackGroupId, 0, class19.clientPreferences.method2258(), false);
 				}
+
 				Client.playingJingle = false;
 			}
 		}
+
 	}
 }

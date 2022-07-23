@@ -1,16 +1,18 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("nn")
 @Implements("AbstractUserComparator")
 public abstract class AbstractUserComparator implements Comparator {
 	@ObfuscatedName("ev")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
 	@Export("archive18")
 	static Archive archive18;
-
 	@ObfuscatedName("v")
 	@Export("nextComparator")
 	Comparator nextComparator;
@@ -19,18 +21,25 @@ public abstract class AbstractUserComparator implements Comparator {
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(Ljava/util/Comparator;S)V", garbageValue = "3115")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Comparator;S)V",
+		garbageValue = "3115"
+	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
 		if (this.nextComparator == null) {
 			this.nextComparator = var1;
 		} else if (this.nextComparator instanceof AbstractUserComparator) {
-			((AbstractUserComparator) (this.nextComparator)).addComparator(var1);
+			((AbstractUserComparator)this.nextComparator).addComparator(var1);
 		}
+
 	}
 
 	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "(Lne;Lne;I)I", garbageValue = "1110990243")
+	@ObfuscatedSignature(
+		descriptor = "(Lne;Lne;I)I",
+		garbageValue = "1110990243"
+	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {
 		return this.nextComparator == null ? 0 : this.nextComparator.compare(var1, var2);
@@ -41,7 +50,10 @@ public abstract class AbstractUserComparator implements Comparator {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lpq;I)V", garbageValue = "-436787497")
+	@ObfuscatedSignature(
+		descriptor = "(Lpq;I)V",
+		garbageValue = "-436787497"
+	)
 	@Export("updatePlayer")
 	static final void updatePlayer(PacketBuffer var0) {
 		var0.importIndex();
@@ -49,7 +61,7 @@ public abstract class AbstractUserComparator implements Comparator {
 		Player var2 = class101.localPlayer = Client.players[var1] = new Player();
 		var2.index = var1;
 		int var3 = var0.readBits(30);
-		byte var4 = ((byte) (var3 >> 28));
+		byte var4 = (byte)(var3 >> 28);
 		int var5 = var3 >> 14 & 16383;
 		int var6 = var3 & 16383;
 		var2.pathX[0] = var5 - class28.baseX;
@@ -60,10 +72,12 @@ public abstract class AbstractUserComparator implements Comparator {
 		if (Players.field1307[var1] != null) {
 			var2.read(Players.field1307[var1]);
 		}
+
 		Players.Players_count = 0;
 		Players.Players_indices[++Players.Players_count - 1] = var1;
 		Players.field1311[var1] = 0;
 		Players.Players_emptyIdxCount = 0;
+
 		for (int var7 = 1; var7 < 2048; ++var7) {
 			if (var1 != var7) {
 				int var8 = var0.readBits(18);
@@ -77,6 +91,7 @@ public abstract class AbstractUserComparator implements Comparator {
 				Players.field1311[var7] = 0;
 			}
 		}
+
 		var0.exportIndex();
 	}
 }

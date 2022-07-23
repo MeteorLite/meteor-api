@@ -1,17 +1,18 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("y")
 public class class8 {
 	@ObfuscatedName("c")
 	final int field27;
-
 	@ObfuscatedName("v")
 	final int field26;
-
 	@ObfuscatedName("q")
 	final String field28;
 
-	@ObfuscatedSignature(descriptor = "(Lqt;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
 	class8(Buffer var1) {
 		this(var1.readUnsignedByte(), var1.readUnsignedByte(), var1.readStringCp1252NullTerminated());
 	}

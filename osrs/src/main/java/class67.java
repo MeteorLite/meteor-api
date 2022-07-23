@@ -1,19 +1,20 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.io.File;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("bb")
 public class class67 {
 	@ObfuscatedName("c")
 	static final BigInteger field886;
-
 	@ObfuscatedName("v")
 	static final BigInteger field885;
-
 	@ObfuscatedName("ex")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
 	@Export("archive15")
 	static Archive archive15;
 
@@ -23,7 +24,10 @@ public class class67 {
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Lpn;", garbageValue = "-1474288872")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Lpn;",
+		garbageValue = "-1474288872"
+	)
 	@Export("getPreferencesFile")
 	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
 		File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
@@ -34,12 +38,14 @@ public class class67 {
 			} catch (IOException var9) {
 			}
 		}
+
 		String var4 = "";
 		if (class93.cacheGamebuild == 33) {
 			var4 = "_rc";
 		} else if (class93.cacheGamebuild == 34) {
 			var4 = "_wip";
 		}
+
 		File var5 = new File(class123.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
 		AccessFile var6;
 		if (!var2 && var5.exists()) {
@@ -49,6 +55,7 @@ public class class67 {
 			} catch (IOException var8) {
 			}
 		}
+
 		try {
 			var6 = new AccessFile(var3, "rw", 10000L);
 			return var6;
@@ -58,19 +65,28 @@ public class class67 {
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(II)Z", garbageValue = "1525199469")
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "1525199469"
+	)
 	public static boolean method1885(int var0) {
 		return (var0 >> 21 & 1) != 0;
 	}
 
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1608144091")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1608144091"
+	)
 	public static void method1886() {
 		ParamComposition.ParamDefinition_cached.clear();
 	}
 
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1419146368")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1419146368"
+	)
 	public static void method1887() {
 		DbRowType.DBRowType_cache.clear();
 	}

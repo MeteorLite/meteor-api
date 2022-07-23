@@ -1,25 +1,32 @@
-import net.runelite.mapping.ObfuscatedName;
 import java.util.ConcurrentModificationException;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("me")
 public class class346 implements Iterator {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lmo;")
+	@ObfuscatedSignature(
+		descriptor = "Lmo;"
+	)
 	class347 field4163;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -437378707)
+	@ObfuscatedGetter(
+		intValue = -437378707
+	)
 	int field4162;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -797289567)
+	@ObfuscatedGetter(
+		intValue = -797289567
+	)
 	int field4164;
 
-	@ObfuscatedSignature(descriptor = "(Lmo;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lmo;)V"
+	)
 	class346(class347 var1) {
 		this.field4162 = 0;
 		this.field4164 = this.field4163.field4169;
@@ -47,7 +54,10 @@ public class class346 implements Iterator {
 	}
 
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "(Lkb;IIIS)V", garbageValue = "16250")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;IIIS)V",
+		garbageValue = "16250"
+	)
 	@Export("Widget_setKeyRate")
 	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
 		if (var0.field3450 == null) {
@@ -59,7 +69,10 @@ public class class346 implements Iterator {
 	}
 
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(IIIIIZI)Lqe;", garbageValue = "2024735229")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIZI)Lqe;",
+		garbageValue = "2024735229"
+	)
 	@Export("getItemSprite")
 	public static final SpritePixels getItemSprite(int var0, int var1, int var2, int var3, int var4, boolean var5) {
 		if (var1 == -1) {
@@ -67,26 +80,31 @@ public class class346 implements Iterator {
 		} else if (var4 == 2 && var1 != 1) {
 			var4 = 1;
 		}
-		long var6 = (((long) (var4)) << 40) + (((long) (var2)) << 38) + ((long) (var0)) + (((long) (var1)) << 16) + (((long) (var3)) << 42);
+
+		long var6 = ((long)var4 << 40) + ((long)var2 << 38) + (long)var0 + ((long)var1 << 16) + ((long)var3 << 42);
 		SpritePixels var8;
 		if (!var5) {
-			var8 = ((SpritePixels) (ItemComposition.ItemDefinition_cachedSprites.get(var6)));
+			var8 = (SpritePixels)ItemComposition.ItemDefinition_cachedSprites.get(var6);
 			if (var8 != null) {
 				return var8;
 			}
 		}
+
 		ItemComposition var9 = EnumComposition.ItemDefinition_get(var0);
 		if (var1 > 1 && var9.countobj != null) {
 			int var10 = -1;
+
 			for (int var11 = 0; var11 < 10; ++var11) {
 				if (var1 >= var9.countco[var11] && var9.countco[var11] != 0) {
 					var10 = var9.countobj[var11];
 				}
 			}
+
 			if (var10 != -1) {
 				var9 = EnumComposition.ItemDefinition_get(var10);
 			}
 		}
+
 		Model var19 = var9.getModel(1);
 		if (var19 == null) {
 			return null;
@@ -108,6 +126,7 @@ public class class346 implements Iterator {
 					return null;
 				}
 			}
+
 			int[] var12 = Rasterizer2D.Rasterizer2D_pixels;
 			int var13 = Rasterizer2D.Rasterizer2D_width;
 			int var14 = Rasterizer2D.Rasterizer2D_height;
@@ -122,12 +141,14 @@ public class class346 implements Iterator {
 			if (var9.placeholderTemplate != -1) {
 				var20.drawTransBgAt(0, 0);
 			}
+
 			int var16 = var9.zoom2d;
 			if (var5) {
-				var16 = ((int) (((double) (var16)) * 1.5));
+				var16 = (int)((double)var16 * 1.5D);
 			} else if (var2 == 2) {
-				var16 = ((int) (1.04 * ((double) (var16))));
+				var16 = (int)(1.04D * (double)var16);
 			}
+
 			int var17 = var16 * Rasterizer3D.Rasterizer3D_sine[var9.xan2d] >> 16;
 			int var18 = var16 * Rasterizer3D.Rasterizer3D_cosine[var9.xan2d] >> 16;
 			var19.calculateBoundsCylinder();
@@ -135,25 +156,32 @@ public class class346 implements Iterator {
 			if (var9.notedId != -1) {
 				var20.drawTransBgAt(0, 0);
 			}
+
 			if (var2 >= 1) {
 				var8.outline(1);
 			}
+
 			if (var2 >= 2) {
 				var8.outline(16777215);
 			}
+
 			if (var3 != 0) {
 				var8.shadow(var3);
 			}
+
 			Rasterizer2D.Rasterizer2D_replace(var8.pixels, 36, 32);
 			if (var9.noteTemplate != -1) {
 				var20.drawTransBgAt(0, 0);
 			}
+
 			if (var4 == 1 || var4 == 2 && var9.isStackable == 1) {
 				ItemComposition.ItemDefinition_fontPlain11.draw(HitSplatDefinition.method3632(var1), 0, 9, 16776960, 1);
 			}
+
 			if (!var5) {
 				ItemComposition.ItemDefinition_cachedSprites.put(var8, var6);
 			}
+
 			Rasterizer2D.Rasterizer2D_replace(var12, var13, var14);
 			Rasterizer2D.Rasterizer2D_setClipArray(var15);
 			Rasterizer3D.Rasterizer3D_setClipFromRasterizer2D();

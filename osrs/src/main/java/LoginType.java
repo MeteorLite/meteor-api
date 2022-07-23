@@ -1,52 +1,63 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("pe")
 @Implements("LoginType")
 public class LoginType {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4611;
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4615;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4612;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4609;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4614;
-
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4613;
-
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	static final LoginType field4617;
-
 	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	public static final LoginType field4620;
-
 	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 217368977)
+	@ObfuscatedGetter(
+		intValue = 217368977
+	)
 	final int field4618;
-
 	@ObfuscatedName("s")
 	final String field4619;
 
@@ -59,7 +70,7 @@ public class LoginType {
 		field4614 = new LoginType(4, 5, "", "");
 		field4613 = new LoginType(6, 6, "", "");
 		field4617 = new LoginType(1, 7, "", "");
-		field4620 = new LoginType(3, -1, "", "", true, new LoginType[]{ oldscape, field4611, field4615, field4609, field4612 });
+		field4620 = new LoginType(3, -1, "", "", true, new LoginType[]{oldscape, field4611, field4615, field4609, field4612});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
@@ -67,7 +78,9 @@ public class LoginType {
 		this.field4619 = var4;
 	}
 
-	@ObfuscatedSignature(descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lpe;)V")
+	@ObfuscatedSignature(
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lpe;)V"
+	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
 		this.field4618 = var1;
 		this.field4619 = var4;
@@ -78,7 +91,10 @@ public class LoginType {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lnk;FFFI)F", garbageValue = "343733515")
+	@ObfuscatedSignature(
+		descriptor = "(Lnk;FFFI)F",
+		garbageValue = "343733515"
+	)
 	static float method7453(class389 var0, float var1, float var2, float var3) {
 		float var4 = FileSystem.method3281(var0.field4415, var0.field4414, var1);
 		if (Math.abs(var4) < class114.field1429) {
@@ -94,6 +110,7 @@ public class LoginType {
 				float var13 = 0.0F;
 				boolean var14 = true;
 				boolean var15 = false;
+
 				do {
 					var15 = false;
 					if (var14) {
@@ -103,6 +120,7 @@ public class LoginType {
 						var8 = var7;
 						var14 = false;
 					}
+
 					if (Math.abs(var13) < Math.abs(var5)) {
 						var1 = var2;
 						var2 = var6;
@@ -111,6 +129,7 @@ public class LoginType {
 						var5 = var13;
 						var13 = var4;
 					}
+
 					float var16 = class114.field1432 * Math.abs(var2) + 0.5F * var3;
 					float var17 = 0.5F * (var6 - var2);
 					boolean var18 = Math.abs(var17) > var16 && var5 != 0.0F;
@@ -128,11 +147,13 @@ public class LoginType {
 								var9 = ((var10 - var11) * 2.0F * var17 * var10 - (var2 - var1) * (var11 - 1.0F)) * var12;
 								var10 = (var12 - 1.0F) * (var10 - 1.0F) * (var11 - 1.0F);
 							}
-							if (((double) (var9)) > 0.0) {
+
+							if ((double)var9 > 0.0D) {
 								var10 = -var10;
 							} else {
 								var9 = -var9;
 							}
+
 							var12 = var8;
 							var8 = var7;
 							if (2.0F * var9 < var10 * 3.0F * var17 - Math.abs(var16 * var10) && var9 < Math.abs(var10 * var12 * 0.5F)) {
@@ -145,24 +166,27 @@ public class LoginType {
 							var7 = var17;
 							var8 = var17;
 						}
+
 						var1 = var2;
 						var4 = var5;
 						if (Math.abs(var7) > var16) {
 							var2 += var7;
-						} else if (((double) (var17)) > 0.0) {
+						} else if ((double)var17 > 0.0D) {
 							var2 += var16;
 						} else {
 							var2 -= var16;
 						}
+
 						var5 = FileSystem.method3281(var0.field4415, var0.field4414, var2);
-						if (((double) (var5 * (var13 / Math.abs(var13)))) > 0.0) {
+						if ((double)(var5 * (var13 / Math.abs(var13))) > 0.0D) {
 							var14 = true;
 							var15 = true;
 						} else {
 							var15 = true;
 						}
 					}
-				} while (var15 );
+				} while(var15);
+
 				return var2;
 			}
 		}

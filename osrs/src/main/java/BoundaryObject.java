@@ -1,57 +1,69 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("hi")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
 	@ObfuscatedName("tr")
-	@ObfuscatedGetter(intValue = 274182681)
+	@ObfuscatedGetter(
+		intValue = 274182681
+	)
 	static int field2622;
-
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1257114009)
+	@ObfuscatedGetter(
+		intValue = 1257114009
+	)
 	@Export("z")
 	int z;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -655721437)
+	@ObfuscatedGetter(
+		intValue = -655721437
+	)
 	@Export("x")
 	int x;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1527654875)
+	@ObfuscatedGetter(
+		intValue = -1527654875
+	)
 	@Export("y")
 	int y;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 364149679)
+	@ObfuscatedGetter(
+		intValue = 364149679
+	)
 	@Export("orientationA")
 	int orientationA;
-
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 1337588957)
+	@ObfuscatedGetter(
+		intValue = 1337588957
+	)
 	@Export("orientationB")
 	int orientationB;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lgj;")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
+	)
 	@Export("renderable1")
 	public Renderable renderable1;
-
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Lgj;")
+	@ObfuscatedSignature(
+		descriptor = "Lgj;"
+	)
 	@Export("renderable2")
 	public Renderable renderable2;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(longValue = 5334859034127772709L)
+	@ObfuscatedGetter(
+		longValue = 5334859034127772709L
+	)
 	@Export("tag")
 	public long tag;
-
 	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = -256459155)
+	@ObfuscatedGetter(
+		intValue = -256459155
+	)
 	@Export("flags")
 	int flags;
 
@@ -61,16 +73,22 @@ public final class BoundaryObject {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lcw;B)V", garbageValue = "-14")
+	@ObfuscatedSignature(
+		descriptor = "(Lcw;B)V",
+		garbageValue = "-14"
+	)
 	@Export("runScriptEvent")
 	public static void runScriptEvent(ScriptEvent var0) {
 		class135.runScript(var0, 500000, 475000);
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(IIIIB)V", garbageValue = "94")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIB)V",
+		garbageValue = "94"
+	)
 	static void method4534(int var0, int var1, int var2, int var3) {
-		for (ObjectSound var4 = ((ObjectSound) (ObjectSound.objectSounds.last())); var4 != null; var4 = ((ObjectSound) (ObjectSound.objectSounds.previous()))) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
 			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
 				int var5 = 0;
 				if (var1 > var4.maxX) {
@@ -78,16 +96,19 @@ public final class BoundaryObject {
 				} else if (var1 < var4.x) {
 					var5 += var4.x - var1;
 				}
+
 				if (var2 > var4.maxY) {
 					var5 += var2 - var4.maxY;
 				} else if (var2 < var4.y) {
 					var5 += var4.y - var2;
 				}
+
 				if (var5 - 64 <= var4.field812 && class19.clientPreferences.method2262() != 0 && var0 == var4.plane) {
 					var5 -= 64;
 					if (var5 < 0) {
 						var5 = 0;
 					}
+
 					int var6 = (var4.field812 - var5) * class19.clientPreferences.method2262() / var4.field812;
 					if (var4.stream1 == null) {
 						if (var4.soundEffectId >= 0) {
@@ -103,9 +124,10 @@ public final class BoundaryObject {
 					} else {
 						var4.stream1.method790(var6);
 					}
+
 					if (var4.stream2 == null) {
 						if (var4.soundEffectIds != null && (var4.field809 -= var3) <= 0) {
-							int var11 = ((int) (Math.random() * ((double) (var4.soundEffectIds.length))));
+							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
 							SoundEffect var12 = SoundEffect.readSoundEffect(Client.archive4, var4.soundEffectIds[var11], 0);
 							if (var12 != null) {
 								RawSound var13 = var12.toRawSound().resample(WorldMapRegion.decimator);
@@ -113,7 +135,7 @@ public final class BoundaryObject {
 								var10.setNumLoops(0);
 								class21.pcmStreamMixer.addSubStream(var10);
 								var4.stream2 = var10;
-								var4.field809 = var4.field819 + ((int) (Math.random() * ((double) (var4.field811 - var4.field819))));
+								var4.field809 = var4.field819 + (int)(Math.random() * (double)(var4.field811 - var4.field819));
 							}
 						}
 					} else {
@@ -127,6 +149,7 @@ public final class BoundaryObject {
 						class21.pcmStreamMixer.removeSubStream(var4.stream1);
 						var4.stream1 = null;
 					}
+
 					if (var4.stream2 != null) {
 						class21.pcmStreamMixer.removeSubStream(var4.stream2);
 						var4.stream2 = null;
@@ -134,10 +157,14 @@ public final class BoundaryObject {
 				}
 			}
 		}
+
 	}
 
 	@ObfuscatedName("fp")
-	@ObfuscatedSignature(descriptor = "(I)J", garbageValue = "-2059501837")
+	@ObfuscatedSignature(
+		descriptor = "(I)J",
+		garbageValue = "-2059501837"
+	)
 	static long method4536() {
 		return Client.field612;
 	}

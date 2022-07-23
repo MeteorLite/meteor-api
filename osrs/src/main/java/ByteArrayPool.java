@@ -1,63 +1,68 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import java.util.ArrayList;
-import net.runelite.mapping.Implements;
+import java.util.HashMap;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("mm")
 @Implements("ByteArrayPool")
 public class ByteArrayPool {
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -2132533809)
+	@ObfuscatedGetter(
+		intValue = -2132533809
+	)
 	@Export("ByteArrayPool_smallCount")
 	static int ByteArrayPool_smallCount;
-
 	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 1551258163)
+	@ObfuscatedGetter(
+		intValue = 1551258163
+	)
 	@Export("ByteArrayPool_mediumCount")
 	static int ByteArrayPool_mediumCount;
-
 	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = 28601155)
+	@ObfuscatedGetter(
+		intValue = 28601155
+	)
 	@Export("ByteArrayPool_largeCount")
 	static int ByteArrayPool_largeCount;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -562517075)
+	@ObfuscatedGetter(
+		intValue = -562517075
+	)
 	static int field4216;
-
 	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = -30790003)
+	@ObfuscatedGetter(
+		intValue = -30790003
+	)
 	static int field4207;
-
 	@ObfuscatedName("i")
-	@ObfuscatedGetter(intValue = 677494483)
+	@ObfuscatedGetter(
+		intValue = 677494483
+	)
 	static int field4208;
-
 	@ObfuscatedName("s")
-	@ObfuscatedGetter(intValue = -479475671)
+	@ObfuscatedGetter(
+		intValue = -479475671
+	)
 	static int field4209;
-
 	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 714035553)
+	@ObfuscatedGetter(
+		intValue = 714035553
+	)
 	static int field4210;
-
 	@ObfuscatedName("z")
 	@Export("ByteArrayPool_small")
 	static byte[][] ByteArrayPool_small;
-
 	@ObfuscatedName("r")
 	@Export("ByteArrayPool_medium")
 	static byte[][] ByteArrayPool_medium;
-
 	@ObfuscatedName("u")
 	@Export("ByteArrayPool_large")
 	static byte[][] ByteArrayPool_large;
-
 	@ObfuscatedName("k")
 	static byte[][] field4214;
-
 	@ObfuscatedName("a")
 	public static ArrayList field4202;
 
@@ -80,7 +85,10 @@ public class ByteArrayPool {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(IZB)[B", garbageValue = "-1")
+	@ObfuscatedSignature(
+		descriptor = "(IZB)[B",
+		garbageValue = "-1"
+	)
 	@Export("ByteArrayPool_getArrayBool")
 	static synchronized byte[] ByteArrayPool_getArrayBool(int var0, boolean var1) {
 		byte[] var4;
@@ -92,6 +100,7 @@ public class ByteArrayPool {
 			ByteArrayPool_small[ByteArrayPool_smallCount] = null;
 			return var4;
 		}
+
 		if (var0 != 5000) {
 			if (var0 < 5000) {
 			}
@@ -100,6 +109,7 @@ public class ByteArrayPool {
 			ByteArrayPool_medium[ByteArrayPool_mediumCount] = null;
 			return var4;
 		}
+
 		if (var0 != 10000) {
 			if (var0 < 10000) {
 			}
@@ -108,6 +118,7 @@ public class ByteArrayPool {
 			ByteArrayPool_large[ByteArrayPool_largeCount] = null;
 			return var4;
 		}
+
 		if (var0 != 30000) {
 			if (var0 < 30000) {
 			}
@@ -116,6 +127,7 @@ public class ByteArrayPool {
 			field4214[field4216] = null;
 			return var4;
 		}
+
 		if (class464.ByteArrayPool_arrays != null) {
 			for (int var2 = 0; var2 < Canvas.ByteArrayPool_alternativeSizes.length; ++var2) {
 				if (Canvas.ByteArrayPool_alternativeSizes[var2] != var0) {
@@ -128,11 +140,15 @@ public class ByteArrayPool {
 				}
 			}
 		}
+
 		return new byte[var0];
 	}
 
 	@ObfuscatedName("gh")
-	@ObfuscatedSignature(descriptor = "(Lci;ZI)V", garbageValue = "1209232624")
+	@ObfuscatedSignature(
+		descriptor = "(Lci;ZI)V",
+		garbageValue = "1209232624"
+	)
 	@Export("addPlayerToScene")
 	static void addPlayerToScene(Player var0, boolean var1) {
 		if (var0 != null && var0.isVisible() && !var0.isHidden) {
@@ -140,6 +156,7 @@ public class ByteArrayPool {
 			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.idleSequence == var0.movementSequence) {
 				var0.isUnanimated = true;
 			}
+
 			int var2 = var0.x >> 7;
 			int var3 = var0.y >> 7;
 			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
@@ -154,13 +171,16 @@ public class ByteArrayPool {
 						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
 							return;
 						}
+
 						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
 					}
+
 					var0.tileHeight = SceneTilePaint.getTileHeight(var0.x, var0.y, PacketWriter.Client_plane);
 					var0.playerCycle = Client.cycle;
 					class356.scene.drawEntity(PacketWriter.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
 				}
 			}
 		}
+
 	}
 }

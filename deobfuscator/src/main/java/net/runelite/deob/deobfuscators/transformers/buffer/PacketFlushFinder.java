@@ -39,9 +39,13 @@ import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
 import net.runelite.asm.execution.Execution;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.signature.Signature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PacketFlushFinder
 {
+	private static final Logger logger = LoggerFactory.getLogger(PacketFlushFinder.class);
+
 	private final ClassGroup group;
 
 	private final List<InstructionContext> queueForWrite = new ArrayList<>();

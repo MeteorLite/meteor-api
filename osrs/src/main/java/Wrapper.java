@@ -1,6 +1,7 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("ip")
 @Implements("Wrapper")
 public abstract class Wrapper extends DualNode {

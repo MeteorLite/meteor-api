@@ -6,7 +6,7 @@ import kotlin.system.exitProcess
 object OSNetClient {
     private const val currentDir = "./"
     private const val parentDir = "../"
-    var injected = File("./injector/build/injected/injected-client.jar")
+    var injected = File("")
     var loaded = false
     @JvmStatic
     fun main(args: Array<String>) {
@@ -17,7 +17,7 @@ object OSNetClient {
     }
 
     fun findInjected() {
-        val pathToInjected = "injector/build/injected/injected-client.jar"
+        val pathToInjected = "src/main/resources/injected-client.osrs"
 
         val currentDirInjected = File(currentDir + pathToInjected)
         val parentDirInjected = File(parentDir + pathToInjected)

@@ -1,25 +1,28 @@
 import java.lang.reflect.Field;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import java.lang.reflect.Method;
-import net.runelite.rs.ScriptOpcodes;
-import net.runelite.rs.Reflection;
 import java.util.Date;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
+import net.runelite.rs.ScriptOpcodes;
+
 @ObfuscatedName("dr")
 @Implements("UserComparator3")
 public class UserComparator3 extends AbstractUserComparator {
 	@ObfuscatedName("tv")
-	@ObfuscatedGetter(intValue = -120700993)
+	@ObfuscatedGetter(
+		intValue = -120700993
+	)
 	static int field1391;
-
 	@ObfuscatedName("mc")
-	@ObfuscatedGetter(intValue = 761312471)
+	@ObfuscatedGetter(
+		intValue = 761312471
+	)
 	@Export("menuX")
 	static int menuX;
-
 	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
@@ -29,7 +32,10 @@ public class UserComparator3 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lnm;Lnm;B)I", garbageValue = "-18")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;Lnm;B)I",
+		garbageValue = "-18"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
 		if (var2.world != var1.world) {
@@ -40,11 +46,14 @@ public class UserComparator3 extends AbstractUserComparator {
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqt;IB)V", garbageValue = "22")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;IB)V",
+		garbageValue = "22"
+	)
 	@Export("readReflectionCheck")
 	public static void readReflectionCheck(Buffer var0, int var1) {
 		ReflectionCheck var2 = new ReflectionCheck();
@@ -56,6 +65,7 @@ public class UserComparator3 extends AbstractUserComparator {
 		var2.intReplaceValues = new int[var2.size];
 		var2.methods = new Method[var2.size];
 		var2.arguments = new byte[var2.size][][];
+
 		for (int var3 = 0; var3 < var2.size; ++var3) {
 			try {
 				int var4 = var0.readUnsignedByte();
@@ -68,9 +78,11 @@ public class UserComparator3 extends AbstractUserComparator {
 						var6 = var0.readStringCp1252NullTerminated();
 						var7 = var0.readUnsignedByte();
 						String[] var8 = new String[var7];
+
 						for (int var9 = 0; var9 < var7; ++var9) {
 							var8[var9] = var0.readStringCp1252NullTerminated();
 						}
+
 						String var20 = var0.readStringCp1252NullTerminated();
 						byte[][] var10 = new byte[var7][];
 						int var12;
@@ -81,35 +93,43 @@ public class UserComparator3 extends AbstractUserComparator {
 								var0.readBytes(var10[var11], 0, var12);
 							}
 						}
+
 						var2.operations[var3] = var4;
 						Class[] var21 = new Class[var7];
+
 						for (var12 = 0; var12 < var7; ++var12) {
 							var21[var12] = WorldMapRectangle.loadClassFromDescriptor(var8[var12]);
 						}
+
 						Class var22 = WorldMapRectangle.loadClassFromDescriptor(var20);
 						if (WorldMapRectangle.loadClassFromDescriptor(var5).getClassLoader() == null) {
 							throw new SecurityException();
 						}
+
 						Method[] var13 = WorldMapRectangle.loadClassFromDescriptor(var5).getDeclaredMethods();
 						Method[] var14 = var13;
+
 						for (int var15 = 0; var15 < var14.length; ++var15) {
 							Method var16 = var14[var15];
 							if (Reflection.getMethodName(var16).equals(var6)) {
 								Class[] var17 = Reflection.getParameterTypes(var16);
 								if (var17.length == var21.length) {
 									boolean var18 = true;
+
 									for (int var19 = 0; var19 < var21.length; ++var19) {
 										if (var21[var19] != var17[var19]) {
 											var18 = false;
 											break;
 										}
 									}
+
 									if (var18 && var22 == var16.getReturnType()) {
 										var2.methods[var3] = var16;
 									}
 								}
 							}
 						}
+
 						var2.arguments[var3] = var10;
 					}
 				} else {
@@ -119,11 +139,13 @@ public class UserComparator3 extends AbstractUserComparator {
 					if (var4 == 1) {
 						var7 = var0.readInt();
 					}
+
 					var2.operations[var3] = var4;
 					var2.intReplaceValues[var3] = var7;
 					if (WorldMapRectangle.loadClassFromDescriptor(var5).getClassLoader() == null) {
 						throw new SecurityException();
 					}
+
 					var2.fields[var3] = Reflection.findField(WorldMapRectangle.loadClassFromDescriptor(var5), var6);
 				}
 			} catch (ClassNotFoundException var24) {
@@ -138,11 +160,15 @@ public class UserComparator3 extends AbstractUserComparator {
 				var2.creationErrors[var3] = -5;
 			}
 		}
+
 		class33.reflectionChecks.addFirst(var2);
 	}
 
 	@ObfuscatedName("ae")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "13")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "13"
+	)
 	static int method2592(int var0, Script var1, boolean var2) {
 		String var3;
 		int var9;
@@ -173,7 +199,7 @@ public class UserComparator3 extends AbstractUserComparator {
 				int var10;
 				if (var0 == ScriptOpcodes.FROMDATE) {
 					var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-					long var13 = 86400000L * (11745L + ((long) (var10)));
+					long var13 = 86400000L * (11745L + (long)var10);
 					Interpreter.Interpreter_calendar.setTime(new Date(var13));
 					var6 = Interpreter.Interpreter_calendar.get(5);
 					int var17 = Interpreter.Interpreter_calendar.get(2);
@@ -220,6 +246,7 @@ public class UserComparator3 extends AbstractUserComparator {
 							} else {
 								Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4;
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.ESCAPE) {
 							var3 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
@@ -228,23 +255,23 @@ public class UserComparator3 extends AbstractUserComparator {
 						} else if (var0 == ScriptOpcodes.APPEND_CHAR) {
 							var3 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
 							var9 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3 + ((char) (var9));
+							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3 + (char)var9;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISPRINTABLE) {
 							var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (StudioGame.isCharPrintable(((char) (var10)))) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = StudioGame.isCharPrintable((char)var10) ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISALPHANUMERIC) {
 							var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (FloorOverlayDefinition.isAlphaNumeric(((char) (var10)))) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = FloorOverlayDefinition.isAlphaNumeric((char)var10) ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISALPHA) {
 							var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (WorldMapDecorationType.isCharAlphabetic(((char) (var10)))) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = WorldMapDecorationType.isCharAlphabetic((char)var10) ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CHAR_ISNUMERIC) {
 							var10 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class83.isDigit(((char) (var10)))) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class83.isDigit((char)var10) ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.STRING_LENGTH) {
 							var3 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
@@ -253,6 +280,7 @@ public class UserComparator3 extends AbstractUserComparator {
 							} else {
 								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.SUBSTRING) {
 							var3 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
@@ -265,6 +293,7 @@ public class UserComparator3 extends AbstractUserComparator {
 							var3 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
 							StringBuilder var15 = new StringBuilder(var3.length());
 							boolean var16 = false;
+
 							for (var6 = 0; var6 < var3.length(); ++var6) {
 								char var7 = var3.charAt(var6);
 								if (var7 == '<') {
@@ -275,6 +304,7 @@ public class UserComparator3 extends AbstractUserComparator {
 									var15.append(var7);
 								}
 							}
+
 							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var15.toString();
 							return 1;
 						} else if (var0 == ScriptOpcodes.STRING_INDEXOF_CHAR) {
@@ -306,6 +336,7 @@ public class UserComparator3 extends AbstractUserComparator {
 					} else {
 						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3;
 					}
+
 					return 1;
 				}
 			}
@@ -313,7 +344,10 @@ public class UserComparator3 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("bz")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "62")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "62"
+	)
 	static int method2590(int var0, Script var1, boolean var2) {
 		if (var0 == 7600) {
 			--Interpreter.Interpreter_stringStackSize;

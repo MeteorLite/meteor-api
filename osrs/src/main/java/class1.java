@@ -1,28 +1,36 @@
+import java.util.concurrent.Callable;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
-import java.util.concurrent.Callable;
+
 @ObfuscatedName("v")
 public class class1 implements Callable {
 	@ObfuscatedName("u")
 	static int[][][] field2;
-
 	@ObfuscatedName("ky")
-	@ObfuscatedSignature(descriptor = "Lkb;")
+	@ObfuscatedSignature(
+		descriptor = "Lkb;"
+	)
 	static Widget field4;
-
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lqt;")
+	@ObfuscatedSignature(
+		descriptor = "Lqt;"
+	)
 	final Buffer field1;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lf;")
+	@ObfuscatedSignature(
+		descriptor = "Lf;"
+	)
 	final class3 field3;
-
-	@ObfuscatedSignature(descriptor = "Lw;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lw;"
+	)
 	final class7 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Lw;Lqt;Lf;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lw;Lqt;Lf;)V"
+	)
 	class1(class7 var1, Buffer var2, class3 var3) {
 		this.this$0 = var1;
 		this.field1 = var2;
@@ -34,9 +42,12 @@ public class class1 implements Callable {
 	}
 
 	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZS)I", garbageValue = "-15642")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZS)I",
+		garbageValue = "-15642"
+	)
 	static int method7(int var0, Script var1, boolean var2) {
-		Widget var3 = (var2) ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+		Widget var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
 		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollX;
 			return 1;
@@ -80,7 +91,7 @@ public class class1 implements Callable {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
 			return 1;
 		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.modelTransparency) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
 			return 1;
 		} else if (var0 != 1615 && var0 != 1616) {
 			return 2;

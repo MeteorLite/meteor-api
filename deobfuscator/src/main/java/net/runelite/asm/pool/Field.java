@@ -32,7 +32,7 @@ public class Field
 {
 	private final Class clazz;
 	private final String name;
-	private Type type;
+	private final Type type;
 
 	public Field(Class clazz, String name, Type type)
 	{
@@ -101,10 +101,5 @@ public class Field
 	public Type getType()
 	{
 		return type;
-	}
-
-	public void setType(Type type)
-	{
-		this.type = type;
 	}
 }

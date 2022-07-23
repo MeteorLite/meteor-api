@@ -1,19 +1,21 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("qa")
 @Implements("Username")
 public class Username implements Comparable {
 	@ObfuscatedName("c")
 	@Export("name")
 	String name;
-
 	@ObfuscatedName("v")
 	@Export("cleanName")
 	String cleanName;
 
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lpe;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lpe;)V"
+	)
 	public Username(String var1, LoginType var2) {
 		this.name = var1;
 		this.cleanName = UserComparator5.method2580(var1, var2);
@@ -25,27 +27,39 @@ public class Username implements Comparable {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "1398829508")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1398829508"
+	)
 	@Export("getName")
 	public String getName() {
 		return this.name;
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Ljava/lang/String;", garbageValue = "1713644314")
+	@ObfuscatedSignature(
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1713644314"
+	)
 	public String method8320() {
 		return this.cleanName;
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-54")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-54"
+	)
 	@Export("hasCleanName")
 	public boolean hasCleanName() {
 		return this.cleanName != null;
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqa;I)I", garbageValue = "113609215")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;I)I",
+		garbageValue = "113609215"
+	)
 	@Export("compareToTyped")
 	public int compareToTyped(Username var1) {
 		if (this.cleanName == null) {
@@ -57,7 +71,7 @@ public class Username implements Comparable {
 
 	public boolean equals(Object var1) {
 		if (var1 instanceof Username) {
-			Username var2 = ((Username) (var1));
+			Username var2 = (Username)var1;
 			if (this.cleanName == null) {
 				return var2.cleanName == null;
 			} else if (var2.cleanName == null) {
@@ -79,6 +93,6 @@ public class Username implements Comparable {
 	}
 
 	public int compareTo(Object var1) {
-		return this.compareToTyped(((Username) (var1)));
+		return this.compareToTyped((Username)var1);
 	}
 }

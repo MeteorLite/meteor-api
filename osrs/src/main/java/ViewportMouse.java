@@ -1,58 +1,65 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("he")
 @Implements("ViewportMouse")
 public class ViewportMouse {
 	@ObfuscatedName("c")
 	@Export("ViewportMouse_isInViewport")
 	public static boolean ViewportMouse_isInViewport;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 953565199)
+	@ObfuscatedGetter(
+		intValue = 953565199
+	)
 	@Export("ViewportMouse_x")
 	public static int ViewportMouse_x;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 573466939)
+	@ObfuscatedGetter(
+		intValue = 573466939
+	)
 	@Export("ViewportMouse_y")
 	public static int ViewportMouse_y;
-
 	@ObfuscatedName("f")
 	@Export("ViewportMouse_false0")
 	public static boolean ViewportMouse_false0;
-
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -1554423405)
+	@ObfuscatedGetter(
+		intValue = -1554423405
+	)
 	static int field2588;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = 1684293485)
+	@ObfuscatedGetter(
+		intValue = 1684293485
+	)
 	static int field2589;
-
 	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = 285393075)
+	@ObfuscatedGetter(
+		intValue = 285393075
+	)
 	static int field2590;
-
 	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 435239719)
+	@ObfuscatedGetter(
+		intValue = 435239719
+	)
 	@Export("ViewportMouse_entityCount")
 	public static int ViewportMouse_entityCount;
-
 	@ObfuscatedName("u")
 	@Export("ViewportMouse_entityTags")
 	public static long[] ViewportMouse_entityTags;
-
 	@ObfuscatedName("jc")
-	@ObfuscatedGetter(intValue = 1467826843)
+	@ObfuscatedGetter(
+		intValue = 1467826843
+	)
 	@Export("cameraPitch")
 	static int cameraPitch;
-
 	@ObfuscatedName("ms")
-	@ObfuscatedGetter(intValue = 863753987)
+	@ObfuscatedGetter(
+		intValue = 863753987
+	)
 	@Export("menuY")
 	static int menuY;
 
@@ -66,15 +73,19 @@ public class ViewportMouse {
 	}
 
 	@ObfuscatedName("t")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZI)I", garbageValue = "1768529211")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "1768529211"
+	)
 	static int method4514(int var0, Script var1, boolean var2) {
 		Widget var3;
 		if (var0 >= 2000) {
 			var0 -= 1000;
 			var3 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
 		} else {
-			var3 = (var2) ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+			var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
 		}
+
 		String var4 = Interpreter.Interpreter_stringStack[--Interpreter.Interpreter_stringStackSize];
 		int[] var5 = null;
 		if (var4.length() > 0 && var4.charAt(var4.length() - 1) == 'Y') {
@@ -83,9 +94,12 @@ public class ViewportMouse {
 				for (var5 = new int[var6]; var6-- > 0; var5[var6] = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]) {
 				}
 			}
+
 			var4 = var4.substring(0, var4.length() - 1);
 		}
+
 		Object[] var8 = new Object[var4.length() + 1];
+
 		int var7;
 		for (var7 = var8.length - 1; var7 >= 1; --var7) {
 			if (var4.charAt(var7 - 1) == 's') {
@@ -94,12 +108,14 @@ public class ViewportMouse {
 				var8[var7] = new Integer(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
 			}
 		}
+
 		var7 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
 		if (var7 != -1) {
 			var8[0] = new Integer(var7);
 		} else {
 			var8 = null;
 		}
+
 		if (var0 == ScriptOpcodes.CC_SETONCLICK) {
 			var3.onClick = var8;
 		} else if (var0 == ScriptOpcodes.CC_SETONHOLD) {
@@ -169,22 +185,29 @@ public class ViewportMouse {
 			if (var0 != 1434) {
 				return 2;
 			}
+
 			var3.field3495 = var8;
 		}
+
 		var3.hasListener = true;
 		return 1;
 	}
 
 	@ObfuscatedName("fl")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "3487029")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "3487029"
+	)
 	@Export("load")
 	static void load() {
 		int var26;
 		if (Client.titleLoadingStage == 0) {
 			class356.scene = new Scene(4, 104, 104, Tiles.Tiles_heights);
+
 			for (var26 = 0; var26 < 4; ++var26) {
 				Client.collisionMaps[var26] = new CollisionMap(104, 104);
 			}
+
 			FloorUnderlayDefinition.sceneMinimapSprite = new SpritePixels(512, 512);
 			Login.Login_loadingText = "Starting game engine...";
 			Login.Login_loadingPercent = 5;
@@ -250,9 +273,9 @@ public class ViewportMouse {
 					Login.Login_loadingText = "Loading fonts - " + Client.fontsMap.size() * 100 / var26 + "%";
 					Login.Login_loadingPercent = 40;
 				} else {
-					MouseHandler.fontPlain11 = ((Font) (Client.fontsMap.get(FontName.FontName_plain11)));
-					DevicePcmPlayerProvider.fontPlain12 = ((Font) (Client.fontsMap.get(FontName.FontName_plain12)));
-					TileItem.fontBold12 = ((Font) (Client.fontsMap.get(FontName.FontName_bold12)));
+					MouseHandler.fontPlain11 = (Font)Client.fontsMap.get(FontName.FontName_plain11);
+					DevicePcmPlayerProvider.fontPlain12 = (Font)Client.fontsMap.get(FontName.FontName_plain12);
+					TileItem.fontBold12 = (Font)Client.fontsMap.get(FontName.FontName_bold12);
 					Occluder.platformInfo = Client.platformInfoProvider.get();
 					Login.Login_loadingText = "Loaded fonts";
 					Login.Login_loadingPercent = 40;
@@ -348,66 +371,77 @@ public class ViewportMouse {
 					} else {
 						++var26;
 					}
+
 					if (class344.redHintArrowSprite == null) {
 						class344.redHintArrowSprite = class7.SpriteBuffer_getSprite(class304.archive8, LoginScreenAnimation.spriteIds.field4367, 0);
 					} else {
 						++var26;
 					}
+
 					if (class13.mapSceneSprites == null) {
 						class13.mapSceneSprites = ClanChannelMember.method2867(class304.archive8, LoginScreenAnimation.spriteIds.mapScenes, 0);
 					} else {
 						++var26;
 					}
+
 					if (Message.headIconPkSprites == null) {
 						Message.headIconPkSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.headIconsPk, 0);
 					} else {
 						++var26;
 					}
+
 					if (class28.headIconPrayerSprites == null) {
 						class28.headIconPrayerSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.field4374, 0);
 					} else {
 						++var26;
 					}
+
 					if (UserComparator4.headIconHintSprites == null) {
 						UserComparator4.headIconHintSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.field4373, 0);
 					} else {
 						++var26;
 					}
+
 					if (DynamicObject.mapMarkerSprites == null) {
 						DynamicObject.mapMarkerSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.field4372, 0);
 					} else {
 						++var26;
 					}
+
 					if (BuddyRankComparator.crossSprites == null) {
 						BuddyRankComparator.crossSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.field4368, 0);
 					} else {
 						++var26;
 					}
+
 					if (class9.mapDotSprites == null) {
 						class9.mapDotSprites = class430.method7547(class304.archive8, LoginScreenAnimation.spriteIds.field4371, 0);
 					} else {
 						++var26;
 					}
+
 					if (class126.scrollBarSprites == null) {
 						class126.scrollBarSprites = ClanChannelMember.method2867(class304.archive8, LoginScreenAnimation.spriteIds.field4375, 0);
 					} else {
 						++var26;
 					}
+
 					if (ClientPreferences.modIconSprites == null) {
 						ClientPreferences.modIconSprites = ClanChannelMember.method2867(class304.archive8, LoginScreenAnimation.spriteIds.field4376, 0);
 					} else {
 						++var26;
 					}
+
 					if (var26 < 11) {
 						Login.Login_loadingText = "Loading sprites - " + var26 * 100 / 12 + "%";
 						Login.Login_loadingPercent = 70;
 					} else {
 						AbstractFont.AbstractFont_modIconSprites = ClientPreferences.modIconSprites;
 						class344.redHintArrowSprite.normalize();
-						var1 = ((int) (Math.random() * 21.0)) - 10;
-						int var2 = ((int) (Math.random() * 21.0)) - 10;
-						int var3 = ((int) (Math.random() * 21.0)) - 10;
-						int var4 = ((int) (Math.random() * 41.0)) - 20;
+						var1 = (int)(Math.random() * 21.0D) - 10;
+						int var2 = (int)(Math.random() * 21.0D) - 10;
+						int var3 = (int)(Math.random() * 21.0D) - 10;
+						int var4 = (int)(Math.random() * 41.0D) - 20;
 						class13.mapSceneSprites[0].shiftColors(var4 + var1, var4 + var2, var3 + var4);
 						Login.Login_loadingText = "Loaded sprites";
 						Login.Login_loadingPercent = 70;
@@ -474,6 +508,7 @@ public class ViewportMouse {
 							class121.worldMap = new WorldMap();
 							class121.worldMap.init(MouseHandler.archive19, AbstractUserComparator.archive18, class4.archive20, TileItem.fontBold12, Client.fontsMap, class13.mapSceneSprites);
 						}
+
 						Login.Login_loadingText = "Loaded world map";
 						Client.titleLoadingStage = 150;
 					}
@@ -503,11 +538,12 @@ public class ViewportMouse {
 			var26 += AbstractUserComparator.archive18.percentage() / 100;
 			var26 += class4.archive20.percentage() / 100;
 			var26 += class132.field1588.percentage() / 100;
-			var26 += (class6.archive17.method5795() && class6.archive17.isFullyLoaded()) ? 1 : 0;
+			var26 += class6.archive17.method5795() && class6.archive17.isFullyLoaded() ? 1 : 0;
 			if (var26 != 100) {
 				if (var26 != 0) {
 					Login.Login_loadingText = "Checking for updates - " + var26 + "%";
 				}
+
 				Login.Login_loadingPercent = 30;
 			} else {
 				HealthBarUpdate.method2202(Varcs.archive5, "Animations");

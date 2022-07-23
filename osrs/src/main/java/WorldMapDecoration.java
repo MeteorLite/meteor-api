@@ -1,24 +1,29 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ix")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 1217125903)
+	@ObfuscatedGetter(
+		intValue = 1217125903
+	)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -1822794685)
+	@ObfuscatedGetter(
+		intValue = -1822794685
+	)
 	@Export("decoration")
 	final int decoration;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1636858953)
+	@ObfuscatedGetter(
+		intValue = -1636858953
+	)
 	@Export("rotation")
 	final int rotation;
 
@@ -29,7 +34,10 @@ public class WorldMapDecoration {
 	}
 
 	@ObfuscatedName("a")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZI)I", garbageValue = "-2049294776")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "-2049294776"
+	)
 	static int method4992(int var0, Script var1, boolean var2) {
 		Widget var3 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
 		if (var0 == ScriptOpcodes.IF_GETX) {
@@ -45,7 +53,7 @@ public class WorldMapDecoration {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.height;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var3.isHidden) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
 			return 1;
 		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.parentId;
@@ -56,7 +64,10 @@ public class WorldMapDecoration {
 	}
 
 	@ObfuscatedName("ig")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "-80")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "-80"
+	)
 	@Export("Widget_runOnTargetLeave")
 	static void Widget_runOnTargetLeave() {
 		if (Client.isSpellSelected) {
@@ -67,6 +78,7 @@ public class WorldMapDecoration {
 				var1.args = var0.onTargetLeave;
 				BoundaryObject.runScriptEvent(var1);
 			}
+
 			Client.selectedSpellItemId = -1;
 			Client.isSpellSelected = false;
 			ChatChannel.invalidateWidget(var0);
@@ -74,7 +86,10 @@ public class WorldMapDecoration {
 	}
 
 	@ObfuscatedName("lp")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1243783436")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1243783436"
+	)
 	static void method4991(int var0) {
 		Client.oculusOrbState = var0;
 	}

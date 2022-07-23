@@ -1,8 +1,9 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("qi")
 @Implements("UserComparator1")
 public class UserComparator1 implements Comparator {
@@ -15,14 +16,17 @@ public class UserComparator1 implements Comparator {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lne;Lne;B)I", garbageValue = "12")
+	@ObfuscatedSignature(
+		descriptor = "(Lne;Lne;B)I",
+		garbageValue = "12"
+	)
 	@Export("compare_bridged")
 	int compare_bridged(User var1, User var2) {
 		return this.reversed ? var1.compareTo_user(var2) : var2.compareTo_user(var1);
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compare_bridged(((User) (var1)), ((User) (var2)));
+		return this.compare_bridged((User)var1, (User)var2);
 	}
 
 	public boolean equals(Object var1) {
@@ -30,7 +34,10 @@ public class UserComparator1 implements Comparator {
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "([BIIII[Lgv;S)V", garbageValue = "-16264")
+	@ObfuscatedSignature(
+		descriptor = "([BIIII[Lgv;S)V",
+		garbageValue = "-16264"
+	)
 	static final void method8020(byte[] var0, int var1, int var2, int var3, int var4, CollisionMap[] var5) {
 		int var7;
 		int var8;
@@ -44,7 +51,9 @@ public class UserComparator1 implements Comparator {
 				}
 			}
 		}
+
 		Buffer var10 = new Buffer(var0);
+
 		for (var7 = 0; var7 < 4; ++var7) {
 			for (var8 = 0; var8 < 64; ++var8) {
 				for (int var9 = 0; var9 < 64; ++var9) {
@@ -52,5 +61,6 @@ public class UserComparator1 implements Comparator {
 				}
 			}
 		}
+
 	}
 }

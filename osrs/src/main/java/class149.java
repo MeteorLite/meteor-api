@@ -1,10 +1,14 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ey")
 public class class149 {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(IIIB)Lbi;", garbageValue = "-90")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)Lbi;",
+		garbageValue = "-90"
+	)
 	@Export("getWorldMapScript")
 	static Script getWorldMapScript(int var0, int var1, int var2) {
 		int var3 = (var1 << 8) + var0;

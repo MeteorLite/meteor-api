@@ -1,24 +1,29 @@
-import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("ma")
 public class class351 {
 	@ObfuscatedName("z")
 	public static boolean field4198;
-
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(intValue = 951623757)
+	@ObfuscatedGetter(
+		intValue = 951623757
+	)
 	int field4197;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -658455091)
+	@ObfuscatedGetter(
+		intValue = -658455091
+	)
 	int field4193;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1299809865)
+	@ObfuscatedGetter(
+		intValue = -1299809865
+	)
 	int field4195;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 156042527)
+	@ObfuscatedGetter(
+		intValue = 156042527
+	)
 	int field4196;
 
 	public String toString() {

@@ -42,16 +42,14 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.util.CheckClassAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JarUtil
 {
+	private static final Logger logger = LoggerFactory.getLogger(JarUtil.class);
 
 	public static ClassGroup load(File jarfile)
-	{
-		return load(jarfile, false);
-	}
-
-	public static ClassGroup load(File jarfile, boolean skip)
 	{
 		ClassGroup group = new ClassGroup();
 
@@ -61,7 +59,7 @@ public class JarUtil
 			{
 				JarEntry entry = it.nextElement();
 
-				if (!entry.getName().endsWith(".class") || (skip && entry.getName().contains("bouncycastle")))
+				if (!entry.getName().endsWith(".class"))
 				{
 					continue;
 				}
@@ -96,16 +94,11 @@ public class JarUtil
 
 	public static ClassGroup loadClasses(Collection<File> files) throws IOException
 	{
-		return loadClasses(files, false);
-	}
-
-	public static ClassGroup loadClasses(Collection<File> files, boolean skip) throws IOException
-	{
 		final ClassGroup group = new ClassGroup();
 
 		for (File file : files)
 		{
-			if (!file.getName().endsWith(".class") || (skip && file.getName().contains("bouncycastle")))
+			if (!file.getName().endsWith(".class"))
 			{
 				continue;
 			}
@@ -173,6 +166,7 @@ public class JarUtil
 		}
 		catch (Exception ex)
 		{
+			logger.warn("Class {} failed validation", name, ex);
 		}
 	}
 }

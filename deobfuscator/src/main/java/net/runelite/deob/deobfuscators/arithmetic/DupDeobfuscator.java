@@ -43,6 +43,8 @@ import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Removes the duplication of multiplication instructions to make
@@ -52,6 +54,7 @@ import net.runelite.deob.Deobfuscator;
  */
 public class DupDeobfuscator implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(DupDeobfuscator.class);
 
 	private int count;
 
@@ -74,6 +77,7 @@ public class DupDeobfuscator implements Deobfuscator
 			{
 				if (i.getInstruction() instanceof Dup)
 				{
+					logger.debug("Dup instruction {} duplicates multiplication result {}", i, ic);
 
 					undup(i);
 					++count;
@@ -81,23 +85,27 @@ public class DupDeobfuscator implements Deobfuscator
 				}
 				if (i.getInstruction() instanceof Dup_X1)
 				{
+					logger.debug("Dup_X1 instruction {} duplicates multiplication result {}", i, ic);
 
 					undup_x1(i);
 					++count;
 					return;
 				}
 
+				logger.warn("Dup instruction {} pops imul", i);
 			}
 			else if (ic.getInstruction() instanceof LMul)
 			{
 				if (i.getInstruction() instanceof Dup2_X1)
 				{
+					logger.debug("Dup_X2 instruction {} duplicates multiplication result {}", i, ic);
 
 					undup2_x1(i);
 					++count;
 					return;
 				}
 				
+				logger.warn("Dup instruction {} pops lmul", i);
 			}
 		}
 
@@ -112,6 +120,7 @@ public class DupDeobfuscator implements Deobfuscator
 				{
 					if (i.getInstruction() instanceof Dup)
 					{
+						logger.debug("imul {} pops dup instruction {}", ic, i);
 
 						undup(i);
 						++count;
@@ -119,23 +128,27 @@ public class DupDeobfuscator implements Deobfuscator
 					}
 					if (i.getInstruction() instanceof Dup_X1)
 					{
+						logger.debug("imul {} pops dup x1 instruction {}", ic, i);
 
 						undup_x1(i);
 						++count;
 						return;
 					}
 
+					logger.warn("imul pops dup instruction {}", i);
 				}
 				else if (ic.getInstruction() instanceof LMul)
 				{
 					if (i.getInstruction() instanceof Dup2_X1)
 					{
+						logger.debug("imul {} pops dup2 x1 instruction {}", ic, i);
 
 						undup2_x1(i);
 						++count;
 						return;
 					}
 
+					logger.warn("lmul pops dup instruction {}", i);
 				}
 			}
 		}
@@ -226,6 +239,8 @@ public class DupDeobfuscator implements Deobfuscator
 		// copy instruction
 		Instruction i = ictx.getInstruction();
 
+		logger.debug("Duplicating instruction {} at index {}", i, idx);
+
 		i = i.clone();
 
 		instructions.addInstruction(idx, i);
@@ -253,6 +268,8 @@ public class DupDeobfuscator implements Deobfuscator
 		e.addMethodContextVisitor(m -> visit(m));
 		e.populateInitialMethods();
 		e.run();
+
+		logger.info("Replaced {} dup instructions", count);
 	}
 
 }

@@ -1,44 +1,55 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("qm")
 public class class446 implements MouseWheel {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	public static final class446 field4751;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	public static final class446 field4750;
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	static final class446 field4753;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	static final class446 field4752;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	static final class446 field4758;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lqm;")
+	@ObfuscatedSignature(
+		descriptor = "Lqm;"
+	)
 	static final class446 field4754;
-
 	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = 273043499)
+	@ObfuscatedGetter(
+		intValue = 273043499
+	)
 	@Export("Interpreter_intStackSize")
 	static int Interpreter_intStackSize;
-
 	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = -1684945137)
+	@ObfuscatedGetter(
+		intValue = -1684945137
+	)
 	final int field4749;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -1783922233)
+	@ObfuscatedGetter(
+		intValue = -1783922233
+	)
 	final int field4756;
 
 	static {
@@ -56,14 +67,20 @@ public class class446 implements MouseWheel {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-100"
+	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field4756;
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "612370997")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "612370997"
+	)
 	public boolean method8008() {
 		return this == field4750;
 	}

@@ -1,15 +1,17 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("is")
 @Implements("WorldMapSprite")
 public final class WorldMapSprite {
 	@ObfuscatedName("em")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
 	@Export("archive14")
 	static Archive archive14;
-
 	@ObfuscatedName("v")
 	@Export("tileColors")
 	final int[] tileColors;
@@ -23,14 +25,20 @@ public final class WorldMapSprite {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(IIB)I", garbageValue = "14")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)I",
+		garbageValue = "14"
+	)
 	@Export("getTileColor")
 	final int getTileColor(int var1, int var2) {
 		return this.tileColors[var2 * 64 + var1];
 	}
 
 	@ObfuscatedName("ho")
-	@ObfuscatedSignature(descriptor = "(Ljw;I)V", garbageValue = "-419484906")
+	@ObfuscatedSignature(
+		descriptor = "(Ljw;I)V",
+		garbageValue = "-419484906"
+	)
 	static final void method4998(class262 var0) {
 		PacketBuffer var1 = Client.packetWriter.packetBuffer;
 		int var2;
@@ -41,10 +49,10 @@ public final class WorldMapSprite {
 		int var7;
 		if (class262.field3022 == var0) {
 			var2 = var1.readUnsignedShort();
-			var3 = var1.readUnsignedByteSub();
+			var3 = var1.method7767();
 			var4 = (var3 >> 4 & 7) + class10.field53;
 			var5 = (var3 & 7) + class298.field3558;
-			var6 = var1.readUnsignedByteSub();
+			var6 = var1.method7767();
 			var7 = var1.readUnsignedShort();
 			if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 				var4 = var4 * 128 + 64;
@@ -52,19 +60,21 @@ public final class WorldMapSprite {
 				GraphicsObject var45 = new GraphicsObject(var2, PacketWriter.Client_plane, var4, var5, SceneTilePaint.getTileHeight(var4, var5, PacketWriter.Client_plane) - var6, var7, Client.cycle);
 				Client.graphicsObjects.addFirst(var45);
 			}
+
 		} else {
 			int var8;
 			if (class262.field3023 == var0) {
-				var2 = var1.readUnsignedByteAdd();
+				var2 = var1.method7765();
 				var3 = var2 >> 2;
 				var4 = var2 & 3;
 				var5 = Client.field582[var3];
-				var6 = var1.readUnsignedByteAdd();
+				var6 = var1.method7765();
 				var7 = (var6 >> 4 & 7) + class10.field53;
 				var8 = (var6 & 7) + class298.field3558;
 				if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
 					Canvas.updatePendingSpawn(PacketWriter.Client_plane, var7, var8, var5, -1, var3, var4, 0, -1);
 				}
+
 			} else {
 				int var9;
 				int var10;
@@ -77,14 +87,14 @@ public final class WorldMapSprite {
 					var3 = var1.readUnsignedShort();
 					var4 = var1.readUnsignedShort();
 					var5 = var1.readUnsignedByte();
-					var6 = var1.readShortAdd();
-					var7 = var1.readUnsignedByteSub();
-					var8 = var1.readUnsignedByteAdd();
+					var6 = var1.method7813();
+					var7 = var1.method7767();
+					var8 = var1.method7765();
 					var9 = (var8 >> 4 & 7) + class10.field53;
 					var10 = (var8 & 7) + class298.field3558;
-					var11 = var1.readUnsignedByteAdd() * 4;
-					byte var40 = var1.readByteSub();
-					var13 = var1.readUnsignedShortAddLE();
+					var11 = var1.method7765() * 4;
+					byte var40 = var1.method7952();
+					var13 = var1.method7776();
 					var14 = var1.readByte();
 					int var41 = var14 + var9;
 					var12 = var40 + var10;
@@ -97,12 +107,13 @@ public final class WorldMapSprite {
 						var36.setDestination(var41, var12, SceneTilePaint.getTileHeight(var41, var12, PacketWriter.Client_plane) - var2, var13 + Client.cycle);
 						Client.projectiles.addFirst(var36);
 					}
+
 				} else {
 					if (class262.field3020 == var0) {
-						var2 = var1.readUnsignedByteAdd();
+						var2 = var1.method7765();
 						var3 = var2 >> 4 & 15;
 						var4 = var2 & 7;
-						var5 = var1.readUnsignedByteSub();
+						var5 = var1.method7767();
 						var6 = var1.readUnsignedShort();
 						var7 = var1.readUnsignedByte();
 						var8 = (var7 >> 4 & 7) + class10.field53;
@@ -119,33 +130,36 @@ public final class WorldMapSprite {
 							}
 						}
 					}
+
 					if (class262.field3017 == var0) {
 						var2 = var1.readUnsignedByte();
 						var3 = (var2 >> 4 & 7) + class10.field53;
 						var4 = (var2 & 7) + class298.field3558;
-						var5 = var1.readUnsignedShortLE();
-						var6 = var1.readUnsignedShortLE();
+						var5 = var1.method7774();
+						var6 = var1.method7774();
 						var7 = var1.readUnsignedShort();
 						if (var3 >= 0 && var4 >= 0 && var3 < 104 && var4 < 104) {
 							NodeDeque var34 = Client.groundItems[PacketWriter.Client_plane][var3][var4];
 							if (var34 != null) {
-								for (TileItem var35 = ((TileItem) (var34.last())); var35 != null; var35 = ((TileItem) (var34.previous()))) {
+								for (TileItem var35 = (TileItem)var34.last(); var35 != null; var35 = (TileItem)var34.previous()) {
 									if ((var6 & 32767) == var35.id && var5 == var35.quantity) {
 										var35.quantity = var7;
 										break;
 									}
 								}
+
 								class133.updateItemPile(var3, var4);
 							}
 						}
+
 					} else {
 						TileItem var32;
 						if (class262.field3019 == var0) {
 							var2 = var1.readUnsignedShort();
-							var3 = var1.readUnsignedByteSub();
+							var3 = var1.method7767();
 							var4 = (var3 >> 4 & 7) + class10.field53;
 							var5 = (var3 & 7) + class298.field3558;
-							var6 = var1.readUnsignedShortAdd();
+							var6 = var1.method7775();
 							if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 								var32 = new TileItem();
 								var32.id = var2;
@@ -153,25 +167,27 @@ public final class WorldMapSprite {
 								if (Client.groundItems[PacketWriter.Client_plane][var4][var5] == null) {
 									Client.groundItems[PacketWriter.Client_plane][var4][var5] = new NodeDeque();
 								}
+
 								Client.groundItems[PacketWriter.Client_plane][var4][var5].addFirst(var32);
 								class133.updateItemPile(var4, var5);
 							}
+
 						} else {
 							if (class262.field3024 == var0) {
-								var2 = var1.readUnsignedByteAdd();
+								var2 = var1.method7765();
 								var3 = (var2 >> 4 & 7) + class10.field53;
 								var4 = (var2 & 7) + class298.field3558;
-								byte var37 = var1.readByteSub();
-								var6 = var1.readUnsignedShortAdd();
-								byte var38 = var1.readByteSub();
-								byte var39 = var1.readByteAdd();
-								var9 = var1.readUnsignedByteSub();
+								byte var37 = var1.method7952();
+								var6 = var1.method7775();
+								byte var38 = var1.method7952();
+								byte var39 = var1.method7768();
+								var9 = var1.method7767();
 								var10 = var9 >> 2;
 								var11 = var9 & 3;
 								var12 = Client.field582[var10];
-								var13 = var1.readUnsignedShortAddLE();
-								var14 = var1.readByteNeg();
-								int var15 = var1.readUnsignedShortAdd();
+								var13 = var1.method7776();
+								var14 = var1.method7769();
+								int var15 = var1.method7775();
 								int var16 = var1.readUnsignedShort();
 								Player var17;
 								if (var15 == Client.localPlayerIndex) {
@@ -179,6 +195,7 @@ public final class WorldMapSprite {
 								} else {
 									var17 = Client.players[var15];
 								}
+
 								if (var17 != null) {
 									ObjectComposition var18 = class162.getObjectDefinition(var6);
 									int var19;
@@ -190,6 +207,7 @@ public final class WorldMapSprite {
 										var19 = var18.sizeY;
 										var20 = var18.sizeX;
 									}
+
 									int var21 = var3 + (var19 >> 1);
 									int var22 = var3 + (var19 + 1 >> 1);
 									int var23 = var4 + (var20 >> 1);
@@ -213,11 +231,13 @@ public final class WorldMapSprite {
 											var37 = var39;
 											var39 = var30;
 										}
+
 										if (var38 > var14) {
 											var30 = var38;
 											var38 = var14;
 											var14 = var30;
 										}
+
 										var17.minX = var37 + var3;
 										var17.maxX = var39 + var3;
 										var17.minY = var4 + var38;
@@ -225,12 +245,13 @@ public final class WorldMapSprite {
 									}
 								}
 							}
+
 							if (class262.field3015 == var0) {
-								var2 = var1.readUnsignedByteAdd();
+								var2 = var1.method7765();
 								var3 = var2 >> 2;
 								var4 = var2 & 3;
 								var5 = Client.field582[var3];
-								var6 = var1.readUnsignedShortLE();
+								var6 = var1.method7774();
 								var7 = var1.readUnsignedByte();
 								var8 = (var7 >> 4 & 7) + class10.field53;
 								var9 = (var7 & 7) + class298.field3558;
@@ -247,6 +268,7 @@ public final class WorldMapSprite {
 											}
 										}
 									}
+
 									if (var5 == 1) {
 										WallDecoration var42 = class356.scene.method4178(PacketWriter.Client_plane, var8, var9);
 										if (var42 != null) {
@@ -265,15 +287,18 @@ public final class WorldMapSprite {
 											}
 										}
 									}
+
 									if (var5 == 2) {
 										GameObject var43 = class356.scene.getGameObject(PacketWriter.Client_plane, var8, var9);
 										if (var3 == 11) {
 											var3 = 10;
 										}
+
 										if (var43 != null) {
 											var43.renderable = new DynamicObject(Decimator.Entity_unpackID(var43.tag), var3, var4, PacketWriter.Client_plane, var8, var9, var6, false, var43.renderable);
 										}
 									}
+
 									if (var5 == 3) {
 										FloorDecoration var44 = class356.scene.getFloorDecoration(PacketWriter.Client_plane, var8, var9);
 										if (var44 != null) {
@@ -281,38 +306,43 @@ public final class WorldMapSprite {
 										}
 									}
 								}
+
 							} else if (class262.field3018 == var0) {
-								var2 = var1.readUnsignedByteNeg();
+								var2 = var1.method7766();
 								var3 = var2 >> 2;
 								var4 = var2 & 3;
 								var5 = Client.field582[var3];
-								var6 = var1.readUnsignedByteAdd();
+								var6 = var1.method7765();
 								var7 = (var6 >> 4 & 7) + class10.field53;
 								var8 = (var6 & 7) + class298.field3558;
-								var9 = var1.readUnsignedShortLE();
+								var9 = var1.method7774();
 								if (var7 >= 0 && var8 >= 0 && var7 < 104 && var8 < 104) {
 									Canvas.updatePendingSpawn(PacketWriter.Client_plane, var7, var8, var5, var9, var3, var4, 0, -1);
 								}
+
 							} else if (class262.field3016 == var0) {
 								var2 = var1.readUnsignedShort();
-								var3 = var1.readUnsignedByteNeg();
+								var3 = var1.method7766();
 								var4 = (var3 >> 4 & 7) + class10.field53;
 								var5 = (var3 & 7) + class298.field3558;
 								if (var4 >= 0 && var5 >= 0 && var4 < 104 && var5 < 104) {
 									NodeDeque var31 = Client.groundItems[PacketWriter.Client_plane][var4][var5];
 									if (var31 != null) {
-										for (var32 = ((TileItem) (var31.last())); var32 != null; var32 = ((TileItem) (var31.previous()))) {
+										for (var32 = (TileItem)var31.last(); var32 != null; var32 = (TileItem)var31.previous()) {
 											if ((var2 & 32767) == var32.id) {
 												var32.remove();
 												break;
 											}
 										}
+
 										if (var31.last() == null) {
 											Client.groundItems[PacketWriter.Client_plane][var4][var5] = null;
 										}
+
 										class133.updateItemPile(var4, var5);
 									}
 								}
+
 							}
 						}
 					}
@@ -322,13 +352,18 @@ public final class WorldMapSprite {
 	}
 
 	@ObfuscatedName("jx")
-	@ObfuscatedSignature(descriptor = "(II)Ljava/lang/String;", garbageValue = "-1162269812")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "-1162269812"
+	)
 	@Export("formatItemStacks")
 	static final String formatItemStacks(int var0) {
 		String var1 = Integer.toString(var0);
+
 		for (int var2 = var1.length() - 3; var2 > 0; var2 -= 3) {
 			var1 = var1.substring(0, var2) + "," + var1.substring(var2);
 		}
+
 		if (var1.length() > 9) {
 			return " " + class122.colorStartTag(65408) + var1.substring(0, var1.length() - 8) + "M" + " " + " (" + var1 + ")" + "</col>";
 		} else {

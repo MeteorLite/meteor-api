@@ -1,8 +1,9 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("dy")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
@@ -15,7 +16,10 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lnm;Lnm;I)I", garbageValue = "1111240808")
+	@ObfuscatedSignature(
+		descriptor = "(Lnm;Lnm;I)I",
+		garbageValue = "1111240808"
+	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
 		if (Client.worldId == var1.world && var2.world == Client.worldId) {
@@ -26,11 +30,14 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy(((Buddy) (var1)), ((Buddy) (var2)));
+		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(ILqt;I)Lfy;", garbageValue = "956626594")
+	@ObfuscatedSignature(
+		descriptor = "(ILqt;I)Lfy;",
+		garbageValue = "956626594"
+	)
 	public static PlayerCompositionColorTextureOverride method2609(int var0, Buffer var1) {
 		int var2 = var1.readUnsignedByte();
 		boolean var3 = (var2 & 1) != 0;
@@ -43,47 +50,58 @@ public class UserComparator10 extends AbstractUserComparator {
 		short var10;
 		if (var3) {
 			var6 = var1.readUnsignedByte();
-			var7 = new int[]{ var6 & 15, var6 >> 4 & 15 };
-			var8 = var5.playerCompositionRecolorTo != null && var7.length == var5.playerCompositionRecolorTo.length;
+			var7 = new int[]{var6 & 15, var6 >> 4 & 15};
+			var8 = var5.field1814 != null && var7.length == var5.field1814.length;
+
 			for (var9 = 0; var9 < 2; ++var9) {
 				if (var7[var9] != 15) {
-					var10 = ((short) (var1.readUnsignedShort()));
+					var10 = (short)var1.readUnsignedShort();
 					if (var8) {
-						var5.playerCompositionRecolorTo[var7[var9]] = var10;
+						var5.field1814[var7[var9]] = var10;
 					}
 				}
 			}
 		}
+
 		if (var4) {
 			var6 = var1.readUnsignedByte();
-			var7 = new int[]{ var6 & 15, var6 >> 4 & 15 };
-			var8 = var5.playerCompositionRetextureTo != null && var7.length == var5.playerCompositionRetextureTo.length;
+			var7 = new int[]{var6 & 15, var6 >> 4 & 15};
+			var8 = var5.field1815 != null && var7.length == var5.field1815.length;
+
 			for (var9 = 0; var9 < 2; ++var9) {
 				if (var7[var9] != 15) {
-					var10 = ((short) (var1.readUnsignedShort()));
+					var10 = (short)var1.readUnsignedShort();
 					if (var8) {
-						var5.playerCompositionRetextureTo[var7[var9]] = var10;
+						var5.field1815[var7[var9]] = var10;
 					}
 				}
 			}
 		}
+
 		return var5;
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "([BIIB)Z", garbageValue = "75")
+	@ObfuscatedSignature(
+		descriptor = "([BIIB)Z",
+		garbageValue = "75"
+	)
 	static final boolean method2611(byte[] var0, int var1, int var2) {
 		boolean var3 = true;
 		Buffer var4 = new Buffer(var0);
 		int var5 = -1;
-		label68 : while (true) {
-			int var6 = var4.readIncrSmallSmart();
+
+		label68:
+		while (true) {
+			int var6 = var4.method7770();
 			if (var6 == 0) {
 				return var3;
 			}
+
 			var5 += var6;
 			int var7 = 0;
 			boolean var8 = false;
+
 			while (true) {
 				int var9;
 				while (!var8) {
@@ -91,6 +109,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					if (var9 == 0) {
 						continue label68;
 					}
+
 					var7 += var9 - 1;
 					int var10 = var7 & 63;
 					int var11 = var7 >> 6 & 63;
@@ -104,21 +123,27 @@ public class UserComparator10 extends AbstractUserComparator {
 								++Client.field547;
 								var3 = false;
 							}
+
 							var8 = true;
 						}
 					}
-				} 
+				}
+
 				var9 = var4.readUShortSmart();
 				if (var9 == 0) {
 					break;
 				}
+
 				var4.readUnsignedByte();
-			} 
-		} 
+			}
+		}
 	}
 
 	@ObfuscatedName("d")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "80")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "80"
+	)
 	static int method2605(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.CLIENTCLOCK) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.cycle;
@@ -181,7 +206,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3 & 16383;
 					return 1;
 				} else if (var0 == ScriptOpcodes.MAP_MEMBERS) {
-					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (Client.isMembersWorld) ? 1 : 0;
+					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.isMembersWorld ? 1 : 0;
 					return 1;
 				} else if (var0 == ScriptOpcodes.INVOTHER_GETOBJ) {
 					class446.Interpreter_intStackSize -= 2;
@@ -207,6 +232,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					} else {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					}
+
 					return 1;
 				} else if (var0 == ScriptOpcodes.REBOOTTIMER) {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.rebootTimer;
@@ -226,6 +252,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					} else {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					}
+
 					return 1;
 				} else if (var0 == ScriptOpcodes.WORLDFLAGS) {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.worldProperties;
@@ -255,7 +282,10 @@ public class UserComparator10 extends AbstractUserComparator {
 	}
 
 	@ObfuscatedName("kj")
-	@ObfuscatedSignature(descriptor = "(IIIILqe;Lkp;I)V", garbageValue = "-860665579")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILqe;Lkp;I)V",
+		garbageValue = "-860665579"
+	)
 	@Export("worldToMinimap")
 	static final void worldToMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
 		int var6 = var3 * var3 + var2 * var2;
@@ -265,19 +295,23 @@ public class UserComparator10 extends AbstractUserComparator {
 			int var9 = Rasterizer3D.Rasterizer3D_cosine[var7];
 			int var10 = var9 * var2 + var3 * var8 >> 16;
 			int var11 = var3 * var9 - var8 * var2 >> 16;
-			double var12 = Math.atan2(((double) (var10)), ((double) (var11)));
+			double var12 = Math.atan2((double)var10, (double)var11);
 			int var14 = var5.width / 2 - 25;
-			int var15 = ((int) (Math.sin(var12) * ((double) (var14))));
-			int var16 = ((int) (Math.cos(var12) * ((double) (var14))));
+			int var15 = (int)(Math.sin(var12) * (double)var14);
+			int var16 = (int)(Math.cos(var12) * (double)var14);
 			byte var17 = 20;
 			class344.redHintArrowSprite.method8179(var15 + (var0 + var5.width / 2 - var17 / 2), var5.height / 2 + var1 - var17 / 2 - var16 - 10, var17, var17, 15, 15, var12, 256);
 		} else {
 			ParamComposition.drawSpriteOnMinimap(var0, var1, var2, var3, var4, var5);
 		}
+
 	}
 
 	@ObfuscatedName("lq")
-	@ObfuscatedSignature(descriptor = "(Lkb;B)Lkb;", garbageValue = "111")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;B)Lkb;",
+		garbageValue = "111"
+	)
 	static Widget method2610(Widget var0) {
 		int var1 = class134.method2906(class124.getWidgetFlags(var0));
 		if (var1 == 0) {
@@ -289,6 +323,7 @@ public class UserComparator10 extends AbstractUserComparator {
 					return null;
 				}
 			}
+
 			return var0;
 		}
 	}

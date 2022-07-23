@@ -29,8 +29,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import java.util.ArrayList;
 import java.util.List;
-
-import meteor.Logger;
 import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.asm.attributes.Code;
@@ -43,9 +41,12 @@ import net.runelite.asm.attributes.code.instruction.types.InvokeInstruction;
 import net.runelite.asm.attributes.code.instruction.types.MappableInstruction;
 import net.runelite.asm.attributes.code.instructions.InvokeStatic;
 import net.runelite.asm.signature.Signature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Frame
 {
-	private static final Logger logger = new Logger("deob");
+	private static final Logger logger = LoggerFactory.getLogger(Frame.class);
 
 	private final Execution execution;
 	private final Method method;
@@ -246,6 +247,7 @@ public class Frame
 
 			try
 			{
+				logger.trace("executing {}", cur);
 				ictx = cur.execute(this);
 				this.addInstructionContext(ictx);
 			}
@@ -385,6 +387,7 @@ public class Frame
 
 		if (ctx.hasJumped(from, to))
 		{
+			logger.trace("Stopping frame {} due to previous jump to {}", this, to);
 			executing = false;
 			return;
 		}

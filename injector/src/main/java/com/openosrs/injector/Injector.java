@@ -7,7 +7,8 @@
  */
 package com.openosrs.injector;
 
-import com.google.common.hash.Hashing;
+import static net.runelite.deob.util.JarUtil.load;
+
 import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injection.InjectTaskHandler;
 import com.openosrs.injector.injectors.CreateAnnotations;
@@ -16,13 +17,12 @@ import com.openosrs.injector.injectors.InterfaceInjector;
 import com.openosrs.injector.injectors.MixinInjector;
 import com.openosrs.injector.injectors.RSApiInjector;
 import com.openosrs.injector.injectors.raw.*;
+import com.openosrs.injector.net.DecodeNet;
 import com.openosrs.injector.rsapi.RSApi;
 import com.openosrs.injector.transformers.InjectTransformer;
 import com.openosrs.injector.transformers.Java8Ifier;
-import com.openosrs.injector.transformers.SourceChanger;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -34,223 +34,157 @@ import joptsimple.util.EnumConverter;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.deob.util.JarUtil;
-import static net.runelite.deob.util.JarUtil.load;
-import org.gradle.api.logging.Logger;
-import org.gradle.api.logging.Logging;
 
-public class Injector extends InjectData implements InjectTaskHandler
-{
-	static final Logger log = Logging.getLogger(Injector.class);
-	static Injector injector = new Injector();
+public class Injector extends InjectData implements InjectTaskHandler {
 
-	public static void main(String[] args)
-	{
-		OptionParser parser = new OptionParser();
+  static Injector injector = new Injector();
+  static String oprsVer;
 
-		ArgumentAcceptingOptionSpec<File> vanillaFileOption =
-			parser.accepts("vanilla", "Vanilla OSRS gamepack file")
-				.withRequiredArg().ofType(File.class);
+  public static void main(String[] args) {
+    OptionParser parser = new OptionParser();
 
-		ArgumentAcceptingOptionSpec<String> oprsVerOption =
-			parser.accepts("version", "OpenOSRS version")
-				.withRequiredArg().ofType(String.class);
+    ArgumentAcceptingOptionSpec<OutputMode> outModeOption =
+        parser.accepts("outmode")
+            .withRequiredArg().ofType(OutputMode.class)
+            .withValuesConvertedBy(new EnumConverter<OutputMode>(OutputMode.class) {
+              @Override
+              public OutputMode convert(String value) {
+                return super.convert(value.toUpperCase());
+              }
+            });
 
-		ArgumentAcceptingOptionSpec<File> outFileOption =
-			parser.accepts("output", "Output file, jar if outmode is jar, folder if outmode is files")
-				.withRequiredArg().ofType(File.class);
+    OptionSet options = parser.parse(args);
+    oprsVer = "1.0-SNAPSHOT";
 
-		ArgumentAcceptingOptionSpec<OutputMode> outModeOption =
-			parser.accepts("outmode")
-				.withRequiredArg().ofType(OutputMode.class)
-				.withValuesConvertedBy(new EnumConverter<>(OutputMode.class)
-				{
-					@Override
-					public OutputMode convert(String value)
-					{
-						return super.convert(value.toUpperCase());
-					}
-				});
+    File clientMixins = new File("../mixins/build/libs/mixins-" + oprsVer + ".jar");
+    injector.vanilla = load(
+            new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));
+    injector.deobfuscated = load(
+            new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));
+    injector.rsApi = new RSApi(Objects.requireNonNull(
+            new File("../api-rs/build/classes/java/main/net/runelite/rs/api/")
+                    .listFiles()));
+    injector.mixins = load(clientMixins);
 
-		OptionSet options = parser.parse(args);
-		String oprsVer = "1.0-SNAPSHOT";
+    injector.initToVanilla();
+    injector.injectVanilla();
+    save(injector.getVanilla(), new File("../client/src/main/resources/injected-client.osrs"),
+            options.valueOf(outModeOption));
+  }
 
-		File vanillaFile = new File("./vanilla-206.jar");
-		injector.vanilla = load(vanillaFile);
-		injector.deobfuscated = load(
-			new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));
-		injector.rsApi = new RSApi(Objects.requireNonNull(
-			new File("../api-rs/build/classes/java/main/net/runelite/rs/api/")
-				.listFiles()));
-		injector.mixins = load(
-			new File("../mixins/build/libs/mixins-" + oprsVer + ".jar"));
+  private static void save(ClassGroup group, File output, OutputMode mode) {
+    if (output.exists()) {
+      try {
+        Files.walk(output.toPath()).sorted(Comparator.reverseOrder()).map(Path::toFile)
+            .forEach(File::delete);
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+    }
 
-		File injected = new File("./build/injected/injected-client.jar");
-		if (injected.exists())
-		{
-			injected.delete();
-		}
+    output.getParentFile().mkdirs();
+    JarUtil.save(group, output);
+  }
 
-		injector.initToVanilla();
-		injector.injectVanilla();
-		save(injector.getVanilla(), injected, OutputMode.JAR, vanillaFile);
-		save(injector.getDeobfuscated(), new File("./deob-test.jar"), OutputMode.JAR, vanillaFile);
-	}
+  private static void saveFiles(ClassGroup group, File outDir) {
+    try {
+      outDir.mkdirs();
 
-	public void injectVanilla()
-	{
-		log.debug("[DEBUG] Starting injection");
+      for (ClassFile cf : group.getClasses()) {
+        File f = new File(outDir, cf.getName() + ".class");
+        byte[] data = JarUtil.writeClass(group, cf);
+        Files.write(f.toPath(), data);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
-		transform(new Java8Ifier(this));
+  public void injectVanilla() {
+    transform(new Java8Ifier(this));
 
-		inject(new CreateAnnotations(this));
+    inject(new CreateAnnotations(this));
 
+    //inject(new GraphicsObject(this));
 
-		//inject(new GraphicsObject(this));
+    //inject(new CopyRuneLiteClasses(this));
 
-		//inject(new CopyRuneLiteClasses(this));
+    //inject(new RuneLiteIterableHashTable(this));
 
-		//inject(new RuneLiteIterables(this));
+    //inject(new RuneliteObject(this));
 
-		//inject(new RuneliteObject(this));
+    //Injects initial RSAPI
+    inject(new InterfaceInjector(this));
 
-		inject(new InterfaceInjector(this));
+    //inject(new RasterizerAlpha(this));
+    //inject(new MixinInjector(this));
 
-		//inject(new RasterizerAlpha(this));
+    // This is where field hooks runs
 
-		inject(new MixinInjector(this));
+    // This is where method hooks runs
 
-		// This is where field hooks runs
+    //inject(new InjectConstruct(this));
 
-		// This is where method hooks runs
+    //Requires InterfaceInjector
+    //inject(new RSApiInjector(this));
 
-		//inject(new InjectConstruct(this));
+    //Some annotations are still nice to have such as ObfName and ObfSig for Reflection checks
+    //inject(new RemoveAnnotations(this));
+    //The Reflection class is skipped during load because the asm doesnt support invokedynamic, ez fix to just put
+    //it back in after doing everything
 
-		inject(new RSApiInjector(this));
+    //inject(new ScriptVM(this));
 
-		//inject(new DrawAfterWidgets(this));
+    // All GPU raw injectors should probably be combined, especially RenderDraw and Occluder
+    //inject(new ClearColorBuffer(this, HOOKS));
 
-		//inject(new ScriptVM(this));
+    //inject(new RenderDraw(this, HOOKS));
 
-		// All GPU raw injectors should probably be combined, especially RenderDraw and Occluder
-		//inject(new ClearColorBuffer(this));
+    //inject(new Occluder(this));
 
-		//inject(new RenderDraw(this));
+    //inject(new DrawMenu(this, HOOKS));
 
-		//inject(new Occluder(this));
+    //inject(new DecodeNet(this));
 
-		//inject(new DrawMenu(this));
+    //inject(new AddPlayerToMenu(this));
 
-		//inject(new GameDrawingMode(this));
+    //validate(new InjectorValidator(this));
 
-		//inject(new AddPlayerToMenu(this));
+    //transform(new SourceChanger(this));
+    //injector.vanilla.addClass(JarUtil.reflectionClassFile);
+  }
 
-		//inject(new RuneliteMenuEntry(this));
+  private void inject(com.openosrs.injector.injectors.Injector injector) {
+    final String name = injector.getName();
 
-		//validate(new InjectorValidator(this));
+    //log.info(ANSI_YELLOW + "[Starting " + name + "]" + ANSI_RESET);
 
-		transform(new SourceChanger(this));
+    injector.start();
 
-	}
+    injector.inject();
 
-	private void inject(com.openosrs.injector.injectors.Injector injector)
-	{
-		final String name = injector.getName();
+    if (injector instanceof Validator) {
+      validate((Validator) injector);
+    }
+  }
 
-		log.lifecycle("[INFO] Starting {}", name);
+  private void validate(Validator validator) {
+    final String name = validator.getName();
 
-		injector.start();
+    if (!validator.validate()) {
+      throw new InjectException(name + " failed validation");
+    }
+  }
 
-		injector.inject();
+  private void transform(InjectTransformer transformer) {
+    final String name = transformer.getName();
 
-		log.lifecycle("{} {}", name, injector.getCompletionMsg());
+    //log.info(ANSI_YELLOW + "Starting " + name + ANSI_RESET);
 
-		if (injector instanceof Validator)
-		{
-			validate((Validator) injector);
-		}
-	}
+    transformer.transform();
+  }
 
-	private void validate(Validator validator)
-	{
-		final String name = validator.getName();
-
-		if (!validator.validate())
-		{
-			throw new InjectException(name + " failed validation");
-		}
-	}
-
-	private void transform(InjectTransformer transformer)
-	{
-		final String name = transformer.getName();
-
-		log.info("[INFO] Starting {}", name);
-
-		transformer.transform();
-
-		log.lifecycle("{} {}", name, transformer.getCompletionMsg());
-	}
-
-	private static void save(ClassGroup group, File output, OutputMode mode, File vanillaFile)
-	{
-		if (output.exists())
-		{
-			try
-			{
-				Files.walk(output.toPath()).sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
-			}
-			catch (IOException e)
-			{
-				log.lifecycle("Failed to delete output directory contents.");
-				throw new RuntimeException(e);
-			}
-		}
-
-		switch (mode)
-		{
-			case FILES:
-				saveFiles(group, output);
-				break;
-			case JAR:
-				output.getParentFile().mkdirs();
-				JarUtil.save(group, output);
-				break;
-		}
-
-		try
-		{
-			String hash = com.google.common.io.Files.asByteSource(vanillaFile).hash(Hashing.sha256()).toString();
-			log.lifecycle("Writing vanilla hash: {}", hash);
-			Files.write(output.getParentFile().toPath().resolve("client.hash"), hash.getBytes(StandardCharsets.UTF_8));
-		}
-		catch (IOException ex)
-		{
-			log.lifecycle("Failed to write vanilla hash file");
-			throw new RuntimeException(ex);
-		}
-	}
-
-	private static void saveFiles(ClassGroup group, File outDir)
-	{
-		try
-		{
-			outDir.mkdirs();
-
-			for (ClassFile cf : group.getClasses())
-			{
-				File f = new File(outDir, cf.getName() + ".class");
-				byte[] data = JarUtil.writeClass(group, cf);
-				Files.write(f.toPath(), data);
-			}
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	public void runChildInjector(com.openosrs.injector.injectors.Injector injector)
-	{
-		inject(injector);
-	}
+  public void runChildInjector(com.openosrs.injector.injectors.Injector injector) {
+    inject(injector);
+  }
 }

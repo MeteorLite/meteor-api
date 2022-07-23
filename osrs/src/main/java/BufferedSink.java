@@ -1,44 +1,44 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.io.OutputStream;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import java.io.IOException;
+import java.io.OutputStream;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("nc")
 @Implements("BufferedSink")
 public class BufferedSink implements Runnable {
 	@ObfuscatedName("c")
 	@Export("thread")
 	Thread thread;
-
 	@ObfuscatedName("v")
 	@Export("outputStream")
 	OutputStream outputStream;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -908139425)
+	@ObfuscatedGetter(
+		intValue = -908139425
+	)
 	@Export("capacity")
 	int capacity;
-
 	@ObfuscatedName("f")
 	@Export("buffer")
 	byte[] buffer;
-
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = -1613116679)
+	@ObfuscatedGetter(
+		intValue = -1613116679
+	)
 	@Export("position")
 	int position;
-
 	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = -2132108273)
+	@ObfuscatedGetter(
+		intValue = -2132108273
+	)
 	@Export("limit")
 	int limit;
-
 	@ObfuscatedName("g")
 	@Export("exception")
 	IOException exception;
-
 	@ObfuscatedName("w")
 	@Export("closed")
 	boolean closed;
@@ -55,7 +55,10 @@ public class BufferedSink implements Runnable {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "1872756001")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1872756001"
+	)
 	@Export("isClosed")
 	boolean isClosed() {
 		if (this.closed) {
@@ -69,6 +72,7 @@ public class BufferedSink implements Runnable {
 					this.exception = new IOException(var2);
 				}
 			}
+
 			return true;
 		} else {
 			return false;
@@ -76,7 +80,10 @@ public class BufferedSink implements Runnable {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "([BIII)V", garbageValue = "-1640336200")
+	@ObfuscatedSignature(
+		descriptor = "([BIII)V",
+		garbageValue = "-1640336200"
+	)
 	@Export("write")
 	void write(byte[] var1, int var2, int var3) throws IOException {
 		if (var3 >= 0 && var2 >= 0 && var3 + var2 <= var1.length) {
@@ -90,6 +97,7 @@ public class BufferedSink implements Runnable {
 					} else {
 						var5 = this.position - this.limit - 1;
 					}
+
 					if (var5 < var3) {
 						throw new IOException("");
 					} else {
@@ -100,6 +108,7 @@ public class BufferedSink implements Runnable {
 							System.arraycopy(var1, var2, this.buffer, this.limit, var6);
 							System.arraycopy(var1, var6 + var2, this.buffer, 0, var3 - var6);
 						}
+
 						this.limit = (var3 + this.limit) % this.capacity;
 						this.notifyAll();
 					}
@@ -111,17 +120,22 @@ public class BufferedSink implements Runnable {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(S)V", garbageValue = "135")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "135"
+	)
 	@Export("close")
 	void close() {
 		synchronized(this) {
 			this.closed = true;
 			this.notifyAll();
 		}
+
 		try {
 			this.thread.join();
 		} catch (InterruptedException var3) {
 		}
+
 	}
 
 	public void run() {
@@ -132,29 +146,35 @@ public class BufferedSink implements Runnable {
 					if (this.exception != null) {
 						return;
 					}
+
 					if (this.position <= this.limit) {
 						var1 = this.limit - this.position;
 					} else {
 						var1 = this.capacity - this.position + this.limit;
 					}
+
 					if (var1 > 0) {
 						break;
 					}
+
 					try {
 						this.outputStream.flush();
 					} catch (IOException var11) {
 						this.exception = var11;
 						return;
 					}
+
 					if (this.isClosed()) {
 						return;
 					}
+
 					try {
 						this.wait();
 					} catch (InterruptedException var12) {
 					}
-				} 
+				}
 			}
+
 			try {
 				if (var1 + this.position <= this.capacity) {
 					this.outputStream.write(this.buffer, this.position, var1);
@@ -170,9 +190,11 @@ public class BufferedSink implements Runnable {
 					return;
 				}
 			}
+
 			synchronized(this) {
 				this.position = (var1 + this.position) % this.capacity;
 			}
-		} while (!this.isClosed() );
+		} while(!this.isClosed());
+
 	}
 }

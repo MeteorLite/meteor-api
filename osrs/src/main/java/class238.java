@@ -1,25 +1,31 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ie")
 public class class238 {
 	@ObfuscatedName("sz")
-	@ObfuscatedSignature(descriptor = "Lar;")
+	@ObfuscatedSignature(
+		descriptor = "Lar;"
+	)
 	@Export("pcmPlayer1")
 	static PcmPlayer pcmPlayer1;
-
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lie;")
+	@ObfuscatedSignature(
+		descriptor = "Lie;"
+	)
 	static final class238 field2837;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lie;")
+	@ObfuscatedSignature(
+		descriptor = "Lie;"
+	)
 	static final class238 field2836;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 406167623)
+	@ObfuscatedGetter(
+		intValue = 406167623
+	)
 	@Export("value")
 	final int value;
 
@@ -33,7 +39,10 @@ public class class238 {
 	}
 
 	@ObfuscatedName("n")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "-43")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-43"
+	)
 	static int method5001(int var0, Script var1, boolean var2) {
 		Widget var3 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
 		if (var0 == ScriptOpcodes.IF_GETTARGETMASK) {
@@ -46,6 +55,7 @@ public class class238 {
 				} else {
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.dataText;
 				}
+
 				return 1;
 			} else {
 				return 2;
@@ -58,6 +68,7 @@ public class class238 {
 			} else {
 				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 			}
+
 			return 1;
 		}
 	}

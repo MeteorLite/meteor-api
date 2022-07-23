@@ -54,6 +54,8 @@ import net.runelite.asm.execution.Execution;
 import net.runelite.asm.execution.Frame;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Sort the ifs in menuAction
@@ -62,6 +64,8 @@ import net.runelite.deob.Deobfuscator;
  */
 public class MenuActionDeobfuscator implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(MenuActionDeobfuscator.class);
+
 	private static final int THRESHOLD_EQ = 50;
 	private static final int THRESHOLD_LT = 1;
 
@@ -130,6 +134,7 @@ public class MenuActionDeobfuscator implements Deobfuscator
 
 			if (get.size() > THRESHOLD_EQ && l <= THRESHOLD_LT)
 			{
+				logger.info("Sorting {} comparisons in {}", eqcmp.size(), method);
 				insert(method, eqcmp);
 			}
 		}

@@ -35,6 +35,8 @@ import net.runelite.asm.attributes.Annotated;
 import net.runelite.asm.execution.Execution;
 import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Sort fields and methods based first on the name order of the classes, and
@@ -44,6 +46,7 @@ import net.runelite.deob.Deobfuscator;
  */
 public class Order implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(Order.class);
 
 	private Execution execution;
 
@@ -82,6 +85,8 @@ public class Order implements Deobfuscator
 				sortedFields += f.size();
 			}
 		}
+
+		logger.info("Sorted {} methods and {} fields", sortedMethods, sortedFields);
 	}
 
 	// static fields, member fields, clinit, init, methods, static methods

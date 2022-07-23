@@ -1,41 +1,31 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("nu")
 public class class388 {
 	@ObfuscatedName("c")
 	float field4405;
-
 	@ObfuscatedName("v")
 	float field4400;
-
 	@ObfuscatedName("q")
 	float field4402;
-
 	@ObfuscatedName("f")
 	float field4409;
-
 	@ObfuscatedName("j")
 	float field4403;
-
 	@ObfuscatedName("e")
 	float field4408;
-
 	@ObfuscatedName("g")
 	float field4401;
-
 	@ObfuscatedName("w")
 	float field4407;
-
 	@ObfuscatedName("y")
 	float field4406;
-
 	@ObfuscatedName("i")
 	float field4404;
-
 	@ObfuscatedName("s")
 	float field4410;
-
 	@ObfuscatedName("t")
 	float field4411;
 
@@ -48,7 +38,10 @@ public class class388 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-1938760120")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1938760120"
+	)
 	void method7022() {
 		this.field4411 = 0.0F;
 		this.field4410 = 0.0F;
@@ -65,10 +58,13 @@ public class class388 {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(FI)V", garbageValue = "1277086210")
+	@ObfuscatedSignature(
+		descriptor = "(FI)V",
+		garbageValue = "1277086210"
+	)
 	void method7029(float var1) {
-		float var2 = ((float) (Math.cos(((double) (var1)))));
-		float var3 = ((float) (Math.sin(((double) (var1)))));
+		float var2 = (float)Math.cos((double)var1);
+		float var3 = (float)Math.sin((double)var1);
 		float var4 = this.field4400;
 		float var5 = this.field4403;
 		float var6 = this.field4407;
@@ -84,10 +80,13 @@ public class class388 {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(FI)V", garbageValue = "287874371")
+	@ObfuscatedSignature(
+		descriptor = "(FI)V",
+		garbageValue = "287874371"
+	)
 	void method7027(float var1) {
-		float var2 = ((float) (Math.cos(((double) (var1)))));
-		float var3 = ((float) (Math.sin(((double) (var1)))));
+		float var2 = (float)Math.cos((double)var1);
+		float var3 = (float)Math.sin((double)var1);
 		float var4 = this.field4405;
 		float var5 = this.field4409;
 		float var6 = this.field4401;
@@ -103,10 +102,13 @@ public class class388 {
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(FI)V", garbageValue = "736372883")
+	@ObfuscatedSignature(
+		descriptor = "(FI)V",
+		garbageValue = "736372883"
+	)
 	void method7039(float var1) {
-		float var2 = ((float) (Math.cos(((double) (var1)))));
-		float var3 = ((float) (Math.sin(((double) (var1)))));
+		float var2 = (float)Math.cos((double)var1);
+		float var3 = (float)Math.sin((double)var1);
 		float var4 = this.field4405;
 		float var5 = this.field4409;
 		float var6 = this.field4401;
@@ -122,7 +124,10 @@ public class class388 {
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(FFFI)V", garbageValue = "1389632603")
+	@ObfuscatedSignature(
+		descriptor = "(FFFI)V",
+		garbageValue = "1389632603"
+	)
 	void method7026(float var1, float var2, float var3) {
 		this.field4404 += var1;
 		this.field4410 += var2;
@@ -134,7 +139,10 @@ public class class388 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(IB)I", garbageValue = "-34")
+	@ObfuscatedSignature(
+		descriptor = "(IB)I",
+		garbageValue = "-34"
+	)
 	@Export("getVarbit")
 	public static int getVarbit(int var0) {
 		VarbitComposition var1 = WorldMapCacheName.method5054(var0);
@@ -146,7 +154,10 @@ public class class388 {
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(FFFF[FI)V", garbageValue = "-885047060")
+	@ObfuscatedSignature(
+		descriptor = "(FFFF[FI)V",
+		garbageValue = "-885047060"
+	)
 	static void method7040(float var0, float var1, float var2, float var3, float[] var4) {
 		float var5 = var1 - var0;
 		float var6 = var2 - var1;

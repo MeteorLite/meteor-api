@@ -21,7 +21,7 @@ dependencies {
     compileOnly(group = "commons-io", name = "commons-io", version = "2.8.0")
     compileOnly(project(":annotations"))
     compileOnly(project(":api-rs"))
-    compileOnly(project(":osrs"))
+    //compileOnly(project(":osrs"))
     compileOnly(project(":api"))
     compileOnly(project(":logger"))
     implementation("net.runelite:cache:1.8.0")

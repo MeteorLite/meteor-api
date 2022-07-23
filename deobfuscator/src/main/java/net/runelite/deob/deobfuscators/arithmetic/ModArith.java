@@ -33,8 +33,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -70,10 +68,12 @@ import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Deobfuscator;
 import static net.runelite.deob.deobfuscators.arithmetic.DMath.modInverse;
 import static net.runelite.deob.deobfuscators.arithmetic.DMath.multiply;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ModArith implements Deobfuscator
 {
-	private static final Logger logger = new Logger("deob");
+	private static final Logger logger = LoggerFactory.getLogger(ModArith.class);
 
 	private ClassGroup group;
 	private Execution execution;

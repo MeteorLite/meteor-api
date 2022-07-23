@@ -1,37 +1,48 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.Map.Entry;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import java.util.Comparator;
+import java.util.Map.Entry;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("l")
 class class18 implements Comparator {
 	@ObfuscatedName("fm")
-	@ObfuscatedGetter(intValue = 872496551)
+	@ObfuscatedGetter(
+		intValue = 872496551
+	)
 	@Export("js5Port")
 	static int js5Port;
-
 	@ObfuscatedName("jt")
-	@ObfuscatedGetter(intValue = 437863053)
+	@ObfuscatedGetter(
+		intValue = 437863053
+	)
 	@Export("cameraX")
 	static int cameraX;
-
-	@ObfuscatedSignature(descriptor = "Ls;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Ls;"
+	)
 	final class10 this$0;
 
-	@ObfuscatedSignature(descriptor = "(Ls;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Ls;)V"
+	)
 	class18(class10 var1) {
 		this.this$0 = var1;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I", garbageValue = "-175722815")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/util/Map$Entry;Ljava/util/Map$Entry;I)I",
+		garbageValue = "-175722815"
+	)
 	int method233(Entry var1, Entry var2) {
-		return ((Float) (var2.getValue())).compareTo(((Float) (var1.getValue())));
+		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.method233(((Entry) (var1)), ((Entry) (var2)));
+		return this.method233((Entry)var1, (Entry)var2);
 	}
 
 	public boolean equals(Object var1) {
@@ -39,15 +50,21 @@ class class18 implements Comparator {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIB)Lbr;", garbageValue = "123")
+	@ObfuscatedSignature(
+		descriptor = "(IIB)Lbr;",
+		garbageValue = "123"
+	)
 	@Export("Messages_getByChannelAndID")
 	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = ((ChatChannel) (Messages.Messages_channels.get(var0)));
+		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
 		return var2.getMessage(var1);
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-80")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-80"
+	)
 	@Export("isKeyDown")
 	public static final boolean isKeyDown() {
 		synchronized(KeyHandler.KeyHandler_instance) {
@@ -63,7 +80,10 @@ class class18 implements Comparator {
 	}
 
 	@ObfuscatedName("im")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-15")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-15"
+	)
 	static final boolean method234() {
 		return Client.isMenuOpen;
 	}

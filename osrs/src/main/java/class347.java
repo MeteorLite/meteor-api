@@ -1,30 +1,33 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import java.util.Iterator;
 import java.util.AbstractQueue;
-import java.util.Map;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("mo")
 public class class347 extends AbstractQueue {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "[Lmn;")
+	@ObfuscatedSignature(
+		descriptor = "[Lmn;"
+	)
 	class345[] field4166;
-
 	@ObfuscatedName("v")
 	Map field4167;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 1349227939)
+	@ObfuscatedGetter(
+		intValue = 1349227939
+	)
 	int field4165;
-
 	@ObfuscatedName("f")
 	final Comparator field4168;
-
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 500600827)
+	@ObfuscatedGetter(
+		intValue = 500600827
+	)
 	int field4169;
 
 	public class347(int var1, Comparator var2) {
@@ -35,18 +38,24 @@ public class class347 extends AbstractQueue {
 	}
 
 	public class347(int var1) {
-		this(var1, ((Comparator) (null)));
+		this(var1, (Comparator)null);
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "111")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "111"
+	)
 	void method6341() {
 		int var1 = (this.field4166.length << 1) + 1;
-		this.field4166 = ((class345[]) ((class345[]) (Arrays.copyOf(this.field4166, var1))));
+		this.field4166 = (class345[])((class345[])Arrays.copyOf(this.field4166, var1));
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1035999073")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1035999073"
+	)
 	void method6342(int var1) {
 		class345 var2;
 		int var3;
@@ -57,20 +66,26 @@ public class class347 extends AbstractQueue {
 				if (this.field4168.compare(var2.field4159, var4.field4159) >= 0) {
 					break;
 				}
-			} else if (((Comparable) (var2.field4159)).compareTo(var4.field4159) >= 0) {
+			} else if (((Comparable)var2.field4159).compareTo(var4.field4159) >= 0) {
 				break;
 			}
+
 			this.field4166[var1] = var4;
 			this.field4166[var1].field4158 = var1;
 		}
+
 		this.field4166[var1] = var2;
 		this.field4166[var1].field4158 = var1;
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(II)V", garbageValue = "1952216372")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "1952216372"
+	)
 	void method6354(int var1) {
 		class345 var2 = this.field4166[var1];
+
 		int var8;
 		for (int var3 = this.field4165 >>> 1; var1 < var3; var1 = var8) {
 			int var4 = (var1 << 1) + 1;
@@ -83,27 +98,30 @@ public class class347 extends AbstractQueue {
 				} else {
 					var8 = var4;
 				}
-			} else if (var6 < this.field4165 && ((Comparable) (var5.field4159)).compareTo(var7.field4159) > 0) {
+			} else if (var6 < this.field4165 && ((Comparable)var5.field4159).compareTo(var7.field4159) > 0) {
 				var8 = var6;
 			} else {
 				var8 = var4;
 			}
+
 			if (this.field4168 != null) {
 				if (this.field4168.compare(var2.field4159, this.field4166[var8].field4159) <= 0) {
 					break;
 				}
-			} else if (((Comparable) (var2.field4159)).compareTo(this.field4166[var8].field4159) <= 0) {
+			} else if (((Comparable)var2.field4159).compareTo(this.field4166[var8].field4159) <= 0) {
 				break;
 			}
+
 			this.field4166[var1] = this.field4166[var8];
 			this.field4166[var1].field4158 = var1;
 		}
+
 		this.field4166[var1] = var2;
 		this.field4166[var1].field4158 = var1;
 	}
 
 	public boolean remove(Object var1) {
-		class345 var2 = ((class345) (this.field4167.remove(var1)));
+		class345 var2 = (class345)this.field4167.remove(var1);
 		if (var2 == null) {
 			return false;
 		} else {
@@ -121,6 +139,7 @@ public class class347 extends AbstractQueue {
 				if (var3 == this.field4166[var2.field4158]) {
 					this.method6342(var2.field4158);
 				}
+
 				return true;
 			}
 		}
@@ -143,6 +162,7 @@ public class class347 extends AbstractQueue {
 			if (var2 >= this.field4166.length) {
 				this.method6341();
 			}
+
 			++this.field4165;
 			if (var2 == 0) {
 				this.field4166[0] = new class345(var1, 0);
@@ -152,6 +172,7 @@ public class class347 extends AbstractQueue {
 				this.field4167.put(var1, this.field4166[var2]);
 				this.method6342(var2);
 			}
+
 			return true;
 		}
 	}
@@ -163,6 +184,7 @@ public class class347 extends AbstractQueue {
 		} else {
 			Arrays.sort(var1);
 		}
+
 		return var1;
 	}
 
@@ -182,6 +204,7 @@ public class class347 extends AbstractQueue {
 				this.field4166[this.field4165] = null;
 				this.method6354(0);
 			}
+
 			return var1;
 		}
 	}

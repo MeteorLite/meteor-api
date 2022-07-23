@@ -1,14 +1,17 @@
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.security.MessageDigest;
+
 @ObfuscatedName("e")
 public class class5 implements class2 {
 	@ObfuscatedName("c")
 	final MessageDigest field13;
 
-	@ObfuscatedSignature(descriptor = "(Ly;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Ly;)V"
+	)
 	class5(class8 var1) {
 		this.field13 = this.method19();
 	}
@@ -24,11 +27,13 @@ public class class5 implements class2 {
 		StringBuilder var4 = new StringBuilder();
 		var4.append(var1).append(Long.toHexString(var2));
 		this.field13.reset();
+
 		try {
 			this.field13.update(var4.toString().getBytes("UTF-8"));
 		} catch (UnsupportedEncodingException var6) {
 			var6.printStackTrace();
 		}
+
 		return this.field13.digest();
 	}
 
@@ -46,6 +51,7 @@ public class class5 implements class2 {
 	static int method16(byte[] var0) {
 		int var1 = 0;
 		byte[] var2 = var0;
+
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			byte var4 = var2[var3];
 			int var5 = method21(var4);
@@ -54,6 +60,7 @@ public class class5 implements class2 {
 				break;
 			}
 		}
+
 		return var1;
 	}
 
@@ -67,6 +74,7 @@ public class class5 implements class2 {
 				++var1;
 			}
 		}
+
 		return var1;
 	}
 }

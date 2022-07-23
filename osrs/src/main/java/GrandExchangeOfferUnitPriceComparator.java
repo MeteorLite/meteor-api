@@ -1,22 +1,26 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import java.text.ParseException;
 import java.util.Comparator;
 import java.util.Date;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("ly")
 @Implements("GrandExchangeOfferUnitPriceComparator")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Llj;Llj;I)I", garbageValue = "-2004855128")
+	@ObfuscatedSignature(
+		descriptor = "(Llj;Llj;I)I",
+		garbageValue = "-2004855128"
+	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
-		return var1.grandExchangeOffer.unitPrice < var2.grandExchangeOffer.unitPrice ? -1 : var2.grandExchangeOffer.unitPrice == var1.grandExchangeOffer.unitPrice ? 0 : 1;
+		return var1.grandExchangeOffer.unitPrice < var2.grandExchangeOffer.unitPrice ? -1 : (var2.grandExchangeOffer.unitPrice == var1.grandExchangeOffer.unitPrice ? 0 : 1);
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compare_bridged(((GrandExchangeEvent) (var1)), ((GrandExchangeEvent) (var2)));
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
 	public boolean equals(Object var1) {
@@ -24,7 +28,10 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "-118")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "-118"
+	)
 	static boolean method6031() {
 		Date var0;
 		try {
@@ -33,6 +40,7 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 			GraphicsObject.method1877("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
 			return false;
 		}
+
 		if (var0 == null) {
 			return false;
 		} else {
@@ -54,15 +62,19 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 				if (!var5) {
 					class174.field1891 = 8388607;
 				} else {
-					class174.field1891 = ((int) (var0.getTime() / 86400000L - 11745L));
+					class174.field1891 = (int)(var0.getTime() / 86400000L - 11745L);
 				}
+
 				return true;
 			}
 		}
 	}
 
 	@ObfuscatedName("ij")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1960096370")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1960096370"
+	)
 	static final void method6024() {
 		PacketBuffer var0 = Client.packetWriter.packetBuffer;
 		var0.importIndex();
@@ -73,10 +85,12 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 				Client.field616[++Client.field615 - 1] = Client.npcIndices[var2];
 			}
 		}
+
 		if (var1 > Client.npcCount) {
 			throw new RuntimeException("");
 		} else {
 			Client.npcCount = 0;
+
 			for (var2 = 0; var2 < var1; ++var2) {
 				int var3 = Client.npcIndices[var2];
 				NPC var4 = Client.npcs[var3];
@@ -114,6 +128,7 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 								var7 = var0.readBits(3);
 								var4.method2361(var7, class192.field2209);
 							}
+
 							var7 = var0.readBits(1);
 							if (var7 == 1) {
 								Client.field539[++Client.field538 - 1] = var3;
@@ -124,6 +139,7 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 					}
 				}
 			}
+
 		}
 	}
 }

@@ -1,30 +1,34 @@
-import net.runelite.mapping.ObfuscatedName;
 import java.util.HashMap;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("oy")
 @Implements("Fonts")
 public class Fonts {
 	@ObfuscatedName("h")
 	@Export("cacheParentPaths")
 	static String[] cacheParentPaths;
-
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedSignature(
+		descriptor = "Llh;"
+	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedSignature(
+		descriptor = "Llh;"
+	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-
 	@ObfuscatedName("q")
 	@Export("map")
 	HashMap map;
 
-	@ObfuscatedSignature(descriptor = "(Llh;Llh;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Llh;Llh;)V"
+	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
 		this.spritesArchive = var1;
 		this.fontsArchive = var2;
@@ -32,11 +36,15 @@ public class Fonts {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "([Lpd;B)Ljava/util/HashMap;", garbageValue = "82")
+	@ObfuscatedSignature(
+		descriptor = "([Lpd;B)Ljava/util/HashMap;",
+		garbageValue = "82"
+	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
 		HashMap var2 = new HashMap();
 		FontName[] var3 = var1;
+
 		for (int var4 = 0; var4 < var3.length; ++var4) {
 			FontName var5 = var3[var4];
 			if (this.map.containsKey(var5)) {
@@ -49,6 +57,7 @@ public class Fonts {
 				}
 			}
 		}
+
 		return var2;
 	}
 }

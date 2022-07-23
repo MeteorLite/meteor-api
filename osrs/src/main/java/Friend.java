@@ -1,15 +1,15 @@
+import java.io.File;
+import java.io.IOException;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import java.io.IOException;
-import java.io.File;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("nr")
 @Implements("Friend")
 public class Friend extends Buddy {
 	@ObfuscatedName("c")
 	boolean field4299;
-
 	@ObfuscatedName("v")
 	boolean field4298;
 
@@ -17,7 +17,10 @@ public class Friend extends Buddy {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lnr;I)I", garbageValue = "-1436702085")
+	@ObfuscatedSignature(
+		descriptor = "(Lnr;I)I",
+		garbageValue = "-1436702085"
+	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
 		if (super.world == Client.worldId && Client.worldId != var1.world) {
@@ -42,20 +45,26 @@ public class Friend extends Buddy {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Lne;B)I", garbageValue = "-81")
+	@ObfuscatedSignature(
+		descriptor = "(Lne;B)I",
+		garbageValue = "-81"
+	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
-		return this.compareToFriend(((Friend) (var1)));
+		return this.compareToFriend((Friend)var1);
 	}
 
 	public int compareTo(Object var1) {
-		return this.compareToFriend(((Friend) (var1)));
+		return this.compareToFriend((Friend)var1);
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Ljava/lang/String;IB)Ljava/io/File;", garbageValue = "-29")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;IB)Ljava/io/File;",
+		garbageValue = "-29"
+	)
 	static File method6630(String var0, String var1, int var2) {
-		String var3 = (var2 == 0) ? "" : "" + var2;
+		String var3 = var2 == 0 ? "" : "" + var2;
 		class267.JagexCache_locationFile = new File(class123.userHomeDirectory, "jagex_cl_" + var0 + "_" + var1 + var3 + ".dat");
 		String var4 = null;
 		String var5 = null;
@@ -65,22 +74,26 @@ public class Friend extends Buddy {
 		if (class267.JagexCache_locationFile.exists()) {
 			try {
 				AccessFile var7 = new AccessFile(class267.JagexCache_locationFile, "rw", 10000L);
+
 				int var9;
-				for (var8 = new Buffer(((int) (var7.length()))); var8.offset < var8.array.length; var8.offset += var9) {
+				for (var8 = new Buffer((int)var7.length()); var8.offset < var8.array.length; var8.offset += var9) {
 					var9 = var7.read(var8.array, var8.offset, var8.array.length - var8.offset);
 					if (var9 == -1) {
 						throw new IOException();
 					}
 				}
+
 				var8.offset = 0;
 				var9 = var8.readUnsignedByte();
 				if (var9 < 1 || var9 > 3) {
 					throw new IOException("" + var9);
 				}
+
 				int var10 = 0;
 				if (var9 > 1) {
 					var10 = var8.readUnsignedByte();
 				}
+
 				if (var9 <= 2) {
 					var4 = var8.readStringCp1252NullCircumfixed();
 					if (var10 == 1) {
@@ -92,16 +105,19 @@ public class Friend extends Buddy {
 						var5 = var8.readCESU8();
 					}
 				}
+
 				var7.close();
 			} catch (IOException var21) {
 				var21.printStackTrace();
 			}
+
 			if (var4 != null) {
 				var23 = new File(var4);
 				if (!var23.exists()) {
 					var4 = null;
 				}
 			}
+
 			if (var4 != null) {
 				var23 = new File(var4, "test.dat");
 				if (!Varcs.method2474(var23, true)) {
@@ -109,8 +125,10 @@ public class Friend extends Buddy {
 				}
 			}
 		}
+
 		if (var4 == null && var2 == 0) {
-			label140 : for (int var15 = 0; var15 < JagexCache.cacheSubPaths.length; ++var15) {
+			label140:
+			for (int var15 = 0; var15 < JagexCache.cacheSubPaths.length; ++var15) {
 				for (int var16 = 0; var16 < Fonts.cacheParentPaths.length; ++var16) {
 					File var17 = new File(Fonts.cacheParentPaths[var16] + JagexCache.cacheSubPaths[var15] + File.separatorChar + var0 + File.separatorChar);
 					if (var17.exists() && Varcs.method2474(new File(var17, "test.dat"), true)) {
@@ -121,17 +139,21 @@ public class Friend extends Buddy {
 				}
 			}
 		}
+
 		if (var4 == null) {
 			var4 = class123.userHomeDirectory + File.separatorChar + "jagexcache" + var3 + File.separatorChar + var0 + File.separatorChar + var1 + File.separatorChar;
 			var6 = true;
 		}
+
 		File var22;
 		if (var5 != null) {
 			var22 = new File(var5);
 			var23 = new File(var4);
+
 			try {
 				File[] var24 = var22.listFiles();
 				File[] var18 = var24;
+
 				for (int var11 = 0; var11 < var18.length; ++var11) {
 					File var12 = var18[var11];
 					File var13 = new File(var23, var12.getName());
@@ -143,11 +165,14 @@ public class Friend extends Buddy {
 			} catch (Exception var20) {
 				var20.printStackTrace();
 			}
+
 			var6 = true;
 		}
+
 		if (var6) {
 			var22 = new File(var4);
 			var8 = null;
+
 			try {
 				AccessFile var25 = new AccessFile(class267.JagexCache_locationFile, "rw", 10000L);
 				Buffer var26 = new Buffer(500);
@@ -157,17 +182,22 @@ public class Friend extends Buddy {
 				if (var8 != null) {
 					var26.writeCESU8("");
 				}
+
 				var25.write(var26.array, 0, var26.offset);
 				var25.close();
 			} catch (IOException var19) {
 				var19.printStackTrace();
 			}
 		}
+
 		return new File(var4);
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "44")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "44"
+	)
 	static int method6619(int var0, Script var1, boolean var2) {
 		if (var0 < 1000) {
 			return JagexCache.method3271(var0, var1, var2);

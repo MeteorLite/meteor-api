@@ -1,45 +1,57 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("jw")
 public class class262 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3020;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3017;
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3019;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3018;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3015;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3016;
-
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3021;
-
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3022;
-
 	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3023;
-
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "Ljw;")
+	@ObfuscatedSignature(
+		descriptor = "Ljw;"
+	)
 	public static final class262 field3024;
 
 	static {
@@ -55,7 +67,10 @@ public class class262 {
 		field3024 = new class262(14);
 	}
 
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "5")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "5"
+	)
 	class262(int var1) {
 	}
 }

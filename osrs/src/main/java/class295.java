@@ -1,27 +1,40 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("kh")
 public enum class295 implements MouseWheel {
-
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lkh;")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
 	field3529(0),
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lkh;")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
 	field3526(1),
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lkh;")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
 	field3527(2),
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lkh;")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
 	field3528(3),
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lkh;")
+	@ObfuscatedSignature(
+		descriptor = "Lkh;"
+	)
 	field3530(4);
+
 	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = 1099242609)
+	@ObfuscatedGetter(
+		intValue = 1099242609
+	)
 	final int field3525;
 
 	class295(int var3) {
@@ -29,19 +42,25 @@ public enum class295 implements MouseWheel {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-100"
+	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field3525;
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(CI)B", garbageValue = "-328191535")
+	@ObfuscatedSignature(
+		descriptor = "(CI)B",
+		garbageValue = "-328191535"
+	)
 	@Export("charToByteCp1252")
 	public static byte charToByteCp1252(char var0) {
 		byte var1;
 		if (var0 > 0 && var0 < 128 || var0 >= 160 && var0 <= 255) {
-			var1 = ((byte) (var0));
+			var1 = (byte)var0;
 		} else if (var0 == 8364) {
 			var1 = -128;
 		} else if (var0 == 8218) {
@@ -99,25 +118,31 @@ public enum class295 implements MouseWheel {
 		} else {
 			var1 = 63;
 		}
+
 		return var1;
 	}
 
 	@ObfuscatedName("x")
-	@ObfuscatedSignature(descriptor = "(Lbc;I)V", garbageValue = "1904209787")
+	@ObfuscatedSignature(
+		descriptor = "(Lbc;I)V",
+		garbageValue = "1904209787"
+	)
 	@Export("changeWorld")
 	static void changeWorld(World var0) {
 		if (var0.isMembersOnly() != Client.isMembersWorld) {
 			Client.isMembersWorld = var0.isMembersOnly();
 			GrandExchangeOfferOwnWorldComparator.method1096(var0.isMembersOnly());
 		}
+
 		if (var0.properties != Client.worldProperties) {
 			SoundSystem.method739(class304.archive8, var0.properties);
 		}
+
 		StructComposition.worldHost = var0.host;
 		Client.worldId = var0.id;
 		Client.worldProperties = var0.properties;
-		FloorDecoration.worldPort = (Client.gameBuild == 0) ? 43594 : var0.id + 40000;
-		class18.js5Port = (Client.gameBuild == 0) ? 443 : var0.id + 50000;
+		FloorDecoration.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
+		class18.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
 		Client.currentPort = FloorDecoration.worldPort;
 	}
 }

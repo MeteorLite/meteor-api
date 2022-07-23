@@ -52,10 +52,14 @@ import net.runelite.asm.pool.Method;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.c2s.RWOpcodeFinder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import static net.runelite.asm.attributes.code.InstructionType.INVOKEVIRTUAL;
 
 public class PacketWriteDeobfuscator implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(PacketWriteDeobfuscator.class);
+
 	private static final String RUNELITE_PACKET = "RUNELITE_PACKET";
 
 	private final OpcodeReplacer opcodeReplacer = new OpcodeReplacer();
@@ -199,6 +203,8 @@ public class PacketWriteDeobfuscator implements Deobfuscator
 			++count;
 			writesCount += write.writes.size();
 		}
+
+		logger.info("Converted buffer write methods for {} opcodes ({} writes)", count, writesCount);
 	}
 
 	private void insert(ClassGroup group, PacketWrite write)

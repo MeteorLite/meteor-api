@@ -36,9 +36,13 @@ import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.instruction.types.FieldInstruction;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UnusedFields implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(UnusedFields.class);
+
 	private final Set<Field> used = new HashSet<>();
 
 	private void checkForFieldUsage(ClassGroup group)
@@ -75,5 +79,7 @@ public class UnusedFields implements Deobfuscator
 					cf.removeField(f);
 					++count;
 				}
+
+		logger.info("Removed " + count + " unused fields");
 	}
 }

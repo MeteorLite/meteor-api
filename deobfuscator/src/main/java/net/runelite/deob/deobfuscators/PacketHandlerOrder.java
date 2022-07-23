@@ -71,9 +71,12 @@ import net.runelite.deob.s2c.PacketHandler;
 import net.runelite.deob.s2c.PacketHandlers;
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 import static org.objectweb.asm.Opcodes.ACC_STATIC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PacketHandlerOrder implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(PacketHandlerOrder.class);
 
 	private static final String RUNELITE_PACKET = "RUNELITE_PACKET";
 
@@ -104,6 +107,8 @@ public class PacketHandlerOrder implements Deobfuscator
 
 		HandlerFinder hf = new HandlerFinder(group, ptf.getPacketType());
 		PacketHandlers handlers = hf.findHandlers();
+
+		logger.info("Found {} packet handlers", handlers.getHandlers().size());
 
 		for (PacketHandler handler : handlers.getHandlers())
 		{
@@ -219,7 +224,11 @@ public class PacketHandlerOrder implements Deobfuscator
 				}
 			});
 
+			logger.debug("Beginning execution of opcode {}", handler.getOpcode());
+
 			e.run();
+
+			logger.info("Executed opcode {}: {} mappable instructions", handler.getOpcode(), handler.mappable.size());
 
 			handler.findReorderableReads();
 		}
@@ -257,6 +266,7 @@ public class PacketHandlerOrder implements Deobfuscator
 					return Integer.compare(s1, s2);
 				}
 
+				logger.warn("Unable to differentiate {} from {}", p1, p2);
 				return 0;
 			})
 			.map(PacketHandler::clone)
@@ -296,6 +306,10 @@ public class PacketHandlerOrder implements Deobfuscator
 				assert i2 != null;
 				int i = Integer.compare(i1, i2);
 
+				if (i == 0)
+				{
+					logger.warn("Cannot differentiate {} from {}", p1, p2);
+				}
 
 				return i;
 			});
@@ -307,6 +321,10 @@ public class PacketHandlerOrder implements Deobfuscator
 
 		for (PacketHandler handler : sortedHandlers)
 		{
+			logger.info("Handler {} mappable {} reads {} invokes {} freads {} fwrites {}",
+				handler.getOpcode(), handler.mappable.size(), handler.reads.size(), handler.methodInvokes.size(),
+				handler.fieldRead.size(), handler.fieldWrite.size());
+
 			final String fieldName = "PACKET_SERVER_" + handler.getOpcode();
 
 			// Add opcode fields

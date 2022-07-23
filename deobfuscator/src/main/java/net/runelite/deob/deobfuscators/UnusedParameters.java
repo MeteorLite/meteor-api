@@ -50,8 +50,13 @@ import net.runelite.asm.signature.util.VirtualMethods;
 import net.runelite.deob.Deob;
 import net.runelite.deob.DeobAnnotations;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class UnusedParameters implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(UnusedParameters.class);
+
 	private final Map<List<Method>, Collection<Integer>> unused = new HashMap<>();
 	private final Multimap<Instruction, InstructionContext> invokes = HashMultimap.create();
 
@@ -123,6 +128,7 @@ public class UnusedParameters implements Deobfuscator
 				/* removing the parameter can't cause collisions on other (overloaded) methods because prior to this we rename
 				 * all classes/fields/methods to have unique names.
 				 */
+				logger.debug("Removing parameter {} at index {} from {}", unusedParameter, lvtIndex, m);
 				removeParameter(group, m, signature, execution, unusedParameter, lvtIndex);
 				break;
 			}
@@ -292,6 +298,7 @@ public class UnusedParameters implements Deobfuscator
 
 		count += i;
 
+		logger.info("Removed {} unused parameters", count);
 	}
 
 	public int getCount()

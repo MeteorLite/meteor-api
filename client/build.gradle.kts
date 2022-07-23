@@ -16,8 +16,8 @@ dependencies {
     implementation(project(":api"))
     implementation(project(":api-rs"))
     implementation("org.rationalityfrontline:kevent:2.1.4")
-    runtimeOnly(files("./injector/build/injected/injected-client.jar"))
-    runtimeOnly(files("../injector/build/injected/injected-client.jar"))
+    implementation(group = "org.bouncycastle", name = "bcprov-jdk15on", version = "1.52")
+    runtimeOnly(files("./src/main/resources/injected-client.osrs"))
 }
 
 tasks {
@@ -25,6 +25,7 @@ tasks {
         dependsOn(":injector:inject")
         classpath(sourceSets["main"].runtimeClasspath)
         mainClass.set("osnet.OSNetClient")
+        jvmArgs("-noverify")
     }
 }
 

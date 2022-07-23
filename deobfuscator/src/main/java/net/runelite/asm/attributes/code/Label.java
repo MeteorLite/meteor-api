@@ -123,12 +123,8 @@ public class Label extends NOP
 		Instruction next;
 		do
 		{
-			try {
-				next = ins.getInstructions().get(i + 1);
-				++i;
-			} catch (java.lang.Exception e) {
-				return null;
-			}
+			next = ins.getInstructions().get(i + 1);
+			++i;
 		}
 		while (next instanceof Label);
 

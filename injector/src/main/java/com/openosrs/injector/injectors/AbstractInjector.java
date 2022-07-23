@@ -10,23 +10,18 @@ package com.openosrs.injector.injectors;
 import com.google.common.base.Stopwatch;
 import com.openosrs.injector.injection.InjectData;
 import lombok.RequiredArgsConstructor;
-import org.gradle.api.logging.Logger;
-import org.gradle.api.logging.Logging;
 
 @RequiredArgsConstructor
-public abstract class AbstractInjector implements Injector
-{
-	protected final InjectData inject;
-	protected final Logger log = Logging.getLogger(this.getClass());
-	private Stopwatch stopwatch;
+public abstract class AbstractInjector implements Injector {
 
-	public void start()
-	{
-		stopwatch = Stopwatch.createStarted();
-	}
+  protected final InjectData inject;
+  private Stopwatch stopwatch;
 
-	public final String getCompletionMsg()
-	{
-		return "finished in " + stopwatch.toString();
-	}
+  public void start() {
+    stopwatch = Stopwatch.createStarted();
+  }
+
+  public final String getCompletionMsg() {
+    return "finished in " + stopwatch.toString();
+  }
 }

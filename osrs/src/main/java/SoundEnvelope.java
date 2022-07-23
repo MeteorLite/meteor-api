@@ -1,50 +1,41 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("at")
 @Implements("SoundEnvelope")
 public class SoundEnvelope {
 	@ObfuscatedName("c")
 	@Export("segments")
 	int segments;
-
 	@ObfuscatedName("v")
 	@Export("durations")
 	int[] durations;
-
 	@ObfuscatedName("q")
 	@Export("phases")
 	int[] phases;
-
 	@ObfuscatedName("f")
 	@Export("start")
 	int start;
-
 	@ObfuscatedName("j")
 	@Export("end")
 	int end;
-
 	@ObfuscatedName("e")
 	@Export("form")
 	int form;
-
 	@ObfuscatedName("g")
 	@Export("ticks")
 	int ticks;
-
 	@ObfuscatedName("w")
 	@Export("phaseIndex")
 	int phaseIndex;
-
 	@ObfuscatedName("y")
 	@Export("max")
 	int max;
-
 	@ObfuscatedName("i")
 	@Export("step")
 	int step;
-
 	@ObfuscatedName("s")
 	@Export("amplitude")
 	int amplitude;
@@ -60,7 +51,9 @@ public class SoundEnvelope {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lqt;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
 	@Export("decode")
 	final void decode(Buffer var1) {
 		this.form = var1.readUnsignedByte();
@@ -70,16 +63,20 @@ public class SoundEnvelope {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Lqt;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
 	@Export("decodeSegments")
 	final void decodeSegments(Buffer var1) {
 		this.segments = var1.readUnsignedByte();
 		this.durations = new int[this.segments];
 		this.phases = new int[this.segments];
+
 		for (int var2 = 0; var2 < this.segments; ++var2) {
 			this.durations[var2] = var1.readUnsignedShort();
 			this.phases[var2] = var1.readUnsignedShort();
 		}
+
 	}
 
 	@ObfuscatedName("q")
@@ -100,11 +97,13 @@ public class SoundEnvelope {
 			if (this.phaseIndex >= this.segments) {
 				this.phaseIndex = this.segments - 1;
 			}
-			this.ticks = ((int) (((double) (this.durations[this.phaseIndex])) / 65536.0 * ((double) (var1))));
+
+			this.ticks = (int)((double)this.durations[this.phaseIndex] / 65536.0D * (double)var1);
 			if (this.ticks > this.max) {
 				this.step = ((this.phases[this.phaseIndex] << 15) - this.amplitude) / (this.ticks - this.max);
 			}
 		}
+
 		this.amplitude += this.step;
 		++this.max;
 		return this.amplitude - this.step >> 15;

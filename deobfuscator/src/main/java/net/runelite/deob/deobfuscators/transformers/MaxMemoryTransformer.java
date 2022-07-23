@@ -41,9 +41,13 @@ import net.runelite.asm.attributes.code.instructions.Pop;
 import net.runelite.asm.pool.Class;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Transformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MaxMemoryTransformer implements Transformer
 {
+	private static final Logger logger = LoggerFactory.getLogger(MaxMemoryTransformer.class);
+
 	private boolean done = false;
 
 	@Override
@@ -56,6 +60,8 @@ public class MaxMemoryTransformer implements Transformer
 				transform(m);
 			}
 		}
+
+		logger.info("Transformed: " + done);
 	}
 
 	private void transform(Method m)

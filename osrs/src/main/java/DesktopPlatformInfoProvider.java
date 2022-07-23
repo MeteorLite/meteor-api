@@ -1,25 +1,33 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("og")
 @Implements("DesktopPlatformInfoProvider")
 public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -199170423)
+	@ObfuscatedGetter(
+		intValue = -199170423
+	)
 	int field4467;
-
 	@ObfuscatedName("j")
-	@ObfuscatedGetter(intValue = 1842203815)
+	@ObfuscatedGetter(
+		intValue = 1842203815
+	)
 	int field4468;
-
 	@ObfuscatedName("e")
-	@ObfuscatedGetter(intValue = -1586858741)
+	@ObfuscatedGetter(
+		intValue = -1586858741
+	)
 	int field4469;
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)Los;", garbageValue = "51821248")
+	@ObfuscatedSignature(
+		descriptor = "(I)Los;",
+		garbageValue = "51821248"
+	)
 	@Export("get")
 	public PlatformInfo get() {
 		byte var1;
@@ -32,31 +40,37 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 		} else {
 			var1 = 4;
 		}
+
 		String var2;
 		try {
 			var2 = System.getProperty("os.arch").toLowerCase();
 		} catch (Exception var30) {
 			var2 = "";
 		}
+
 		String var3;
 		try {
 			var3 = System.getProperty("os.version").toLowerCase();
 		} catch (Exception var29) {
 			var3 = "";
 		}
+
 		String var4 = "Unknown";
 		String var5 = "1.1";
+
 		try {
 			var4 = System.getProperty("java.vendor");
 			var5 = System.getProperty("java.version");
 		} catch (Exception var28) {
 		}
+
 		boolean var27;
 		if (!var2.startsWith("amd64") && !var2.startsWith("x86_64")) {
 			var27 = false;
 		} else {
 			var27 = true;
 		}
+
 		byte var7 = 0;
 		if (var1 == 1) {
 			if (var3.indexOf("4.0") != -1) {
@@ -105,6 +119,7 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 				var7 = 29;
 			}
 		}
+
 		byte var8;
 		if (var4.toLowerCase().indexOf("sun") != -1) {
 			var8 = 1;
@@ -117,15 +132,17 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 		} else {
 			var8 = 4;
 		}
+
 		this.method7151(var5);
 		boolean var9 = false;
-		int var10 = ((int) (Runtime.getRuntime().maxMemory() / 1048576L)) + 1;
+		int var10 = (int)(Runtime.getRuntime().maxMemory() / 1048576L) + 1;
 		int var11;
 		if (this.field4467 > 3) {
 			var11 = Runtime.getRuntime().availableProcessors();
 		} else {
 			var11 = 0;
 		}
+
 		byte var12 = 0;
 		String var13 = "";
 		String var14 = "";
@@ -145,19 +162,27 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)V", garbageValue = "-1038587213")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1038587213"
+	)
 	void method7151(String var1) {
 		if (var1.startsWith("1.")) {
 			this.method7152(var1);
 		} else {
 			this.method7153(var1);
 		}
+
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)V", garbageValue = "-1489289662")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-1489289662"
+	)
 	void method7152(String var1) {
 		String[] var2 = var1.split("\\.");
+
 		try {
 			this.field4467 = Integer.parseInt(var2[1]);
 			var2 = var2[2].split("_");
@@ -165,17 +190,23 @@ public class DesktopPlatformInfoProvider implements PlatformInfoProvider {
 			this.field4469 = Integer.parseInt(var2[1]);
 		} catch (Exception var4) {
 		}
+
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;I)V", garbageValue = "530635410")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "530635410"
+	)
 	void method7153(String var1) {
 		String[] var2 = var1.split("\\.");
+
 		try {
 			this.field4467 = Integer.parseInt(var2[0]);
 			this.field4468 = Integer.parseInt(var2[1]);
 			this.field4469 = Integer.parseInt(var2[2]);
 		} catch (Exception var4) {
 		}
+
 	}
 }

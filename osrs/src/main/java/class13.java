@@ -1,29 +1,39 @@
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
+import java.util.Hashtable;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import org.bouncycastle.crypto.tls.TlsAuthentication;
-import java.util.Hashtable;
-import java.io.IOException;
-import java.io.ByteArrayOutputStream;
 import org.bouncycastle.crypto.tls.DefaultTlsClient;
-import net.runelite.mapping.Export;
+import org.bouncycastle.crypto.tls.TlsAuthentication;
+
 @ObfuscatedName("r")
 class class13 extends DefaultTlsClient {
 	@ObfuscatedName("w")
 	@Export("SpriteBuffer_spritePalette")
 	public static int[] SpriteBuffer_spritePalette;
-
 	@ObfuscatedName("iu")
-	@ObfuscatedSignature(descriptor = "[Lqu;")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
 	@Export("mapSceneSprites")
 	static IndexedSprite[] mapSceneSprites;
-
-	@ObfuscatedSignature(descriptor = "Lz;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lz;"
+	)
 	final class12 this$1;
 
-	@ObfuscatedSignature(descriptor = "(Lz;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lz;)V"
+	)
 	class13(class12 var1) {
 		this.this$1 = var1;
+	}
+
+	public TlsAuthentication getAuthentication() throws IOException {
+		return new class11(this);
 	}
 
 	public Hashtable getClientExtensions() throws IOException {
@@ -31,6 +41,7 @@ class class13 extends DefaultTlsClient {
 		if (var1 == null) {
 			var1 = new Hashtable();
 		}
+
 		byte[] var2 = this.this$1.val$host.getBytes();
 		ByteArrayOutputStream var3 = new ByteArrayOutputStream();
 		DataOutputStream var4 = new DataOutputStream(var3);
@@ -41,9 +52,5 @@ class class13 extends DefaultTlsClient {
 		var4.close();
 		var1.put(0, var3.toByteArray());
 		return var1;
-	}
-
-	public TlsAuthentication getAuthentication() throws IOException {
-		return new class11(this);
 	}
 }

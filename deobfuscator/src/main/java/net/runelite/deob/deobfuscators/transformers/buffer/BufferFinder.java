@@ -31,6 +31,8 @@ import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class which identifies Buffer and PacketBuffer
@@ -39,6 +41,8 @@ import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
  */
 public class BufferFinder
 {
+	private static final Logger logger = LoggerFactory.getLogger(BufferFinder.class);
+
 	private final ClassGroup group;
 
 	private ClassFile buffer, packetBuffer;
@@ -75,6 +79,8 @@ public class BufferFinder
 						.filter(cl -> cl.getParent() == cf)
 						.findAny()
 						.get();
+
+					logger.info("Identified buffer {}, packetBuffer {}", buffer, packetBuffer);
 				}
 			}
 		}

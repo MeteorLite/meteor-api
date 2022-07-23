@@ -26,8 +26,6 @@ package net.runelite.deob.deobfuscators;
 
 import com.google.common.base.Strings;
 import java.util.List;
-
-import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.Field;
@@ -47,10 +45,12 @@ import net.runelite.deob.DeobAnnotations;
 import static net.runelite.deob.DeobAnnotations.*;
 import net.runelite.deob.Deobfuscator;
 import net.runelite.deob.util.NameMappings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Renamer implements Deobfuscator
 {
-	private static final Logger logger = new Logger("deob");
+	private static final Logger logger = LoggerFactory.getLogger(Renamer.class);
 
 	private final NameMappings mappings;
 

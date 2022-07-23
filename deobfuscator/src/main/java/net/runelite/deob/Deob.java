@@ -27,8 +27,6 @@ package net.runelite.deob;
 import com.google.common.base.Stopwatch;
 import java.io.File;
 import java.io.IOException;
-
-import meteor.Logger;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.execution.Execution;
 import net.runelite.deob.deobfuscators.CastNull;
@@ -44,39 +42,39 @@ import net.runelite.deob.deobfuscators.UnusedClass;
 import net.runelite.deob.deobfuscators.UnusedFields;
 import net.runelite.deob.deobfuscators.UnusedMethods;
 import net.runelite.deob.deobfuscators.UnusedParameters;
-import net.runelite.deob.deobfuscators.arithmetic.ModArith;
-import net.runelite.deob.deobfuscators.arithmetic.MultiplicationDeobfuscator;
-import net.runelite.deob.deobfuscators.arithmetic.MultiplyOneDeobfuscator;
-import net.runelite.deob.deobfuscators.arithmetic.MultiplyZeroDeobfuscator;
 import net.runelite.deob.deobfuscators.cfg.ControlFlowDeobfuscator;
 import net.runelite.deob.deobfuscators.constparam.ConstantParameter;
 import net.runelite.deob.deobfuscators.exprargorder.ExprArgOrder;
 import net.runelite.deob.deobfuscators.menuaction.MenuActionDeobfuscator;
+import net.runelite.deob.deobfuscators.rsmaths.MultiplierAnnotations;
+import net.runelite.deob.deobfuscators.rsmaths.MultiplierFinderKt;
+import net.runelite.deob.deobfuscators.rsmaths.MultiplierFixerKt;
 import net.runelite.deob.deobfuscators.transformers.ClientErrorTransformer;
 import net.runelite.deob.deobfuscators.transformers.GetPathTransformer;
 import net.runelite.deob.deobfuscators.transformers.OpcodesTransformer;
 import net.runelite.deob.deobfuscators.transformers.ReflectionTransformer;
 import net.runelite.deob.util.JarUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Deob
 {
-	private static final Logger logger = new Logger("deob");
+	private static final Logger logger = LoggerFactory.getLogger(Deob.class);
 
 	public static final int OBFUSCATED_NAME_MAX_LEN = 3;
 	private static final boolean CHECK_EXEC = false;
 
 	public static void main(String[] args) throws IOException
 	{
-		if (args == null || args.length < 2)
-		{
-			System.err.println("Syntax: input_jar output_jar");
-			System.exit(-1);
-		}
+		args = new String[2];
+		args[0] = "./deobfuscator/gamepack-obf.jar";
+		args[1] = "./deobfuscator/gamepack-deob.jar";
 
 		logger.info("Deobfuscator revision {}", DeobProperties.getRevision());
 
 		Stopwatch stopwatch = Stopwatch.createStarted();
 
-		ClassGroup group = JarUtil.load(new File(args[0]), true);
+		ClassGroup group = JarUtil.load(new File(args[0]));
 
 		// remove except RuntimeException
 		run(group, new RuntimeExceptions());
@@ -114,7 +112,7 @@ public class Deob
 
 		run(group, new UnusedClass());
 
-		runMath(group);
+		group = runMath(group, args[1]);
 
 		run(group, new ExprArgOrder());
 
@@ -155,9 +153,15 @@ public class Deob
 				|| name.startsWith("__");
 	}
 
-	private static void runMath(ClassGroup group)
+	private static ClassGroup runMath(ClassGroup group, String s) throws IOException
 	{
-		ModArith mod = new ModArith();
+		File f = new File(new File(s).getParentFile(), "tmp-" + System.currentTimeMillis() + ".jar");
+		f.deleteOnExit();
+		JarUtil.save(group, f);
+		MultiplierFinderKt.INSTANCE.transform(f.toPath(), f.toPath());
+		MultiplierFixerKt.INSTANCE.transform(f.toPath(), f.toPath());
+		MultiplierAnnotations.INSTANCE.transform(f.toPath(), f.toPath());
+		/*ModArith mod = new ModArith();
 		mod.run(group);
 
 		int last = -1, cur;
@@ -182,7 +186,9 @@ public class Deob
 		// now that modarith is done, remove field * 1
 		new MultiplyOneDeobfuscator(false).run(group);
 
-		mod.annotateEncryption();
+		mod.annotateEncryption();*/
+
+		return JarUtil.load(f);
 	}
 
 	private static void run(ClassGroup group, Deobfuscator deob)

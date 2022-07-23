@@ -1,17 +1,21 @@
-import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("pp")
 public class class438 {
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -1532753849)
+	@ObfuscatedGetter(
+		intValue = -1532753849
+	)
 	static final int field4680;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = 875475555)
+	@ObfuscatedGetter(
+		intValue = 875475555
+	)
 	static final int field4683;
 
 	static {
-		field4680 = ((int) (Math.pow(2.0, 4.0) - 1.0));
-		field4683 = ((int) (Math.pow(2.0, 8.0) - 1.0));
+		field4680 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
+		field4683 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
 	}
 }

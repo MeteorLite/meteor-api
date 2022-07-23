@@ -1,9 +1,13 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("id")
 public class class259 {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "2045687167")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "2045687167"
+	)
 	static void method5188() {
 		Tiles.Tiles_minPlane = 99;
 		Tiles.Tiles_underlays = new byte[4][104][104];
@@ -21,7 +25,10 @@ public class class259 {
 	}
 
 	@ObfuscatedName("kv")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-387349075")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-387349075"
+	)
 	static final void method5189() {
 		Client.field690 = Client.cycleCntr;
 		Projectile.ClanChat_inClanChat = true;

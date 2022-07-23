@@ -17,25 +17,25 @@ public interface RSBuffer extends Buffer, RSNode
 	void setOffset(int offset);
 
 	@Import("readUnsignedByte")
-	int readUnsignedByte();
+	int readUnsignedByte$rs();
 
 	@Import("readByte")
-	byte readByte();
+	byte readByte$rs();
 
 	@Import("readUnsignedShort")
-	int readUnsignedShort();
+	int readUnsignedShort$rs();
 
 	@Import("readMedium")
-	int readMedium();
+	int readMedium$rs();
 
 	@Import("readShort")
-	int readShort();
+	int readShort$rs();
 
 	@Import("readInt")
-	int readInt();
+	int readInt$rs();
 
 	@Import("readStringCp1252NullTerminated")
-	String readStringCp1252NullTerminated();
+	String readStringCp1252NullTerminated$rs();
 
 	//	@Import("writeBoolean")
 	//	void writeBoolean(boolean i);
@@ -44,7 +44,7 @@ public interface RSBuffer extends Buffer, RSNode
 	//	void writeBuffer(Buffer i);
 	//
 	@Import(WRITEBYTE)
-	void writeByte(int i);
+	void writeByte$rs(int i);
 	//
 	@Import(WRITEBYTEADD)
 	void writeByteAdd(int i);
@@ -65,7 +65,7 @@ public interface RSBuffer extends Buffer, RSNode
 	//	int writeCrc(int i);
 	//
 	@Import(WRITEINT)
-	void writeInt(int i);
+	void writeInt$rs(int i);
 	//
 	@Import(WRITEINTIME)
 	void writeIntIME(int i);
@@ -95,7 +95,7 @@ public interface RSBuffer extends Buffer, RSNode
 	//	void writeMedium(int i);
 	//
 	@Import(WRITESHORT)
-	void writeShort(int i);
+	void writeShort$rs(int i);
 	//
 	@Import(WRITESHORTADD)
 	void writeShortAdd(int i);
@@ -104,16 +104,16 @@ public interface RSBuffer extends Buffer, RSNode
 	void writeShortAddLE(int i);
 	//
 	@Import(WRITESHORTLE)
-	void writeShortLE(int i);
+	void writeShortLE$rs(int i);
 	//
 	//	@Import("writeSmartByteShort")
 	//	void writeSmartByteShort(int i);
 	//
 	@Import("writeStringCp1252NullCircumfixed")
-	void writeStringCp1252NullCircumfixed(String i);
+	void writeStringCp1252NullCircumfixed$rs(String i);
 	//
 	@Import("writeStringCp1252NullTerminated")
-	void writeStringCp1252NullTerminated(String i);
+	void writeStringCp1252NullTerminated$rs(String i);
 	//
 	//	@Import("writeVarInt")
 	//	void writeVarInt(int i);

@@ -34,6 +34,8 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.InstructionType;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Finds fields which are initialized in clinit
@@ -42,6 +44,7 @@ import net.runelite.asm.attributes.code.instructions.PutStatic;
  */
 public class StaticInitializerIndexer
 {
+	private static final Logger logger = LoggerFactory.getLogger(StaticInitializerIndexer.class);
 
 	private final ClassGroup group;
 	private final Set<Field> fields = new HashSet<>();
@@ -79,6 +82,7 @@ public class StaticInitializerIndexer
 			}
 		}
 
+		logger.debug("Indexed {} statically initialized fields", fields.size());
 	}
 
 	public boolean isStatic(Field field)

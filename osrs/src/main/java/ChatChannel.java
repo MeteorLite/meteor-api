@@ -1,19 +1,23 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("bx")
 @Implements("ChatChannel")
 public class ChatChannel {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "[Lbr;")
+	@ObfuscatedSignature(
+		descriptor = "[Lbr;"
+	)
 	@Export("messages")
 	Message[] messages;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = 941516663)
+	@ObfuscatedGetter(
+		intValue = 941516663
+	)
 	@Export("count")
 	int count;
 
@@ -22,15 +26,20 @@ public class ChatChannel {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;", garbageValue = "-1607330830")
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lbr;",
+		garbageValue = "-1607330830"
+	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
 		Message var5 = this.messages[99];
+
 		for (int var6 = this.count; var6 > 0; --var6) {
 			if (var6 != 100) {
 				this.messages[var6] = this.messages[var6 - 1];
 			}
 		}
+
 		if (var5 == null) {
 			var5 = new Message(var1, var2, var4, var3);
 		} else {
@@ -38,29 +47,40 @@ public class ChatChannel {
 			var5.removeDual();
 			var5.set(var1, var2, var4, var3);
 		}
+
 		this.messages[0] = var5;
 		if (this.count < 100) {
 			++this.count;
 		}
+
 		return var5;
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(II)Lbr;", garbageValue = "-2069744784")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lbr;",
+		garbageValue = "-2069744784"
+	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "164096866")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "164096866"
+	)
 	@Export("size")
 	int size() {
 		return this.count;
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZS)I", garbageValue = "1700")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZS)I",
+		garbageValue = "1700"
+	)
 	static int method2003(int var0, Script var1, boolean var2) {
 		boolean var3 = true;
 		Widget var4;
@@ -69,8 +89,9 @@ public class ChatChannel {
 			var4 = class140.getWidget(Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize]);
 			var3 = false;
 		} else {
-			var4 = (var2) ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
+			var4 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
 		}
+
 		int var11;
 		if (var0 == ScriptOpcodes.CC_SETOP) {
 			var11 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] - 1;
@@ -121,8 +142,8 @@ public class ChatChannel {
 					if (var0 == ScriptOpcodes.CC_SETOPTKEY) {
 						class446.Interpreter_intStackSize -= 2;
 						var5 = 10;
-						var8 = new byte[]{ ((byte) (Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize])) };
-						byte[] var9 = new byte[]{ ((byte) (Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1])) };
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize]};
+						byte[] var9 = new byte[]{(byte)Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]};
 						class340.Widget_setKey(var4, var5, var8, var9);
 						return 1;
 					} else if (var0 == ScriptOpcodes.CC_SETOPKEYRATE) {
@@ -163,21 +184,25 @@ public class ChatChannel {
 					var8 = null;
 					if (var3) {
 						class446.Interpreter_intStackSize -= 10;
+
 						for (var7 = 0; var7 < 10 && Interpreter.Interpreter_intStack[var7 + class446.Interpreter_intStackSize] >= 0; var7 += 2) {
 						}
+
 						if (var7 > 0) {
 							var10 = new byte[var7 / 2];
 							var8 = new byte[var7 / 2];
+
 							for (var7 -= 2; var7 >= 0; var7 -= 2) {
-								var10[var7 / 2] = ((byte) (Interpreter.Interpreter_intStack[var7 + class446.Interpreter_intStackSize]));
-								var8[var7 / 2] = ((byte) (Interpreter.Interpreter_intStack[var7 + class446.Interpreter_intStackSize + 1]));
+								var10[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + class446.Interpreter_intStackSize];
+								var8[var7 / 2] = (byte)Interpreter.Interpreter_intStack[var7 + class446.Interpreter_intStackSize + 1];
 							}
 						}
 					} else {
 						class446.Interpreter_intStackSize -= 2;
-						var10 = new byte[]{ ((byte) (Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize])) };
-						var8 = new byte[]{ ((byte) (Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1])) };
+						var10 = new byte[]{(byte)Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize]};
+						var8 = new byte[]{(byte)Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1]};
 					}
+
 					var7 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize] - 1;
 					if (var7 >= 0 && var7 <= 9) {
 						class340.Widget_setKey(var4, var7, var10, var8);
@@ -191,7 +216,10 @@ public class ChatChannel {
 	}
 
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(descriptor = "([BI)V", garbageValue = "1956135788")
+	@ObfuscatedSignature(
+		descriptor = "([BI)V",
+		garbageValue = "1956135788"
+	)
 	@Export("SpriteBuffer_decode")
 	static void SpriteBuffer_decode(byte[] var0) {
 		Buffer var1 = new Buffer(var0);
@@ -206,28 +234,36 @@ public class ChatChannel {
 		ModelData0.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
 		class456.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
 		int var2 = (var1.readUnsignedByte() & 255) + 1;
+
 		int var3;
 		for (var3 = 0; var3 < class456.SpriteBuffer_spriteCount; ++var3) {
 			class426.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
 		}
+
 		for (var3 = 0; var3 < class456.SpriteBuffer_spriteCount; ++var3) {
 			class142.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
 		}
+
 		for (var3 = 0; var3 < class456.SpriteBuffer_spriteCount; ++var3) {
 			class359.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
 		}
+
 		for (var3 = 0; var3 < class456.SpriteBuffer_spriteCount; ++var3) {
 			class456.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
 		}
+
 		var1.offset = var0.length - 7 - class456.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
 		class13.SpriteBuffer_spritePalette = new int[var2];
+
 		for (var3 = 1; var3 < var2; ++var3) {
 			class13.SpriteBuffer_spritePalette[var3] = var1.readMedium();
 			if (class13.SpriteBuffer_spritePalette[var3] == 0) {
 				class13.SpriteBuffer_spritePalette[var3] = 1;
 			}
 		}
+
 		var1.offset = 0;
+
 		for (var3 = 0; var3 < class456.SpriteBuffer_spriteCount; ++var3) {
 			int var4 = class359.SpriteBuffer_spriteWidths[var3];
 			int var5 = class456.SpriteBuffer_spriteHeights[var3];
@@ -248,14 +284,19 @@ public class ChatChannel {
 				}
 			}
 		}
+
 	}
 
 	@ObfuscatedName("kf")
-	@ObfuscatedSignature(descriptor = "(Lkb;I)V", garbageValue = "-720762696")
+	@ObfuscatedSignature(
+		descriptor = "(Lkb;I)V",
+		garbageValue = "-720762696"
+	)
 	@Export("invalidateWidget")
 	static void invalidateWidget(Widget var0) {
 		if (var0 != null && var0.cycle == Client.field702) {
 			Client.field703[var0.rootIndex] = true;
 		}
+
 	}
 }

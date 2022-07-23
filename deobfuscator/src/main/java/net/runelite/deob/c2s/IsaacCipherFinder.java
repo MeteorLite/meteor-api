@@ -31,9 +31,12 @@ import net.runelite.asm.Type;
 import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.instruction.types.PushConstantInstruction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class IsaacCipherFinder
 {
+	private static final Logger logger = LoggerFactory.getLogger(IsaacCipherFinder.class);
 
 	private static final int GOLDEN_RATIO = 0x9E3779B9; // 2^32 / phi
 	private final ClassGroup group;
@@ -88,6 +91,7 @@ public class IsaacCipherFinder
 			}
 		}
 
+		logger.debug("Found cipher {}, getNext {}", isaacCipher, getNext);
 	}
 
 	private int find(Method method, Code code)

@@ -1,29 +1,37 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("g")
 public enum class6 implements MouseWheel {
-
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Lg;")
+	@ObfuscatedSignature(
+		descriptor = "Lg;"
+	)
 	field17(0, 0);
+
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lqu;")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
 	@Export("titlebuttonSprite")
 	static IndexedSprite titlebuttonSprite;
-
 	@ObfuscatedName("ef")
-	@ObfuscatedSignature(descriptor = "Llc;")
+	@ObfuscatedSignature(
+		descriptor = "Llc;"
+	)
 	@Export("archive17")
 	static Archive archive17;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = -1659874385)
+	@ObfuscatedGetter(
+		intValue = -1659874385
+	)
 	public final int field16;
-
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(intValue = -162249617)
+	@ObfuscatedGetter(
+		intValue = -162249617
+	)
 	final int field15;
 
 	class6(int var3, int var4) {
@@ -32,21 +40,30 @@ public enum class6 implements MouseWheel {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-100"
+	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field15;
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Z", garbageValue = "-1172724173")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "-1172724173"
+	)
 	public static boolean method37() {
-		ReflectionCheck var0 = ((ReflectionCheck) (class33.reflectionChecks.last()));
+		ReflectionCheck var0 = (ReflectionCheck)class33.reflectionChecks.last();
 		return var0 != null;
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIILgk;II)V", garbageValue = "565551340")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgk;II)V",
+		garbageValue = "565551340"
+	)
 	static void method38(int var0, int var1, int var2, ObjectComposition var3, int var4) {
 		ObjectSound var5 = new ObjectSound();
 		var5.plane = var0;
@@ -58,6 +75,7 @@ public enum class6 implements MouseWheel {
 			var6 = var3.sizeY;
 			var7 = var3.sizeX;
 		}
+
 		var5.maxX = (var6 + var1) * 128;
 		var5.maxY = (var7 + var2) * 128;
 		var5.soundEffectId = var3.ambientSoundId;
@@ -69,9 +87,11 @@ public enum class6 implements MouseWheel {
 			var5.obj = var3;
 			var5.set();
 		}
+
 		ObjectSound.objectSounds.addFirst(var5);
 		if (var5.soundEffectIds != null) {
-			var5.field809 = var5.field819 + ((int) (Math.random() * ((double) (var5.field811 - var5.field819))));
+			var5.field809 = var5.field819 + (int)(Math.random() * (double)(var5.field811 - var5.field819));
 		}
+
 	}
 }

@@ -39,9 +39,13 @@ import net.runelite.asm.attributes.code.instructions.PutStatic;
 import static net.runelite.deob.deobfuscators.transformers.OpcodesTransformer.RUNELITE_OPCODES;
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 import static org.objectweb.asm.Opcodes.ACC_STATIC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class OpcodeReplacer
 {
+	private static final Logger logger = LoggerFactory.getLogger(OpcodeReplacer.class);
+
 	public void run(ClassGroup group, Collection<PacketWrite> writes)
 	{
 		int count = 0;
@@ -89,5 +93,7 @@ class OpcodeReplacer
 
 			++count;
 		}
+
+		logger.info("Injected {} packet writes", count);
 	}
 }

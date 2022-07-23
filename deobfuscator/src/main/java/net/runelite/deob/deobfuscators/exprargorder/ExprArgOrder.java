@@ -65,8 +65,13 @@ import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.asm.signature.Signature;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ExprArgOrder implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(ExprArgOrder.class);
+
 	private final List<Instruction> exprIns = new ArrayList<>();
 	private final Map<Instruction, Expression> exprs = new HashMap<>();
 	private int count;
@@ -389,6 +394,10 @@ public class ExprArgOrder implements Deobfuscator
 		int hash1 = hash(method, ic1);
 		int hash2 = hash(method, ic2);
 
+		if (hash1 == hash2)
+		{
+			logger.debug("Unable to differentiate {} from {}", ic1, ic2);
+		}
 
 		return Integer.compare(hash1, hash2);
 	}
@@ -432,6 +441,10 @@ public class ExprArgOrder implements Deobfuscator
 		int hash1 = hash(method, expr1.getHead());
 		int hash2 = hash(method, expr2.getHead());
 
+		if (hash1 == hash2)
+		{
+			logger.debug("Unable to differentiate {} from {}", expr1.getHead(), expr2.getHead());
+		}
 
 		return Integer.compare(hash1, hash2);
 	}
@@ -525,5 +538,7 @@ public class ExprArgOrder implements Deobfuscator
 		execution.addMethodContextVisitor(i -> visit(i));
 		execution.populateInitialMethods();
 		execution.run();
+
+		logger.info("Reordered {} expressions", count);
 	}
 }

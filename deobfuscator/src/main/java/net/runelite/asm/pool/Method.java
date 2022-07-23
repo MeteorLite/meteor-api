@@ -31,7 +31,7 @@ public class Method
 {
 	private final Class clazz;
 	private final String name;
-	private Signature type;
+	private final Signature type;
 
 	public Method(Class clazz, String name, Signature type)
 	{
@@ -100,10 +100,5 @@ public class Method
 	public Signature getType()
 	{
 		return type;
-	}
-
-	public void setType(Signature type)
-	{
-		this.type = type;
 	}
 }

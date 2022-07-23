@@ -1,16 +1,18 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import java.nio.ByteBuffer;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("jr")
 @Implements("DirectByteArrayCopier")
 public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 	@ObfuscatedName("fy")
-	@ObfuscatedGetter(intValue = -1703500315)
+	@ObfuscatedGetter(
+		intValue = -1703500315
+	)
 	static int field3306;
-
 	@ObfuscatedName("c")
 	@Export("directBuffer")
 	ByteBuffer directBuffer;
@@ -19,7 +21,10 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(B)[B", garbageValue = "-87")
+	@ObfuscatedSignature(
+		descriptor = "(B)[B",
+		garbageValue = "-87"
+	)
 	@Export("get")
 	byte[] get() {
 		byte[] var1 = new byte[this.directBuffer.capacity()];
@@ -29,7 +34,10 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "([BI)V", garbageValue = "2067022612")
+	@ObfuscatedSignature(
+		descriptor = "([BI)V",
+		garbageValue = "2067022612"
+	)
 	@Export("set")
 	void set(byte[] var1) {
 		this.directBuffer = ByteBuffer.allocateDirect(var1.length);
@@ -38,7 +46,10 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Llc;IB)V", garbageValue = "20")
+	@ObfuscatedSignature(
+		descriptor = "(Llc;IB)V",
+		garbageValue = "20"
+	)
 	public static void method5512(Archive var0, int var1) {
 		KitDefinition.field1862.offset = var1 * 8 + 5;
 		if (KitDefinition.field1862.offset >= KitDefinition.field1862.array.length) {
@@ -55,14 +66,17 @@ public class DirectByteArrayCopier extends AbstractByteArrayCopier {
 	}
 
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(II)I", garbageValue = "1018448231")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "1018448231"
+	)
 	@Export("Messages_getLastChatID")
 	static int Messages_getLastChatID(int var0) {
-		Message var1 = ((Message) (Messages.Messages_hashTable.get(((long) (var0)))));
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
 		if (var1 == null) {
 			return -1;
 		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message) (var1.previousDual)).count;
+			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
 		}
 	}
 }

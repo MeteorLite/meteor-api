@@ -1,12 +1,12 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
 import java.math.BigInteger;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("bs")
 public class class65 {
 	@ObfuscatedName("j")
 	static final BigInteger field865;
-
 	@ObfuscatedName("e")
 	static final BigInteger field868;
 
@@ -16,7 +16,10 @@ public class class65 {
 	}
 
 	@ObfuscatedName("gw")
-	@ObfuscatedSignature(descriptor = "(Lci;III)V", garbageValue = "-1780893346")
+	@ObfuscatedSignature(
+		descriptor = "(Lci;III)V",
+		garbageValue = "-1780893346"
+	)
 	@Export("performPlayerAnimation")
 	static void performPlayerAnimation(Player var0, int var1, int var2) {
 		if (var0.sequence == var1 && var1 != -1) {
@@ -27,6 +30,7 @@ public class class65 {
 				var0.sequenceDelay = var2;
 				var0.field1190 = 0;
 			}
+
 			if (var3 == 2) {
 				var0.field1190 = 0;
 			}
@@ -38,5 +42,6 @@ public class class65 {
 			var0.field1190 = 0;
 			var0.field1203 = var0.pathLength;
 		}
+
 	}
 }

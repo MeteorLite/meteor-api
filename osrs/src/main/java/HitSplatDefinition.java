@@ -1,99 +1,118 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("gr")
 @Implements("HitSplatDefinition")
 public class HitSplatDefinition extends DualNode {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedSignature(
+		descriptor = "Llh;"
+	)
 	@Export("HitSplatDefinition_archive")
 	public static AbstractArchive HitSplatDefinition_archive;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedSignature(
+		descriptor = "Llh;"
+	)
 	public static AbstractArchive field2017;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Lii;")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
 	@Export("HitSplatDefinition_cached")
 	public static EvictingDualNodeHashTable HitSplatDefinition_cached;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lii;")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
 	@Export("HitSplatDefinition_cachedSprites")
 	public static EvictingDualNodeHashTable HitSplatDefinition_cachedSprites;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Lii;")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
 	@Export("HitSplatDefinition_cachedFonts")
 	public static EvictingDualNodeHashTable HitSplatDefinition_cachedFonts;
-
 	@ObfuscatedName("t")
-	@ObfuscatedGetter(intValue = -592555797)
+	@ObfuscatedGetter(
+		intValue = -592555797
+	)
 	@Export("fontId")
 	int fontId;
-
 	@ObfuscatedName("z")
-	@ObfuscatedGetter(intValue = -1722715223)
+	@ObfuscatedGetter(
+		intValue = -1722715223
+	)
 	@Export("textColor")
 	public int textColor;
-
 	@ObfuscatedName("r")
-	@ObfuscatedGetter(intValue = 860140195)
+	@ObfuscatedGetter(
+		intValue = 860140195
+	)
 	public int field2026;
-
 	@ObfuscatedName("u")
-	@ObfuscatedGetter(intValue = 332626063)
+	@ObfuscatedGetter(
+		intValue = 332626063
+	)
 	int field2021;
-
 	@ObfuscatedName("k")
-	@ObfuscatedGetter(intValue = -161678465)
+	@ObfuscatedGetter(
+		intValue = -161678465
+	)
 	int field2016;
-
 	@ObfuscatedName("h")
-	@ObfuscatedGetter(intValue = -1426101485)
+	@ObfuscatedGetter(
+		intValue = -1426101485
+	)
 	int field2029;
-
 	@ObfuscatedName("x")
-	@ObfuscatedGetter(intValue = 195385179)
+	@ObfuscatedGetter(
+		intValue = 195385179
+	)
 	int field2027;
-
 	@ObfuscatedName("l")
-	@ObfuscatedGetter(intValue = 1489450415)
+	@ObfuscatedGetter(
+		intValue = 1489450415
+	)
 	public int field2031;
-
 	@ObfuscatedName("a")
-	@ObfuscatedGetter(intValue = -2109795173)
+	@ObfuscatedGetter(
+		intValue = -2109795173
+	)
 	public int field2032;
-
 	@ObfuscatedName("p")
-	@ObfuscatedGetter(intValue = 247260053)
+	@ObfuscatedGetter(
+		intValue = 247260053
+	)
 	public int field2030;
-
 	@ObfuscatedName("b")
 	String field2034;
-
 	@ObfuscatedName("n")
-	@ObfuscatedGetter(intValue = 242554481)
+	@ObfuscatedGetter(
+		intValue = 242554481
+	)
 	public int field2035;
-
 	@ObfuscatedName("o")
-	@ObfuscatedGetter(intValue = 1781397165)
+	@ObfuscatedGetter(
+		intValue = 1781397165
+	)
 	public int field2019;
-
 	@ObfuscatedName("m")
 	@Export("transforms")
 	public int[] transforms;
-
 	@ObfuscatedName("d")
-	@ObfuscatedGetter(intValue = -1586306339)
+	@ObfuscatedGetter(
+		intValue = -1586306339
+	)
 	@Export("transformVarbit")
 	int transformVarbit;
-
 	@ObfuscatedName("ad")
-	@ObfuscatedGetter(intValue = 837589615)
+	@ObfuscatedGetter(
+		intValue = 837589615
+	)
 	@Export("transformVarp")
 	int transformVarp;
 
@@ -122,7 +141,10 @@ public class HitSplatDefinition extends DualNode {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Lqt;I)V", garbageValue = "-905711242")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;I)V",
+		garbageValue = "-905711242"
+	)
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -130,26 +152,30 @@ public class HitSplatDefinition extends DualNode {
 			if (var2 == 0) {
 				return;
 			}
+
 			this.decodeNext(var1, var2);
-		} 
+		}
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lqt;II)V", garbageValue = "1685495726")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;II)V",
+		garbageValue = "1685495726"
+	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
-			this.fontId = var1.readNullableLargeSmart();
+			this.fontId = var1.method7752();
 		} else if (var2 == 2) {
 			this.textColor = var1.readMedium();
 		} else if (var2 == 3) {
-			this.field2021 = var1.readNullableLargeSmart();
+			this.field2021 = var1.method7752();
 		} else if (var2 == 4) {
-			this.field2029 = var1.readNullableLargeSmart();
+			this.field2029 = var1.method7752();
 		} else if (var2 == 5) {
-			this.field2016 = var1.readNullableLargeSmart();
+			this.field2016 = var1.method7752();
 		} else if (var2 == 6) {
-			this.field2027 = var1.readNullableLargeSmart();
+			this.field2027 = var1.method7752();
 		} else if (var2 == 7) {
 			this.field2031 = var1.readShort();
 		} else if (var2 == 8) {
@@ -171,10 +197,12 @@ public class HitSplatDefinition extends DualNode {
 			if (this.transformVarbit == 65535) {
 				this.transformVarbit = -1;
 			}
+
 			this.transformVarp = var1.readUnsignedShort();
 			if (this.transformVarp == 65535) {
 				this.transformVarp = -1;
 			}
+
 			int var3 = -1;
 			if (var2 == 18) {
 				var3 = var1.readUnsignedShort();
@@ -182,20 +210,27 @@ public class HitSplatDefinition extends DualNode {
 					var3 = -1;
 				}
 			}
+
 			int var4 = var1.readUnsignedByte();
 			this.transforms = new int[var4 + 2];
+
 			for (int var5 = 0; var5 <= var4; ++var5) {
 				this.transforms[var5] = var1.readUnsignedShort();
 				if (this.transforms[var5] == 65535) {
 					this.transforms[var5] = -1;
 				}
 			}
+
 			this.transforms[var4 + 1] = var3;
 		}
+
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(I)Lgr;", garbageValue = "-303621175")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lgr;",
+		garbageValue = "-303621175"
+	)
 	@Export("transform")
 	public final HitSplatDefinition transform() {
 		int var1 = -1;
@@ -204,113 +239,139 @@ public class HitSplatDefinition extends DualNode {
 		} else if (this.transformVarp != -1) {
 			var1 = Varps.Varps_main[this.transformVarp];
 		}
+
 		int var2;
 		if (var1 >= 0 && var1 < this.transforms.length - 1) {
 			var2 = this.transforms[var1];
 		} else {
 			var2 = this.transforms[this.transforms.length - 1];
 		}
+
 		return var2 != -1 ? class122.method2800(var2) : null;
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(II)Ljava/lang/String;", garbageValue = "1527850435")
+	@ObfuscatedSignature(
+		descriptor = "(II)Ljava/lang/String;",
+		garbageValue = "1527850435"
+	)
 	@Export("getString")
 	public String getString(int var1) {
 		String var2 = this.field2034;
+
 		while (true) {
 			int var3 = var2.indexOf("%1");
 			if (var3 < 0) {
 				return var2;
 			}
+
 			var2 = var2.substring(0, var3) + Tile.intToString(var1, false) + var2.substring(var3 + 2);
-		} 
+		}
 	}
 
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "(I)Lqe;", garbageValue = "-2128633016")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lqe;",
+		garbageValue = "-2128633016"
+	)
 	public SpritePixels method3623() {
 		if (this.field2021 < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = ((SpritePixels) (HitSplatDefinition_cachedSprites.get(((long) (this.field2021)))));
+			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2021);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class7.SpriteBuffer_getSprite(field2017, this.field2021, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, ((long) (this.field2021)));
+					HitSplatDefinition_cachedSprites.put(var1, (long)this.field2021);
 				}
+
 				return var1;
 			}
 		}
 	}
 
 	@ObfuscatedName("g")
-	@ObfuscatedSignature(descriptor = "(B)Lqe;", garbageValue = "10")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lqe;",
+		garbageValue = "10"
+	)
 	public SpritePixels method3643() {
 		if (this.field2016 < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = ((SpritePixels) (HitSplatDefinition_cachedSprites.get(((long) (this.field2016)))));
+			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2016);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class7.SpriteBuffer_getSprite(field2017, this.field2016, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, ((long) (this.field2016)));
+					HitSplatDefinition_cachedSprites.put(var1, (long)this.field2016);
 				}
+
 				return var1;
 			}
 		}
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(B)Lqe;", garbageValue = "33")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lqe;",
+		garbageValue = "33"
+	)
 	public SpritePixels method3625() {
 		if (this.field2029 < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = ((SpritePixels) (HitSplatDefinition_cachedSprites.get(((long) (this.field2029)))));
+			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2029);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class7.SpriteBuffer_getSprite(field2017, this.field2029, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, ((long) (this.field2029)));
+					HitSplatDefinition_cachedSprites.put(var1, (long)this.field2029);
 				}
+
 				return var1;
 			}
 		}
 	}
 
 	@ObfuscatedName("y")
-	@ObfuscatedSignature(descriptor = "(B)Lqe;", garbageValue = "1")
+	@ObfuscatedSignature(
+		descriptor = "(B)Lqe;",
+		garbageValue = "1"
+	)
 	public SpritePixels method3626() {
 		if (this.field2027 < 0) {
 			return null;
 		} else {
-			SpritePixels var1 = ((SpritePixels) (HitSplatDefinition_cachedSprites.get(((long) (this.field2027)))));
+			SpritePixels var1 = (SpritePixels)HitSplatDefinition_cachedSprites.get((long)this.field2027);
 			if (var1 != null) {
 				return var1;
 			} else {
 				var1 = class7.SpriteBuffer_getSprite(field2017, this.field2027, 0);
 				if (var1 != null) {
-					HitSplatDefinition_cachedSprites.put(var1, ((long) (this.field2027)));
+					HitSplatDefinition_cachedSprites.put(var1, (long)this.field2027);
 				}
+
 				return var1;
 			}
 		}
 	}
 
 	@ObfuscatedName("i")
-	@ObfuscatedSignature(descriptor = "(S)Lmt;", garbageValue = "9601")
+	@ObfuscatedSignature(
+		descriptor = "(S)Lmt;",
+		garbageValue = "9601"
+	)
 	@Export("getFont")
 	public Font getFont() {
 		if (this.fontId == -1) {
 			return null;
 		} else {
-			Font var1 = ((Font) (HitSplatDefinition_cachedFonts.get(((long) (this.fontId)))));
+			Font var1 = (Font)HitSplatDefinition_cachedFonts.get((long)this.fontId);
 			if (var1 != null) {
 				return var1;
 			} else {
@@ -335,18 +396,24 @@ public class HitSplatDefinition extends DualNode {
 						class421.SpriteBuffer_pixels = null;
 						var6 = var8;
 					}
+
 					var2 = var6;
 				}
+
 				if (var2 != null) {
-					HitSplatDefinition_cachedFonts.put(var2, ((long) (this.fontId)));
+					HitSplatDefinition_cachedFonts.put(var2, (long)this.fontId);
 				}
+
 				return var2;
 			}
 		}
 	}
 
 	@ObfuscatedName("z")
-	@ObfuscatedSignature(descriptor = "(IB)Ljava/lang/String;", garbageValue = "44")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "44"
+	)
 	static final String method3632(int var0) {
 		if (var0 < 100000) {
 			return "<col=ffff00>" + var0 + "</col>";
@@ -356,7 +423,10 @@ public class HitSplatDefinition extends DualNode {
 	}
 
 	@ObfuscatedName("u")
-	@ObfuscatedSignature(descriptor = "(Lmt;Lmt;Lmt;I)V", garbageValue = "1695432560")
+	@ObfuscatedSignature(
+		descriptor = "(Lmt;Lmt;Lmt;I)V",
+		garbageValue = "1695432560"
+	)
 	@Export("drawTitle")
 	static void drawTitle(Font var0, Font var1, Font var2) {
 		Login.xPadding = (Script.canvasWidth - 765) / 2;
@@ -377,6 +447,7 @@ public class HitSplatDefinition extends DualNode {
 				SpritePixels[] var50 = class430.method7547(var46, var45, var25);
 				ScriptFrame.worldSelectBackSprites = var50;
 			}
+
 			IndexedSprite[] var51;
 			if (class126.worldSelectFlagSprites == null) {
 				var46 = class304.archive8;
@@ -385,6 +456,7 @@ public class HitSplatDefinition extends DualNode {
 				var51 = ClanChannelMember.method2867(var46, var45, var25);
 				class126.worldSelectFlagSprites = var51;
 			}
+
 			if (FriendSystem.worldSelectArrows == null) {
 				var46 = class304.archive8;
 				var45 = var46.getGroupId("sl_arrows");
@@ -392,6 +464,7 @@ public class HitSplatDefinition extends DualNode {
 				var51 = ClanChannelMember.method2867(var46, var45, var25);
 				FriendSystem.worldSelectArrows = var51;
 			}
+
 			if (class220.worldSelectStars == null) {
 				var46 = class304.archive8;
 				var45 = var46.getGroupId("sl_stars");
@@ -399,12 +472,15 @@ public class HitSplatDefinition extends DualNode {
 				var51 = ClanChannelMember.method2867(var46, var45, var25);
 				class220.worldSelectStars = var51;
 			}
+
 			if (class266.worldSelectLeftSprite == null) {
 				class266.worldSelectLeftSprite = class421.SpriteBuffer_getIndexedSpriteByName(class304.archive8, "leftarrow", "");
 			}
+
 			if (SceneTilePaint.worldSelectRightSprite == null) {
 				SceneTilePaint.worldSelectRightSprite = class421.SpriteBuffer_getIndexedSpriteByName(class304.archive8, "rightarrow", "");
 			}
+
 			Rasterizer2D.Rasterizer2D_fillRectangle(Login.xPadding, 23, 765, 480, 0);
 			Rasterizer2D.Rasterizer2D_fillRectangleGradient(Login.xPadding, 0, 125, 23, 12425273, 9135624);
 			Rasterizer2D.Rasterizer2D_fillRectangleGradient(Login.xPadding + 125, 0, 640, 23, 5197647, 2697513);
@@ -415,6 +491,7 @@ public class HitSplatDefinition extends DualNode {
 				class220.worldSelectStars[0].drawAt(Login.xPadding + 140, 12);
 				var1.draw("Free world", Login.xPadding + 152, 21, 16777215, -1);
 			}
+
 			if (FriendSystem.worldSelectArrows != null) {
 				var32 = Login.xPadding + 280;
 				if (World.World_sortOption1[0] == 0 && World.World_sortOption2[0] == 0) {
@@ -422,11 +499,13 @@ public class HitSplatDefinition extends DualNode {
 				} else {
 					FriendSystem.worldSelectArrows[0].drawAt(var32, 4);
 				}
+
 				if (World.World_sortOption1[0] == 0 && World.World_sortOption2[0] == 1) {
 					FriendSystem.worldSelectArrows[3].drawAt(var32 + 15, 4);
 				} else {
 					FriendSystem.worldSelectArrows[1].drawAt(var32 + 15, 4);
 				}
+
 				var0.draw("World", var32 + 32, 17, 16777215, -1);
 				var4 = Login.xPadding + 390;
 				if (World.World_sortOption1[0] == 1 && World.World_sortOption2[0] == 0) {
@@ -434,11 +513,13 @@ public class HitSplatDefinition extends DualNode {
 				} else {
 					FriendSystem.worldSelectArrows[0].drawAt(var4, 4);
 				}
+
 				if (World.World_sortOption1[0] == 1 && World.World_sortOption2[0] == 1) {
 					FriendSystem.worldSelectArrows[3].drawAt(var4 + 15, 4);
 				} else {
 					FriendSystem.worldSelectArrows[1].drawAt(var4 + 15, 4);
 				}
+
 				var0.draw("Players", var4 + 32, 17, 16777215, -1);
 				var45 = Login.xPadding + 500;
 				if (World.World_sortOption1[0] == 2 && World.World_sortOption2[0] == 0) {
@@ -446,11 +527,13 @@ public class HitSplatDefinition extends DualNode {
 				} else {
 					FriendSystem.worldSelectArrows[0].drawAt(var45, 4);
 				}
+
 				if (World.World_sortOption1[0] == 2 && World.World_sortOption2[0] == 1) {
 					FriendSystem.worldSelectArrows[3].drawAt(var45 + 15, 4);
 				} else {
 					FriendSystem.worldSelectArrows[1].drawAt(var45 + 15, 4);
 				}
+
 				var0.draw("Location", var45 + 32, 17, 16777215, -1);
 				var25 = Login.xPadding + 610;
 				if (World.World_sortOption1[0] == 3 && World.World_sortOption2[0] == 0) {
@@ -458,13 +541,16 @@ public class HitSplatDefinition extends DualNode {
 				} else {
 					FriendSystem.worldSelectArrows[0].drawAt(var25, 4);
 				}
+
 				if (World.World_sortOption1[0] == 3 && World.World_sortOption2[0] == 1) {
 					FriendSystem.worldSelectArrows[3].drawAt(var25 + 15, 4);
 				} else {
 					FriendSystem.worldSelectArrows[1].drawAt(var25 + 15, 4);
 				}
+
 				var0.draw("Type", var25 + 32, 17, 16777215, -1);
 			}
+
 			Rasterizer2D.Rasterizer2D_fillRectangle(Login.xPadding + 708, 4, 50, 16, 0);
 			var1.drawCentered("Cancel", Login.xPadding + 708 + 25, 16, 16777215, -1);
 			Login.hoveredWorldIndex = -1;
@@ -473,6 +559,7 @@ public class HitSplatDefinition extends DualNode {
 				byte var41 = 19;
 				var45 = 765 / (var3 + 1) - 1;
 				var25 = 480 / (var41 + 1);
+
 				int var35;
 				do {
 					var7 = var25;
@@ -480,21 +567,26 @@ public class HitSplatDefinition extends DualNode {
 					if (var25 * (var45 - 1) >= World.World_count) {
 						--var45;
 					}
+
 					if (var45 * (var25 - 1) >= World.World_count) {
 						--var25;
 					}
+
 					if (var45 * (var25 - 1) >= World.World_count) {
 						--var25;
 					}
-				} while (var25 != var7 || var45 != var35 );
+				} while(var25 != var7 || var45 != var35);
+
 				var7 = (765 - var3 * var45) / (var45 + 1);
 				if (var7 > 5) {
 					var7 = 5;
 				}
+
 				var35 = (480 - var25 * var41) / (var25 + 1);
 				if (var35 > 5) {
 					var35 = 5;
 				}
+
 				int var37 = (765 - var3 * var45 - var7 * (var45 - 1)) / 2;
 				int var38 = (480 - var25 * var41 - var35 * (var25 - 1)) / 2;
 				int var28 = (var25 + World.World_count - 1) / var25;
@@ -502,14 +594,17 @@ public class HitSplatDefinition extends DualNode {
 				if (class266.worldSelectLeftSprite != null && Login.worldSelectPage > 0) {
 					class266.worldSelectLeftSprite.drawAt(8, class78.canvasHeight / 2 - class266.worldSelectLeftSprite.subHeight / 2);
 				}
+
 				if (SceneTilePaint.worldSelectRightSprite != null && Login.worldSelectPage < Login.worldSelectPagesCount) {
 					SceneTilePaint.worldSelectRightSprite.drawAt(Script.canvasWidth - SceneTilePaint.worldSelectRightSprite.subWidth - 8, class78.canvasHeight / 2 - SceneTilePaint.worldSelectRightSprite.subHeight / 2);
 				}
+
 				int var29 = var38 + 23;
 				int var39 = var37 + Login.xPadding;
 				int var40 = 0;
 				boolean var42 = false;
 				int var43 = Login.worldSelectPage;
+
 				int var17;
 				for (var17 = var25 * var43; var17 < World.World_count && var43 - Login.worldSelectPage < var45; ++var17) {
 					World var18 = class362.World_worlds[var17];
@@ -522,6 +617,7 @@ public class HitSplatDefinition extends DualNode {
 						var20 = "FULL";
 						var19 = false;
 					}
+
 					int var22 = 0;
 					byte var21;
 					if (var18.isBeta()) {
@@ -554,6 +650,7 @@ public class HitSplatDefinition extends DualNode {
 					} else {
 						var21 = 0;
 					}
+
 					if (MouseHandler.MouseHandler_x >= var39 && MouseHandler.MouseHandler_y >= var29 && MouseHandler.MouseHandler_x < var3 + var39 && MouseHandler.MouseHandler_y < var41 + var29 && var19) {
 						Login.hoveredWorldIndex = var17;
 						ScriptFrame.worldSelectBackSprites[var21].drawTransOverlayAt(var39, var29, 128, 16777215);
@@ -561,9 +658,11 @@ public class HitSplatDefinition extends DualNode {
 					} else {
 						ScriptFrame.worldSelectBackSprites[var21].drawAt(var39, var29);
 					}
+
 					if (class126.worldSelectFlagSprites != null) {
 						class126.worldSelectFlagSprites[(var18.isMembersOnly() ? 8 : 0) + var18.location].drawAt(var39 + 29, var29);
 					}
+
 					var0.drawCentered(Integer.toString(var18.id), var39 + 15, var41 / 2 + var29 + 5, var22, -1);
 					var1.drawCentered(var20, var39 + 60, var41 / 2 + var29 + 5, 268435455, -1);
 					var29 = var29 + var41 + var35;
@@ -575,6 +674,7 @@ public class HitSplatDefinition extends DualNode {
 						++var43;
 					}
 				}
+
 				if (var42) {
 					var17 = var1.stringWidth(class362.World_worlds[Login.hoveredWorldIndex].activity) + 6;
 					int var30 = var1.ascent + 8;
@@ -582,11 +682,13 @@ public class HitSplatDefinition extends DualNode {
 					if (var30 + var44 > 480) {
 						var44 = MouseHandler.MouseHandler_y - 25 - var30;
 					}
+
 					Rasterizer2D.Rasterizer2D_fillRectangle(MouseHandler.MouseHandler_x - var17 / 2, var44, var17, var30, 16777120);
 					Rasterizer2D.Rasterizer2D_drawRectangle(MouseHandler.MouseHandler_x - var17 / 2, var44, var17, var30, 0);
 					var1.drawCentered(class362.World_worlds[Login.hoveredWorldIndex].activity, MouseHandler.MouseHandler_x, var44 + var1.ascent + 4, 0, -1);
 				}
 			}
+
 			Message.rasterProvider.drawFull(0, 0);
 		} else {
 			class16.leftTitleSprite.drawAt(Login.xPadding, 0);
@@ -602,6 +704,7 @@ public class HitSplatDefinition extends DualNode {
 				Rasterizer2D.Rasterizer2D_fillRectangle(Login.loginBoxX + 180 - 150 + Login.Login_loadingPercent * 3, var4 + 2, 300 - Login.Login_loadingPercent * 3, 30, 0);
 				var0.drawCentered(Login.Login_loadingText, Login.loginBoxX + 180, 276 - var3, 16777215, -1);
 			}
+
 			String var5;
 			String var6;
 			short var31;
@@ -619,16 +722,21 @@ public class HitSplatDefinition extends DualNode {
 				if (Login.loginIndex != 4 && Login.loginIndex != 10) {
 					var0.draw("Login: ", Login.loginBoxX + 180 - 110, var32, 16777215, 0);
 					var33 = 200;
+
 					for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(0, var5.length() - 1)) {
 					}
+
 					var0.draw(AbstractFont.escapeBrackets(var5), Login.loginBoxX + 180 - 70, var32, 16777215, 0);
 					var32 += 15;
+
 					for (var6 = NetCache.method5952(Login.Login_password); var0.stringWidth(var6) > var33; var6 = var6.substring(1)) {
 					}
+
 					var0.draw("Password: " + var6, Login.loginBoxX + 180 - 108, var32, 16777215, 0);
 					var32 += 15;
 				}
 			}
+
 			if (Client.gameState == 10 || Client.gameState == 11 || Client.gameState == 50) {
 				class4.titleboxSprite.drawAt(Login.loginBoxX, 171);
 				short var23;
@@ -670,26 +778,30 @@ public class HitSplatDefinition extends DualNode {
 					var32 += 7;
 					var0.draw("Login: ", Canvas.loginBoxCenter - 110, var32, 16777215, 0);
 					var33 = 200;
+
 					for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
 					}
+
 					var0.draw(AbstractFont.escapeBrackets(var5) + (Login.currentLoginField == 0 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 70, var32, 16777215, 0);
 					var32 += 15;
+
 					for (var6 = NetCache.method5952(Login.Login_password); var0.stringWidth(var6) > var33; var6 = var6.substring(1)) {
 					}
+
 					var0.draw("Password: " + var6 + (Login.currentLoginField == 1 & Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Canvas.loginBoxCenter - 108, var32, 16777215, 0);
 					var32 += 15;
 					var31 = 277;
 					var7 = Canvas.loginBoxCenter + -117;
 					boolean var9 = Client.Login_isUsernameRemembered;
 					boolean var10 = Login.field912;
-					IndexedSprite var26 = (var9) ? var10 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var10 ? class113.field1427 : class345.options_buttons_0Sprite;
+					IndexedSprite var26 = var9 ? (var10 ? DynamicObject.field979 : class228.options_buttons_2Sprite) : (var10 ? class113.field1427 : class345.options_buttons_0Sprite);
 					var26.drawAt(var7, var31);
 					var7 = var7 + var26.subWidth + 5;
 					var1.draw("Remember username", var7, var31 + 13, 16776960, 0);
 					var7 = Canvas.loginBoxCenter + 24;
 					boolean var13 = class19.clientPreferences.method2247();
 					boolean var14 = Login.field913;
-					IndexedSprite var12 = (var13) ? var14 ? DynamicObject.field979 : class228.options_buttons_2Sprite : var14 ? class113.field1427 : class345.options_buttons_0Sprite;
+					IndexedSprite var12 = var13 ? (var14 ? DynamicObject.field979 : class228.options_buttons_2Sprite) : (var14 ? class113.field1427 : class345.options_buttons_0Sprite);
 					var12.drawAt(var7, var31);
 					var7 = var7 + var12.subWidth + 5;
 					var1.draw("Hide username", var7, var31 + 13, 16776960, 0);
@@ -702,13 +814,14 @@ public class HitSplatDefinition extends DualNode {
 					class6.titlebuttonSprite.drawAt(var15 - 73, var16 - 20);
 					var0.drawCentered("Cancel", var15, var16 + 5, 16777215, 0);
 					var31 = 357;
-					switch (Login.field902) {
-						case 2 :
-							TileItem.field1299 = "Having trouble logging in?";
-							break;
-						default :
-							TileItem.field1299 = "Can't login? Click here.";
+					switch(Login.field902) {
+					case 2:
+						TileItem.field1299 = "Having trouble logging in?";
+						break;
+					default:
+						TileItem.field1299 = "Can't login? Click here.";
 					}
+
 					ArchiveLoader.field1022 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth(TileItem.field1299), 11);
 					PcmPlayer.field294 = new Bounds(Canvas.loginBoxCenter, var31, var1.stringWidth("Still having trouble logging in?"), 11);
 					var1.drawCentered(TileItem.field1299, Canvas.loginBoxCenter, var31, 16777215, 0);
@@ -752,6 +865,7 @@ public class HitSplatDefinition extends DualNode {
 						} else {
 							var34 = class345.options_buttons_0Sprite;
 						}
+
 						var34.drawAt(var4, var45);
 						var32 += 15;
 						var7 = Login.loginBoxX + 180 - 80;
@@ -774,8 +888,10 @@ public class HitSplatDefinition extends DualNode {
 						var32 += 14;
 						var0.draw("Username/email: ", Login.loginBoxX + 180 - 145, var32, 16777215, 0);
 						var33 = 174;
+
 						for (var5 = class125.method2829(); var0.stringWidth(var5) > var33; var5 = var5.substring(1)) {
 						}
+
 						var0.draw(AbstractFont.escapeBrackets(var5) + (Client.cycle % 40 < 20 ? class122.colorStartTag(16776960) + "|" : ""), Login.loginBoxX + 180 - 34, var32, 16777215, 0);
 						var32 += 15;
 						var25 = Login.loginBoxX + 180 - 80;
@@ -809,6 +925,7 @@ public class HitSplatDefinition extends DualNode {
 							var0.drawCentered(Login.Login_response3, Canvas.loginBoxCenter, var32, 16776960, 0);
 							var4 = Canvas.loginBoxCenter - 150;
 							var32 += 10;
+
 							for (var45 = 0; var45 < 8; ++var45) {
 								class6.titlebuttonSprite.method8135(var4, var32, 30, 40);
 								boolean var47 = var45 == Login.field910 & Client.cycle % 40 < 20;
@@ -820,6 +937,7 @@ public class HitSplatDefinition extends DualNode {
 									var0.draw(AbstractFont.escapeBrackets("/"), var4 - 13, var32 + 27, 16777215, 0);
 								}
 							}
+
 							var45 = Canvas.loginBoxCenter - 80;
 							short var48 = 321;
 							class6.titlebuttonSprite.drawAt(var45 - 73, var48 - 20);
@@ -907,20 +1025,21 @@ public class HitSplatDefinition extends DualNode {
 						String var24 = "";
 						var5 = "";
 						var6 = "";
-						switch (Login.field897) {
-							case 0 :
-								var24 = "Your account has been disabled.";
-								var5 = Strings.field3670;
-								var6 = "";
-								break;
-							case 1 :
-								var24 = "Account locked as we suspect it has been stolen.";
-								var5 = Strings.field3709;
-								var6 = "";
-								break;
-							default :
-								class135.Login_promptCredentials(false);
+						switch(Login.field897) {
+						case 0:
+							var24 = "Your account has been disabled.";
+							var5 = Strings.field3670;
+							var6 = "";
+							break;
+						case 1:
+							var24 = "Account locked as we suspect it has been stolen.";
+							var5 = Strings.field3709;
+							var6 = "";
+							break;
+						default:
+							class135.Login_promptCredentials(false);
 						}
+
 						var0.drawCentered(var24, Login.loginBoxX + 180, var31, 16776960, 0);
 						var32 = var31 + 15;
 						var2.drawCentered(var5, Login.loginBoxX + 180, var32, 16776960, 0);
@@ -965,6 +1084,7 @@ public class HitSplatDefinition extends DualNode {
 					}
 				}
 			}
+
 			if (Client.gameState >= 10) {
 				int[] var27 = new int[4];
 				Rasterizer2D.Rasterizer2D_getClipArray(var27);
@@ -973,6 +1093,7 @@ public class HitSplatDefinition extends DualNode {
 				Login.loginScreenRunesAnimation.draw(Login.xPadding + 22 + 765 - 128, Client.cycle);
 				Rasterizer2D.Rasterizer2D_setClipArray(var27);
 			}
+
 			class145.title_muteSprite[class19.clientPreferences.method2317() ? 1 : 0].drawAt(Login.xPadding + 765 - 40, 463);
 			if (Client.gameState > 5 && Language.Language_EN == class134.clientLanguage) {
 				if (UserComparator5.field1385 != null) {
@@ -991,11 +1112,15 @@ public class HitSplatDefinition extends DualNode {
 					UserComparator5.field1385 = class421.SpriteBuffer_getIndexedSpriteByName(class304.archive8, "sl_button", "");
 				}
 			}
+
 		}
 	}
 
 	@ObfuscatedName("lx")
-	@ObfuscatedSignature(descriptor = "(IB)V", garbageValue = "-17")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "-17"
+	)
 	static void method3624(int var0) {
 		if (var0 != Client.loginState) {
 			Client.loginState = var0;

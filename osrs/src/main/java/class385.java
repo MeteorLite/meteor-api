@@ -1,13 +1,12 @@
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+
 @ObfuscatedName("nx")
 public class class385 {
 	@ObfuscatedName("c")
 	float field4383;
-
 	@ObfuscatedName("v")
 	float field4382;
-
 	@ObfuscatedName("q")
 	float field4384;
 
@@ -26,9 +25,12 @@ public class class385 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)F", garbageValue = "84")
+	@ObfuscatedSignature(
+		descriptor = "(B)F",
+		garbageValue = "84"
+	)
 	final float method6929() {
-		return ((float) (Math.sqrt(((double) (this.field4384 * this.field4384 + this.field4383 * this.field4383 + this.field4382 * this.field4382)))));
+		return (float)Math.sqrt((double)(this.field4384 * this.field4384 + this.field4383 * this.field4383 + this.field4382 * this.field4382));
 	}
 
 	public String toString() {

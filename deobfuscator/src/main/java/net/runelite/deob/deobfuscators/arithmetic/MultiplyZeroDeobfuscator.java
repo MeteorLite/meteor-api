@@ -38,9 +38,12 @@ import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MultiplyZeroDeobfuscator implements Deobfuscator
 {
+	private static final Logger logger = LoggerFactory.getLogger(MultiplyZeroDeobfuscator.class);
 
 	private int count;
 
@@ -133,5 +136,7 @@ public class MultiplyZeroDeobfuscator implements Deobfuscator
 		e.addMethodContextVisitor(i -> visit(i));
 		e.populateInitialMethods();
 		e.run();
+		
+		logger.info("Removed " + count + " 0 multiplications");
 	}
 }

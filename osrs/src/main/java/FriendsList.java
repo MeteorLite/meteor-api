@@ -1,26 +1,33 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ng")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Lpe;")
+	@ObfuscatedSignature(
+		descriptor = "Lpe;"
+	)
 	@Export("loginType")
 	final LoginType loginType;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -1848201845)
+	@ObfuscatedGetter(
+		intValue = -1848201845
+	)
 	int field4286;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Lli;")
+	@ObfuscatedSignature(
+		descriptor = "Lli;"
+	)
 	@Export("friendLoginUpdates")
 	public LinkDeque friendLoginUpdates;
 
-	@ObfuscatedSignature(descriptor = "(Lpe;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lpe;)V"
+	)
 	public FriendsList(LoginType var1) {
 		super(400);
 		this.field4286 = 1;
@@ -29,24 +36,33 @@ public class FriendsList extends UserList {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(S)Lne;", garbageValue = "-7122")
+	@ObfuscatedSignature(
+		descriptor = "(S)Lne;",
+		garbageValue = "-7122"
+	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Friend();
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(II)[Lne;", garbageValue = "77510907")
+	@ObfuscatedSignature(
+		descriptor = "(II)[Lne;",
+		garbageValue = "77510907"
+	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lqa;ZB)Z", garbageValue = "-49")
+	@ObfuscatedSignature(
+		descriptor = "(Lqa;ZB)Z",
+		garbageValue = "-49"
+	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
-		Friend var3 = ((Friend) (this.getByUsername(var1)));
+		Friend var3 = (Friend)this.getByUsername(var1);
 		if (var3 == null) {
 			return false;
 		} else {
@@ -55,7 +71,10 @@ public class FriendsList extends UserList {
 	}
 
 	@ObfuscatedName("w")
-	@ObfuscatedSignature(descriptor = "(Lqt;IB)V", garbageValue = "1")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;IB)V",
+		garbageValue = "1"
+	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		while (true) {
@@ -73,11 +92,12 @@ public class FriendsList extends UserList {
 					var1.readUnsignedByte();
 					var1.readInt();
 				}
+
 				var1.readStringCp1252NullTerminated();
 				if (var4 != null && var4.hasCleanName()) {
-					Friend var11 = ((Friend) (this.getByCurrentUsername(var4)));
+					Friend var11 = (Friend)this.getByCurrentUsername(var4);
 					if (var3) {
-						Friend var12 = ((Friend) (this.getByCurrentUsername(var5)));
+						Friend var12 = (Friend)this.getByCurrentUsername(var5);
 						if (var12 != null && var12 != var11) {
 							if (var11 != null) {
 								this.remove(var12);
@@ -86,11 +106,13 @@ public class FriendsList extends UserList {
 							}
 						}
 					}
+
 					if (var11 != null) {
 						this.changeName(var11, var4, var5);
 						if (var6 != var11.world) {
 							boolean var14 = true;
-							for (FriendLoginUpdate var13 = ((FriendLoginUpdate) (this.friendLoginUpdates.last())); var13 != null; var13 = ((FriendLoginUpdate) (this.friendLoginUpdates.previous()))) {
+
+							for (FriendLoginUpdate var13 = (FriendLoginUpdate)this.friendLoginUpdates.last(); var13 != null; var13 = (FriendLoginUpdate)this.friendLoginUpdates.previous()) {
 								if (var13.username.equals(var4)) {
 									if (var6 != 0 && var13.world == 0) {
 										var13.remove();
@@ -101,6 +123,7 @@ public class FriendsList extends UserList {
 									}
 								}
 							}
+
 							if (var14) {
 								this.friendLoginUpdates.addFirst(new FriendLoginUpdate(var4, var6));
 							}
@@ -109,34 +132,44 @@ public class FriendsList extends UserList {
 						if (this.getSize() >= 400) {
 							continue;
 						}
-						var11 = ((Friend) (this.addLast(var4, var5)));
+
+						var11 = (Friend)this.addLast(var4, var5);
 					}
+
 					if (var6 != var11.world) {
 						var11.int2 = ++this.field4286 - 1;
 						if (var11.world == -1 && var6 == 0) {
 							var11.int2 = -(var11.int2 * -1691529257) * 1716524007;
 						}
+
 						var11.world = var6;
 					}
+
 					var11.rank = var7;
 					var11.field4299 = var9;
 					var11.field4298 = var10;
 					continue;
 				}
+
 				throw new IllegalStateException();
 			}
+
 			this.sort();
 			return;
-		} 
+		}
 	}
 
 	@ObfuscatedName("iw")
-	@ObfuscatedSignature(descriptor = "(IIIILjava/lang/String;Ljava/lang/String;IIB)V", garbageValue = "1")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILjava/lang/String;Ljava/lang/String;IIB)V",
+		garbageValue = "1"
+	)
 	@Export("menuAction")
 	static final void menuAction(int var0, int var1, int var2, int var3, String var4, String var5, int var6, int var7) {
 		if (var2 >= 2000) {
 			var2 -= 2000;
 		}
+
 		PacketBufferNode var8;
 		if (var2 == 1) {
 			Client.mouseCrossX = var6;
@@ -146,12 +179,12 @@ public class FriendsList extends UserList {
 			Client.destinationX = var0;
 			Client.destinationY = var1;
 			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2979, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeShortAdd(EnumComposition.selectedItemSlot);
+			var8.packetBuffer.method7863(EnumComposition.selectedItemSlot);
 			var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
-			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShortLE(var3);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7771(var3);
 			var8.packetBuffer.writeShort(WorldMapIcon_0.selectedItemId);
-			var8.packetBuffer.writeShortLE(ModeWhere.selectedItemWidget);
+			var8.packetBuffer.method7784(ModeWhere.selectedItemWidget);
 			var8.packetBuffer.writeShort(var0 + class28.baseX);
 			Client.packetWriter.addNode(var8);
 		} else if (var2 == 2) {
@@ -161,14 +194,14 @@ public class FriendsList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOCT, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeShortLE(WorldMapLabelSize.baseY + var1);
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2992, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7771(WorldMapLabelSize.baseY + var1);
 			var8.packetBuffer.writeShort(var3);
-			var8.packetBuffer.writeShortAddLE(var0 + class28.baseX);
-			var8.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
-			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShortLE(NetCache.selectedSpellWidget);
-			var8.packetBuffer.writeShortAdd(Client.selectedSpellItemId);
+			var8.packetBuffer.method7929(var0 + class28.baseX);
+			var8.packetBuffer.method7771(Client.selectedSpellChildIndex);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7784(NetCache.selectedSpellWidget);
+			var8.packetBuffer.method7863(Client.selectedSpellItemId);
 			Client.packetWriter.addNode(var8);
 		} else if (var2 == 3) {
 			Client.mouseCrossX = var6;
@@ -177,11 +210,11 @@ public class FriendsList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOC1, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeShortAddLE(WorldMapLabelSize.baseY + var1);
-			var8.packetBuffer.writeShortAddLE(var0 + class28.baseX);
-			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShortLE(var3);
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3005, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7929(WorldMapLabelSize.baseY + var1);
+			var8.packetBuffer.method7929(var0 + class28.baseX);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7771(var3);
 			Client.packetWriter.addNode(var8);
 		} else if (var2 == 4) {
 			Client.mouseCrossX = var6;
@@ -190,11 +223,11 @@ public class FriendsList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOC2, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3003, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 			var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
 			var8.packetBuffer.writeShort(var0 + class28.baseX);
-			var8.packetBuffer.writeShortAddLE(var3);
+			var8.packetBuffer.method7929(var3);
 			Client.packetWriter.addNode(var8);
 		} else if (var2 == 5) {
 			Client.mouseCrossX = var6;
@@ -203,10 +236,10 @@ public class FriendsList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOC3, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShortAdd(var0 + class28.baseX);
-			var8.packetBuffer.writeShortAdd(WorldMapLabelSize.baseY + var1);
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3009, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7863(var0 + class28.baseX);
+			var8.packetBuffer.method7863(WorldMapLabelSize.baseY + var1);
 			var8.packetBuffer.writeShort(var3);
 			Client.packetWriter.addNode(var8);
 		} else if (var2 == 6) {
@@ -216,11 +249,11 @@ public class FriendsList extends UserList {
 			Client.mouseCrossState = 0;
 			Client.destinationX = var0;
 			Client.destinationY = var1;
-			var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOC4, Client.packetWriter.isaacCipher);
-			var8.packetBuffer.writeShortAddLE(WorldMapLabelSize.baseY + var1);
+			var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2936, Client.packetWriter.isaacCipher);
+			var8.packetBuffer.method7929(WorldMapLabelSize.baseY + var1);
 			var8.packetBuffer.writeShort(var0 + class28.baseX);
-			var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-			var8.packetBuffer.writeShortAdd(var3);
+			var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+			var8.packetBuffer.method7863(var3);
 			Client.packetWriter.addNode(var8);
 		} else {
 			PacketBufferNode var9;
@@ -236,9 +269,9 @@ public class FriendsList extends UserList {
 					Client.destinationY = var1;
 					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2910, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
-					var9.packetBuffer.writeShortLE(EnumComposition.selectedItemSlot);
-					var9.packetBuffer.writeShortAddLE(var3);
-					var9.packetBuffer.writeShortLE(WorldMapIcon_0.selectedItemId);
+					var9.packetBuffer.method7771(EnumComposition.selectedItemSlot);
+					var9.packetBuffer.method7929(var3);
+					var9.packetBuffer.method7771(WorldMapIcon_0.selectedItemId);
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
@@ -251,11 +284,11 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPCT, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeIntLE(NetCache.selectedSpellWidget);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2911, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7760(NetCache.selectedSpellWidget);
 					var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
 					var9.packetBuffer.writeShort(Client.selectedSpellItemId);
-					var9.packetBuffer.writeShortAddLE(var3);
+					var9.packetBuffer.method7929(var3);
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
@@ -268,9 +301,9 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPC1, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeShortAdd(var3);
-					var9.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2939, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7863(var3);
+					var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
 			} else if (var2 == 10) {
@@ -282,9 +315,9 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPC2, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var9.packetBuffer.writeShortLE(var3);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2948, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var9.packetBuffer.method7771(var3);
 					Client.packetWriter.addNode(var9);
 				}
 			} else if (var2 == 11) {
@@ -296,9 +329,9 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPC3, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeShortAdd(var3);
-					var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7863(var3);
+					var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
 			} else if (var2 == 12) {
@@ -310,9 +343,9 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPC4, Client.packetWriter.isaacCipher);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2940, Client.packetWriter.isaacCipher);
 					var9.packetBuffer.writeShort(var3);
-					var9.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
 			} else if (var2 == 13) {
@@ -324,8 +357,8 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPC5, Client.packetWriter.isaacCipher);
-					var9.packetBuffer.writeShortAddLE(var3);
+					var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2907, Client.packetWriter.isaacCipher);
+					var9.packetBuffer.method7929(var3);
 					var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var9);
 				}
@@ -341,10 +374,10 @@ public class FriendsList extends UserList {
 						Client.destinationX = var0;
 						Client.destinationY = var1;
 						var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2908, Client.packetWriter.isaacCipher);
-						var9.packetBuffer.writeShortAdd(var3);
-						var9.packetBuffer.writeShortAdd(WorldMapIcon_0.selectedItemId);
-						var9.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-						var9.packetBuffer.writeShortAdd(EnumComposition.selectedItemSlot);
+						var9.packetBuffer.method7863(var3);
+						var9.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+						var9.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+						var9.packetBuffer.method7863(EnumComposition.selectedItemSlot);
 						var9.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
 						Client.packetWriter.addNode(var9);
 					}
@@ -357,12 +390,12 @@ public class FriendsList extends UserList {
 						Client.mouseCrossState = 0;
 						Client.destinationX = var0;
 						Client.destinationY = var1;
-						var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYERT, Client.packetWriter.isaacCipher);
+						var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2924, Client.packetWriter.isaacCipher);
 						var9.packetBuffer.writeShort(Client.selectedSpellChildIndex);
-						var9.packetBuffer.writeShortAddLE(var3);
-						var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+						var9.packetBuffer.method7929(var3);
+						var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 						var9.packetBuffer.writeInt(NetCache.selectedSpellWidget);
-						var9.packetBuffer.writeShortLE(Client.selectedSpellItemId);
+						var9.packetBuffer.method7771(Client.selectedSpellItemId);
 						Client.packetWriter.addNode(var9);
 					}
 				} else if (var2 == 16) {
@@ -375,10 +408,10 @@ public class FriendsList extends UserList {
 					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2997, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
 					var8.packetBuffer.writeInt(ModeWhere.selectedItemWidget);
-					var8.packetBuffer.writeShortAddLE(EnumComposition.selectedItemSlot);
-					var8.packetBuffer.writeShortAdd(WorldMapIcon_0.selectedItemId);
-					var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShortAdd(var3);
+					var8.packetBuffer.method7929(EnumComposition.selectedItemSlot);
+					var8.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+					var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7863(var3);
 					var8.packetBuffer.writeShort(var0 + class28.baseX);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 17) {
@@ -388,14 +421,14 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJT, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortLE(var3);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2980, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7771(var3);
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShortAdd(var0 + class28.baseX);
-					var8.packetBuffer.writeShortAddLE(Client.selectedSpellChildIndex);
-					var8.packetBuffer.writeShortLE(Client.selectedSpellItemId);
-					var8.packetBuffer.writeShortAdd(WorldMapLabelSize.baseY + var1);
-					var8.packetBuffer.writeIntLE(NetCache.selectedSpellWidget);
+					var8.packetBuffer.method7863(var0 + class28.baseX);
+					var8.packetBuffer.method7929(Client.selectedSpellChildIndex);
+					var8.packetBuffer.method7771(Client.selectedSpellItemId);
+					var8.packetBuffer.method7863(WorldMapLabelSize.baseY + var1);
+					var8.packetBuffer.method7760(NetCache.selectedSpellWidget);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 18) {
 					Client.mouseCrossX = var6;
@@ -404,9 +437,9 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJ1, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(var0 + class28.baseX);
-					var8.packetBuffer.writeShortAdd(var3);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2909, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7929(var0 + class28.baseX);
+					var8.packetBuffer.method7863(var3);
 					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
 					var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					Client.packetWriter.addNode(var8);
@@ -417,11 +450,11 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJ2, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAddLE(WorldMapLabelSize.baseY + var1);
-					var8.packetBuffer.writeShortAddLE(var3);
-					var8.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShortAddLE(var0 + class28.baseX);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2919, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7929(WorldMapLabelSize.baseY + var1);
+					var8.packetBuffer.method7929(var3);
+					var8.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7929(var0 + class28.baseX);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 20) {
 					Client.mouseCrossX = var6;
@@ -430,11 +463,11 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJ3, Client.packetWriter.isaacCipher);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2920, Client.packetWriter.isaacCipher);
 					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
-					var8.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShortAdd(var3);
-					var8.packetBuffer.writeShortLE(var0 + class28.baseX);
+					var8.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7863(var3);
+					var8.packetBuffer.method7771(var0 + class28.baseX);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 21) {
 					Client.mouseCrossX = var6;
@@ -443,10 +476,10 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJ4, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var0 + class28.baseX);
-					var8.packetBuffer.writeShortAddLE(var3);
-					var8.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2955, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7863(var0 + class28.baseX);
+					var8.packetBuffer.method7929(var3);
+					var8.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 22) {
@@ -456,10 +489,10 @@ public class FriendsList extends UserList {
 					Client.mouseCrossState = 0;
 					Client.destinationX = var0;
 					Client.destinationY = var1;
-					var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJ5, Client.packetWriter.isaacCipher);
-					var8.packetBuffer.writeShortAdd(var0 + class28.baseX);
-					var8.packetBuffer.writeByteSub(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-					var8.packetBuffer.writeShortAddLE(var3);
+					var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2961, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7863(var0 + class28.baseX);
+					var8.packetBuffer.method7764(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+					var8.packetBuffer.method7929(var3);
 					var8.packetBuffer.writeShort(WorldMapLabelSize.baseY + var1);
 					Client.packetWriter.addNode(var8);
 				} else if (var2 == 23) {
@@ -478,6 +511,7 @@ public class FriendsList extends UserList {
 							if (var16.contentType > 0) {
 								var11 = Message.method1065(var16);
 							}
+
 							if (var11) {
 								var12 = EnumComposition.getPacketBufferNode(ClientPacket.field2999, Client.packetWriter.isaacCipher);
 								var12.packetBuffer.writeInt(var1);
@@ -495,14 +529,17 @@ public class FriendsList extends UserList {
 								if (Client.selectedSpellActionName == null) {
 									Client.selectedSpellActionName = "null";
 								}
+
 								if (var16.isIf3) {
 									Client.selectedSpellName = var16.dataText + class122.colorStartTag(16777215);
 								} else {
 									Client.selectedSpellName = class122.colorStartTag(65280) + var16.spellName + class122.colorStartTag(16777215);
 								}
 							}
+
 							return;
 						}
+
 						if (var2 == 26) {
 							Occluder.method4354();
 						} else {
@@ -538,12 +575,12 @@ public class FriendsList extends UserList {
 								}
 							} else if (var2 == 31) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2993, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeShortAddLE(EnumComposition.selectedItemSlot);
-								var8.packetBuffer.writeShortLE(var1);
-								var8.packetBuffer.writeIntIME(ModeWhere.selectedItemWidget);
-								var8.packetBuffer.writeShortAddLE(var0);
-								var8.packetBuffer.writeShortAdd(WorldMapIcon_0.selectedItemId);
-								var8.packetBuffer.writeShortLE(var3);
+								var8.packetBuffer.method7929(EnumComposition.selectedItemSlot);
+								var8.packetBuffer.method7784(var1);
+								var8.packetBuffer.method7783(ModeWhere.selectedItemWidget);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7863(WorldMapIcon_0.selectedItemId);
+								var8.packetBuffer.method7771(var3);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
@@ -552,36 +589,36 @@ public class FriendsList extends UserList {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2933, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeInt(var1);
 								var8.packetBuffer.writeShort(var3);
-								var8.packetBuffer.writeShortLE(Client.selectedSpellChildIndex);
-								var8.packetBuffer.writeIntLE(NetCache.selectedSpellWidget);
-								var8.packetBuffer.writeShortAddLE(var0);
+								var8.packetBuffer.method7771(Client.selectedSpellChildIndex);
+								var8.packetBuffer.method7760(NetCache.selectedSpellWidget);
+								var8.packetBuffer.method7929(var0);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
 								Client.field600 = var0;
 							} else if (var2 == 33) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2988, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeIntLE(var1);
-								var8.packetBuffer.writeShortLE(var0);
-								var8.packetBuffer.writeShortAddLE(var3);
+								var8.packetBuffer.method7760(var1);
+								var8.packetBuffer.method7771(var0);
+								var8.packetBuffer.method7929(var3);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
 								Client.field600 = var0;
 							} else if (var2 == 34) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2943, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeShortAddLE(var0);
-								var8.packetBuffer.writeShortLE(var1);
-								var8.packetBuffer.writeShortAdd(var3);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7784(var1);
+								var8.packetBuffer.method7863(var3);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
 								Client.field600 = var0;
 							} else if (var2 == 35) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2998, Client.packetWriter.isaacCipher);
-								var8.packetBuffer.writeShortAdd(var3);
-								var8.packetBuffer.writeIntLE(var1);
-								var8.packetBuffer.writeShortLE(var0);
+								var8.packetBuffer.method7863(var3);
+								var8.packetBuffer.method7760(var1);
+								var8.packetBuffer.method7771(var0);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
@@ -589,8 +626,8 @@ public class FriendsList extends UserList {
 							} else if (var2 == 36) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeShort(var3);
-								var8.packetBuffer.writeShortAddLE(var0);
-								var8.packetBuffer.writeIntIME(var1);
+								var8.packetBuffer.method7929(var0);
+								var8.packetBuffer.method7783(var1);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
@@ -598,8 +635,8 @@ public class FriendsList extends UserList {
 							} else if (var2 == 37) {
 								var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2968, Client.packetWriter.isaacCipher);
 								var8.packetBuffer.writeInt(var1);
-								var8.packetBuffer.writeShortLE(var0);
-								var8.packetBuffer.writeShortAdd(var3);
+								var8.packetBuffer.method7771(var0);
+								var8.packetBuffer.method7863(var3);
 								Client.packetWriter.addNode(var8);
 								Client.field599 = 0;
 								class1.field4 = class140.getWidget(var1);
@@ -617,12 +654,14 @@ public class FriendsList extends UserList {
 									if (Client.selectedItemName == null) {
 										Client.selectedItemName = "null";
 									}
+
 									return;
 								}
+
 								if (var2 == 39) {
 									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2938, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeIntLE(var1);
-									var8.packetBuffer.writeShortAddLE(var0);
+									var8.packetBuffer.method7760(var1);
+									var8.packetBuffer.method7929(var0);
 									var8.packetBuffer.writeShort(var3);
 									Client.packetWriter.addNode(var8);
 									Client.field599 = 0;
@@ -630,17 +669,17 @@ public class FriendsList extends UserList {
 									Client.field600 = var0;
 								} else if (var2 == 40) {
 									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2978, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeIntIME(var1);
-									var8.packetBuffer.writeShortAdd(var0);
-									var8.packetBuffer.writeShortLE(var3);
+									var8.packetBuffer.method7783(var1);
+									var8.packetBuffer.method7863(var0);
+									var8.packetBuffer.method7771(var3);
 									Client.packetWriter.addNode(var8);
 									Client.field599 = 0;
 									class1.field4 = class140.getWidget(var1);
 									Client.field600 = var0;
 								} else if (var2 == 41) {
 									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2967, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeShortAdd(var3);
-									var8.packetBuffer.writeShortLE(var1);
+									var8.packetBuffer.method7863(var3);
+									var8.packetBuffer.method7784(var1);
 									var8.packetBuffer.writeShort(var0);
 									Client.packetWriter.addNode(var8);
 									Client.field599 = 0;
@@ -648,18 +687,18 @@ public class FriendsList extends UserList {
 									Client.field600 = var0;
 								} else if (var2 == 42) {
 									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeShortAdd(var0);
+									var8.packetBuffer.method7863(var0);
 									var8.packetBuffer.writeShort(var3);
-									var8.packetBuffer.writeIntIME(var1);
+									var8.packetBuffer.method7783(var1);
 									Client.packetWriter.addNode(var8);
 									Client.field599 = 0;
 									class1.field4 = class140.getWidget(var1);
 									Client.field600 = var0;
 								} else if (var2 == 43) {
 									var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2935, Client.packetWriter.isaacCipher);
-									var8.packetBuffer.writeShortAddLE(var0);
-									var8.packetBuffer.writeIntIME(var1);
-									var8.packetBuffer.writeShortAddLE(var3);
+									var8.packetBuffer.method7929(var0);
+									var8.packetBuffer.method7783(var1);
+									var8.packetBuffer.method7929(var3);
 									Client.packetWriter.addNode(var8);
 									Client.field599 = 0;
 									class1.field4 = class140.getWidget(var1);
@@ -673,7 +712,7 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER1, Client.packetWriter.isaacCipher);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2970, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.writeShort(var3);
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
@@ -687,9 +726,9 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER2, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeShortAdd(var3);
-										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2994, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7863(var3);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
 									}
 								} else if (var2 == 46) {
@@ -701,9 +740,9 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER3, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeShortAddLE(var3);
-										var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2986, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7929(var3);
+										var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
 									}
 								} else if (var2 == 47) {
@@ -715,9 +754,9 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER4, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-										var9.packetBuffer.writeShortAdd(var3);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2991, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9.packetBuffer.method7863(var3);
 										Client.packetWriter.addNode(var9);
 									}
 								} else if (var2 == 48) {
@@ -729,8 +768,8 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER5, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeShortLE(var3);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2953, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7771(var3);
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
 									}
@@ -743,9 +782,9 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER6, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeShortLE(var3);
-										var9.packetBuffer.writeByteAdd(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2965, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7771(var3);
+										var9.packetBuffer.method7762(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
 									}
 								} else if (var2 == 50) {
@@ -757,7 +796,7 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER7, Client.packetWriter.isaacCipher);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2947, Client.packetWriter.isaacCipher);
 										var9.packetBuffer.writeShort(var3);
 										var9.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										Client.packetWriter.addNode(var9);
@@ -771,28 +810,29 @@ public class FriendsList extends UserList {
 										Client.mouseCrossState = 0;
 										Client.destinationX = var0;
 										Client.destinationY = var1;
-										var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPPLAYER8, Client.packetWriter.isaacCipher);
-										var9.packetBuffer.writeByteNeg(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
+										var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2959, Client.packetWriter.isaacCipher);
+										var9.packetBuffer.method7763(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
 										var9.packetBuffer.writeShort(var3);
 										Client.packetWriter.addNode(var9);
 									}
 								} else {
-									label654 : {
+									label654: {
 										if (var2 != 57) {
 											if (var2 == 58) {
 												var16 = ScriptFrame.getWidgetChild(var1, var0);
 												if (var16 != null) {
-													var9 = EnumComposition.getPacketBufferNode(ClientPacket.IF_BUTTONT, Client.packetWriter.isaacCipher);
-													var9.packetBuffer.writeShortAddLE(Client.selectedSpellItemId);
-													var9.packetBuffer.writeShortAdd(Client.selectedSpellChildIndex);
-													var9.packetBuffer.writeIntLE(NetCache.selectedSpellWidget);
-													var9.packetBuffer.writeShortAddLE(var16.itemId);
+													var9 = EnumComposition.getPacketBufferNode(ClientPacket.field2925, Client.packetWriter.isaacCipher);
+													var9.packetBuffer.method7929(Client.selectedSpellItemId);
+													var9.packetBuffer.method7863(Client.selectedSpellChildIndex);
+													var9.packetBuffer.method7760(NetCache.selectedSpellWidget);
+													var9.packetBuffer.method7929(var16.itemId);
 													var9.packetBuffer.writeShort(var0);
-													var9.packetBuffer.writeIntIME(var1);
+													var9.packetBuffer.method7783(var1);
 													Client.packetWriter.addNode(var9);
 												}
 												break label654;
 											}
+
 											if (var2 == 1001) {
 												Client.mouseCrossX = var6;
 												Client.mouseCrossY = var7;
@@ -800,24 +840,26 @@ public class FriendsList extends UserList {
 												Client.mouseCrossState = 0;
 												Client.destinationX = var0;
 												Client.destinationY = var1;
-												var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOC5, Client.packetWriter.isaacCipher);
-												var8.packetBuffer.writeShortAddLE(var0 + class28.baseX);
-												var8.packetBuffer.writeShortAdd(var3);
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2937, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7929(var0 + class28.baseX);
+												var8.packetBuffer.method7863(var3);
 												var8.packetBuffer.writeByte(KeyHandler.KeyHandler_pressedKeys[82] ? 1 : 0);
-												var8.packetBuffer.writeShortAddLE(WorldMapLabelSize.baseY + var1);
+												var8.packetBuffer.method7929(WorldMapLabelSize.baseY + var1);
 												Client.packetWriter.addNode(var8);
 												break label654;
 											}
+
 											if (var2 == 1002) {
 												Client.mouseCrossX = var6;
 												Client.mouseCrossY = var7;
 												Client.mouseCrossColor = 2;
 												Client.mouseCrossState = 0;
-												var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPLOCE, Client.packetWriter.isaacCipher);
-												var8.packetBuffer.writeShortAdd(var3);
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field2976, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7863(var3);
 												Client.packetWriter.addNode(var8);
 												break label654;
 											}
+
 											if (var2 == 1003) {
 												Client.mouseCrossX = var6;
 												Client.mouseCrossY = var7;
@@ -829,45 +871,51 @@ public class FriendsList extends UserList {
 													if (var17.transforms != null) {
 														var17 = var17.transform();
 													}
+
 													if (var17 != null) {
-														var12 = EnumComposition.getPacketBufferNode(ClientPacket.OPNPCE, Client.packetWriter.isaacCipher);
-														var12.packetBuffer.writeShortLE(var17.id);
+														var12 = EnumComposition.getPacketBufferNode(ClientPacket.field2941, Client.packetWriter.isaacCipher);
+														var12.packetBuffer.method7771(var17.id);
 														Client.packetWriter.addNode(var12);
 													}
 												}
 												break label654;
 											}
+
 											if (var2 == 1004) {
 												Client.mouseCrossX = var6;
 												Client.mouseCrossY = var7;
 												Client.mouseCrossColor = 2;
 												Client.mouseCrossState = 0;
-												var8 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
-												var8.packetBuffer.writeShortAddLE(var3);
+												var8 = EnumComposition.getPacketBufferNode(ClientPacket.field3004, Client.packetWriter.isaacCipher);
+												var8.packetBuffer.method7929(var3);
 												Client.packetWriter.addNode(var8);
 												break label654;
 											}
+
 											if (var2 == 1005) {
 												var16 = class140.getWidget(var1);
 												if (var16 != null && var16.itemQuantities[var0] >= 100000) {
 													class290.addGameMessage(27, "", var16.itemQuantities[var0] + " x " + EnumComposition.ItemDefinition_get(var3).name);
 												} else {
-													var9 = EnumComposition.getPacketBufferNode(ClientPacket.OPOBJE, Client.packetWriter.isaacCipher);
-													var9.packetBuffer.writeShortAddLE(var3);
+													var9 = EnumComposition.getPacketBufferNode(ClientPacket.field3004, Client.packetWriter.isaacCipher);
+													var9.packetBuffer.method7929(var3);
 													Client.packetWriter.addNode(var9);
 												}
+
 												Client.field599 = 0;
 												class1.field4 = class140.getWidget(var1);
 												Client.field600 = var0;
 												break label654;
 											}
+
 											if (var2 != 1007) {
-												if (var2 == 1009 || var2 == 1008 || var2 == 1010 || var2 == 1011 || var2 == 1012) {
+												if (var2 == 1009 || var2 == 1010 || var2 == 1011 || var2 == 1008 || var2 == 1012) {
 													class121.worldMap.worldMapMenuAction(var2, var3, new Coord(var0), new Coord(var1));
 												}
 												break label654;
 											}
 										}
+
 										var16 = ScriptFrame.getWidgetChild(var1, var0);
 										if (var16 != null) {
 											TextureProvider.widgetDefaultMenuAction(var3, var1, var0, var16.itemId, var5);
@@ -880,15 +928,19 @@ public class FriendsList extends UserList {
 				}
 			}
 		}
+
 		if (Client.isItemSelected != 0) {
 			Client.isItemSelected = 0;
 			ChatChannel.invalidateWidget(class140.getWidget(ModeWhere.selectedItemWidget));
 		}
+
 		if (Client.isSpellSelected) {
 			WorldMapDecoration.Widget_runOnTargetLeave();
 		}
+
 		if (class1.field4 != null && Client.field599 == 0) {
 			ChatChannel.invalidateWidget(class1.field4);
 		}
+
 	}
 }

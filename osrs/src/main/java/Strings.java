@@ -1,20 +1,17 @@
-import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("kl")
 @Implements("Strings")
 public class Strings {
 	@ObfuscatedName("bf")
 	public static String field3670;
-
 	@ObfuscatedName("ce")
 	public static String field3709;
-
 	@ObfuscatedName("ke")
 	public static String field3894;
-
 	@ObfuscatedName("kh")
 	public static String field3926;
-
 	@ObfuscatedName("ku")
 	public static String field3896;
 

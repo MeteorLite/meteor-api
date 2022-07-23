@@ -1,13 +1,16 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("gj")
 @Implements("Renderable")
 public abstract class Renderable extends DualNode {
 	@ObfuscatedName("dr")
-	@ObfuscatedGetter(intValue = 1004163911)
+	@ObfuscatedGetter(
+		intValue = 1004163911
+	)
 	@Export("height")
 	public int height;
 
@@ -16,7 +19,10 @@ public abstract class Renderable extends DualNode {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(I)Lhy;", garbageValue = "1081110576")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lhy;",
+		garbageValue = "1081110576"
+	)
 	@Export("getModel")
 	protected Model getModel() {
 		return null;
@@ -30,15 +36,22 @@ public abstract class Renderable extends DualNode {
 			this.height = var11.height;
 			var11.draw(var1, var2, var3, var4, var5, var6, var7, var8, var9);
 		}
+
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Llh;I)V", garbageValue = "730571688")
+	@ObfuscatedSignature(
+		descriptor = "(Llh;I)V",
+		garbageValue = "730571688"
+	)
 	public static void method4342(AbstractArchive var0) {
 	}
 
 	@ObfuscatedName("as")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZI)I", garbageValue = "1526978313")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZI)I",
+		garbageValue = "1526978313"
+	)
 	static int method4339(int var0, Script var1, boolean var2) {
 		if (var0 == 7400) {
 			--class446.Interpreter_intStackSize;
@@ -84,14 +97,19 @@ public abstract class Renderable extends DualNode {
 	}
 
 	@ObfuscatedName("fu")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "51")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "51"
+	)
 	@Export("playPcmPlayers")
 	static final void playPcmPlayers() {
 		if (class238.pcmPlayer1 != null) {
 			class238.pcmPlayer1.run();
 		}
+
 		if (AttackOption.pcmPlayer0 != null) {
 			AttackOption.pcmPlayer0.run();
 		}
+
 	}
 }

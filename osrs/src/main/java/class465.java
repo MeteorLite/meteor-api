@@ -1,5 +1,6 @@
-import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedName;
+
 @ObfuscatedName("ql")
 public class class465 {
 	@ObfuscatedName("z")

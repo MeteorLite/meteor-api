@@ -1,30 +1,34 @@
-import java.util.LinkedList;
-import net.runelite.mapping.ObfuscatedName;
-import org.bouncycastle.crypto.tls.TlsCredentials;
+import java.awt.FontMetrics;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.security.cert.CertificateFactory;
 import java.security.cert.CertificateException;
-import org.bouncycastle.crypto.tls.Certificate;
+import java.security.cert.CertificateFactory;
+import java.util.LinkedList;
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.bouncycastle.crypto.tls.Certificate;
 import org.bouncycastle.crypto.tls.CertificateRequest;
 import org.bouncycastle.crypto.tls.TlsAuthentication;
-import java.io.ByteArrayInputStream;
-import java.awt.FontMetrics;
-import net.runelite.mapping.Export;
+import org.bouncycastle.crypto.tls.TlsCredentials;
+
 @ObfuscatedName("t")
 class class11 implements TlsAuthentication {
 	@ObfuscatedName("s")
 	@Export("musicTrackBoolean")
 	public static boolean musicTrackBoolean;
-
 	@ObfuscatedName("ab")
 	@Export("loginScreenFontMetrics")
 	static FontMetrics loginScreenFontMetrics;
-
-	@ObfuscatedSignature(descriptor = "Lr;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lr;"
+	)
 	final class13 this$2;
 
-	@ObfuscatedSignature(descriptor = "(Lr;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lr;)V"
+	)
 	class11(class13 var1) {
 		this.this$2 = var1;
 	}
@@ -34,11 +38,13 @@ class class11 implements TlsAuthentication {
 			CertificateFactory var2 = CertificateFactory.getInstance("X.509");
 			LinkedList var3 = new LinkedList();
 			org.bouncycastle.asn1.x509.Certificate[] var4 = var1.getCertificateList();
+
 			for (int var5 = 0; var5 < var4.length; ++var5) {
 				org.bouncycastle.asn1.x509.Certificate var6 = var4[var5];
 				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
 			}
-			this.this$2.this$1.field63 = ((java.security.cert.Certificate[]) ((java.security.cert.Certificate[]) (var3.toArray(new java.security.cert.Certificate[0]))));
+
+			this.this$2.this$1.field63 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
 		} catch (CertificateException var7) {
 			throw new IOException(var7);
 		}
@@ -49,7 +55,10 @@ class class11 implements TlsAuthentication {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(IIIII)V", garbageValue = "1603427189")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)V",
+		garbageValue = "1603427189"
+	)
 	static final void method98(int var0, int var1, int var2, int var3) {
 		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
 			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
@@ -58,22 +67,29 @@ class class11 implements TlsAuthentication {
 					if (var0 == var5 && var5 > 0) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
 					}
+
 					if (var0 + var2 == var5 && var5 < 103) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
 					}
+
 					if (var4 == var1 && var4 > 0) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
 					}
+
 					if (var3 + var1 == var4 && var4 < 103) {
 						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
 					}
 				}
 			}
 		}
+
 	}
 
 	@ObfuscatedName("ac")
-	@ObfuscatedSignature(descriptor = "(ILkb;IIIII[FI)Lkb;", garbageValue = "1978245093")
+	@ObfuscatedSignature(
+		descriptor = "(ILkb;IIIII[FI)Lkb;",
+		garbageValue = "1978245093"
+	)
 	static Widget method97(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
 		Widget var8 = new Widget();
 		var8.type = var0;
@@ -84,15 +100,18 @@ class class11 implements TlsAuthentication {
 		var8.yAlignment = var4;
 		var8.widthAlignment = var5;
 		var8.heightAlignment = var6;
-		var8.rawX = ((int) (var7[0] * ((float) (var1.width))));
-		var8.rawY = ((int) (((float) (var1.height)) * var7[1]));
-		var8.rawWidth = ((int) (((float) (var1.width)) * var7[2]));
-		var8.rawHeight = ((int) (var7[3] * ((float) (var1.height))));
+		var8.rawX = (int)(var7[0] * (float)var1.width);
+		var8.rawY = (int)((float)var1.height * var7[1]);
+		var8.rawWidth = (int)((float)var1.width * var7[2]);
+		var8.rawHeight = (int)(var7[3] * (float)var1.height);
 		return var8;
 	}
 
 	@ObfuscatedName("au")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "-27")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-27"
+	)
 	static int method96(int var0, Script var1, boolean var2) {
 		if (var0 == 7100) {
 			++class446.Interpreter_intStackSize;
@@ -108,7 +127,7 @@ class class11 implements TlsAuthentication {
 				++class446.Interpreter_intStackSize;
 				return 1;
 			} else if (var0 == 7108) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class18.method234()) ? 1 : 0;
+				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class18.method234() ? 1 : 0;
 				return 1;
 			} else if (var0 == 7110) {
 				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;

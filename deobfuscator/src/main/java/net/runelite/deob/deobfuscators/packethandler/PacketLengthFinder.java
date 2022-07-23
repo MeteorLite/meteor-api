@@ -34,9 +34,13 @@ import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.GetStatic;
 import net.runelite.asm.attributes.code.instructions.IALoad;
 import net.runelite.asm.attributes.code.instructions.PutStatic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PacketLengthFinder
 {
+	private static final Logger logger = LoggerFactory.getLogger(PacketLengthFinder.class);
+
 	private final ClassGroup group;
 	private final PacketTypeFinder packetType;
 
@@ -86,6 +90,8 @@ public class PacketLengthFinder
 				run(method.getCode());
 			}
 		}
+
+		logger.info("Found packet length: {}", packetLength);
 	}
 
 	//   getstatic             class272/field3690 [I

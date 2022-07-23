@@ -1,41 +1,49 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.cert.Certificate;
 import javax.net.ssl.HandshakeCompletedListener;
-import net.runelite.mapping.ObfuscatedName;
-import java.io.OutputStream;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
-import java.io.InputStream;
-import java.io.IOException;
-import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
+
 @ObfuscatedName("z")
 class class12 extends SSLSocket {
 	@ObfuscatedName("sw")
-	@ObfuscatedGetter(intValue = 731084091)
+	@ObfuscatedGetter(
+		intValue = 731084091
+	)
 	static int field65;
-
 	@ObfuscatedName("lm")
-	@ObfuscatedSignature(descriptor = "Lhk;")
+	@ObfuscatedSignature(
+		descriptor = "Lhk;"
+	)
 	@Export("textureProvider")
 	static TextureProvider textureProvider;
-
 	@ObfuscatedName("pw")
-	@ObfuscatedSignature(descriptor = "[Lkb;")
+	@ObfuscatedSignature(
+		descriptor = "[Lkb;"
+	)
 	static Widget[] field62;
-
 	@ObfuscatedName("c")
 	Certificate[] field63;
-
-	@ObfuscatedSignature(descriptor = "Lk;")
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
 	final class15 this$0;
-
+	// $FF: synthetic field
 	final TlsClientProtocol val$tlsClientProtocol;
-
+	// $FF: synthetic field
 	final String val$host;
 
-	@ObfuscatedSignature(descriptor = "(Lk;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lk;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
+	)
 	class12(class15 var1, TlsClientProtocol var2, String var3) {
 		this.this$0 = var1;
 		this.val$tlsClientProtocol = var2;

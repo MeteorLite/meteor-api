@@ -17,49 +17,49 @@ import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instructions.InvokeStatic;
 import net.runelite.asm.attributes.code.instructions.InvokeVirtual;
+import net.runelite.asm.pool.Class;
+import net.runelite.asm.signature.Signature;
 
-public class RenderDraw extends AbstractInjector
-{
-	private static final int EXPECTED = 21;
+public class RenderDraw extends AbstractInjector {
 
-	public RenderDraw(InjectData inject)
-	{
-		super(inject);
-	}
+  private  net.runelite.asm.pool.Method RENDERDRAW;
+  private static final int EXPECTED = 21;
 
-	@Override
-	public void inject()
-	{
-		final net.runelite.asm.pool.Method renderDraw = inject.toVanilla(inject.getDeobfuscated().findClass("Scene")).findMethod("renderDraw").getPoolMethod();
+  public RenderDraw(InjectData inject, String hooks) {
+    super(inject);
+    RENDERDRAW = new net.runelite.asm.pool.Method(
+            new Class(hooks),
+            "renderDraw",
+            new Signature("(Lnet/runelite/api/Renderable;IIIIIIIIJ)V"));
+  }
 
-		int replaced = 0;
+  @Override
+  public void inject() {
+    int replaced = 0;
 
-		/*
-		 * This class replaces entity draw invocation instructions
-		 * with the renderDraw method on drawcallbacks
-		 */
-		final net.runelite.asm.pool.Method draw = InjectUtil.findMethod(inject, "draw", "Renderable", null, true, false).getPoolMethod();
+    /*
+     * This class replaces entity draw invocation instructions
+     * with the renderDraw method on drawcallbacks
+     */
+    final net.runelite.asm.pool.Method draw = InjectUtil
+        .findMethod(inject, "draw", "Renderable", null, true, false).getPoolMethod();
 
-		final Method drawTile = InjectUtil.findMethod(inject, "drawTile", "Scene", null, true, false);
+    final Method drawTile = InjectUtil.findMethod(inject, "drawTile", "Scene", null, true, false);
 
-		Instructions ins = drawTile.getCode().getInstructions();
-		for (ListIterator<Instruction> iterator = ins.listIterator(); iterator.hasNext(); )
-		{
-			Instruction i = iterator.next();
-			if (i instanceof InvokeVirtual)
-			{
-				if (((InvokeVirtual) i).getMethod().equals(draw))
-				{
-					iterator.set(new InvokeStatic(ins, renderDraw));
-					log.debug("[DEBUG] Replaced method call at {}", i);
-					++replaced;
-				}
-			}
-		}
+    Instructions ins = drawTile.getCode().getInstructions();
+    for (ListIterator<Instruction> iterator = ins.listIterator(); iterator.hasNext(); ) {
+      Instruction i = iterator.next();
+      if (i instanceof InvokeVirtual) {
+        if (((InvokeVirtual) i).getMethod().equals(draw)) {
+          iterator.set(new InvokeStatic(ins, RENDERDRAW));
+          //			log.debug("[DEBUG] Replaced method call at {}", i);
+          ++replaced;
+        }
+      }
+    }
 
-		if (replaced != EXPECTED)
-		{
-			throw new InjectException("Didn't replace the expected amount of method calls");
-		}
-	}
+    if (replaced != EXPECTED) {
+      throw new InjectException("Didn't replace the expected amount of method calls");
+    }
+  }
 }

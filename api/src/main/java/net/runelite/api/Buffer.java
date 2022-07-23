@@ -41,7 +41,7 @@ public interface Buffer extends Node
 
 	void writeBuffer(Buffer i);
 
-	void writeByte(int i);
+	void writeByte$rs(int i);
 
 	void writeByteAdd(int i);
 
@@ -55,7 +55,7 @@ public interface Buffer extends Node
 
 	int writeCrc(int i);
 
-	void writeInt(int i);
+	void writeInt$rs(int i);
 
 	void writeIntIME(int i);
 
@@ -75,19 +75,19 @@ public interface Buffer extends Node
 	
 	void writeMedium(int i);
 
-	void writeShort(int i);
+	void writeShort$rs(int i);
 
 	void writeShortAdd(int i);
 
 	void writeShortAddLE(int i);
 
-	void writeShortLE(int i);
+	void writeShortLE$rs(int i);
 
 	void writeSmartByteShort(int i);
 
-	void writeStringCp1252NullCircumfixed(String i);
+	void writeStringCp1252NullCircumfixed$rs(String i);
 
-	void writeStringCp1252NullTerminated(String i);
+	void writeStringCp1252NullTerminated$rs(String i);
 
 	void writeVarInt(int i);
 }

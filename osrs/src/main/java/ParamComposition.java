@@ -1,35 +1,37 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.Implements;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("gf")
 @Implements("ParamComposition")
 public class ParamComposition extends DualNode {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Llh;")
+	@ObfuscatedSignature(
+		descriptor = "Llh;"
+	)
 	@Export("ParamDefinition_archive")
 	public static AbstractArchive ParamDefinition_archive;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lii;")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
 	@Export("ParamDefinition_cached")
 	static EvictingDualNodeHashTable ParamDefinition_cached;
-
 	@ObfuscatedName("q")
 	@Export("type")
 	char type;
-
 	@ObfuscatedName("f")
-	@ObfuscatedGetter(intValue = -480942967)
+	@ObfuscatedGetter(
+		intValue = -480942967
+	)
 	@Export("defaultInt")
 	public int defaultInt;
-
 	@ObfuscatedName("j")
 	@Export("defaultStr")
 	public String defaultStr;
-
 	@ObfuscatedName("e")
 	@Export("autoDisable")
 	boolean autoDisable;
@@ -43,13 +45,19 @@ public class ParamComposition extends DualNode {
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "20")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "20"
+	)
 	@Export("postDecode")
 	void postDecode() {
 	}
 
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "(Lqt;B)V", garbageValue = "0")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;B)V",
+		garbageValue = "0"
+	)
 	@Export("decode")
 	void decode(Buffer var1) {
 		while (true) {
@@ -57,12 +65,16 @@ public class ParamComposition extends DualNode {
 			if (var2 == 0) {
 				return;
 			}
+
 			this.decodeNext(var1, var2);
-		} 
+		}
 	}
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(Lqt;II)V", garbageValue = "-1779670866")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;II)V",
+		garbageValue = "-1779670866"
+	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
 		if (var2 == 1) {
@@ -74,36 +86,47 @@ public class ParamComposition extends DualNode {
 		} else if (var2 == 5) {
 			this.defaultStr = var1.readStringCp1252NullTerminated();
 		}
+
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(B)Z", garbageValue = "35")
+	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "35"
+	)
 	@Export("isString")
 	public boolean isString() {
 		return this.type == 's';
 	}
 
 	@ObfuscatedName("r")
-	@ObfuscatedSignature(descriptor = "(II)Lgh;", garbageValue = "273043499")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lgh;",
+		garbageValue = "273043499"
+	)
 	@Export("getFrames")
 	static Frames getFrames(int var0) {
-		Frames var1 = ((Frames) (SequenceDefinition.SequenceDefinition_cachedFrames.get(((long) (var0)))));
+		Frames var1 = (Frames)SequenceDefinition.SequenceDefinition_cachedFrames.get((long)var0);
 		if (var1 != null) {
 			return var1;
 		} else {
 			var1 = Calendar.method5499(SequenceDefinition.SequenceDefinition_animationsArchive, SequenceDefinition.SequenceDefinition_skeletonsArchive, var0, false);
 			if (var1 != null) {
-				SequenceDefinition.SequenceDefinition_cachedFrames.put(var1, ((long) (var0)));
+				SequenceDefinition.SequenceDefinition_cachedFrames.put(var1, (long)var0);
 			}
+
 			return var1;
 		}
 	}
 
 	@ObfuscatedName("aq")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "126")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "126"
+	)
 	static int method3574(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.WORLDLIST_FETCH) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (class136.loadWorlds()) ? 1 : 0;
+			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class136.loadWorlds() ? 1 : 0;
 			return 1;
 		} else {
 			World var9;
@@ -124,6 +147,7 @@ public class ParamComposition extends DualNode {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 				}
+
 				return 1;
 			} else if (var0 == ScriptOpcodes.WORLDLIST_NEXT) {
 				var9 = Interpreter.getNextWorldListWorld();
@@ -142,6 +166,7 @@ public class ParamComposition extends DualNode {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 				}
+
 				return 1;
 			} else {
 				int var3;
@@ -150,12 +175,14 @@ public class ParamComposition extends DualNode {
 				if (var0 == ScriptOpcodes.WORLDLIST_SPECIFIC) {
 					var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
 					var7 = null;
+
 					for (var8 = 0; var8 < World.World_count; ++var8) {
 						if (var3 == class362.World_worlds[var8].id) {
 							var7 = class362.World_worlds[var8];
 							break;
 						}
 					}
+
 					if (var7 != null) {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.id;
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.properties;
@@ -171,6 +198,7 @@ public class ParamComposition extends DualNode {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 					}
+
 					return 1;
 				} else if (var0 == ScriptOpcodes.WORLDLIST_SORT) {
 					class446.Interpreter_intStackSize -= 4;
@@ -197,6 +225,7 @@ public class ParamComposition extends DualNode {
 							} else {
 								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = BuddyRankComparator.getNpcDefinition(var3).getIntParam(var4, var5.defaultInt);
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.LC_PARAM) {
 							class446.Interpreter_intStackSize -= 2;
@@ -208,6 +237,7 @@ public class ParamComposition extends DualNode {
 							} else {
 								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class162.getObjectDefinition(var3).getIntParam(var4, var5.defaultInt);
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.OC_PARAM) {
 							class446.Interpreter_intStackSize -= 2;
@@ -219,6 +249,7 @@ public class ParamComposition extends DualNode {
 							} else {
 								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = EnumComposition.ItemDefinition_get(var3).getIntParam(var4, var5.defaultInt);
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.STRUCT_PARAM) {
 							class446.Interpreter_intStackSize -= 2;
@@ -230,9 +261,10 @@ public class ParamComposition extends DualNode {
 							} else {
 								Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = WorldMapIcon_1.StructDefinition_getStructDefinition(var3).getIntParam(var4, var5.defaultInt);
 							}
+
 							return 1;
 						} else if (var0 == ScriptOpcodes.ON_MOBILE) {
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (Client.onMobile) ? 1 : 0;
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.onMobile ? 1 : 0;
 							return 1;
 						} else if (var0 == ScriptOpcodes.CLIENTTYPE) {
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.clientType;
@@ -283,6 +315,7 @@ public class ParamComposition extends DualNode {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 					}
+
 					return 1;
 				}
 			}
@@ -290,7 +323,10 @@ public class ParamComposition extends DualNode {
 	}
 
 	@ObfuscatedName("kl")
-	@ObfuscatedSignature(descriptor = "(IIIILqe;Lkp;I)V", garbageValue = "1077753678")
+	@ObfuscatedSignature(
+		descriptor = "(IIIILqe;Lkp;I)V",
+		garbageValue = "1077753678"
+	)
 	@Export("drawSpriteOnMinimap")
 	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
 		if (var4 != null) {
@@ -306,6 +342,7 @@ public class ParamComposition extends DualNode {
 				} else {
 					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
 				}
+
 			}
 		}
 	}

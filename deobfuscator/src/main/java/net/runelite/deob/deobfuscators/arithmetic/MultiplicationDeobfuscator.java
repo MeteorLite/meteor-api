@@ -52,10 +52,13 @@ import net.runelite.asm.execution.StackContext;
 import net.runelite.asm.execution.VariableContext;
 import net.runelite.asm.execution.Variables;
 import net.runelite.deob.Deobfuscator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MultiplicationDeobfuscator implements Deobfuscator
 {
-
+	private static final Logger logger = LoggerFactory.getLogger(MultiplicationDeobfuscator.class);
+	
 	private ClassGroup group;
 	
 	@Override
@@ -67,8 +70,10 @@ public class MultiplicationDeobfuscator implements Deobfuscator
 		int count = 0;
 		while ((i = runOnce()) > 0)
 		{
+			logger.info("Replaced " + i + " constants");
 			count += i;
 		}
+		logger.info("Total changed " + count);
 	}
 	
 	public static MultiplicationExpression parseExpression(InstructionContext ctx, Class want)
@@ -134,7 +139,8 @@ public class MultiplicationDeobfuscator implements Deobfuscator
 			{
 				if (i.getInstruction() instanceof Swap)
 				{
-
+					logger.debug("Resolving swap");
+					
 					Swap swap = (Swap) i.getInstruction();
 					sctx = swap.getOriginal(sctx);
 					i = sctx.getPushed();

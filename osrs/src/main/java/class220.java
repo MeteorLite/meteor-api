@@ -1,34 +1,46 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("ha")
 public class class220 {
 	@ObfuscatedName("cm")
-	@ObfuscatedSignature(descriptor = "[Lqu;")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
 	@Export("worldSelectStars")
 	static IndexedSprite[] worldSelectStars;
 
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "1440657841")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1440657841"
+	)
 	@Export("savePreferences")
 	static void savePreferences() {
 		AccessFile var0 = null;
+
 		try {
 			var0 = class67.getPreferencesFile("", class285.field3313.name, true);
 			Buffer var1 = class19.clientPreferences.toBuffer();
 			var0.write(var1.array, 0, var1.offset);
 		} catch (Exception var3) {
 		}
+
 		try {
 			if (var0 != null) {
 				var0.closeSync(true);
 			}
 		} catch (Exception var2) {
 		}
+
 	}
 
 	@ObfuscatedName("hl")
-	@ObfuscatedSignature(descriptor = "(IIII)V", garbageValue = "1567739451")
+	@ObfuscatedSignature(
+		descriptor = "(IIII)V",
+		garbageValue = "1567739451"
+	)
 	@Export("worldToScreen")
 	static final void worldToScreen(int var0, int var1, int var2) {
 		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
@@ -52,6 +64,7 @@ public class class220 {
 				Client.viewportTempX = -1;
 				Client.viewportTempY = -1;
 			}
+
 		} else {
 			Client.viewportTempX = -1;
 			Client.viewportTempY = -1;

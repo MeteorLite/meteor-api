@@ -1,53 +1,64 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.rs.ScriptOpcodes;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("dq")
 public class class118 implements MouseWheel {
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1481;
-
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1477;
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1478;
-
 	@ObfuscatedName("f")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1479;
-
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1480;
-
 	@ObfuscatedName("e")
-	@ObfuscatedSignature(descriptor = "Ldq;")
+	@ObfuscatedSignature(
+		descriptor = "Ldq;"
+	)
 	static final class118 field1484;
-
 	@ObfuscatedName("g")
-	@ObfuscatedGetter(intValue = -451186485)
+	@ObfuscatedGetter(
+		intValue = -451186485
+	)
 	final int field1482;
-
 	@ObfuscatedName("w")
-	@ObfuscatedGetter(intValue = -1492168119)
+	@ObfuscatedGetter(
+		intValue = -1492168119
+	)
 	final int field1483;
-
 	@ObfuscatedName("y")
-	@ObfuscatedGetter(intValue = 1225507013)
+	@ObfuscatedGetter(
+		intValue = 1225507013
+	)
 	final int field1486;
 
 	static {
-		field1481 = new class118(0, 0, ((String) (null)), 0);
-		field1477 = new class118(1, 1, ((String) (null)), 9);
-		field1478 = new class118(2, 2, ((String) (null)), 3);
-		field1479 = new class118(3, 3, ((String) (null)), 6);
-		field1480 = new class118(4, 4, ((String) (null)), 1);
-		field1484 = new class118(5, 5, ((String) (null)), 3);
+		field1481 = new class118(0, 0, (String)null, 0);
+		field1477 = new class118(1, 1, (String)null, 9);
+		field1478 = new class118(2, 2, (String)null, 3);
+		field1479 = new class118(3, 3, (String)null, 6);
+		field1480 = new class118(4, 4, (String)null, 1);
+		field1484 = new class118(5, 5, (String)null, 3);
 	}
 
 	class118(int var1, int var2, String var3, int var4) {
@@ -57,30 +68,43 @@ public class class118 implements MouseWheel {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(B)I", garbageValue = "-100")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "-100"
+	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.field1483;
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(I)I", garbageValue = "-2129901712")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-2129901712"
+	)
 	int method2736() {
 		return this.field1486;
 	}
 
 	@ObfuscatedName("l")
-	@ObfuscatedSignature(descriptor = "(I)V", garbageValue = "-533774728")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-533774728"
+	)
 	static void method2738() {
 		if (class136.loadWorlds()) {
 			Login.worldSelectOpen = true;
 			Login.worldSelectPage = 0;
 			Login.worldSelectPagesCount = 0;
 		}
+
 	}
 
 	@ObfuscatedName("am")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "-81")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-81"
+	)
 	static int method2742(int var0, Script var1, boolean var2) {
 		if (var0 == ScriptOpcodes.CHAT_GETFILTER_PUBLIC) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.publicChatMode;
@@ -92,8 +116,9 @@ public class class118 implements MouseWheel {
 			if (class339.privateChatMode == null) {
 				class339.privateChatMode = PrivateChatMode.field4817;
 			}
+
 			Client.tradeChatMode = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 2];
-			PacketBufferNode var13 = EnumComposition.getPacketBufferNode(ClientPacket.CHAT_SETFILTER, Client.packetWriter.isaacCipher);
+			PacketBufferNode var13 = EnumComposition.getPacketBufferNode(ClientPacket.field2916, Client.packetWriter.isaacCipher);
 			var13.packetBuffer.writeByte(Client.publicChatMode);
 			var13.packetBuffer.writeByte(class339.privateChatMode.field4820);
 			var13.packetBuffer.writeByte(Client.tradeChatMode);
@@ -109,7 +134,7 @@ public class class118 implements MouseWheel {
 				class446.Interpreter_intStackSize -= 2;
 				var7 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
 				var9 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
-				var6 = EnumComposition.getPacketBufferNode(ClientPacket.CHAT_SENDABUSEREPORT, Client.packetWriter.isaacCipher);
+				var6 = EnumComposition.getPacketBufferNode(ClientPacket.field2949, Client.packetWriter.isaacCipher);
 				var6.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var8) + 2);
 				var6.packetBuffer.writeStringCp1252NullTerminated(var8);
 				var6.packetBuffer.writeByte(var7 - 1);
@@ -127,10 +152,10 @@ public class class118 implements MouseWheel {
 					if (var5 != null) {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.count;
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.cycle;
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.sender != null) ? var5.sender : "";
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.prefix != null) ? var5.prefix : "";
-						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.text != null) ? var5.text : "";
-						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var5.isFromFriend()) ? 1 : var5.isFromIgnored() ? 2 : 0;
+						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
+						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
+						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
+						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
 					} else {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
@@ -139,6 +164,7 @@ public class class118 implements MouseWheel {
 						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 					}
+
 					return 1;
 				} else {
 					Message var4;
@@ -148,10 +174,10 @@ public class class118 implements MouseWheel {
 						if (var4 != null) {
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.type;
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.cycle;
-							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.sender != null) ? var4.sender : "";
-							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.prefix != null) ? var4.prefix : "";
-							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.text != null) ? var4.text : "";
-							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var4.isFromFriend()) ? 1 : var4.isFromIgnored() ? 2 : 0;
+							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
+							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
+							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
+							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
 						} else {
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
@@ -160,6 +186,7 @@ public class class118 implements MouseWheel {
 							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 						}
+
 						return 1;
 					} else if (var0 == ScriptOpcodes.CHAT_GETFILTER_PRIVATE) {
 						if (class339.privateChatMode == null) {
@@ -167,6 +194,7 @@ public class class118 implements MouseWheel {
 						} else {
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class339.privateChatMode.field4820;
 						}
+
 						return 1;
 					} else {
 						PacketBufferNode var12;
@@ -180,7 +208,7 @@ public class class118 implements MouseWheel {
 							Interpreter.Interpreter_stringStackSize -= 2;
 							var8 = Interpreter.Interpreter_stringStack[Interpreter.Interpreter_stringStackSize];
 							String var11 = Interpreter.Interpreter_stringStack[Interpreter.Interpreter_stringStackSize + 1];
-							var12 = EnumComposition.getPacketBufferNode(ClientPacket.CHAT_SENDPRIVATE, Client.packetWriter.isaacCipher);
+							var12 = EnumComposition.getPacketBufferNode(ClientPacket.field2932, Client.packetWriter.isaacCipher);
 							var12.packetBuffer.writeShort(0);
 							int var10 = var12.packetBuffer.offset;
 							var12.packetBuffer.writeStringCp1252NullTerminated(var8);
@@ -232,7 +260,7 @@ public class class118 implements MouseWheel {
 							} else if (var0 == 5025) {
 								++class446.Interpreter_intStackSize;
 								return 1;
-							} else if (var0 == 5030) {
+							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYTYPEANDLINE) {
 								class446.Interpreter_intStackSize -= 2;
 								var3 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize];
 								var7 = Interpreter.Interpreter_intStack[class446.Interpreter_intStackSize + 1];
@@ -240,10 +268,10 @@ public class class118 implements MouseWheel {
 								if (var5 != null) {
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.count;
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.cycle;
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.sender != null) ? var5.sender : "";
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.prefix != null) ? var5.prefix : "";
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var5.text != null) ? var5.text : "";
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var5.isFromFriend()) ? 1 : var5.isFromIgnored() ? 2 : 0;
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.sender != null ? var5.sender : "";
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.prefix != null ? var5.prefix : "";
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var5.text != null ? var5.text : "";
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var5.isFromFriend() ? 1 : (var5.isFromIgnored() ? 2 : 0);
 									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 								} else {
@@ -256,17 +284,18 @@ public class class118 implements MouseWheel {
 									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 								}
+
 								return 1;
-							} else if (var0 == 5031) {
+							} else if (var0 == ScriptOpcodes.CHAT_GETHISTORYEX_BYUID) {
 								var3 = Interpreter.Interpreter_intStack[--class446.Interpreter_intStackSize];
 								var4 = UserComparator7.Messages_getMessage(var3);
 								if (var4 != null) {
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.type;
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.cycle;
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.sender != null) ? var4.sender : "";
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.prefix != null) ? var4.prefix : "";
-									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = (var4.text != null) ? var4.text : "";
-									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = (var4.isFromFriend()) ? 1 : var4.isFromIgnored() ? 2 : 0;
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.sender != null ? var4.sender : "";
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.prefix != null ? var4.prefix : "";
+									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var4.text != null ? var4.text : "";
+									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var4.isFromFriend() ? 1 : (var4.isFromIgnored() ? 2 : 0);
 									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 								} else {
@@ -279,6 +308,7 @@ public class class118 implements MouseWheel {
 									Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = "";
 									Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 								}
+
 								return 1;
 							} else {
 								return 2;
@@ -289,6 +319,7 @@ public class class118 implements MouseWheel {
 							} else {
 								var8 = "";
 							}
+
 							Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var8;
 							return 1;
 						}
@@ -299,7 +330,10 @@ public class class118 implements MouseWheel {
 	}
 
 	@ObfuscatedName("af")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "-58")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-58"
+	)
 	static int method2744(int var0, Script var1, boolean var2) {
 		int var3;
 		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
@@ -310,6 +344,7 @@ public class class118 implements MouseWheel {
 				Client.camAngleX = var3;
 				Client.camAngleY = var4;
 			}
+
 			return 1;
 		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
 			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = Client.camAngleX;
@@ -322,6 +357,7 @@ public class class118 implements MouseWheel {
 			if (var3 < 0) {
 				var3 = 0;
 			}
+
 			Client.camFollowHeight = var3;
 			return 1;
 		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
@@ -333,7 +369,10 @@ public class class118 implements MouseWheel {
 	}
 
 	@ObfuscatedName("jz")
-	@ObfuscatedSignature(descriptor = "([Lkb;IIIZB)V", garbageValue = "84")
+	@ObfuscatedSignature(
+		descriptor = "([Lkb;IIIZB)V",
+		garbageValue = "84"
+	)
 	@Export("resizeInterface")
 	static void resizeInterface(Widget[] var0, int var1, int var2, int var3, boolean var4) {
 		for (int var5 = 0; var5 < var0.length; ++var5) {
@@ -344,19 +383,24 @@ public class class118 implements MouseWheel {
 				if (var6.scrollX > var6.scrollWidth - var6.width) {
 					var6.scrollX = var6.scrollWidth - var6.width;
 				}
+
 				if (var6.scrollX < 0) {
 					var6.scrollX = 0;
 				}
+
 				if (var6.scrollY > var6.scrollHeight - var6.height) {
 					var6.scrollY = var6.scrollHeight - var6.height;
 				}
+
 				if (var6.scrollY < 0) {
 					var6.scrollY = 0;
 				}
+
 				if (var6.type == 0) {
 					BufferedNetSocket.revalidateWidgetScroll(var0, var6, var4);
 				}
 			}
 		}
+
 	}
 }

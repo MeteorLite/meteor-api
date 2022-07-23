@@ -1,21 +1,24 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.Export;
+
 @ObfuscatedName("oh")
 @Implements("Node")
 public class Node {
 	@ObfuscatedName("gu")
 	@Export("key")
 	public long key;
-
 	@ObfuscatedName("gn")
-	@ObfuscatedSignature(descriptor = "Loh;")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
 	@Export("previous")
 	public Node previous;
-
 	@ObfuscatedName("go")
-	@ObfuscatedSignature(descriptor = "Loh;")
+	@ObfuscatedSignature(
+		descriptor = "Loh;"
+	)
 	@Export("next")
 	public Node next;
 

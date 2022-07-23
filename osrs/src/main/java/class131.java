@@ -1,25 +1,32 @@
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.mapping.ObfuscatedGetter;
 import java.io.IOException;
 import java.net.Socket;
-import net.runelite.rs.ScriptOpcodes;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
+
 @ObfuscatedName("ej")
 public class class131 {
 	@ObfuscatedName("c")
-	@ObfuscatedGetter(longValue = -1512748666488385143L)
+	@ObfuscatedGetter(
+		longValue = -1512748666488385143L
+	)
 	long field1582;
-
 	@ObfuscatedName("v")
-	@ObfuscatedGetter(intValue = 713864739)
+	@ObfuscatedGetter(
+		intValue = 713864739
+	)
 	int field1584;
-
 	@ObfuscatedName("q")
-	@ObfuscatedSignature(descriptor = "Llk;")
+	@ObfuscatedSignature(
+		descriptor = "Llk;"
+	)
 	IterableNodeDeque field1585;
 
-	@ObfuscatedSignature(descriptor = "(Lqt;)V")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;)V"
+	)
 	public class131(Buffer var1) {
 		this.field1584 = -1;
 		this.field1585 = new IterableNodeDeque();
@@ -27,10 +34,14 @@ public class class131 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Lqt;I)V", garbageValue = "840156873")
+	@ObfuscatedSignature(
+		descriptor = "(Lqt;I)V",
+		garbageValue = "840156873"
+	)
 	void method2868(Buffer var1) {
 		this.field1582 = var1.readLong();
 		this.field1584 = var1.readInt();
+
 		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
 			Object var3;
 			if (var2 == 3) {
@@ -65,20 +76,27 @@ public class class131 {
 				if (var2 != 15) {
 					throw new RuntimeException("");
 				}
+
 				var3 = new class147(this);
 			}
-			((class128) (var3)).vmethod3150(var1);
-			this.field1585.addFirst(((Node) (var3)));
+
+			((class128)var3).vmethod3150(var1);
+			this.field1585.addFirst((Node)var3);
 		}
+
 	}
 
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "(Len;I)V", garbageValue = "-1292823548")
+	@ObfuscatedSignature(
+		descriptor = "(Len;I)V",
+		garbageValue = "-1292823548"
+	)
 	public void method2869(ClanSettings var1) {
 		if (var1.field1627 == this.field1582 && this.field1584 == var1.field1628) {
-			for (class128 var2 = ((class128) (this.field1585.last())); var2 != null; var2 = ((class128) (this.field1585.previous()))) {
+			for (class128 var2 = (class128)this.field1585.last(); var2 != null; var2 = (class128)this.field1585.previous()) {
 				var2.vmethod3149(var1);
 			}
+
 			++var1.field1628;
 		} else {
 			throw new RuntimeException("");
@@ -86,13 +104,19 @@ public class class131 {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/net/Socket;IIB)Lnl;", garbageValue = "-16")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/net/Socket;IIB)Lnl;",
+		garbageValue = "-16"
+	)
 	public static AbstractSocket method2878(Socket var0, int var1, int var2) throws IOException {
 		return new BufferedNetSocket(var0, var1, var2);
 	}
 
 	@ObfuscatedName("j")
-	@ObfuscatedSignature(descriptor = "(IIIZIZI)V", garbageValue = "906922492")
+	@ObfuscatedSignature(
+		descriptor = "(IIIZIZI)V",
+		garbageValue = "906922492"
+	)
 	@Export("doWorldSorting")
 	static void doWorldSorting(int var0, int var1, int var2, boolean var3, int var4, boolean var5) {
 		if (var0 < var1) {
@@ -101,6 +125,7 @@ public class class131 {
 			World var8 = class362.World_worlds[var6];
 			class362.World_worlds[var6] = class362.World_worlds[var1];
 			class362.World_worlds[var1] = var8;
+
 			for (int var9 = var0; var9 < var1; ++var9) {
 				if (MusicPatchPcmStream.method5445(class362.World_worlds[var9], var8, var2, var3, var4, var5) <= 0) {
 					World var10 = class362.World_worlds[var9];
@@ -108,15 +133,20 @@ public class class131 {
 					class362.World_worlds[var7++] = var10;
 				}
 			}
+
 			class362.World_worlds[var1] = class362.World_worlds[var7];
 			class362.World_worlds[var7] = var8;
 			doWorldSorting(var0, var7 - 1, var2, var3, var4, var5);
 			doWorldSorting(var7 + 1, var1, var2, var3, var4, var5);
 		}
+
 	}
 
 	@ObfuscatedName("ad")
-	@ObfuscatedSignature(descriptor = "(ILbi;ZB)I", garbageValue = "-70")
+	@ObfuscatedSignature(
+		descriptor = "(ILbi;ZB)I",
+		garbageValue = "-70"
+	)
 	static int method2875(int var0, Script var1, boolean var2) {
 		int var3;
 		int var6;
@@ -128,6 +158,7 @@ public class class131 {
 			EnumComposition var10 = UserComparator7.getEnum(var3);
 			if (var10.outputType != 's') {
 			}
+
 			for (var6 = 0; var6 < var10.outputCount; ++var6) {
 				if (var9 == var10.keys[var6]) {
 					Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var10.strVals[var6];
@@ -135,9 +166,11 @@ public class class131 {
 					break;
 				}
 			}
+
 			if (var10 != null) {
 				Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var10.defaultStr;
 			}
+
 			return 1;
 		} else if (var0 != ScriptOpcodes.ENUM) {
 			if (var0 == ScriptOpcodes.ENUM_GETOUTPUTCOUNT) {
@@ -163,10 +196,12 @@ public class class131 {
 						} else {
 							Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.intVals[var8];
 						}
+
 						var7 = null;
 						break;
 					}
 				}
+
 				if (var7 != null) {
 					if (var9 == 115) {
 						Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var7.defaultStr;
@@ -174,6 +209,7 @@ public class class131 {
 						Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var7.defaultInt;
 					}
 				}
+
 				return 1;
 			} else {
 				if (var9 == 115) {
@@ -181,13 +217,17 @@ public class class131 {
 				} else {
 					Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
 				}
+
 				return 1;
 			}
 		}
 	}
 
 	@ObfuscatedName("fg")
-	@ObfuscatedSignature(descriptor = "(B)V", garbageValue = "117")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "117"
+	)
 	static final void method2877() {
 		if (Client.logoutTimer > 0) {
 			MouseRecorder.logOut();

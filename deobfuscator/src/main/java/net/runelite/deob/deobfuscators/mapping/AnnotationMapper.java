@@ -32,9 +32,13 @@ import net.runelite.asm.Method;
 import net.runelite.asm.Annotation;
 import net.runelite.asm.attributes.Annotated;
 import net.runelite.deob.DeobAnnotations;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AnnotationMapper
 {
+	private static final Logger logger = LoggerFactory.getLogger(AnnotationMapper.class);
+
 	private final ClassGroup source, target;
 	private final ParallelExecutorMapping mapping;
 
@@ -48,18 +52,25 @@ public class AnnotationMapper
 	public void run()
 	{
 		int count = 0;
+		int fails = 0;
 
 		for (ClassFile c : source.getClasses())
 		{
 			ClassFile other = (ClassFile) mapping.get(c);
 
-			count += run(c, other);
+			int[] ary = run(c, other);
+			count += ary[0];
+			fails += ary[1];
 		}
+
+		logger.info("Copied {} annotations", count);
+		logger.info("Failed {} methods", fails);
 	}
 
-	private int run(ClassFile from, ClassFile to)
+	private int[] run(ClassFile from, ClassFile to)
 	{
 		int count = 0;
+		int fails = 0;
 
 		if (hasCopyableAnnotation(from))
 		{
@@ -69,6 +80,7 @@ public class AnnotationMapper
 			}
 			else
 			{
+				logger.warn("Class {} has copyable annotations but there is no mapped class", from);
 			}
 		}
 
@@ -80,6 +92,7 @@ public class AnnotationMapper
 			Field other = (Field) mapping.get(f);
 			if (other == null)
 			{
+				logger.warn("Unable to map annotated field {} named {}", f, DeobAnnotations.getExportedName(f));
 				continue;
 			}
 
@@ -94,13 +107,15 @@ public class AnnotationMapper
 			Method other = (Method) mapping.get(m);
 			if (other == null)
 			{
+				logger.warn("Unable to map annotated method {} named {}", m, DeobAnnotations.getExportedName(m));
+				fails++;
 				continue;
 			}
 
 			count += copyAnnotations(m, other);
 		}
 
-		return count;
+		return new int[]{count, fails};
 	}
 
 	private int copyAnnotations(Annotated from, Annotated to)

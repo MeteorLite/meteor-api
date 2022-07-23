@@ -1,22 +1,24 @@
-import net.runelite.mapping.ObfuscatedName;
-import java.net.InetSocketAddress;
-import org.bouncycastle.crypto.tls.TlsClientProtocol;
-import java.net.UnknownHostException;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.security.SecureRandom;
 import java.security.Security;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import net.runelite.mapping.ObfuscatedSignature;
 import javax.net.ssl.SSLSocket;
-import java.net.Socket;
 import javax.net.ssl.SSLSocketFactory;
-import java.net.InetAddress;
+import net.runelite.mapping.ObfuscatedName;
+import net.runelite.mapping.ObfuscatedSignature;
+import org.bouncycastle.crypto.tls.TlsClientProtocol;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
 @ObfuscatedName("k")
 public class class15 extends SSLSocketFactory {
 	@ObfuscatedName("v")
-	@ObfuscatedSignature(descriptor = "Lk;")
+	@ObfuscatedSignature(
+		descriptor = "Lk;"
+	)
 	public static class15 field85;
-
 	@ObfuscatedName("c")
 	SecureRandom field86;
 
@@ -24,6 +26,7 @@ public class class15 extends SSLSocketFactory {
 		if (Security.getProvider("BC") == null) {
 			Security.addProvider(new BouncyCastleProvider());
 		}
+
 	}
 
 	public class15() {
@@ -31,7 +34,10 @@ public class class15 extends SSLSocketFactory {
 	}
 
 	@ObfuscatedName("c")
-	@ObfuscatedSignature(descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;", garbageValue = "-63")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;B)Ljavax/net/ssl/SSLSocket;",
+		garbageValue = "-63"
+	)
 	SSLSocket method164(String var1, TlsClientProtocol var2) {
 		return new class12(this, var2, var1);
 	}
@@ -44,9 +50,11 @@ public class class15 extends SSLSocketFactory {
 		if (var1 == null) {
 			var1 = new Socket();
 		}
+
 		if (!var1.isConnected()) {
 			var1.connect(new InetSocketAddress(var2, var3));
 		}
+
 		TlsClientProtocol var5 = new TlsClientProtocol(var1.getInputStream(), var1.getOutputStream(), this.field86);
 		return this.method164(var2, var5);
 	}

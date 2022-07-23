@@ -1,26 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package net.runelite.rs;
 import java.io.File;
 import java.io.IOException;
@@ -52,11 +29,7 @@ public class Reflection {
 			while (systemResources.hasMoreElements()) {
 				URL url = systemResources.nextElement();
 				Path path;
-				try {
-					path = new File(url.toURI()).toPath();
-				} catch (URISyntaxException e) {
-					path = new File(url.getPath()).toPath();
-				}
+				path = new File("../osrs/build/classes/java/main/").toPath();
 				Files.walk(path).filter(Files::isRegularFile).forEach(( f) -> {
 					String className = f.getName(f.getNameCount() - 1).toString().replace(".class", "");
 					try {
@@ -66,6 +39,7 @@ public class Reflection {
 							classes.put(obfuscatedName.value(), clazz);
 						}
 					} catch (ClassNotFoundException ignore) {
+						ignore.printStackTrace();
 					}
 				});
 			} 

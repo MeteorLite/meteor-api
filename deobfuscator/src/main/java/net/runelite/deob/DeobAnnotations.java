@@ -77,14 +77,7 @@ public class DeobAnnotations
 	@Nullable
 	public static String getImplements(@NotNull ClassFile cf)
 	{
-		String stringValue = getStringValue(cf, IMPLEMENTS);
-
-		if (stringValue != null)
-		{
-			stringValue = flatten(stringValue);
-		}
-
-		return stringValue;
+		return getStringValue(cf, IMPLEMENTS);
 	}
 
 	@Nullable
@@ -120,10 +113,5 @@ public class DeobAnnotations
 	{
 		final var a = an.findAnnotation(type);
 		return a == null ? null : a.getValueString();
-	}
-
-	public static String flatten(String className)
-	{
-		return className.substring(className.lastIndexOf('/') + 1);
 	}
 }

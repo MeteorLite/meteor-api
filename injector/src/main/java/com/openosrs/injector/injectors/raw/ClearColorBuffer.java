@@ -7,6 +7,7 @@
  */
 package com.openosrs.injector.injectors.raw;
 
+
 import com.openosrs.injector.InjectUtil;
 import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injectors.AbstractInjector;
@@ -22,64 +23,67 @@ import net.runelite.asm.execution.Execution;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.MethodContext;
 import net.runelite.asm.execution.StackContext;
+import net.runelite.asm.signature.Signature;
 
-public class ClearColorBuffer extends AbstractInjector
-{
-	public ClearColorBuffer(InjectData inject)
-	{
-		super(inject);
-	}
+public class ClearColorBuffer extends AbstractInjector {
 
-	public void inject()
-	{
+  private static net.runelite.asm.pool.Method CLEARBUFFER;
 
-		/*
-		 * This class stops the client from basically painting everything black before the scene is drawn
-		 */
-		final Execution exec = new Execution(inject.getVanilla());
+  public ClearColorBuffer(InjectData inject, String hooks) {
+    super(inject);
+    CLEARBUFFER = new net.runelite.asm.pool.Method(
+            new net.runelite.asm.pool.Class(hooks),
+            "clearColorBuffer",
+            new Signature("(IIIII)V"));
+  }
 
-		final net.runelite.asm.pool.Method clearBuffer = inject.getVanilla().findClass("client").findMethod("clearColorBuffer").getPoolMethod();
-		final net.runelite.asm.pool.Method fillRectPool = InjectUtil.findMethod(inject, "Rasterizer2D_fillRectangle", "Rasterizer2D", null).getPoolMethod();
-		final Method drawEntities = InjectUtil.findMethod(inject, "drawEntities"); // XXX: should prob be called drawViewport?
+  public void inject() {
+    /*
+     * This class stops the client from basically painting everything black before the scene is drawn
+     */
+    final Execution exec = new Execution(inject.getVanilla());
 
-		exec.addMethod(drawEntities);
-		exec.noInvoke = true;
+    final net.runelite.asm.pool.Method fillRectPool = InjectUtil
+        .findMethod(inject, "Rasterizer2D_fillRectangle", "Rasterizer2D", null).getPoolMethod();
+    final Method drawEntities = InjectUtil
+        .findMethod(inject, "drawEntities"); // XXX: should prob be called drawViewport?
 
-		final AtomicReference<MethodContext> pcontext = new AtomicReference<>(null);
+    exec.addMethod(drawEntities);
+    exec.noInvoke = true;
 
-		exec.addMethodContextVisitor(pcontext::set);
-		exec.run();
+    final AtomicReference<MethodContext> pcontext = new AtomicReference<>(null);
 
-		final MethodContext methodContext = pcontext.get();
-		for (InstructionContext ic : methodContext.getInstructionContexts())
-		{
-			final Instruction instr = ic.getInstruction();
-			if (!(instr instanceof InvokeStatic))
-			{
-				continue;
-			}
+    exec.addMethodContextVisitor(pcontext::set);
+    exec.run();
 
-			if (fillRectPool.equals(((InvokeStatic) instr).getMethod()))
-			{
-				List<StackContext> pops = ic.getPops();
+    final MethodContext methodContext = pcontext.get();
+    for (InstructionContext ic : methodContext.getInstructionContexts()) {
+      final Instruction instr = ic.getInstruction();
+      if (!(instr instanceof InvokeStatic)) {
+        continue;
+      }
 
-				// Last pop is constant value 0, before that are vars in order
-				assert pops.size() == 5 : "If this fails cause of this add in 1 for obfuscation, I don't think that happens here though";
+      if (fillRectPool.equals(((InvokeStatic) instr).getMethod())) {
+        List<StackContext> pops = ic.getPops();
 
-				int i = 0;
-				Instruction pushed = pops.get(i++).getPushed().getInstruction();
-				assert (pushed instanceof PushConstantInstruction) && ((PushConstantInstruction) pushed).getConstant().equals(0);
+        // Last pop is constant value 0, before that are vars in order
+        assert pops.size()
+            == 5 : "If this fails cause of this add in 1 for obfuscation, I don't think that happens here though";
 
-				for (int varI = 3; i < 5; i++, varI--)
-				{
-					pushed = pops.get(i).getPushed().getInstruction();
-					assert (pushed instanceof ILoad) && ((ILoad) pushed).getVariableIndex() == varI;
-				}
+        int i = 0;
+        Instruction pushed = pops.get(i++).getPushed().getInstruction();
+        assert (pushed instanceof PushConstantInstruction) && ((PushConstantInstruction) pushed)
+            .getConstant().equals(0);
 
-				Instructions ins = instr.getInstructions();
-				ins.replace(instr, new InvokeStatic(ins, clearBuffer));
-				log.debug("[DEBUG] Injected drawRectangle at {}", methodContext.getMethod().getPoolMethod());
-			}
-		}
-	}
+        for (int varI = 3; i < 5; i++, varI--) {
+          pushed = pops.get(i).getPushed().getInstruction();
+          assert (pushed instanceof ILoad) && ((ILoad) pushed).getVariableIndex() == varI;
+        }
+
+        Instructions ins = instr.getInstructions();
+        ins.replace(instr, new InvokeStatic(ins, CLEARBUFFER));
+        //		log.debug("[DEBUG] Injected drawRectangle at {}", methodContext.getMethod().getPoolMethod());
+      }
+    }
+  }
 }
