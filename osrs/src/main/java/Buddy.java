@@ -33,8 +33,8 @@ public class Buddy extends User {
 	public int rank;
 
 	Buddy() {
-		this.world = -1; // L: 4
-	} // L: 8
+		this.world = -1;
+	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -43,9 +43,9 @@ public class Buddy extends User {
 	)
 	@Export("set")
 	void set(int var1, int var2) {
-		this.world = var1; // L: 11
-		this.int2 = var2; // L: 12
-	} // L: 13
+		this.world = var1;
+		this.int2 = var2;
+	}
 
 	@ObfuscatedName("av")
 	@ObfuscatedSignature(
@@ -54,7 +54,7 @@ public class Buddy extends User {
 	)
 	@Export("getWorld")
 	public int getWorld() {
-		return this.world; // L: 16
+		return this.world;
 	}
 
 	@ObfuscatedName("aw")
@@ -64,6 +64,6 @@ public class Buddy extends User {
 	)
 	@Export("hasWorld")
 	public boolean hasWorld() {
-		return this.world > 0; // L: 20
+		return this.world > 0;
 	}
 }

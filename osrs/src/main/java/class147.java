@@ -27,8 +27,8 @@ public class class147 extends class128 {
 	)
 	class147(class131 var1) {
 		this.this$0 = var1;
-		this.field1686 = -1; // L: 144
-	} // L: 146
+		this.field1686 = -1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -36,8 +36,8 @@ public class class147 extends class128 {
 		garbageValue = "5"
 	)
 	void vmethod3150(Buffer var1) {
-		this.field1686 = var1.readUnsignedShort(); // L: 149
-	} // L: 150
+		this.field1686 = var1.readUnsignedShort();
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -45,6 +45,6 @@ public class class147 extends class128 {
 		garbageValue = "-1718344311"
 	)
 	void vmethod3149(ClanSettings var1) {
-		var1.method3016(this.field1686); // L: 153
-	} // L: 154
+		var1.method3016(this.field1686);
+	}
 }

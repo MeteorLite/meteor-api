@@ -33,6 +33,6 @@ public class Task {
 	public volatile Object result;
 
 	Task() {
-		this.status = 0; // L: 10
-	} // L: 22
+		this.status = 0;
+	}
 }

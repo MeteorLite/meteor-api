@@ -29,8 +29,8 @@ public class class421 implements class420 {
 		descriptor = "(Lqw;)V"
 	)
 	public class421(class449 var1) {
-		this.field4605 = var1; // L: 15
-	} // L: 16
+		this.field4605 = var1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -38,14 +38,14 @@ public class class421 implements class420 {
 		garbageValue = "-2111872296"
 	)
 	public int vmethod7440(int var1) {
-		if (this.field4606 != null) { // L: 20
-			class450 var2 = (class450)this.field4606.get(var1); // L: 21
+		if (this.field4606 != null) {
+			class450 var2 = (class450)this.field4606.get(var1);
 			if (var2 != null) {
-				return (Integer)var2.field4766; // L: 22
+				return (Integer)var2.field4766;
 			}
 		}
 
-		return (Integer)this.field4605.vmethod8027(var1); // L: 24
+		return (Integer)this.field4605.vmethod8027(var1);
 	}
 
 	@ObfuscatedName("v")
@@ -54,22 +54,22 @@ public class class421 implements class420 {
 		garbageValue = "31470"
 	)
 	public void vmethod7441(int var1, Object var2) {
-		if (this.field4606 == null) { // L: 29
-			this.field4606 = new HashMap(); // L: 30
-			this.field4606.put(var1, new class450(var1, var2)); // L: 31
+		if (this.field4606 == null) {
+			this.field4606 = new HashMap();
+			this.field4606.put(var1, new class450(var1, var2));
 		} else {
-			class450 var3 = (class450)this.field4606.get(var1); // L: 34
+			class450 var3 = (class450)this.field4606.get(var1);
 			if (var3 == null) {
-				this.field4606.put(var1, new class450(var1, var2)); // L: 35
+				this.field4606.put(var1, new class450(var1, var2));
 			} else {
-				var3.field4766 = var2; // L: 36
+				var3.field4766 = var2;
 			}
 		}
 
-	} // L: 38
+	}
 
 	public Iterator iterator() {
-		return this.field4606 == null ? Collections.emptyList().iterator() : this.field4606.values().iterator(); // L: 42 43
+		return this.field4606 == null ? Collections.emptyList().iterator() : this.field4606.values().iterator();
 	}
 
 	@ObfuscatedName("f")
@@ -79,15 +79,15 @@ public class class421 implements class420 {
 	)
 	@Export("SpriteBuffer_getIndexedSpriteByName")
 	public static IndexedSprite SpriteBuffer_getIndexedSpriteByName(AbstractArchive var0, String var1, String var2) {
-		int var3 = var0.getGroupId(var1); // L: 85
-		int var4 = var0.getFileId(var3, var2); // L: 86
+		int var3 = var0.getGroupId(var1);
+		int var4 = var0.getFileId(var3, var2);
 		IndexedSprite var5;
-		if (!Ignored.method6774(var0, var3, var4)) { // L: 89
-			var5 = null; // L: 90
+		if (!Ignored.method6774(var0, var3, var4)) {
+			var5 = null;
 		} else {
-			var5 = class390.method7053(); // L: 93
+			var5 = class390.method7053();
 		}
 
-		return var5; // L: 95
+		return var5;
 	}
 }

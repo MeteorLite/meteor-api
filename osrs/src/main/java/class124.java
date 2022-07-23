@@ -50,9 +50,9 @@ public enum class124 implements MouseWheel {
 	final int id;
 
 	class124(int var3, int var4) {
-		this.field1548 = var3; // L: 17
-		this.id = var4; // L: 18
-	} // L: 19
+		this.field1548 = var3;
+		this.id = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -61,7 +61,7 @@ public enum class124 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 23
+		return this.id;
 	}
 
 	@ObfuscatedName("v")
@@ -84,19 +84,19 @@ public enum class124 implements MouseWheel {
 		garbageValue = "15"
 	)
 	public static FloorOverlayDefinition method2814(int var0) {
-		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0); // L: 30
-		if (var1 != null) { // L: 31
+		FloorOverlayDefinition var1 = (FloorOverlayDefinition)FloorOverlayDefinition.FloorOverlayDefinition_cached.get((long)var0);
+		if (var1 != null) {
 			return var1;
 		} else {
-			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0); // L: 32
-			var1 = new FloorOverlayDefinition(); // L: 33
-			if (var2 != null) { // L: 34
+			byte[] var2 = FloorOverlayDefinition.FloorOverlayDefinition_archive.takeFile(4, var0);
+			var1 = new FloorOverlayDefinition();
+			if (var2 != null) {
 				var1.decode(new Buffer(var2), var0);
 			}
 
-			var1.postDecode(); // L: 35
-			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0); // L: 36
-			return var1; // L: 37
+			var1.postDecode();
+			FloorOverlayDefinition.FloorOverlayDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 
@@ -106,7 +106,7 @@ public enum class124 implements MouseWheel {
 		garbageValue = "127"
 	)
 	static VerticalAlignment[] method2820() {
-		return new VerticalAlignment[]{VerticalAlignment.field1963, VerticalAlignment.field1961, VerticalAlignment.VerticalAlignment_centered}; // L: 14
+		return new VerticalAlignment[]{VerticalAlignment.field1963, VerticalAlignment.field1961, VerticalAlignment.VerticalAlignment_centered};
 	}
 
 	@ObfuscatedName("lw")
@@ -116,7 +116,7 @@ public enum class124 implements MouseWheel {
 	)
 	@Export("getWidgetFlags")
 	static int getWidgetFlags(Widget var0) {
-		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32)); // L: 12289
-		return var1 != null ? var1.integer : var0.flags; // L: 12290 12291
+		IntegerNode var1 = (IntegerNode)Client.widgetFlags.get((long)var0.childIndex + ((long)var0.id << 32));
+		return var1 != null ? var1.integer : var0.flags;
 	}
 }

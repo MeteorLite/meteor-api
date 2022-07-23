@@ -18,7 +18,7 @@ public abstract class AbstractUserComparator implements Comparator {
 	Comparator nextComparator;
 
 	protected AbstractUserComparator() {
-	} // L: 8
+	}
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
@@ -27,13 +27,13 @@ public abstract class AbstractUserComparator implements Comparator {
 	)
 	@Export("addComparator")
 	final void addComparator(Comparator var1) {
-		if (this.nextComparator == null) { // L: 11
-			this.nextComparator = var1; // L: 12
-		} else if (this.nextComparator instanceof AbstractUserComparator) { // L: 14
-			((AbstractUserComparator)this.nextComparator).addComparator(var1); // L: 15
+		if (this.nextComparator == null) {
+			this.nextComparator = var1;
+		} else if (this.nextComparator instanceof AbstractUserComparator) {
+			((AbstractUserComparator)this.nextComparator).addComparator(var1);
 		}
 
-	} // L: 17
+	}
 
 	@ObfuscatedName("y")
 	@ObfuscatedSignature(
@@ -42,11 +42,11 @@ public abstract class AbstractUserComparator implements Comparator {
 	)
 	@Export("compareUser")
 	protected final int compareUser(User var1, User var2) {
-		return this.nextComparator == null ? 0 : this.nextComparator.compare(var1, var2); // L: 20 21
+		return this.nextComparator == null ? 0 : this.nextComparator.compare(var1, var2);
 	}
 
 	public boolean equals(Object var1) {
-		return super.equals(var1); // L: 25
+		return super.equals(var1);
 	}
 
 	@ObfuscatedName("c")
@@ -56,42 +56,42 @@ public abstract class AbstractUserComparator implements Comparator {
 	)
 	@Export("updatePlayer")
 	static final void updatePlayer(PacketBuffer var0) {
-		var0.importIndex(); // L: 37
-		int var1 = Client.localPlayerIndex; // L: 38
-		Player var2 = class101.localPlayer = Client.players[var1] = new Player(); // L: 39
-		var2.index = var1; // L: 40
-		int var3 = var0.readBits(30); // L: 41
-		byte var4 = (byte)(var3 >> 28); // L: 42
-		int var5 = var3 >> 14 & 16383; // L: 43
-		int var6 = var3 & 16383; // L: 44
-		var2.pathX[0] = var5 - class28.baseX; // L: 45
-		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6); // L: 46
-		var2.pathY[0] = var6 - WorldMapLabelSize.baseY; // L: 47
-		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6); // L: 48
-		PacketWriter.Client_plane = var2.plane = var4; // L: 49
-		if (Players.field1307[var1] != null) { // L: 50
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = class101.localPlayer = Client.players[var1] = new Player();
+		var2.index = var1;
+		int var3 = var0.readBits(30);
+		byte var4 = (byte)(var3 >> 28);
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - class28.baseX;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - WorldMapLabelSize.baseY;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		PacketWriter.Client_plane = var2.plane = var4;
+		if (Players.field1307[var1] != null) {
 			var2.read(Players.field1307[var1]);
 		}
 
-		Players.Players_count = 0; // L: 51
-		Players.Players_indices[++Players.Players_count - 1] = var1; // L: 52
-		Players.field1311[var1] = 0; // L: 53
-		Players.Players_emptyIdxCount = 0; // L: 54
+		Players.Players_count = 0;
+		Players.Players_indices[++Players.Players_count - 1] = var1;
+		Players.field1311[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
 
-		for (int var7 = 1; var7 < 2048; ++var7) { // L: 55
-			if (var1 != var7) { // L: 56
-				int var8 = var0.readBits(18); // L: 57
-				int var9 = var8 >> 16; // L: 58
-				int var10 = var8 >> 8 & 597; // L: 59
-				int var11 = var8 & 597; // L: 60
-				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28); // L: 61
-				Players.Players_orientations[var7] = 0; // L: 62
-				Players.Players_targetIndices[var7] = -1; // L: 63
-				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7; // L: 64
-				Players.field1311[var7] = 0; // L: 65
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var1 != var7) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = var8 >> 8 & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+				Players.field1311[var7] = 0;
 			}
 		}
 
-		var0.exportIndex(); // L: 67
-	} // L: 68
+		var0.exportIndex();
+	}
 }

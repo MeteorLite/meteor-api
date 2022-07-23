@@ -65,7 +65,7 @@ public class WorldMapSection2 implements WorldMapSection {
 	int field2687;
 
 	WorldMapSection2() {
-	} // L: 18
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -74,23 +74,23 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("expandBounds")
 	public void expandBounds(WorldMapArea var1) {
-		if (var1.regionLowX > this.field2693) { // L: 22
+		if (var1.regionLowX > this.field2693) {
 			var1.regionLowX = this.field2693;
 		}
 
 		if (var1.regionHighX < this.field2695) {
-			var1.regionHighX = this.field2695; // L: 23
+			var1.regionHighX = this.field2695;
 		}
 
-		if (var1.regionLowY > this.field2689) { // L: 24
+		if (var1.regionLowY > this.field2689) {
 			var1.regionLowY = this.field2689;
 		}
 
-		if (var1.regionHighY < this.field2687) { // L: 25
+		if (var1.regionHighY < this.field2687) {
 			var1.regionHighY = this.field2687;
 		}
 
-	} // L: 26
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -99,10 +99,10 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("containsCoord")
 	public boolean containsCoord(int var1, int var2, int var3) {
-		if (var1 >= this.minPlane && var1 < this.planes + this.minPlane) { // L: 30
-			return var2 >> 6 >= this.regionStartX && var2 >> 6 <= this.regionEndX && var3 >> 6 >= this.regionStartY && var3 >> 6 <= this.regionEndY; // L: 33
+		if (var1 >= this.minPlane && var1 < this.planes + this.minPlane) {
+			return var2 >> 6 >= this.regionStartX && var2 >> 6 <= this.regionEndX && var3 >> 6 >= this.regionStartY && var3 >> 6 <= this.regionEndY;
 		} else {
-			return false; // L: 31
+			return false;
 		}
 	}
 
@@ -113,7 +113,7 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("containsPosition")
 	public boolean containsPosition(int var1, int var2) {
-		return var1 >> 6 >= this.field2693 && var1 >> 6 <= this.field2695 && var2 >> 6 >= this.field2689 && var2 >> 6 <= this.field2687; // L: 38
+		return var1 >> 6 >= this.field2693 && var1 >> 6 <= this.field2695 && var2 >> 6 >= this.field2689 && var2 >> 6 <= this.field2687;
 	}
 
 	@ObfuscatedName("f")
@@ -123,11 +123,11 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("getBorderTileLengths")
 	public int[] getBorderTileLengths(int var1, int var2, int var3) {
-		if (!this.containsCoord(var1, var2, var3)) { // L: 43
-			return null; // L: 44
+		if (!this.containsCoord(var1, var2, var3)) {
+			return null;
 		} else {
-			int[] var4 = new int[]{var2 + (this.field2693 * 64 - this.regionStartX * 64), var3 + (this.field2689 * 64 - this.regionStartY * 64)}; // L: 46 47 48
-			return var4; // L: 49
+			int[] var4 = new int[]{var2 + (this.field2693 * 64 - this.regionStartX * 64), var3 + (this.field2689 * 64 - this.regionStartY * 64)};
+			return var4;
 		}
 	}
 
@@ -138,12 +138,12 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("coord")
 	public Coord coord(int var1, int var2) {
-		if (!this.containsPosition(var1, var2)) { // L: 54
-			return null; // L: 55
+		if (!this.containsPosition(var1, var2)) {
+			return null;
 		} else {
-			int var3 = this.regionStartX * 64 - this.field2693 * 64 + var1; // L: 57
-			int var4 = var2 + (this.regionStartY * 64 - this.field2689 * 64); // L: 58
-			return new Coord(this.minPlane, var3, var4); // L: 59
+			int var3 = this.regionStartX * 64 - this.field2693 * 64 + var1;
+			int var4 = var2 + (this.regionStartY * 64 - this.field2689 * 64);
+			return new Coord(this.minPlane, var3, var4);
 		}
 	}
 
@@ -154,18 +154,18 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("read")
 	public void read(Buffer var1) {
-		this.minPlane = var1.readUnsignedByte(); // L: 64
-		this.planes = var1.readUnsignedByte(); // L: 65
-		this.regionStartX = var1.readUnsignedShort(); // L: 66
-		this.regionStartY = var1.readUnsignedShort(); // L: 67
-		this.regionEndX = var1.readUnsignedShort(); // L: 68
-		this.regionEndY = var1.readUnsignedShort(); // L: 69
-		this.field2693 = var1.readUnsignedShort(); // L: 70
-		this.field2689 = var1.readUnsignedShort(); // L: 71
-		this.field2695 = var1.readUnsignedShort(); // L: 72
-		this.field2687 = var1.readUnsignedShort(); // L: 73
-		this.postRead(); // L: 74
-	} // L: 75
+		this.minPlane = var1.readUnsignedByte();
+		this.planes = var1.readUnsignedByte();
+		this.regionStartX = var1.readUnsignedShort();
+		this.regionStartY = var1.readUnsignedShort();
+		this.regionEndX = var1.readUnsignedShort();
+		this.regionEndY = var1.readUnsignedShort();
+		this.field2693 = var1.readUnsignedShort();
+		this.field2689 = var1.readUnsignedShort();
+		this.field2695 = var1.readUnsignedShort();
+		this.field2687 = var1.readUnsignedShort();
+		this.postRead();
+	}
 
 	@ObfuscatedName("g")
 	@ObfuscatedSignature(
@@ -174,7 +174,7 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("postRead")
 	void postRead() {
-	} // L: 77
+	}
 
 	@ObfuscatedName("q")
 	@ObfuscatedSignature(
@@ -183,37 +183,37 @@ public class WorldMapSection2 implements WorldMapSection {
 	)
 	@Export("loadInterface")
 	public static boolean loadInterface(int var0) {
-		if (class228.Widget_loadedInterfaces[var0]) { // L: 237
+		if (class228.Widget_loadedInterfaces[var0]) {
 			return true;
-		} else if (!MusicPatchPcmStream.Widget_archive.tryLoadGroup(var0)) { // L: 238
+		} else if (!MusicPatchPcmStream.Widget_archive.tryLoadGroup(var0)) {
 			return false;
 		} else {
-			int var1 = MusicPatchPcmStream.Widget_archive.getGroupFileCount(var0); // L: 239
-			if (var1 == 0) { // L: 240
-				class228.Widget_loadedInterfaces[var0] = true; // L: 241
-				return true; // L: 242
+			int var1 = MusicPatchPcmStream.Widget_archive.getGroupFileCount(var0);
+			if (var1 == 0) {
+				class228.Widget_loadedInterfaces[var0] = true;
+				return true;
 			} else {
-				if (SoundCache.Widget_interfaceComponents[var0] == null) { // L: 244
+				if (SoundCache.Widget_interfaceComponents[var0] == null) {
 					SoundCache.Widget_interfaceComponents[var0] = new Widget[var1];
 				}
 
-				for (int var2 = 0; var2 < var1; ++var2) { // L: 245
-					if (SoundCache.Widget_interfaceComponents[var0][var2] == null) { // L: 246
-						byte[] var3 = MusicPatchPcmStream.Widget_archive.takeFile(var0, var2); // L: 247
-						if (var3 != null) { // L: 248
-							SoundCache.Widget_interfaceComponents[var0][var2] = new Widget(); // L: 249
-							SoundCache.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16); // L: 250
-							if (var3[0] == -1) { // L: 251
+				for (int var2 = 0; var2 < var1; ++var2) {
+					if (SoundCache.Widget_interfaceComponents[var0][var2] == null) {
+						byte[] var3 = MusicPatchPcmStream.Widget_archive.takeFile(var0, var2);
+						if (var3 != null) {
+							SoundCache.Widget_interfaceComponents[var0][var2] = new Widget();
+							SoundCache.Widget_interfaceComponents[var0][var2].id = var2 + (var0 << 16);
+							if (var3[0] == -1) {
 								SoundCache.Widget_interfaceComponents[var0][var2].decode(new Buffer(var3));
 							} else {
-								SoundCache.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3)); // L: 252
+								SoundCache.Widget_interfaceComponents[var0][var2].decodeLegacy(new Buffer(var3));
 							}
 						}
 					}
 				}
 
-				class228.Widget_loadedInterfaces[var0] = true; // L: 256
-				return true; // L: 257
+				class228.Widget_loadedInterfaces[var0] = true;
+				return true;
 			}
 		}
 	}

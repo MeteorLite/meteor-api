@@ -13,15 +13,15 @@ public class class391 implements class396 {
 		descriptor = "(Lpl;)V"
 	)
 	class391(class421 var1) {
-		this.field4424 = var1; // L: 14
-	} // L: 15
+		this.field4424 = var1;
+	}
 
 	@ObfuscatedSignature(
 		descriptor = "(Loz;)V"
 	)
 	public class391(class392 var1) {
-		this(new class421(var1)); // L: 10
-	} // L: 11
+		this(new class421(var1));
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -29,6 +29,6 @@ public class class391 implements class396 {
 		garbageValue = "-275089160"
 	)
 	public int method7055(int var1) {
-		return this.field4424.vmethod7440(var1); // L: 18
+		return this.field4424.vmethod7440(var1);
 	}
 }

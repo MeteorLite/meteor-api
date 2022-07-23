@@ -22,19 +22,19 @@ public class class290 {
 	)
 	class290(String var1, UrlRequester var2) {
 		try {
-			this.field3331 = var2.request(new URL(var1)); // L: 16
-		} catch (MalformedURLException var4) { // L: 18
+			this.field3331 = var2.request(new URL(var1));
+		} catch (MalformedURLException var4) {
 			this.field3331 = null;
 		}
 
-	} // L: 21
+	}
 
 	@ObfuscatedSignature(
 		descriptor = "(Lct;)V"
 	)
 	class290(UrlRequest var1) {
-		this.field3331 = var1; // L: 24
-	} // L: 25
+		this.field3331 = var1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -42,15 +42,15 @@ public class class290 {
 		garbageValue = "47"
 	)
 	SpritePixels method5562() {
-		if (this.field3332 == null && this.field3331 != null && this.field3331.isDone()) { // L: 28
-			if (this.field3331.getResponse() != null) { // L: 29
-				this.field3332 = ItemLayer.method3920(this.field3331.getResponse()); // L: 30
+		if (this.field3332 == null && this.field3331 != null && this.field3331.isDone()) {
+			if (this.field3331.getResponse() != null) {
+				this.field3332 = ItemLayer.method3920(this.field3331.getResponse());
 			}
 
-			this.field3331 = null; // L: 32
+			this.field3331 = null;
 		}
 
-		return this.field3332; // L: 34
+		return this.field3332;
 	}
 
 	@ObfuscatedName("c")
@@ -60,6 +60,6 @@ public class class290 {
 	)
 	@Export("addGameMessage")
 	static void addGameMessage(int var0, String var1, String var2) {
-		SecureRandomFuture.addChatMessage(var0, var1, var2, (String)null); // L: 19
-	} // L: 20
+		SecureRandomFuture.addChatMessage(var0, var1, var2, (String)null);
+	}
 }

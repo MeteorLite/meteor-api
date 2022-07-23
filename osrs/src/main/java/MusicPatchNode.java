@@ -117,7 +117,7 @@ public class MusicPatchNode extends Node {
 	int field3270;
 
 	MusicPatchNode() {
-	} // L: 31
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -125,11 +125,11 @@ public class MusicPatchNode extends Node {
 		garbageValue = "-120"
 	)
 	void method5471() {
-		this.patch = null; // L: 34
-		this.rawSound = null; // L: 35
-		this.field3264 = null; // L: 36
-		this.stream = null; // L: 37
-	} // L: 38
+		this.patch = null;
+		this.rawSound = null;
+		this.field3264 = null;
+		this.stream = null;
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -138,16 +138,16 @@ public class MusicPatchNode extends Node {
 	)
 	public static PacketBufferNode method5473() {
 		PacketBufferNode var0;
-		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) { // L: 47
-			var0 = new PacketBufferNode(); // L: 48
+		if (PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0) {
+			var0 = new PacketBufferNode();
 		} else {
-			var0 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount]; // L: 51
+			var0 = PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
 		}
 
-		var0.clientPacket = null; // L: 54
-		var0.clientPacketLength = 0; // L: 55
-		var0.packetBuffer = new PacketBuffer(5000); // L: 56
-		return var0; // L: 57
+		var0.clientPacket = null;
+		var0.clientPacketLength = 0;
+		var0.packetBuffer = new PacketBuffer(5000);
+		return var0;
 	}
 
 	@ObfuscatedName("v")
@@ -156,13 +156,13 @@ public class MusicPatchNode extends Node {
 		garbageValue = "-507334207"
 	)
 	public static class432 method5472(int var0) {
-		int var1 = class430.field4652[var0]; // L: 19
-		if (var1 == 1) { // L: 20
-			return class432.field4658; // L: 21
-		} else if (var1 == 2) { // L: 23
-			return class432.field4657; // L: 24
+		int var1 = class430.field4652[var0];
+		if (var1 == 1) {
+			return class432.field4658;
+		} else if (var1 == 2) {
+			return class432.field4657;
 		} else {
-			return var1 == 3 ? class432.field4656 : null; // L: 26 27 29
+			return var1 == 3 ? class432.field4656 : null;
 		}
 	}
 }

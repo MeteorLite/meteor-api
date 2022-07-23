@@ -21,8 +21,8 @@ public class UrlRequest {
 	volatile byte[] response0;
 
 	UrlRequest(URL var1) {
-		this.url = var1; // L: 118
-	} // L: 119
+		this.url = var1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -31,7 +31,7 @@ public class UrlRequest {
 	)
 	@Export("isDone")
 	public boolean isDone() {
-		return this.isDone0; // L: 122
+		return this.isDone0;
 	}
 
 	@ObfuscatedName("v")
@@ -41,7 +41,7 @@ public class UrlRequest {
 	)
 	@Export("getResponse")
 	public byte[] getResponse() {
-		return this.response0; // L: 126
+		return this.response0;
 	}
 
 	@ObfuscatedName("q")
@@ -50,7 +50,7 @@ public class UrlRequest {
 		garbageValue = "-2136536725"
 	)
 	public String method2553() {
-		return this.url.toString(); // L: 130
+		return this.url.toString();
 	}
 
 	@ObfuscatedName("e")
@@ -59,8 +59,8 @@ public class UrlRequest {
 		garbageValue = "-1626715483"
 	)
 	public static int method2557(boolean var0, boolean var1) {
-		byte var2 = 0; // L: 143
-		int var3 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount; // L: 144
-		return var3; // L: 145
+		byte var2 = 0;
+		int var3 = var2 + NetCache.NetCache_pendingPriorityWritesCount + NetCache.NetCache_pendingPriorityResponsesCount;
+		return var3;
 	}
 }

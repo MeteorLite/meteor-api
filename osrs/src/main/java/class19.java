@@ -17,12 +17,12 @@ public class class19 {
 	String field106;
 
 	class19(Future var1) {
-		this.field107 = var1; // L: 10
-	} // L: 11
+		this.field107 = var1;
+	}
 
 	class19(String var1) {
-		this.method243(var1); // L: 14
-	} // L: 15
+		this.method243(var1);
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -30,17 +30,17 @@ public class class19 {
 		garbageValue = "1161369831"
 	)
 	void method243(String var1) {
-		if (var1 == null) { // L: 18
+		if (var1 == null) {
 			var1 = "";
 		}
 
-		this.field106 = var1; // L: 19
-		if (this.field107 != null) { // L: 20
-			this.field107.cancel(true); // L: 21
-			this.field107 = null; // L: 22
+		this.field106 = var1;
+		if (this.field107 != null) {
+			this.field107.cancel(true);
+			this.field107 = null;
 		}
 
-	} // L: 24
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -48,7 +48,7 @@ public class class19 {
 		garbageValue = "-688611992"
 	)
 	public final String method244() {
-		return this.field106; // L: 27
+		return this.field106;
 	}
 
 	@ObfuscatedName("q")
@@ -57,7 +57,7 @@ public class class19 {
 		garbageValue = "731102059"
 	)
 	public boolean method251() {
-		return this.field106 != null || this.field107 == null; // L: 31
+		return this.field106 != null || this.field107 == null;
 	}
 
 	@ObfuscatedName("f")
@@ -66,7 +66,7 @@ public class class19 {
 		garbageValue = "1151479385"
 	)
 	public final boolean method246() {
-		return this.method251() ? true : this.field107.isDone(); // L: 35 36
+		return this.method251() ? true : this.field107.isDone();
 	}
 
 	@ObfuscatedName("j")
@@ -75,18 +75,18 @@ public class class19 {
 		garbageValue = "-5003"
 	)
 	public final class21 method249() {
-		if (this.method251()) { // L: 40
+		if (this.method251()) {
 			return new class21(this.field106);
-		} else if (!this.method246()) { // L: 41
+		} else if (!this.method246()) {
 			return null;
 		} else {
 			try {
-				return (class21)this.field107.get(); // L: 43
-			} catch (Exception var3) { // L: 45
-				String var2 = "Error retrieving REST request reply"; // L: 46
-				System.err.println(var2 + "\r\n" + var3); // L: 47
-				this.method243(var2); // L: 48
-				return new class21(var2); // L: 49
+				return (class21)this.field107.get();
+			} catch (Exception var3) {
+				String var2 = "Error retrieving REST request reply";
+				System.err.println(var2 + "\r\n" + var3);
+				this.method243(var2);
+				return new class21(var2);
 			}
 		}
 	}
@@ -97,11 +97,11 @@ public class class19 {
 		garbageValue = "234177073"
 	)
 	static class119 method254(int var0) {
-		class119 var1 = (class119)Actor.findEnumerated(UserComparator9.method2599(), var0); // L: 92
+		class119 var1 = (class119)Actor.findEnumerated(UserComparator9.method2599(), var0);
 		if (var1 == null) {
-			var1 = class119.field1497; // L: 93
+			var1 = class119.field1497;
 		}
 
-		return var1; // L: 94
+		return var1;
 	}
 }

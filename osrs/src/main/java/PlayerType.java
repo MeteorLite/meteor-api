@@ -114,11 +114,11 @@ public enum PlayerType implements MouseWheel {
 	public final boolean isUser;
 
 	PlayerType(int var3, int var4, boolean var5, boolean var6, boolean var7) {
-		this.id = var3; // L: 33
-		this.modIcon = var4; // L: 34
-		this.isPrivileged = var6; // L: 35
-		this.isUser = var7; // L: 36
-	} // L: 37
+		this.id = var3;
+		this.modIcon = var4;
+		this.isPrivileged = var6;
+		this.isUser = var7;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -127,6 +127,6 @@ public enum PlayerType implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 41
+		return this.id;
 	}
 }

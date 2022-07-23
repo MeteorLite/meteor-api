@@ -78,19 +78,19 @@ public class Interpreter {
 	static Widget dragInventoryWidget;
 
 	static {
-		Interpreter_arrayLengths = new int[5]; // L: 83
-		Interpreter_arrays = new int[5][5000]; // L: 84
-		Interpreter_intStack = new int[1000]; // L: 85
-		Interpreter_stringStack = new String[1000]; // L: 87
-		Interpreter_frameDepth = 0; // L: 89
-		Interpreter_frames = new ScriptFrame[50]; // L: 90
-		Interpreter_calendar = java.util.Calendar.getInstance(); // L: 96
-		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}; // L: 99
-		field829 = false; // L: 102
-		field842 = false; // L: 103
-		field843 = new ArrayList(); // L: 104
-		field850 = 0; // L: 105
-		field845 = Math.log(2.0D); // L: 109
+		Interpreter_arrayLengths = new int[5];
+		Interpreter_arrays = new int[5][5000];
+		Interpreter_intStack = new int[1000];
+		Interpreter_stringStack = new String[1000];
+		Interpreter_frameDepth = 0;
+		Interpreter_frames = new ScriptFrame[50];
+		Interpreter_calendar = java.util.Calendar.getInstance();
+		Interpreter_MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+		field829 = false;
+		field842 = false;
+		field843 = new ArrayList();
+		field850 = 0;
+		field845 = Math.log(2.0D);
 	}
 
 	@ObfuscatedName("f")
@@ -99,7 +99,7 @@ public class Interpreter {
 		garbageValue = "1105102872"
 	)
 	static class123[] method1866() {
-		return new class123[]{class123.field1535, class123.field1529, class123.field1542, class123.field1531, class123.field1536, class123.field1533, class123.field1534, class123.field1532, class123.field1528}; // L: 113
+		return new class123[]{class123.field1535, class123.field1529, class123.field1542, class123.field1531, class123.field1536, class123.field1533, class123.field1534, class123.field1532, class123.field1528};
 	}
 
 	@ObfuscatedName("w")
@@ -108,8 +108,8 @@ public class Interpreter {
 		garbageValue = "1772742726"
 	)
 	public static void method1868() {
-		StructComposition.StructDefinition_cached.clear(); // L: 71
-	} // L: 72
+		StructComposition.StructDefinition_cached.clear();
+	}
 
 	@ObfuscatedName("y")
 	@ObfuscatedSignature(
@@ -118,6 +118,6 @@ public class Interpreter {
 	)
 	@Export("getNextWorldListWorld")
 	static World getNextWorldListWorld() {
-		return World.World_listCount < World.World_count ? class362.World_worlds[++World.World_listCount - 1] : null; // L: 242 243
+		return World.World_listCount < World.World_count ? class362.World_worlds[++World.World_listCount - 1] : null;
 	}
 }

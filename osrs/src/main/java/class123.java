@@ -66,9 +66,9 @@ public enum class123 implements MouseWheel {
 	final int field1538;
 
 	class123(int var3, int var4) {
-		this.field1537 = var3; // L: 117
-		this.field1538 = var4; // L: 118
-	} // L: 119
+		this.field1537 = var3;
+		this.field1538 = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -77,7 +77,7 @@ public enum class123 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1538; // L: 122
+		return this.field1538;
 	}
 
 	@ObfuscatedName("lk")
@@ -86,12 +86,12 @@ public enum class123 implements MouseWheel {
 		garbageValue = "-5"
 	)
 	static class436 method2813(int var0) {
-		class436 var1 = (class436)Client.Widget_cachedModels.get((long)var0); // L: 12477
-		if (var1 == null) { // L: 12478
-			var1 = new class436(class132.field1588, class285.method5516(var0), HealthBarUpdate.method2199(var0)); // L: 12479
-			Client.Widget_cachedModels.put(var1, (long)var0); // L: 12480
+		class436 var1 = (class436)Client.Widget_cachedModels.get((long)var0);
+		if (var1 == null) {
+			var1 = new class436(class132.field1588, class285.method5516(var0), HealthBarUpdate.method2199(var0));
+			Client.Widget_cachedModels.put(var1, (long)var0);
 		}
 
-		return var1; // L: 12482
+		return var1;
 	}
 }

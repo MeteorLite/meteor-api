@@ -43,9 +43,9 @@ public enum class390 implements MouseWheel {
 	final int field4421;
 
 	class390(int var3, int var4) {
-		this.field4417 = var3; // L: 16
-		this.field4421 = var4; // L: 17
-	} // L: 18
+		this.field4417 = var3;
+		this.field4421 = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -54,7 +54,7 @@ public enum class390 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field4421; // L: 22
+		return this.field4421;
 	}
 
 	@ObfuscatedName("g")
@@ -63,21 +63,21 @@ public enum class390 implements MouseWheel {
 		garbageValue = "14"
 	)
 	static IndexedSprite method7053() {
-		IndexedSprite var0 = new IndexedSprite(); // L: 136
-		var0.width = ModelData0.SpriteBuffer_spriteWidth; // L: 137
-		var0.height = class456.SpriteBuffer_spriteHeight; // L: 138
-		var0.xOffset = class426.SpriteBuffer_xOffsets[0]; // L: 139
-		var0.yOffset = class142.SpriteBuffer_yOffsets[0]; // L: 140
-		var0.subWidth = class359.SpriteBuffer_spriteWidths[0]; // L: 141
-		var0.subHeight = class456.SpriteBuffer_spriteHeights[0]; // L: 142
-		var0.palette = class13.SpriteBuffer_spritePalette; // L: 143
-		var0.pixels = class421.SpriteBuffer_pixels[0]; // L: 144
-		class426.SpriteBuffer_xOffsets = null; // L: 146
-		class142.SpriteBuffer_yOffsets = null; // L: 147
-		class359.SpriteBuffer_spriteWidths = null; // L: 148
-		class456.SpriteBuffer_spriteHeights = null; // L: 149
-		class13.SpriteBuffer_spritePalette = null; // L: 150
-		class421.SpriteBuffer_pixels = null; // L: 151
-		return var0; // L: 153
+		IndexedSprite var0 = new IndexedSprite();
+		var0.width = ModelData0.SpriteBuffer_spriteWidth;
+		var0.height = class456.SpriteBuffer_spriteHeight;
+		var0.xOffset = class426.SpriteBuffer_xOffsets[0];
+		var0.yOffset = class142.SpriteBuffer_yOffsets[0];
+		var0.subWidth = class359.SpriteBuffer_spriteWidths[0];
+		var0.subHeight = class456.SpriteBuffer_spriteHeights[0];
+		var0.palette = class13.SpriteBuffer_spritePalette;
+		var0.pixels = class421.SpriteBuffer_pixels[0];
+		class426.SpriteBuffer_xOffsets = null;
+		class142.SpriteBuffer_yOffsets = null;
+		class359.SpriteBuffer_spriteWidths = null;
+		class456.SpriteBuffer_spriteHeights = null;
+		class13.SpriteBuffer_spritePalette = null;
+		class421.SpriteBuffer_pixels = null;
+		return var0;
 	}
 }

@@ -66,6 +66,6 @@ public class class272 {
 	static Fonts WorldMapElement_fonts;
 
 	static {
-		musicPlayerStatus = 0; // L: 11
+		musicPlayerStatus = 0;
 	}
 }

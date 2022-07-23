@@ -135,8 +135,8 @@ public enum WorldMapDecorationType implements MouseWheel {
 		garbageValue = "0"
 	)
 	WorldMapDecorationType(int var3, int var4) {
-		this.id = var3; // L: 34
-	} // L: 35
+		this.id = var3;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -145,7 +145,7 @@ public enum WorldMapDecorationType implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 39
+		return this.id;
 	}
 
 	@ObfuscatedName("i")
@@ -155,6 +155,6 @@ public enum WorldMapDecorationType implements MouseWheel {
 	)
 	@Export("isCharAlphabetic")
 	public static boolean isCharAlphabetic(char var0) {
-		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z'; // L: 155
+		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
 	}
 }

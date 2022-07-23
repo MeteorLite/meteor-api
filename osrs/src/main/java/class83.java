@@ -48,9 +48,9 @@ public enum class83 implements MouseWheel {
 	final int field1081;
 
 	class83(int var3, int var4) {
-		this.field1080 = var3; // L: 21
-		this.field1081 = var4; // L: 22
-	} // L: 23
+		this.field1080 = var3;
+		this.field1081 = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -59,7 +59,7 @@ public enum class83 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1081; // L: 27
+		return this.field1081;
 	}
 
 	@ObfuscatedName("f")
@@ -68,13 +68,13 @@ public enum class83 implements MouseWheel {
 		garbageValue = "155608234"
 	)
 	public static void method2118() {
-		if (KeyHandler.KeyHandler_instance != null) { // L: 167
-			synchronized(KeyHandler.KeyHandler_instance) { // L: 168
-				KeyHandler.KeyHandler_instance = null; // L: 169
-			} // L: 170
+		if (KeyHandler.KeyHandler_instance != null) {
+			synchronized(KeyHandler.KeyHandler_instance) {
+				KeyHandler.KeyHandler_instance = null;
+			}
 		}
 
-	} // L: 172
+	}
 
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
@@ -83,6 +83,6 @@ public enum class83 implements MouseWheel {
 	)
 	@Export("isDigit")
 	public static boolean isDigit(char var0) {
-		return var0 >= '0' && var0 <= '9'; // L: 159
+		return var0 >= '0' && var0 <= '9';
 	}
 }

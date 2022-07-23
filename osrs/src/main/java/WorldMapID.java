@@ -30,13 +30,13 @@ public class WorldMapID {
 	final int value;
 
 	static {
-		field2843 = new WorldMapID(0); // L: 4
-		field2840 = new WorldMapID(1); // L: 5
+		field2843 = new WorldMapID(0);
+		field2840 = new WorldMapID(1);
 	}
 
 	WorldMapID(int var1) {
-		this.value = var1; // L: 9
-	} // L: 10
+		this.value = var1;
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -45,7 +45,7 @@ public class WorldMapID {
 	)
 	@Export("Widget_unpackTargetMask")
 	public static int Widget_unpackTargetMask(int var0) {
-		return var0 >> 11 & 63; // L: 13
+		return var0 >> 11 & 63;
 	}
 
 	@ObfuscatedName("f")
@@ -54,6 +54,6 @@ public class WorldMapID {
 		garbageValue = "255"
 	)
 	public static boolean method5003(int var0) {
-		return (var0 >> 20 & 1) != 0; // L: 21
+		return (var0 >> 20 & 1) != 0;
 	}
 }

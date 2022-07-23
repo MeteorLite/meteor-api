@@ -7,7 +7,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Clock")
 public abstract class Clock {
 	Clock() {
-	} // L: 4
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -31,6 +31,6 @@ public abstract class Clock {
 		garbageValue = "2013103742"
 	)
 	public static boolean method3331(int var0) {
-		return var0 >= WorldMapDecorationType.field3553.id && var0 <= WorldMapDecorationType.field3552.id; // L: 43
+		return var0 >= WorldMapDecorationType.field3553.id && var0 <= WorldMapDecorationType.field3552.id;
 	}
 }

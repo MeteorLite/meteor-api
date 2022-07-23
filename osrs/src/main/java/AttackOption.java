@@ -50,8 +50,8 @@ public enum AttackOption implements MouseWheel {
 	final int id;
 
 	AttackOption(int var3) {
-		this.id = var3; // L: 12508
-	} // L: 12509
+		this.id = var3;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -60,7 +60,7 @@ public enum AttackOption implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 12513
+		return this.id;
 	}
 
 	@ObfuscatedName("c")
@@ -69,12 +69,12 @@ public enum AttackOption implements MouseWheel {
 		garbageValue = "-2127504965"
 	)
 	public static void method2410(AbstractArchive var0, int var1, int var2, int var3, boolean var4) {
-		class272.musicPlayerStatus = 1; // L: 26
-		class272.musicTrackArchive = var0; // L: 27
-		class272.musicTrackGroupId = var1; // L: 28
-		class151.musicTrackFileId = var2; // L: 29
-		class272.musicTrackVolume = var3; // L: 30
-		class11.musicTrackBoolean = var4; // L: 31
-		class272.pcmSampleLength = 10000; // L: 32
-	} // L: 33
+		class272.musicPlayerStatus = 1;
+		class272.musicTrackArchive = var0;
+		class272.musicTrackGroupId = var1;
+		class151.musicTrackFileId = var2;
+		class272.musicTrackVolume = var3;
+		class11.musicTrackBoolean = var4;
+		class272.pcmSampleLength = 10000;
+	}
 }

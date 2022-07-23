@@ -51,8 +51,8 @@ public class PacketBufferNode extends Node {
 	public int index;
 
 	static {
-		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300]; // L: 13
-		PacketBufferNode_packetBufferNodeCount = 0; // L: 14
+		PacketBufferNode_packetBufferNodes = new PacketBufferNode[300];
+		PacketBufferNode_packetBufferNodeCount = 0;
 	}
 
 	@ObfuscatedName("q")
@@ -62,10 +62,10 @@ public class PacketBufferNode extends Node {
 	)
 	@Export("release")
 	public void release() {
-		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) { // L: 61
-			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this; // L: 62
+		if (PacketBufferNode_packetBufferNodeCount < PacketBufferNode_packetBufferNodes.length) {
+			PacketBufferNode_packetBufferNodes[++PacketBufferNode_packetBufferNodeCount - 1] = this;
 		}
-	} // L: 63
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -73,8 +73,8 @@ public class PacketBufferNode extends Node {
 		garbageValue = "-1959147234"
 	)
 	public static void method5202() {
-		class33.reflectionChecks = new IterableNodeDeque(); // L: 24
-	} // L: 25
+		class33.reflectionChecks = new IterableNodeDeque();
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -82,18 +82,18 @@ public class PacketBufferNode extends Node {
 		garbageValue = "-1179746293"
 	)
 	public static void method5200(int var0, int var1) {
-		VarbitComposition var2 = WorldMapCacheName.method5054(var0); // L: 33
-		int var3 = var2.baseVar; // L: 34
-		int var4 = var2.startBit; // L: 35
-		int var5 = var2.endBit; // L: 36
-		int var6 = Varps.Varps_masks[var5 - var4]; // L: 37
-		if (var1 < 0 || var1 > var6) { // L: 38
+		VarbitComposition var2 = WorldMapCacheName.method5054(var0);
+		int var3 = var2.baseVar;
+		int var4 = var2.startBit;
+		int var5 = var2.endBit;
+		int var6 = Varps.Varps_masks[var5 - var4];
+		if (var1 < 0 || var1 > var6) {
 			var1 = 0;
 		}
 
-		var6 <<= var4; // L: 39
-		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6; // L: 40
-	} // L: 41
+		var6 <<= var4;
+		Varps.Varps_main[var3] = Varps.Varps_main[var3] & ~var6 | var1 << var4 & var6;
+	}
 
 	@ObfuscatedName("q")
 	@ObfuscatedSignature(
@@ -101,16 +101,16 @@ public class PacketBufferNode extends Node {
 		garbageValue = "-936573581"
 	)
 	static char method5203(char var0) {
-		switch(var0) { // L: 93
+		switch(var0) {
 		case ' ':
 		case '-':
 		case '_':
 		case ' ':
-			return '_'; // L: 145
+			return '_';
 		case '#':
 		case '[':
 		case ']':
-			return var0; // L: 157
+			return var0;
 		case 'À':
 		case 'Á':
 		case 'Â':
@@ -121,10 +121,10 @@ public class PacketBufferNode extends Node {
 		case 'â':
 		case 'ã':
 		case 'ä':
-			return 'a'; // L: 104
+			return 'a';
 		case 'Ç':
 		case 'ç':
-			return 'c'; // L: 153
+			return 'c';
 		case 'È':
 		case 'É':
 		case 'Ê':
@@ -133,17 +133,17 @@ public class PacketBufferNode extends Node {
 		case 'é':
 		case 'ê':
 		case 'ë':
-			return 'e'; // L: 129
+			return 'e';
 		case 'Í':
 		case 'Î':
 		case 'Ï':
 		case 'í':
 		case 'î':
 		case 'ï':
-			return 'i'; // L: 120
+			return 'i';
 		case 'Ñ':
 		case 'ñ':
-			return 'n'; // L: 160
+			return 'n';
 		case 'Ò':
 		case 'Ó':
 		case 'Ô':
@@ -154,7 +154,7 @@ public class PacketBufferNode extends Node {
 		case 'ô':
 		case 'õ':
 		case 'ö':
-			return 'o'; // L: 140
+			return 'o';
 		case 'Ù':
 		case 'Ú':
 		case 'Û':
@@ -163,14 +163,14 @@ public class PacketBufferNode extends Node {
 		case 'ú':
 		case 'û':
 		case 'ü':
-			return 'u'; // L: 113
+			return 'u';
 		case 'ß':
-			return 'b'; // L: 147
+			return 'b';
 		case 'ÿ':
 		case 'Ÿ':
-			return 'y'; // L: 150
+			return 'y';
 		default:
-			return Character.toLowerCase(var0); // L: 162
+			return Character.toLowerCase(var0);
 		}
 	}
 
@@ -180,9 +180,9 @@ public class PacketBufferNode extends Node {
 		garbageValue = "-21851942"
 	)
 	public static void method5194() {
-		NPCComposition.NpcDefinition_cached.clear(); // L: 291
-		NPCComposition.NpcDefinition_cachedModels.clear(); // L: 292
-	} // L: 293
+		NPCComposition.NpcDefinition_cached.clear();
+		NPCComposition.NpcDefinition_cachedModels.clear();
+	}
 
 	@ObfuscatedName("kh")
 	@ObfuscatedSignature(
@@ -190,20 +190,20 @@ public class PacketBufferNode extends Node {
 		garbageValue = "-1529183895"
 	)
 	static final void method5196(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 255); // L: 11840
-		if (var0 != class19.clientPreferences.method2258()) { // L: 11841
-			if (class19.clientPreferences.method2258() == 0 && Client.currentTrackGroupId != -1) { // L: 11842
-				AttackOption.method2410(class121.archive6, Client.currentTrackGroupId, 0, var0, false); // L: 11843
-				Client.playingJingle = false; // L: 11844
-			} else if (var0 == 0) { // L: 11846
-				ReflectionCheck.method579(); // L: 11847
-				Client.playingJingle = false; // L: 11848
+		var0 = Math.min(Math.max(var0, 0), 255);
+		if (var0 != class19.clientPreferences.method2258()) {
+			if (class19.clientPreferences.method2258() == 0 && Client.currentTrackGroupId != -1) {
+				AttackOption.method2410(class121.archive6, Client.currentTrackGroupId, 0, var0, false);
+				Client.playingJingle = false;
+			} else if (var0 == 0) {
+				ReflectionCheck.method579();
+				Client.playingJingle = false;
 			} else {
-				Decimator.method1005(var0); // L: 11850
+				Decimator.method1005(var0);
 			}
 
-			class19.clientPreferences.method2297(var0); // L: 11851
+			class19.clientPreferences.method2297(var0);
 		}
 
-	} // L: 11853
+	}
 }

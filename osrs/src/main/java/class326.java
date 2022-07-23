@@ -26,13 +26,13 @@ public class class326 {
 	static String[] Interpreter_stringLocals;
 
 	static {
-		field4079 = new class326(); // L: 4
-		field4083 = new class326(); // L: 5
-		field4080 = new class326(); // L: 6
+		field4079 = new class326();
+		field4083 = new class326();
+		field4080 = new class326();
 	}
 
 	class326() {
-	} // L: 8
+	}
 
 	@ObfuscatedName("q")
 	@ObfuscatedSignature(
@@ -40,6 +40,6 @@ public class class326 {
 		garbageValue = "-408398263"
 	)
 	static char method6050(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0; // L: 61 62
+		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
 	}
 }

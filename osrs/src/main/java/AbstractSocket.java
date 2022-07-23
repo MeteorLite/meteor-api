@@ -8,7 +8,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("AbstractSocket")
 public abstract class AbstractSocket {
 	AbstractSocket() {
-	} // L: 7
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -64,6 +64,6 @@ public abstract class AbstractSocket {
 		garbageValue = "-106"
 	)
 	public static IndexedSprite method6819(AbstractArchive var0, int var1) {
-		return !class431.method7559(var0, var1) ? null : class390.method7053(); // L: 131 132
+		return !class431.method7559(var0, var1) ? null : class390.method7053();
 	}
 }

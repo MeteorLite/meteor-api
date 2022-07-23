@@ -47,14 +47,14 @@ public class GameBuild {
 	public final int buildId;
 
 	static {
-		LIVE = new GameBuild("LIVE", 0); // L: 5
-		BUILDLIVE = new GameBuild("BUILDLIVE", 3); // L: 6
-		RC = new GameBuild("RC", 1); // L: 7
-		WIP = new GameBuild("WIP", 2); // L: 8
+		LIVE = new GameBuild("LIVE", 0);
+		BUILDLIVE = new GameBuild("BUILDLIVE", 3);
+		RC = new GameBuild("RC", 1);
+		WIP = new GameBuild("WIP", 2);
 	}
 
 	GameBuild(String var1, int var2) {
-		this.name = var1; // L: 17
-		this.buildId = var2; // L: 18
-	} // L: 19
+		this.name = var1;
+		this.buildId = var2;
+	}
 }

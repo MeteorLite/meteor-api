@@ -14,7 +14,7 @@ public class class328 {
 
 	static {
 		new HashMap();
-	} // L: 9
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -22,6 +22,6 @@ public class class328 {
 		garbageValue = "1400532526"
 	)
 	public static void method6056(int var0) {
-		MouseHandler.MouseHandler_idleCycles = var0; // L: 45
-	} // L: 46
+		MouseHandler.MouseHandler_idleCycles = var0;
+	}
 }

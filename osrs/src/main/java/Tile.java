@@ -132,13 +132,13 @@ public final class Tile extends Node {
 	Tile linkedBelowTile;
 
 	Tile(int var1, int var2, int var3) {
-		this.gameObjects = new GameObject[5]; // L: 17
-		this.gameObjectEdgeMasks = new int[5]; // L: 18
-		this.gameObjectsEdgeMask = 0; // L: 19
-		this.originalPlane = this.plane = var1; // L: 31
-		this.x = var2; // L: 32
-		this.y = var3; // L: 33
-	} // L: 34
+		this.gameObjects = new GameObject[5];
+		this.gameObjectEdgeMasks = new int[5];
+		this.gameObjectsEdgeMask = 0;
+		this.originalPlane = this.plane = var1;
+		this.x = var2;
+		this.y = var3;
+	}
 
 	@ObfuscatedName("e")
 	@ObfuscatedSignature(
@@ -147,7 +147,7 @@ public final class Tile extends Node {
 	)
 	@Export("intToString")
 	public static String intToString(int var0, boolean var1) {
-		return var1 && var0 >= 0 ? class140.method3038(var0, 10, var1) : Integer.toString(var0); // L: 115 116
+		return var1 && var0 >= 0 ? class140.method3038(var0, 10, var1) : Integer.toString(var0);
 	}
 
 	@ObfuscatedName("k")
@@ -156,10 +156,10 @@ public final class Tile extends Node {
 		garbageValue = "29"
 	)
 	public static int method4019(int var0) {
-		if (var0 > 0) { // L: 204
+		if (var0 > 0) {
 			return 1;
 		} else {
-			return var0 < 0 ? -1 : 0; // L: 205 206
+			return var0 < 0 ? -1 : 0;
 		}
 	}
 }

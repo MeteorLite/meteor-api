@@ -12,7 +12,7 @@ public class class389 {
 	int field4414;
 
 	class389(float[] var1, int var2) {
-		this.field4415 = var1; // L: 10
-		this.field4414 = var2; // L: 11
-	} // L: 12
+		this.field4415 = var1;
+		this.field4414 = var2;
+	}
 }

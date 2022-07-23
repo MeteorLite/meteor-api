@@ -68,7 +68,7 @@ public final class ItemLayer {
 	int height;
 
 	ItemLayer() {
-	} // L: 13
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -76,24 +76,24 @@ public final class ItemLayer {
 		garbageValue = "-730527050"
 	)
 	public static final SpritePixels method3920(byte[] var0) {
-		BufferedImage var1 = null; // L: 20
+		BufferedImage var1 = null;
 
 		try {
-			Class var2 = ImageIO.class; // L: 22
+			Class var2 = ImageIO.class;
 			synchronized(ImageIO.class) {
-				var1 = ImageIO.read(new ByteArrayInputStream(var0)); // L: 23
-			} // L: 24
+				var1 = ImageIO.read(new ByteArrayInputStream(var0));
+			}
 
-			int var6 = var1.getWidth(); // L: 25
-			int var7 = var1.getHeight(); // L: 26
-			int[] var4 = new int[var6 * var7]; // L: 27
-			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6); // L: 28
-			var5.grabPixels(); // L: 29
-			return new SpritePixels(var4, var6, var7); // L: 30
-		} catch (IOException var9) { // L: 32
-		} catch (InterruptedException var10) { // L: 33
+			int var6 = var1.getWidth();
+			int var7 = var1.getHeight();
+			int[] var4 = new int[var6 * var7];
+			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6);
+			var5.grabPixels();
+			return new SpritePixels(var4, var6, var7);
+		} catch (IOException var9) {
+		} catch (InterruptedException var10) {
 		}
 
-		return new SpritePixels(0, 0); // L: 34
+		return new SpritePixels(0, 0);
 	}
 }

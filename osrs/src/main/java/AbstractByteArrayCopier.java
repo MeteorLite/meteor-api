@@ -20,7 +20,7 @@ public abstract class AbstractByteArrayCopier {
 	static Archive archive13;
 
 	AbstractByteArrayCopier() {
-	} // L: 4
+	}
 
 	@ObfuscatedName("f")
 	@ObfuscatedSignature(

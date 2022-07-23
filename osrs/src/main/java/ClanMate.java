@@ -20,9 +20,9 @@ public class ClanMate extends Buddy {
 	TriBool ignored;
 
 	ClanMate() {
-		this.friend = TriBool.TriBool_unknown; // L: 6
-		this.ignored = TriBool.TriBool_unknown; // L: 7
-	} // L: 9
+		this.friend = TriBool.TriBool_unknown;
+		this.ignored = TriBool.TriBool_unknown;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -31,8 +31,8 @@ public class ClanMate extends Buddy {
 	)
 	@Export("clearIsFriend")
 	void clearIsFriend() {
-		this.friend = TriBool.TriBool_unknown; // L: 12
-	} // L: 13
+		this.friend = TriBool.TriBool_unknown;
+	}
 
 	@ObfuscatedName("q")
 	@ObfuscatedSignature(
@@ -41,11 +41,11 @@ public class ClanMate extends Buddy {
 	)
 	@Export("isFriend")
 	public final boolean isFriend() {
-		if (this.friend == TriBool.TriBool_unknown) { // L: 16
-			this.fillIsFriend(); // L: 17
+		if (this.friend == TriBool.TriBool_unknown) {
+			this.fillIsFriend();
 		}
 
-		return this.friend == TriBool.TriBool_true; // L: 19
+		return this.friend == TriBool.TriBool_true;
 	}
 
 	@ObfuscatedName("f")
@@ -55,8 +55,8 @@ public class ClanMate extends Buddy {
 	)
 	@Export("fillIsFriend")
 	void fillIsFriend() {
-		this.friend = Player.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false; // L: 23
-	} // L: 24
+		this.friend = Player.friendSystem.friendsList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
 
 	@ObfuscatedName("e")
 	@ObfuscatedSignature(
@@ -65,7 +65,7 @@ public class ClanMate extends Buddy {
 	)
 	@Export("clearIsIgnored")
 	void clearIsIgnored() {
-		this.ignored = TriBool.TriBool_unknown; // L: 27
+		this.ignored = TriBool.TriBool_unknown;
 	}
 
 	@ObfuscatedName("g")
@@ -75,11 +75,11 @@ public class ClanMate extends Buddy {
 	)
 	@Export("isIgnored")
 	public final boolean isIgnored() {
-		if (this.ignored == TriBool.TriBool_unknown) { // L: 31
-			this.fillIsIgnored(); // L: 32
+		if (this.ignored == TriBool.TriBool_unknown) {
+			this.fillIsIgnored();
 		}
 
-		return this.ignored == TriBool.TriBool_true; // L: 34
+		return this.ignored == TriBool.TriBool_true;
 	}
 
 	@ObfuscatedName("w")
@@ -89,8 +89,8 @@ public class ClanMate extends Buddy {
 	)
 	@Export("fillIsIgnored")
 	void fillIsIgnored() {
-		this.ignored = Player.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false; // L: 38
-	} // L: 39
+		this.ignored = Player.friendSystem.ignoreList.contains(super.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -98,6 +98,6 @@ public class ClanMate extends Buddy {
 		garbageValue = "34"
 	)
 	public static int method6650(int var0) {
-		return class401.field4442[var0 & 16383]; // L: 28
+		return class401.field4442[var0 & 16383];
 	}
 }

@@ -16,7 +16,7 @@ public abstract class class394 implements class248 {
 	class432 field4428;
 
 	class394(int var1) {
-	} // L: 13
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -32,35 +32,35 @@ public abstract class class394 implements class248 {
 	)
 	public void method7073(Buffer var1) {
 		while (true) {
-			int var2 = var1.readUnsignedByte(); // L: 17
-			if (var2 == 0) { // L: 18
-				return; // L: 47
+			int var2 = var1.readUnsignedByte();
+			if (var2 == 0) {
+				return;
 			}
 
-			class390[] var3 = new class390[]{class390.field4418, class390.field4419, class390.field4420, class390.field4422}; // L: 21
-			class390 var4 = (class390)Actor.findEnumerated(var3, var2); // L: 23
-			if (var4 != null) { // L: 24
-				switch(var4.field4417) { // L: 25
+			class390[] var3 = new class390[]{class390.field4418, class390.field4419, class390.field4420, class390.field4422};
+			class390 var4 = (class390)Actor.findEnumerated(var3, var2);
+			if (var4 != null) {
+				switch(var4.field4417) {
 				case 0:
-					int var6 = var1.readUnsignedByte(); // L: 39
-					this.field4428 = MusicPatchNode.method5472(var6); // L: 40
+					int var6 = var1.readUnsignedByte();
+					this.field4428 = MusicPatchNode.method5472(var6);
 					if (this.field4428 != null) {
 						break;
 					}
 
-					throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var6); // L: 41
+					throw new IllegalStateException("Unknown ScriptVarType ID in VarType.decode: " + var6);
 				case 1:
-					class308[] var5 = new class308[]{class308.field3939, class308.field3938, class308.field3941, class308.field3940}; // L: 32
-					Actor.findEnumerated(var5, var1.readUnsignedByte()); // L: 34
-					break; // L: 35
+					class308[] var5 = new class308[]{class308.field3939, class308.field3938, class308.field3941, class308.field3940};
+					Actor.findEnumerated(var5, var1.readUnsignedByte());
+					break;
 				case 2:
-					var1.readStringCp1252NullCircumfixed(); // L: 27
+					var1.readStringCp1252NullCircumfixed();
 					break;
 				default:
-					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var4); // L: 37
+					throw new IllegalStateException("Unrecognised VarTypeEncodingKey - " + var4);
 				}
 			} else {
-				this.vmethod7080(var1, var2); // L: 45
+				this.vmethod7080(var1, var2);
 			}
 		}
 	}
@@ -71,7 +71,7 @@ public abstract class class394 implements class248 {
 		garbageValue = "1341290829"
 	)
 	boolean method7074() {
-		return this.field4428 != null; // L: 52
+		return this.field4428 != null;
 	}
 
 	@ObfuscatedName("e")
@@ -80,12 +80,12 @@ public abstract class class394 implements class248 {
 		garbageValue = "-72788464"
 	)
 	Object method7082() {
-		if (this.field4428 == class432.field4658) { // L: 56
-			return 0; // L: 57
-		} else if (this.field4428 == class432.field4656) { // L: 59
-			return -1L; // L: 60
+		if (this.field4428 == class432.field4658) {
+			return 0;
+		} else if (this.field4428 == class432.field4656) {
+			return -1L;
 		} else {
-			return this.field4428 == class432.field4657 ? "" : null; // L: 62 63 65
+			return this.field4428 == class432.field4657 ? "" : null;
 		}
 	}
 }

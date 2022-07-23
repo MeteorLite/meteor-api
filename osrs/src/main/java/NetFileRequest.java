@@ -28,7 +28,7 @@ public class NetFileRequest extends DualNode {
 	public byte padding;
 
 	NetFileRequest() {
-	} // L: 10
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -36,8 +36,8 @@ public class NetFileRequest extends DualNode {
 		garbageValue = "-1298247103"
 	)
 	static SecureRandom method5843() {
-		SecureRandom var0 = new SecureRandom(); // L: 39
-		var0.nextInt(); // L: 40
-		return var0; // L: 41
+		SecureRandom var0 = new SecureRandom();
+		var0.nextInt();
+		return var0;
 	}
 }

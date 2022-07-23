@@ -4,7 +4,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("el")
 public abstract class class144 extends Node {
 	class144() {
-	} // L: 49
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(

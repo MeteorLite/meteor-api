@@ -27,8 +27,8 @@ public class class132 extends class128 {
 	)
 	class132(class131 var1) {
 		this.this$0 = var1;
-		this.field1590 = -1; // L: 128
-	} // L: 131
+		this.field1590 = -1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -36,9 +36,9 @@ public class class132 extends class128 {
 		garbageValue = "5"
 	)
 	void vmethod3150(Buffer var1) {
-		this.field1590 = var1.readUnsignedShort(); // L: 134
-		this.field1589 = var1.readByte(); // L: 135
-	} // L: 136
+		this.field1590 = var1.readUnsignedShort();
+		this.field1589 = var1.readByte();
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -46,8 +46,8 @@ public class class132 extends class128 {
 		garbageValue = "-1718344311"
 	)
 	void vmethod3149(ClanSettings var1) {
-		var1.method2961(this.field1590, this.field1589); // L: 139
-	} // L: 140
+		var1.method2961(this.field1590, this.field1589);
+	}
 
 	@ObfuscatedName("n")
 	@ObfuscatedSignature(
@@ -55,8 +55,8 @@ public class class132 extends class128 {
 		garbageValue = "-1204833299"
 	)
 	public static final void method2885(class47 var0) {
-		ModelData0.pcmPlayerProvider = var0; // L: 45
-	} // L: 46
+		ModelData0.pcmPlayerProvider = var0;
+	}
 
 	@ObfuscatedName("gz")
 	@ObfuscatedSignature(
@@ -64,10 +64,10 @@ public class class132 extends class128 {
 		garbageValue = "854083418"
 	)
 	static void method2887() {
-		if (class121.worldMap != null) { // L: 4337
-			class121.worldMap.method7192(PacketWriter.Client_plane, (class101.localPlayer.x >> 7) + class28.baseX, (class101.localPlayer.y >> 7) + WorldMapLabelSize.baseY, false); // L: 4338
-			class121.worldMap.loadCache(); // L: 4339
+		if (class121.worldMap != null) {
+			class121.worldMap.method7192(PacketWriter.Client_plane, (class101.localPlayer.x >> 7) + class28.baseX, (class101.localPlayer.y >> 7) + WorldMapLabelSize.baseY, false);
+			class121.worldMap.loadCache();
 		}
 
-	} // L: 4341
+	}
 }

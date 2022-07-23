@@ -11,8 +11,8 @@ public class class393 extends class394 {
 	static long field4425;
 
 	public class393(int var1) {
-		super(var1); // L: 7
-	} // L: 8
+		super(var1);
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -20,5 +20,5 @@ public class class393 extends class394 {
 		garbageValue = "803287054"
 	)
 	void vmethod7080(Buffer var1, int var2) {
-	} // L: 12
+	}
 }

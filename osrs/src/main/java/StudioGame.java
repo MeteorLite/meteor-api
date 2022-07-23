@@ -55,9 +55,9 @@ public enum StudioGame implements MouseWheel {
 	final int id;
 
 	StudioGame(String var3, String var4, int var5) {
-		this.name = var3; // L: 17
-		this.id = var5; // L: 18
-	} // L: 19
+		this.name = var3;
+		this.id = var5;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -66,7 +66,7 @@ public enum StudioGame implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 22
+		return this.id;
 	}
 
 	@ObfuscatedName("f")
@@ -75,8 +75,8 @@ public enum StudioGame implements MouseWheel {
 		garbageValue = "-466654611"
 	)
 	@Export("FillMode_values")
-	public static FillMode[] FillMode_values() {
-		return new FillMode[]{FillMode.SOLID, FillMode.field4778, FillMode.field4783}; // L: 15
+	public static class453[] FillMode_values() {
+		return new class453[]{class453.SOLID, class453.field4778, class453.field4783};
 	}
 
 	@ObfuscatedName("u")
@@ -86,12 +86,12 @@ public enum StudioGame implements MouseWheel {
 	)
 	@Export("isCharPrintable")
 	public static boolean isCharPrintable(char var0) {
-		if (var0 >= ' ' && var0 <= '~') { // L: 197
+		if (var0 >= ' ' && var0 <= '~') {
 			return true;
-		} else if (var0 >= 160 && var0 <= 255) { // L: 198
+		} else if (var0 >= 160 && var0 <= 255) {
 			return true;
 		} else {
-			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376; // L: 199
+			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
 		}
 	}
 }

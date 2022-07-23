@@ -38,9 +38,9 @@ public enum HorizontalAlignment implements MouseWheel {
 	final int id;
 
 	HorizontalAlignment(int var3, int var4) {
-		this.value = var3; // L: 18
-		this.id = var4; // L: 19
-	} // L: 20
+		this.value = var3;
+		this.id = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -49,7 +49,7 @@ public enum HorizontalAlignment implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id; // L: 24
+		return this.id;
 	}
 
 	@ObfuscatedName("jk")
@@ -59,6 +59,6 @@ public enum HorizontalAlignment implements MouseWheel {
 	)
 	@Export("getTapToDrop")
 	static boolean getTapToDrop() {
-		return Client.tapToDrop; // L: 11040
+		return Client.tapToDrop;
 	}
 }

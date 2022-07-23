@@ -116,7 +116,7 @@ public final class Occluder {
 	int field2473;
 
 	Occluder() {
-	} // L: 23
+	}
 
 	@ObfuscatedName("kc")
 	@ObfuscatedSignature(
@@ -124,21 +124,21 @@ public final class Occluder {
 		garbageValue = "-49313522"
 	)
 	static final void method4354() {
-		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher); // L: 11980
-		Client.packetWriter.addNode(var0); // L: 11981
-		Interpreter.field842 = true; // L: 11982
+		PacketBufferNode var0 = EnumComposition.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher);
+		Client.packetWriter.addNode(var0);
+		Interpreter.field842 = true;
 
-		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) { // L: 11983
-			if (var1.type == 0 || var1.type == 3) { // L: 11984
+		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
+			if (var1.type == 0 || var1.type == 3) {
 				MusicPatchPcmStream.closeInterface(var1, true);
 			}
 		}
 
-		if (Client.meslayerContinueWidget != null) { // L: 11986
-			ChatChannel.invalidateWidget(Client.meslayerContinueWidget); // L: 11987
-			Client.meslayerContinueWidget = null; // L: 11988
+		if (Client.meslayerContinueWidget != null) {
+			ChatChannel.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
 		}
 
-		Interpreter.field842 = false; // L: 11990
-	} // L: 11991
+		Interpreter.field842 = false;
+	}
 }

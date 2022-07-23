@@ -20,7 +20,7 @@ public final class class345 {
 	int field4158;
 
 	class345(Object var1, int var2) {
-		this.field4159 = var1; // L: 170
-		this.field4158 = var2; // L: 171
-	} // L: 172
+		this.field4159 = var1;
+		this.field4158 = var2;
+	}
 }

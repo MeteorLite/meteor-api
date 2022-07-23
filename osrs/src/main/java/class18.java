@@ -29,7 +29,7 @@ class class18 implements Comparator {
 		descriptor = "(Ls;)V"
 	)
 	class18(class10 var1) {
-		this.this$0 = var1; // L: 50
+		this.this$0 = var1;
 	}
 
 	@ObfuscatedName("c")
@@ -38,15 +38,15 @@ class class18 implements Comparator {
 		garbageValue = "-175722815"
 	)
 	int method233(Entry var1, Entry var2) {
-		return ((Float)var2.getValue()).compareTo((Float)var1.getValue()); // L: 52
+		return ((Float)var2.getValue()).compareTo((Float)var1.getValue());
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.method233((Entry)var1, (Entry)var2); // L: 56
+		return this.method233((Entry)var1, (Entry)var2);
 	}
 
 	public boolean equals(Object var1) {
-		return super.equals(var1); // L: 60
+		return super.equals(var1);
 	}
 
 	@ObfuscatedName("q")
@@ -56,8 +56,8 @@ class class18 implements Comparator {
 	)
 	@Export("Messages_getByChannelAndID")
 	static Message Messages_getByChannelAndID(int var0, int var1) {
-		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0); // L: 35
-		return var2.getMessage(var1); // L: 36
+		ChatChannel var2 = (ChatChannel)Messages.Messages_channels.get(var0);
+		return var2.getMessage(var1);
 	}
 
 	@ObfuscatedName("j")
@@ -67,14 +67,14 @@ class class18 implements Comparator {
 	)
 	@Export("isKeyDown")
 	public static final boolean isKeyDown() {
-		synchronized(KeyHandler.KeyHandler_instance) { // L: 175
-			if (KeyHandler.field127 == KeyHandler.field147) { // L: 176
+		synchronized(KeyHandler.KeyHandler_instance) {
+			if (KeyHandler.field127 == KeyHandler.field147) {
 				return false;
 			} else {
-				class272.field3196 = KeyHandler.field148[KeyHandler.field147]; // L: 177
-				HealthBar.field1258 = KeyHandler.field149[KeyHandler.field147]; // L: 178
-				KeyHandler.field147 = KeyHandler.field147 + 1 & 127; // L: 179
-				return true; // L: 180
+				class272.field3196 = KeyHandler.field148[KeyHandler.field147];
+				HealthBar.field1258 = KeyHandler.field149[KeyHandler.field147];
+				KeyHandler.field147 = KeyHandler.field147 + 1 & 127;
+				return true;
 			}
 		}
 	}
@@ -85,6 +85,6 @@ class class18 implements Comparator {
 		garbageValue = "-15"
 	)
 	static final boolean method234() {
-		return Client.isMenuOpen; // L: 8499
+		return Client.isMenuOpen;
 	}
 }

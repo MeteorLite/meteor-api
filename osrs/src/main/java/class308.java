@@ -39,8 +39,8 @@ public enum class308 implements MouseWheel {
 	final int field3944;
 
 	class308(int var3) {
-		this.field3944 = var3; // L: 15
-	} // L: 16
+		this.field3944 = var3;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -49,6 +49,6 @@ public enum class308 implements MouseWheel {
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field3944; // L: 20
+		return this.field3944;
 	}
 }

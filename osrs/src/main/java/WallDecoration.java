@@ -75,9 +75,9 @@ public final class WallDecoration {
 	int flags;
 
 	WallDecoration() {
-		this.tag = 0L; // L: 13
-		this.flags = 0; // L: 14
-	} // L: 16
+		this.tag = 0L;
+		this.flags = 0;
+	}
 
 	@ObfuscatedName("e")
 	@ObfuscatedSignature(
@@ -85,6 +85,6 @@ public final class WallDecoration {
 		garbageValue = "106"
 	)
 	public static boolean method4551(int var0) {
-		return (var0 >> 22 & 1) != 0; // L: 29
+		return (var0 >> 22 & 1) != 0;
 	}
 }

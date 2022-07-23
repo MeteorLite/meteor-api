@@ -20,7 +20,7 @@ public class VorbisMapping {
 
 	VorbisMapping() {
 		VorbisSample.readBits(16);
-		this.submaps = (VorbisSample.readBit() != 0) ? VorbisSample.readBits(4) + 1 : 1;
+		this.submaps = VorbisSample.readBit() != 0 ? VorbisSample.readBits(4) + 1 : 1;
 		if (VorbisSample.readBit() != 0) {
 			VorbisSample.readBits(8);
 		}

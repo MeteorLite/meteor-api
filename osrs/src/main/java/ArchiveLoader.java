@@ -35,10 +35,10 @@ public class ArchiveLoader {
 		descriptor = "(Llc;Ljava/lang/String;)V"
 	)
 	ArchiveLoader(Archive var1, String var2) {
-		this.loadedCount = 0; // L: 9
+		this.loadedCount = 0;
 		this.archive = var1;
 		this.groupCount = var1.getGroupCount();
-	} // L: 14
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -47,15 +47,15 @@ public class ArchiveLoader {
 	)
 	@Export("isLoaded")
 	boolean isLoaded() {
-		this.loadedCount = 0; // L: 17
+		this.loadedCount = 0;
 
-		for (int var1 = 0; var1 < this.groupCount; ++var1) { // L: 18
+		for (int var1 = 0; var1 < this.groupCount; ++var1) {
 			if (!this.archive.method5806(var1) || this.archive.method5805(var1)) {
-				++this.loadedCount; // L: 19
+				++this.loadedCount;
 			}
 		}
 
-		return this.loadedCount >= this.groupCount; // L: 21
+		return this.loadedCount >= this.groupCount;
 	}
 
 	@ObfuscatedName("c")
@@ -64,7 +64,7 @@ public class ArchiveLoader {
 		garbageValue = "1248295079"
 	)
 	public static int method2075(int var0) {
-		return var0 != 0 && var0 != 1 ? -1 : 0; // L: 12 13 15
+		return var0 != 0 && var0 != 1 ? -1 : 0;
 	}
 
 	@ObfuscatedName("ao")
@@ -73,17 +73,17 @@ public class ArchiveLoader {
 		garbageValue = "280590426"
 	)
 	static int method2073(int var0, Script var1, boolean var2) {
-		if (var0 != 3700 && var0 != 3701) { // L: 2707
-			if (var0 == 3702) { // L: 2712
-				++class446.Interpreter_intStackSize; // L: 2713
-				return 1; // L: 2714
+		if (var0 != 3700 && var0 != 3701) {
+			if (var0 == 3702) {
+				++class446.Interpreter_intStackSize;
+				return 1;
 			} else {
-				return 2; // L: 2716
+				return 2;
 			}
 		} else {
-			--class446.Interpreter_intStackSize; // L: 2708
-			--Interpreter.Interpreter_stringStackSize; // L: 2709
-			return 1; // L: 2710
+			--class446.Interpreter_intStackSize;
+			--Interpreter.Interpreter_stringStackSize;
+			return 1;
 		}
 	}
 
@@ -94,11 +94,11 @@ public class ArchiveLoader {
 	)
 	@Export("clanKickUser")
 	static final void clanKickUser(String var0) {
-		if (Huffman.friendsChat != null) { // L: 12225
-			PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.field2923, Client.packetWriter.isaacCipher); // L: 12226
-			var1.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var0)); // L: 12227
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0); // L: 12228
-			Client.packetWriter.addNode(var1); // L: 12229
+		if (Huffman.friendsChat != null) {
+			PacketBufferNode var1 = EnumComposition.getPacketBufferNode(ClientPacket.field2923, Client.packetWriter.isaacCipher);
+			var1.packetBuffer.writeByte(ScriptEvent.stringCp1252NullTerminatedByteSize(var0));
+			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
+			Client.packetWriter.addNode(var1);
 		}
-	} // L: 12230
+	}
 }

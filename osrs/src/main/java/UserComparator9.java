@@ -11,8 +11,8 @@ public class UserComparator9 extends AbstractUserComparator {
 	final boolean reversed;
 
 	public UserComparator9(boolean var1) {
-		this.reversed = var1; // L: 11
-	} // L: 12
+		this.reversed = var1;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -21,15 +21,15 @@ public class UserComparator9 extends AbstractUserComparator {
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
-		if (Client.worldId == var1.world && var2.world == Client.worldId) { // L: 15
-			return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername()); // L: 16
+		if (Client.worldId == var1.world && var2.world == Client.worldId) {
+			return this.reversed ? var1.getUsername().compareToTyped(var2.getUsername()) : var2.getUsername().compareToTyped(var1.getUsername());
 		} else {
-			return this.compareUser(var1, var2); // L: 18
+			return this.compareUser(var1, var2);
 		}
 	}
 
 	public int compare(Object var1, Object var2) {
-		return this.compareBuddy((Buddy)var1, (Buddy)var2); // L: 22
+		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
 	@ObfuscatedName("f")
@@ -38,6 +38,6 @@ public class UserComparator9 extends AbstractUserComparator {
 		garbageValue = "6"
 	)
 	static class119[] method2599() {
-		return new class119[]{class119.field1497, class119.field1504, class119.field1505, class119.field1501, class119.field1492, class119.field1493, class119.field1494, class119.field1495, class119.field1496, class119.field1489, class119.field1498, class119.field1499, class119.field1500, class119.field1502, class119.field1488, class119.field1503, class119.field1491}; // L: 74
+		return new class119[]{class119.field1497, class119.field1504, class119.field1505, class119.field1501, class119.field1492, class119.field1493, class119.field1494, class119.field1495, class119.field1496, class119.field1489, class119.field1498, class119.field1499, class119.field1500, class119.field1502, class119.field1488, class119.field1503, class119.field1491};
 	}
 }

@@ -26,7 +26,7 @@ public class User implements Comparable {
 	Username previousUsername;
 
 	User() {
-	} // L: 9
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -35,7 +35,7 @@ public class User implements Comparable {
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
-		return this.username.compareToTyped(var1.username); // L: 32
+		return this.username.compareToTyped(var1.username);
 	}
 
 	@ObfuscatedName("ac")
@@ -55,7 +55,7 @@ public class User implements Comparable {
 	)
 	@Export("getName")
 	public String getName() {
-		return this.username == null ? "" : this.username.getName(); // L: 17
+		return this.username == null ? "" : this.username.getName();
 	}
 
 	@ObfuscatedName("aj")
@@ -84,7 +84,7 @@ public class User implements Comparable {
 	}
 
 	public int compareTo(Object var1) {
-		return this.compareTo_user((User)var1); // L: 36
+		return this.compareTo_user((User)var1);
 	}
 
 	@ObfuscatedName("c")
@@ -93,36 +93,36 @@ public class User implements Comparable {
 		garbageValue = "-1413737997"
 	)
 	public static String method6679(CharSequence[] var0, int var1, int var2) {
-		if (var2 == 0) { // L: 12
+		if (var2 == 0) {
 			return "";
-		} else if (var2 == 1) { // L: 13
-			CharSequence var10 = var0[var1]; // L: 14
-			return var10 == null ? "null" : var10.toString(); // L: 15 16
+		} else if (var2 == 1) {
+			CharSequence var10 = var0[var1];
+			return var10 == null ? "null" : var10.toString();
 		} else {
-			int var3 = var2 + var1; // L: 18
-			int var4 = 0; // L: 19
+			int var3 = var2 + var1;
+			int var4 = 0;
 
-			for (int var5 = var1; var5 < var3; ++var5) { // L: 20
-				CharSequence var9 = var0[var5]; // L: 21
-				if (var9 == null) { // L: 22
+			for (int var5 = var1; var5 < var3; ++var5) {
+				CharSequence var9 = var0[var5];
+				if (var9 == null) {
 					var4 += 4;
 				} else {
-					var4 += var9.length(); // L: 23
+					var4 += var9.length();
 				}
 			}
 
-			StringBuilder var8 = new StringBuilder(var4); // L: 25
+			StringBuilder var8 = new StringBuilder(var4);
 
-			for (int var6 = var1; var6 < var3; ++var6) { // L: 26
-				CharSequence var7 = var0[var6]; // L: 27
-				if (var7 == null) { // L: 28
+			for (int var6 = var1; var6 < var3; ++var6) {
+				CharSequence var7 = var0[var6];
+				if (var7 == null) {
 					var8.append("null");
 				} else {
-					var8.append(var7); // L: 29
+					var8.append(var7);
 				}
 			}
 
-			return var8.toString(); // L: 31
+			return var8.toString();
 		}
 	}
 }

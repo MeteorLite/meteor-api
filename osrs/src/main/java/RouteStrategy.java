@@ -33,7 +33,7 @@ public abstract class RouteStrategy {
 	public int approxDestinationSizeY;
 
 	protected RouteStrategy() {
-	} // L: 9
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(

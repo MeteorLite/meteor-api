@@ -51,5 +51,5 @@ public final class FloorDecoration {
 	int flags;
 
 	FloorDecoration() {
-	} // L: 11
+	}
 }

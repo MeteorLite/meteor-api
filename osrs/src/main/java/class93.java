@@ -33,11 +33,11 @@ public class class93 {
 	int field1281;
 
 	class93(int var1, int var2, int var3, int var4) {
-		this.field1280 = var1; // L: 10
-		this.field1283 = var2; // L: 11
-		this.field1279 = var3; // L: 12
-		this.field1281 = var4; // L: 13
-	} // L: 14
+		this.field1280 = var1;
+		this.field1283 = var2;
+		this.field1279 = var3;
+		this.field1281 = var4;
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -45,7 +45,7 @@ public class class93 {
 		garbageValue = "-376919384"
 	)
 	int method2391() {
-		return this.field1280; // L: 17
+		return this.field1280;
 	}
 
 	@ObfuscatedName("v")
@@ -54,7 +54,7 @@ public class class93 {
 		garbageValue = "1976546197"
 	)
 	int method2392() {
-		return this.field1283; // L: 21
+		return this.field1283;
 	}
 
 	@ObfuscatedName("q")
@@ -63,7 +63,7 @@ public class class93 {
 		garbageValue = "1"
 	)
 	int method2400() {
-		return this.field1279; // L: 25
+		return this.field1279;
 	}
 
 	@ObfuscatedName("f")
@@ -72,7 +72,7 @@ public class class93 {
 		garbageValue = "-936836113"
 	)
 	int method2393() {
-		return this.field1281; // L: 29
+		return this.field1281;
 	}
 
 	@ObfuscatedName("v")
@@ -81,31 +81,31 @@ public class class93 {
 		garbageValue = "-222305285"
 	)
 	static void method2403(Archive var0, int var1) {
-		if (var0.field3990) { // L: 62
-			if (var1 <= NetCache.field4031) { // L: 63
-				throw new RuntimeException(""); // L: 64
+		if (var0.field3990) {
+			if (var1 <= NetCache.field4031) {
+				throw new RuntimeException("");
 			}
 
-			if (var1 < NetCache.field4032) { // L: 66
-				NetCache.field4032 = var1; // L: 67
+			if (var1 < NetCache.field4032) {
+				NetCache.field4032 = var1;
 			}
 		} else {
-			if (var1 >= NetCache.field4032) { // L: 71
-				throw new RuntimeException(""); // L: 72
+			if (var1 >= NetCache.field4032) {
+				throw new RuntimeException("");
 			}
 
-			if (var1 > NetCache.field4031) { // L: 74
-				NetCache.field4031 = var1; // L: 75
+			if (var1 > NetCache.field4031) {
+				NetCache.field4031 = var1;
 			}
 		}
 
-		if (KitDefinition.field1862 != null) { // L: 78
-			DirectByteArrayCopier.method5512(var0, var1); // L: 79
+		if (KitDefinition.field1862 != null) {
+			DirectByteArrayCopier.method5512(var0, var1);
 		} else {
-			ClanChannel.requestNetFile((Archive)null, 255, 255, 0, (byte)0, true); // L: 82
-			NetCache.NetCache_archives[var1] = var0; // L: 83
+			ClanChannel.requestNetFile((Archive)null, 255, 255, 0, (byte)0, true);
+			NetCache.NetCache_archives[var1] = var0;
 		}
-	} // L: 80 84
+	}
 
 	@ObfuscatedName("f")
 	@ObfuscatedSignature(
@@ -114,26 +114,26 @@ public class class93 {
 	)
 	@Export("ByteArrayPool_release")
 	public static synchronized void ByteArrayPool_release(byte[] var0) {
-		if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4207) { // L: 98
-			ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0; // L: 99
-		} else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4208) { // L: 102
-			ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0; // L: 103
-		} else if (var0.length == 10000 && ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4209) { // L: 106
-			ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0; // L: 107
-		} else if (var0.length == 30000 && ByteArrayPool.field4216 < ByteArrayPool.field4210) { // L: 110
-			ByteArrayPool.field4214[++ByteArrayPool.field4216 - 1] = var0; // L: 111
+		if (var0.length == 100 && ByteArrayPool.ByteArrayPool_smallCount < ByteArrayPool.field4207) {
+			ByteArrayPool.ByteArrayPool_small[++ByteArrayPool.ByteArrayPool_smallCount - 1] = var0;
+		} else if (var0.length == 5000 && ByteArrayPool.ByteArrayPool_mediumCount < ByteArrayPool.field4208) {
+			ByteArrayPool.ByteArrayPool_medium[++ByteArrayPool.ByteArrayPool_mediumCount - 1] = var0;
+		} else if (var0.length == 10000 && ByteArrayPool.ByteArrayPool_largeCount < ByteArrayPool.field4209) {
+			ByteArrayPool.ByteArrayPool_large[++ByteArrayPool.ByteArrayPool_largeCount - 1] = var0;
+		} else if (var0.length == 30000 && ByteArrayPool.field4216 < ByteArrayPool.field4210) {
+			ByteArrayPool.field4214[++ByteArrayPool.field4216 - 1] = var0;
 		} else {
-			if (class464.ByteArrayPool_arrays != null) { // L: 114
-				for (int var1 = 0; var1 < Canvas.ByteArrayPool_alternativeSizes.length; ++var1) { // L: 115
-					if (var0.length == Canvas.ByteArrayPool_alternativeSizes[var1] && class17.ByteArrayPool_altSizeArrayCounts[var1] < class464.ByteArrayPool_arrays[var1].length) { // L: 116
-						class464.ByteArrayPool_arrays[var1][class17.ByteArrayPool_altSizeArrayCounts[var1]++] = var0; // L: 117
-						return; // L: 118
+			if (class464.ByteArrayPool_arrays != null) {
+				for (int var1 = 0; var1 < Canvas.ByteArrayPool_alternativeSizes.length; ++var1) {
+					if (var0.length == Canvas.ByteArrayPool_alternativeSizes[var1] && class17.ByteArrayPool_altSizeArrayCounts[var1] < class464.ByteArrayPool_arrays[var1].length) {
+						class464.ByteArrayPool_arrays[var1][class17.ByteArrayPool_altSizeArrayCounts[var1]++] = var0;
+						return;
 					}
 				}
 			}
 
 		}
-	} // L: 100 104 108 112 122
+	}
 
 	@ObfuscatedName("az")
 	@ObfuscatedSignature(
@@ -141,13 +141,13 @@ public class class93 {
 		garbageValue = "-769795107"
 	)
 	public static int method2404(byte[] var0, int var1, int var2) {
-		int var3 = -1; // L: 47
+		int var3 = -1;
 
-		for (int var4 = var1; var4 < var2; ++var4) { // L: 48
-			var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255]; // L: 49
+		for (int var4 = var1; var4 < var2; ++var4) {
+			var3 = var3 >>> 8 ^ Buffer.crc32Table[(var3 ^ var0[var4]) & 255];
 		}
 
-		var3 = ~var3; // L: 51
-		return var3; // L: 52
+		var3 = ~var3;
+		return var3;
 	}
 }

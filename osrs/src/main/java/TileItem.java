@@ -31,7 +31,7 @@ public final class TileItem extends Renderable {
 	int quantity;
 
 	TileItem() {
-	} // L: 11
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -40,7 +40,7 @@ public final class TileItem extends Renderable {
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		return EnumComposition.ItemDefinition_get(this.id).getModel(this.quantity); // L: 14
+		return EnumComposition.ItemDefinition_get(this.id).getModel(this.quantity);
 	}
 
 	@ObfuscatedName("j")
@@ -49,6 +49,6 @@ public final class TileItem extends Renderable {
 		garbageValue = "1179876648"
 	)
 	public static int method2414(int var0) {
-		return class7.method51(ViewportMouse.ViewportMouse_entityTags[var0]); // L: 73
+		return class7.method51(ViewportMouse.ViewportMouse_entityTags[var0]);
 	}
 }

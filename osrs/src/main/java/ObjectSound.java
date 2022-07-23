@@ -105,7 +105,7 @@ public final class ObjectSound extends Node {
 	}
 
 	ObjectSound() {
-	} // L: 27
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -114,28 +114,28 @@ public final class ObjectSound extends Node {
 	)
 	@Export("set")
 	void set() {
-		int var1 = this.soundEffectId; // L: 44
-		ObjectComposition var2 = this.obj.transform(); // L: 45
-		if (var2 != null) { // L: 46
-			this.soundEffectId = var2.ambientSoundId; // L: 47
-			this.field812 = var2.int7 * 128; // L: 48
-			this.field819 = var2.int5; // L: 49
-			this.field811 = var2.int6; // L: 50
-			this.soundEffectIds = var2.soundEffectIds; // L: 51
+		int var1 = this.soundEffectId;
+		ObjectComposition var2 = this.obj.transform();
+		if (var2 != null) {
+			this.soundEffectId = var2.ambientSoundId;
+			this.field812 = var2.int7 * 128;
+			this.field819 = var2.int5;
+			this.field811 = var2.int6;
+			this.soundEffectIds = var2.soundEffectIds;
 		} else {
-			this.soundEffectId = -1; // L: 54
-			this.field812 = 0; // L: 55
-			this.field819 = 0; // L: 56
-			this.field811 = 0; // L: 57
-			this.soundEffectIds = null; // L: 58
+			this.soundEffectId = -1;
+			this.field812 = 0;
+			this.field819 = 0;
+			this.field811 = 0;
+			this.soundEffectIds = null;
 		}
 
-		if (var1 != this.soundEffectId && this.stream1 != null) { // L: 60
-			class21.pcmStreamMixer.removeSubStream(this.stream1); // L: 61
-			this.stream1 = null; // L: 62
+		if (var1 != this.soundEffectId && this.stream1 != null) {
+			class21.pcmStreamMixer.removeSubStream(this.stream1);
+			this.stream1 = null;
 		}
 
-	} // L: 64
+	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
@@ -149,14 +149,14 @@ public final class ObjectSound extends Node {
 			return var1;
 		} else {
 			byte[] var2 = SpotAnimationDefinition.SpotAnimationDefinition_archive.takeFile(13, var0);
-			var1 = new SpotAnimationDefinition(); // L: 35
+			var1 = new SpotAnimationDefinition();
 			var1.id = var0;
-			if (var2 != null) { // L: 37
+			if (var2 != null) {
 				var1.decode(new Buffer(var2));
 			}
 
-			SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0); // L: 38
-			return var1; // L: 39
+			SpotAnimationDefinition.SpotAnimationDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 
@@ -167,36 +167,36 @@ public final class ObjectSound extends Node {
 	)
 	@Export("sortItemsByName")
 	public static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
-		if (var2 < var3) { // L: 9
-			int var4 = (var3 + var2) / 2; // L: 10
-			int var5 = var2; // L: 11
-			String var6 = var0[var4]; // L: 12
-			var0[var4] = var0[var3]; // L: 13
-			var0[var3] = var6; // L: 14
-			short var7 = var1[var4]; // L: 15
-			var1[var4] = var1[var3]; // L: 16
-			var1[var3] = var7; // L: 17
+		if (var2 < var3) {
+			int var4 = (var3 + var2) / 2;
+			int var5 = var2;
+			String var6 = var0[var4];
+			var0[var4] = var0[var3];
+			var0[var3] = var6;
+			short var7 = var1[var4];
+			var1[var4] = var1[var3];
+			var1[var3] = var7;
 
-			for (int var8 = var2; var8 < var3; ++var8) { // L: 18
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) { // L: 19
-					String var9 = var0[var8]; // L: 20
-					var0[var8] = var0[var5]; // L: 21
-					var0[var5] = var9; // L: 22
-					short var10 = var1[var8]; // L: 23
-					var1[var8] = var1[var5]; // L: 24
-					var1[var5++] = var10; // L: 25
+			for (int var8 = var2; var8 < var3; ++var8) {
+				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
+					String var9 = var0[var8];
+					var0[var8] = var0[var5];
+					var0[var5] = var9;
+					short var10 = var1[var8];
+					var1[var8] = var1[var5];
+					var1[var5++] = var10;
 				}
 			}
 
-			var0[var3] = var0[var5]; // L: 29
-			var0[var5] = var6; // L: 30
-			var1[var3] = var1[var5]; // L: 31
-			var1[var5] = var7; // L: 32
-			sortItemsByName(var0, var1, var2, var5 - 1); // L: 33
-			sortItemsByName(var0, var1, var5 + 1, var3); // L: 34
+			var0[var3] = var0[var5];
+			var0[var5] = var6;
+			var1[var3] = var1[var5];
+			var1[var5] = var7;
+			sortItemsByName(var0, var1, var2, var5 - 1);
+			sortItemsByName(var0, var1, var5 + 1, var3);
 		}
 
-	} // L: 36
+	}
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
@@ -204,10 +204,10 @@ public final class ObjectSound extends Node {
 		garbageValue = "1730846792"
 	)
 	public static void method1702() {
-		ItemComposition.ItemDefinition_cached.clear(); // L: 563
-		ItemComposition.ItemDefinition_cachedModels.clear(); // L: 564
-		ItemComposition.ItemDefinition_cachedSprites.clear(); // L: 565
-	} // L: 566
+		ItemComposition.ItemDefinition_cached.clear();
+		ItemComposition.ItemDefinition_cachedModels.clear();
+		ItemComposition.ItemDefinition_cachedSprites.clear();
+	}
 
 	@ObfuscatedName("je")
 	@ObfuscatedSignature(
@@ -216,30 +216,30 @@ public final class ObjectSound extends Node {
 	)
 	@Export("runCs1")
 	static final boolean runCs1(Widget var0) {
-		if (var0.cs1Comparisons == null) { // L: 10769
+		if (var0.cs1Comparisons == null) {
 			return false;
 		} else {
-			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) { // L: 10770
-				int var2 = Canvas.method319(var0, var1); // L: 10771
-				int var3 = var0.cs1ComparisonValues[var1]; // L: 10772
-				if (var0.cs1Comparisons[var1] == 2) { // L: 10773
-					if (var2 >= var3) { // L: 10774
+			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
+				int var2 = Canvas.method319(var0, var1);
+				int var3 = var0.cs1ComparisonValues[var1];
+				if (var0.cs1Comparisons[var1] == 2) {
+					if (var2 >= var3) {
 						return false;
 					}
-				} else if (var0.cs1Comparisons[var1] == 3) { // L: 10776
-					if (var2 <= var3) { // L: 10777
+				} else if (var0.cs1Comparisons[var1] == 3) {
+					if (var2 <= var3) {
 						return false;
 					}
-				} else if (var0.cs1Comparisons[var1] == 4) { // L: 10779
-					if (var2 == var3) { // L: 10780
+				} else if (var0.cs1Comparisons[var1] == 4) {
+					if (var2 == var3) {
 						return false;
 					}
-				} else if (var2 != var3) { // L: 10782
+				} else if (var2 != var3) {
 					return false;
 				}
 			}
 
-			return true; // L: 10784
+			return true;
 		}
 	}
 }

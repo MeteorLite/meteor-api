@@ -35,7 +35,7 @@ public class class133 extends class128 {
 		descriptor = "(Lej;)V"
 	)
 	class133(class131 var1) {
-		this.this$0 = var1; // L: 289
+		this.this$0 = var1;
 	}
 
 	@ObfuscatedName("c")
@@ -44,11 +44,11 @@ public class class133 extends class128 {
 		garbageValue = "5"
 	)
 	void vmethod3150(Buffer var1) {
-		this.field1594 = var1.readInt(); // L: 292
-		this.field1596 = var1.readInt(); // L: 293
-		this.field1592 = var1.readUnsignedByte(); // L: 294
-		this.field1593 = var1.readUnsignedByte(); // L: 295
-	} // L: 296
+		this.field1594 = var1.readInt();
+		this.field1596 = var1.readInt();
+		this.field1592 = var1.readUnsignedByte();
+		this.field1593 = var1.readUnsignedByte();
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
@@ -56,8 +56,8 @@ public class class133 extends class128 {
 		garbageValue = "-1718344311"
 	)
 	void vmethod3149(ClanSettings var1) {
-		var1.method3004(this.field1594, this.field1596, this.field1592, this.field1593); // L: 299
-	} // L: 300
+		var1.method3004(this.field1594, this.field1596, this.field1592, this.field1593);
+	}
 
 	@ObfuscatedName("g")
 	@ObfuscatedSignature(
@@ -66,44 +66,44 @@ public class class133 extends class128 {
 	)
 	@Export("compareWorlds")
 	static int compareWorlds(World var0, World var1, int var2, boolean var3) {
-		if (var2 == 1) { // L: 211
-			int var4 = var0.population; // L: 212
-			int var5 = var1.population; // L: 213
-			if (!var3) { // L: 214
-				if (var4 == -1) { // L: 215
+		if (var2 == 1) {
+			int var4 = var0.population;
+			int var5 = var1.population;
+			if (!var3) {
+				if (var4 == -1) {
 					var4 = 2001;
 				}
 
-				if (var5 == -1) { // L: 216
+				if (var5 == -1) {
 					var5 = 2001;
 				}
 			}
 
-			return var4 - var5; // L: 218
-		} else if (var2 == 2) { // L: 220
+			return var4 - var5;
+		} else if (var2 == 2) {
 			return var0.location - var1.location;
-		} else if (var2 == 3) { // L: 221
-			if (var0.activity.equals("-")) { // L: 222
-				if (var1.activity.equals("-")) { // L: 223
+		} else if (var2 == 3) {
+			if (var0.activity.equals("-")) {
+				if (var1.activity.equals("-")) {
 					return 0;
 				} else {
-					return var3 ? -1 : 1; // L: 224
+					return var3 ? -1 : 1;
 				}
-			} else if (var1.activity.equals("-")) { // L: 226
+			} else if (var1.activity.equals("-")) {
 				return var3 ? 1 : -1;
 			} else {
-				return var0.activity.compareTo(var1.activity); // L: 227
+				return var0.activity.compareTo(var1.activity);
 			}
-		} else if (var2 == 4) { // L: 229
+		} else if (var2 == 4) {
 			return var0.method1594() ? (var1.method1594() ? 0 : 1) : (var1.method1594() ? -1 : 0);
-		} else if (var2 == 5) { // L: 230
+		} else if (var2 == 5) {
 			return var0.method1628() ? (var1.method1628() ? 0 : 1) : (var1.method1628() ? -1 : 0);
-		} else if (var2 == 6) { // L: 231
+		} else if (var2 == 6) {
 			return var0.isPvp() ? (var1.isPvp() ? 0 : 1) : (var1.isPvp() ? -1 : 0);
-		} else if (var2 == 7) { // L: 232
+		} else if (var2 == 7) {
 			return var0.isMembersOnly() ? (var1.isMembersOnly() ? 0 : 1) : (var1.isMembersOnly() ? -1 : 0);
 		} else {
-			return var0.id - var1.id; // L: 233
+			return var0.id - var1.id;
 		}
 	}
 
@@ -114,49 +114,49 @@ public class class133 extends class128 {
 	)
 	@Export("updateItemPile")
 	static final void updateItemPile(int var0, int var1) {
-		NodeDeque var2 = Client.groundItems[PacketWriter.Client_plane][var0][var1]; // L: 7857
-		if (var2 == null) { // L: 7858
-			class356.scene.removeGroundItemPile(PacketWriter.Client_plane, var0, var1); // L: 7859
+		NodeDeque var2 = Client.groundItems[PacketWriter.Client_plane][var0][var1];
+		if (var2 == null) {
+			class356.scene.removeGroundItemPile(PacketWriter.Client_plane, var0, var1);
 		} else {
-			long var3 = -99999999L; // L: 7862
-			TileItem var5 = null; // L: 7863
+			long var3 = -99999999L;
+			TileItem var5 = null;
 
 			TileItem var6;
-			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) { // L: 7864 7865 7873
-				ItemComposition var7 = EnumComposition.ItemDefinition_get(var6.id); // L: 7866
-				long var11 = (long)var7.price; // L: 7867
+			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+				ItemComposition var7 = EnumComposition.ItemDefinition_get(var6.id);
+				long var11 = (long)var7.price;
 				if (var7.isStackable == 1) {
-					var11 *= (long)(var6.quantity + 1); // L: 7868
+					var11 *= (long)(var6.quantity + 1);
 				}
 
-				if (var11 > var3) { // L: 7869
-					var3 = var11; // L: 7870
-					var5 = var6; // L: 7871
+				if (var11 > var3) {
+					var3 = var11;
+					var5 = var6;
 				}
 			}
 
-			if (var5 == null) { // L: 7875
-				class356.scene.removeGroundItemPile(PacketWriter.Client_plane, var0, var1); // L: 7876
+			if (var5 == null) {
+				class356.scene.removeGroundItemPile(PacketWriter.Client_plane, var0, var1);
 			} else {
-				var2.addLast(var5); // L: 7879
-				TileItem var13 = null; // L: 7880
-				TileItem var8 = null; // L: 7881
+				var2.addLast(var5);
+				TileItem var13 = null;
+				TileItem var8 = null;
 
-				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) { // L: 7882 7883 7888
-					if (var5.id != var6.id) { // L: 7884
-						if (var13 == null) { // L: 7885
+				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+					if (var5.id != var6.id) {
+						if (var13 == null) {
 							var13 = var6;
 						}
 
-						if (var6.id != var13.id && var8 == null) { // L: 7886
+						if (var6.id != var13.id && var8 == null) {
 							var8 = var6;
 						}
 					}
 				}
 
-				long var9 = TaskHandler.calculateTag(var0, var1, 3, false, 0); // L: 7890
-				class356.scene.newGroundItemPile(PacketWriter.Client_plane, var0, var1, SceneTilePaint.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, PacketWriter.Client_plane), var5, var9, var13, var8); // L: 7891
+				long var9 = TaskHandler.calculateTag(var0, var1, 3, false, 0);
+				class356.scene.newGroundItemPile(PacketWriter.Client_plane, var0, var1, SceneTilePaint.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, PacketWriter.Client_plane), var5, var9, var13, var8);
 			}
 		}
-	} // L: 7860 7877 7892
+	}
 }
