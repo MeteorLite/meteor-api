@@ -84,12 +84,13 @@ public class InjectConstruct extends AbstractInjector {
   }
 
   private void injectConstruct(ClassFile targetClass, Method apiMethod) {
-    //log.debug("[DEBUG] Injecting constructor for {} into {}", apiMethod, targetClass.getPoolClass());
-
+    System.out.println("[DEBUG] Injecting constructor for " + apiMethod + " into " + targetClass.getPoolClass());
+    if (targetClass.getName().contains("runelite"))
+      return;
     final Type returnval = apiMethod.getType().getReturnValue();
 
     final ClassFile deobClass = inject.toDeob(returnval.getInternalName());
-    final ClassFile classToConstruct = inject.toVanilla(deobClass);
+    final ClassFile classToConstruct = inject.vanilla.findClass(deobClass.getName());
 
     Signature constr = new Signature.Builder()
         .addArguments(apiMethod.getType().getArguments().stream()
@@ -101,8 +102,7 @@ public class InjectConstruct extends AbstractInjector {
 
     final net.runelite.asm.Method constructor = classToConstruct.findMethod("<init>", constr);
     if (constructor == null) {
-      throw new InjectException(
-          "Unable to find constructor for " + classToConstruct.getName() + ".<init>" + constr);
+      return;
     }
 
     net.runelite.asm.Method setterMethod = new net.runelite.asm.Method(targetClass,

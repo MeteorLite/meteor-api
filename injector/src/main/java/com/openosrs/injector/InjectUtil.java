@@ -154,7 +154,7 @@ public interface InjectUtil {
   }
 
   static ClassFile findClassOrThrow(ClassGroup group, String name) {
-    ClassFile clazz = group.findClass("osrs/" + name);
+    ClassFile clazz = group.findClass(name);
     if (clazz == null) {
       clazz = group.findClass(name);
       if (clazz == null) {
@@ -290,7 +290,7 @@ public interface InjectUtil {
     try {
       return data.getVanilla().findClass(hintClass).findField(name);
     } catch (Exception e) {
-      return data.getVanilla().findClass("osrs/" + hintClass).findField(name);
+      return data.getVanilla().findClass(hintClass).findField(name);
     }
   }
 

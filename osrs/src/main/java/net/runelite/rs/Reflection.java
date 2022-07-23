@@ -19,7 +19,7 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 public class Reflection {
-	private static final boolean PRINT_DEBUG_MESSAGES = true;
+	private static final boolean PRINT_DEBUG_MESSAGES = false;
 
 	private static Map<String, Class<?>> classes = new HashMap<>();
 	static 
@@ -39,7 +39,6 @@ public class Reflection {
 							classes.put(obfuscatedName.value(), clazz);
 						}
 					} catch (ClassNotFoundException ignore) {
-						ignore.printStackTrace();
 					}
 				});
 			} 

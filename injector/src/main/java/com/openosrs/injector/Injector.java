@@ -117,16 +117,16 @@ public class Injector extends InjectData implements InjectTaskHandler {
     inject(new InterfaceInjector(this));
 
     //inject(new RasterizerAlpha(this));
-    //inject(new MixinInjector(this));
+    inject(new MixinInjector(this));
 
     // This is where field hooks runs
 
     // This is where method hooks runs
 
-    //inject(new InjectConstruct(this));
+    inject(new InjectConstruct(this));
 
     //Requires InterfaceInjector
-    //inject(new RSApiInjector(this));
+    inject(new RSApiInjector(this));
 
     //Some annotations are still nice to have such as ObfName and ObfSig for Reflection checks
     //inject(new RemoveAnnotations(this));
@@ -151,7 +151,7 @@ public class Injector extends InjectData implements InjectTaskHandler {
     //validate(new InjectorValidator(this));
 
     //transform(new SourceChanger(this));
-    //injector.vanilla.addClass(JarUtil.reflectionClassFile);
+    injector.vanilla.addClass(JarUtil.reflectionClass);
   }
 
   private void inject(com.openosrs.injector.injectors.Injector injector) {

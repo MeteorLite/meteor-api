@@ -48,6 +48,7 @@ import org.slf4j.LoggerFactory;
 public class JarUtil
 {
 	private static final Logger logger = LoggerFactory.getLogger(JarUtil.class);
+	public static ClassFile reflectionClass = null;
 
 	public static ClassGroup load(File jarfile)
 	{
@@ -71,7 +72,12 @@ public class JarUtil
 
 				reader.accept(cv, ClassReader.SKIP_FRAMES);
 
-				group.addClass(cv.getClassFile());
+				ClassFile cf = cv.getClassFile();
+				if (cf.getName().endsWith("Reflection"))
+					reflectionClass = cf;
+				else
+					group.addClass(cv.getClassFile());
+
 			}
 		}
 		catch (IOException e)
