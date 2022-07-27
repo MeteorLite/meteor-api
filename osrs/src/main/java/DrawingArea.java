@@ -2,7 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public class Class44_Sub3_Sub1 extends Class44_Sub3 {
+public class DrawingArea extends Class44_Sub3 {
 
     public static boolean aBoolean1348 = true;
     public static int anInt1349;
@@ -18,10 +18,10 @@ public class Class44_Sub3_Sub1 extends Class44_Sub3 {
     public static int anInt1359;
     public static int anInt1360;
     public static int anInt1361;
-    public Class44_Sub3_Sub1() {
+    public DrawingArea() {
     }
 
-    public static void method406(int i, int j, int[] ai, int k) {
+    public static void initDrawingArea(int i, int j, int[] ai, int k) {
         anIntArray1351 = ai;
         anInt1352 = i;
         if (k != 9)

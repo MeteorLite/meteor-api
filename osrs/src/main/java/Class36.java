@@ -1646,7 +1646,7 @@ public class Class36 {
         int l6 = Class44_Sub3_Sub1_Sub1.anInt1404 + (k4 << 9) / j3;
         Class44_Sub3_Sub1_Sub1.anInt1402 = 0;
         if ((i6 - k6) * (l5 - l6) - (j6 - l6) * (k5 - k6) > 0) {
-            Class44_Sub3_Sub1_Sub1.aBoolean1399 = i6 < 0 || k6 < 0 || k5 < 0 || i6 > Class44_Sub3_Sub1.anInt1358 || k6 > Class44_Sub3_Sub1.anInt1358 || k5 > Class44_Sub3_Sub1.anInt1358;
+            Class44_Sub3_Sub1_Sub1.aBoolean1399 = i6 < 0 || k6 < 0 || k5 < 0 || i6 > DrawingArea.anInt1358 || k6 > DrawingArea.anInt1358 || k5 > DrawingArea.anInt1358;
             if (aBoolean624 && method322(anInt625, anInt626, j6, l6, l5, i6, k6, k5)) {
                 anInt627 = j1;
                 anInt628 = k1;
@@ -1665,7 +1665,7 @@ public class Class36 {
             }
         }
         if ((i5 - k5) * (l6 - l5) - (j5 - l5) * (k6 - k5) > 0) {
-            Class44_Sub3_Sub1_Sub1.aBoolean1399 = i5 < 0 || k5 < 0 || k6 < 0 || i5 > Class44_Sub3_Sub1.anInt1358 || k5 > Class44_Sub3_Sub1.anInt1358 || k6 > Class44_Sub3_Sub1.anInt1358;
+            Class44_Sub3_Sub1_Sub1.aBoolean1399 = i5 < 0 || k5 < 0 || k6 < 0 || i5 > DrawingArea.anInt1358 || k5 > DrawingArea.anInt1358 || k6 > DrawingArea.anInt1358;
             if (aBoolean624 && method322(anInt625, anInt626, j5, l5, l6, i5, k5, k6)) {
                 anInt627 = j1;
                 anInt628 = k1;
@@ -1724,7 +1724,7 @@ public class Class36 {
             int j5 = Class15.anIntArray383[k3];
             int k5 = Class15.anIntArray383[i4];
             if ((j4 - k4) * (k5 - j5) - (i5 - j5) * (l4 - k4) > 0) {
-                Class44_Sub3_Sub1_Sub1.aBoolean1399 = j4 < 0 || k4 < 0 || l4 < 0 || j4 > Class44_Sub3_Sub1.anInt1358 || k4 > Class44_Sub3_Sub1.anInt1358 || l4 > Class44_Sub3_Sub1.anInt1358;
+                Class44_Sub3_Sub1_Sub1.aBoolean1399 = j4 < 0 || k4 < 0 || l4 < 0 || j4 > DrawingArea.anInt1358 || k4 > DrawingArea.anInt1358 || l4 > DrawingArea.anInt1358;
                 if (aBoolean624 && method322(anInt625, anInt626, i5, j5, k5, j4, k4, l4)) {
                     anInt627 = k;
                     anInt628 = j1;

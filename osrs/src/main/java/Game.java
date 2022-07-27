@@ -24,10 +24,10 @@ public class Game extends Applet
     public int gameWidth;
     public int gameHeight;
     public Graphics graphics;
-    public Class34 aClass34_15;
+    public ImageProducer aImageProducer_15;
     public final Class44_Sub3_Sub1_Sub2[] aClass44_Sub3_Sub1_Sub2Array16;
     public GameWindow gameWindow;
-    public boolean aBoolean18;
+    public boolean shouldFillBackground;
     public boolean aBoolean19;
     public int mouseIdleMs;
     public int lastMouseButtonPressed;
@@ -57,7 +57,7 @@ public class Game extends Applet
         aLongArray9 = new long[10];
         aBoolean11 = false;
         aClass44_Sub3_Sub1_Sub2Array16 = new Class44_Sub3_Sub1_Sub2[6];
-        aBoolean18 = true;
+        shouldFillBackground = true;
         aBoolean19 = true;
         anIntArray32 = new int[128];
         anIntArray33 = new int[128];
@@ -70,7 +70,7 @@ public class Game extends Applet
         gameHeight = height;
         gameWindow = new GameWindow(this, gameWidth, gameHeight, 0);
         graphics = getGameWindow(aByte2).getGraphics();
-        aClass34_15 = new Class34(gameHeight, anInt3, gameWidth, getGameWindow(aByte2));
+        aImageProducer_15 = new ImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
         startRunnable(this, 1);
     }
 
@@ -80,7 +80,7 @@ public class Game extends Applet
             gameWidth = j;
             gameHeight = i;
             graphics = getGameWindow(aByte2).getGraphics();
-            aClass34_15 = new Class34(gameHeight, anInt3, gameWidth, getGameWindow(aByte2));
+            aImageProducer_15 = new ImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
             startRunnable(this, 1);
         }
     }
@@ -92,7 +92,7 @@ public class Game extends Applet
         getGameWindow(aByte2).addFocusListener(this);
         if (gameWindow != null)
             gameWindow.addWindowListener(this);
-        method13("Loading...", 0, 7);
+        drawString("Loading...", 0, 7);
         startup();
         int i = 0;
         int j = 256;
@@ -223,14 +223,14 @@ public class Game extends Applet
     public void update(Graphics g) {
         if (graphics == null)
             graphics = g;
-        aBoolean18 = true;
+        shouldFillBackground = true;
         method10(148);
     }
 
     public void paint(Graphics g) {
         if (graphics == null)
             graphics = g;
-        aBoolean18 = true;
+        shouldFillBackground = true;
         method10(148);
     }
 
@@ -380,7 +380,7 @@ public class Game extends Applet
 
     public void focusGained(FocusEvent focusevent) {
         aBoolean19 = true;
-        aBoolean18 = true;
+        shouldFillBackground = true;
         method10(148);
     }
 
@@ -445,13 +445,13 @@ public class Game extends Applet
             return this;
     }
 
-    public void startRunnable(Runnable runnable, int i) {
+    public void startRunnable(Runnable runnable, int priority) {
         Thread thread = new Thread(runnable);
         thread.start();
-        thread.setPriority(i);
+        thread.setPriority(priority);
     }
 
-    public void method13(String s, int i, int j) {
+    public void drawString(String text, int x, int j) {
         while (graphics == null) {
             graphics = getGameWindow(aByte2).getGraphics();
             try {
@@ -470,20 +470,20 @@ public class Game extends Applet
         FontMetrics fontmetrics = getGameWindow(aByte2).getFontMetrics(font);
         Font font1 = new Font("Helvetica", 0, 13);
         getGameWindow(aByte2).getFontMetrics(font1);
-        if (aBoolean18) {
+        if (shouldFillBackground) {
             graphics.setColor(Color.black);
             graphics.fillRect(0, 0, gameWidth, gameHeight);
-            aBoolean18 = false;
+            shouldFillBackground = false;
         }
         Color color = new Color(140, 17, 17);
         int l = gameHeight / 2 - 18;
         graphics.setColor(color);
         graphics.drawRect(gameWidth / 2 - 152, l, 304, 34);
-        graphics.fillRect(gameWidth / 2 - 150, l + 2, i * 3, 30);
+        graphics.fillRect(gameWidth / 2 - 150, l + 2, x * 3, 30);
         graphics.setColor(Color.black);
-        graphics.fillRect((gameWidth / 2 - 150) + i * 3, l + 2, 300 - i * 3, 30);
+        graphics.fillRect((gameWidth / 2 - 150) + x * 3, l + 2, 300 - x * 3, 30);
         graphics.setFont(font);
         graphics.setColor(Color.white);
-        graphics.drawString(s, (gameWidth - fontmetrics.stringWidth(s)) / 2, l + 22);
+        graphics.drawString(text, (gameWidth - fontmetrics.stringWidth(text)) / 2, l + 22);
     }
 }

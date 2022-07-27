@@ -2,6 +2,8 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
+import net.runelite.mapping.Export;
+
 import java.awt.*;
 
 public class GameWindow extends Frame {
@@ -21,17 +23,10 @@ public class GameWindow extends Frame {
         }
     }
 
+    //This fixes a natural offset the game has in the frame
     public Graphics getGraphics() {
         Graphics g = super.getGraphics();
         g.translate(4, 24);
         return g;
-    }
-
-    public void update(Graphics g) {
-        game.update(g);
-    }
-
-    public void paint(Graphics g) {
-        game.paint(g);
     }
 }

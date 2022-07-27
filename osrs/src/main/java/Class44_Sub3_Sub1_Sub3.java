@@ -2,7 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1 {
+public class Class44_Sub3_Sub1_Sub3 extends DrawingArea {
 
     public int anInt1438;
     public final boolean aBoolean1439;
@@ -167,39 +167,39 @@ public class Class44_Sub3_Sub1_Sub3 extends Class44_Sub3_Sub1 {
     public void method453(byte byte0, int i, int j) {
         i += anInt1449;
         j += anInt1450;
-        int k = i + j * Class44_Sub3_Sub1.anInt1352;
+        int k = i + j * DrawingArea.anInt1352;
         int l = 0;
         int i1 = anInt1448;
         int j1 = anInt1447;
-        int k1 = Class44_Sub3_Sub1.anInt1352 - j1;
+        int k1 = DrawingArea.anInt1352 - j1;
         int l1 = 0;
-        if (j < Class44_Sub3_Sub1.anInt1354) {
-            int i2 = Class44_Sub3_Sub1.anInt1354 - j;
+        if (j < DrawingArea.anInt1354) {
+            int i2 = DrawingArea.anInt1354 - j;
             i1 -= i2;
-            j = Class44_Sub3_Sub1.anInt1354;
+            j = DrawingArea.anInt1354;
             l += i2 * j1;
-            k += i2 * Class44_Sub3_Sub1.anInt1352;
+            k += i2 * DrawingArea.anInt1352;
         }
-        if (j + i1 > Class44_Sub3_Sub1.anInt1355)
-            i1 -= (j + i1) - Class44_Sub3_Sub1.anInt1355;
-        if (i < Class44_Sub3_Sub1.anInt1356) {
-            int j2 = Class44_Sub3_Sub1.anInt1356 - i;
+        if (j + i1 > DrawingArea.anInt1355)
+            i1 -= (j + i1) - DrawingArea.anInt1355;
+        if (i < DrawingArea.anInt1356) {
+            int j2 = DrawingArea.anInt1356 - i;
             j1 -= j2;
-            i = Class44_Sub3_Sub1.anInt1356;
+            i = DrawingArea.anInt1356;
             l += j2;
             k += j2;
             l1 += j2;
             k1 += j2;
         }
-        if (i + j1 > Class44_Sub3_Sub1.anInt1357) {
-            int k2 = (i + j1) - Class44_Sub3_Sub1.anInt1357;
+        if (i + j1 > DrawingArea.anInt1357) {
+            int k2 = (i + j1) - DrawingArea.anInt1357;
             j1 -= k2;
             l1 += k2;
             k1 += k2;
         }
         if (j1 <= 0 || i1 <= 0)
             return;
-        method454(l1, (byte) -55, k1, l, i1, j1, Class44_Sub3_Sub1.anIntArray1351, aByteArray1445, k, anIntArray1446);
+        method454(l1, (byte) -55, k1, l, i1, j1, DrawingArea.anIntArray1351, aByteArray1445, k, anIntArray1446);
         if (byte0 != 7)
             anInt1438 = -485;
     }

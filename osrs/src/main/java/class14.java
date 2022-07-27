@@ -145,18 +145,18 @@ public class Class14 {
         int k1 = Class44_Sub3_Sub1_Sub1.anInt1403;
         int l1 = Class44_Sub3_Sub1_Sub1.anInt1404;
         int[] ai = Class44_Sub3_Sub1_Sub1.anIntArray1409;
-        int[] ai1 = Class44_Sub3_Sub1.anIntArray1351;
-        int i2 = Class44_Sub3_Sub1.anInt1352;
-        int j2 = Class44_Sub3_Sub1.anInt1353;
-        int k2 = Class44_Sub3_Sub1.anInt1356;
-        int l2 = Class44_Sub3_Sub1.anInt1357;
-        int i3 = Class44_Sub3_Sub1.anInt1354;
-        int j3 = Class44_Sub3_Sub1.anInt1355;
+        int[] ai1 = DrawingArea.anIntArray1351;
+        int i2 = DrawingArea.anInt1352;
+        int j2 = DrawingArea.anInt1353;
+        int k2 = DrawingArea.anInt1356;
+        int l2 = DrawingArea.anInt1357;
+        int i3 = DrawingArea.anInt1354;
+        int j3 = DrawingArea.anInt1355;
         if (k != 45926)
             throw new NullPointerException();
         Class44_Sub3_Sub1_Sub1.aBoolean1401 = false;
-        Class44_Sub3_Sub1.method406(32, 32, class44_sub3_sub1_sub2_1.anIntArray1431, 9);
-        Class44_Sub3_Sub1.method411(32, 0, 32, 0, 0, 0);
+        DrawingArea.initDrawingArea(32, 32, class44_sub3_sub1_sub2_1.anIntArray1431, 9);
+        DrawingArea.method411(32, 0, 32, 0, 0, 0);
         Class44_Sub3_Sub1_Sub1.method419(false);
         int k3 = class14.anInt331;
         if (j == -1)
@@ -215,8 +215,8 @@ public class Class14 {
         }
         if (j == 0)
             aClass39_365.method340(201, i, class44_sub3_sub1_sub2_1);
-        Class44_Sub3_Sub1.method406(i2, j2, ai1, 9);
-        Class44_Sub3_Sub1.method408(5, j3, l2, k2, i3);
+        DrawingArea.initDrawingArea(i2, j2, ai1, 9);
+        DrawingArea.method408(5, j3, l2, k2, i3);
         Class44_Sub3_Sub1_Sub1.anInt1403 = k1;
         Class44_Sub3_Sub1_Sub1.anInt1404 = l1;
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = ai;

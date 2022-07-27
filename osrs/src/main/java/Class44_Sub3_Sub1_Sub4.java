@@ -4,7 +4,7 @@
 
 import java.util.Random;
 
-public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1 {
+public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
 
     public int anInt1453;
     public final int anInt1454;
@@ -175,7 +175,7 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1 {
         if (i <= 0)
             return;
         if (aBoolean1466)
-            Class44_Sub3_Sub1.method414(k - i1, 0x800000, i1, (byte) 125, j + (int) ((double) anInt1464 * 0.69999999999999996D));
+            DrawingArea.method414(k - i1, 0x800000, i1, (byte) 125, j + (int) ((double) anInt1464 * 0.69999999999999996D));
     }
 
     public void method461(int i, int j, String s, int k, int l, int i1, boolean flag) {
@@ -248,37 +248,37 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1 {
     }
 
     public void method463(byte[] abyte0, int i, int j, int k, int l, int i1) {
-        int j1 = i + j * Class44_Sub3_Sub1.anInt1352;
-        int k1 = Class44_Sub3_Sub1.anInt1352 - k;
+        int j1 = i + j * DrawingArea.anInt1352;
+        int k1 = DrawingArea.anInt1352 - k;
         int l1 = 0;
         int i2 = 0;
-        if (j < Class44_Sub3_Sub1.anInt1354) {
-            int j2 = Class44_Sub3_Sub1.anInt1354 - j;
+        if (j < DrawingArea.anInt1354) {
+            int j2 = DrawingArea.anInt1354 - j;
             l -= j2;
-            j = Class44_Sub3_Sub1.anInt1354;
+            j = DrawingArea.anInt1354;
             i2 += j2 * k;
-            j1 += j2 * Class44_Sub3_Sub1.anInt1352;
+            j1 += j2 * DrawingArea.anInt1352;
         }
-        if (j + l >= Class44_Sub3_Sub1.anInt1355)
-            l -= ((j + l) - Class44_Sub3_Sub1.anInt1355) + 1;
-        if (i < Class44_Sub3_Sub1.anInt1356) {
-            int k2 = Class44_Sub3_Sub1.anInt1356 - i;
+        if (j + l >= DrawingArea.anInt1355)
+            l -= ((j + l) - DrawingArea.anInt1355) + 1;
+        if (i < DrawingArea.anInt1356) {
+            int k2 = DrawingArea.anInt1356 - i;
             k -= k2;
-            i = Class44_Sub3_Sub1.anInt1356;
+            i = DrawingArea.anInt1356;
             i2 += k2;
             j1 += k2;
             l1 += k2;
             k1 += k2;
         }
-        if (i + k >= Class44_Sub3_Sub1.anInt1357) {
-            int l2 = ((i + k) - Class44_Sub3_Sub1.anInt1357) + 1;
+        if (i + k >= DrawingArea.anInt1357) {
+            int l2 = ((i + k) - DrawingArea.anInt1357) + 1;
             k -= l2;
             l1 += l2;
             k1 += l2;
         }
         if (k <= 0 || l <= 0) {
         } else {
-            method464(Class44_Sub3_Sub1.anIntArray1351, abyte0, i1, i2, j1, k, l, k1, l1);
+            method464(DrawingArea.anIntArray1351, abyte0, i1, i2, j1, k, l, k1, l1);
         }
     }
 
@@ -320,37 +320,37 @@ public class Class44_Sub3_Sub1_Sub4 extends Class44_Sub3_Sub1 {
 
     public void method465(int i, byte[] abyte0, int j, int k, int l, boolean flag, int i1,
                           int j1) {
-        int k1 = j + i * Class44_Sub3_Sub1.anInt1352;
-        int l1 = Class44_Sub3_Sub1.anInt1352 - j1;
+        int k1 = j + i * DrawingArea.anInt1352;
+        int l1 = DrawingArea.anInt1352 - j1;
         int i2 = 0;
         int j2 = 0;
-        if (i < Class44_Sub3_Sub1.anInt1354) {
-            int k2 = Class44_Sub3_Sub1.anInt1354 - i;
+        if (i < DrawingArea.anInt1354) {
+            int k2 = DrawingArea.anInt1354 - i;
             l -= k2;
-            i = Class44_Sub3_Sub1.anInt1354;
+            i = DrawingArea.anInt1354;
             j2 += k2 * j1;
-            k1 += k2 * Class44_Sub3_Sub1.anInt1352;
+            k1 += k2 * DrawingArea.anInt1352;
         }
-        if (i + l >= Class44_Sub3_Sub1.anInt1355)
-            l -= ((i + l) - Class44_Sub3_Sub1.anInt1355) + 1;
-        if (j < Class44_Sub3_Sub1.anInt1356) {
-            int l2 = Class44_Sub3_Sub1.anInt1356 - j;
+        if (i + l >= DrawingArea.anInt1355)
+            l -= ((i + l) - DrawingArea.anInt1355) + 1;
+        if (j < DrawingArea.anInt1356) {
+            int l2 = DrawingArea.anInt1356 - j;
             j1 -= l2;
-            j = Class44_Sub3_Sub1.anInt1356;
+            j = DrawingArea.anInt1356;
             j2 += l2;
             k1 += l2;
             i2 += l2;
             l1 += l2;
         }
-        if (j + j1 >= Class44_Sub3_Sub1.anInt1357) {
-            int i3 = ((j + j1) - Class44_Sub3_Sub1.anInt1357) + 1;
+        if (j + j1 >= DrawingArea.anInt1357) {
+            int i3 = ((j + j1) - DrawingArea.anInt1357) + 1;
             j1 -= i3;
             i2 += i3;
             l1 += i3;
         }
         if (j1 <= 0 || l <= 0) {
         } else {
-            method466(l, abyte0, k, j1, i2, i1, k1, Class44_Sub3_Sub1.anIntArray1351, -701, j2, l1);
+            method466(l, abyte0, k, j1, i2, i1, k1, DrawingArea.anIntArray1351, -701, j2, l1);
             if (!flag) ;
         }
     }

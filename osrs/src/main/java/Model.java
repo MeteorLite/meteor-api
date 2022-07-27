@@ -1405,19 +1405,19 @@ public class Model extends Renderable {
             return;
         int j3 = l1 * l + j1 * i1 >> 16;
         int k3 = j3 - anInt1546 << 9;
-        if (k3 / i3 >= Class44_Sub3_Sub1.anInt1359)
+        if (k3 / i3 >= DrawingArea.anInt1359)
             return;
         int l3 = j3 + anInt1546 << 9;
-        if (l3 / i3 <= -Class44_Sub3_Sub1.anInt1359)
+        if (l3 / i3 <= -DrawingArea.anInt1359)
             return;
         int i4 = k1 * k - j2 * j >> 16;
         int j4 = anInt1546 * j >> 16;
         int k4 = i4 + j4 << 9;
-        if (k4 / i3 <= -Class44_Sub3_Sub1.anInt1360)
+        if (k4 / i3 <= -DrawingArea.anInt1360)
             return;
         int l4 = j4 + (super.anInt1394 * k >> 16);
         int i5 = i4 - l4 << 9;
-        if (i5 / i3 >= Class44_Sub3_Sub1.anInt1360)
+        if (i5 / i3 >= DrawingArea.anInt1360)
             return;
         int j5 = l2 + (super.anInt1394 * j >> 16);
         boolean flag = k2 - j5 <= 50;
@@ -1518,7 +1518,7 @@ public class Model extends Renderable {
                     }
                     if ((i3 - l3) * (anIntArray1562[j2] - anIntArray1562[k1]) - (anIntArray1562[l] - anIntArray1562[k1]) * (k4 - l3) > 0) {
                         aBooleanArray1560[k] = false;
-                        aBooleanArray1559[k] = i3 < 0 || l3 < 0 || k4 < 0 || i3 > Class44_Sub3_Sub1.anInt1358 || l3 > Class44_Sub3_Sub1.anInt1358 || k4 > Class44_Sub3_Sub1.anInt1358;
+                        aBooleanArray1559[k] = i3 < 0 || l3 < 0 || k4 < 0 || i3 > DrawingArea.anInt1358 || l3 > DrawingArea.anInt1358 || k4 > DrawingArea.anInt1358;
                         int k5 = (anIntArray1563[l] + anIntArray1563[k1] + anIntArray1563[j2]) / 3 + anInt1549;
                         anIntArrayArray1568[k5][anIntArray1567[k5]++] = k;
                     }
@@ -1774,7 +1774,7 @@ public class Model extends Renderable {
         if ((j3 - j4) * (k7 - j7) - (i7 - j7) * (j5 - j4) > 0) {
             Class44_Sub3_Sub1_Sub1.aBoolean1399 = false;
             if (l == 3) {
-                if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.anInt1358 || j4 > Class44_Sub3_Sub1.anInt1358 || j5 > Class44_Sub3_Sub1.anInt1358)
+                if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > DrawingArea.anInt1358 || j4 > DrawingArea.anInt1358 || j5 > DrawingArea.anInt1358)
                     Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
                 int l7;
                 if (anIntArray1533 == null)
@@ -1800,7 +1800,7 @@ public class Model extends Renderable {
                 }
             }
             if (l == 4) {
-                if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Class44_Sub3_Sub1.anInt1358 || j4 > Class44_Sub3_Sub1.anInt1358 || j5 > Class44_Sub3_Sub1.anInt1358 || anIntArray1574[3] < 0 || anIntArray1574[3] > Class44_Sub3_Sub1.anInt1358)
+                if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > DrawingArea.anInt1358 || j4 > DrawingArea.anInt1358 || j5 > DrawingArea.anInt1358 || anIntArray1574[3] < 0 || anIntArray1574[3] > DrawingArea.anInt1358)
                     Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
                 int i8;
                 if (anIntArray1533 == null)

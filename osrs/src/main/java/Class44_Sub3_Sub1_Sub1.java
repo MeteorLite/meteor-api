@@ -2,7 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
+public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 
     public static boolean aBoolean1396;
     public static int anInt1397 = -593;
@@ -70,14 +70,14 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
     }
 
     public static void method419(boolean flag) {
-        anIntArray1409 = new int[Class44_Sub3_Sub1.anInt1353];
+        anIntArray1409 = new int[DrawingArea.anInt1353];
         if (flag)
             anInt1397 = 465;
-        for (int i = 0; i < Class44_Sub3_Sub1.anInt1353; i++)
-            anIntArray1409[i] = Class44_Sub3_Sub1.anInt1352 * i;
+        for (int i = 0; i < DrawingArea.anInt1353; i++)
+            anIntArray1409[i] = DrawingArea.anInt1352 * i;
 
-        anInt1403 = Class44_Sub3_Sub1.anInt1352 / 2;
-        anInt1404 = Class44_Sub3_Sub1.anInt1353 / 2;
+        anInt1403 = DrawingArea.anInt1352 / 2;
+        anInt1404 = DrawingArea.anInt1353 / 2;
     }
 
     public static void method420(int i, int j, int k) {
@@ -342,12 +342,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             k3 = (k1 - i2 << 15) / (i - k);
         }
         if (i <= j && i <= k) {
-            if (i >= Class44_Sub3_Sub1.anInt1355)
+            if (i >= DrawingArea.anInt1355)
                 return;
-            if (j > Class44_Sub3_Sub1.anInt1355)
-                j = Class44_Sub3_Sub1.anInt1355;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
+            if (j > DrawingArea.anInt1355)
+                j = DrawingArea.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
             if (j < k) {
                 j1 = l <<= 16;
                 i2 = k1 <<= 15;
@@ -368,8 +368,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 if (i != j && j3 < j2 || i == j && j3 > l2) {
                     k -= j;
                     j -= i;
-                    for (i = anIntArray1409[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                        method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                    for (i = anIntArray1409[i]; --j >= 0; i += DrawingArea.anInt1352) {
+                        method430(DrawingArea.anIntArray1351, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                         j1 += j3;
                         l += j2;
                         i2 += k3;
@@ -377,19 +377,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                     }
 
                     while (--k >= 0) {
-                        method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+                        method430(DrawingArea.anIntArray1351, i, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                         j1 += j3;
                         i1 += l2;
                         i2 += k3;
                         l1 += i3;
-                        i += Class44_Sub3_Sub1.anInt1352;
+                        i += DrawingArea.anInt1352;
                     }
                     return;
                 }
                 k -= j;
                 j -= i;
-                for (i = anIntArray1409[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                for (i = anIntArray1409[i]; --j >= 0; i += DrawingArea.anInt1352) {
+                    method430(DrawingArea.anIntArray1351, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                     j1 += j3;
                     l += j2;
                     i2 += k3;
@@ -397,12 +397,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 }
 
                 while (--k >= 0) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                    method430(DrawingArea.anIntArray1351, i, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                     j1 += j3;
                     i1 += l2;
                     i2 += k3;
                     l1 += i3;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                 }
                 return;
             }
@@ -425,8 +425,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (i != k && j3 < j2 || i == k && l2 > j2) {
                 j -= k;
                 k -= i;
-                for (i = anIntArray1409[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                for (i = anIntArray1409[i]; --k >= 0; i += DrawingArea.anInt1352) {
+                    method430(DrawingArea.anIntArray1351, i, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     i1 += j3;
                     l += j2;
                     l1 += k3;
@@ -434,19 +434,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 }
 
                 while (--j >= 0) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                    method430(DrawingArea.anIntArray1351, i, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                     j1 += l2;
                     l += j2;
                     i2 += i3;
                     k1 += k2;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                 }
                 return;
             }
             j -= k;
             k -= i;
-            for (i = anIntArray1409[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+            for (i = anIntArray1409[i]; --k >= 0; i += DrawingArea.anInt1352) {
+                method430(DrawingArea.anIntArray1351, i, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                 i1 += j3;
                 l += j2;
                 l1 += k3;
@@ -454,22 +454,22 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             }
 
             while (--j >= 0) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                method430(DrawingArea.anIntArray1351, i, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                 j1 += l2;
                 l += j2;
                 i2 += i3;
                 k1 += k2;
-                i += Class44_Sub3_Sub1.anInt1352;
+                i += DrawingArea.anInt1352;
             }
             return;
         }
         if (j <= k) {
-            if (j >= Class44_Sub3_Sub1.anInt1355)
+            if (j >= DrawingArea.anInt1355)
                 return;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
-            if (i > Class44_Sub3_Sub1.anInt1355)
-                i = Class44_Sub3_Sub1.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
+            if (i > DrawingArea.anInt1355)
+                i = DrawingArea.anInt1355;
             if (k < i) {
                 l = i1 <<= 16;
                 k1 = l1 <<= 15;
@@ -490,8 +490,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 if (j != k && j2 < l2 || j == k && j2 > j3) {
                     i -= k;
                     k -= j;
-                    for (j = anIntArray1409[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                        method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                    for (j = anIntArray1409[j]; --k >= 0; j += DrawingArea.anInt1352) {
+                        method430(DrawingArea.anIntArray1351, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                         l += j2;
                         i1 += l2;
                         k1 += k2;
@@ -499,19 +499,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                     }
 
                     while (--i >= 0) {
-                        method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+                        method430(DrawingArea.anIntArray1351, j, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                         l += j2;
                         j1 += j3;
                         k1 += k2;
                         i2 += k3;
-                        j += Class44_Sub3_Sub1.anInt1352;
+                        j += DrawingArea.anInt1352;
                     }
                     return;
                 }
                 i -= k;
                 k -= j;
-                for (j = anIntArray1409[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                for (j = anIntArray1409[j]; --k >= 0; j += DrawingArea.anInt1352) {
+                    method430(DrawingArea.anIntArray1351, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     l += j2;
                     i1 += l2;
                     k1 += k2;
@@ -519,12 +519,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 }
 
                 while (--i >= 0) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+                    method430(DrawingArea.anIntArray1351, j, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
                     l += j2;
                     j1 += j3;
                     k1 += k2;
                     i2 += k3;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                 }
                 return;
             }
@@ -547,8 +547,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (j2 < l2) {
                 k -= i;
                 i -= j;
-                for (j = anIntArray1409[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+                for (j = anIntArray1409[j]; --i >= 0; j += DrawingArea.anInt1352) {
+                    method430(DrawingArea.anIntArray1351, j, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                     j1 += j2;
                     i1 += l2;
                     i2 += k2;
@@ -556,19 +556,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 }
 
                 while (--k >= 0) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                    method430(DrawingArea.anIntArray1351, j, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                     l += j3;
                     i1 += l2;
                     k1 += k3;
                     l1 += i3;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                 }
                 return;
             }
             k -= i;
             i -= j;
-            for (j = anIntArray1409[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+            for (j = anIntArray1409[j]; --i >= 0; j += DrawingArea.anInt1352) {
+                method430(DrawingArea.anIntArray1351, j, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                 j1 += j2;
                 i1 += l2;
                 i2 += k2;
@@ -576,21 +576,21 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             }
 
             while (--k >= 0) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                method430(DrawingArea.anIntArray1351, j, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                 l += j3;
                 i1 += l2;
                 k1 += k3;
                 l1 += i3;
-                j += Class44_Sub3_Sub1.anInt1352;
+                j += DrawingArea.anInt1352;
             }
             return;
         }
-        if (k >= Class44_Sub3_Sub1.anInt1355)
+        if (k >= DrawingArea.anInt1355)
             return;
-        if (i > Class44_Sub3_Sub1.anInt1355)
-            i = Class44_Sub3_Sub1.anInt1355;
-        if (j > Class44_Sub3_Sub1.anInt1355)
-            j = Class44_Sub3_Sub1.anInt1355;
+        if (i > DrawingArea.anInt1355)
+            i = DrawingArea.anInt1355;
+        if (j > DrawingArea.anInt1355)
+            j = DrawingArea.anInt1355;
         if (i < j) {
             i1 = j1 <<= 16;
             l1 = i2 <<= 15;
@@ -611,8 +611,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (l2 < j3) {
                 j -= i;
                 i -= k;
-                for (k = anIntArray1409[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                for (k = anIntArray1409[k]; --i >= 0; k += DrawingArea.anInt1352) {
+                    method430(DrawingArea.anIntArray1351, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                     i1 += l2;
                     j1 += j3;
                     l1 += i3;
@@ -620,19 +620,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 }
 
                 while (--j >= 0) {
-                    method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
+                    method430(DrawingArea.anIntArray1351, k, 0, 0, i1 >> 16, l >> 16, l1 >> 7, k1 >> 7);
                     i1 += l2;
                     l += j2;
                     l1 += i3;
                     k1 += k2;
-                    k += Class44_Sub3_Sub1.anInt1352;
+                    k += DrawingArea.anInt1352;
                 }
                 return;
             }
             j -= i;
             i -= k;
-            for (k = anIntArray1409[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+            for (k = anIntArray1409[k]; --i >= 0; k += DrawingArea.anInt1352) {
+                method430(DrawingArea.anIntArray1351, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
                 i1 += l2;
                 j1 += j3;
                 l1 += i3;
@@ -640,12 +640,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             }
 
             while (--j >= 0) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
+                method430(DrawingArea.anIntArray1351, k, 0, 0, l >> 16, i1 >> 16, k1 >> 7, l1 >> 7);
                 i1 += l2;
                 l += j2;
                 l1 += i3;
                 k1 += k2;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
             }
             return;
         }
@@ -668,8 +668,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         if (l2 < j3) {
             i -= j;
             j -= k;
-            for (k = anIntArray1409[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
+            for (k = anIntArray1409[k]; --j >= 0; k += DrawingArea.anInt1352) {
+                method430(DrawingArea.anIntArray1351, k, 0, 0, l >> 16, j1 >> 16, k1 >> 7, i2 >> 7);
                 l += l2;
                 j1 += j3;
                 k1 += i3;
@@ -677,19 +677,19 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             }
 
             while (--i >= 0) {
-                method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
+                method430(DrawingArea.anIntArray1351, k, 0, 0, i1 >> 16, j1 >> 16, l1 >> 7, i2 >> 7);
                 i1 += j2;
                 j1 += j3;
                 l1 += k2;
                 i2 += k3;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
             }
             return;
         }
         i -= j;
         j -= k;
-        for (k = anIntArray1409[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-            method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
+        for (k = anIntArray1409[k]; --j >= 0; k += DrawingArea.anInt1352) {
+            method430(DrawingArea.anIntArray1351, k, 0, 0, j1 >> 16, l >> 16, i2 >> 7, k1 >> 7);
             l += l2;
             j1 += j3;
             k1 += i3;
@@ -697,12 +697,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         }
 
         while (--i >= 0) {
-            method430(Class44_Sub3_Sub1.anIntArray1351, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
+            method430(DrawingArea.anIntArray1351, k, 0, 0, j1 >> 16, i1 >> 16, i2 >> 7, l1 >> 7);
             i1 += j2;
             j1 += j3;
             l1 += k2;
             i2 += k3;
-            k += Class44_Sub3_Sub1.anInt1352;
+            k += DrawingArea.anInt1352;
         }
     }
 
@@ -714,8 +714,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                     l1 = (k1 - j1) / (i1 - l);
                 else
                     l1 = 0;
-                if (i1 > Class44_Sub3_Sub1.anInt1358)
-                    i1 = Class44_Sub3_Sub1.anInt1358;
+                if (i1 > DrawingArea.anInt1358)
+                    i1 = DrawingArea.anInt1358;
                 if (l < 0) {
                     j1 -= l * l1;
                     l = 0;
@@ -779,8 +779,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             return;
         int i2 = (k1 - j1) / (i1 - l);
         if (aBoolean1399) {
-            if (i1 > Class44_Sub3_Sub1.anInt1358)
-                i1 = Class44_Sub3_Sub1.anInt1358;
+            if (i1 > DrawingArea.anInt1358)
+                i1 = DrawingArea.anInt1358;
             if (l < 0) {
                 j1 -= l * i2;
                 l = 0;
@@ -818,12 +818,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         if (k != i)
             j2 = (l - j1 << 16) / (i - k);
         if (i <= j && i <= k) {
-            if (i >= Class44_Sub3_Sub1.anInt1355)
+            if (i >= DrawingArea.anInt1355)
                 return;
-            if (j > Class44_Sub3_Sub1.anInt1355)
-                j = Class44_Sub3_Sub1.anInt1355;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
+            if (j > DrawingArea.anInt1355)
+                j = DrawingArea.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
             if (j < k) {
                 j1 = l <<= 16;
                 if (i < 0) {
@@ -839,33 +839,33 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 if (i != j && j2 < l1 || i == j && j2 > i2) {
                     k -= j;
                     j -= i;
-                    for (i = anIntArray1409[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                        method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, j1 >> 16, l >> 16);
+                    for (i = anIntArray1409[i]; --j >= 0; i += DrawingArea.anInt1352) {
+                        method432(DrawingArea.anIntArray1351, i, k1, 0, j1 >> 16, l >> 16);
                         j1 += j2;
                         l += l1;
                     }
 
                     while (--k >= 0) {
-                        method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, j1 >> 16, i1 >> 16);
+                        method432(DrawingArea.anIntArray1351, i, k1, 0, j1 >> 16, i1 >> 16);
                         j1 += j2;
                         i1 += i2;
-                        i += Class44_Sub3_Sub1.anInt1352;
+                        i += DrawingArea.anInt1352;
                     }
                     return;
                 }
                 k -= j;
                 j -= i;
-                for (i = anIntArray1409[i]; --j >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, l >> 16, j1 >> 16);
+                for (i = anIntArray1409[i]; --j >= 0; i += DrawingArea.anInt1352) {
+                    method432(DrawingArea.anIntArray1351, i, k1, 0, l >> 16, j1 >> 16);
                     j1 += j2;
                     l += l1;
                 }
 
                 while (--k >= 0) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, i1 >> 16, j1 >> 16);
+                    method432(DrawingArea.anIntArray1351, i, k1, 0, i1 >> 16, j1 >> 16);
                     j1 += j2;
                     i1 += i2;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                 }
                 return;
             }
@@ -883,43 +883,43 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (i != k && j2 < l1 || i == k && i2 > l1) {
                 j -= k;
                 k -= i;
-                for (i = anIntArray1409[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, i1 >> 16, l >> 16);
+                for (i = anIntArray1409[i]; --k >= 0; i += DrawingArea.anInt1352) {
+                    method432(DrawingArea.anIntArray1351, i, k1, 0, i1 >> 16, l >> 16);
                     i1 += j2;
                     l += l1;
                 }
 
                 while (--j >= 0) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, j1 >> 16, l >> 16);
+                    method432(DrawingArea.anIntArray1351, i, k1, 0, j1 >> 16, l >> 16);
                     j1 += i2;
                     l += l1;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                 }
                 return;
             }
             j -= k;
             k -= i;
-            for (i = anIntArray1409[i]; --k >= 0; i += Class44_Sub3_Sub1.anInt1352) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, l >> 16, i1 >> 16);
+            for (i = anIntArray1409[i]; --k >= 0; i += DrawingArea.anInt1352) {
+                method432(DrawingArea.anIntArray1351, i, k1, 0, l >> 16, i1 >> 16);
                 i1 += j2;
                 l += l1;
             }
 
             while (--j >= 0) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, i, k1, 0, l >> 16, j1 >> 16);
+                method432(DrawingArea.anIntArray1351, i, k1, 0, l >> 16, j1 >> 16);
                 j1 += i2;
                 l += l1;
-                i += Class44_Sub3_Sub1.anInt1352;
+                i += DrawingArea.anInt1352;
             }
             return;
         }
         if (j <= k) {
-            if (j >= Class44_Sub3_Sub1.anInt1355)
+            if (j >= DrawingArea.anInt1355)
                 return;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
-            if (i > Class44_Sub3_Sub1.anInt1355)
-                i = Class44_Sub3_Sub1.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
+            if (i > DrawingArea.anInt1355)
+                i = DrawingArea.anInt1355;
             if (k < i) {
                 l = i1 <<= 16;
                 if (j < 0) {
@@ -935,33 +935,33 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 if (j != k && l1 < i2 || j == k && l1 > j2) {
                     i -= k;
                     k -= j;
-                    for (j = anIntArray1409[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                        method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, l >> 16, i1 >> 16);
+                    for (j = anIntArray1409[j]; --k >= 0; j += DrawingArea.anInt1352) {
+                        method432(DrawingArea.anIntArray1351, j, k1, 0, l >> 16, i1 >> 16);
                         l += l1;
                         i1 += i2;
                     }
 
                     while (--i >= 0) {
-                        method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, l >> 16, j1 >> 16);
+                        method432(DrawingArea.anIntArray1351, j, k1, 0, l >> 16, j1 >> 16);
                         l += l1;
                         j1 += j2;
-                        j += Class44_Sub3_Sub1.anInt1352;
+                        j += DrawingArea.anInt1352;
                     }
                     return;
                 }
                 i -= k;
                 k -= j;
-                for (j = anIntArray1409[j]; --k >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, i1 >> 16, l >> 16);
+                for (j = anIntArray1409[j]; --k >= 0; j += DrawingArea.anInt1352) {
+                    method432(DrawingArea.anIntArray1351, j, k1, 0, i1 >> 16, l >> 16);
                     l += l1;
                     i1 += i2;
                 }
 
                 while (--i >= 0) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, j1 >> 16, l >> 16);
+                    method432(DrawingArea.anIntArray1351, j, k1, 0, j1 >> 16, l >> 16);
                     l += l1;
                     j1 += j2;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                 }
                 return;
             }
@@ -979,42 +979,42 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (l1 < i2) {
                 k -= i;
                 i -= j;
-                for (j = anIntArray1409[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, j1 >> 16, i1 >> 16);
+                for (j = anIntArray1409[j]; --i >= 0; j += DrawingArea.anInt1352) {
+                    method432(DrawingArea.anIntArray1351, j, k1, 0, j1 >> 16, i1 >> 16);
                     j1 += l1;
                     i1 += i2;
                 }
 
                 while (--k >= 0) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, l >> 16, i1 >> 16);
+                    method432(DrawingArea.anIntArray1351, j, k1, 0, l >> 16, i1 >> 16);
                     l += j2;
                     i1 += i2;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                 }
                 return;
             }
             k -= i;
             i -= j;
-            for (j = anIntArray1409[j]; --i >= 0; j += Class44_Sub3_Sub1.anInt1352) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, i1 >> 16, j1 >> 16);
+            for (j = anIntArray1409[j]; --i >= 0; j += DrawingArea.anInt1352) {
+                method432(DrawingArea.anIntArray1351, j, k1, 0, i1 >> 16, j1 >> 16);
                 j1 += l1;
                 i1 += i2;
             }
 
             while (--k >= 0) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, j, k1, 0, i1 >> 16, l >> 16);
+                method432(DrawingArea.anIntArray1351, j, k1, 0, i1 >> 16, l >> 16);
                 l += j2;
                 i1 += i2;
-                j += Class44_Sub3_Sub1.anInt1352;
+                j += DrawingArea.anInt1352;
             }
             return;
         }
-        if (k >= Class44_Sub3_Sub1.anInt1355)
+        if (k >= DrawingArea.anInt1355)
             return;
-        if (i > Class44_Sub3_Sub1.anInt1355)
-            i = Class44_Sub3_Sub1.anInt1355;
-        if (j > Class44_Sub3_Sub1.anInt1355)
-            j = Class44_Sub3_Sub1.anInt1355;
+        if (i > DrawingArea.anInt1355)
+            i = DrawingArea.anInt1355;
+        if (j > DrawingArea.anInt1355)
+            j = DrawingArea.anInt1355;
         if (i < j) {
             i1 = j1 <<= 16;
             if (k < 0) {
@@ -1030,33 +1030,33 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             if (i2 < j2) {
                 j -= i;
                 i -= k;
-                for (k = anIntArray1409[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, i1 >> 16, j1 >> 16);
+                for (k = anIntArray1409[k]; --i >= 0; k += DrawingArea.anInt1352) {
+                    method432(DrawingArea.anIntArray1351, k, k1, 0, i1 >> 16, j1 >> 16);
                     i1 += i2;
                     j1 += j2;
                 }
 
                 while (--j >= 0) {
-                    method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, i1 >> 16, l >> 16);
+                    method432(DrawingArea.anIntArray1351, k, k1, 0, i1 >> 16, l >> 16);
                     i1 += i2;
                     l += l1;
-                    k += Class44_Sub3_Sub1.anInt1352;
+                    k += DrawingArea.anInt1352;
                 }
                 return;
             }
             j -= i;
             i -= k;
-            for (k = anIntArray1409[k]; --i >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, j1 >> 16, i1 >> 16);
+            for (k = anIntArray1409[k]; --i >= 0; k += DrawingArea.anInt1352) {
+                method432(DrawingArea.anIntArray1351, k, k1, 0, j1 >> 16, i1 >> 16);
                 i1 += i2;
                 j1 += j2;
             }
 
             while (--j >= 0) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, l >> 16, i1 >> 16);
+                method432(DrawingArea.anIntArray1351, k, k1, 0, l >> 16, i1 >> 16);
                 i1 += i2;
                 l += l1;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
             }
             return;
         }
@@ -1074,40 +1074,40 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         if (i2 < j2) {
             i -= j;
             j -= k;
-            for (k = anIntArray1409[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, l >> 16, j1 >> 16);
+            for (k = anIntArray1409[k]; --j >= 0; k += DrawingArea.anInt1352) {
+                method432(DrawingArea.anIntArray1351, k, k1, 0, l >> 16, j1 >> 16);
                 l += i2;
                 j1 += j2;
             }
 
             while (--i >= 0) {
-                method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, i1 >> 16, j1 >> 16);
+                method432(DrawingArea.anIntArray1351, k, k1, 0, i1 >> 16, j1 >> 16);
                 i1 += l1;
                 j1 += j2;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
             }
             return;
         }
         i -= j;
         j -= k;
-        for (k = anIntArray1409[k]; --j >= 0; k += Class44_Sub3_Sub1.anInt1352) {
-            method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, j1 >> 16, l >> 16);
+        for (k = anIntArray1409[k]; --j >= 0; k += DrawingArea.anInt1352) {
+            method432(DrawingArea.anIntArray1351, k, k1, 0, j1 >> 16, l >> 16);
             l += i2;
             j1 += j2;
         }
 
         while (--i >= 0) {
-            method432(Class44_Sub3_Sub1.anIntArray1351, k, k1, 0, j1 >> 16, i1 >> 16);
+            method432(DrawingArea.anIntArray1351, k, k1, 0, j1 >> 16, i1 >> 16);
             i1 += l1;
             j1 += j2;
-            k += Class44_Sub3_Sub1.anInt1352;
+            k += DrawingArea.anInt1352;
         }
     }
 
     public static void method432(int[] ai, int i, int j, int k, int l, int i1) {
         if (aBoolean1399) {
-            if (i1 > Class44_Sub3_Sub1.anInt1358)
-                i1 = Class44_Sub3_Sub1.anInt1358;
+            if (i1 > DrawingArea.anInt1358)
+                i1 = DrawingArea.anInt1358;
             if (l < 0)
                 l = 0;
         }
@@ -1180,12 +1180,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             j8 = (k1 - i2 << 16) / (i - k);
         }
         if (i <= j && i <= k) {
-            if (i >= Class44_Sub3_Sub1.anInt1355)
+            if (i >= DrawingArea.anInt1355)
                 return;
-            if (j > Class44_Sub3_Sub1.anInt1355)
-                j = Class44_Sub3_Sub1.anInt1355;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
+            if (j > DrawingArea.anInt1355)
+                j = DrawingArea.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
             if (j < k) {
                 j1 = l <<= 16;
                 i2 = k1 <<= 16;
@@ -1212,23 +1212,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                     j -= i;
                     i = anIntArray1409[i];
                     while (--j >= 0) {
-                        method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(DrawingArea.anIntArray1351, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                         j1 += i8;
                         l += i7;
                         i2 += j8;
                         k1 += j7;
-                        i += Class44_Sub3_Sub1.anInt1352;
+                        i += DrawingArea.anInt1352;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
                     }
                     while (--k >= 0) {
-                        method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(DrawingArea.anIntArray1351, ai, 0, 0, i, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                         j1 += i8;
                         i1 += k7;
                         i2 += j8;
                         l1 += l7;
-                        i += Class44_Sub3_Sub1.anInt1352;
+                        i += DrawingArea.anInt1352;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
@@ -1239,23 +1239,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 j -= i;
                 i = anIntArray1409[i];
                 while (--j >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i8;
                     l += i7;
                     i2 += j8;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while (--k >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, i, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i8;
                     i1 += k7;
                     i2 += j8;
                     l1 += l7;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1287,23 +1287,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 k -= i;
                 i = anIntArray1409[i];
                 while (--k >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, i, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += i8;
                     l += i7;
                     l1 += j8;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while (--j >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, i, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += k7;
                     l += i7;
                     i2 += l7;
                     k1 += j7;
-                    i += Class44_Sub3_Sub1.anInt1352;
+                    i += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1314,23 +1314,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             k -= i;
             i = anIntArray1409[i];
             while (--k >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, i, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += i8;
                 l += i7;
                 l1 += j8;
                 k1 += j7;
-                i += Class44_Sub3_Sub1.anInt1352;
+                i += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while (--j >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, i, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 j1 += k7;
                 l += i7;
                 i2 += l7;
                 k1 += j7;
-                i += Class44_Sub3_Sub1.anInt1352;
+                i += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -1338,12 +1338,12 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             return;
         }
         if (j <= k) {
-            if (j >= Class44_Sub3_Sub1.anInt1355)
+            if (j >= DrawingArea.anInt1355)
                 return;
-            if (k > Class44_Sub3_Sub1.anInt1355)
-                k = Class44_Sub3_Sub1.anInt1355;
-            if (i > Class44_Sub3_Sub1.anInt1355)
-                i = Class44_Sub3_Sub1.anInt1355;
+            if (k > DrawingArea.anInt1355)
+                k = DrawingArea.anInt1355;
+            if (i > DrawingArea.anInt1355)
+                i = DrawingArea.anInt1355;
             if (k < i) {
                 l = i1 <<= 16;
                 k1 = l1 <<= 16;
@@ -1370,23 +1370,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                     k -= j;
                     j = anIntArray1409[j];
                     while (--k >= 0) {
-                        method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(DrawingArea.anIntArray1351, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                         l += i7;
                         i1 += k7;
                         k1 += j7;
                         l1 += l7;
-                        j += Class44_Sub3_Sub1.anInt1352;
+                        j += DrawingArea.anInt1352;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
                     }
                     while (--i >= 0) {
-                        method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                        method434(DrawingArea.anIntArray1351, ai, 0, 0, j, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                         l += i7;
                         j1 += i8;
                         k1 += j7;
                         i2 += j8;
-                        j += Class44_Sub3_Sub1.anInt1352;
+                        j += DrawingArea.anInt1352;
                         l4 += j5;
                         k5 += i6;
                         j6 += l6;
@@ -1397,23 +1397,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 k -= j;
                 j = anIntArray1409[j];
                 while (--k >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i7;
                     i1 += k7;
                     k1 += j7;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while (--i >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, j, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i7;
                     j1 += i8;
                     k1 += j7;
                     i2 += j8;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1445,23 +1445,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 i -= j;
                 j = anIntArray1409[j];
                 while (--i >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, j, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                     j1 += i7;
                     i1 += k7;
                     i2 += j7;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while (--k >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, j, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                     l += i8;
                     i1 += k7;
                     k1 += j8;
                     l1 += l7;
-                    j += Class44_Sub3_Sub1.anInt1352;
+                    j += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1472,35 +1472,35 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             i -= j;
             j = anIntArray1409[j];
             while (--i >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, j, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 j1 += i7;
                 i1 += k7;
                 i2 += j7;
                 l1 += l7;
-                j += Class44_Sub3_Sub1.anInt1352;
+                j += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while (--k >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, j, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                 l += i8;
                 i1 += k7;
                 k1 += j8;
                 l1 += l7;
-                j += Class44_Sub3_Sub1.anInt1352;
+                j += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             return;
         }
-        if (k >= Class44_Sub3_Sub1.anInt1355)
+        if (k >= DrawingArea.anInt1355)
             return;
-        if (i > Class44_Sub3_Sub1.anInt1355)
-            i = Class44_Sub3_Sub1.anInt1355;
-        if (j > Class44_Sub3_Sub1.anInt1355)
-            j = Class44_Sub3_Sub1.anInt1355;
+        if (i > DrawingArea.anInt1355)
+            i = DrawingArea.anInt1355;
+        if (j > DrawingArea.anInt1355)
+            j = DrawingArea.anInt1355;
         if (i < j) {
             i1 = j1 <<= 16;
             l1 = i2 <<= 16;
@@ -1527,23 +1527,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
                 i -= k;
                 k = anIntArray1409[k];
                 while (--i >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += k7;
                     j1 += i8;
                     l1 += l7;
                     i2 += j8;
-                    k += Class44_Sub3_Sub1.anInt1352;
+                    k += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
                 }
                 while (--j >= 0) {
-                    method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+                    method434(DrawingArea.anIntArray1351, ai, 0, 0, k, i1 >> 16, l >> 16, l1 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
                     i1 += k7;
                     l += i7;
                     l1 += l7;
                     k1 += j7;
-                    k += Class44_Sub3_Sub1.anInt1352;
+                    k += DrawingArea.anInt1352;
                     l4 += j5;
                     k5 += i6;
                     j6 += l6;
@@ -1554,23 +1554,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             i -= k;
             k = anIntArray1409[k];
             while (--i >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += k7;
                 j1 += i8;
                 l1 += l7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while (--j >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, k, l >> 16, i1 >> 16, k1 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += k7;
                 l += i7;
                 l1 += l7;
                 k1 += j7;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -1602,23 +1602,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
             j -= k;
             k = anIntArray1409[k];
             while (--j >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, k, l >> 16, j1 >> 16, k1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 l += k7;
                 j1 += i8;
                 k1 += l7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
             }
             while (--i >= 0) {
-                method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
+                method434(DrawingArea.anIntArray1351, ai, 0, 0, k, i1 >> 16, j1 >> 16, l1 >> 8, i2 >> 8, l4, k5, j6, i5, l5, k6);
                 i1 += i7;
                 j1 += i8;
                 l1 += j7;
                 i2 += j8;
-                k += Class44_Sub3_Sub1.anInt1352;
+                k += DrawingArea.anInt1352;
                 l4 += j5;
                 k5 += i6;
                 j6 += l6;
@@ -1629,23 +1629,23 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         j -= k;
         k = anIntArray1409[k];
         while (--j >= 0) {
-            method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
+            method434(DrawingArea.anIntArray1351, ai, 0, 0, k, j1 >> 16, l >> 16, i2 >> 8, k1 >> 8, l4, k5, j6, i5, l5, k6);
             l += k7;
             j1 += i8;
             k1 += l7;
             i2 += j8;
-            k += Class44_Sub3_Sub1.anInt1352;
+            k += DrawingArea.anInt1352;
             l4 += j5;
             k5 += i6;
             j6 += l6;
         }
         while (--i >= 0) {
-            method434(Class44_Sub3_Sub1.anIntArray1351, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
+            method434(DrawingArea.anIntArray1351, ai, 0, 0, k, j1 >> 16, i1 >> 16, i2 >> 8, l1 >> 8, l4, k5, j6, i5, l5, k6);
             i1 += i7;
             j1 += i8;
             l1 += j7;
             i2 += j8;
-            k += Class44_Sub3_Sub1.anInt1352;
+            k += DrawingArea.anInt1352;
             l4 += j5;
             k5 += i6;
             j6 += l6;
@@ -1660,8 +1660,8 @@ public class Class44_Sub3_Sub1_Sub1 extends Class44_Sub3_Sub1 {
         int k3;
         if (aBoolean1399) {
             j3 = (k1 - j1) / (i1 - l);
-            if (i1 > Class44_Sub3_Sub1.anInt1358)
-                i1 = Class44_Sub3_Sub1.anInt1358;
+            if (i1 > DrawingArea.anInt1358)
+                i1 = DrawingArea.anInt1358;
             if (l < 0) {
                 j1 -= l * j3;
                 l = 0;

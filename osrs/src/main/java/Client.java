@@ -157,20 +157,20 @@ public class Client extends Game implements RSClient {
     public int anInt849;
     public int anInt850;
     public boolean aBoolean851;
-    public Class34 aClass34_852;
-    public Class34 aClass34_853;
-    public Class34 aClass34_854;
-    public Class34 aClass34_855;
-    public Class34 aClass34_856;
-    public Class34 aClass34_857;
-    public Class34 aClass34_858;
-    public Class34 aClass34_859;
-    public Class34 aClass34_860;
+    public ImageProducer aImageProducer_852;
+    public ImageProducer aImageProducer_853;
+    public ImageProducer aImageProducer_854;
+    public ImageProducer aImageProducer_855;
+    public ImageProducer aImageProducer_856;
+    public ImageProducer aImageProducer_857;
+    public ImageProducer aImageProducer_858;
+    public ImageProducer aImageProducer_859;
+    public ImageProducer aImageProducer_860;
     public Class5 aClass5_861;
-    public Class34 aClass34_862;
-    public Class34 aClass34_863;
-    public Class34 aClass34_864;
-    public Class34 aClass34_865;
+    public ImageProducer aImageProducer_862;
+    public ImageProducer aImageProducer_863;
+    public ImageProducer aImageProducer_864;
+    public ImageProducer aImageProducer_865;
     public int anInt866;
     public long aLong867;
     public int anInt868;
@@ -291,9 +291,9 @@ public class Client extends Game implements RSClient {
     public int anInt987;
     public int[] anIntArray988;
     public int[] anIntArray989;
-    public Class34 aClass34_990;
-    public Class34 aClass34_991;
-    public Class34 aClass34_992;
+    public ImageProducer aImageProducer_990;
+    public ImageProducer aImageProducer_991;
+    public ImageProducer aImageProducer_992;
     public int anInt993;
     public int anInt994;
     public int anInt995;
@@ -335,15 +335,15 @@ public class Client extends Game implements RSClient {
     public boolean aBoolean1035;
     public int anInt1036;
     public int anInt1037;
-    public Class34 aClass34_1039;
-    public Class34 aClass34_1040;
-    public Class34 aClass34_1041;
-    public Class34 aClass34_1042;
-    public Class34 aClass34_1043;
-    public Class34 aClass34_1044;
-    public Class34 aClass34_1045;
-    public Class34 aClass34_1046;
-    public Class34 aClass34_1047;
+    public ImageProducer aImageProducer_1039;
+    public ImageProducer aImageProducer_1040;
+    public ImageProducer aImageProducer_1041;
+    public ImageProducer aImageProducer_1042;
+    public ImageProducer aImageProducer_1043;
+    public ImageProducer aImageProducer_1044;
+    public ImageProducer aImageProducer_1045;
+    public ImageProducer aImageProducer_1046;
+    public ImageProducer aImageProducer_1047;
     public int[] anIntArray1048;
     public int anInt1049;
     public int anInt1051;
@@ -839,9 +839,9 @@ public class Client extends Game implements RSClient {
         int i1 = anInt1257;
         int j1 = anInt1258;
         int k1 = 0x5d5447;
-        Class44_Sub3_Sub1.method411(j1, k1, i1, k, 0, l);
-        Class44_Sub3_Sub1.method411(16, 0, i1 - 2, k + 1, 0, l + 1);
-        Class44_Sub3_Sub1.method412(i1 - 2, 0, j1 - 19, k + 1, l + 18, 394);
+        DrawingArea.method411(j1, k1, i1, k, 0, l);
+        DrawingArea.method411(16, 0, i1 - 2, k + 1, 0, l + 1);
+        DrawingArea.method412(i1 - 2, 0, j1 - 19, k + 1, l + 18, 394);
         aClass44_Sub3_Sub1_Sub4_1077.method458(k + 3, "Choose Option", k1, l + 14, true);
         int l1 = super.anInt22;
         int i2 = super.anInt23;
@@ -868,37 +868,37 @@ public class Client extends Game implements RSClient {
     }
 
     public void method16(int i) {
-        if (aClass34_1039 != null)
+        if (aImageProducer_1039 != null)
             return;
-        super.aClass34_15 = null;
-        aClass34_865 = null;
-        aClass34_863 = null;
-        aClass34_862 = null;
-        aClass34_864 = null;
-        aClass34_990 = null;
-        aClass34_991 = null;
-        aClass34_992 = null;
-        aClass34_1042 = new Class34(265, anInt940, 128, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1043 = new Class34(265, anInt940, 128, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1039 = new Class34(171, anInt940, 509, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1040 = new Class34(132, anInt940, 360, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
+        super.aImageProducer_15 = null;
+        aImageProducer_865 = null;
+        aImageProducer_863 = null;
+        aImageProducer_862 = null;
+        aImageProducer_864 = null;
+        aImageProducer_990 = null;
+        aImageProducer_991 = null;
+        aImageProducer_992 = null;
+        aImageProducer_1042 = new ImageProducer(265, 128, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1043 = new ImageProducer(265, 128, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1039 = new ImageProducer(171, 509, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1040 = new ImageProducer(132, 360, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
         if (i != -43664) {
             for (int j = 1; j > 0; j++) ;
         }
-        aClass34_1041 = new Class34(200, anInt940, 360, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1044 = new Class34(238, anInt940, 202, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1045 = new Class34(238, anInt940, 203, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1046 = new Class34(94, anInt940, 74, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
-        aClass34_1047 = new Class34(94, anInt940, 75, getGameWindow(aByte1102));
-        Class44_Sub3_Sub1.method409(8);
+        aImageProducer_1041 = new ImageProducer(200, 360, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1044 = new ImageProducer(238, 202, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1045 = new ImageProducer(238, 203, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1046 = new ImageProducer(94, 74, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
+        aImageProducer_1047 = new ImageProducer(94, 75, getGameWindow(aByte1102));
+        DrawingArea.method409(8);
         if (aClass47_942 != null) {
             method59(0);
             method91(4);
@@ -1033,7 +1033,7 @@ public class Client extends Game implements RSClient {
 
             aClass44_Sub3_Sub2_843.putOpcode(120);
             class3.method163(collisionMap, false, worldController);
-            aClass34_864.method272(aBoolean960);
+            aImageProducer_864.initDrawingArea();
             aClass44_Sub3_Sub2_843.putOpcode(120);
             for (int k5 = 0; k5 < 104; k5++) {
                 for (int j6 = 0; j6 < 104; j6++)
@@ -1531,22 +1531,22 @@ public class Client extends Game implements RSClient {
         anIntArray838 = null;
         anIntArray839 = null;
         aByteArray1088 = null;
-        aClass34_862 = null;
-        aClass34_863 = null;
-        aClass34_864 = null;
-        aClass34_865 = null;
-        aClass34_990 = null;
-        aClass34_991 = null;
-        aClass34_992 = null;
-        aClass34_852 = null;
-        aClass34_853 = null;
-        aClass34_854 = null;
-        aClass34_855 = null;
-        aClass34_856 = null;
-        aClass34_857 = null;
-        aClass34_858 = null;
-        aClass34_859 = null;
-        aClass34_860 = null;
+        aImageProducer_862 = null;
+        aImageProducer_863 = null;
+        aImageProducer_864 = null;
+        aImageProducer_865 = null;
+        aImageProducer_990 = null;
+        aImageProducer_991 = null;
+        aImageProducer_992 = null;
+        aImageProducer_852 = null;
+        aImageProducer_853 = null;
+        aImageProducer_854 = null;
+        aImageProducer_855 = null;
+        aImageProducer_856 = null;
+        aImageProducer_857 = null;
+        aImageProducer_858 = null;
+        aImageProducer_859 = null;
+        aImageProducer_860 = null;
         aClass44_Sub3_Sub1_Sub3_1201 = null;
         aClass44_Sub3_Sub1_Sub3_1202 = null;
         aClass44_Sub3_Sub1_Sub3_1203 = null;
@@ -1601,15 +1601,15 @@ public class Client extends Game implements RSClient {
         aStringArray833 = null;
         aLongArray1159 = null;
         anIntArray1073 = null;
-        aClass34_1042 = null;
-        aClass34_1043 = null;
-        aClass34_1039 = null;
-        aClass34_1040 = null;
-        aClass34_1041 = null;
-        aClass34_1044 = null;
-        aClass34_1045 = null;
-        aClass34_1046 = null;
-        aClass34_1047 = null;
+        aImageProducer_1042 = null;
+        aImageProducer_1043 = null;
+        aImageProducer_1039 = null;
+        aImageProducer_1040 = null;
+        aImageProducer_1041 = null;
+        aImageProducer_1044 = null;
+        aImageProducer_1045 = null;
+        aImageProducer_1046 = null;
+        aImageProducer_1047 = null;
         method114(0);
         GameObjectDefinition.method198((byte) 1);
         Class12.method213((byte) 1);
@@ -1622,7 +1622,7 @@ public class Client extends Game implements RSClient {
         Class32.aClass32Array547 = null;
         Class32.aClass39_559 = null;
         Class38.aClass38Array660 = null;
-        super.aClass34_15 = null;
+        super.aImageProducer_15 = null;
         Class44_Sub3_Sub4_Sub6_Sub1.aClass39_1680 = null;
         Class44_Sub3_Sub1_Sub1.method418((byte) 1);
         Class36.method277((byte) 1);
@@ -2093,14 +2093,14 @@ public class Client extends Game implements RSClient {
         Model.anInt1583 = 0;
         Model.anInt1581 = super.anInt22 - 4;
         Model.anInt1582 = super.anInt23 - 4;
-        Class44_Sub3_Sub1.method409(8);
+        DrawingArea.method409(8);
         worldController.method317(anInt820, -41301, anInt822, anInt824, anInt821, k, anInt823);
         worldController.method292(-579);
         method115(0);
         method126(6905);
         method57(l2, 502);
         method18(31037);
-        aClass34_864.method273(4, super.graphics, (byte) 76, 4);
+        aImageProducer_864.method273(4, super.graphics, (byte) 76, 4);
         anInt820 = i1;
         anInt821 = j1;
         anInt822 = k1;
@@ -2566,10 +2566,10 @@ public class Client extends Game implements RSClient {
     public void method42(int i) {
         i = 15 / i;
         if (isLowMemory && loadingState == 2 && Class3.anInt68 != clientPlane) {
-            aClass34_864.method272(aBoolean960);
+            aImageProducer_864.initDrawingArea();
             aClass44_Sub3_Sub1_Sub4_1076.method455(257, 151, 0, "Loading - please wait.", false);
             aClass44_Sub3_Sub1_Sub4_1076.method455(256, 150, 0xffffff, "Loading - please wait.", false);
-            aClass34_864.method273(4, super.graphics, (byte) 76, 4);
+            aImageProducer_864.method273(4, super.graphics, (byte) 76, 4);
             loadingState = 1;
             aLong1127 = System.currentTimeMillis();
         }
@@ -3285,7 +3285,7 @@ public class Client extends Game implements RSClient {
         if (flag1)
             aBoolean956 = !aBoolean956;
         method16(anInt845);
-        aClass34_1041.method272(aBoolean960);
+        aImageProducer_1041.initDrawingArea();
         aClass44_Sub3_Sub1_Sub3_1263.method453(aByte1070, 0, 0);
         char c = '\u0168';
         char c1 = '\310';
@@ -3343,15 +3343,15 @@ public class Client extends Game implements RSClient {
             aClass44_Sub3_Sub1_Sub3_1264.method453(aByte1070, j1 - 73, i2 - 20);
             aClass44_Sub3_Sub1_Sub4_1077.method456(0, j1, i2 + 5, "Cancel", 0xffffff, true);
         }
-        aClass34_1041.method273(202, super.graphics, (byte) 76, 171);
+        aImageProducer_1041.method273(202, super.graphics, (byte) 76, 171);
         if (aBoolean917) {
             aBoolean917 = false;
-            aClass34_1039.method273(128, super.graphics, (byte) 76, 0);
-            aClass34_1040.method273(202, super.graphics, (byte) 76, 371);
-            aClass34_1044.method273(0, super.graphics, (byte) 76, 265);
-            aClass34_1045.method273(562, super.graphics, (byte) 76, 265);
-            aClass34_1046.method273(128, super.graphics, (byte) 76, 171);
-            aClass34_1047.method273(562, super.graphics, (byte) 76, 171);
+            aImageProducer_1039.method273(128, super.graphics, (byte) 76, 0);
+            aImageProducer_1040.method273(202, super.graphics, (byte) 76, 371);
+            aImageProducer_1044.method273(0, super.graphics, (byte) 76, 265);
+            aImageProducer_1045.method273(562, super.graphics, (byte) 76, 265);
+            aImageProducer_1046.method273(128, super.graphics, (byte) 76, 171);
+            aImageProducer_1047.method273(562, super.graphics, (byte) 76, 171);
         }
     }
 
@@ -3407,20 +3407,20 @@ public class Client extends Game implements RSClient {
     public void method56(int i, int j, int k, byte byte0, int l, int i1) {
         aClass44_Sub3_Sub1_Sub3_1154.method453(aByte1070, l, j);
         aClass44_Sub3_Sub1_Sub3_1155.method453(aByte1070, l, (j + i1) - 16);
-        Class44_Sub3_Sub1.method411(i1 - 32, anInt1158, 16, l, 0, j + 16);
+        DrawingArea.method411(i1 - 32, anInt1158, 16, l, 0, j + 16);
         int j1 = ((i1 - 32) * i1) / k;
         if (j1 < 8)
             j1 = 8;
         int k1 = ((i1 - 32 - j1) * i) / (k - i1);
-        Class44_Sub3_Sub1.method411(j1, anInt1007, 16, l, 0, j + 16 + k1);
-        Class44_Sub3_Sub1.method416(anInt1177, j1, l, 384, j + 16 + k1);
-        Class44_Sub3_Sub1.method416(anInt1177, j1, l + 1, 384, j + 16 + k1);
-        Class44_Sub3_Sub1.method414(16, anInt1177, l, (byte) 125, j + 16 + k1);
-        Class44_Sub3_Sub1.method414(16, anInt1177, l, (byte) 125, j + 17 + k1);
-        Class44_Sub3_Sub1.method416(anInt825, j1, l + 15, 384, j + 16 + k1);
-        Class44_Sub3_Sub1.method416(anInt825, j1 - 1, l + 14, 384, j + 17 + k1);
-        Class44_Sub3_Sub1.method414(16, anInt825, l, (byte) 125, j + 15 + k1 + j1);
-        Class44_Sub3_Sub1.method414(15, anInt825, l + 1, (byte) 125, j + 14 + k1 + j1);
+        DrawingArea.method411(j1, anInt1007, 16, l, 0, j + 16 + k1);
+        DrawingArea.method416(anInt1177, j1, l, 384, j + 16 + k1);
+        DrawingArea.method416(anInt1177, j1, l + 1, 384, j + 16 + k1);
+        DrawingArea.method414(16, anInt1177, l, (byte) 125, j + 16 + k1);
+        DrawingArea.method414(16, anInt1177, l, (byte) 125, j + 17 + k1);
+        DrawingArea.method416(anInt825, j1, l + 15, 384, j + 16 + k1);
+        DrawingArea.method416(anInt825, j1 - 1, l + 14, 384, j + 17 + k1);
+        DrawingArea.method414(16, anInt825, l, (byte) 125, j + 15 + k1 + j1);
+        DrawingArea.method414(15, anInt825, l + 1, (byte) 125, j + 14 + k1 + j1);
         if (byte0 != 123)
             aClass44_Sub3_Sub2_843.put1(30);
     }
@@ -3538,23 +3538,23 @@ public class Client extends Game implements RSClient {
     public void method59(int i) {
         byte[] abyte0 = aClass47_942.method546("title.dat", null);
         Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(abyte0, this);
-        aClass34_1042.method272(aBoolean960);
+        aImageProducer_1042.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 0);
-        aClass34_1043.method272(aBoolean960);
+        aImageProducer_1043.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -637);
-        aClass34_1039.method272(aBoolean960);
+        aImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -128);
-        aClass34_1040.method272(aBoolean960);
+        aImageProducer_1040.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-371, false, -202);
-        aClass34_1041.method272(aBoolean960);
+        aImageProducer_1041.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -202);
-        aClass34_1044.method272(aBoolean960);
+        aImageProducer_1044.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, 0);
-        aClass34_1045.method272(aBoolean960);
+        aImageProducer_1045.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, -562);
-        aClass34_1046.method272(aBoolean960);
+        aImageProducer_1046.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -128);
-        aClass34_1047.method272(aBoolean960);
+        aImageProducer_1047.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -562);
         int[] ai = new int[class44_sub3_sub1_sub2.anInt1432];
         for (int j = 0; j < class44_sub3_sub1_sub2.anInt1433; j++) {
@@ -3566,27 +3566,27 @@ public class Client extends Game implements RSClient {
 
         }
 
-        aClass34_1042.method272(aBoolean960);
+        aImageProducer_1042.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 382);
-        aClass34_1043.method272(aBoolean960);
+        aImageProducer_1043.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -255);
-        aClass34_1039.method272(aBoolean960);
+        aImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 254);
-        aClass34_1040.method272(aBoolean960);
+        aImageProducer_1040.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-371, false, 180);
-        aClass34_1041.method272(aBoolean960);
+        aImageProducer_1041.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, 180);
-        aClass34_1044.method272(aBoolean960);
+        aImageProducer_1044.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, 382);
-        aClass34_1045.method272(aBoolean960);
+        aImageProducer_1045.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, -180);
-        aClass34_1046.method272(aBoolean960);
+        aImageProducer_1046.initDrawingArea();
         anInt1219 += i;
         class44_sub3_sub1_sub2.method438(-171, false, 254);
-        aClass34_1047.method272(aBoolean960);
+        aImageProducer_1047.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -180);
         class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(aClass47_942, "logo", 0);
-        aClass34_1039.method272(aBoolean960);
+        aImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method440(aByte1070, 382 - class44_sub3_sub1_sub2.anInt1432 / 2 - 128, 18);
         class44_sub3_sub1_sub2 = null;
         abyte0 = null;
@@ -4152,7 +4152,7 @@ public class Client extends Game implements RSClient {
             anInt1235 = aClass46_944.method542();
         while (abyte0 == null) {
             String s2 = "Unknown error";
-            method13("Requesting " + s, k, 7);
+            drawString("Requesting " + s, k, 7);
             Object obj = null;
             try {
                 int k1 = 0;
@@ -4178,7 +4178,7 @@ public class Client extends Game implements RSClient {
                     j2 += j3;
                     int k3 = (j2 * 100) / i2;
                     if (k3 != k1)
-                        method13("Loading " + s + " - " + k3 + "%", k, 7);
+                        drawString("Loading " + s + " - " + k3 + "%", k, 7);
                     k1 = k3;
                 }
                 datainputstream.close();
@@ -4221,10 +4221,10 @@ public class Client extends Game implements RSClient {
             if (abyte0 == null) {
                 for (int l1 = l; l1 > 0; l1--) {
                     if (j1 >= 3) {
-                        method13("Game updated - please reload page", k, 7);
+                        drawString("Game updated - please reload page", k, 7);
                         l1 = 10;
                     } else {
-                        method13(s2 + " - Retrying in " + l1, k, 7);
+                        drawString(s2 + " - Retrying in " + l1, k, 7);
                     }
                     try {
                         Thread.sleep(1000L);
@@ -4273,7 +4273,7 @@ public class Client extends Game implements RSClient {
     public void method63(byte byte0) {
         if (byte0 != -29)
             aBoolean899 = !aBoolean899;
-        aClass34_865.method272(aBoolean960);
+        aImageProducer_865.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1243;
         aClass44_Sub3_Sub1_Sub3_1203.method453(aByte1070, 0, 0);
         if (aBoolean1265) {
@@ -4292,7 +4292,7 @@ public class Client extends Game implements RSClient {
         } else {
             Class44_Sub3_Sub1_Sub4 class44_sub3_sub1_sub4 = aClass44_Sub3_Sub1_Sub4_1076;
             int i = 0;
-            Class44_Sub3_Sub1.method408(5, 77, 463, 0, 0);
+            DrawingArea.method408(5, 77, 463, 0, 0);
             for (int j = 0; j < 100; j++)
                 if (aStringArray950[j] != null) {
                     int k = anIntArray948[j];
@@ -4372,7 +4372,7 @@ public class Client extends Game implements RSClient {
                     }
                 }
 
-            Class44_Sub3_Sub1.method407(true);
+            DrawingArea.method407(true);
             anInt931 = i * 14 + 7;
             if (anInt931 < 78)
                 anInt931 = 78;
@@ -4384,18 +4384,18 @@ public class Client extends Game implements RSClient {
                 s = Class48.method551(131, aString1147);
             class44_sub3_sub1_sub4.method458(4, s + ":", 0, 90, true);
             class44_sub3_sub1_sub4.method458(6 + class44_sub3_sub1_sub4.method457(-43341, s + ": "), aString1009 + "*", 255, 90, true);
-            Class44_Sub3_Sub1.method414(479, 0, 0, (byte) 125, 77);
+            DrawingArea.method414(479, 0, 0, (byte) 125, 77);
         }
         if (aBoolean851 && anInt1254 == 2)
             method15(-593);
-        aClass34_865.method273(17, super.graphics, (byte) 76, 357);
-        aClass34_864.method272(aBoolean960);
+        aImageProducer_865.method273(17, super.graphics, (byte) 76, 357);
+        aImageProducer_864.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1245;
     }
 
     @Export("startup")
     public void startup() {
-        method13("Starting up", 20, 7);
+        drawString("Starting up", 20, 7);
         if (signlink.sunjava)
             super.anInt8 = 5;
         if (aBoolean926) {
@@ -4455,7 +4455,7 @@ public class Client extends Game implements RSClient {
 
             aClass44_Sub3_Sub1_Sub2_1027 = new Class44_Sub3_Sub1_Sub2(512, 512);
             Class47 class47_6 = method61("update list", 5, "versionlist", anIntArray885[5], (byte) 46, 60);
-            method13("Connecting to update server", 60, 7);
+            drawString("Connecting to update server", 60, 7);
             aClass43_Sub1_1015 = new Class43_Sub1();
             aClass43_Sub1_1015.method383(class47_6, this);
             Class11.method207(aClass43_Sub1_1015.method386(836));
@@ -4480,7 +4480,7 @@ public class Client extends Game implements RSClient {
                     }
                 }
             }
-            method13("Requesting animations", 65, 7);
+            drawString("Requesting animations", 65, 7);
             int k = aClass43_Sub1_1015.method385(anInt1235, 1);
             for (int i1 = 0; i1 < k; i1++)
                 aClass43_Sub1_1015.method392(1, i1);
@@ -4488,7 +4488,7 @@ public class Client extends Game implements RSClient {
             while (aClass43_Sub1_1015.method393() > 0) {
                 int j1 = k - aClass43_Sub1_1015.method393();
                 if (j1 > 0)
-                    method13("Loading animations - " + (j1 * 100) / k + "%", 65, 7);
+                    drawString("Loading animations - " + (j1 * 100) / k + "%", 65, 7);
                 method23(0);
                 try {
                     Thread.sleep(100L);
@@ -4499,7 +4499,7 @@ public class Client extends Game implements RSClient {
                     return;
                 }
             }
-            method13("Requesting models", 70, 7);
+            drawString("Requesting models", 70, 7);
             k = aClass43_Sub1_1015.method385(anInt1235, 0);
             for (int k1 = 0; k1 < k; k1++) {
                 int l1 = aClass43_Sub1_1015.method390(k1, (byte) 9);
@@ -4511,7 +4511,7 @@ public class Client extends Game implements RSClient {
             while (aClass43_Sub1_1015.method393() > 0) {
                 int i2 = k - aClass43_Sub1_1015.method393();
                 if (i2 > 0)
-                    method13("Loading models - " + (i2 * 100) / k + "%", 70, 7);
+                    drawString("Loading models - " + (i2 * 100) / k + "%", 70, 7);
                 method23(0);
                 try {
                     Thread.sleep(100L);
@@ -4519,7 +4519,7 @@ public class Client extends Game implements RSClient {
                 }
             }
             if (aClass45Array1225[0] != null) {
-                method13("Requesting maps", 75, 7);
+                drawString("Requesting maps", 75, 7);
                 aClass43_Sub1_1015.method392(3, aClass43_Sub1_1015.method387(0, 47, false, 48));
                 aClass43_Sub1_1015.method392(3, aClass43_Sub1_1015.method387(1, 47, false, 48));
                 aClass43_Sub1_1015.method392(3, aClass43_Sub1_1015.method387(0, 48, false, 48));
@@ -4536,7 +4536,7 @@ public class Client extends Game implements RSClient {
                 while (aClass43_Sub1_1015.method393() > 0) {
                     int j2 = k - aClass43_Sub1_1015.method393();
                     if (j2 > 0)
-                        method13("Loading maps - " + (j2 * 100) / k + "%", 75, 7);
+                        drawString("Loading maps - " + (j2 * 100) / k + "%", 75, 7);
                     method23(0);
                     try {
                         Thread.sleep(100L);
@@ -4576,7 +4576,7 @@ public class Client extends Game implements RSClient {
                         aClass43_Sub1_1015.method395((byte) 5, i3, 2, (byte) 1);
 
             }
-            method13("Unpacking media", 80, 7);
+            drawString("Unpacking media", 80, 7);
             aClass44_Sub3_Sub1_Sub3_1201 = new Class44_Sub3_Sub1_Sub3(class47_2, "invback", 0);
             aClass44_Sub3_Sub1_Sub3_1203 = new Class44_Sub3_Sub1_Sub3(class47_2, "chatback", 0);
             aClass44_Sub3_Sub1_Sub3_1202 = new Class44_Sub3_Sub1_Sub3(class47_2, "mapback", 0);
@@ -4647,31 +4647,31 @@ public class Client extends Game implements RSClient {
                 aClass44_Sub3_Sub1_Sub3Array914[l4] = new Class44_Sub3_Sub1_Sub3(class47_2, "mod_icons", l4);
 
             Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backleft1", 0);
-            aClass34_852 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_852 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backleft2", 0);
-            aClass34_853 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_853 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backright1", 0);
-            aClass34_854 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_854 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backright2", 0);
-            aClass34_855 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_855 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backtop1", 0);
-            aClass34_856 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_856 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid1", 0);
-            aClass34_857 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_857 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid2", 0);
-            aClass34_858 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_858 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid3", 0);
-            aClass34_859 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_859 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backhmid2", 0);
-            aClass34_860 = new Class34(class44_sub3_sub1_sub2.anInt1433, anInt940, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aImageProducer_860 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             int i5 = (int) (Math.random() * 21D) - 10;
             int j5 = (int) (Math.random() * 21D) - 10;
@@ -4684,11 +4684,11 @@ public class Client extends Game implements RSClient {
                     aClass44_Sub3_Sub1_Sub3Array1018[i6].method452(k5 + l5, 6, i5 + l5, j5 + l5);
             }
 
-            method13("Unpacking textures", 83, 7);
+            drawString("Unpacking textures", 83, 7);
             Class44_Sub3_Sub1_Sub1.method423(class47_3, 0);
             Class44_Sub3_Sub1_Sub1.method427(-42222, 0.80000000000000004D);
             Class44_Sub3_Sub1_Sub1.method422(20, 2972);
-            method13("Unpacking config", 86, 7);
+            drawString("Unpacking config", 86, 7);
             Class26.method253(false, class47);
             GameObjectDefinition.method197(class47);
             Class20.method243(false, class47);
@@ -4700,17 +4700,17 @@ public class Client extends Game implements RSClient {
             Class35.method275(false, class47);
             Class14.aBoolean324 = isMembersWorld;
             if (!isLowMemory) {
-                method13("Unpacking sounds", 90, 7);
+                drawString("Unpacking sounds", 90, 7);
                 byte[] abyte0 = class47_5.method546("sounds.dat", null);
                 Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
                 Class4.method175(false, class44_sub3_sub2);
             }
-            method13("Unpacking interfaces", 95, 7);
+            drawString("Unpacking interfaces", 95, 7);
             Class44_Sub3_Sub1_Sub4[] aclass44_sub3_sub1_sub4 = {
                     aClass44_Sub3_Sub1_Sub4_1075, aClass44_Sub3_Sub1_Sub4_1076, aClass44_Sub3_Sub1_Sub4_1077, aClass44_Sub3_Sub1_Sub4_1078
             };
             Class5.method181(class47_1, class47_2, aclass44_sub3_sub1_sub4, -584);
-            method13("Preparing game engine", 100, 7);
+            drawString("Preparing game engine", 100, 7);
             for (int j6 = 0; j6 < 33; j6++) {
                 int k6 = 999;
                 int i7 = 0;
@@ -5181,40 +5181,40 @@ public class Client extends Game implements RSClient {
         aBoolean917 = true;
     }
 
-    public void method13(String s, int i, int j) {
+    public void drawString(String text, int i, int j) {
         anInt908 = i;
         if (j != 7)
             return;
-        aString828 = s;
+        aString828 = text;
         method16(anInt845);
         if (aClass47_942 == null) {
-            super.method13(s, i, 7);
+            super.drawString(text, i, 7);
             return;
         }
-        aClass34_1041.method272(aBoolean960);
+        aImageProducer_1041.initDrawingArea();
         char c = '\u0168';
         char c1 = '\310';
         byte byte0 = 20;
         aClass44_Sub3_Sub1_Sub4_1077.method455(c / 2, c1 / 2 - 26 - byte0, 0xffffff, "RuneScape is loading - please wait...", false);
         int k = c1 / 2 - 18 - byte0;
-        Class44_Sub3_Sub1.method412(304, 0x8c1111, 34, c / 2 - 152, k, 394);
-        Class44_Sub3_Sub1.method412(302, 0, 32, c / 2 - 151, k + 1, 394);
-        Class44_Sub3_Sub1.method411(30, 0x8c1111, i * 3, c / 2 - 150, 0, k + 2);
-        Class44_Sub3_Sub1.method411(30, 0, 300 - i * 3, (c / 2 - 150) + i * 3, 0, k + 2);
-        aClass44_Sub3_Sub1_Sub4_1077.method455(c / 2, (c1 / 2 + 5) - byte0, 0xffffff, s, false);
-        aClass34_1041.method273(202, super.graphics, (byte) 76, 171);
+        DrawingArea.method412(304, 0x8c1111, 34, c / 2 - 152, k, 394);
+        DrawingArea.method412(302, 0, 32, c / 2 - 151, k + 1, 394);
+        DrawingArea.method411(30, 0x8c1111, i * 3, c / 2 - 150, 0, k + 2);
+        DrawingArea.method411(30, 0, 300 - i * 3, (c / 2 - 150) + i * 3, 0, k + 2);
+        aClass44_Sub3_Sub1_Sub4_1077.method455(c / 2, (c1 / 2 + 5) - byte0, 0xffffff, text, false);
+        aImageProducer_1041.method273(202, super.graphics, (byte) 76, 171);
         if (aBoolean917) {
             aBoolean917 = false;
             if (!aBoolean906) {
-                aClass34_1042.method273(0, super.graphics, (byte) 76, 0);
-                aClass34_1043.method273(637, super.graphics, (byte) 76, 0);
+                aImageProducer_1042.method273(0, super.graphics, (byte) 76, 0);
+                aImageProducer_1043.method273(637, super.graphics, (byte) 76, 0);
             }
-            aClass34_1039.method273(128, super.graphics, (byte) 76, 0);
-            aClass34_1040.method273(202, super.graphics, (byte) 76, 371);
-            aClass34_1044.method273(0, super.graphics, (byte) 76, 265);
-            aClass34_1045.method273(562, super.graphics, (byte) 76, 265);
-            aClass34_1046.method273(128, super.graphics, (byte) 76, 171);
-            aClass34_1047.method273(562, super.graphics, (byte) 76, 171);
+            aImageProducer_1039.method273(128, super.graphics, (byte) 76, 0);
+            aImageProducer_1040.method273(202, super.graphics, (byte) 76, 371);
+            aImageProducer_1044.method273(0, super.graphics, (byte) 76, 265);
+            aImageProducer_1045.method273(562, super.graphics, (byte) 76, 265);
+            aImageProducer_1046.method273(128, super.graphics, (byte) 76, 171);
+            aImageProducer_1047.method273(562, super.graphics, (byte) 76, 171);
         }
     }
 
@@ -5428,13 +5428,13 @@ public class Client extends Game implements RSClient {
             method80(false);
             return;
         }
-        aClass34_864.method272(aBoolean960);
+        aImageProducer_864.initDrawingArea();
         aClass44_Sub3_Sub1_Sub4_1076.method455(257, 144, 0, "Connection lost", false);
         aClass44_Sub3_Sub1_Sub4_1076.method455(256, 143, 0xffffff, "Connection lost", false);
         anInt1219 += i;
         aClass44_Sub3_Sub1_Sub4_1076.method455(257, 159, 0, "Please wait - attempting to reestablish", false);
         aClass44_Sub3_Sub1_Sub4_1076.method455(256, 158, 0xffffff, "Please wait - attempting to reestablish", false);
-        aClass34_864.method273(4, super.graphics, (byte) 76, 4);
+        aImageProducer_864.method273(4, super.graphics, (byte) 76, 4);
         anInt1031 = 0;
         anInt1025 = 0;
         Class7 class7 = aClass7_1108;
@@ -5583,7 +5583,7 @@ public class Client extends Game implements RSClient {
 
         }
 
-        aClass34_864.method272(aBoolean960);
+        aImageProducer_864.initDrawingArea();
         anInt987 = 0;
         for (int k2 = 0; k2 < 104; k2++) {
             for (int l2 = 0; l2 < 104; l2++) {
@@ -6116,9 +6116,9 @@ public class Client extends Game implements RSClient {
         if (i != 4)
             anInt1220 = aClass44_Sub3_Sub2_1135.get1();
         aClass44_Sub3_Sub1_Sub2_892 = new Class44_Sub3_Sub1_Sub2(128, 265);
-        System.arraycopy(aClass34_1042.anIntArray571, 0, aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, 33920);
+        System.arraycopy(aImageProducer_1042.pixels, 0, aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, 33920);
 
-        System.arraycopy(aClass34_1043.anIntArray571, 0, aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, 33920);
+        System.arraycopy(aImageProducer_1043.pixels, 0, aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, 33920);
 
         anIntArray937 = new int[256];
         for (int k1 = 0; k1 < 64; k1++)
@@ -6165,7 +6165,7 @@ public class Client extends Game implements RSClient {
         method100(512, null);
         anIntArray977 = new int[32768];
         anIntArray978 = new int[32768];
-        method13("Connecting to fileserver", 10, 7);
+        drawString("Connecting to fileserver", 10, 7);
         if (!aBoolean906) {
             aBoolean1175 = true;
             aBoolean906 = true;
@@ -6174,30 +6174,30 @@ public class Client extends Game implements RSClient {
     }
 
     public void method92(int i) {
-        if (aClass34_865 != null) {
+        if (aImageProducer_865 != null) {
         } else {
             method114(0);
-            super.aClass34_15 = null;
-            aClass34_1039 = null;
-            aClass34_1040 = null;
-            aClass34_1041 = null;
-            aClass34_1042 = null;
-            aClass34_1043 = null;
+            super.aImageProducer_15 = null;
+            aImageProducer_1039 = null;
+            aImageProducer_1040 = null;
+            aImageProducer_1041 = null;
+            aImageProducer_1042 = null;
+            aImageProducer_1043 = null;
             i = 12 / i;
-            aClass34_1044 = null;
-            aClass34_1045 = null;
-            aClass34_1046 = null;
-            aClass34_1047 = null;
-            aClass34_865 = new Class34(96, anInt940, 479, getGameWindow(aByte1102));
-            aClass34_863 = new Class34(156, anInt940, 172, getGameWindow(aByte1102));
-            Class44_Sub3_Sub1.method409(8);
+            aImageProducer_1044 = null;
+            aImageProducer_1045 = null;
+            aImageProducer_1046 = null;
+            aImageProducer_1047 = null;
+            aImageProducer_865 = new ImageProducer(96, 479, getGameWindow(aByte1102));
+            aImageProducer_863 = new ImageProducer(156, 172, getGameWindow(aByte1102));
+            DrawingArea.method409(8);
             aClass44_Sub3_Sub1_Sub3_1202.method453(aByte1070, 0, 0);
-            aClass34_862 = new Class34(261, anInt940, 190, getGameWindow(aByte1102));
-            aClass34_864 = new Class34(334, anInt940, 512, getGameWindow(aByte1102));
-            Class44_Sub3_Sub1.method409(8);
-            aClass34_990 = new Class34(50, anInt940, 496, getGameWindow(aByte1102));
-            aClass34_991 = new Class34(37, anInt940, 269, getGameWindow(aByte1102));
-            aClass34_992 = new Class34(45, anInt940, 249, getGameWindow(aByte1102));
+            aImageProducer_862 = new ImageProducer(261, 190, getGameWindow(aByte1102));
+            aImageProducer_864 = new ImageProducer(334, 512, getGameWindow(aByte1102));
+            DrawingArea.method409(8);
+            aImageProducer_990 = new ImageProducer(50, 496, getGameWindow(aByte1102));
+            aImageProducer_991 = new ImageProducer(37, 269, getGameWindow(aByte1102));
+            aImageProducer_992 = new ImageProducer(45, 249, getGameWindow(aByte1102));
             aBoolean917 = true;
         }
     }
@@ -6417,7 +6417,7 @@ public class Client extends Game implements RSClient {
     }
 
     public void method98(boolean flag) {
-        aClass34_862.method272(aBoolean960);
+        aImageProducer_862.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1244;
         aClass44_Sub3_Sub1_Sub3_1201.method453(aByte1070, 0, 0);
         if (anInt1216 != -1)
@@ -6426,11 +6426,11 @@ public class Client extends Game implements RSClient {
             method127(0, Class5.aClass5Array103[anIntArray954[anInt1013]], 0, 0, (byte) 0);
         if (aBoolean851 && anInt1254 == 1)
             method15(-593);
-        aClass34_862.method273(553, super.graphics, (byte) 76, 205);
+        aImageProducer_862.method273(553, super.graphics, (byte) 76, 205);
         if (!flag) {
             for (int i = 1; i > 0; i++) ;
         }
-        aClass34_864.method272(aBoolean960);
+        aImageProducer_864.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1245;
     }
 
@@ -6754,17 +6754,17 @@ public class Client extends Game implements RSClient {
     }
 
     public void method103(byte byte0) {
-        aClass34_863.method272(aBoolean960);
+        aImageProducer_863.initDrawingArea();
         if (anInt1031 == 2) {
             byte[] abyte0 = aClass44_Sub3_Sub1_Sub3_1202.aByteArray1445;
-            int[] ai = Class44_Sub3_Sub1.anIntArray1351;
+            int[] ai = DrawingArea.anIntArray1351;
             int k2 = abyte0.length;
             for (int i5 = 0; i5 < k2; i5++)
                 if (abyte0[i5] == 0)
                     ai[i5] = 0;
 
             aClass44_Sub3_Sub1_Sub2_1085.method444(256, 25, 33, 33, 0, anIntArray1054, 25, anIntArray883, -582, anInt1206, 0);
-            aClass34_864.method272(aBoolean960);
+            aImageProducer_864.initDrawingArea();
             return;
         }
         int i = anInt1206 + anInt1217 & 0x7ff;
@@ -6852,8 +6852,8 @@ public class Client extends Game implements RSClient {
             int l4 = (anInt1026 * 4 + 2) - aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 / 32;
             method33(l4, j2, (byte) -111, aClass44_Sub3_Sub1_Sub2_964);
         }
-        Class44_Sub3_Sub1.method411(3, 0xffffff, 3, 97, 0, 78);
-        aClass34_864.method272(aBoolean960);
+        DrawingArea.method411(3, 0xffffff, 3, 97, 0, 78);
+        aImageProducer_864.initDrawingArea();
     }
 
     public void method104(boolean flag) {
@@ -7563,10 +7563,10 @@ public class Client extends Game implements RSClient {
                     aBoolean1169 = true;
                 loadingState = 1;
                 aLong1127 = System.currentTimeMillis();
-                aClass34_864.method272(aBoolean960);
+                aImageProducer_864.initDrawingArea();
                 aClass44_Sub3_Sub1_Sub4_1076.method455(257, 151, 0, "Loading - please wait.", false);
                 aClass44_Sub3_Sub1_Sub4_1076.method455(256, 150, 0xffffff, "Loading - please wait.", false);
-                aClass34_864.method273(4, super.graphics, (byte) 76, 4);
+                aImageProducer_864.method273(4, super.graphics, (byte) 76, 4);
                 int j16 = 0;
                 for (int j19 = (anInt922 - 6) / 8; j19 <= (anInt922 + 6) / 8; j19++) {
                     for (int i21 = (anInt923 - 6) / 8; i21 <= (anInt923 + 6) / 8; i21++)
@@ -8192,8 +8192,8 @@ public class Client extends Game implements RSClient {
                         int i1 = (obj.anInt1619 * 30) / obj.anInt1620;
                         if (i1 > 30)
                             i1 = 30;
-                        Class44_Sub3_Sub1.method411(5, 65280, i1, anInt999 - 15, 0, anInt1000 - 3);
-                        Class44_Sub3_Sub1.method411(5, 0xff0000, 30 - i1, (anInt999 - 15) + i1, 0, anInt1000 - 3);
+                        DrawingArea.method411(5, 65280, i1, anInt999 - 15, 0, anInt1000 - 3);
+                        DrawingArea.method411(5, 0xff0000, 30 - i1, (anInt999 - 15) + i1, 0, anInt1000 - 3);
                     }
                 }
                 for (int j1 = 0; j1 < 4; j1++)
@@ -8285,10 +8285,10 @@ public class Client extends Game implements RSClient {
                 if (anIntArray1097[k] == 2) {
                     int i4 = aClass44_Sub3_Sub1_Sub4_1077.method457(-43341, s);
                     int j4 = ((150 - anIntArray1098[k]) * (i4 + 100)) / 150;
-                    Class44_Sub3_Sub1.method408(5, 334, anInt999 + 50, anInt999 - 50, 0);
+                    DrawingArea.method408(5, 334, anInt999 + 50, anInt999 - 50, 0);
                     aClass44_Sub3_Sub1_Sub4_1077.method458((anInt999 + 50) - j4, s, 0, anInt1000 + 1, true);
                     aClass44_Sub3_Sub1_Sub4_1077.method458((anInt999 + 50) - j4, s, i3, anInt1000, true);
-                    Class44_Sub3_Sub1.method407(true);
+                    DrawingArea.method407(true);
                 }
             } else {
                 aClass44_Sub3_Sub1_Sub4_1077.method455(anInt999, anInt1000 + 1, 0, s, false);
@@ -8918,11 +8918,11 @@ public class Client extends Game implements RSClient {
             return;
         if (class5.aBoolean124 && anInt1248 != class5.anInt108 && anInt1016 != class5.anInt108 && anInt1066 != class5.anInt108)
             return;
-        int l = Class44_Sub3_Sub1.anInt1356;
-        int i1 = Class44_Sub3_Sub1.anInt1354;
-        int j1 = Class44_Sub3_Sub1.anInt1357;
-        int k1 = Class44_Sub3_Sub1.anInt1355;
-        Class44_Sub3_Sub1.method408(5, j + class5.anInt114, i + class5.anInt113, i, j);
+        int l = DrawingArea.anInt1356;
+        int i1 = DrawingArea.anInt1354;
+        int j1 = DrawingArea.anInt1357;
+        int k1 = DrawingArea.anInt1355;
+        DrawingArea.method408(5, j + class5.anInt114, i + class5.anInt113, i, j);
         int l1 = class5.anIntArray125.length;
         for (int i2 = 0; i2 < l1; i2++) {
             int j2 = class5.anIntArray126[i2] + i;
@@ -8955,7 +8955,7 @@ public class Client extends Game implements RSClient {
                                 int j6 = 0;
                                 int i7 = 0;
                                 int i9 = class5_1.anIntArray104[l2] - 1;
-                                if (j5 > Class44_Sub3_Sub1.anInt1356 - 32 && j5 < Class44_Sub3_Sub1.anInt1357 && i6 > Class44_Sub3_Sub1.anInt1354 - 32 && i6 < Class44_Sub3_Sub1.anInt1355 || anInt895 != 0 && anInt894 == l2) {
+                                if (j5 > DrawingArea.anInt1356 - 32 && j5 < DrawingArea.anInt1357 && i6 > DrawingArea.anInt1354 - 32 && i6 < DrawingArea.anInt1355 || anInt895 != 0 && anInt894 == l2) {
                                     int k9 = 0;
                                     if (anInt811 == 1 && anInt812 == l2 && anInt813 == class5_1.anInt108)
                                         k9 = 0xffffff;
@@ -8973,8 +8973,8 @@ public class Client extends Game implements RSClient {
                                                 i7 = 0;
                                             }
                                             class44_sub3_sub1_sub2_2.method442(i6 + i7, j5 + j6, -676, 128);
-                                            if (i6 + i7 < Class44_Sub3_Sub1.anInt1354 && class5.anInt123 > 0) {
-                                                int l9 = (anInt975 * (Class44_Sub3_Sub1.anInt1354 - i6 - i7)) / 3;
+                                            if (i6 + i7 < DrawingArea.anInt1354 && class5.anInt123 > 0) {
+                                                int l9 = (anInt975 * (DrawingArea.anInt1354 - i6 - i7)) / 3;
                                                 if (l9 > anInt975 * 10)
                                                     l9 = anInt975 * 10;
                                                 if (l9 > class5.anInt123)
@@ -8982,8 +8982,8 @@ public class Client extends Game implements RSClient {
                                                 class5.anInt123 -= l9;
                                                 anInt897 += l9;
                                             }
-                                            if (i6 + i7 + 32 > Class44_Sub3_Sub1.anInt1355 && class5.anInt123 < class5.anInt122 - class5.anInt114) {
-                                                int i10 = (anInt975 * ((i6 + i7 + 32) - Class44_Sub3_Sub1.anInt1355)) / 3;
+                                            if (i6 + i7 + 32 > DrawingArea.anInt1355 && class5.anInt123 < class5.anInt122 - class5.anInt114) {
+                                                int i10 = (anInt975 * ((i6 + i7 + 32) - DrawingArea.anInt1355)) / 3;
                                                 if (i10 > anInt975 * 10)
                                                     i10 = anInt975 * 10;
                                                 if (i10 > class5.anInt122 - class5.anInt114 - class5.anInt123)
@@ -9026,13 +9026,13 @@ public class Client extends Game implements RSClient {
                     }
                     if (class5_1.aByte115 == 0) {
                         if (class5_1.aBoolean140)
-                            Class44_Sub3_Sub1.method411(class5_1.anInt114, i3, class5_1.anInt113, j2, 0, k2);
+                            DrawingArea.method411(class5_1.anInt114, i3, class5_1.anInt113, j2, 0, k2);
                         else
-                            Class44_Sub3_Sub1.method412(class5_1.anInt113, i3, class5_1.anInt114, j2, k2, 394);
+                            DrawingArea.method412(class5_1.anInt113, i3, class5_1.anInt114, j2, k2, 394);
                     } else if (class5_1.aBoolean140)
-                        Class44_Sub3_Sub1.method410(class5_1.anInt113, class5_1.anInt114, k2, i3, j2, 0, 256 - (class5_1.aByte115 & 0xff));
+                        DrawingArea.method410(class5_1.anInt113, class5_1.anInt114, k2, i3, j2, 0, 256 - (class5_1.aByte115 & 0xff));
                     else
-                        Class44_Sub3_Sub1.method413(class5_1.anInt113, true, k2, j2, i3, class5_1.anInt114, 256 - (class5_1.aByte115 & 0xff));
+                        DrawingArea.method413(class5_1.anInt113, true, k2, j2, i3, class5_1.anInt114, 256 - (class5_1.aByte115 & 0xff));
                 } else if (class5_1.anInt110 == 4) {
                     Class44_Sub3_Sub1_Sub4 class44_sub3_sub1_sub4 = class5_1.aClass44_Sub3_Sub1_Sub4_143;
                     String s = class5_1.aString144;
@@ -9053,7 +9053,7 @@ public class Client extends Game implements RSClient {
                         s = "Please wait...";
                         l3 = class5_1.anInt146;
                     }
-                    if (Class44_Sub3_Sub1.anInt1352 == 479) {
+                    if (DrawingArea.anInt1352 == 479) {
                         if (l3 == 0xffff00)
                             l3 = 255;
                         if (l3 == 49152)
@@ -9164,7 +9164,7 @@ public class Client extends Game implements RSClient {
                 }
         }
 
-        Class44_Sub3_Sub1.method408(5, k1, j1, l, i1);
+        DrawingArea.method408(5, k1, j1, l, i1);
         if (byte0 == 0) {
             byte0 = 0;
         } else {
@@ -9198,7 +9198,7 @@ public class Client extends Game implements RSClient {
             System.arraycopy(anIntArray937, 0, anIntArray936, 0, 256);
 
         }
-        System.arraycopy(aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, aClass34_1042.anIntArray571, 0, 33920);
+        System.arraycopy(aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, aImageProducer_1042.pixels, 0, 33920);
 
         int j1 = 0;
         int k1 = 1152;
@@ -9214,8 +9214,8 @@ public class Client extends Game implements RSClient {
                     int i4 = k3;
                     int k4 = 256 - k3;
                     k3 = anIntArray936[k3];
-                    int i5 = aClass34_1042.anIntArray571[k1];
-                    aClass34_1042.anIntArray571[k1++] = ((k3 & 0xff00ff) * i4 + (i5 & 0xff00ff) * k4 & 0xff00ff00) + ((k3 & 0xff00) * i4 + (i5 & 0xff00) * k4 & 0xff0000) >> 8;
+                    int i5 = aImageProducer_1042.pixels[k1];
+                    aImageProducer_1042.pixels[k1++] = ((k3 & 0xff00ff) * i4 + (i5 & 0xff00ff) * k4 & 0xff00ff00) + ((k3 & 0xff00) * i4 + (i5 & 0xff00) * k4 & 0xff0000) >> 8;
                 } else {
                     k1++;
                 }
@@ -9224,8 +9224,8 @@ public class Client extends Game implements RSClient {
             k1 += k2;
         }
 
-        aClass34_1042.method273(0, super.graphics, (byte) 76, 0);
-        System.arraycopy(aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, aClass34_1043.anIntArray571, 0, 33920);
+        aImageProducer_1042.method273(0, super.graphics, (byte) 76, 0);
+        System.arraycopy(aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, aImageProducer_1043.pixels, 0, 33920);
 
         j1 = 0;
         k1 = 1176;
@@ -9239,8 +9239,8 @@ public class Client extends Game implements RSClient {
                     int j5 = l4;
                     int k5 = 256 - l4;
                     l4 = anIntArray936[l4];
-                    int l5 = aClass34_1043.anIntArray571[k1];
-                    aClass34_1043.anIntArray571[k1++] = ((l4 & 0xff00ff) * j5 + (l5 & 0xff00ff) * k5 & 0xff00ff00) + ((l4 & 0xff00) * j5 + (l5 & 0xff00) * k5 & 0xff0000) >> 8;
+                    int l5 = aImageProducer_1043.pixels[k1];
+                    aImageProducer_1043.pixels[k1++] = ((l4 & 0xff00ff) * j5 + (l5 & 0xff00ff) * k5 & 0xff00ff00) + ((l4 & 0xff00) * j5 + (l5 & 0xff00) * k5 & 0xff0000) >> 8;
                 } else {
                     k1++;
                 }
@@ -9250,7 +9250,7 @@ public class Client extends Game implements RSClient {
             k1 += 128 - l3 - j3;
         }
 
-        aClass34_1043.method273(637, super.graphics, (byte) 76, 0);
+        aImageProducer_1043.method273(637, super.graphics, (byte) 76, 0);
     }
 
     public void method129(boolean flag) {
@@ -9980,22 +9980,22 @@ public class Client extends Game implements RSClient {
             anInt1220 = -1;
         if (aBoolean917) {
             aBoolean917 = false;
-            aClass34_852.method273(0, super.graphics, (byte) 76, 4);
-            aClass34_853.method273(0, super.graphics, (byte) 76, 357);
-            aClass34_854.method273(722, super.graphics, (byte) 76, 4);
-            aClass34_855.method273(743, super.graphics, (byte) 76, 205);
-            aClass34_856.method273(0, super.graphics, (byte) 76, 0);
-            aClass34_857.method273(516, super.graphics, (byte) 76, 4);
-            aClass34_858.method273(516, super.graphics, (byte) 76, 205);
-            aClass34_859.method273(496, super.graphics, (byte) 76, 357);
-            aClass34_860.method273(0, super.graphics, (byte) 76, 338);
+            aImageProducer_852.method273(0, super.graphics, (byte) 76, 4);
+            aImageProducer_853.method273(0, super.graphics, (byte) 76, 357);
+            aImageProducer_854.method273(722, super.graphics, (byte) 76, 4);
+            aImageProducer_855.method273(743, super.graphics, (byte) 76, 205);
+            aImageProducer_856.method273(0, super.graphics, (byte) 76, 0);
+            aImageProducer_857.method273(516, super.graphics, (byte) 76, 4);
+            aImageProducer_858.method273(516, super.graphics, (byte) 76, 205);
+            aImageProducer_859.method273(496, super.graphics, (byte) 76, 357);
+            aImageProducer_860.method273(0, super.graphics, (byte) 76, 338);
             aBoolean928 = true;
             aBoolean1109 = true;
             aBoolean841 = true;
             aBoolean1141 = true;
             if (loadingState != 2) {
-                aClass34_864.method273(4, super.graphics, (byte) 76, 4);
-                aClass34_863.method273(550, super.graphics, (byte) 76, 4);
+                aImageProducer_864.method273(4, super.graphics, (byte) 76, 4);
+                aImageProducer_863.method273(550, super.graphics, (byte) 76, 4);
             }
         }
         if (loadingState == 2)
@@ -10048,7 +10048,7 @@ public class Client extends Game implements RSClient {
         }
         if (loadingState == 2) {
             method103((byte) 5);
-            aClass34_863.method273(550, super.graphics, (byte) 76, 4);
+            aImageProducer_863.method273(550, super.graphics, (byte) 76, 4);
         }
         if (anInt1173 != -1)
             aBoolean841 = true;
@@ -10059,7 +10059,7 @@ public class Client extends Game implements RSClient {
                 aClass44_Sub3_Sub2_843.put1(anInt1013);
             }
             aBoolean841 = false;
-            aClass34_992.method272(aBoolean960);
+            aImageProducer_992.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1180.method453(aByte1070, 0, 0);
             if (anInt1216 == -1) {
                 if (anIntArray954[anInt1013] != -1) {
@@ -10093,8 +10093,8 @@ public class Client extends Game implements RSClient {
                 if (anIntArray954[6] != -1 && (anInt1173 != 6 || tick % 20 < 10))
                     aClass44_Sub3_Sub1_Sub3Array952[6].method453(aByte1070, 208, 13);
             }
-            aClass34_992.method273(516, super.graphics, (byte) 76, 160);
-            aClass34_991.method272(aBoolean960);
+            aImageProducer_992.method273(516, super.graphics, (byte) 76, 160);
+            aImageProducer_991.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1179.method453(aByte1070, 0, 0);
             if (anInt1216 == -1) {
                 if (anIntArray954[anInt1013] != -1) {
@@ -10126,12 +10126,12 @@ public class Client extends Game implements RSClient {
                 if (anIntArray954[13] != -1 && (anInt1173 != 13 || tick % 20 < 10))
                     aClass44_Sub3_Sub1_Sub3Array952[12].method453(aByte1070, 226, 2);
             }
-            aClass34_991.method273(496, super.graphics, (byte) 76, 466);
-            aClass34_864.method272(aBoolean960);
+            aImageProducer_991.method273(496, super.graphics, (byte) 76, 466);
+            aImageProducer_864.initDrawingArea();
         }
         if (aBoolean1141) {
             aBoolean1141 = false;
-            aClass34_990.method272(aBoolean960);
+            aImageProducer_990.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1178.method453(aByte1070, 0, 0);
             aClass44_Sub3_Sub1_Sub4_1076.method456(0, 55, 28, "Public chat", 0xffffff, true);
             if (anInt967 == 0)
@@ -10157,8 +10157,8 @@ public class Client extends Game implements RSClient {
             if (anInt805 == 2)
                 aClass44_Sub3_Sub1_Sub4_1076.method456(0, 324, 41, "Off", 0xff0000, true);
             aClass44_Sub3_Sub1_Sub4_1076.method456(0, 458, 33, "Report abuse", 0xffffff, true);
-            aClass34_990.method273(0, super.graphics, (byte) 76, 453);
-            aClass34_864.method272(aBoolean960);
+            aImageProducer_990.method273(0, super.graphics, (byte) 76, 453);
+            aImageProducer_864.initDrawingArea();
         }
         anInt975 = 0;
     }
@@ -10266,7 +10266,7 @@ public class Client extends Game implements RSClient {
         int k = 0;
         while (anIntArray885[8] == 0) {
             String s = "Unknown problem";
-            method13("Connecting to web server", 20, 7);
+            drawString("Connecting to web server", 20, 7);
             try {
                 DataInputStream datainputstream = method84("crc" + (int) (Math.random() * 99999999D) + "-" + 274);
                 Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(new byte[40], (byte) 1);
@@ -10300,10 +10300,10 @@ public class Client extends Game implements RSClient {
                 k++;
                 for (int l = j; l > 0; l--) {
                     if (k >= 10) {
-                        method13("Game updated - please reload page", 10, 7);
+                        drawString("Game updated - please reload page", 10, 7);
                         l = 10;
                     } else {
-                        method13(s + " - Will retry in " + l + " secs.", 10, 7);
+                        drawString(s + " - Will retry in " + l + " secs.", 10, 7);
                     }
                     try {
                         Thread.sleep(1000L);
