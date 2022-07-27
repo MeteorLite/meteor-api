@@ -1,155 +1,142 @@
-import java.awt.FontMetrics;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.util.LinkedList;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import org.bouncycastle.crypto.tls.Certificate;
-import org.bouncycastle.crypto.tls.CertificateRequest;
-import org.bouncycastle.crypto.tls.TlsAuthentication;
-import org.bouncycastle.crypto.tls.TlsCredentials;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-@ObfuscatedName("t")
-class class11 implements TlsAuthentication {
-	@ObfuscatedName("s")
-	@Export("musicTrackBoolean")
-	public static boolean musicTrackBoolean;
-	@ObfuscatedName("ab")
-	@Export("loginScreenFontMetrics")
-	static FontMetrics loginScreenFontMetrics;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lr;"
-	)
-	final class13 this$2;
+public class Class11 {
 
-	@ObfuscatedSignature(
-		descriptor = "(Lr;)V"
-	)
-	class11(class13 var1) {
-		this.this$2 = var1;
-	}
+    public static Class11[] aClass11Array264;
+    public static boolean[] aBooleanArray272;
+    public int anInt265;
+    public Class9 aClass9_266;
+    public int anInt267;
+    public int[] anIntArray268;
+    public int[] anIntArray269;
+    public int[] anIntArray270;
+    public int[] anIntArray271;
+    public Class11() {
+    }
 
-	public void notifyServerCertificate(Certificate var1) throws IOException {
-		try {
-			CertificateFactory var2 = CertificateFactory.getInstance("X.509");
-			LinkedList var3 = new LinkedList();
-			org.bouncycastle.asn1.x509.Certificate[] var4 = var1.getCertificateList();
+    public static void method207(int i) {
+        aClass11Array264 = new Class11[i + 1];
+        aBooleanArray272 = new boolean[i + 1];
+        for (int j = 0; j < i + 1; j++)
+            aBooleanArray272[j] = true;
 
-			for (int var5 = 0; var5 < var4.length; ++var5) {
-				org.bouncycastle.asn1.x509.Certificate var6 = var4[var5];
-				var3.add(var2.generateCertificate(new ByteArrayInputStream(var6.getEncoded())));
-			}
+    }
 
-			this.this$2.this$1.field63 = (java.security.cert.Certificate[])((java.security.cert.Certificate[])var3.toArray(new java.security.cert.Certificate[0]));
-		} catch (CertificateException var7) {
-			throw new IOException(var7);
-		}
-	}
+    public static void method208(int i, byte[] abyte0) {
+        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        if (i >= 0)
+            return;
+        class44_sub3_sub2.anInt1374 = abyte0.length - 8;
+        int j = class44_sub3_sub2.get2();
+        int k = class44_sub3_sub2.get2();
+        int l = class44_sub3_sub2.get2();
+        int i1 = class44_sub3_sub2.get2();
+        int j1 = 0;
+        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        class44_sub3_sub2_1.anInt1374 = j1;
+        j1 += j + 2;
+        Class44_Sub3_Sub2 class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        class44_sub3_sub2_2.anInt1374 = j1;
+        j1 += k;
+        Class44_Sub3_Sub2 class44_sub3_sub2_3 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        class44_sub3_sub2_3.anInt1374 = j1;
+        j1 += l;
+        Class44_Sub3_Sub2 class44_sub3_sub2_4 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        class44_sub3_sub2_4.anInt1374 = j1;
+        j1 += i1;
+        Class44_Sub3_Sub2 class44_sub3_sub2_5 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
+        class44_sub3_sub2_5.anInt1374 = j1;
+        Class9 class9 = new Class9(10470, class44_sub3_sub2_5);
+        int k1 = class44_sub3_sub2_1.get2();
+        int[] ai = new int[500];
+        int[] ai1 = new int[500];
+        int[] ai2 = new int[500];
+        int[] ai3 = new int[500];
+        for (int l1 = 0; l1 < k1; l1++) {
+            int i2 = class44_sub3_sub2_1.get2();
+            Class11 class11 = aClass11Array264[i2] = new Class11();
+            class11.anInt265 = class44_sub3_sub2_4.get1();
+            class11.aClass9_266 = class9;
+            int j2 = class44_sub3_sub2_1.get1();
+            int k2 = -1;
+            int l2 = 0;
+            for (int i3 = 0; i3 < j2; i3++) {
+                int j3 = class44_sub3_sub2_2.get1();
+                if (j3 > 0) {
+                    if (class9.anIntArray255[i3] != 0) {
+                        for (int l3 = i3 - 1; l3 > k2; l3--) {
+                            if (class9.anIntArray255[l3] != 0)
+                                continue;
+                            ai[l2] = l3;
+                            ai1[l2] = 0;
+                            ai2[l2] = 0;
+                            ai3[l2] = 0;
+                            l2++;
+                            break;
+                        }
 
-	public TlsCredentials getClientCredentials(CertificateRequest var1) throws IOException {
-		return null;
-	}
+                    }
+                    ai[l2] = i3;
+                    char c = '\0';
+                    if (class9.anIntArray255[i3] == 3)
+                        c = '\200';
+                    if ((j3 & 1) != 0)
+                        ai1[l2] = class44_sub3_sub2_3.method492();
+                    else
+                        ai1[l2] = c;
+                    if ((j3 & 2) != 0)
+                        ai2[l2] = class44_sub3_sub2_3.method492();
+                    else
+                        ai2[l2] = c;
+                    if ((j3 & 4) != 0)
+                        ai3[l2] = class44_sub3_sub2_3.method492();
+                    else
+                        ai3[l2] = c;
+                    k2 = i3;
+                    l2++;
+                    if (class9.anIntArray255[i3] == 5)
+                        aBooleanArray272[i2] = false;
+                }
+            }
 
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1603427189"
-	)
-	static final void method98(int var0, int var1, int var2, int var3) {
-		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
-			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
-				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
-					UserComparator6.field1415[0][var5][var4] = 127;
-					if (var0 == var5 && var5 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
-					}
+            class11.anInt267 = l2;
+            class11.anIntArray268 = new int[l2];
+            class11.anIntArray269 = new int[l2];
+            class11.anIntArray270 = new int[l2];
+            class11.anIntArray271 = new int[l2];
+            for (int k3 = 0; k3 < l2; k3++) {
+                class11.anIntArray268[k3] = ai[k3];
+                class11.anIntArray269[k3] = ai1[k3];
+                class11.anIntArray270[k3] = ai2[k3];
+                class11.anIntArray271[k3] = ai3[k3];
+            }
 
-					if (var0 + var2 == var5 && var5 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
-					}
+        }
 
-					if (var4 == var1 && var4 > 0) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
-					}
+    }
 
-					if (var3 + var1 == var4 && var4 < 103) {
-						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
-					}
-				}
-			}
-		}
+    public static void method209(byte byte0) {
+        if (byte0 != 1) {
+        } else {
+            aClass11Array264 = null;
+        }
+    }
 
-	}
+    public static Class11 method210(int i, int j) {
+        if (j != 6)
+            throw new NullPointerException();
+        if (aClass11Array264 == null)
+            return null;
+        else
+            return aClass11Array264[i];
+    }
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(ILkb;IIIII[FI)Lkb;",
-		garbageValue = "1978245093"
-	)
-	static Widget method97(int var0, Widget var1, int var2, int var3, int var4, int var5, int var6, float[] var7) {
-		Widget var8 = new Widget();
-		var8.type = var0;
-		var8.parentId = var1.id;
-		var8.childIndex = var2;
-		var8.isIf3 = true;
-		var8.xAlignment = var3;
-		var8.yAlignment = var4;
-		var8.widthAlignment = var5;
-		var8.heightAlignment = var6;
-		var8.rawX = (int)(var7[0] * (float)var1.width);
-		var8.rawY = (int)((float)var1.height * var7[1]);
-		var8.rawWidth = (int)((float)var1.width * var7[2]);
-		var8.rawHeight = (int)(var7[3] * (float)var1.height);
-		return var8;
-	}
-
-	@ObfuscatedName("au")
-	@ObfuscatedSignature(
-		descriptor = "(ILbi;ZB)I",
-		garbageValue = "-27"
-	)
-	static int method96(int var0, Script var1, boolean var2) {
-		if (var0 == 7100) {
-			++class446.Interpreter_intStackSize;
-			return 1;
-		} else if (var0 == 7101) {
-			Interpreter.Interpreter_stringStackSize += 2;
-			return 1;
-		} else if (var0 != 7102 && var0 != 7103 && var0 != 7104 && var0 != 7105 && var0 != 7109) {
-			if (var0 == 7106) {
-				++class446.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7107) {
-				++class446.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 == 7108) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = class18.method234() ? 1 : 0;
-				return 1;
-			} else if (var0 == 7110) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7120) {
-				--class446.Interpreter_intStackSize;
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else if (var0 == 7121) {
-				class446.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = -1;
-				return 1;
-			} else if (var0 == 7122) {
-				class446.Interpreter_intStackSize -= 2;
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			++class446.Interpreter_intStackSize;
-			return 1;
-		}
-	}
+    public static boolean method211(int i, int j) {
+        if (j != 0) {
+            for (int k = 1; k > 0; k++) ;
+        }
+        return i == -1;
+    }
 }

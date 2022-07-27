@@ -68,6 +68,8 @@ public class Injector extends InjectData implements InjectTaskHandler {
 
     injector.initToVanilla();
     injector.injectVanilla();
+    save(injector.getVanilla(), new File("./build/injected/injected-client.jar"),
+            options.valueOf(outModeOption));
     save(injector.getVanilla(), new File("../client/src/main/resources/injected-client.osrs"),
             options.valueOf(outModeOption));
   }
@@ -143,7 +145,7 @@ public class Injector extends InjectData implements InjectTaskHandler {
     //validate(new InjectorValidator(this));
 
     //transform(new SourceChanger(this));
-    injector.vanilla.addClass(JarUtil.reflectionClass);
+    //injector.vanilla.addClass(JarUtil.reflectionClass);
   }
 
   private void inject(com.openosrs.injector.injectors.Injector injector) {

@@ -27,8 +27,7 @@ package net.runelite.rs.api;
 import net.runelite.api.Client;
 import net.runelite.mapping.Import;
 
-public interface RSClient extends RSGameEngine, Client
+public interface RSClient extends Client
 {
-    @Import("gameState")
-    int gameState();
+
 }

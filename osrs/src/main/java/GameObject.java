@@ -1,159 +1,66 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-@ObfuscatedName("hb")
-@Implements("GameObject")
-public final class GameObject {
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 555755513
-	)
-	@Export("plane")
-	int plane;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = 1199180827
-	)
-	@Export("z")
-	int z;
-	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = 1171704683
-	)
-	@Export("centerX")
-	int centerX;
-	@ObfuscatedName("f")
-	@ObfuscatedGetter(
-		intValue = -1998426191
-	)
-	@Export("centerY")
-	int centerY;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Lgj;"
-	)
-	@Export("renderable")
-	public Renderable renderable;
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = 2060742587
-	)
-	@Export("orientation")
-	int orientation;
-	@ObfuscatedName("g")
-	@ObfuscatedGetter(
-		intValue = 780367115
-	)
-	@Export("startX")
-	int startX;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = -16124731
-	)
-	@Export("endX")
-	int endX;
-	@ObfuscatedName("y")
-	@ObfuscatedGetter(
-		intValue = 1663298221
-	)
-	@Export("startY")
-	int startY;
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(
-		intValue = -2083887369
-	)
-	@Export("endY")
-	int endY;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1662545459
-	)
-	int field2655;
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = 1055321127
-	)
-	@Export("lastDrawn")
-	int lastDrawn;
-	@ObfuscatedName("z")
-	@ObfuscatedGetter(
-		longValue = -5445393225516942137L
-	)
-	@Export("tag")
-	public long tag;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = -1409812671
-	)
-	@Export("flags")
-	int flags;
+public class GameObject extends Renderable {
 
-	GameObject() {
-		this.tag = 0L;
-		this.flags = 0;
-	}
+    public int anInt1467;
+    public boolean aBoolean1468;
+    public final int objectId;
+    public final int type;
+    public final int orientation;
+    public final int minX;
+    public final int minY;
+    public final int maxX;
+    public final int maxY;
+    public Class26 animation;
+    public int frame;
+    public int nextFrameTime;
+    public GameObject(int type, int orientation, int k, int objectId, int maxX, int j1, boolean animating,
+                      int minY, int maxY, int minX) {
+        aBoolean1468 = false;
+        this.objectId = objectId;
+        this.type = type;
+        this.orientation = orientation;
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
+        animation = Class26.aClass26Array497[k];
+        frame = 0;
+        nextFrameTime = Client.tick;
+        if (j1 != 0)
+            anInt1467 = 429;
+        if (animating && animation.frameStep != -1) {
+            frame = (int) (Math.random() * (double) animation.anInt498);
+            nextFrameTime -= (int) (Math.random() * (double) animation.getFrameLength(frame, 41645));
+        }
+    }
 
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/util/Date;",
-		garbageValue = "206"
-	)
-	static Date method4552() throws ParseException {
-		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
-		var0.setLenient(false);
-		StringBuilder var1 = new StringBuilder();
-		String[] var2 = Login.field911;
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			String var4 = var2[var3];
-			if (var4 == null) {
-				GraphicsObject.method1877("Date not valid.", "Please ensure all characters are populated.", "");
-				return null;
-			}
-
-			var1.append(var4);
-		}
-
-		var1.append("12");
-		return var0.parse(var1.toString());
-	}
-
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "(ILbi;ZI)I",
-		garbageValue = "-1762087173"
-	)
-	static int method4553(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETINVOBJECT) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemId;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETINVCOUNT) {
-			if (var3.itemId != -1) {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.itemQuantity;
-			} else {
-				Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = 0;
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETID) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.childIndex;
-			return 1;
-		} else if (var0 == 1707) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.method5680() ? 1 : 0;
-			return 1;
-		} else if (var0 == 1708) {
-			return class29.method363(var3);
-		} else {
-			return var0 == 1709 ? WorldMapSection0.method4947(var3) : 2;
-		}
-	}
+    public Model getModel(boolean flag) {
+        if (animation != null) {
+            int step = Client.tick - nextFrameTime;
+            if (step > 100 && animation.frameStep > 0)
+                step = 100;
+            while (step > animation.getFrameLength(frame, 41645)) {
+                step -= animation.getFrameLength(frame, 41645);
+                frame++;
+                if (frame < animation.anInt498)
+                    continue;
+                frame -= animation.frameStep;
+                if (frame >= 0 && frame < animation.anInt498)
+                    continue;
+                animation = null;
+                break;
+            }
+            nextFrameTime = Client.tick - step;
+        }
+        int animationId = -1;
+        if (flag)
+            aBoolean1468 = !aBoolean1468;
+        if (animation != null)
+            animationId = animation.primaryFrames[frame];
+        GameObjectDefinition definition = GameObjectDefinition.get(objectId);
+        return definition.getModel(type, orientation, minX, minY, maxX, maxY, animationId );
+    }
 }

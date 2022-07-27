@@ -112,7 +112,7 @@ public class Deob
 
 		run(group, new UnusedClass());
 
-		group = runMath(group, args[1]);
+		//group = runMath(group, args[1]);
 
 		run(group, new ExprArgOrder());
 
@@ -122,15 +122,15 @@ public class Deob
 
 		run(group, new EnumDeobfuscator());
 
-		new OpcodesTransformer().transform(group);
+		//new OpcodesTransformer().transform(group);
 		//run(group, new PacketHandlerOrder());
 		//run(group, new PacketWriteDeobfuscator());
 
-		run(group, new MenuActionDeobfuscator());
+		//run(group, new MenuActionDeobfuscator());
 
-		new GetPathTransformer().transform(group);
-		new ClientErrorTransformer().transform(group);
-		new ReflectionTransformer().transform(group);
+		//new GetPathTransformer().transform(group);
+		//new ClientErrorTransformer().transform(group);
+		//new ReflectionTransformer().transform(group);
 		//new MaxMemoryTransformer().transform(group);
 		//new RuneliteBufferTransformer().transform(group);
 

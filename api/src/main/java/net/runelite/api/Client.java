@@ -27,6 +27,6 @@ package net.runelite.api;
 /**
  * Represents the RuneScape client.
  */
-public interface Client extends GameEngine
+public interface Client
 {
 }

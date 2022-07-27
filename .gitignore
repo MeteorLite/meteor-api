@@ -1,8 +1,8 @@
 .gradle/
 .idea/
-client/build
+Client/build
 agent/build
 build/
-client/.mixin.out
+Client/.mixin.out
 .mixin.out
-injected-client/src/main/java
+injected-Client/src/main/java

@@ -11,9 +11,7 @@ object OSNetClient {
     @JvmStatic
     fun main(args: Array<String>) {
         findInjected()
-        AppletConfiguration.init()
-        Applet().init()
-        OSRSPanel.init()
+        AppletBootstrap().init()
     }
 
     fun findInjected() {

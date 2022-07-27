@@ -1,66 +1,115 @@
-import javax.imageio.ImageIO;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-@ObfuscatedName("al")
-public class class28 {
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "Llh;"
-	)
-	@Export("soundEffectsArchive")
-	public static AbstractArchive soundEffectsArchive;
-	@ObfuscatedName("hh")
-	@ObfuscatedGetter(
-		intValue = -140156033
-	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("iy")
-	@ObfuscatedSignature(
-		descriptor = "[Lqe;"
-	)
-	@Export("headIconPrayerSprites")
-	static SpritePixels[] headIconPrayerSprites;
+public class Class28 {
 
-	static {
-		ImageIO.setUseCache(false);
-	}
+    public boolean aBoolean520;
+    public boolean aBoolean521;
+    public int anInt522;
+    public final Class44 aClass44_523;
+    public Class44 aClass44_524;
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "181658487"
-	)
-	static final void method352(int var0, int var1, int var2) {
-		int var3;
-		for (var3 = 0; var3 < 8; ++var3) {
-			for (int var4 = 0; var4 < 8; ++var4) {
-				Tiles.Tiles_heights[var0][var3 + var1][var4 + var2] = 0;
-			}
-		}
+    public Class28(int i) {
+        aBoolean520 = true;
+        aBoolean521 = true;
+        anInt522 = -676;
+        aClass44_523 = new Class44();
+        if (i >= 0)
+            aBoolean520 = !aBoolean520;
+        aClass44_523.aClass44_761 = aClass44_523;
+        aClass44_523.aClass44_762 = aClass44_523;
+    }
 
-		if (var1 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var1][var3 + var2] = Tiles.Tiles_heights[var0][var1 - 1][var3 + var2];
-			}
-		}
+    public void method256(Class44 class44) {
+        if (class44.aClass44_762 != null)
+            class44.unlink();
+        class44.aClass44_762 = aClass44_523.aClass44_762;
+        class44.aClass44_761 = aClass44_523;
+        class44.aClass44_762.aClass44_761 = class44;
+        class44.aClass44_761.aClass44_762 = class44;
+    }
 
-		if (var2 > 0) {
-			for (var3 = 1; var3 < 8; ++var3) {
-				Tiles.Tiles_heights[var0][var3 + var1][var2] = Tiles.Tiles_heights[var0][var3 + var1][var2 - 1];
-			}
-		}
+    public void method257(boolean flag, Class44 class44) {
+        if (class44.aClass44_762 != null)
+            class44.unlink();
+        class44.aClass44_762 = aClass44_523;
+        class44.aClass44_761 = aClass44_523.aClass44_761;
+        class44.aClass44_762.aClass44_761 = class44;
+        if (flag)
+            anInt522 = 91;
+        class44.aClass44_761.aClass44_762 = class44;
+    }
 
-		if (var1 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2];
-		} else if (var2 > 0 && Tiles.Tiles_heights[var0][var1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1][var2 - 1];
-		} else if (var1 > 0 && var2 > 0 && Tiles.Tiles_heights[var0][var1 - 1][var2 - 1] != 0) {
-			Tiles.Tiles_heights[var0][var1][var2] = Tiles.Tiles_heights[var0][var1 - 1][var2 - 1];
-		}
+    public Class44 method258() {
+        Class44 class44 = aClass44_523.aClass44_761;
+        if (class44 == aClass44_523) {
+            return null;
+        } else {
+            class44.unlink();
+            return class44;
+        }
+    }
 
-	}
+    public Class44 peekFront() {
+        Class44 class44 = aClass44_523.aClass44_761;
+        if (class44 == aClass44_523) {
+            aClass44_524 = null;
+            return null;
+        } else {
+            aClass44_524 = class44.aClass44_761;
+            return class44;
+        }
+    }
+
+    public Class44 method260(boolean flag) {
+        Class44 class44 = aClass44_523.aClass44_762;
+        if (flag)
+            aBoolean521 = !aBoolean521;
+        if (class44 == aClass44_523) {
+            aClass44_524 = null;
+            return null;
+        } else {
+            aClass44_524 = class44.aClass44_762;
+            return class44;
+        }
+    }
+
+    public Class44 getPrevious(byte byte0) {
+        Class44 class44 = aClass44_524;
+        if (class44 == aClass44_523) {
+            aClass44_524 = null;
+            return null;
+        }
+        aClass44_524 = class44.aClass44_761;
+        if (byte0 == 0)
+            byte0 = 0;
+        else
+            aBoolean521 = !aBoolean521;
+        return class44;
+    }
+
+    public Class44 method262(boolean flag) {
+        if (flag)
+            throw new NullPointerException();
+        Class44 class44 = aClass44_524;
+        if (class44 == aClass44_523) {
+            aClass44_524 = null;
+            return null;
+        } else {
+            aClass44_524 = class44.aClass44_762;
+            return class44;
+        }
+    }
+
+    public void method263() {
+        if (aClass44_523.aClass44_761 == aClass44_523)
+            return;
+        do {
+            Class44 class44 = aClass44_523.aClass44_761;
+            if (class44 == aClass44_523)
+                return;
+            class44.unlink();
+        } while (true);
+    }
 }

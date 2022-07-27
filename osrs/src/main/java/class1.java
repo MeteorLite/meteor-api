@@ -1,103 +1,75 @@
-import java.util.concurrent.Callable;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-@ObfuscatedName("v")
-public class class1 implements Callable {
-	@ObfuscatedName("u")
-	static int[][][] field2;
-	@ObfuscatedName("ky")
-	@ObfuscatedSignature(
-		descriptor = "Lkb;"
-	)
-	static Widget field4;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lqt;"
-	)
-	final Buffer field1;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lf;"
-	)
-	final class3 field3;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lw;"
-	)
-	final class7 this$0;
+public class Class1 {
 
-	@ObfuscatedSignature(
-		descriptor = "(Lw;Lqt;Lf;)V"
-	)
-	class1(class7 var1, Buffer var2, class3 var3) {
-		this.this$0 = var1;
-		this.field1 = var2;
-		this.field3 = var3;
-	}
+    public static int anInt51;
+    public int anInt38;
+    public boolean aBoolean39;
+    public int anInt40;
+    public int[] anIntArray41;
+    public int[] anIntArray42;
+    public int anInt43;
+    public int anInt44;
+    public int anInt45;
+    public int anInt46;
+    public int anInt47;
+    public int anInt48;
+    public int anInt49;
+    public int anInt50;
+    public Class1() {
+        anInt38 = 1;
+        aBoolean39 = false;
+    }
 
-	public Object call() {
-		return this.field3.vmethod10(this.field1);
-	}
+    public void method148(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2) {
+        anInt45 = class44_sub3_sub2.get1();
+        if (byte0 == 2)
+            byte0 = 0;
+        else
+            aBoolean39 = !aBoolean39;
+        anInt43 = class44_sub3_sub2.get4();
+        anInt44 = class44_sub3_sub2.get4();
+        method149(class44_sub3_sub2, 9);
+    }
 
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "(ILbi;ZS)I",
-		garbageValue = "-15642"
-	)
-	static int method7(int var0, Script var1, boolean var2) {
-		Widget var3 = var2 ? class124.scriptDotWidget : GrandExchangeOfferOwnWorldComparator.scriptActiveWidget;
-		if (var0 == ScriptOpcodes.CC_GETSCROLLX) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLY) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETTEXT) {
-			Interpreter.Interpreter_stringStack[++Interpreter.Interpreter_stringStackSize - 1] = var3.text;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLWIDTH) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollWidth;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETSCROLLHEIGHT) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.scrollHeight;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELZOOM) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelZoom;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_X) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Z) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleZ;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELANGLE_Y) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETTRANS) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyTop;
-			return 1;
-		} else if (var0 == 1610) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.transparencyBot;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETCOLOUR) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETFILLCOLOUR) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.color2;
-			return 1;
-		} else if (var0 == 1613) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.fillMode.rsOrdinal();
-			return 1;
-		} else if (var0 == ScriptOpcodes.CC_GETMODELTRANSPARENT) {
-			Interpreter.Interpreter_intStack[++class446.Interpreter_intStackSize - 1] = var3.modelTransparency ? 1 : 0;
-			return 1;
-		} else if (var0 != 1615 && var0 != 1616) {
-			return 2;
-		} else {
-			++class446.Interpreter_intStackSize;
-			return 1;
-		}
-	}
+    public void method149(Class44_Sub3_Sub2 class44_sub3_sub2, int i) {
+        if (i != 9)
+            return;
+        anInt40 = class44_sub3_sub2.get1();
+        anIntArray41 = new int[anInt40];
+        anIntArray42 = new int[anInt40];
+        for (int j = 0; j < anInt40; j++) {
+            anIntArray41[j] = class44_sub3_sub2.get2();
+            anIntArray42[j] = class44_sub3_sub2.get2();
+        }
+
+    }
+
+    public void method150(int i) {
+        anInt46 = 0;
+        anInt47 = 0;
+        anInt48 = 0;
+        anInt49 = 0;
+        anInt50 = 0;
+        if (i != 0)
+            anInt38 = 193;
+    }
+
+    public int method151(byte byte0, int i) {
+        if (byte0 != -7)
+            return anInt38;
+        if (anInt50 >= anInt46) {
+            anInt49 = anIntArray42[anInt47++] << 15;
+            if (anInt47 >= anInt40)
+                anInt47 = anInt40 - 1;
+            anInt46 = (int) (((double) anIntArray41[anInt47] / 65536D) * (double) i);
+            if (anInt46 > anInt50)
+                anInt48 = ((anIntArray42[anInt47] << 15) - anInt49) / (anInt46 - anInt50);
+        }
+        anInt49 += anInt48;
+        anInt50++;
+        return anInt49 - anInt48 >> 15;
+    }
 }

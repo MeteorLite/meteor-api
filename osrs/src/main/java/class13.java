@@ -1,56 +1,18 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.Hashtable;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedName;
-import net.runelite.mapping.ObfuscatedSignature;
-import org.bouncycastle.crypto.tls.DefaultTlsClient;
-import org.bouncycastle.crypto.tls.TlsAuthentication;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-@ObfuscatedName("r")
-class class13 extends DefaultTlsClient {
-	@ObfuscatedName("w")
-	@Export("SpriteBuffer_spritePalette")
-	public static int[] SpriteBuffer_spritePalette;
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "[Lqu;"
-	)
-	@Export("mapSceneSprites")
-	static IndexedSprite[] mapSceneSprites;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lz;"
-	)
-	final class12 this$1;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lz;)V"
-	)
-	class13(class12 var1) {
-		this.this$1 = var1;
-	}
+public class Class13 {
 
-	public TlsAuthentication getAuthentication() throws IOException {
-		return new class11(this);
-	}
-
-	public Hashtable getClientExtensions() throws IOException {
-		Hashtable var1 = super.getClientExtensions();
-		if (var1 == null) {
-			var1 = new Hashtable();
-		}
-
-		byte[] var2 = this.this$1.val$host.getBytes();
-		ByteArrayOutputStream var3 = new ByteArrayOutputStream();
-		DataOutputStream var4 = new DataOutputStream(var3);
-		var4.writeShort(var2.length + 3);
-		var4.writeByte(0);
-		var4.writeShort(var2.length);
-		var4.write(var2);
-		var4.close();
-		var1.put(0, var3.toByteArray());
-		return var1;
-	}
+    public int anInt307;
+    public int anInt308;
+    public int anInt309;
+    public int anInt310;
+    public int anInt311;
+    public Renderable aRenderable_312;
+    public int anInt313;
+    public byte aByte314;
+    public Class13() {
+    }
 }

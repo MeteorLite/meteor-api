@@ -4,10 +4,10 @@
 .int_var_count      16
 .string_var_count   2
 ; callback "friendsChatSetText"
-;   Fired just before the client pops the name off the stack
+;   Fired just before the Client pops the name off the stack
 ;     Modified by the friendnotes plugin to show the icon
 ; callback "friendsChatSetPosition"
-;   Fired just before the client sets the position of "friend changed their name" icon
+;   Fired just before the Client sets the position of "friend changed their name" icon
 ;     Modified by the friendnotes plugin to offset the name changed icon
    iload                  1
    iconst                 2
