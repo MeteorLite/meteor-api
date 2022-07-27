@@ -1,3 +1,10 @@
 package net.runelite.rs.api;
 
-public interface RSBufferedNetSocket {}
+import net.runelite.api.BufferedNetSocket;
+import net.runelite.mapping.Import;
+
+public interface RSBufferedNetSocket extends BufferedNetSocket {
+    @Import("readUnsignedByte")
+    @Override
+    int readUnsignedByte();
+}

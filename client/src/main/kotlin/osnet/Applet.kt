@@ -1,7 +1,6 @@
 package osnet
 
 import eventbus.Events
-import eventbus.events.AppletLoaded
 import net.runelite.api.Client
 import java.applet.Applet
 import java.applet.AppletContext
@@ -10,8 +9,10 @@ import java.applet.AudioClip
 import java.awt.Desktop
 import java.awt.Dimension
 import java.awt.Image
+import java.io.File
 import java.io.InputStream
 import java.net.URL
+import java.net.URLClassLoader
 import java.util.*
 import org.rationalityfrontline.kevent.KEVENT as EventBus
 
@@ -34,12 +35,11 @@ class Applet : AppletStub, AppletContext {
     fun init() {
         applet = configureApplet()
         applet.size = applet.minimumSize
-        EventBus.post(Events.APPLET_LOADED, AppletLoaded())
-
     }
 
     private fun configureApplet(): Applet {
-        val applet = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Applet
+        val classloader = URLClassLoader(arrayOf(File("./src/main/resources/injected-client.osrs").toURI().toURL()), ClassLoader.getSystemClassLoader())
+        val applet = classloader.loadClass("Client").newInstance() as Applet
         applet.setStub(this)
         applet.maximumSize = appletMaxSize()
         applet.minimumSize = appletMinSize()

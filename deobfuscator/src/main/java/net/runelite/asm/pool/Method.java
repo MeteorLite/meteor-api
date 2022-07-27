@@ -25,13 +25,16 @@
 package net.runelite.asm.pool;
 
 import java.util.Objects;
+
+import lombok.Setter;
 import net.runelite.asm.signature.Signature;
 
 public class Method
 {
 	private final Class clazz;
 	private final String name;
-	private final Signature type;
+	@Setter
+	public Signature type;
 
 	public Method(Class clazz, String name, Signature type)
 	{

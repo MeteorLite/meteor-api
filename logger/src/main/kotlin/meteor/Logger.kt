@@ -4,7 +4,8 @@ import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.*
 
-class Logger(var name: String) {
+class Logger{
+    var name: String = ""
     var plugin: String? = null
     var format = "%-35s%s%n"
     fun info(message: Any, vararg replacers: Any) {
@@ -75,8 +76,10 @@ class Logger(var name: String) {
         const val ANSI_WHITE = "\u001B[37m"
         var DEFAULT_CONTROLLER_COLOR = ANSI_CYAN
         var isDebugEnabled = true
+        @JvmStatic
         fun getLogger(loggedClass: Class<*>): Logger {
-            val newLogger = Logger(loggedClass.name)
+            val newLogger = Logger()
+            newLogger.name = loggedClass.name
             val split = loggedClass.toString().split(".")
             newLogger.name = split[split.size - 1]
             return newLogger

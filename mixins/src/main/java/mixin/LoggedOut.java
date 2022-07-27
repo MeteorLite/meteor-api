@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2019, Null (zeruth)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,12 +22,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package mixin;
 
-/**
- * A bitmap Font in Jagex's format
- */
-public interface FontTypeFace
+import net.runelite.api.mixins.*;
+import net.runelite.rs.api.RSClient;
+
+@Mixin(RSClient.class)
+public abstract class LoggedOut implements RSClient
 {
+	@Shadow("client")
+	private static RSClient client;
 
+	@Shadow("logger")
+	private static meteor.Logger logger;
+
+	@Copy("doCycleLoggedOut")
+	@Replace("doCycleLoggedOut")
+	final void doCycleLoggedOut$rs() {
+		logger.debug("pre logged-out");
+		doCycleLoggedOut$rs();
+		logger.debug("post logged-out");
+	}
 }

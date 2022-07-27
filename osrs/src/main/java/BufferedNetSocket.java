@@ -113,12 +113,12 @@ public class BufferedNetSocket extends AbstractSocket {
 		descriptor = "(B)Ljava/util/Date;",
 		garbageValue = "-61"
 	)
-	static Date method6835() {
-		java.util.Calendar var0 = java.util.Calendar.getInstance();
-		var0.set(2, 0);
-		var0.set(5, 1);
-		var0.set(1, 1900);
-		return var0.getTime();
+	static Date getEmptyDate() {
+		java.util.Calendar emptyDate = java.util.Calendar.getInstance();
+		emptyDate.set(2, 0);
+		emptyDate.set(5, 1);
+		emptyDate.set(1, 1900);
+		return emptyDate.getTime();
 	}
 
 	@ObfuscatedName("m")

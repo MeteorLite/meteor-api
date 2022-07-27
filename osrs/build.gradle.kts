@@ -22,6 +22,11 @@ dependencies{
 }
 
 tasks{
+    build {
+        outputs.upToDateWhen {
+            false
+        }
+    }
     withType<JavaCompile>(){
         options.encoding = "UTF-8"
     }

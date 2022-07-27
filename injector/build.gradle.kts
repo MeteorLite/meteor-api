@@ -32,7 +32,6 @@ dependencies{
     implementation(project(":annotations"))
     implementation(project(":deobfuscator"))
     implementation(project(":api-rs"))
-    implementation(project(":osrs"))
     implementation(project(":logger"))
 
     implementation(group = "org.ow2.asm", name = "asm", version = "8.0.1")
@@ -48,6 +47,7 @@ tasks{
         useJUnitPlatform()
     }
     register<JavaExec>("inject"){
+        dependsOn(":osrs:build")
         classpath(sourceSets["main"].runtimeClasspath)
         mainClass.set("com.openosrs.injector.Injector")
         dependsOn(":mixins:jar")

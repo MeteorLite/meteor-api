@@ -10,17 +10,19 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.Future;
+
+import meteor.Logger;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import net.runelite.rs.ScriptOpcodes;
-import netscape.javascript.JSObject;
 
 @Implements("Client")
 @ObfuscatedName("client")
 public final class Client extends GameEngine implements Usernamed, OAuthApi {
+	public static Logger log = new Logger();
 	@ObfuscatedName("rh")
 	@ObfuscatedSignature(
 		descriptor = "[Len;"
@@ -2216,6 +2218,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 
 						NetFileRequest var5;
 						Buffer var6;
+
 						while (NetCache.NetCache_pendingPriorityResponsesCount < 200 && NetCache.NetCache_pendingPriorityWritesCount > 0) {
 							var5 = (NetFileRequest)NetCache.NetCache_pendingPriorityWrites.first();
 							var6 = new Buffer(4);
@@ -2438,6 +2441,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			if (--field621 + 1 <= 0) {
 				try {
 					if (js5ConnectState == 0) {
+						log.debug("opening js5 socket");
 						FloorOverlayDefinition.js5SocketTask = GameEngine.taskHandler.newSocketTask(StructComposition.worldHost, currentPort);
 						++js5ConnectState;
 					}
@@ -2595,6 +2599,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	)
 	@Export("doCycleLoggedOut")
 	final void doCycleLoggedOut() {
+		log.debug("pre logged-out");
 		AbstractSocket var1 = packetWriter.getSocket();
 		PacketBuffer var2 = packetWriter.packetBuffer;
 
@@ -6387,6 +6392,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	}
 
 	public final void init() {
+		log.debug("init");
 		try {
 			if (this.checkHost()) {
 				for (int var1 = 0; var1 <= 28; ++var1) {

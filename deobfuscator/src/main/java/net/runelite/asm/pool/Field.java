@@ -26,13 +26,16 @@
 package net.runelite.asm.pool;
 
 import java.util.Objects;
+
+import lombok.Setter;
 import net.runelite.asm.Type;
 
 public class Field
 {
 	private final Class clazz;
 	private final String name;
-	private final Type type;
+	@Setter
+	public Type type;
 
 	public Field(Class clazz, String name, Type type)
 	{

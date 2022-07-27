@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2019, Null (zeruth)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,12 +22,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package mixin;
 
-/**
- * A bitmap Font in Jagex's format
- */
-public interface FontTypeFace
+import net.runelite.api.mixins.*;
+import net.runelite.rs.api.RSClient;
+
+import static meteor.Logger.getLogger;
+
+@Mixin(RSClient.class)
+public abstract class Logger implements RSClient
 {
-
+	@Inject
+	public static meteor.Logger logger = getLogger(RSClient.class);
 }

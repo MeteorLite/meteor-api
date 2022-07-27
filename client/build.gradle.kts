@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation(project(":api"))
     implementation(project(":api-rs"))
+    implementation(project(":logger"))
     implementation("org.rationalityfrontline:kevent:2.1.4")
     implementation(group = "org.bouncycastle", name = "bcprov-jdk15on", version = "1.52")
     runtimeOnly(files("./src/main/resources/injected-client.osrs"))

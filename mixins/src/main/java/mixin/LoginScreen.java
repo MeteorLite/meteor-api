@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2019, Null (zeruth)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,12 +22,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package mixin;
 
-/**
- * A bitmap Font in Jagex's format
- */
-public interface FontTypeFace
+import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.api.mixins.Shadow;
+import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSFont;
+import net.runelite.rs.api.RSGameEngine;
+
+@Mixin(RSClient.class)
+public abstract class LoginScreen implements RSClient
 {
+	@Shadow("client")
+	private static RSClient client;
 
+	@Shadow("logger")
+	private static meteor.Logger logger;
+
+	@Copy("loginScreen")
+	@Replace("loginScreen")
+	static void loginScreen$rs(RSGameEngine engine, RSFont font) {
+		loginScreen$rs(engine, font);
+	}
 }

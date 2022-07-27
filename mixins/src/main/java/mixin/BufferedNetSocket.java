@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2019, Null (zeruth)
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,12 +22,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.api;
+package mixin;
 
-/**
- * A bitmap Font in Jagex's format
- */
-public interface FontTypeFace
+import js5.NetSocketManager;
+import net.runelite.api.mixins.*;
+import net.runelite.rs.api.RSBuffer;
+import net.runelite.rs.api.RSBufferedNetSocket;
+import net.runelite.rs.api.RSClient;
+
+@Mixin(RSBufferedNetSocket.class)
+public abstract class BufferedNetSocket implements RSBufferedNetSocket
 {
+	@Shadow("client")
+	private static RSClient client;
 
+
+	@Copy("readUnsignedByte")
+	@Replace("readUnsignedByte")
+	public int readUnsignedByte() {
+		int value = NetSocketManager.INSTANCE.readUnsignedByte(readUnsignedByte());
+		System.out.println("[read uByte] - " + value);
+		return value;
+	}
 }

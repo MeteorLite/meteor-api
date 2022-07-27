@@ -20,6 +20,12 @@ publishing {
     }
 }
 
+tasks.build {
+    outputs.upToDateWhen {
+        false
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }

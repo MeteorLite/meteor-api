@@ -38,13 +38,13 @@ public abstract class Buffer implements RSBuffer
 	@Replace("writeByte")
 	public void writeByte$rs(int b) {
 		writeByte$rs(b);
-		System.out.println("[write-byte] " + getOffset() + "(-1) - " + b);
+		//System.out.println("[write-byte] " + getOffset() + "(-1) - " + b);
 	}
 
 	@Copy("writeShort")
 	@Replace("writeShort")
 	public void writeShort$rs(int b) {
 		writeShort$rs(b);
-		System.out.println("[write-short] " + getOffset() + "(-1) - " + b);
+		//System.out.println("[write-short] " + getOffset() + "(-1) - " + b);
 	}
 }

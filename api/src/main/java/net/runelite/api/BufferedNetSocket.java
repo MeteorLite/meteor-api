@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2020, Noodleeater <noodleeater4@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,11 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package net.runelite.api;
-
-/**
- * A bitmap Font in Jagex's format
- */
-public interface FontTypeFace
+public interface BufferedNetSocket extends Node
 {
-
+	int readUnsignedByte();
 }

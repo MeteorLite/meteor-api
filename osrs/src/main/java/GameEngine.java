@@ -20,6 +20,7 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.net.URL;
+
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
@@ -864,6 +865,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	}
 
 	public void run() {
+		Client.log.debug("run");
 		try {
 			if (class360.javaVendor != null) {
 				String var1 = class360.javaVendor.toLowerCase();
@@ -914,6 +916,7 @@ public abstract class GameEngine extends Applet implements Runnable, FocusListen
 	}
 
 	public final void start() {
+		Client.log.debug("start");
 		if (this == gameEngine && !isKilled) {
 			stopTimeMs = 0L;
 		}

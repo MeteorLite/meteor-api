@@ -238,7 +238,7 @@ public interface InjectUtil {
         return field;
       }
     }
-    String s = type.toString().replaceFirst("L", "Losrs/");
+    String s = type.toString();
     type = Type.getType(s, 0);
     if (classHint != null) {
       ClassFile clazz = findClassOrThrow(deob, classHint);

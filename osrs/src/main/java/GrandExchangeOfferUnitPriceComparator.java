@@ -53,7 +53,7 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 			var2.set(14, 0);
 			Date var3 = var2.getTime();
 			boolean var5 = var0.before(var3);
-			Date var4 = BufferedNetSocket.method6835();
+			Date var4 = BufferedNetSocket.getEmptyDate();
 			boolean var7 = var0.after(var4);
 			if (!var7) {
 				GraphicsObject.method1877("Date not valid.", "Please ensure date follows the format", "DD/MM/YYYY and is after 01/01/1900");
