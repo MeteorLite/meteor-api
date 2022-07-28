@@ -4,16 +4,19 @@
 
 import net.runelite.mapping.Export;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow extends Frame {
 
     public final Game game;
 
+    public JPanel panel = new JPanel();
+
     public GameWindow(Game game, int width, int height, int k) {
         this.game = game;
         setTitle("Jagex");
-        setResizable(false);
+        //setResizable(false);
         show();
         toFront();
         if (k != 0) {

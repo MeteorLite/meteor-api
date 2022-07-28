@@ -11,7 +11,7 @@ public class ImageProducer
     public final int width;
     public final int height;
     public final ColorModel colorModel;
-    public ImageConsumer anImageConsumer575;
+    public ImageConsumer imageConsumer;
     public final Image gameImage;
 
     public ImageProducer(int height, int width, Component component) {
@@ -33,13 +33,13 @@ public class ImageProducer
         DrawingArea.initDrawingArea(width, height, pixels, 9);
     }
 
-    public void method273(int i, Graphics g, byte byte0, int j) {
+    public void drawGameImage(Graphics g, int x, int y) {
         drawPixels();
-        g.drawImage(gameImage, i, j, this);
+        g.drawImage(gameImage, x, y, this);
     }
 
     public synchronized void addConsumer(ImageConsumer imageconsumer) {
-        anImageConsumer575 = imageconsumer;
+        imageConsumer = imageconsumer;
         imageconsumer.setDimensions(width, height);
         imageconsumer.setProperties(null);
         imageconsumer.setColorModel(colorModel);
@@ -47,12 +47,12 @@ public class ImageProducer
     }
 
     public synchronized boolean isConsumer(ImageConsumer imageconsumer) {
-        return anImageConsumer575 == imageconsumer;
+        return imageConsumer == imageconsumer;
     }
 
     public synchronized void removeConsumer(ImageConsumer imageconsumer) {
-        if (anImageConsumer575 == imageconsumer)
-            anImageConsumer575 = null;
+        if (imageConsumer == imageconsumer)
+            imageConsumer = null;
     }
 
     public void startProduction(ImageConsumer imageconsumer) {
@@ -64,10 +64,9 @@ public class ImageProducer
     }
 
     public synchronized void drawPixels() {
-        if (anImageConsumer575 == null) {
-        } else {
-            anImageConsumer575.setPixels(0, 0, width, height, colorModel, pixels, 0, width);
-            anImageConsumer575.imageComplete(2);
+        if (imageConsumer != null) {
+            imageConsumer.setPixels(0, 0, width, height, colorModel, pixels, 0, width);
+            imageConsumer.imageComplete(2);
         }
     }
 

@@ -24,13 +24,24 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.Client;
 import net.runelite.mapping.Import;
 
 import java.awt.*;
 
-public interface RSGame
+public interface RSImageProducer
 {
-    @Import("gameWindow")
-    RSGameWindow getGameWindow();
+    @Import("pixels")
+    int[] getPixels$api();
+
+    @Import("width")
+    int getWidth$api();
+
+    @Import("height")
+    int getHeight$api();
+
+    @Import("drawPixels")
+    void drawPixels$api();
+
+    @Import("gameImage")
+    Image getGameImage$api();
 }
