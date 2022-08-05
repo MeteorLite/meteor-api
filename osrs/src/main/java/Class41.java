@@ -143,6 +143,8 @@ public class Class41 {
         return c >= ' ' && c <= '\177' || c == ' ' || c == '\n' || c == '\t' || c == '\243' || c == '\u20AC';
     }
 
+    //TODO: figure out the consequences of skipping the 2 methods commented out here
+    // Not commenting them out causes a ClassNotFound Exception on public chat that is hard to trace
     public static String method352(byte byte0, String s) {
         long l = System.currentTimeMillis();
         char[] ac = s.toCharArray();
@@ -150,19 +152,17 @@ public class Class41 {
         String s1 = (new String(ac)).trim();
         ac = s1.toLowerCase().toCharArray();
         String s2 = s1.toLowerCase();
-        method360(true, ac);
+        //method360(true, ac);
         method355(ac, (byte) 6);
         if (byte0 != 3)
             anInt736 = -446;
-        method356(ac, (byte) 5);
+        //method356(ac, (byte) 5);
         method369(ac, 9);
         for (String value : aStringArray751) {
             for (int j = -1; (j = s2.indexOf(value, j + 1)) != -1; ) {
                 char[] ac1 = value.toCharArray();
                 System.arraycopy(ac1, 0, ac, j, ac1.length);
-
             }
-
         }
 
         method353(ac, s1.toCharArray(), -51);
