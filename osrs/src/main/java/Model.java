@@ -844,7 +844,7 @@ public class Model extends Renderable {
 			int var20;
 			int var21;
 			if (var4 == 3) {
-				if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > DrawingArea.anInt1358 || var12 > DrawingArea.anInt1358 || var13 > DrawingArea.anInt1358) {
+				if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Statics.anInt1358 || var12 > Statics.anInt1358 || var13 > Statics.anInt1358) {
 					Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
 				}
 
@@ -874,7 +874,7 @@ public class Model extends Renderable {
 			}
 
 			if (var4 == 4) {
-				if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > DrawingArea.anInt1358 || var12 > DrawingArea.anInt1358 || var13 > DrawingArea.anInt1358 || anIntArray1574[3] < 0 || anIntArray1574[3] > DrawingArea.anInt1358) {
+				if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Statics.anInt1358 || var12 > Statics.anInt1358 || var13 > Statics.anInt1358 || anIntArray1574[3] < 0 || anIntArray1574[3] > Statics.anInt1358) {
 					Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
 				}
 
@@ -1056,16 +1056,16 @@ public class Model extends Renderable {
 		if (var13 > 50 && var11 < 3500) {
 			int var14 = var8 * var4 + var5 * var6 >> 16;
 			int var15 = var14 - this.anInt1546 << 9;
-			if (var15 / var13 < DrawingArea.anInt1359) {
+			if (var15 / var13 < Statics.anInt1359) {
 				int var16 = var14 + this.anInt1546 << 9;
-				if (var16 / var13 > -DrawingArea.anInt1359) {
+				if (var16 / var13 > -Statics.anInt1359) {
 					int var17 = var3 * var7 - var10 * var2 >> 16;
 					int var18 = var2 * this.anInt1546 >> 16;
 					int var19 = var17 + var18 << 9;
-					if (var19 / var13 > -DrawingArea.anInt1360) {
+					if (var19 / var13 > -Statics.anInt1360) {
 						int var20 = (var3 * super.anInt1394 >> 16) + var18;
 						int var21 = var17 - var20 << 9;
-						if (var21 / var13 < DrawingArea.anInt1360) {
+						if (var21 / var13 < Statics.anInt1360) {
 							int var22 = var12 + (var2 * super.anInt1394 >> 16);
 							boolean var23 = var11 - var22 <= 50;
 							boolean var24 = false;
@@ -1388,7 +1388,7 @@ public class Model extends Renderable {
 
 					if ((var8 - var9) * (anIntArray1562[var7] - anIntArray1562[var6]) - (var10 - var9) * (anIntArray1562[var5] - anIntArray1562[var6]) > 0) {
 						aBooleanArray1560[var4] = false;
-						aBooleanArray1559[var4] = var8 < 0 || var9 < 0 || var10 < 0 || var8 > DrawingArea.anInt1358 || var9 > DrawingArea.anInt1358 || var10 > DrawingArea.anInt1358;
+						aBooleanArray1559[var4] = var8 < 0 || var9 < 0 || var10 < 0 || var8 > Statics.anInt1358 || var9 > Statics.anInt1358 || var10 > Statics.anInt1358;
 						var11 = (anIntArray1563[var5] + anIntArray1563[var6] + anIntArray1563[var7]) / 3 + this.anInt1549;
 						anIntArrayArray1568[var11][anIntArray1567[var11]++] = var4;
 					}

@@ -74,6 +74,5 @@ public class Class47 {
 			this.anIntArray786[var7] = var8;
 			var8 += this.anIntArray785[var7];
 		}
-
 	}
 }

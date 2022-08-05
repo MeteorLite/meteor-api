@@ -801,28 +801,28 @@ public class Client extends Game {
 			this.aComponentImageProducer_991 = null;
 			this.aComponentImageProducer_992 = null;
 			this.aComponentImageProducer_1042 = new ComponentImageProducer(265, 128, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1043 = new ComponentImageProducer(265, 128, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1039 = new ComponentImageProducer(171, 509, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1040 = new ComponentImageProducer(132, 360, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			if (var1 != -43664) {
 				for (int var2 = 1; var2 > 0; ++var2) {
 				}
 			}
 
 			this.aComponentImageProducer_1041 = new ComponentImageProducer(200, 360, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1044 = new ComponentImageProducer(238, 202, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1045 = new ComponentImageProducer(238, 203, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1046 = new ComponentImageProducer(94, 74, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_1047 = new ComponentImageProducer(94, 75, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			if (this.aClass47_942 != null) {
 				this.method59(0);
 				this.method91();
@@ -849,10 +849,10 @@ public class Client extends Game {
 			byte var6 = 20;
 			this.aClass44_Sub3_Sub1_Sub4_1077.method455(var4 / 2, var5 / 2 - 26 - var6, 16777215, "RuneScape is loading - please wait...");
 			int var7 = var5 / 2 - 18 - var6;
-			DrawingArea.method412(304, 9179409, 34, var4 / 2 - 152, var7);
-			DrawingArea.method412(302, 0, 32, var4 / 2 - 151, var7 + 1);
-			DrawingArea.method411(30, 9179409, var2 * 3, var4 / 2 - 150, 0, var7 + 2);
-			DrawingArea.method411(30, 0, 300 - var2 * 3, var4 / 2 - 150 + var2 * 3, 0, var7 + 2);
+			Statics.method412(304, 9179409, 34, var4 / 2 - 152, var7);
+			Statics.method412(302, 0, 32, var4 / 2 - 151, var7 + 1);
+			Statics.method411(30, 9179409, var2 * 3, var4 / 2 - 150, 0, var7 + 2);
+			Statics.method411(30, 0, 300 - var2 * 3, var4 / 2 - 150 + var2 * 3, 0, var7 + 2);
 			this.aClass44_Sub3_Sub1_Sub4_1077.method455(var4 / 2, var5 / 2 + 5 - var6, 16777215, var1);
 			this.aComponentImageProducer_1041.drawComponentImage(super.graphics, 202, 171);
 			if (this.aBoolean917) {
@@ -1887,7 +1887,7 @@ public class Client extends Game {
 		Model.anInt1583 = 0;
 		Model.anInt1581 = super.anInt22 - 4;
 		Model.anInt1582 = super.anInt23 - 4;
-		DrawingArea.method409();
+		Statics.method409();
 		this.worldController.method317(this.anInt820, -41301, this.anInt822, this.anInt824, this.anInt821, var2, this.anInt823);
 		this.worldController.method292();
 		this.method115();
@@ -2420,7 +2420,7 @@ public class Client extends Game {
 
 			this.aClass44_Sub3_Sub1_Sub4_1077.method460("Username: " + this.aString1147 + (this.anInt955 == 0 & tick % 40 < 20 ? "@yel@|" : ""), this.anInt1033, true, var5, var3 / 2 - 90, 16777215);
 			var5 += 15;
-			this.aClass44_Sub3_Sub1_Sub4_1077.method460("Password: " + Class48.method553(this.aString1148) + (this.anInt955 == 1 & tick % 40 < 20 ? "@yel@|" : ""), this.anInt1033, true, var5, var3 / 2 - 88, 16777215);
+			this.aClass44_Sub3_Sub1_Sub4_1077.method460("Password: " + Statics.method553(this.aString1148) + (this.anInt955 == 1 & tick % 40 < 20 ? "@yel@|" : ""), this.anInt1033, true, var5, var3 / 2 - 88, 16777215);
 			var5 += 15;
 			if (!var1) {
 				var6 = var3 / 2 - 80;
@@ -2700,7 +2700,7 @@ public class Client extends Game {
 				var16 = var5.readUByte();
 				int var9 = var5.offset;
 				if (var4.aString1657 != null && var4.aBoolean1658) {
-					long var10 = Class48.method547(var4.aString1657);
+					long var10 = Statics.method547(var4.aString1657);
 					boolean var12 = false;
 					if (var15 <= 1) {
 						for (int var13 = 0; var13 < this.anInt961; ++var13) {
@@ -2713,7 +2713,7 @@ public class Client extends Game {
 
 					if (!var12 && this.anInt890 == 0) {
 						try {
-							String var17 = Class49.method554((byte)8, var16, var5);
+							String var17 = Statics.method554((byte)8, var16, var5);
 							var17 = Class41.method352((byte)3, var17);
 							var4.aString1611 = var17;
 							var4.anInt1613 = var6 >> 8;
@@ -2972,7 +2972,7 @@ public class Client extends Game {
 					this.anInt887 = this.aBuffer_1135.readUShort();
 					this.anInt1100 = this.aBuffer_1135.readUByte();
 					if (this.anInt970 != 0 && this.anInt1037 == -1) {
-						signlink.dnslookup(Class48.method550((byte)94, this.anInt970));
+						signlink.dnslookup(Statics.method550((byte)94, this.anInt970));
 						this.method45();
 						short var49 = 650;
 						if (this.anInt1029 != 201 || this.anInt1100 == 1) {
@@ -3192,7 +3192,7 @@ public class Client extends Game {
 					long var44;
 					if (var43.endsWith(":tradereq:")) {
 						var37 = var43.substring(0, var43.indexOf(":"));
-						var44 = Class48.method547(var37);
+						var44 = Statics.method547(var37);
 						var6 = false;
 
 						for (var7 = 0; var7 < this.anInt961; ++var7) {
@@ -3209,7 +3209,7 @@ public class Client extends Game {
 						this.method49(-476, 0, "", var43);
 					} else {
 						var37 = var43.substring(0, var43.indexOf(":"));
-						var44 = Class48.method547(var37);
+						var44 = Statics.method547(var37);
 						var6 = false;
 
 						for (var7 = 0; var7 < this.anInt961; ++var7) {
@@ -3596,7 +3596,7 @@ public class Client extends Game {
 				if (this.anInt1220 == 247) {
 					var21 = this.aBuffer_1135.readLong(0);
 					var4 = this.aBuffer_1135.readUByte();
-					String var30 = Class48.method551(131, Class48.method548(0, var21));
+					String var30 = Statics.method551(131, Statics.method548(0, var21));
 
 					for (var27 = 0; var27 < this.anInt1115; ++var27) {
 						if (var21 == this.aLongArray1159[var27]) {
@@ -3919,16 +3919,16 @@ public class Client extends Game {
 						try {
 							this.anIntArray1068[this.anInt1186] = var4;
 							this.anInt1186 = (this.anInt1186 + 1) % 100;
-							String var28 = Class49.method554((byte)8, this.anInt1219 - 13, this.aBuffer_1135);
+							String var28 = Statics.method554((byte)8, this.anInt1219 - 13, this.aBuffer_1135);
 							var28 = Class41.method352((byte)3, var28);
 							if (var5 != 2 && var5 != 3) {
 								if (var5 == 1) {
-									this.method49(-476, 7, "@cr1@" + Class48.method551(131, Class48.method548(0, var21)), var28);
+									this.method49(-476, 7, "@cr1@" + Statics.method551(131, Statics.method548(0, var21)), var28);
 								} else {
-									this.method49(-476, 3, Class48.method551(131, Class48.method548(0, var21)), var28);
+									this.method49(-476, 3, Statics.method551(131, Statics.method548(0, var21)), var28);
 								}
 							} else {
-								this.method49(-476, 7, "@cr2@" + Class48.method551(131, Class48.method548(0, var21)), var28);
+								this.method49(-476, 7, "@cr2@" + Statics.method551(131, Statics.method548(0, var21)), var28);
 							}
 						} catch (Exception var18) {
 							signlink.reporterror("cde1");
@@ -5468,11 +5468,11 @@ public class Client extends Game {
 	public void method127(int var1, Class5 var2, int var3, int var4, byte var5) {
 		if (var2.anInt110 == 0 && var2.anIntArray125 != null) {
 			if (!var2.aBoolean124 || var2.anInt108 == this.anInt1248 || var2.anInt108 == this.anInt1016 || var2.anInt108 == this.anInt1066) {
-				int var6 = DrawingArea.anInt1356;
-				int var7 = DrawingArea.anInt1354;
-				int var8 = DrawingArea.anInt1357;
-				int var9 = DrawingArea.anInt1355;
-				DrawingArea.method408(5, var3 + var2.anInt114, var2.anInt113 + var1, var1, var3);
+				int var6 = Statics.anInt1356;
+				int var7 = Statics.anInt1354;
+				int var8 = Statics.anInt1357;
+				int var9 = Statics.anInt1355;
+				Statics.method408(5, var3 + var2.anInt114, var2.anInt113 + var1, var1, var3);
 				int var10 = var2.anIntArray125.length;
 
 				for (int var11 = 0; var11 < var10; ++var11) {
@@ -5530,7 +5530,7 @@ public class Client extends Game {
 										var34 = 0;
 										var21 = 0;
 										var22 = var14.anIntArray104[var27] - 1;
-										if (var18 > DrawingArea.anInt1356 - 32 && var18 < DrawingArea.anInt1357 && var33 > DrawingArea.anInt1354 - 32 && var33 < DrawingArea.anInt1355 || this.anInt895 != 0 && var27 == this.anInt894) {
+										if (var18 > Statics.anInt1356 - 32 && var18 < Statics.anInt1357 && var33 > Statics.anInt1354 - 32 && var33 < Statics.anInt1355 || this.anInt895 != 0 && var27 == this.anInt894) {
 											int var23 = 0;
 											if (this.anInt811 == 1 && var27 == this.anInt812 && this.anInt813 == var14.anInt108) {
 												var23 = 16777215;
@@ -5556,8 +5556,8 @@ public class Client extends Game {
 													}
 
 													var24.method442(var33 + var21, var18 + var34, -676, 128);
-													if (var33 + var21 < DrawingArea.anInt1354 && var2.anInt123 > 0) {
-														var25 = (DrawingArea.anInt1354 - var33 - var21) * this.anInt975 / 3;
+													if (var33 + var21 < Statics.anInt1354 && var2.anInt123 > 0) {
+														var25 = (Statics.anInt1354 - var33 - var21) * this.anInt975 / 3;
 														if (var25 > this.anInt975 * 10) {
 															var25 = this.anInt975 * 10;
 														}
@@ -5570,8 +5570,8 @@ public class Client extends Game {
 														this.anInt897 += var25;
 													}
 
-													if (var33 + var21 + 32 > DrawingArea.anInt1355 && var2.anInt123 < var2.anInt122 - var2.anInt114) {
-														var25 = (var33 + var21 + 32 - DrawingArea.anInt1355) * this.anInt975 / 3;
+													if (var33 + var21 + 32 > Statics.anInt1355 && var2.anInt123 < var2.anInt122 - var2.anInt114) {
+														var25 = (var33 + var21 + 32 - Statics.anInt1355) * this.anInt975 / 3;
 														if (var25 > this.anInt975 * 10) {
 															var25 = this.anInt975 * 10;
 														}
@@ -5617,14 +5617,14 @@ public class Client extends Game {
 
 							if (var14.aByte115 == 0) {
 								if (var14.aBoolean140) {
-									DrawingArea.method411(var14.anInt114, var16, var14.anInt113, var12, 0, var13);
+									Statics.method411(var14.anInt114, var16, var14.anInt113, var12, 0, var13);
 								} else {
-									DrawingArea.method412(var14.anInt113, var16, var14.anInt114, var12, var13);
+									Statics.method412(var14.anInt113, var16, var14.anInt114, var12, var13);
 								}
 							} else if (var14.aBoolean140) {
-								DrawingArea.method410(var14.anInt113, var14.anInt114, var13, var16, var12, 0, 256 - (var14.aByte115 & 255));
+								Statics.method410(var14.anInt113, var14.anInt114, var13, var16, var12, 0, 256 - (var14.aByte115 & 255));
 							} else {
-								DrawingArea.method413(var14.anInt113, true, var13, var12, var16, var14.anInt114, 256 - (var14.aByte115 & 255));
+								Statics.method413(var14.anInt113, true, var13, var12, var16, var14.anInt114, 256 - (var14.aByte115 & 255));
 							}
 						} else {
 							Class44_Sub3_Sub1_Sub4 var15;
@@ -5653,7 +5653,7 @@ public class Client extends Game {
 									var18 = var14.anInt146;
 								}
 
-								if (DrawingArea.anInt1352 == 479) {
+								if (Statics.anInt1352 == 479) {
 									if (var18 == 16776960) {
 										var18 = 255;
 									}
@@ -5789,7 +5789,7 @@ public class Client extends Game {
 					}
 				}
 
-				DrawingArea.method408(5, var9, var8, var6, var7);
+				Statics.method408(5, var9, var8, var6, var7);
 				if (var5 == 0) {
 					boolean var26 = false;
 				} else {
@@ -5908,9 +5908,9 @@ public class Client extends Game {
 		int var3 = this.anInt1257;
 		int var4 = this.anInt1258;
 		int var5 = 6116423;
-		DrawingArea.method411(var4, var5, var3, var1, 0, var2);
-		DrawingArea.method411(16, 0, var3 - 2, var1 + 1, 0, var2 + 1);
-		DrawingArea.method412(var3 - 2, 0, var4 - 19, var1 + 1, var2 + 18);
+		Statics.method411(var4, var5, var3, var1, 0, var2);
+		Statics.method411(16, 0, var3 - 2, var1 + 1, 0, var2 + 1);
+		Statics.method412(var3 - 2, 0, var4 - 19, var1 + 1, var2 + 18);
 		this.aClass44_Sub3_Sub1_Sub4_1077.method458(var1 + 3, "Choose Option", var5, var2 + 14);
 		int var6 = super.anInt22;
 		int var7 = super.anInt23;
@@ -6346,7 +6346,7 @@ public class Client extends Game {
 				var14 = this.aStringArray1114[var2];
 				var8 = var14.indexOf("@whi@");
 				if (var8 != -1) {
-					var20 = Class48.method547(var14.substring(var8 + 5).trim());
+					var20 = Statics.method547(var14.substring(var8 + 5).trim());
 					if (var5 == 605) {
 						this.method102(199, var20);
 					}
@@ -6589,7 +6589,7 @@ public class Client extends Game {
 					var14 = this.aStringArray1114[var2];
 					var8 = var14.indexOf("@whi@");
 					if (var8 != -1) {
-						var20 = Class48.method547(var14.substring(var8 + 5).trim());
+						var20 = Statics.method547(var14.substring(var8 + 5).trim());
 						var11 = -1;
 
 						for (int var12 = 0; var12 < this.anInt1115; ++var12) {
@@ -6702,7 +6702,7 @@ public class Client extends Game {
 					var8 = var14.indexOf("@whi@");
 					if (var8 != -1) {
 						var14 = var14.substring(var8 + 5).trim();
-						var21 = Class48.method551(131, Class48.method548(0, Class48.method547(var14)));
+						var21 = Statics.method551(131, Statics.method548(0, Statics.method547(var14)));
 						boolean var10 = false;
 
 						for (var11 = 0; var11 < this.anInt1121; ++var11) {
@@ -7822,7 +7822,7 @@ public class Client extends Game {
 			}
 
 			this.aClass7_1108 = new Class7(-158, this.method72(portOffset + 43594), this);
-			long var4 = Class48.method547(var1);
+			long var4 = Statics.method547(var1);
 			int var6 = (int)(var4 >> 16 & 31L);
 			this.aBuffer_843.offset = 0;
 			this.aBuffer_843.writeByte(14);
@@ -8398,7 +8398,7 @@ public class Client extends Game {
 						var2.aString144 = "";
 						var2.anInt111 = 0;
 					} else {
-						var2.aString144 = Class48.method551(131, Class48.method548(0, this.aLongArray817[var3]));
+						var2.aString144 = Statics.method551(131, Statics.method548(0, this.aLongArray817[var3]));
 						var2.anInt111 = 1;
 					}
 				} else if (var3 == 503) {
@@ -8617,22 +8617,22 @@ public class Client extends Game {
 	public void method56(int var1, int var2, int var3, byte var4, int var5, int var6) {
 		this.aClass44_Sub3_Sub1_Sub3_1154.method453(this.aByte1070, var5, var2);
 		this.aClass44_Sub3_Sub1_Sub3_1155.method453(this.aByte1070, var5, var2 + var6 - 16);
-		DrawingArea.method411(var6 - 32, this.anInt1158, 16, var5, 0, var2 + 16);
+		Statics.method411(var6 - 32, this.anInt1158, 16, var5, 0, var2 + 16);
 		int var7 = (var6 - 32) * var6 / var3;
 		if (var7 < 8) {
 			var7 = 8;
 		}
 
 		int var8 = (var6 - 32 - var7) * var1 / (var3 - var6);
-		DrawingArea.method411(var7, this.anInt1007, 16, var5, 0, var8 + var2 + 16);
-		DrawingArea.method416(this.anInt1177, var7, var5, 384, var8 + var2 + 16);
-		DrawingArea.method416(this.anInt1177, var7, var5 + 1, 384, var8 + var2 + 16);
-		DrawingArea.method414(16, this.anInt1177, var5, (byte)125, var8 + var2 + 16);
-		DrawingArea.method414(16, this.anInt1177, var5, (byte)125, var8 + var2 + 17);
-		DrawingArea.method416(this.anInt825, var7, var5 + 15, 384, var8 + var2 + 16);
-		DrawingArea.method416(this.anInt825, var7 - 1, var5 + 14, 384, var8 + var2 + 17);
-		DrawingArea.method414(16, this.anInt825, var5, (byte)125, var8 + var7 + var2 + 15);
-		DrawingArea.method414(15, this.anInt825, var5 + 1, (byte)125, var8 + var7 + var2 + 14);
+		Statics.method411(var7, this.anInt1007, 16, var5, 0, var8 + var2 + 16);
+		Statics.method416(this.anInt1177, var7, var5, 384, var8 + var2 + 16);
+		Statics.method416(this.anInt1177, var7, var5 + 1, 384, var8 + var2 + 16);
+		Statics.method414(16, this.anInt1177, var5, (byte)125, var8 + var2 + 16);
+		Statics.method414(16, this.anInt1177, var5, (byte)125, var8 + var2 + 17);
+		Statics.method416(this.anInt825, var7, var5 + 15, 384, var8 + var2 + 16);
+		Statics.method416(this.anInt825, var7 - 1, var5 + 14, 384, var8 + var2 + 17);
+		Statics.method414(16, this.anInt825, var5, (byte)125, var8 + var7 + var2 + 15);
+		Statics.method414(15, this.anInt825, var5 + 1, (byte)125, var8 + var7 + var2 + 14);
 	}
 
 	@ObfuscatedSignature(
@@ -8941,7 +8941,7 @@ public class Client extends Game {
 			} else if (this.anInt1115 >= 200) {
 				this.method49(-476, 0, "", "Your friendlist is full. Max of 100 for free users, and 200 for members");
 			} else {
-				String var4 = Class48.method551(131, Class48.method548(0, var2));
+				String var4 = Statics.method551(131, Statics.method548(0, var2));
 
 				int var5;
 				for (var5 = 0; var5 < this.anInt1115; ++var5) {
@@ -9756,7 +9756,7 @@ public class Client extends Game {
 			if (this.anInt961 >= 100) {
 				this.method49(-476, 0, "", "Your ignore list is full. Max of 100 hit");
 			} else {
-				String var3 = Class48.method551(131, Class48.method548(0, var1));
+				String var3 = Statics.method551(131, Statics.method548(0, var1));
 
 				int var4;
 				for (var4 = 0; var4 < this.anInt961; ++var4) {
@@ -10199,8 +10199,8 @@ public class Client extends Game {
 							var3 = 30;
 						}
 
-						DrawingArea.method411(5, 65280, var3, this.anInt999 - 15, 0, this.anInt1000 - 3);
-						DrawingArea.method411(5, 16711680, 30 - var3, var3 + (this.anInt999 - 15), 0, this.anInt1000 - 3);
+						Statics.method411(5, 65280, var3, this.anInt999 - 15, 0, this.anInt1000 - 3);
+						Statics.method411(5, 16711680, 30 - var3, var3 + (this.anInt999 - 15), 0, this.anInt1000 - 3);
 					}
 				}
 
@@ -10317,10 +10317,10 @@ public class Client extends Game {
 				if (this.anIntArray1097[var1] == 2) {
 					var9 = this.aClass44_Sub3_Sub1_Sub4_1077.method457(-43341, var14);
 					int var10 = (150 - this.anIntArray1098[var1]) * (var9 + 100) / 150;
-					DrawingArea.method408(5, 334, this.anInt999 + 50, this.anInt999 - 50, 0);
+					Statics.method408(5, 334, this.anInt999 + 50, this.anInt999 - 50, 0);
 					this.aClass44_Sub3_Sub1_Sub4_1077.method458(this.anInt999 + 50 - var10, var14, 0, this.anInt1000 + 1);
 					this.aClass44_Sub3_Sub1_Sub4_1077.method458(this.anInt999 + 50 - var10, var14, var8, this.anInt1000);
-					DrawingArea.method407();
+					Statics.method407();
 				}
 			} else {
 				this.aClass44_Sub3_Sub1_Sub4_1077.method455(this.anInt999, this.anInt1000 + 1, 0, var14);
@@ -10865,7 +10865,7 @@ public class Client extends Game {
 		} else {
 			Class44_Sub3_Sub1_Sub4 var1 = this.aClass44_Sub3_Sub1_Sub4_1076;
 			int var2 = 0;
-			DrawingArea.method408(5, 77, 463, 0, 0);
+			Statics.method408(5, 77, 463, 0, 0);
 
 			for (int var3 = 0; var3 < 100; ++var3) {
 				if (this.aStringArray950[var3] != null) {
@@ -10971,7 +10971,7 @@ public class Client extends Game {
 				}
 			}
 
-			DrawingArea.method407();
+			Statics.method407();
 			this.anInt931 = var2 * 14 + 7;
 			if (this.anInt931 < 78) {
 				this.anInt931 = 78;
@@ -10982,12 +10982,12 @@ public class Client extends Game {
 			if (aClass44_Sub3_Sub4_Sub6_Sub1_1252 != null && aClass44_Sub3_Sub4_Sub6_Sub1_1252.aString1657 != null) {
 				var9 = aClass44_Sub3_Sub4_Sub6_Sub1_1252.aString1657;
 			} else {
-				var9 = Class48.method551(131, this.aString1147);
+				var9 = Statics.method551(131, this.aString1147);
 			}
 
 			var1.method458(4, var9 + ":", 0, 90);
 			var1.method458(6 + var1.method457(-43341, var9 + ": "), this.aString1009 + "*", 255, 90);
-			DrawingArea.method414(479, 0, 0, (byte)125, 77);
+			Statics.method414(479, 0, 0, (byte)125, 77);
 		}
 
 		if (this.aBoolean851 && this.anInt1254 == 2) {
@@ -11005,7 +11005,7 @@ public class Client extends Game {
 		int var5;
 		if (this.anInt1031 == 2) {
 			byte[] var14 = this.aClass44_Sub3_Sub1_Sub3_1202.aByteArray1445;
-			int[] var15 = DrawingArea.anIntArray1351;
+			int[] var15 = Statics.anIntArray1351;
 			var4 = var14.length;
 
 			for (var5 = 0; var5 < var4; ++var5) {
@@ -11060,7 +11060,7 @@ public class Client extends Game {
 						var7 = var18.anInt1599 / 32 - aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599 / 32;
 						var8 = var18.anInt1600 / 32 - aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 / 32;
 						boolean var21 = false;
-						long var10 = Class48.method547(var18.aString1657);
+						long var10 = Statics.method547(var18.aString1657);
 
 						for (int var12 = 0; var12 < this.anInt1115; ++var12) {
 							if (var10 == this.aLongArray1159[var12] && this.anIntArray1073[var12] != 0) {
@@ -11109,7 +11109,7 @@ public class Client extends Game {
 					this.method33(var6, var5, (byte)-111, this.aClass44_Sub3_Sub1_Sub2_964);
 				}
 
-				DrawingArea.method411(3, 16777215, 3, 97, 0, 78);
+				Statics.method411(3, 16777215, 3, 97, 0, 78);
 				this.componentImageProducer.initDrawingArea();
 			}
 		}
@@ -11375,11 +11375,11 @@ public class Client extends Game {
 			this.aComponentImageProducer_1047 = null;
 			this.aComponentImageProducer_865 = new ComponentImageProducer(96, 479, this.getGameWindow((byte)7));
 			this.aComponentImageProducer_863 = new ComponentImageProducer(156, 172, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aClass44_Sub3_Sub1_Sub3_1202.method453(this.aByte1070, 0, 0);
 			this.aComponentImageProducer_862 = new ComponentImageProducer(261, 190, this.getGameWindow((byte)7));
 			this.componentImageProducer = new ComponentImageProducer(334, 512, this.getGameWindow((byte)7));
-			DrawingArea.method409();
+			Statics.method409();
 			this.aComponentImageProducer_990 = new ComponentImageProducer(50, 496, this.getGameWindow((byte)7));
 			this.aComponentImageProducer_991 = new ComponentImageProducer(37, 269, this.getGameWindow((byte)7));
 			this.aComponentImageProducer_992 = new ComponentImageProducer(45, 249, this.getGameWindow((byte)7));
@@ -11985,12 +11985,12 @@ public class Client extends Game {
 							this.aBoolean1109 = true;
 							long var7;
 							if (this.anInt1051 == 1) {
-								var7 = Class48.method547(this.aString984);
+								var7 = Statics.method547(this.aString984);
 								this.method102(199, var7);
 							}
 
 							if (this.anInt1051 == 2 && this.anInt1115 > 0) {
-								var7 = Class48.method547(this.aString984);
+								var7 = Statics.method547(this.aString984);
 								this.method62(0, var7);
 							}
 
@@ -11999,11 +11999,11 @@ public class Client extends Game {
 								this.aBuffer_843.writeByte(0);
 								var2 = this.aBuffer_843.offset;
 								this.aBuffer_843.writeLong(this.aLong867, 0);
-								Class49.method555(this.aString984, (byte)126, this.aBuffer_843);
+								Statics.method555(this.aString984, (byte)126, this.aBuffer_843);
 								this.aBuffer_843.writeSize(this.aBuffer_843.offset - var2, this.anInt797);
-								this.aString984 = Class48.method552(this.aString984);
+								this.aString984 = Statics.method552(this.aString984);
 								this.aString984 = Class41.method352((byte)3, this.aString984);
-								this.method49(-476, 6, Class48.method551(131, Class48.method548(0, this.aLong867)), this.aString984);
+								this.method49(-476, 6, Statics.method551(131, Statics.method548(0, this.aLong867)), this.aString984);
 								if (this.anInt972 == 2) {
 									this.anInt972 = 1;
 									this.aBoolean1141 = true;
@@ -12015,12 +12015,12 @@ public class Client extends Game {
 							}
 
 							if (this.anInt1051 == 4 && this.anInt961 < 100) {
-								var7 = Class48.method547(this.aString984);
+								var7 = Statics.method547(this.aString984);
 								this.method96(var7);
 							}
 
 							if (this.anInt1051 == 5 && this.anInt961 > 0) {
-								var7 = Class48.method547(this.aString984);
+								var7 = Statics.method547(this.aString984);
 								this.method123(this.aBoolean974, var7);
 							}
 						}
@@ -12161,9 +12161,9 @@ public class Client extends Game {
 								int var4 = this.aBuffer_843.offset;
 								this.aBuffer_843.writeByte(var6);
 								this.aBuffer_843.writeByte(var3);
-								Class49.method555(this.aString1009, (byte)126, this.aBuffer_843);
+								Statics.method555(this.aString1009, (byte)126, this.aBuffer_843);
 								this.aBuffer_843.writeSize(this.aBuffer_843.offset - var4, this.anInt797);
-								this.aString1009 = Class48.method552(this.aString1009);
+								this.aString1009 = Statics.method552(this.aString1009);
 								this.aString1009 = Class41.method352((byte)3, this.aString1009);
 								aClass44_Sub3_Sub4_Sub6_Sub1_1252.aString1611 = this.aString1009;
 								aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1613 = var6;
@@ -12320,7 +12320,7 @@ public class Client extends Game {
 						this.method45();
 						if (this.aString951.length() > 0) {
 							this.aBuffer_843.writeOpcode(137);
-							this.aBuffer_843.writeLong(Class48.method547(this.aString951), 0);
+							this.aBuffer_843.writeLong(Statics.method547(this.aString951), 0);
 							this.aBuffer_843.writeByte(var3 - 601);
 							this.aBuffer_843.writeByte(this.aBoolean1128 ? 1 : 0);
 						}

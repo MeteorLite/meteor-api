@@ -914,7 +914,7 @@ public class Class36 {
 						Class44_Sub3_Sub1_Sub1.anInt1402 = 0;
 						int var30;
 						if ((var26 - var28) * (var25 - var29) - (var27 - var29) * (var24 - var28) > 0) {
-							Class44_Sub3_Sub1_Sub1.aBoolean1399 = var26 < 0 || var28 < 0 || var24 < 0 || var26 > DrawingArea.anInt1358 || var28 > DrawingArea.anInt1358 || var24 > DrawingArea.anInt1358;
+							Class44_Sub3_Sub1_Sub1.aBoolean1399 = var26 < 0 || var28 < 0 || var24 < 0 || var26 > Statics.anInt1358 || var28 > Statics.anInt1358 || var24 > Statics.anInt1358;
 							if (aBoolean624 && this.method322(anInt625, anInt626, var27, var29, var25, var26, var28, var24)) {
 								anInt627 = var7;
 								anInt628 = var8;
@@ -937,7 +937,7 @@ public class Class36 {
 						}
 
 						if ((var22 - var24) * (var29 - var25) - (var23 - var25) * (var28 - var24) > 0) {
-							Class44_Sub3_Sub1_Sub1.aBoolean1399 = var22 < 0 || var24 < 0 || var28 < 0 || var22 > DrawingArea.anInt1358 || var24 > DrawingArea.anInt1358 || var28 > DrawingArea.anInt1358;
+							Class44_Sub3_Sub1_Sub1.aBoolean1399 = var22 < 0 || var24 < 0 || var28 < 0 || var22 > Statics.anInt1358 || var24 > Statics.anInt1358 || var28 > Statics.anInt1358;
 							if (aBoolean624 && this.method322(anInt625, anInt626, var23, var25, var29, var22, var24, var28)) {
 								anInt627 = var7;
 								anInt628 = var8;
@@ -1009,7 +1009,7 @@ public class Class36 {
 			int var18 = Class15.anIntArray383[var12];
 			int var19 = Class15.anIntArray383[var13];
 			if ((var14 - var15) * (var19 - var18) - (var17 - var18) * (var16 - var15) > 0) {
-				Class44_Sub3_Sub1_Sub1.aBoolean1399 = var14 < 0 || var15 < 0 || var16 < 0 || var14 > DrawingArea.anInt1358 || var15 > DrawingArea.anInt1358 || var16 > DrawingArea.anInt1358;
+				Class44_Sub3_Sub1_Sub1.aBoolean1399 = var14 < 0 || var15 < 0 || var16 < 0 || var14 > Statics.anInt1358 || var15 > Statics.anInt1358 || var16 > Statics.anInt1358;
 				if (aBoolean624 && this.method322(anInt625, anInt626, var17, var18, var19, var14, var15, var16)) {
 					anInt627 = var3;
 					anInt628 = var7;

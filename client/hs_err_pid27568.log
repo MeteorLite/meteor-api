@@ -48,7 +48,7 @@ RSI=0x0000000622054350 is an oop: java.lang.Class
  - ---- fields (total size 21 words):
  - private volatile transient 'classRedefinedCount' 'I' @12  0
  - private volatile transient 'cachedConstructor' 'Ljava/lang/reflect/Constructor;' @40  NULL (0)
- - private transient 'name' 'Ljava/lang/String;' @44  "DrawingArea"{0x00000006223e43a8} (c447c875)
+ - private transient 'name' 'Ljava/lang/String;' @44  "Statics"{0x00000006223e43a8} (c447c875)
  - private transient 'module' 'Ljava/lang/Module;' @48  a 'java/lang/Module'{0x000000062209f178} (c4413e2f)
  - private final 'classLoader' 'Ljava/lang/ClassLoader;' @52  a 'jdk/internal/loader/ClassLoaders$AppClassLoader'{0x0000000622000880} (c4400110)
  - private transient 'classData' 'Ljava/lang/Object;' @56  NULL (0)
@@ -62,8 +62,8 @@ RSI=0x0000000622054350 is an oop: java.lang.Class
  - private volatile transient 'annotationType' 'Lsun/reflect/annotation/AnnotationType;' @88  NULL (0)
  - transient 'classValueMap' 'Ljava/lang/ClassValue$ClassValueMap;' @92  NULL (0)
  - signature: LDrawingArea;
- - fake entry for mirror: 'DrawingArea'
- - fake entry for array: 'DrawingArea'[]
+ - fake entry for mirror: 'Statics'
+ - fake entry for array: 'Statics'[]
  - fake entry for oop_size: 21
  - fake entry for static_oop_field_count: 1
  - public static 'aBoolean1348' 'Z' @164  true
@@ -485,7 +485,7 @@ Event: 7.090 Thread 0x0000021ad3ac9b60 nmethod 1743 0x0000021aae30a390 code [0x0
 Event: 7.094 Thread 0x0000021ad3ab7b40 nmethod 1745 0x0000021ab54ae410 code [0x0000021ab54ae580, 0x0000021ab54ae7d8]
 Event: 7.177 Thread 0x0000021ad3ac9b60 1746 % !   3       Client::method48 @ 1033 (1852 bytes)
 Event: 7.185 Thread 0x0000021ad3ac9b60 nmethod 1746% 0x0000021aae30cd10 code [0x0000021aae30d9e0, 0x0000021aae315eb8]
-Event: 7.229 Thread 0x0000021ad3ab7b40 1747       4       DrawingArea::method409 (35 bytes)
+Event: 7.229 Thread 0x0000021ad3ab7b40 1747       4       Statics::method409 (35 bytes)
 Event: 7.231 Thread 0x0000021ad3bf3560 1748       3       Client::method23 (315 bytes)
 Event: 7.231 Thread 0x0000021ad3ac9b60 1749  s    3       java.util.Hashtable::put (104 bytes)
 Event: 7.232 Thread 0x0000021ad3ac9b60 nmethod 1749 0x0000021aae319110 code [0x0000021aae319320, 0x0000021aae319a58]
@@ -622,7 +622,7 @@ Event: 6.205 Thread 0x0000021adbcfe650 DEOPT UNPACKING pc=0x0000021aad892b43 sp=
 Event: 7.229 Thread 0x0000021adbcfeff0 DEOPT PACKING pc=0x0000021aae091dec sp=0x000000c6c48feda0
 Event: 7.229 Thread 0x0000021adbcfeff0 DEOPT UNPACKING pc=0x0000021aad892b43 sp=0x000000c6c48fe238 mode 0
 Event: 7.229 Thread 0x0000021adbcfeff0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000021ab540f3a0 relative=0x00000000000001a0
-Event: 7.229 Thread 0x0000021adbcfeff0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000021ab540f3a0 method=DrawingArea.method409(I)V @ 19 c2
+Event: 7.229 Thread 0x0000021adbcfeff0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000021ab540f3a0 method=Statics.method409(I)V @ 19 c2
 Event: 7.229 Thread 0x0000021adbcfeff0 DEOPT PACKING pc=0x0000021ab540f3a0 sp=0x000000c6c48fed90
 Event: 7.229 Thread 0x0000021adbcfeff0 DEOPT UNPACKING pc=0x0000021aad8923a3 sp=0x000000c6c48fed38 mode 2
 Event: 7.232 Thread 0x0000021adbcfeff0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000021ab549ad18 relative=0x0000000000000678

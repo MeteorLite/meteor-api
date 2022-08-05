@@ -48,7 +48,7 @@ public class ComponentImageProducer implements ImageProducer, ImageObserver {
 	}
 
 	public void initDrawingArea() {
-		DrawingArea.initDrawingArea(this.width, this.height, this.pixels, 9);
+		Statics.initDrawingArea(this.width, this.height, this.pixels, 9);
 	}
 
 	public void drawComponentImage(Graphics var1, int var2, int var3) {

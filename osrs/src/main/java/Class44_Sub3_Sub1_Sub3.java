@@ -1,6 +1,6 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class44_Sub3_Sub1_Sub3 extends DrawingArea {
+public class Class44_Sub3_Sub1_Sub3 extends Statics {
 	public int anInt1451;
 	public int anInt1449;
 	public final int[] anIntArray1446;
@@ -70,44 +70,44 @@ public class Class44_Sub3_Sub1_Sub3 extends DrawingArea {
 	public void method453(byte var1, int var2, int var3) {
 		var2 += this.anInt1449;
 		var3 += this.anInt1450;
-		int var4 = var3 * DrawingArea.anInt1352 + var2;
+		int var4 = var3 * Statics.anInt1352 + var2;
 		int var5 = 0;
 		int var6 = this.anInt1448;
 		int var7 = this.anInt1447;
-		int var8 = DrawingArea.anInt1352 - var7;
+		int var8 = Statics.anInt1352 - var7;
 		int var9 = 0;
 		int var10;
-		if (var3 < DrawingArea.anInt1354) {
-			var10 = DrawingArea.anInt1354 - var3;
+		if (var3 < Statics.anInt1354) {
+			var10 = Statics.anInt1354 - var3;
 			var6 -= var10;
-			var3 = DrawingArea.anInt1354;
+			var3 = Statics.anInt1354;
 			var5 += var10 * var7;
-			var4 += var10 * DrawingArea.anInt1352;
+			var4 += var10 * Statics.anInt1352;
 		}
 
-		if (var3 + var6 > DrawingArea.anInt1355) {
-			var6 -= var3 + var6 - DrawingArea.anInt1355;
+		if (var3 + var6 > Statics.anInt1355) {
+			var6 -= var3 + var6 - Statics.anInt1355;
 		}
 
-		if (var2 < DrawingArea.anInt1356) {
-			var10 = DrawingArea.anInt1356 - var2;
+		if (var2 < Statics.anInt1356) {
+			var10 = Statics.anInt1356 - var2;
 			var7 -= var10;
-			var2 = DrawingArea.anInt1356;
+			var2 = Statics.anInt1356;
 			var5 += var10;
 			var4 += var10;
 			var9 += var10;
 			var8 += var10;
 		}
 
-		if (var7 + var2 > DrawingArea.anInt1357) {
-			var10 = var7 + var2 - DrawingArea.anInt1357;
+		if (var7 + var2 > Statics.anInt1357) {
+			var10 = var7 + var2 - Statics.anInt1357;
 			var7 -= var10;
 			var9 += var10;
 			var8 += var10;
 		}
 
 		if (var7 > 0 && var6 > 0) {
-			this.method454(var9, (byte)-55, var8, var5, var6, var7, DrawingArea.anIntArray1351, this.aByteArray1445, var4, this.anIntArray1446);
+			this.method454(var9, (byte)-55, var8, var5, var6, var7, Statics.anIntArray1351, this.aByteArray1445, var4, this.anIntArray1446);
 			if (var1 != 7) {
 				this.anInt1438 = -485;
 			}

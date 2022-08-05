@@ -531,16 +531,16 @@ public class Class14 {
 			int var8 = Class44_Sub3_Sub1_Sub1.anInt1403;
 			int var9 = Class44_Sub3_Sub1_Sub1.anInt1404;
 			int[] var10 = Class44_Sub3_Sub1_Sub1.anIntArray1409;
-			int[] var11 = DrawingArea.anIntArray1351;
-			int var12 = DrawingArea.anInt1352;
-			int var13 = DrawingArea.anInt1353;
-			int var14 = DrawingArea.anInt1356;
-			int var15 = DrawingArea.anInt1357;
-			int var16 = DrawingArea.anInt1354;
-			int var17 = DrawingArea.anInt1355;
+			int[] var11 = Statics.anIntArray1351;
+			int var12 = Statics.anInt1352;
+			int var13 = Statics.anInt1353;
+			int var14 = Statics.anInt1356;
+			int var15 = Statics.anInt1357;
+			int var16 = Statics.anInt1354;
+			int var17 = Statics.anInt1355;
 			Class44_Sub3_Sub1_Sub1.aBoolean1401 = false;
-			DrawingArea.initDrawingArea(32, 32, var7.anIntArray1431, 9);
-			DrawingArea.method411(32, 0, 32, 0, 0, 0);
+			Statics.initDrawingArea(32, 32, var7.anIntArray1431, 9);
+			Statics.method411(32, 0, 32, 0, 0, 0);
 			Class44_Sub3_Sub1_Sub1.method419();
 			int var18 = var23.anInt331;
 			if (var1 == -1) {
@@ -613,8 +613,8 @@ public class Class14 {
 				aClass39_365.method340(201, (long)var0, var7);
 			}
 
-			DrawingArea.initDrawingArea(var12, var13, var11, 9);
-			DrawingArea.method408(5, var17, var15, var14, var16);
+			Statics.initDrawingArea(var12, var13, var11, 9);
+			Statics.method408(5, var17, var15, var14, var16);
 			Class44_Sub3_Sub1_Sub1.anInt1403 = var8;
 			Class44_Sub3_Sub1_Sub1.anInt1404 = var9;
 			Class44_Sub3_Sub1_Sub1.anIntArray1409 = var10;

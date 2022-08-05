@@ -405,7 +405,7 @@ public class Class5 {
 	}
 
 	public static Class44_Sub3_Sub1_Sub2 method186(int var0, boolean var1, String var2, Class47 var3) {
-		long var4 = (Class48.method549(7, var2) << 8) + (long)var0;
+		long var4 = (Statics.method549(7, var2) << 8) + (long)var0;
 		Class44_Sub3_Sub1_Sub2 var6 = (Class44_Sub3_Sub1_Sub2)aClass39_166.method339(var4);
 		if (var6 != null) {
 			return var6;

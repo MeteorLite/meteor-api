@@ -348,7 +348,7 @@ Event: 4.793 Thread 0x000001e25907e2a0 nmethod 1701 0x000001e2337a4310 code [0x0
 Event: 4.797 Thread 0x000001e258f65600 nmethod 1703 0x000001e23a957010 code [0x000001e23a957180, 0x000001e23a9573d8]
 Event: 4.844 Thread 0x000001e25907e2a0 1704 % !   3       Client::method48 @ 1033 (1852 bytes)
 Event: 4.850 Thread 0x000001e25907e2a0 nmethod 1704% 0x000001e2337a6c90 code [0x000001e2337a7960, 0x000001e2337afe38]
-Event: 4.896 Thread 0x000001e258f65600 1705       4       DrawingArea::method409 (35 bytes)
+Event: 4.896 Thread 0x000001e258f65600 1705       4       Statics::method409 (35 bytes)
 
 GC Heap History (14 events):
 Event: 0.647 GC heap before
@@ -468,7 +468,7 @@ Event: 3.682 Thread 0x000001e260dfc110 DEOPT UNPACKING pc=0x000001e232d423a3 sp=
 Event: 4.896 Thread 0x000001e260ea7e80 DEOPT PACKING pc=0x000001e23353c4ec sp=0x0000005818d0f1d0
 Event: 4.896 Thread 0x000001e260ea7e80 DEOPT UNPACKING pc=0x000001e232d42b43 sp=0x0000005818d0e668 mode 0
 Event: 4.896 Thread 0x000001e260ea7e80 Uncommon trap: trap_request=0xffffff45 fr.pc=0x000001e23a8bfb20 relative=0x00000000000001a0
-Event: 4.896 Thread 0x000001e260ea7e80 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001e23a8bfb20 method=DrawingArea.method409(I)V @ 19 c2
+Event: 4.896 Thread 0x000001e260ea7e80 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000001e23a8bfb20 method=Statics.method409(I)V @ 19 c2
 Event: 4.896 Thread 0x000001e260ea7e80 DEOPT PACKING pc=0x000001e23a8bfb20 sp=0x0000005818d0f1c0
 Event: 4.896 Thread 0x000001e260ea7e80 DEOPT UNPACKING pc=0x000001e232d423a3 sp=0x0000005818d0f168 mode 2
 

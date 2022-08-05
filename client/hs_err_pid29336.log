@@ -391,7 +391,7 @@ Event: 7.993 Thread 0x0000025e74a04270 nmethod 1773 0x0000025e4f285490 code [0x0
 Event: 7.993 Thread 0x0000025e74b28800 nmethod 1775 0x0000025e4f286490 code [0x0000025e4f286640, 0x0000025e4f286968]
 Event: 8.110 Thread 0x0000025e74a14ef0 1777 % !   4       Client::method48 @ 1033 (1852 bytes)
 Event: 8.128 Thread 0x0000025e74a14ef0 nmethod 1777% 0x0000025e56420890 code [0x0000025e56420a60, 0x0000025e56421508]
-Event: 8.168 Thread 0x0000025e74a14ef0 1778       4       DrawingArea::method409 (35 bytes)
+Event: 8.168 Thread 0x0000025e74a14ef0 1778       4       Statics::method409 (35 bytes)
 Event: 8.178 Thread 0x0000025e74a14ef0 nmethod 1778 0x0000025e56421a10 code [0x0000025e56421b80, 0x0000025e56421d38]
 Event: 8.181 Thread 0x0000025e74b28800 1779  s    3       java.util.Hashtable::put (104 bytes)
 Event: 8.181 Thread 0x0000025e74a04270 1780       3       java.util.Hashtable::addEntry (87 bytes)
@@ -514,7 +514,7 @@ Event: 6.699 Thread 0x0000025e74b66800 DEOPT UNPACKING pc=0x0000025e4e8023a3 sp=
 Event: 8.168 Thread 0x0000025e74b64ff0 DEOPT PACKING pc=0x0000025e4efffaec sp=0x000000fcc151ef20
 Event: 8.168 Thread 0x0000025e74b64ff0 DEOPT UNPACKING pc=0x0000025e4e802b43 sp=0x000000fcc151e3b8 mode 0
 Event: 8.168 Thread 0x0000025e74b64ff0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000025e5637f220 relative=0x00000000000001a0
-Event: 8.168 Thread 0x0000025e74b64ff0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000025e5637f220 method=DrawingArea.method409(I)V @ 19 c2
+Event: 8.168 Thread 0x0000025e74b64ff0 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000025e5637f220 method=Statics.method409(I)V @ 19 c2
 Event: 8.168 Thread 0x0000025e74b64ff0 DEOPT PACKING pc=0x0000025e5637f220 sp=0x000000fcc151ef10
 Event: 8.168 Thread 0x0000025e74b64ff0 DEOPT UNPACKING pc=0x0000025e4e8023a3 sp=0x000000fcc151eeb8 mode 2
 Event: 8.182 Thread 0x0000025e74b64ff0 Uncommon trap: trap_request=0xffffff45 fr.pc=0x0000025e5641c3e4 relative=0x0000000000001a24

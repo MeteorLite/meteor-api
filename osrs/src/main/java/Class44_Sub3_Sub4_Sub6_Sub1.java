@@ -404,7 +404,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
 			super.anInt1610 = -1;
 		}
 
-		this.aString1657 = Class48.method551(131, Class48.method548(0, var1.readLong(0)));
+		this.aString1657 = Statics.method551(131, Statics.method548(0, var1.readLong(0)));
 		this.anInt1663 = var1.readUByte();
 		this.anInt1664 = var1.readUShort();
 		this.aBoolean1658 = true;

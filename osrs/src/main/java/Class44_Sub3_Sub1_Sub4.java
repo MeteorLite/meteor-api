@@ -1,7 +1,7 @@
 import java.util.Random;
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
+public class Class44_Sub3_Sub1_Sub4 extends Statics {
 	public boolean aBoolean1466;
 	public final int anInt1454;
 	public final Random aRandom1465;
@@ -169,7 +169,7 @@ public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
 
 			if (var2 > 0) {
 				if (this.aBoolean1466) {
-					DrawingArea.method414(var5 - var7, 8388608, var7, (byte)125, (int)((double)this.anInt1464 * 0.7D) + var4);
+					Statics.method414(var5 - var7, 8388608, var7, (byte)125, (int)((double)this.anInt1464 * 0.7D) + var4);
 				}
 
 			}
@@ -275,83 +275,83 @@ public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
 	}
 
 	public void method463(byte[] var1, int var2, int var3, int var4, int var5, int var6) {
-		int var7 = var3 * DrawingArea.anInt1352 + var2;
-		int var8 = DrawingArea.anInt1352 - var4;
+		int var7 = var3 * Statics.anInt1352 + var2;
+		int var8 = Statics.anInt1352 - var4;
 		int var9 = 0;
 		int var10 = 0;
 		int var11;
-		if (var3 < DrawingArea.anInt1354) {
-			var11 = DrawingArea.anInt1354 - var3;
+		if (var3 < Statics.anInt1354) {
+			var11 = Statics.anInt1354 - var3;
 			var5 -= var11;
-			var3 = DrawingArea.anInt1354;
+			var3 = Statics.anInt1354;
 			var10 += var11 * var4;
-			var7 += var11 * DrawingArea.anInt1352;
+			var7 += var11 * Statics.anInt1352;
 		}
 
-		if (var3 + var5 >= DrawingArea.anInt1355) {
-			var5 -= var3 + var5 - DrawingArea.anInt1355 + 1;
+		if (var3 + var5 >= Statics.anInt1355) {
+			var5 -= var3 + var5 - Statics.anInt1355 + 1;
 		}
 
-		if (var2 < DrawingArea.anInt1356) {
-			var11 = DrawingArea.anInt1356 - var2;
+		if (var2 < Statics.anInt1356) {
+			var11 = Statics.anInt1356 - var2;
 			var4 -= var11;
-			var2 = DrawingArea.anInt1356;
+			var2 = Statics.anInt1356;
 			var10 += var11;
 			var7 += var11;
 			var9 += var11;
 			var8 += var11;
 		}
 
-		if (var2 + var4 >= DrawingArea.anInt1357) {
-			var11 = var2 + var4 - DrawingArea.anInt1357 + 1;
+		if (var2 + var4 >= Statics.anInt1357) {
+			var11 = var2 + var4 - Statics.anInt1357 + 1;
 			var4 -= var11;
 			var9 += var11;
 			var8 += var11;
 		}
 
 		if (var4 > 0 && var5 > 0) {
-			this.method464(DrawingArea.anIntArray1351, var1, var6, var10, var7, var4, var5, var8, var9);
+			this.method464(Statics.anIntArray1351, var1, var6, var10, var7, var4, var5, var8, var9);
 		}
 
 	}
 
 	public void method465(int var1, byte[] var2, int var3, int var4, int var5, boolean var6, int var7, int var8) {
-		int var9 = var3 + DrawingArea.anInt1352 * var1;
-		int var10 = DrawingArea.anInt1352 - var8;
+		int var9 = var3 + Statics.anInt1352 * var1;
+		int var10 = Statics.anInt1352 - var8;
 		int var11 = 0;
 		int var12 = 0;
 		int var13;
-		if (var1 < DrawingArea.anInt1354) {
-			var13 = DrawingArea.anInt1354 - var1;
+		if (var1 < Statics.anInt1354) {
+			var13 = Statics.anInt1354 - var1;
 			var5 -= var13;
-			var1 = DrawingArea.anInt1354;
+			var1 = Statics.anInt1354;
 			var12 += var13 * var8;
-			var9 += var13 * DrawingArea.anInt1352;
+			var9 += var13 * Statics.anInt1352;
 		}
 
-		if (var5 + var1 >= DrawingArea.anInt1355) {
-			var5 -= var5 + var1 - DrawingArea.anInt1355 + 1;
+		if (var5 + var1 >= Statics.anInt1355) {
+			var5 -= var5 + var1 - Statics.anInt1355 + 1;
 		}
 
-		if (var3 < DrawingArea.anInt1356) {
-			var13 = DrawingArea.anInt1356 - var3;
+		if (var3 < Statics.anInt1356) {
+			var13 = Statics.anInt1356 - var3;
 			var8 -= var13;
-			var3 = DrawingArea.anInt1356;
+			var3 = Statics.anInt1356;
 			var12 += var13;
 			var9 += var13;
 			var11 += var13;
 			var10 += var13;
 		}
 
-		if (var3 + var8 >= DrawingArea.anInt1357) {
-			var13 = var3 + var8 - DrawingArea.anInt1357 + 1;
+		if (var3 + var8 >= Statics.anInt1357) {
+			var13 = var3 + var8 - Statics.anInt1357 + 1;
 			var8 -= var13;
 			var11 += var13;
 			var10 += var13;
 		}
 
 		if (var8 > 0 && var5 > 0) {
-			this.method466(var5, var2, var4, var8, var11, var7, var9, DrawingArea.anIntArray1351, -701, var12, var10);
+			this.method466(var5, var2, var4, var8, var11, var7, var9, Statics.anIntArray1351, -701, var12, var10);
 		}
 
 	}

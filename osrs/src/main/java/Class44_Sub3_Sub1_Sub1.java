@@ -1,6 +1,6 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
+public class Class44_Sub3_Sub1_Sub1 extends Statics {
 	public static int anInt1397;
 	public static int anInt1403;
 	public static int anInt1404;
@@ -225,13 +225,13 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 		}
 
 		if (var0 <= var1 && var0 <= var2) {
-			if (var0 < DrawingArea.anInt1355) {
-				if (var1 > DrawingArea.anInt1355) {
-					var1 = DrawingArea.anInt1355;
+			if (var0 < Statics.anInt1355) {
+				if (var1 > Statics.anInt1355) {
+					var1 = Statics.anInt1355;
 				}
 
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
 				if (var1 < var2) {
@@ -262,17 +262,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var0, var6, 0, var5 >> 16, var4 >> 16);
+									method432(Statics.anIntArray1351, var0, var6, 0, var5 >> 16, var4 >> 16);
 									var5 += var9;
 									var4 += var8;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var0, var6, 0, var5 >> 16, var3 >> 16);
+							method432(Statics.anIntArray1351, var0, var6, 0, var5 >> 16, var3 >> 16);
 							var5 += var9;
 							var3 += var7;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					} else {
 						var2 -= var1;
@@ -288,17 +288,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var0, var6, 0, var4 >> 16, var5 >> 16);
+									method432(Statics.anIntArray1351, var0, var6, 0, var4 >> 16, var5 >> 16);
 									var5 += var9;
 									var4 += var8;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var0, var6, 0, var3 >> 16, var5 >> 16);
+							method432(Statics.anIntArray1351, var0, var6, 0, var3 >> 16, var5 >> 16);
 							var5 += var9;
 							var3 += var7;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					}
 				} else {
@@ -329,17 +329,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var0, var6, 0, var5 >> 16, var3 >> 16);
+									method432(Statics.anIntArray1351, var0, var6, 0, var5 >> 16, var3 >> 16);
 									var5 += var8;
 									var3 += var7;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var0, var6, 0, var4 >> 16, var3 >> 16);
+							method432(Statics.anIntArray1351, var0, var6, 0, var4 >> 16, var3 >> 16);
 							var4 += var9;
 							var3 += var7;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					} else {
 						var1 -= var2;
@@ -355,29 +355,29 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var0, var6, 0, var3 >> 16, var5 >> 16);
+									method432(Statics.anIntArray1351, var0, var6, 0, var3 >> 16, var5 >> 16);
 									var5 += var8;
 									var3 += var7;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var0, var6, 0, var3 >> 16, var4 >> 16);
+							method432(Statics.anIntArray1351, var0, var6, 0, var3 >> 16, var4 >> 16);
 							var4 += var9;
 							var3 += var7;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					}
 				}
 			}
 		} else if (var1 <= var2) {
-			if (var1 < DrawingArea.anInt1355) {
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+			if (var1 < Statics.anInt1355) {
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
-				if (var0 > DrawingArea.anInt1355) {
-					var0 = DrawingArea.anInt1355;
+				if (var0 > Statics.anInt1355) {
+					var0 = Statics.anInt1355;
 				}
 
 				if (var2 < var0) {
@@ -408,17 +408,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var1, var6, 0, var5 >> 16, var3 >> 16);
+									method432(Statics.anIntArray1351, var1, var6, 0, var5 >> 16, var3 >> 16);
 									var3 += var7;
 									var5 += var9;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var1, var6, 0, var4 >> 16, var3 >> 16);
+							method432(Statics.anIntArray1351, var1, var6, 0, var4 >> 16, var3 >> 16);
 							var3 += var7;
 							var4 += var8;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					} else {
 						var0 -= var2;
@@ -434,17 +434,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var1, var6, 0, var3 >> 16, var5 >> 16);
+									method432(Statics.anIntArray1351, var1, var6, 0, var3 >> 16, var5 >> 16);
 									var3 += var7;
 									var5 += var9;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var1, var6, 0, var3 >> 16, var4 >> 16);
+							method432(Statics.anIntArray1351, var1, var6, 0, var3 >> 16, var4 >> 16);
 							var3 += var7;
 							var4 += var8;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					}
 				} else {
@@ -475,17 +475,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var1, var6, 0, var3 >> 16, var4 >> 16);
+									method432(Statics.anIntArray1351, var1, var6, 0, var3 >> 16, var4 >> 16);
 									var3 += var9;
 									var4 += var8;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var1, var6, 0, var5 >> 16, var4 >> 16);
+							method432(Statics.anIntArray1351, var1, var6, 0, var5 >> 16, var4 >> 16);
 							var5 += var7;
 							var4 += var8;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					} else {
 						var2 -= var0;
@@ -501,28 +501,28 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method432(DrawingArea.anIntArray1351, var1, var6, 0, var4 >> 16, var3 >> 16);
+									method432(Statics.anIntArray1351, var1, var6, 0, var4 >> 16, var3 >> 16);
 									var3 += var9;
 									var4 += var8;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method432(DrawingArea.anIntArray1351, var1, var6, 0, var4 >> 16, var5 >> 16);
+							method432(Statics.anIntArray1351, var1, var6, 0, var4 >> 16, var5 >> 16);
 							var5 += var7;
 							var4 += var8;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					}
 				}
 			}
-		} else if (var2 < DrawingArea.anInt1355) {
-			if (var0 > DrawingArea.anInt1355) {
-				var0 = DrawingArea.anInt1355;
+		} else if (var2 < Statics.anInt1355) {
+			if (var0 > Statics.anInt1355) {
+				var0 = Statics.anInt1355;
 			}
 
-			if (var1 > DrawingArea.anInt1355) {
-				var1 = DrawingArea.anInt1355;
+			if (var1 > Statics.anInt1355) {
+				var1 = Statics.anInt1355;
 			}
 
 			if (var0 < var1) {
@@ -553,17 +553,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method432(DrawingArea.anIntArray1351, var2, var6, 0, var4 >> 16, var3 >> 16);
+								method432(Statics.anIntArray1351, var2, var6, 0, var4 >> 16, var3 >> 16);
 								var4 += var8;
 								var3 += var7;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method432(DrawingArea.anIntArray1351, var2, var6, 0, var4 >> 16, var5 >> 16);
+						method432(Statics.anIntArray1351, var2, var6, 0, var4 >> 16, var5 >> 16);
 						var4 += var8;
 						var5 += var9;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				} else {
 					var1 -= var0;
@@ -579,17 +579,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method432(DrawingArea.anIntArray1351, var2, var6, 0, var3 >> 16, var4 >> 16);
+								method432(Statics.anIntArray1351, var2, var6, 0, var3 >> 16, var4 >> 16);
 								var4 += var8;
 								var3 += var7;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method432(DrawingArea.anIntArray1351, var2, var6, 0, var5 >> 16, var4 >> 16);
+						method432(Statics.anIntArray1351, var2, var6, 0, var5 >> 16, var4 >> 16);
 						var4 += var8;
 						var5 += var9;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				}
 			} else {
@@ -620,17 +620,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method432(DrawingArea.anIntArray1351, var2, var6, 0, var4 >> 16, var5 >> 16);
+								method432(Statics.anIntArray1351, var2, var6, 0, var4 >> 16, var5 >> 16);
 								var4 += var7;
 								var5 += var9;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method432(DrawingArea.anIntArray1351, var2, var6, 0, var3 >> 16, var5 >> 16);
+						method432(Statics.anIntArray1351, var2, var6, 0, var3 >> 16, var5 >> 16);
 						var3 += var8;
 						var5 += var9;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				} else {
 					var0 -= var1;
@@ -646,17 +646,17 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method432(DrawingArea.anIntArray1351, var2, var6, 0, var5 >> 16, var4 >> 16);
+								method432(Statics.anIntArray1351, var2, var6, 0, var5 >> 16, var4 >> 16);
 								var4 += var7;
 								var5 += var9;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method432(DrawingArea.anIntArray1351, var2, var6, 0, var5 >> 16, var3 >> 16);
+						method432(Statics.anIntArray1351, var2, var6, 0, var5 >> 16, var3 >> 16);
 						var3 += var8;
 						var5 += var9;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				}
 			}
@@ -686,13 +686,13 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 		}
 
 		if (var0 <= var1 && var0 <= var2) {
-			if (var0 < DrawingArea.anInt1355) {
-				if (var1 > DrawingArea.anInt1355) {
-					var1 = DrawingArea.anInt1355;
+			if (var0 < Statics.anInt1355) {
+				if (var1 > Statics.anInt1355) {
+					var1 = Statics.anInt1355;
 				}
 
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
 				if (var1 < var2) {
@@ -728,21 +728,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var0, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+									method430(Statics.anIntArray1351, var0, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
 									var5 += var13;
 									var4 += var11;
 									var8 += var14;
 									var7 += var12;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var0, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+							method430(Statics.anIntArray1351, var0, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
 							var5 += var13;
 							var3 += var9;
 							var8 += var14;
 							var6 += var10;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					} else {
 						var2 -= var1;
@@ -758,21 +758,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var0, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+									method430(Statics.anIntArray1351, var0, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
 									var5 += var13;
 									var4 += var11;
 									var8 += var14;
 									var7 += var12;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var0, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+							method430(Statics.anIntArray1351, var0, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
 							var5 += var13;
 							var3 += var9;
 							var8 += var14;
 							var6 += var10;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					}
 				} else {
@@ -808,21 +808,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var0, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+									method430(Statics.anIntArray1351, var0, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
 									var5 += var11;
 									var3 += var9;
 									var8 += var12;
 									var6 += var10;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var0, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+							method430(Statics.anIntArray1351, var0, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
 							var4 += var13;
 							var3 += var9;
 							var7 += var14;
 							var6 += var10;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					} else {
 						var1 -= var2;
@@ -838,33 +838,33 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var0, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+									method430(Statics.anIntArray1351, var0, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
 									var5 += var11;
 									var3 += var9;
 									var8 += var12;
 									var6 += var10;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var0, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+							method430(Statics.anIntArray1351, var0, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
 							var4 += var13;
 							var3 += var9;
 							var7 += var14;
 							var6 += var10;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 						}
 					}
 				}
 			}
 		} else if (var1 <= var2) {
-			if (var1 < DrawingArea.anInt1355) {
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+			if (var1 < Statics.anInt1355) {
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
-				if (var0 > DrawingArea.anInt1355) {
-					var0 = DrawingArea.anInt1355;
+				if (var0 > Statics.anInt1355) {
+					var0 = Statics.anInt1355;
 				}
 
 				if (var2 < var0) {
@@ -900,21 +900,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var1, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+									method430(Statics.anIntArray1351, var1, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
 									var3 += var9;
 									var5 += var13;
 									var6 += var10;
 									var8 += var14;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var1, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+							method430(Statics.anIntArray1351, var1, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
 							var3 += var9;
 							var4 += var11;
 							var6 += var10;
 							var7 += var12;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					} else {
 						var0 -= var2;
@@ -930,21 +930,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var1, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+									method430(Statics.anIntArray1351, var1, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
 									var3 += var9;
 									var5 += var13;
 									var6 += var10;
 									var8 += var14;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var1, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+							method430(Statics.anIntArray1351, var1, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
 							var3 += var9;
 							var4 += var11;
 							var6 += var10;
 							var7 += var12;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					}
 				} else {
@@ -980,21 +980,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var1, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+									method430(Statics.anIntArray1351, var1, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
 									var3 += var13;
 									var4 += var11;
 									var6 += var14;
 									var7 += var12;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var1, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+							method430(Statics.anIntArray1351, var1, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
 							var5 += var9;
 							var4 += var11;
 							var8 += var10;
 							var7 += var12;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					} else {
 						var2 -= var0;
@@ -1010,32 +1010,32 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method430(DrawingArea.anIntArray1351, var1, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+									method430(Statics.anIntArray1351, var1, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
 									var3 += var13;
 									var4 += var11;
 									var6 += var14;
 									var7 += var12;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 								}
 							}
 
-							method430(DrawingArea.anIntArray1351, var1, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+							method430(Statics.anIntArray1351, var1, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
 							var5 += var9;
 							var4 += var11;
 							var8 += var10;
 							var7 += var12;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 						}
 					}
 				}
 			}
-		} else if (var2 < DrawingArea.anInt1355) {
-			if (var0 > DrawingArea.anInt1355) {
-				var0 = DrawingArea.anInt1355;
+		} else if (var2 < Statics.anInt1355) {
+			if (var0 > Statics.anInt1355) {
+				var0 = Statics.anInt1355;
 			}
 
-			if (var1 > DrawingArea.anInt1355) {
-				var1 = DrawingArea.anInt1355;
+			if (var1 > Statics.anInt1355) {
+				var1 = Statics.anInt1355;
 			}
 
 			if (var0 < var1) {
@@ -1071,21 +1071,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method430(DrawingArea.anIntArray1351, var2, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+								method430(Statics.anIntArray1351, var2, 0, 0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
 								var4 += var11;
 								var3 += var9;
 								var7 += var12;
 								var6 += var10;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method430(DrawingArea.anIntArray1351, var2, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+						method430(Statics.anIntArray1351, var2, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
 						var4 += var11;
 						var5 += var13;
 						var7 += var12;
 						var8 += var14;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				} else {
 					var1 -= var0;
@@ -1101,21 +1101,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method430(DrawingArea.anIntArray1351, var2, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+								method430(Statics.anIntArray1351, var2, 0, 0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
 								var4 += var11;
 								var3 += var9;
 								var7 += var12;
 								var6 += var10;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method430(DrawingArea.anIntArray1351, var2, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+						method430(Statics.anIntArray1351, var2, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
 						var4 += var11;
 						var5 += var13;
 						var7 += var12;
 						var8 += var14;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				}
 			} else {
@@ -1151,21 +1151,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method430(DrawingArea.anIntArray1351, var2, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+								method430(Statics.anIntArray1351, var2, 0, 0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
 								var4 += var9;
 								var5 += var13;
 								var7 += var10;
 								var8 += var14;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method430(DrawingArea.anIntArray1351, var2, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+						method430(Statics.anIntArray1351, var2, 0, 0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
 						var3 += var11;
 						var5 += var13;
 						var6 += var12;
 						var8 += var14;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				} else {
 					var0 -= var1;
@@ -1181,21 +1181,21 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method430(DrawingArea.anIntArray1351, var2, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+								method430(Statics.anIntArray1351, var2, 0, 0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
 								var4 += var9;
 								var5 += var13;
 								var7 += var10;
 								var8 += var14;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 							}
 						}
 
-						method430(DrawingArea.anIntArray1351, var2, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+						method430(Statics.anIntArray1351, var2, 0, 0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
 						var3 += var11;
 						var5 += var13;
 						var6 += var12;
 						var8 += var14;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 					}
 				}
 			}
@@ -1317,13 +1317,13 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 
 		int var35;
 		if (var0 <= var1 && var0 <= var2) {
-			if (var0 < DrawingArea.anInt1355) {
-				if (var1 > DrawingArea.anInt1355) {
-					var1 = DrawingArea.anInt1355;
+			if (var0 < Statics.anInt1355) {
+				if (var1 > Statics.anInt1355) {
+					var1 = Statics.anInt1355;
 				}
 
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
 				if (var1 < var2) {
@@ -1363,24 +1363,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var0, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 									var5 += var33;
 									var4 += var31;
 									var8 += var34;
 									var7 += var32;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 							var5 += var33;
 							var3 += var29;
 							var8 += var34;
 							var6 += var30;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1399,24 +1399,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 									var5 += var33;
 									var4 += var31;
 									var8 += var34;
 									var7 += var32;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 							var5 += var33;
 							var3 += var29;
 							var8 += var34;
 							var6 += var30;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1459,24 +1459,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 									var5 += var31;
 									var3 += var29;
 									var8 += var32;
 									var6 += var30;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var0, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 							var4 += var33;
 							var3 += var29;
 							var7 += var34;
 							var6 += var30;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1495,24 +1495,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 									var5 += var31;
 									var3 += var29;
 									var8 += var32;
 									var6 += var30;
-									var0 += DrawingArea.anInt1352;
+									var0 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var0, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 							var4 += var33;
 							var3 += var29;
 							var7 += var34;
 							var6 += var30;
-							var0 += DrawingArea.anInt1352;
+							var0 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1521,13 +1521,13 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 				}
 			}
 		} else if (var1 <= var2) {
-			if (var1 < DrawingArea.anInt1355) {
-				if (var2 > DrawingArea.anInt1355) {
-					var2 = DrawingArea.anInt1355;
+			if (var1 < Statics.anInt1355) {
+				if (var2 > Statics.anInt1355) {
+					var2 = Statics.anInt1355;
 				}
 
-				if (var0 > DrawingArea.anInt1355) {
-					var0 = DrawingArea.anInt1355;
+				if (var0 > Statics.anInt1355) {
+					var0 = Statics.anInt1355;
 				}
 
 				if (var2 < var0) {
@@ -1567,24 +1567,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var1, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 									var3 += var29;
 									var5 += var33;
 									var6 += var30;
 									var8 += var34;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 							var3 += var29;
 							var4 += var31;
 							var6 += var30;
 							var7 += var32;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1603,24 +1603,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 									var3 += var29;
 									var5 += var33;
 									var6 += var30;
 									var8 += var34;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 							var3 += var29;
 							var4 += var31;
 							var6 += var30;
 							var7 += var32;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1663,24 +1663,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 									var3 += var33;
 									var4 += var31;
 									var6 += var34;
 									var7 += var32;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var1, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 							var5 += var29;
 							var4 += var31;
 							var8 += var30;
 							var7 += var32;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1699,24 +1699,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 										return;
 									}
 
-									method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+									method434(Statics.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 									var3 += var33;
 									var4 += var31;
 									var6 += var34;
 									var7 += var32;
-									var1 += DrawingArea.anInt1352;
+									var1 += Statics.anInt1352;
 									var20 += var22;
 									var23 += var25;
 									var26 += var28;
 								}
 							}
 
-							method434(DrawingArea.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+							method434(Statics.anIntArray1351, var19, 0, 0, var1, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 							var5 += var29;
 							var4 += var31;
 							var8 += var30;
 							var7 += var32;
-							var1 += DrawingArea.anInt1352;
+							var1 += Statics.anInt1352;
 							var20 += var22;
 							var23 += var25;
 							var26 += var28;
@@ -1724,13 +1724,13 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 					}
 				}
 			}
-		} else if (var2 < DrawingArea.anInt1355) {
-			if (var0 > DrawingArea.anInt1355) {
-				var0 = DrawingArea.anInt1355;
+		} else if (var2 < Statics.anInt1355) {
+			if (var0 > Statics.anInt1355) {
+				var0 = Statics.anInt1355;
 			}
 
-			if (var1 > DrawingArea.anInt1355) {
-				var1 = DrawingArea.anInt1355;
+			if (var1 > Statics.anInt1355) {
+				var1 = Statics.anInt1355;
 			}
 
 			if (var0 < var1) {
@@ -1770,24 +1770,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+								method434(Statics.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 								var4 += var31;
 								var3 += var29;
 								var7 += var32;
 								var6 += var30;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 								var20 += var22;
 								var23 += var25;
 								var26 += var28;
 							}
 						}
 
-						method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+						method434(Statics.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 						var4 += var31;
 						var5 += var33;
 						var7 += var32;
 						var8 += var34;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 						var20 += var22;
 						var23 += var25;
 						var26 += var28;
@@ -1806,24 +1806,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+								method434(Statics.anIntArray1351, var19, 0, 0, var2, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 								var4 += var31;
 								var3 += var29;
 								var7 += var32;
 								var6 += var30;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 								var20 += var22;
 								var23 += var25;
 								var26 += var28;
 							}
 						}
 
-						method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+						method434(Statics.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 						var4 += var31;
 						var5 += var33;
 						var7 += var32;
 						var8 += var34;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 						var20 += var22;
 						var23 += var25;
 						var26 += var28;
@@ -1866,24 +1866,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+								method434(Statics.anIntArray1351, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 								var4 += var29;
 								var5 += var33;
 								var7 += var30;
 								var8 += var34;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 								var20 += var22;
 								var23 += var25;
 								var26 += var28;
 							}
 						}
 
-						method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
+						method434(Statics.anIntArray1351, var19, 0, 0, var2, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var20, var23, var26, var21, var24, var27);
 						var3 += var31;
 						var5 += var33;
 						var6 += var32;
 						var8 += var34;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 						var20 += var22;
 						var23 += var25;
 						var26 += var28;
@@ -1902,24 +1902,24 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 									return;
 								}
 
-								method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
+								method434(Statics.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var20, var23, var26, var21, var24, var27);
 								var4 += var29;
 								var5 += var33;
 								var7 += var30;
 								var8 += var34;
-								var2 += DrawingArea.anInt1352;
+								var2 += Statics.anInt1352;
 								var20 += var22;
 								var23 += var25;
 								var26 += var28;
 							}
 						}
 
-						method434(DrawingArea.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
+						method434(Statics.anIntArray1351, var19, 0, 0, var2, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var20, var23, var26, var21, var24, var27);
 						var3 += var31;
 						var5 += var33;
 						var6 += var32;
 						var8 += var34;
-						var2 += DrawingArea.anInt1352;
+						var2 += Statics.anInt1352;
 						var20 += var22;
 						var23 += var25;
 						var26 += var28;
@@ -1931,8 +1931,8 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 
 	public static void method432(int[] var0, int var1, int var2, int var3, int var4, int var5) {
 		if (aBoolean1399) {
-			if (var5 > DrawingArea.anInt1358) {
-				var5 = DrawingArea.anInt1358;
+			if (var5 > Statics.anInt1358) {
+				var5 = Statics.anInt1358;
 			}
 
 			if (var4 < 0) {
@@ -2005,8 +2005,8 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 					var8 = 0;
 				}
 
-				if (var5 > DrawingArea.anInt1358) {
-					var5 = DrawingArea.anInt1358;
+				if (var5 > Statics.anInt1358) {
+					var5 = Statics.anInt1358;
 				}
 
 				if (var4 < 0) {
@@ -2093,8 +2093,8 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 		} else if (var4 < var5) {
 			var8 = (var7 - var6) / (var5 - var4);
 			if (aBoolean1399) {
-				if (var5 > DrawingArea.anInt1358) {
-					var5 = DrawingArea.anInt1358;
+				if (var5 > Statics.anInt1358) {
+					var5 = Statics.anInt1358;
 				}
 
 				if (var4 < 0) {
@@ -2137,14 +2137,14 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 		garbageValue = "0"
 	)
 	public static void method419() {
-		anIntArray1409 = new int[DrawingArea.anInt1353];
+		anIntArray1409 = new int[Statics.anInt1353];
 
-		for (int var0 = 0; var0 < DrawingArea.anInt1353; ++var0) {
-			anIntArray1409[var0] = var0 * DrawingArea.anInt1352;
+		for (int var0 = 0; var0 < Statics.anInt1353; ++var0) {
+			anIntArray1409[var0] = var0 * Statics.anInt1352;
 		}
 
-		anInt1403 = DrawingArea.anInt1352 / 2;
-		anInt1404 = DrawingArea.anInt1353 / 2;
+		anInt1403 = Statics.anInt1352 / 2;
+		anInt1404 = Statics.anInt1353 / 2;
 	}
 
 	public static void method434(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14) {
@@ -2153,8 +2153,8 @@ public class Class44_Sub3_Sub1_Sub1 extends DrawingArea {
 			int var16;
 			if (aBoolean1399) {
 				var15 = (var8 - var7) / (var6 - var5);
-				if (var6 > DrawingArea.anInt1358) {
-					var6 = DrawingArea.anInt1358;
+				if (var6 > Statics.anInt1358) {
+					var6 = Statics.anInt1358;
 				}
 
 				if (var5 < 0) {
