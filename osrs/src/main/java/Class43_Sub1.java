@@ -8,7 +8,7 @@ import java.util.zip.GZIPInputStream;
 import net.runelite.mapping.ObfuscatedSignature;
 import sign.signlink;
 
-public class Class43_Sub1 extends Class43 implements Runnable {
+public class Class43_Sub1 implements Runnable {
 	public int[] anIntArray1280;
 	public int[] anIntArray1281;
 	public boolean aBoolean1282;

@@ -15,7 +15,6 @@ public class Model extends Renderable {
 	public static int[] anIntArray1519;
 	public static int[] anIntArray1569;
 	public static int[] anIntArray1520;
-	public static Class43 aClass43_1558;
 	public static int[] anIntArray1566;
 	public static boolean[] aBooleanArray1559;
 	public static int[] anIntArray1573;
@@ -39,6 +38,8 @@ public class Model extends Renderable {
 	public static int[] anIntArray1572;
 	public static int[] anIntArray1587;
 	public static boolean aBoolean1580;
+
+	private static Class43_Sub1 aClass43_1558;
 	public int anInt1548;
 	public int[][] anIntArrayArray1553;
 	public int[] anIntArray1551;
@@ -2194,7 +2195,7 @@ public class Model extends Renderable {
 		}
 	}
 
-	public static void method500(int var0, Class43 var1) {
+	public static void method500(int var0, Class43_Sub1 var1) {
 		aClass21Array1557 = new Class21[var0];
 		aClass43_1558 = var1;
 	}
