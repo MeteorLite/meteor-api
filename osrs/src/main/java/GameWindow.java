@@ -11,15 +11,12 @@ public class GameWindow extends Frame {
 
     public final Game game;
 
-    public Graphics graphics;
-
     public GameWindow(Game game, int width, int height, int k) {
         this.game = game;
         setTitle("Jagex");
         //setResizable(false);
         show();
-        toFront();
-        graphics = this.getGraphics();
+        hide();
         if (k != 0) {
             throw new NullPointerException();
         } else {

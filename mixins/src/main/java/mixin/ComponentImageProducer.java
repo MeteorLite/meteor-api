@@ -37,6 +37,6 @@ abstract class ComponentImageProducer extends Frame implements RSComponentImageP
             }
         }
         drawPixels$api();
-        gameImage.getGraphics().drawImage(getGameImage$api(), i, j, this);
+        gameImage.getGraphics().drawImage(getComponentImage$api(), i, j, this);
     }
 }

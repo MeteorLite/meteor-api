@@ -43,5 +43,5 @@ public interface RSComponentImageProducer
     void drawPixels$api();
 
     @Import("gameImage")
-    Image getGameImage$api();
+    Image getComponentImage$api();
 }

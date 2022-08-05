@@ -52,8 +52,6 @@ abstract class Client implements RSClient {
         return gameCanvas;
     }
 
-
-
     @Inject
     @Override
     public void setCanvas(Canvas gameCanvas) {
@@ -88,7 +86,6 @@ abstract class Client implements RSClient {
         }
         if (gameImage != null) {
             loginScreen$mixin(b, b1);
-
             client.getCallbacks().drawGameImage();
         }
     }
