@@ -33,7 +33,7 @@ public class Class47 {
 				}
 
 				if (!this.aBoolean787) {
-					Class37.method329(var2, this.anIntArray784[var4], this.aByteArray781, this.anIntArray785[var4], this.anIntArray786[var4]);
+					Statics.method329(var2, this.anIntArray784[var4], this.aByteArray781, this.anIntArray785[var4], this.anIntArray786[var4]);
 				} else if (this.anIntArray784[var4] >= 0) {
 					System.arraycopy(this.aByteArray781, this.anIntArray786[var4], var2, 0, this.anIntArray784[var4]);
 				}
@@ -51,7 +51,7 @@ public class Class47 {
 		int var5 = var3.readMedium();
 		if (var5 != var4) {
 			byte[] var6 = new byte[var4];
-			Class37.method329(var6, var4, var2, var5, 6);
+			Statics.method329(var6, var4, var2, var5, 6);
 			this.aByteArray781 = var6;
 			var3 = new Buffer(this.aByteArray781, (byte)1);
 			this.aBoolean787 = true;
