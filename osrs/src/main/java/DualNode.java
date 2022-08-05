@@ -1,13 +1,13 @@
 public class DualNode extends Node {
-	public DualNode next;
-	public DualNode previous;
+	public DualNode nextDualNode;
+	public DualNode previousDualNode;
 
-	public void unlinktwo() {
-		if (this.next != null) {
-			this.next.previous = this.previous;
-			this.previous.next = this.next;
-			this.previous = null;
-			this.next = null;
+	public void removeDualNode() {
+		if (this.nextDualNode != null) {
+			this.nextDualNode.previousDualNode = this.previousDualNode;
+			this.previousDualNode.nextDualNode = this.nextDualNode;
+			this.previousDualNode = null;
+			this.nextDualNode = null;
 		}
 	}
 }

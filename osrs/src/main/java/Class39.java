@@ -35,8 +35,8 @@ public class Class39 {
 				return;
 			}
 
-			var1.remove();
-			var1.unlinktwo();
+			var1.removeNode();
+			var1.removeDualNode();
 		}
 	}
 
@@ -56,12 +56,12 @@ public class Class39 {
 		var1 = 72 / var1;
 		if (this.anInt681 == 0) {
 			DualNode var5 = this.aClass31_683.method265();
-			var5.remove();
-			var5.unlinktwo();
+			var5.removeNode();
+			var5.removeDualNode();
 			if (var5 == this.aDualNode_679) {
 				DualNode var6 = this.aClass31_683.method265();
-				var6.remove();
-				var6.unlinktwo();
+				var6.removeNode();
+				var6.removeDualNode();
 			}
 		} else {
 			--this.anInt681;

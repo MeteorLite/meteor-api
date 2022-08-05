@@ -116,28 +116,28 @@ public class Class22 {
 
 	public void method248(byte var1, Buffer var2) {
 		while (true) {
-			int var3 = var2.get1();
+			int var3 = var2.readUByte();
 			if (var3 == 0) {
 				return;
 			}
 
 			if (var3 == 1) {
-				this.anInt456 = var2.get1();
+				this.anInt456 = var2.readUByte();
 			} else if (var3 == 2) {
-				int var4 = var2.get1();
+				int var4 = var2.readUByte();
 				this.anIntArray457 = new int[var4];
 
 				for (int var5 = 0; var5 < var4; ++var5) {
-					this.anIntArray457[var5] = var2.get2();
+					this.anIntArray457[var5] = var2.readUShort();
 				}
 			} else if (var3 == 3) {
 				this.aBoolean461 = true;
 			} else if (var3 >= 40 && var3 < 50) {
-				this.anIntArray458[var3 - 40] = var2.get2();
+				this.anIntArray458[var3 - 40] = var2.readUShort();
 			} else if (var3 >= 50 && var3 < 60) {
-				this.anIntArray459[var3 - 50] = var2.get2();
+				this.anIntArray459[var3 - 50] = var2.readUShort();
 			} else if (var3 >= 60 && var3 < 70) {
-				this.anIntArray460[var3 - 60] = var2.get2();
+				this.anIntArray460[var3 - 60] = var2.readUShort();
 			} else {
 				System.out.println("Error unrecognised config code: " + var3);
 			}
@@ -146,7 +146,7 @@ public class Class22 {
 
 	public static void method247(boolean var0, Class47 var1) {
 		Buffer var2 = new Buffer(var1.method546("idk.dat", (byte[])null), (byte)1);
-		anInt454 = var2.get2();
+		anInt454 = var2.readUShort();
 		if (aClass22Array455 == null) {
 			aClass22Array455 = new Class22[anInt454];
 		}

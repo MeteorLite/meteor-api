@@ -21,15 +21,15 @@ public class Class1 {
 	}
 
 	public void method148(byte var1, Buffer var2) {
-		this.anInt45 = var2.get1();
+		this.anInt45 = var2.readUByte();
 		if (var1 == 2) {
 			boolean var3 = false;
 		} else {
 			this.aBoolean39 = !this.aBoolean39;
 		}
 
-		this.anInt43 = var2.get4();
-		this.anInt44 = var2.get4();
+		this.anInt43 = var2.readInt();
+		this.anInt44 = var2.readInt();
 		this.method149(var2);
 	}
 
@@ -50,13 +50,13 @@ public class Class1 {
 		garbageValue = "9"
 	)
 	public void method149(Buffer var1) {
-		this.anInt40 = var1.get1();
+		this.anInt40 = var1.readUByte();
 		this.anIntArray41 = new int[this.anInt40];
 		this.anIntArray42 = new int[this.anInt40];
 
 		for (int var2 = 0; var2 < this.anInt40; ++var2) {
-			this.anIntArray41[var2] = var1.get2();
-			this.anIntArray42[var2] = var1.get2();
+			this.anIntArray41[var2] = var1.readUShort();
+			this.anIntArray42[var2] = var1.readUShort();
 		}
 
 	}

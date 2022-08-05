@@ -109,7 +109,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 			return null;
 		} else {
 			synchronized(this.aClass31_1288) {
-				var1.unlinktwo();
+				var1.removeDualNode();
 			}
 
 			if (var1.aByteArray1389 == null) {
@@ -461,7 +461,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 								this.aClass28_1292.method256(this.aClass44_Sub3_Sub3_1301);
 							}
 						} else {
-							this.aClass44_Sub3_Sub3_1301.remove();
+							this.aClass44_Sub3_Sub3_1301.removeNode();
 						}
 
 						this.aClass44_Sub3_Sub3_1301 = null;
@@ -510,7 +510,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 							this.aClass28_1292.method256(this.aClass44_Sub3_Sub3_1301);
 						}
 					} else {
-						this.aClass44_Sub3_Sub3_1301.remove();
+						this.aClass44_Sub3_Sub3_1301.removeNode();
 					}
 				}
 
@@ -582,7 +582,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 			this.aByteArrayArray1273[var4] = new byte[var6];
 
 			for (var8 = 0; var8 < var6; ++var8) {
-				this.anIntArrayArray1271[var4][var8] = var7.get2();
+				this.anIntArrayArray1271[var4][var8] = var7.readUShort();
 			}
 		}
 
@@ -596,7 +596,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 			this.anIntArrayArray1272[var11] = new int[var13];
 
 			for (int var9 = 0; var9 < var13; ++var9) {
-				this.anIntArrayArray1272[var11][var9] = var14.get4();
+				this.anIntArrayArray1272[var11][var9] = var14.readInt();
 			}
 		}
 
@@ -621,10 +621,10 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		this.anIntArray1279 = new int[var6];
 
 		for (var8 = 0; var8 < var6; ++var8) {
-			this.anIntArray1276[var8] = var7.get2();
-			this.anIntArray1277[var8] = var7.get2();
-			this.anIntArray1278[var8] = var7.get2();
-			this.anIntArray1279[var8] = var7.get1();
+			this.anIntArray1276[var8] = var7.readUShort();
+			this.anIntArray1277[var8] = var7.readUShort();
+			this.anIntArray1278[var8] = var7.readUShort();
+			this.anIntArray1279[var8] = var7.readUByte();
 		}
 
 		var5 = var1.method546("anim_index", (byte[])null);
@@ -633,7 +633,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		this.anIntArray1280 = new int[var6];
 
 		for (var8 = 0; var8 < var6; ++var8) {
-			this.anIntArray1280[var8] = var7.get2();
+			this.anIntArray1280[var8] = var7.readUShort();
 		}
 
 		var5 = var1.method546("midi_index", (byte[])null);
@@ -642,7 +642,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		this.anIntArray1281 = new int[var6];
 
 		for (var8 = 0; var8 < var6; ++var8) {
-			this.anIntArray1281[var8] = var7.get1();
+			this.anIntArray1281[var8] = var7.readUByte();
 		}
 
 		this.aClient1283 = var2;

@@ -93,34 +93,34 @@ public class Class4 {
 
 	public Buffer method179(int var1, byte var2) {
 		int var3 = this.method180(var1);
-		aBuffer_97.anInt1374 = 0;
-		aBuffer_97.put4(1380533830);
-		aBuffer_97.put4LE(true, var3 + 36);
-		aBuffer_97.put4(1463899717);
-		aBuffer_97.put4(1718449184);
-		aBuffer_97.put4LE(true, 16);
-		aBuffer_97.put2LE(false, 1);
-		aBuffer_97.put2LE(false, 1);
-		aBuffer_97.put4LE(true, 22050);
-		aBuffer_97.put4LE(true, 22050);
-		aBuffer_97.put2LE(false, 1);
-		aBuffer_97.put2LE(false, 8);
-		aBuffer_97.put4(1684108385);
-		aBuffer_97.put4LE(true, var3);
+		aBuffer_97.offset = 0;
+		aBuffer_97.writeInt(1380533830);
+		aBuffer_97.writeIntME(true, var3 + 36);
+		aBuffer_97.writeInt(1463899717);
+		aBuffer_97.writeInt(1718449184);
+		aBuffer_97.writeIntME(true, 16);
+		aBuffer_97.writeShortLE(false, 1);
+		aBuffer_97.writeShortLE(false, 1);
+		aBuffer_97.writeIntME(true, 22050);
+		aBuffer_97.writeIntME(true, 22050);
+		aBuffer_97.writeShortLE(false, 1);
+		aBuffer_97.writeShortLE(false, 8);
+		aBuffer_97.writeInt(1684108385);
+		aBuffer_97.writeIntME(true, var3);
 		if (var2 != this.aByte92) {
 			throw new NullPointerException();
 		} else {
 			Buffer var10000 = aBuffer_97;
-			var10000.anInt1374 += var3;
+			var10000.offset += var3;
 			return aBuffer_97;
 		}
 	}
 
 	public void method177(byte var1, Buffer var2) {
 		for (int var3 = 0; var3 < 10; ++var3) {
-			int var4 = var2.get1();
+			int var4 = var2.readUByte();
 			if (var4 != 0) {
-				--var2.anInt1374;
+				--var2.offset;
 				this.aClass6Array98[var3] = new Class6();
 				this.aClass6Array98[var3].method190((byte)2, var2);
 			}
@@ -132,8 +132,8 @@ public class Class4 {
 			this.anInt91 = -185;
 		}
 
-		this.anInt99 = var2.get2();
-		this.anInt100 = var2.get2();
+		this.anInt99 = var2.readUShort();
+		this.anInt100 = var2.readUShort();
 	}
 
 	@ObfuscatedSignature(
@@ -192,7 +192,7 @@ public class Class4 {
 		Class6.method187();
 
 		while (true) {
-			int var2 = var1.get2();
+			int var2 = var1.readUShort();
 			if (var2 == 65535) {
 				return;
 			}

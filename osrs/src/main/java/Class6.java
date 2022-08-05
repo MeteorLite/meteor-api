@@ -48,27 +48,27 @@ public class Class6 {
 		this.aClass1_169.method148((byte)2, var2);
 		this.aClass1_170 = new Class1();
 		this.aClass1_170.method148((byte)2, var2);
-		int var3 = var2.get1();
+		int var3 = var2.readUByte();
 		if (var3 != 0) {
-			--var2.anInt1374;
+			--var2.offset;
 			this.aClass1_171 = new Class1();
 			this.aClass1_171.method148((byte)2, var2);
 			this.aClass1_172 = new Class1();
 			this.aClass1_172.method148((byte)2, var2);
 		}
 
-		var3 = var2.get1();
+		var3 = var2.readUByte();
 		if (var3 != 0) {
-			--var2.anInt1374;
+			--var2.offset;
 			this.aClass1_173 = new Class1();
 			this.aClass1_173.method148((byte)2, var2);
 			this.aClass1_174 = new Class1();
 			this.aClass1_174.method148((byte)2, var2);
 		}
 
-		var3 = var2.get1();
+		var3 = var2.readUByte();
 		if (var3 != 0) {
-			--var2.anInt1374;
+			--var2.offset;
 			this.aClass1_175 = new Class1();
 			this.aClass1_175.method148((byte)2, var2);
 			this.aClass1_176 = new Class1();
@@ -76,20 +76,20 @@ public class Class6 {
 		}
 
 		for (int var4 = 0; var4 < 10; ++var4) {
-			int var5 = var2.method493();
+			int var5 = var2.readUShortSmart();
 			if (var5 == 0) {
 				break;
 			}
 
 			this.anIntArray177[var4] = var5;
-			this.anIntArray178[var4] = var2.method492();
-			this.anIntArray179[var4] = var2.method493();
+			this.anIntArray178[var4] = var2.readShortSmart();
+			this.anIntArray179[var4] = var2.readUShortSmart();
 		}
 
-		this.anInt180 = var2.method493();
-		this.anInt181 = var2.method493();
-		this.anInt184 = var2.get2();
-		this.anInt185 = var2.get2();
+		this.anInt180 = var2.readUShortSmart();
+		this.anInt181 = var2.readUShortSmart();
+		this.anInt184 = var2.readUShort();
+		this.anInt185 = var2.readUShort();
 		this.aClass2_182 = new Class2();
 		this.aClass1_183 = new Class1();
 		this.aClass2_182.method156(var2, this.aByte167, this.aClass1_183);

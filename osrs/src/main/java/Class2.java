@@ -106,7 +106,7 @@ public class Class2 {
 	}
 
 	public void method156(Buffer var1, byte var2, Class1 var3) {
-		int var4 = var1.get1();
+		int var4 = var1.readUByte();
 		this.anIntArray55[0] = var4 >> 4;
 		this.anIntArray55[1] = var4 & 15;
 		int var5;
@@ -116,24 +116,24 @@ public class Class2 {
 		}
 
 		if (var4 != 0) {
-			this.anIntArray58[0] = var1.get2();
-			this.anIntArray58[1] = var1.get2();
-			var5 = var1.get1();
+			this.anIntArray58[0] = var1.readUShort();
+			this.anIntArray58[1] = var1.readUShort();
+			var5 = var1.readUByte();
 
 			int var6;
 			int var7;
 			for (var6 = 0; var6 < 2; ++var6) {
 				for (var7 = 0; var7 < this.anIntArray55[var6]; ++var7) {
-					this.anIntArrayArrayArray56[var6][0][var7] = var1.get2();
-					this.anIntArrayArrayArray57[var6][0][var7] = var1.get2();
+					this.anIntArrayArrayArray56[var6][0][var7] = var1.readUShort();
+					this.anIntArrayArrayArray57[var6][0][var7] = var1.readUShort();
 				}
 			}
 
 			for (var6 = 0; var6 < 2; ++var6) {
 				for (var7 = 0; var7 < this.anIntArray55[var6]; ++var7) {
 					if ((var5 & 1 << var6 * 4 << var7) != 0) {
-						this.anIntArrayArrayArray56[var6][1][var7] = var1.get2();
-						this.anIntArrayArrayArray57[var6][1][var7] = var1.get2();
+						this.anIntArrayArrayArray56[var6][1][var7] = var1.readUShort();
+						this.anIntArrayArrayArray57[var6][1][var7] = var1.readUShort();
 					} else {
 						this.anIntArrayArrayArray56[var6][1][var7] = this.anIntArrayArrayArray56[var6][0][var7];
 						this.anIntArrayArrayArray57[var6][1][var7] = this.anIntArrayArrayArray57[var6][0][var7];

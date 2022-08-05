@@ -242,57 +242,57 @@ public class Class14 {
 
 	public void method222(byte var1, Buffer var2) {
 		while (true) {
-			int var3 = var2.get1();
+			int var3 = var2.readUByte();
 			if (var3 == 0) {
 				return;
 			}
 
 			if (var3 == 1) {
-				this.anInt326 = var2.get2();
+				this.anInt326 = var2.readUShort();
 			} else if (var3 == 2) {
-				this.aString327 = var2.getString();
+				this.aString327 = var2.readString();
 			} else if (var3 == 3) {
-				this.aByteArray328 = var2.getStringArray(this.anInt315);
+				this.aByteArray328 = var2.readStringArray(this.anInt315);
 			} else if (var3 == 4) {
-				this.anInt331 = var2.get2();
+				this.anInt331 = var2.readUShort();
 			} else if (var3 == 5) {
-				this.anInt332 = var2.get2();
+				this.anInt332 = var2.readUShort();
 			} else if (var3 == 6) {
-				this.anInt333 = var2.get2();
+				this.anInt333 = var2.readUShort();
 			} else if (var3 == 7) {
-				this.anInt335 = var2.get2();
+				this.anInt335 = var2.readUShort();
 				if (this.anInt335 > 32767) {
 					this.anInt335 -= 65536;
 				}
 			} else if (var3 == 8) {
-				this.anInt336 = var2.get2();
+				this.anInt336 = var2.readUShort();
 				if (this.anInt336 > 32767) {
 					this.anInt336 -= 65536;
 				}
 			} else if (var3 == 10) {
-				this.anInt337 = var2.get2();
+				this.anInt337 = var2.readUShort();
 			} else if (var3 == 11) {
 				this.aBoolean338 = true;
 			} else if (var3 == 12) {
-				this.anInt339 = var2.get4();
+				this.anInt339 = var2.readInt();
 			} else if (var3 == 16) {
 				this.aBoolean340 = true;
 			} else if (var3 == 23) {
-				this.anInt343 = var2.get2();
-				this.aByte345 = var2.get1Signed();
+				this.anInt343 = var2.readUShort();
+				this.aByte345 = var2.readByte();
 			} else if (var3 == 24) {
-				this.anInt344 = var2.get2();
+				this.anInt344 = var2.readUShort();
 			} else if (var3 == 25) {
-				this.anInt346 = var2.get2();
-				this.aByte348 = var2.get1Signed();
+				this.anInt346 = var2.readUShort();
+				this.aByte348 = var2.readByte();
 			} else if (var3 == 26) {
-				this.anInt347 = var2.get2();
+				this.anInt347 = var2.readUShort();
 			} else if (var3 >= 30 && var3 < 35) {
 				if (this.aStringArray341 == null) {
 					this.aStringArray341 = new String[5];
 				}
 
-				this.aStringArray341[var3 - 30] = var2.getString();
+				this.aStringArray341[var3 - 30] = var2.readString();
 				if (this.aStringArray341[var3 - 30].equalsIgnoreCase("hidden")) {
 					this.aStringArray341[var3 - 30] = null;
 				}
@@ -301,52 +301,52 @@ public class Class14 {
 					this.aStringArray342 = new String[5];
 				}
 
-				this.aStringArray342[var3 - 35] = var2.getString();
+				this.aStringArray342[var3 - 35] = var2.readString();
 			} else if (var3 == 40) {
-				int var4 = var2.get1();
+				int var4 = var2.readUByte();
 				this.anIntArray329 = new int[var4];
 				this.anIntArray330 = new int[var4];
 
 				for (int var5 = 0; var5 < var4; ++var5) {
-					this.anIntArray329[var5] = var2.get2();
-					this.anIntArray330[var5] = var2.get2();
+					this.anIntArray329[var5] = var2.readUShort();
+					this.anIntArray330[var5] = var2.readUShort();
 				}
 			} else if (var3 == 78) {
-				this.anInt349 = var2.get2();
+				this.anInt349 = var2.readUShort();
 			} else if (var3 == 79) {
-				this.anInt350 = var2.get2();
+				this.anInt350 = var2.readUShort();
 			} else if (var3 == 90) {
-				this.anInt351 = var2.get2();
+				this.anInt351 = var2.readUShort();
 			} else if (var3 == 91) {
-				this.anInt353 = var2.get2();
+				this.anInt353 = var2.readUShort();
 			} else if (var3 == 92) {
-				this.anInt352 = var2.get2();
+				this.anInt352 = var2.readUShort();
 			} else if (var3 == 93) {
-				this.anInt354 = var2.get2();
+				this.anInt354 = var2.readUShort();
 			} else if (var3 == 95) {
-				this.anInt334 = var2.get2();
+				this.anInt334 = var2.readUShort();
 			} else if (var3 == 97) {
-				this.anInt357 = var2.get2();
+				this.anInt357 = var2.readUShort();
 			} else if (var3 == 98) {
-				this.anInt358 = var2.get2();
+				this.anInt358 = var2.readUShort();
 			} else if (var3 >= 100 && var3 < 110) {
 				if (this.anIntArray355 == null) {
 					this.anIntArray355 = new int[10];
 					this.anIntArray356 = new int[10];
 				}
 
-				this.anIntArray355[var3 - 100] = var2.get2();
-				this.anIntArray356[var3 - 100] = var2.get2();
+				this.anIntArray355[var3 - 100] = var2.readUShort();
+				this.anIntArray356[var3 - 100] = var2.readUShort();
 			} else if (var3 == 110) {
-				this.anInt359 = var2.get2();
+				this.anInt359 = var2.readUShort();
 			} else if (var3 == 111) {
-				this.anInt360 = var2.get2();
+				this.anInt360 = var2.readUShort();
 			} else if (var3 == 112) {
-				this.anInt361 = var2.get2();
+				this.anInt361 = var2.readUShort();
 			} else if (var3 == 113) {
-				this.anInt362 = var2.get1Signed();
+				this.anInt362 = var2.readByte();
 			} else if (var3 == 114) {
-				this.anInt363 = var2.get1Signed() * 5;
+				this.anInt363 = var2.readByte() * 5;
 			}
 		}
 	}
@@ -465,7 +465,7 @@ public class Class14 {
 
 		anInt323 = (anInt323 + 1) % 10;
 		Class14 var2 = aClass14Array322[anInt323];
-		aBuffer_321.anInt1374 = anIntArray320[var0];
+		aBuffer_321.offset = anIntArray320[var0];
 		var2.anInt325 = var0;
 		var2.method221();
 		var2.method222((byte)2, aBuffer_321);
@@ -487,7 +487,7 @@ public class Class14 {
 		if (var1 == 0) {
 			Class44_Sub3_Sub1_Sub2 var4 = (Class44_Sub3_Sub1_Sub2)aClass39_365.method339((long)var0);
 			if (var4 != null && var3 != var4.anInt1437 && var4.anInt1437 != -1) {
-				var4.remove();
+				var4.removeNode();
 				var4 = null;
 			}
 
@@ -645,14 +645,14 @@ public class Class14 {
 	public static void method218(Class47 var0) {
 		aBuffer_321 = new Buffer(var0.method546("obj.dat", (byte[])null), (byte)1);
 		Buffer var1 = new Buffer(var0.method546("obj.idx", (byte[])null), (byte)1);
-		anInt319 = var1.get2();
+		anInt319 = var1.readUShort();
 		anIntArray320 = new int[anInt319];
 		int var2 = 2;
 
 		int var3;
 		for (var3 = 0; var3 < anInt319; ++var3) {
 			anIntArray320[var3] = var2;
-			var2 += var1.get2();
+			var2 += var1.readUShort();
 		}
 
 		aClass14Array322 = new Class14[10];

@@ -184,7 +184,7 @@ public class Class12 {
 
 		while (true) {
 			while (true) {
-				var3 = var2.get1();
+				var3 = var2.readUByte();
 				if (var3 == 0) {
 					return;
 				}
@@ -192,76 +192,76 @@ public class Class12 {
 				int var4;
 				int var5;
 				if (var3 == 1) {
-					var4 = var2.get1();
+					var4 = var2.readUByte();
 					this.anIntArray284 = new int[var4];
 
 					for (var5 = 0; var5 < var4; ++var5) {
-						this.anIntArray284[var5] = var2.get2();
+						this.anIntArray284[var5] = var2.readUShort();
 					}
 				} else if (var3 == 2) {
-					this.aString281 = var2.getString();
+					this.aString281 = var2.readString();
 				} else if (var3 == 3) {
-					this.aByteArray282 = var2.getStringArray(this.anInt273);
+					this.aByteArray282 = var2.readStringArray(this.anInt273);
 				} else if (var3 == 12) {
-					this.aByte283 = var2.get1Signed();
+					this.aByte283 = var2.readByte();
 				} else if (var3 == 13) {
-					this.anInt286 = var2.get2();
+					this.anInt286 = var2.readUShort();
 				} else if (var3 == 14) {
-					this.anInt287 = var2.get2();
+					this.anInt287 = var2.readUShort();
 				} else if (var3 == 17) {
-					this.anInt287 = var2.get2();
-					this.anInt288 = var2.get2();
-					this.anInt289 = var2.get2();
-					this.anInt290 = var2.get2();
+					this.anInt287 = var2.readUShort();
+					this.anInt288 = var2.readUShort();
+					this.anInt289 = var2.readUShort();
+					this.anInt290 = var2.readUShort();
 				} else if (var3 >= 30 && var3 < 40) {
 					if (this.aStringArray293 == null) {
 						this.aStringArray293 = new String[5];
 					}
 
-					this.aStringArray293[var3 - 30] = var2.getString();
+					this.aStringArray293[var3 - 30] = var2.readString();
 					if (this.aStringArray293[var3 - 30].equalsIgnoreCase("hidden")) {
 						this.aStringArray293[var3 - 30] = null;
 					}
 				} else if (var3 == 40) {
-					var4 = var2.get1();
+					var4 = var2.readUByte();
 					this.anIntArray291 = new int[var4];
 					this.anIntArray292 = new int[var4];
 
 					for (var5 = 0; var5 < var4; ++var5) {
-						this.anIntArray291[var5] = var2.get2();
-						this.anIntArray292[var5] = var2.get2();
+						this.anIntArray291[var5] = var2.readUShort();
+						this.anIntArray292[var5] = var2.readUShort();
 					}
 				} else if (var3 == 60) {
-					var4 = var2.get1();
+					var4 = var2.readUByte();
 					this.anIntArray285 = new int[var4];
 
 					for (var5 = 0; var5 < var4; ++var5) {
-						this.anIntArray285[var5] = var2.get2();
+						this.anIntArray285[var5] = var2.readUShort();
 					}
 				} else if (var3 == 90) {
-					this.anInt294 = var2.get2();
+					this.anInt294 = var2.readUShort();
 				} else if (var3 == 91) {
-					this.anInt295 = var2.get2();
+					this.anInt295 = var2.readUShort();
 				} else if (var3 == 92) {
-					this.anInt296 = var2.get2();
+					this.anInt296 = var2.readUShort();
 				} else if (var3 == 93) {
 					this.aBoolean297 = false;
 				} else if (var3 == 95) {
-					this.anInt298 = var2.get2();
+					this.anInt298 = var2.readUShort();
 				} else if (var3 == 97) {
-					this.anInt299 = var2.get2();
+					this.anInt299 = var2.readUShort();
 				} else if (var3 == 98) {
-					this.anInt300 = var2.get2();
+					this.anInt300 = var2.readUShort();
 				} else if (var3 == 99) {
 					this.aBoolean301 = true;
 				} else if (var3 == 100) {
-					this.anInt302 = var2.get1Signed();
+					this.anInt302 = var2.readByte();
 				} else if (var3 == 101) {
-					this.anInt303 = var2.get1Signed() * 5;
+					this.anInt303 = var2.readByte() * 5;
 				} else if (var3 == 102) {
-					this.anInt304 = var2.get2();
+					this.anInt304 = var2.readUShort();
 				} else if (var3 == 103) {
-					this.anInt305 = var2.get2();
+					this.anInt305 = var2.readUShort();
 				}
 			}
 		}
@@ -276,7 +276,7 @@ public class Class12 {
 
 		anInt279 = (anInt279 + 1) % 20;
 		Class12 var2 = aClass12Array278[anInt279] = new Class12();
-		aBuffer_277.anInt1374 = anIntArray276[var0];
+		aBuffer_277.offset = anIntArray276[var0];
 		var2.aLong280 = (long)var0;
 		var2.method215((byte)2, aBuffer_277);
 		return var2;
@@ -298,14 +298,14 @@ public class Class12 {
 	public static void method212(Class47 var0) {
 		aBuffer_277 = new Buffer(var0.method546("npc.dat", (byte[])null), (byte)1);
 		Buffer var1 = new Buffer(var0.method546("npc.idx", (byte[])null), (byte)1);
-		anInt275 = var1.get2();
+		anInt275 = var1.readUShort();
 		anIntArray276 = new int[anInt275];
 		int var2 = 2;
 
 		int var3;
 		for (var3 = 0; var3 < anInt275; ++var3) {
 			anIntArray276[var3] = var2;
-			var2 += var1.get2();
+			var2 += var1.readUShort();
 		}
 
 		aClass12Array278 = new Class12[20];

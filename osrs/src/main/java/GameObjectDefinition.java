@@ -297,7 +297,7 @@ public class GameObjectDefinition {
 			int var6;
 			do {
 				while (true) {
-					int var4 = var2.get1();
+					int var4 = var2.readUByte();
 					if (var4 == 0) {
 						if (var3 == -1) {
 							this.hasActions = this.anIntArray219 != null && (this.anIntArray220 == null || this.anIntArray220[0] == 10);
@@ -319,34 +319,34 @@ public class GameObjectDefinition {
 					}
 
 					if (var4 == 1) {
-						var5 = var2.get1();
+						var5 = var2.readUByte();
 						break;
 					}
 
 					if (var4 == 2) {
-						this.aString221 = var2.getString();
+						this.aString221 = var2.readString();
 					} else if (var4 == 3) {
-						this.aByteArray222 = var2.getStringArray(this.anInt207);
+						this.aByteArray222 = var2.readStringArray(this.anInt207);
 					} else if (var4 == 5) {
-						var5 = var2.get1();
+						var5 = var2.readUByte();
 						if (var5 > 0) {
 							this.anIntArray220 = null;
 							this.anIntArray219 = new int[var5];
 
 							for (var6 = 0; var6 < var5; ++var6) {
-								this.anIntArray219[var6] = var2.get2();
+								this.anIntArray219[var6] = var2.readUShort();
 							}
 						}
 					} else if (var4 == 14) {
-						this.sizeX = var2.get1();
+						this.sizeX = var2.readUByte();
 					} else if (var4 == 15) {
-						this.sizeY = var2.get1();
+						this.sizeY = var2.readUByte();
 					} else if (var4 == 17) {
 						this.solid = false;
 					} else if (var4 == 18) {
 						this.walkable = false;
 					} else if (var4 == 19) {
-						var3 = var2.get1();
+						var3 = var2.readUByte();
 						if (var3 == 1) {
 							this.hasActions = true;
 						}
@@ -357,62 +357,62 @@ public class GameObjectDefinition {
 					} else if (var4 == 23) {
 						this.aBoolean232 = true;
 					} else if (var4 == 24) {
-						this.animationId = var2.get2();
+						this.animationId = var2.readUShort();
 						if (this.animationId == 65535) {
 							this.animationId = -1;
 						}
 					} else if (var4 == 28) {
-						this.anInt234 = var2.get1();
+						this.anInt234 = var2.readUByte();
 					} else if (var4 == 29) {
-						this.aByte235 = var2.get1Signed();
+						this.aByte235 = var2.readByte();
 					} else if (var4 == 39) {
-						this.aByte236 = var2.get1Signed();
+						this.aByte236 = var2.readByte();
 					} else if (var4 >= 30 && var4 < 39) {
 						if (this.aStringArray237 == null) {
 							this.aStringArray237 = new String[5];
 						}
 
-						this.aStringArray237[var4 - 30] = var2.getString();
+						this.aStringArray237[var4 - 30] = var2.readString();
 						if (this.aStringArray237[var4 - 30].equalsIgnoreCase("hidden")) {
 							this.aStringArray237[var4 - 30] = null;
 						}
 					} else if (var4 == 40) {
-						var5 = var2.get1();
+						var5 = var2.readUByte();
 						this.anIntArray223 = new int[var5];
 						this.anIntArray224 = new int[var5];
 
 						for (var6 = 0; var6 < var5; ++var6) {
-							this.anIntArray223[var6] = var2.get2();
-							this.anIntArray224[var6] = var2.get2();
+							this.anIntArray223[var6] = var2.readUShort();
+							this.anIntArray224[var6] = var2.readUShort();
 						}
 					} else if (var4 == 60) {
-						this.anInt238 = var2.get2();
+						this.anInt238 = var2.readUShort();
 					} else if (var4 == 62) {
 						this.aBoolean240 = true;
 					} else if (var4 == 64) {
 						this.aBoolean241 = false;
 					} else if (var4 == 65) {
-						this.anInt242 = var2.get2();
+						this.anInt242 = var2.readUShort();
 					} else if (var4 == 66) {
-						this.anInt243 = var2.get2();
+						this.anInt243 = var2.readUShort();
 					} else if (var4 == 67) {
-						this.anInt244 = var2.get2();
+						this.anInt244 = var2.readUShort();
 					} else if (var4 == 68) {
-						this.anInt239 = var2.get2();
+						this.anInt239 = var2.readUShort();
 					} else if (var4 == 69) {
-						this.anInt248 = var2.get1();
+						this.anInt248 = var2.readUByte();
 					} else if (var4 == 70) {
-						this.anInt245 = var2.get2Signed();
+						this.anInt245 = var2.readShort();
 					} else if (var4 == 71) {
-						this.anInt246 = var2.get2Signed();
+						this.anInt246 = var2.readShort();
 					} else if (var4 == 72) {
-						this.anInt247 = var2.get2Signed();
+						this.anInt247 = var2.readShort();
 					} else if (var4 == 73) {
 						this.aBoolean249 = true;
 					} else if (var4 == 74) {
 						this.aBoolean250 = true;
 					} else if (var4 == 75) {
-						this.anInt251 = var2.get1();
+						this.anInt251 = var2.readUByte();
 					}
 				}
 			} while(var5 <= 0);
@@ -421,8 +421,8 @@ public class GameObjectDefinition {
 			this.anIntArray219 = new int[var5];
 
 			for (var6 = 0; var6 < var5; ++var6) {
-				this.anIntArray219[var6] = var2.get2();
-				this.anIntArray220[var6] = var2.get1();
+				this.anIntArray219[var6] = var2.readUShort();
+				this.anIntArray220[var6] = var2.readUByte();
 			}
 		}
 	}
@@ -470,7 +470,7 @@ public class GameObjectDefinition {
 
 		anInt216 = (anInt216 + 1) % 10;
 		GameObjectDefinition var2 = aClass8Array215[anInt216];
-		aBuffer_214.anInt1374 = anIntArray213[var0];
+		aBuffer_214.offset = anIntArray213[var0];
 		var2.anInt218 = var0;
 		var2.method200();
 		var2.method201((byte)2, aBuffer_214);
@@ -495,14 +495,14 @@ public class GameObjectDefinition {
 	public static void method197(Class47 var0) {
 		aBuffer_214 = new Buffer(var0.method546("loc.dat", (byte[])null), (byte)1);
 		Buffer var1 = new Buffer(var0.method546("loc.idx", (byte[])null), (byte)1);
-		anInt212 = var1.get2();
+		anInt212 = var1.readUShort();
 		anIntArray213 = new int[anInt212];
 		int var2 = 2;
 
 		int var3;
 		for (var3 = 0; var3 < anInt212; ++var3) {
 			anIntArray213[var3] = var2;
-			var2 += var1.get2();
+			var2 += var1.readUShort();
 		}
 
 		aClass8Array215 = new GameObjectDefinition[10];

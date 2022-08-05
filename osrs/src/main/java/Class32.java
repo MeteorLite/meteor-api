@@ -58,32 +58,32 @@ public class Class32 {
 
 		while (true) {
 			while (true) {
-				int var3 = var2.get1();
+				int var3 = var2.readUByte();
 				if (var3 == 0) {
 					return;
 				}
 
 				if (var3 == 1) {
-					this.anInt549 = var2.get2();
+					this.anInt549 = var2.readUShort();
 				} else if (var3 == 2) {
-					this.anInt550 = var2.get2();
+					this.anInt550 = var2.readUShort();
 					if (Class26.aClass26Array497 != null) {
 						this.aClass26_551 = Class26.aClass26Array497[this.anInt550];
 					}
 				} else if (var3 == 4) {
-					this.anInt554 = var2.get2();
+					this.anInt554 = var2.readUShort();
 				} else if (var3 == 5) {
-					this.anInt555 = var2.get2();
+					this.anInt555 = var2.readUShort();
 				} else if (var3 == 6) {
-					this.anInt556 = var2.get2();
+					this.anInt556 = var2.readUShort();
 				} else if (var3 == 7) {
-					this.anInt557 = var2.get1();
+					this.anInt557 = var2.readUByte();
 				} else if (var3 == 8) {
-					this.anInt558 = var2.get1();
+					this.anInt558 = var2.readUByte();
 				} else if (var3 >= 40 && var3 < 50) {
-					this.anIntArray552[var3 - 40] = var2.get2();
+					this.anIntArray552[var3 - 40] = var2.readUShort();
 				} else if (var3 >= 50 && var3 < 60) {
-					this.anIntArray553[var3 - 50] = var2.get2();
+					this.anIntArray553[var3 - 50] = var2.readUShort();
 				} else {
 					System.out.println("Error unrecognised spotanim config code: " + var3);
 				}
@@ -93,7 +93,7 @@ public class Class32 {
 
 	public static void method269(boolean var0, Class47 var1) {
 		Buffer var2 = new Buffer(var1.method546("spotanim.dat", (byte[])null), (byte)1);
-		anInt546 = var2.get2();
+		anInt546 = var2.readUShort();
 		if (aClass32Array547 == null) {
 			aClass32Array547 = new Class32[anInt546];
 		}

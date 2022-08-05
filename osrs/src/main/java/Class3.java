@@ -862,7 +862,7 @@ public class Class3 {
 						this.aByteArrayArrayArray72[var8][var11][var12] = 0;
 
 						while (true) {
-							var13 = var7.get1();
+							var13 = var7.readUByte();
 							if (var13 == 0) {
 								if (var8 == 0) {
 									this.anIntArrayArrayArray71[0][var11][var12] = -method165(932731 + var11 + var2, 556238 + var12 + var5) * 8;
@@ -873,7 +873,7 @@ public class Class3 {
 							}
 
 							if (var13 == 1) {
-								int var14 = var7.get1();
+								int var14 = var7.readUByte();
 								if (var14 == 1) {
 									var14 = 0;
 								}
@@ -887,7 +887,7 @@ public class Class3 {
 							}
 
 							if (var13 <= 49) {
-								this.aByteArrayArrayArray74[var8][var11][var12] = var7.get1Signed();
+								this.aByteArrayArrayArray74[var8][var11][var12] = var7.readByte();
 								this.aByteArrayArrayArray75[var8][var11][var12] = (byte)((var13 - 2) / 4);
 								this.aByteArrayArrayArray76[var8][var11][var12] = (byte)(var13 - 2 & 3);
 							} else if (var13 <= 81) {
@@ -898,18 +898,18 @@ public class Class3 {
 						}
 					} else {
 						while (true) {
-							var13 = var7.get1();
+							var13 = var7.readUByte();
 							if (var13 == 0) {
 								break;
 							}
 
 							if (var13 == 1) {
-								var7.get1();
+								var7.readUByte();
 								break;
 							}
 
 							if (var13 <= 49) {
-								var7.get1();
+								var7.readUByte();
 							}
 						}
 					}
@@ -924,7 +924,7 @@ public class Class3 {
 		int var8 = -1;
 
 		while (true) {
-			int var9 = var7.method493();
+			int var9 = var7.readUShortSmart();
 			if (var9 == 0) {
 				return;
 			}
@@ -933,7 +933,7 @@ public class Class3 {
 			int var10 = 0;
 
 			while (true) {
-				int var11 = var7.method493();
+				int var11 = var7.readUShortSmart();
 				if (var11 == 0) {
 					break;
 				}
@@ -942,7 +942,7 @@ public class Class3 {
 				int var12 = var10 & 63;
 				int var13 = var10 >> 6 & 63;
 				int var14 = var10 >> 12;
-				int var15 = var7.get1();
+				int var15 = var7.readUByte();
 				int var16 = var15 >> 2;
 				int var17 = var15 & 3;
 				int var18 = var5 + var13;
@@ -1016,7 +1016,7 @@ public class Class3 {
 
 		label55:
 		while (true) {
-			int var7 = var5.method493();
+			int var7 = var5.readUShortSmart();
 			if (var7 == 0) {
 				return var4;
 			}
@@ -1028,7 +1028,7 @@ public class Class3 {
 			while (true) {
 				int var10;
 				while (!var9) {
-					var10 = var5.method493();
+					var10 = var5.readUShortSmart();
 					if (var10 == 0) {
 						continue label55;
 					}
@@ -1036,7 +1036,7 @@ public class Class3 {
 					var8 += var10 - 1;
 					int var11 = var8 & 63;
 					int var12 = var8 >> 6 & 63;
-					int var13 = var5.get1() >> 2;
+					int var13 = var5.readUByte() >> 2;
 					int var14 = var3 + var12;
 					int var15 = var11 + var2;
 					if (var14 > 0 && var15 > 0 && var14 < 103 && var15 < 103) {
@@ -1048,12 +1048,12 @@ public class Class3 {
 					}
 				}
 
-				var10 = var5.method493();
+				var10 = var5.readUShortSmart();
 				if (var10 == 0) {
 					break;
 				}
 
-				var5.get1();
+				var5.readUByte();
 			}
 		}
 	}
@@ -1328,7 +1328,7 @@ public class Class3 {
 		int var3 = -1;
 
 		while (true) {
-			int var4 = var1.method493();
+			int var4 = var1.readUShortSmart();
 			if (var4 == 0) {
 				return;
 			}
@@ -1338,12 +1338,12 @@ public class Class3 {
 			var5.method204((byte)0, var2);
 
 			while (true) {
-				int var6 = var1.method493();
+				int var6 = var1.readUShortSmart();
 				if (var6 == 0) {
 					break;
 				}
 
-				var1.get1();
+				var1.readUByte();
 			}
 		}
 	}

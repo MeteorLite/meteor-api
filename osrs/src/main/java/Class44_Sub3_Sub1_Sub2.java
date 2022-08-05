@@ -82,44 +82,44 @@ public class Class44_Sub3_Sub1_Sub2 extends DrawingArea {
 		this.aBoolean1430 = false;
 		Buffer var4 = new Buffer(var1.method546(var2 + ".dat", (byte[])null), (byte)1);
 		Buffer var5 = new Buffer(var1.method546("index.dat", (byte[])null), (byte)1);
-		var5.anInt1374 = var4.get2();
-		this.anInt1436 = var5.get2();
-		this.anInt1437 = var5.get2();
-		int var6 = var5.get1();
+		var5.offset = var4.readUShort();
+		this.anInt1436 = var5.readUShort();
+		this.anInt1437 = var5.readUShort();
+		int var6 = var5.readUByte();
 		int[] var7 = new int[var6];
 
 		int var8;
 		for (var8 = 0; var8 < var6 - 1; ++var8) {
-			var7[var8 + 1] = var5.get3();
+			var7[var8 + 1] = var5.readMedium();
 			if (var7[var8 + 1] == 0) {
 				var7[var8 + 1] = 1;
 			}
 		}
 
 		for (var8 = 0; var8 < var3; ++var8) {
-			var5.anInt1374 += 2;
-			var4.anInt1374 += var5.get2() * var5.get2();
-			++var5.anInt1374;
+			var5.offset += 2;
+			var4.offset += var5.readUShort() * var5.readUShort();
+			++var5.offset;
 		}
 
-		this.anInt1434 = var5.get1();
-		this.anInt1435 = var5.get1();
-		this.anInt1432 = var5.get2();
-		this.anInt1433 = var5.get2();
-		var8 = var5.get1();
+		this.anInt1434 = var5.readUByte();
+		this.anInt1435 = var5.readUByte();
+		this.anInt1432 = var5.readUShort();
+		this.anInt1433 = var5.readUShort();
+		var8 = var5.readUByte();
 		int var9 = this.anInt1432 * this.anInt1433;
 		this.anIntArray1431 = new int[var9];
 		int var10;
 		if (var8 == 0) {
 			for (var10 = 0; var10 < var9; ++var10) {
-				this.anIntArray1431[var10] = var7[var4.get1()];
+				this.anIntArray1431[var10] = var7[var4.readUByte()];
 			}
 
 		} else {
 			if (var8 == 1) {
 				for (var10 = 0; var10 < this.anInt1432; ++var10) {
 					for (int var11 = 0; var11 < this.anInt1433; ++var11) {
-						this.anIntArray1431[var10 + var11 * this.anInt1432] = var7[var4.get1()];
+						this.anIntArray1431[var10 + var11 * this.anInt1432] = var7[var4.readUByte()];
 					}
 				}
 			}

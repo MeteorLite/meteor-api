@@ -11,8 +11,8 @@ public class Buffer extends DualNode {
 	public static int anInt1380;
 	public static int anInt1381;
 	public int anInt1375;
-	public byte[] aByteArray1373;
-	public int anInt1374;
+	public byte[] array;
+	public int offset;
 	public Class46 aClass46_1378;
 	public int anInt1363;
 	public char[] aCharArray1385;
@@ -67,8 +67,8 @@ public class Buffer extends DualNode {
 		this.aBoolean1370 = false;
 		this.aBoolean1371 = false;
 		this.anInt1372 = -186;
-		this.aByteArray1373 = var1;
-		this.anInt1374 = 0;
+		this.array = var1;
+		this.offset = 0;
 	}
 
 	@ObfuscatedSignature(
@@ -91,139 +91,50 @@ public class Buffer extends DualNode {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "4"
+			descriptor = "(IB)I",
+			garbageValue = "-96"
 	)
-	public void accessBits(byte var1) {
-		this.anInt1375 = this.anInt1374 * 8;
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-96"
-	)
-	public int getBit(int var1, byte var2) {
+	public int readBit(int var1, byte var2) {
 		int var3 = this.anInt1375 >> 3;
 		int var4 = 8 - (this.anInt1375 & 7);
 		int var5 = 0;
 
 		for (this.anInt1375 += var1; var1 > var4; var4 = 8) {
-			var5 += (this.aByteArray1373[var3++] & anIntArray1377[var4]) << var1 - var4;
+			var5 += (this.array[var3++] & anIntArray1377[var4]) << var1 - var4;
 			var1 -= var4;
 		}
 
 		if (var4 == var1) {
-			var5 += this.aByteArray1373[var3] & anIntArray1377[var4];
+			var5 += this.array[var3] & anIntArray1377[var4];
 		} else {
-			var5 += this.aByteArray1373[var3] >> var4 - var1 & anIntArray1377[var1];
+			var5 += this.array[var3] >> var4 - var1 & anIntArray1377[var1];
 		}
 
 		return var5;
 	}
 
-	public int get4() {
-		this.anInt1374 += 4;
-		return ((this.aByteArray1373[this.anInt1374 - 3] & 255) << 16) + (this.aByteArray1373[this.anInt1374 - 1] & 255) + ((this.aByteArray1373[this.anInt1374 - 2] & 255) << 8) + ((this.aByteArray1373[this.anInt1374 - 4] & 255) << 24);
+	//1
+	public int readUByte() {
+		return this.array[this.offset++] & 255;
 	}
 
-	public int get1() {
-		return this.aByteArray1373[this.anInt1374++] & 255;
+	//1
+	public byte readByte() {
+		return this.array[this.offset++];
 	}
 
-	public void putOpcode(int var1) {
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 + this.aClass46_1378.method542());
+	//2
+	public int readUShort() {
+		this.offset += 2;
+		return (this.array[this.offset - 1] & 255)
+				+ ((this.array[this.offset - 2] & 255) << 8);
 	}
 
-	public int method493() {
-		int var1 = this.aByteArray1373[this.anInt1374] & 255;
-		return var1 < 128 ? this.get1() : this.get2() - 32768;
-	}
-
-	public int get3() {
-		this.anInt1374 += 3;
-		return ((this.aByteArray1373[this.anInt1374 - 3] & 255) << 16) + (this.aByteArray1373[this.anInt1374 - 1] & 255) + ((this.aByteArray1373[this.anInt1374 - 2] & 255) << 8);
-	}
-
-	public void put1(int var1) {
-		this.aByteArray1373[this.anInt1374++] = (byte)var1;
-	}
-
-	public int get2() {
-		this.anInt1374 += 2;
-		return (this.aByteArray1373[this.anInt1374 - 1] & 255) + ((this.aByteArray1373[this.anInt1374 - 2] & 255) << 8);
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(I[BII)V",
-		garbageValue = "0"
-	)
-	public void getArray(int var1, byte[] var2, int var3, int var4) {
-		for (int var5 = var3; var5 < var3 + var1; ++var5) {
-			var2[var5] = this.aByteArray1373[this.anInt1374++];
-		}
-
-	}
-
-	public void accessBytes(int var1) {
-		this.anInt1374 = (this.anInt1375 + 7) / 8;
-		var1 = 88 / var1;
-	}
-
-	public String getString() {
-		int var1 = this.anInt1374;
-
-		while (this.aByteArray1373[this.anInt1374++] != 10) {
-		}
-
-		return new String(this.aByteArray1373, var1, this.anInt1374 - var1 - 1);
-	}
-
-	public void put4(int var1) {
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 24);
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 16);
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 8);
-		this.aByteArray1373[this.anInt1374++] = (byte)var1;
-	}
-
-	public byte[] getStringArray(int var1) {
-		int var2 = this.anInt1374;
-
-		while (this.aByteArray1373[this.anInt1374++] != 10) {
-		}
-
-		byte[] var3 = new byte[this.anInt1374 - var2 - 1];
-		if (var1 != -32952) {
-			this.anInt1363 = 127;
-		}
-
-		if (this.anInt1374 - 1 - var2 >= 0) {
-			System.arraycopy(this.aByteArray1373, var2, var3, 0, this.anInt1374 - 1 - var2);
-		}
-
-		return var3;
-	}
-
-	public byte get1Signed() {
-		return this.aByteArray1373[this.anInt1374++];
-	}
-
-	public void put4LE(boolean var1, int var2) {
-		this.aByteArray1373[this.anInt1374++] = (byte)var2;
-		this.aByteArray1373[this.anInt1374++] = (byte)(var2 >> 8);
-		this.aByteArray1373[this.anInt1374++] = (byte)(var2 >> 16);
-		this.aByteArray1373[this.anInt1374++] = (byte)(var2 >> 24);
-	}
-
-	public void putArray(byte[] var1, boolean var2, int var3, int var4) {
-		for (int var5 = var3; var5 < var3 + var4; ++var5) {
-			this.aByteArray1373[this.anInt1374++] = var1[var5];
-		}
-
-	}
-
-	public int get2Signed() {
-		this.anInt1374 += 2;
-		int var1 = (this.aByteArray1373[this.anInt1374 - 1] & 255) + ((this.aByteArray1373[this.anInt1374 - 2] & 255) << 8);
+	//2
+	public int readShort() {
+		this.offset += 2;
+		int var1 = (this.array[this.offset - 1] & 255)
+				+ ((this.array[this.offset - 2] & 255) << 8);
 		if (var1 > 32767) {
 			var1 -= 65536;
 		}
@@ -231,80 +142,197 @@ public class Buffer extends DualNode {
 		return var1;
 	}
 
+	//3
+	public int readMedium() {
+		this.offset += 3;
+		return ((this.array[this.offset - 3] & 255) << 16)
+				+ (this.array[this.offset - 1] & 255)
+				+ ((this.array[this.offset - 2] & 255) << 8);
+	}
+
+	//4
+	public int readInt() {
+		this.offset += 4;
+		return ((this.array[this.offset - 3] & 255) << 16)
+				+ (this.array[this.offset - 1] & 255)
+				+ ((this.array[this.offset - 2] & 255) << 8)
+				+ ((this.array[this.offset - 4] & 255) << 24);
+	}
+
+	//8
 	@ObfuscatedSignature(
-		descriptor = "(JI)V",
-		garbageValue = "0"
+			descriptor = "(I)J",
+			garbageValue = "0"
 	)
-	public void put8(long var1, int var3) {
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 56));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 48));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 40));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 32));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 24));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 16));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)(var1 >> 8));
-		this.aByteArray1373[this.anInt1374++] = (byte)((int)var1);
-	}
-
-	public void put2LE(boolean var1, int var2) {
-		this.aByteArray1373[this.anInt1374++] = (byte)var2;
-		this.aByteArray1373[this.anInt1374++] = (byte)(var2 >> 8);
-	}
-
-	public void put2(int var1) {
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 8);
-		this.aByteArray1373[this.anInt1374++] = (byte)var1;
-	}
-
-	@ObfuscatedSignature(
-		descriptor = "(I)J",
-		garbageValue = "0"
-	)
-	public long get8(int var1) {
-		long var2 = (long)this.get4() & 4294967295L;
-		long var4 = (long)this.get4() & 4294967295L;
+	public long readLong(int var1) {
+		long var2 = (long)this.readInt() & 4294967295L;
+		long var4 = (long)this.readInt() & 4294967295L;
 		return (var2 << 32) + var4;
 	}
 
-	public void putSize(int var1, int var2) {
-		if (var2 == 0) {
-			this.aByteArray1373[this.anInt1374 - var1 - 1] = (byte)var1;
+	//Variable
+	public int readUShortSmart() {
+		int var1 = this.array[this.offset] & 255;
+		return var1 < 128 ? this.readUByte() : this.readUShort() - 32768;
+	}
+
+	//Variable
+	public int readShortSmart() {
+		int var1 = this.array[this.offset] & 255;
+		return var1 < 128 ? this.readUByte() - 64 : this.readUShort() - 49152;
+	}
+
+	//Variable
+	public String readString() {
+		int var1 = this.offset;
+
+		while (this.array[this.offset++] != 10) {
 		}
 
+		return new String(this.array, var1, this.offset - var1 - 1);
 	}
 
-	public void putString(String var1) {
-		var1.getBytes(0, var1.length(), this.aByteArray1373, this.anInt1374);
-		this.anInt1374 += var1.length();
-		this.aByteArray1373[this.anInt1374++] = 10;
+	//Variable
+	public byte[] readStringArray(int var1) {
+		int var2 = this.offset;
+
+		while (this.array[this.offset++] != 10) {
+		}
+
+		byte[] var3 = new byte[this.offset - var2 - 1];
+		if (var1 != -32952) {
+			this.anInt1363 = 127;
+		}
+
+		if (this.offset - 1 - var2 >= 0) {
+			System.arraycopy(this.array, var2, var3, 0, this.offset - 1 - var2);
+		}
+
+		return var3;
 	}
 
-	public void put3(int var1) {
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 16);
-		this.aByteArray1373[this.anInt1374++] = (byte)(var1 >> 8);
-		this.aByteArray1373[this.anInt1374++] = (byte)var1;
+	//Variable
+	@ObfuscatedSignature(
+			descriptor = "(I[BII)V",
+			garbageValue = "0"
+	)
+	public void readArray(int var1, byte[] var2, int var3, int var4) {
+		for (int var5 = var3; var5 < var3 + var1; ++var5) {
+			var2[var5] = this.array[this.offset++];
+		}
 	}
 
-	public int method492() {
-		int var1 = this.aByteArray1373[this.anInt1374] & 255;
-		return var1 < 128 ? this.get1() - 64 : this.get2() - 49152;
+	//1
+	public void writeOpcode(int var1) {
+		this.array[this.offset++] = (byte)(var1 + this.aClass46_1378.method542());
+	}
+
+	//1
+	public void writeSize(int var1, int var2) {
+		if (var2 == 0) {
+			this.array[this.offset - var1 - 1] = (byte)var1;
+		}
+	}
+
+	//1
+	public void writeByte(int var1) {
+		this.array[this.offset++] = (byte)var1;
+	}
+
+	//2
+	public void writeShort(int var1) {
+		this.array[this.offset++] = (byte)(var1 >> 8);
+		this.array[this.offset++] = (byte)var1;
+	}
+
+	//2
+	public void writeShortLE(boolean var1, int var2) {
+		this.array[this.offset++] = (byte)var2;
+		this.array[this.offset++] = (byte)(var2 >> 8);
+	}
+
+	//3
+	public void writeMedium(int var1) {
+		this.array[this.offset++] = (byte)(var1 >> 16);
+		this.array[this.offset++] = (byte)(var1 >> 8);
+		this.array[this.offset++] = (byte)var1;
+	}
+
+	//4
+	public void writeInt(int var1) {
+		this.array[this.offset++] = (byte)(var1 >> 24);
+		this.array[this.offset++] = (byte)(var1 >> 16);
+		this.array[this.offset++] = (byte)(var1 >> 8);
+		this.array[this.offset++] = (byte)var1;
+	}
+
+	//4
+	public void writeIntME(boolean var1, int var2) {
+		this.array[this.offset++] = (byte)var2;
+		this.array[this.offset++] = (byte)(var2 >> 8);
+		this.array[this.offset++] = (byte)(var2 >> 16);
+		this.array[this.offset++] = (byte)(var2 >> 24);
+	}
+
+	//4
+	@ObfuscatedSignature(
+			descriptor = "(JI)V",
+			garbageValue = "0"
+	)
+	public void writeLong(long var1, int var3) {
+		this.array[this.offset++] = (byte)((int)(var1 >> 56));
+		this.array[this.offset++] = (byte)((int)(var1 >> 48));
+		this.array[this.offset++] = (byte)((int)(var1 >> 40));
+		this.array[this.offset++] = (byte)((int)(var1 >> 32));
+		this.array[this.offset++] = (byte)((int)(var1 >> 24));
+		this.array[this.offset++] = (byte)((int)(var1 >> 16));
+		this.array[this.offset++] = (byte)((int)(var1 >> 8));
+		this.array[this.offset++] = (byte)((int)var1);
+	}
+
+	//Variable
+	public void writeArray(byte[] var1, boolean var2, int var3, int var4) {
+		for (int var5 = var3; var5 < var3 + var4; ++var5) {
+			this.array[this.offset++] = var1[var5];
+		}
+	}
+
+	//Variable
+	public void writeString(String var1) {
+		var1.getBytes(0, var1.length(), this.array, this.offset);
+		this.offset += var1.length();
+		this.array[this.offset++] = 10;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V",
-		garbageValue = "4"
+			descriptor = "(B)V",
+			garbageValue = "4"
+	)
+	public void accessBits(byte var1) {
+		this.anInt1375 = this.offset * 8;
+	}
+
+
+	public void accessBytes(int var1) {
+		this.offset = (this.anInt1375 + 7) / 8;
+		var1 = 88 / var1;
+	}
+
+	@ObfuscatedSignature(
+			descriptor = "(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V",
+			garbageValue = "4"
 	)
 	public void rsa(BigInteger var1, BigInteger var2) {
-		int var3 = this.anInt1374;
-		this.anInt1374 = 0;
+		int var3 = this.offset;
+		this.offset = 0;
 		byte[] var4 = new byte[var3];
-		this.getArray(var3, var4, 0, 0);
+		this.readArray(var3, var4, 0, 0);
 		BigInteger var5 = new BigInteger(var4);
 		BigInteger var6 = var5.modPow(var2, var1);
 		byte[] var7 = var6.toByteArray();
-		this.anInt1374 = 0;
-		this.put1(var7.length);
-		this.putArray(var7, false, 0, var7.length);
+		this.offset = 0;
+		this.writeByte(var7.length);
+		this.writeArray(var7, false, 0, var7.length);
 	}
 
 	public static Buffer method467(int var0, int var1) {
@@ -322,19 +350,19 @@ public class Buffer extends DualNode {
 			}
 
 			if (var3 != null) {
-				var3.anInt1374 = 0;
+				var3.offset = 0;
 				return var3;
 			}
 		}
 
 		Buffer var2 = new Buffer((byte)3);
-		var2.anInt1374 = 0;
+		var2.offset = 0;
 		if (var1 == 0) {
-			var2.aByteArray1373 = new byte[100];
+			var2.array = new byte[100];
 		} else if (var1 == 1) {
-			var2.aByteArray1373 = new byte[5000];
+			var2.array = new byte[5000];
 		} else {
-			var2.aByteArray1373 = new byte[30000];
+			var2.array = new byte[30000];
 		}
 
 		return var2;

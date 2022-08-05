@@ -60,7 +60,7 @@ public class Class26 {
 
 		while (true) {
 			while (true) {
-				var3 = var2.get1();
+				var3 = var2.readUByte();
 				if (var3 == 0) {
 					if (this.anInt498 == 0) {
 						this.anInt498 = 1;
@@ -94,48 +94,48 @@ public class Class26 {
 
 				int var4;
 				if (var3 == 1) {
-					this.anInt498 = var2.get1();
+					this.anInt498 = var2.readUByte();
 					this.primaryFrames = new int[this.anInt498];
 					this.anIntArray500 = new int[this.anInt498];
 					this.anIntArray501 = new int[this.anInt498];
 
 					for (var4 = 0; var4 < this.anInt498; ++var4) {
-						this.primaryFrames[var4] = var2.get2();
-						this.anIntArray500[var4] = var2.get2();
+						this.primaryFrames[var4] = var2.readUShort();
+						this.anIntArray500[var4] = var2.readUShort();
 						if (this.anIntArray500[var4] == 65535) {
 							this.anIntArray500[var4] = -1;
 						}
 
-						this.anIntArray501[var4] = var2.get2();
+						this.anIntArray501[var4] = var2.readUShort();
 					}
 				} else if (var3 == 2) {
-					this.frameStep = var2.get2();
+					this.frameStep = var2.readUShort();
 				} else if (var3 != 3) {
 					if (var3 == 4) {
 						this.aBoolean504 = true;
 					} else if (var3 == 5) {
-						this.anInt505 = var2.get1();
+						this.anInt505 = var2.readUByte();
 					} else if (var3 == 6) {
-						this.anInt506 = var2.get2();
+						this.anInt506 = var2.readUShort();
 					} else if (var3 == 7) {
-						this.anInt507 = var2.get2();
+						this.anInt507 = var2.readUShort();
 					} else if (var3 == 8) {
-						this.anInt508 = var2.get1();
+						this.anInt508 = var2.readUByte();
 					} else if (var3 == 9) {
-						this.anInt509 = var2.get1();
+						this.anInt509 = var2.readUByte();
 					} else if (var3 == 10) {
-						this.anInt510 = var2.get1();
+						this.anInt510 = var2.readUByte();
 					} else if (var3 == 11) {
-						this.anInt511 = var2.get1();
+						this.anInt511 = var2.readUByte();
 					} else {
 						System.out.println("Error unrecognised seq config code: " + var3);
 					}
 				} else {
-					var4 = var2.get1();
+					var4 = var2.readUByte();
 					this.anIntArray503 = new int[var4 + 1];
 
 					for (int var5 = 0; var5 < var4; ++var5) {
-						this.anIntArray503[var5] = var2.get1();
+						this.anIntArray503[var5] = var2.readUByte();
 					}
 
 					this.anIntArray503[var4] = 9999999;
@@ -146,7 +146,7 @@ public class Class26 {
 
 	public static void method253(boolean var0, Class47 var1) {
 		Buffer var2 = new Buffer(var1.method546("seq.dat", (byte[])null), (byte)1);
-		anInt496 = var2.get2();
+		anInt496 = var2.readUShort();
 		if (aClass26Array497 == null) {
 			aClass26Array497 = new Class26[anInt496];
 		}

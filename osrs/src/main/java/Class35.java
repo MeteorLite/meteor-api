@@ -13,17 +13,17 @@ public class Class35 {
 
 	public void method276(Buffer var1, byte var2, int var3) {
 		while (true) {
-			int var4 = var1.get1();
+			int var4 = var1.readUByte();
 			if (var4 == 0) {
 				return;
 			}
 
 			if (var4 == 1) {
-				this.anInt582 = var1.get2();
-				this.anInt583 = var1.get1();
-				this.anInt584 = var1.get1();
+				this.anInt582 = var1.readUShort();
+				this.anInt583 = var1.readUByte();
+				this.anInt584 = var1.readUByte();
 			} else if (var4 == 10) {
-				this.aString581 = var1.getString();
+				this.aString581 = var1.readString();
 			} else {
 				System.out.println("Error unrecognised config code: " + var4);
 			}
@@ -32,7 +32,7 @@ public class Class35 {
 
 	public static void method275(boolean var0, Class47 var1) {
 		Buffer var2 = new Buffer(var1.method546("varbit.dat", (byte[])null), (byte)1);
-		anInt579 = var2.get2();
+		anInt579 = var2.readUShort();
 		if (aClass35Array580 == null) {
 			aClass35Array580 = new Class35[anInt579];
 		}
@@ -45,7 +45,7 @@ public class Class35 {
 			aClass35Array580[var3].method276(var2, (byte)6, var3);
 		}
 
-		if (var2.aByteArray1373.length != var2.anInt1374) {
+		if (var2.array.length != var2.offset) {
 			System.out.println("varbit load mismatch");
 		}
 

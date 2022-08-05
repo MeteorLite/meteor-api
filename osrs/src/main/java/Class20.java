@@ -146,22 +146,22 @@ public class Class20 {
 
 	public void method244(byte var1, Buffer var2) {
 		while (true) {
-			int var3 = var2.get1();
+			int var3 = var2.readUByte();
 			if (var3 == 0) {
 				return;
 			}
 
 			if (var3 == 1) {
-				this.anInt424 = var2.get3();
+				this.anInt424 = var2.readMedium();
 				this.method245(this.anInt424);
 			} else if (var3 == 2) {
-				this.anInt425 = var2.get1();
+				this.anInt425 = var2.readUByte();
 			} else if (var3 == 3) {
 				this.aBoolean426 = true;
 			} else if (var3 == 5) {
 				this.aBoolean427 = false;
 			} else if (var3 == 6) {
-				this.aString428 = var2.getString();
+				this.aString428 = var2.readString();
 			} else {
 				System.out.println("Error unrecognised config code: " + var3);
 			}
@@ -170,7 +170,7 @@ public class Class20 {
 
 	public static void method243(boolean var0, Class47 var1) {
 		Buffer var2 = new Buffer(var1.method546("flo.dat", (byte[])null), (byte)1);
-		anInt422 = var2.get2();
+		anInt422 = var2.readUShort();
 		if (aClass20Array423 == null) {
 			aClass20Array423 = new Class20[anInt422];
 		}

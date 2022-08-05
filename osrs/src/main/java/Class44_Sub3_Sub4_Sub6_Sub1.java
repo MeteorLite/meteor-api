@@ -337,22 +337,22 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
 	}
 
 	public void method534(Buffer var1, int var2) {
-		var1.anInt1374 = 0;
-		this.anInt1659 = var1.get1();
-		this.anInt1660 = var1.get1();
+		var1.offset = 0;
+		this.anInt1659 = var1.readUByte();
+		this.anInt1660 = var1.readUByte();
 		this.aClass12_1679 = null;
 
 		int var3;
 		int var4;
 		for (var3 = 0; var3 < 12; ++var3) {
-			var4 = var1.get1();
+			var4 = var1.readUByte();
 			if (var4 == 0) {
 				this.anIntArray1661[var3] = 0;
 			} else {
-				int var5 = var1.get1();
+				int var5 = var1.readUByte();
 				this.anIntArray1661[var3] = var5 + (var4 << 8);
 				if (var3 == 0 && this.anIntArray1661[0] == 65535) {
-					this.aClass12_1679 = Class12.method214(var1.get2());
+					this.aClass12_1679 = Class12.method214(var1.readUShort());
 					break;
 				}
 			}
@@ -361,7 +361,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
 		var2 = 2 / var2;
 
 		for (var3 = 0; var3 < 5; ++var3) {
-			var4 = var1.get1();
+			var4 = var1.readUByte();
 			if (var4 < 0 || var4 >= Client.anIntArrayArray1241[var3].length) {
 				var4 = 0;
 			}
@@ -369,44 +369,44 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
 			this.anIntArray1662[var3] = var4;
 		}
 
-		super.anInt1604 = var1.get2();
+		super.anInt1604 = var1.readUShort();
 		if (super.anInt1604 == 65535) {
 			super.anInt1604 = -1;
 		}
 
-		super.anInt1605 = var1.get2();
+		super.anInt1605 = var1.readUShort();
 		if (super.anInt1605 == 65535) {
 			super.anInt1605 = -1;
 		}
 
-		super.anInt1606 = var1.get2();
+		super.anInt1606 = var1.readUShort();
 		if (super.anInt1606 == 65535) {
 			super.anInt1606 = -1;
 		}
 
-		super.anInt1607 = var1.get2();
+		super.anInt1607 = var1.readUShort();
 		if (super.anInt1607 == 65535) {
 			super.anInt1607 = -1;
 		}
 
-		super.anInt1608 = var1.get2();
+		super.anInt1608 = var1.readUShort();
 		if (super.anInt1608 == 65535) {
 			super.anInt1608 = -1;
 		}
 
-		super.anInt1609 = var1.get2();
+		super.anInt1609 = var1.readUShort();
 		if (super.anInt1609 == 65535) {
 			super.anInt1609 = -1;
 		}
 
-		super.anInt1610 = var1.get2();
+		super.anInt1610 = var1.readUShort();
 		if (super.anInt1610 == 65535) {
 			super.anInt1610 = -1;
 		}
 
-		this.aString1657 = Class48.method551(131, Class48.method548(0, var1.get8(0)));
-		this.anInt1663 = var1.get1();
-		this.anInt1664 = var1.get2();
+		this.aString1657 = Class48.method551(131, Class48.method548(0, var1.readLong(0)));
+		this.anInt1663 = var1.readUByte();
+		this.anInt1664 = var1.readUShort();
 		this.aBoolean1658 = true;
 		this.aLong1665 = 0L;
 

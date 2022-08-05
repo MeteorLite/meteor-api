@@ -389,15 +389,15 @@ public class Model extends Renderable {
 
 		this.anIntArray1536 = new int[this.anInt1526];
 		Buffer var4 = new Buffer(var3.aByteArray435, (byte)1);
-		var4.anInt1374 = var3.anInt439;
+		var4.offset = var3.anInt439;
 		Buffer var5 = new Buffer(var3.aByteArray435, (byte)1);
-		var5.anInt1374 = var3.anInt440;
+		var5.offset = var3.anInt440;
 		Buffer var6 = new Buffer(var3.aByteArray435, (byte)1);
-		var6.anInt1374 = var3.anInt441;
+		var6.offset = var3.anInt441;
 		Buffer var7 = new Buffer(var3.aByteArray435, (byte)1);
-		var7.anInt1374 = var3.anInt442;
+		var7.offset = var3.anInt442;
 		Buffer var8 = new Buffer(var3.aByteArray435, (byte)1);
-		var8.anInt1374 = var3.anInt443;
+		var8.offset = var3.anInt443;
 		int var9 = 0;
 		int var10 = 0;
 		int var11 = 0;
@@ -408,20 +408,20 @@ public class Model extends Renderable {
 		int var15;
 		int var16;
 		for (var12 = 0; var12 < this.anInt1522; ++var12) {
-			var13 = var4.get1();
+			var13 = var4.readUByte();
 			var14 = 0;
 			if ((var13 & 1) != 0) {
-				var14 = var5.method492();
+				var14 = var5.readShortSmart();
 			}
 
 			var15 = 0;
 			if ((var13 & 2) != 0) {
-				var15 = var6.method492();
+				var15 = var6.readShortSmart();
 			}
 
 			var16 = 0;
 			if ((var13 & 4) != 0) {
-				var16 = var7.method492();
+				var16 = var7.readShortSmart();
 			}
 
 			this.anIntArray1523[var12] = var9 + var14;
@@ -431,48 +431,48 @@ public class Model extends Renderable {
 			var10 = this.anIntArray1524[var12];
 			var11 = this.anIntArray1525[var12];
 			if (this.anIntArray1551 != null) {
-				this.anIntArray1551[var12] = var8.get1();
+				this.anIntArray1551[var12] = var8.readUByte();
 			}
 		}
 
-		var4.anInt1374 = var3.anInt446;
-		var5.anInt1374 = var3.anInt447;
-		var6.anInt1374 = var3.anInt448;
-		var7.anInt1374 = var3.anInt449;
-		var8.anInt1374 = var3.anInt450;
+		var4.offset = var3.anInt446;
+		var5.offset = var3.anInt447;
+		var6.offset = var3.anInt448;
+		var7.offset = var3.anInt449;
+		var8.offset = var3.anInt450;
 
 		for (var12 = 0; var12 < this.anInt1526; ++var12) {
-			this.anIntArray1536[var12] = var4.get2();
+			this.anIntArray1536[var12] = var4.readUShort();
 			if (this.anIntArray1533 != null) {
-				this.anIntArray1533[var12] = var5.get1();
+				this.anIntArray1533[var12] = var5.readUByte();
 			}
 
 			if (this.anIntArray1534 != null) {
-				this.anIntArray1534[var12] = var6.get1();
+				this.anIntArray1534[var12] = var6.readUByte();
 			}
 
 			if (this.anIntArray1535 != null) {
-				this.anIntArray1535[var12] = var7.get1();
+				this.anIntArray1535[var12] = var7.readUByte();
 			}
 
 			if (this.anIntArray1552 != null) {
-				this.anIntArray1552[var12] = var8.get1();
+				this.anIntArray1552[var12] = var8.readUByte();
 			}
 		}
 
-		var4.anInt1374 = var3.anInt444;
-		var5.anInt1374 = var3.anInt445;
+		var4.offset = var3.anInt444;
+		var5.offset = var3.anInt445;
 		var12 = 0;
 		var13 = 0;
 		var14 = 0;
 		var15 = 0;
 
 		for (var16 = 0; var16 < this.anInt1526; ++var16) {
-			int var17 = var5.get1();
+			int var17 = var5.readUByte();
 			if (var17 == 1) {
-				var12 = var4.method492() + var15;
-				var13 = var4.method492() + var12;
-				var14 = var4.method492() + var13;
+				var12 = var4.readShortSmart() + var15;
+				var13 = var4.readShortSmart() + var12;
+				var14 = var4.readShortSmart() + var13;
 				var15 = var14;
 				this.anIntArray1527[var16] = var12;
 				this.anIntArray1528[var16] = var13;
@@ -481,7 +481,7 @@ public class Model extends Renderable {
 
 			if (var17 == 2) {
 				var13 = var14;
-				var14 = var4.method492() + var15;
+				var14 = var4.readShortSmart() + var15;
 				var15 = var14;
 				this.anIntArray1527[var16] = var12;
 				this.anIntArray1528[var16] = var13;
@@ -490,7 +490,7 @@ public class Model extends Renderable {
 
 			if (var17 == 3) {
 				var12 = var14;
-				var14 = var4.method492() + var15;
+				var14 = var4.readShortSmart() + var15;
 				var15 = var14;
 				this.anIntArray1527[var16] = var12;
 				this.anIntArray1528[var16] = var13;
@@ -501,7 +501,7 @@ public class Model extends Renderable {
 				int var18 = var12;
 				var12 = var13;
 				var13 = var18;
-				var14 = var4.method492() + var15;
+				var14 = var4.readShortSmart() + var15;
 				var15 = var14;
 				this.anIntArray1527[var16] = var12;
 				this.anIntArray1528[var16] = var18;
@@ -509,12 +509,12 @@ public class Model extends Renderable {
 			}
 		}
 
-		var4.anInt1374 = var3.anInt451;
+		var4.offset = var3.anInt451;
 
 		for (var16 = 0; var16 < this.anInt1538; ++var16) {
-			this.anIntArray1539[var16] = var4.get2();
-			this.anIntArray1540[var16] = var4.get2();
-			this.anIntArray1541[var16] = var4.get2();
+			this.anIntArray1539[var16] = var4.readUShort();
+			this.anIntArray1540[var16] = var4.readUShort();
+			this.anIntArray1541[var16] = var4.readUShort();
 		}
 
 	}
@@ -2094,21 +2094,21 @@ public class Model extends Renderable {
 			var14.anInt438 = 0;
 		} else {
 			Buffer var2 = new Buffer(var1, (byte)1);
-			var2.anInt1374 = var1.length - 18;
+			var2.offset = var1.length - 18;
 			Class21 var3 = aClass21Array1557[var0] = new Class21();
 			var3.aByteArray435 = var1;
-			var3.anInt436 = var2.get2();
-			var3.anInt437 = var2.get2();
-			var3.anInt438 = var2.get1();
-			int var4 = var2.get1();
-			int var5 = var2.get1();
-			int var6 = var2.get1();
-			int var7 = var2.get1();
-			int var8 = var2.get1();
-			int var9 = var2.get2();
-			int var10 = var2.get2();
-			int var11 = var2.get2();
-			int var12 = var2.get2();
+			var3.anInt436 = var2.readUShort();
+			var3.anInt437 = var2.readUShort();
+			var3.anInt438 = var2.readUByte();
+			int var4 = var2.readUByte();
+			int var5 = var2.readUByte();
+			int var6 = var2.readUByte();
+			int var7 = var2.readUByte();
+			int var8 = var2.readUByte();
+			int var9 = var2.readUShort();
+			int var10 = var2.readUShort();
+			int var11 = var2.readUShort();
+			int var12 = var2.readUShort();
 			byte var13 = 0;
 			var3.anInt439 = var13;
 			int var15 = var13 + var3.anInt436;

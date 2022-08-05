@@ -34,19 +34,19 @@ public class Class49 {
 				if (var6 < 13) {
 					var3 = var6;
 				} else {
-					var2.put1(var6);
+					var2.writeByte(var6);
 				}
 			} else if (var6 < 13) {
-				var2.put1(var6 + (var3 << 4));
+				var2.writeByte(var6 + (var3 << 4));
 				var3 = -1;
 			} else {
-				var2.put1((var6 >> 4) + (var3 << 4));
+				var2.writeByte((var6 >> 4) + (var3 << 4));
 				var3 = var6 & 15;
 			}
 		}
 
 		if (var3 != -1) {
-			var2.put1(var3 << 4);
+			var2.writeByte(var3 << 4);
 		}
 
 	}
@@ -57,7 +57,7 @@ public class Class49 {
 
 		int var6;
 		for (int var5 = 0; var5 < var1; ++var5) {
-			var6 = var2.get1();
+			var6 = var2.readUByte();
 			int var7 = var6 >> 4 & 15;
 			if (var4 == -1) {
 				if (var7 < 13) {

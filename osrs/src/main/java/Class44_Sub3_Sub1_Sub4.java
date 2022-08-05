@@ -30,30 +30,30 @@ public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
 		Buffer var5 = new Buffer(var1.method546(var3 + ".dat", (byte[])null), (byte)1);
 		Buffer var6 = new Buffer(var1.method546("index.dat", (byte[])null), (byte)1);
 		boolean var7 = true;
-		var6.anInt1374 = var5.get2() + 4;
-		int var8 = var6.get1();
+		var6.offset = var5.readUShort() + 4;
+		int var8 = var6.readUByte();
 		if (var8 > 0) {
-			var6.anInt1374 += 3 * (var8 - 1);
+			var6.offset += 3 * (var8 - 1);
 		}
 
 		for (int var9 = 0; var9 < 256; ++var9) {
-			this.anIntArray1461[var9] = var6.get1();
-			this.anIntArray1462[var9] = var6.get1();
-			int var11 = this.anIntArray1459[var9] = var6.get2();
-			int var12 = this.anIntArray1460[var9] = var6.get2();
-			int var13 = var6.get1();
+			this.anIntArray1461[var9] = var6.readUByte();
+			this.anIntArray1462[var9] = var6.readUByte();
+			int var11 = this.anIntArray1459[var9] = var6.readUShort();
+			int var12 = this.anIntArray1460[var9] = var6.readUShort();
+			int var13 = var6.readUByte();
 			int var14 = var11 * var12;
 			this.aByteArrayArray1458[var9] = new byte[var14];
 			int var15;
 			int var16;
 			if (var13 == 0) {
 				for (var15 = 0; var15 < var14; ++var15) {
-					this.aByteArrayArray1458[var9][var15] = var5.get1Signed();
+					this.aByteArrayArray1458[var9][var15] = var5.readByte();
 				}
 			} else if (var13 == 1) {
 				for (var15 = 0; var15 < var11; ++var15) {
 					for (var16 = 0; var16 < var12; ++var16) {
-						this.aByteArrayArray1458[var9][var15 + var16 * var11] = var5.get1Signed();
+						this.aByteArrayArray1458[var9][var15 + var16 * var11] = var5.readByte();
 					}
 				}
 			}

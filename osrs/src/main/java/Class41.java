@@ -723,7 +723,7 @@ public class Class41 {
 	}
 
 	public static void method345(int var0, Buffer var1) {
-		int var2 = var1.get4();
+		int var2 = var1.readInt();
 		aCharArrayArray746 = new char[var2][];
 		aByteArrayArrayArray747 = new byte[var2][][];
 		var0 = 88 / var0;
@@ -736,18 +736,18 @@ public class Class41 {
 	)
 	public static void method348(Buffer var0, byte[][][] var1, char[][] var2) {
 		for (int var3 = 0; var3 < var2.length; ++var3) {
-			char[] var4 = new char[var0.get1()];
+			char[] var4 = new char[var0.readUByte()];
 
 			for (int var5 = 0; var5 < var4.length; ++var5) {
-				var4[var5] = (char)var0.get1();
+				var4[var5] = (char)var0.readUByte();
 			}
 
 			var2[var3] = var4;
-			byte[][] var7 = new byte[var0.get1()][2];
+			byte[][] var7 = new byte[var0.readUByte()][2];
 
 			for (int var6 = 0; var6 < var7.length; ++var6) {
-				var7[var6][0] = (byte)var0.get1();
-				var7[var6][1] = (byte)var0.get1();
+				var7[var6][0] = (byte)var0.readUByte();
+				var7[var6][1] = (byte)var0.readUByte();
 			}
 
 			if (var7.length > 0) {
@@ -762,17 +762,17 @@ public class Class41 {
 		garbageValue = "0"
 	)
 	public static void method346(Buffer var0) {
-		int var1 = var0.get4();
+		int var1 = var0.readInt();
 		aCharArrayArray748 = new char[var1][];
 		method349(false, aCharArrayArray748, var0);
 	}
 
 	public static void method349(boolean var0, char[][] var1, Buffer var2) {
 		for (int var3 = 0; var3 < var1.length; ++var3) {
-			char[] var4 = new char[var2.get1()];
+			char[] var4 = new char[var2.readUByte()];
 
 			for (int var5 = 0; var5 < var4.length; ++var5) {
-				var4[var5] = (char)var2.get1();
+				var4[var5] = (char)var2.readUByte();
 			}
 
 			var1[var3] = var4;
@@ -781,10 +781,10 @@ public class Class41 {
 	}
 
 	public static void method347(int var0, Buffer var1) {
-		anIntArray745 = new int[var1.get4()];
+		anIntArray745 = new int[var1.readInt()];
 
 		for (int var2 = 0; var2 < anIntArray745.length; ++var2) {
-			anIntArray745[var2] = var1.get2();
+			anIntArray745[var2] = var1.readUShort();
 		}
 
 	}
@@ -794,16 +794,16 @@ public class Class41 {
 		garbageValue = "14"
 	)
 	public static void method344(Buffer var0) {
-		int var1 = var0.get4();
+		int var1 = var0.readInt();
 		aCharArrayArray749 = new char[var1][];
 		anIntArray750 = new int[var1];
 
 		for (int var2 = 0; var2 < var1; ++var2) {
-			anIntArray750[var2] = var0.get1();
-			char[] var3 = new char[var0.get1()];
+			anIntArray750[var2] = var0.readUByte();
+			char[] var3 = new char[var0.readUByte()];
 
 			for (int var4 = 0; var4 < var3.length; ++var4) {
-				var3[var4] = (char)var0.get1();
+				var3[var4] = (char)var0.readUByte();
 			}
 
 			aCharArrayArray749[var2] = var3;

@@ -47,8 +47,8 @@ public class Class47 {
 
 	public void method545(int var1, byte[] var2) {
 		Buffer var3 = new Buffer(var2, (byte)1);
-		int var4 = var3.get3();
-		int var5 = var3.get3();
+		int var4 = var3.readMedium();
+		int var5 = var3.readMedium();
 		if (var5 != var4) {
 			byte[] var6 = new byte[var4];
 			Class37.method329(var6, var4, var2, var5, 6);
@@ -60,17 +60,17 @@ public class Class47 {
 			this.aBoolean787 = false;
 		}
 
-		this.anInt782 = var3.get2();
+		this.anInt782 = var3.readUShort();
 		this.anIntArray783 = new int[this.anInt782];
 		this.anIntArray784 = new int[this.anInt782];
 		this.anIntArray785 = new int[this.anInt782];
 		this.anIntArray786 = new int[this.anInt782];
-		int var8 = var3.anInt1374 + this.anInt782 * 10;
+		int var8 = var3.offset + this.anInt782 * 10;
 
 		for (int var7 = 0; var7 < this.anInt782; ++var7) {
-			this.anIntArray783[var7] = var3.get4();
-			this.anIntArray784[var7] = var3.get3();
-			this.anIntArray785[var7] = var3.get3();
+			this.anIntArray783[var7] = var3.readInt();
+			this.anIntArray784[var7] = var3.readMedium();
+			this.anIntArray785[var7] = var3.readMedium();
 			this.anIntArray786[var7] = var8;
 			var8 += this.anIntArray785[var7];
 		}
