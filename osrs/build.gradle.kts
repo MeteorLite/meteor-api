@@ -1,5 +1,6 @@
 plugins{
     java
+    checkstyle
 }
 group = "org.meteorlite"
 version = "1.0-SNAPSHOT"
@@ -42,5 +43,8 @@ tasks{
     }
     test{
         useJUnitPlatform()
+    }
+    checkstyle {
+        toolVersion = "10.3.2"
     }
 }
