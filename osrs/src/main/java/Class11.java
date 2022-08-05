@@ -1,142 +1,150 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class11 {
+	public static Class11[] aClass11Array264;
+	public static boolean[] aBooleanArray272;
+	public Class9 aClass9_266;
+	public int anInt265;
+	public int anInt267;
+	public int[] anIntArray268;
+	public int[] anIntArray269;
+	public int[] anIntArray270;
+	public int[] anIntArray271;
 
-    public static Class11[] aClass11Array264;
-    public static boolean[] aBooleanArray272;
-    public int anInt265;
-    public Class9 aClass9_266;
-    public int anInt267;
-    public int[] anIntArray268;
-    public int[] anIntArray269;
-    public int[] anIntArray270;
-    public int[] anIntArray271;
-    public Class11() {
-    }
+	@ObfuscatedSignature(
+		descriptor = "(II)LClass11;",
+		garbageValue = "6"
+	)
+	public static Class11 method210(int var0) {
+		return aClass11Array264 == null ? null : aClass11Array264[var0];
+	}
 
-    public static void method207(int i) {
-        aClass11Array264 = new Class11[i + 1];
-        aBooleanArray272 = new boolean[i + 1];
-        for (int j = 0; j < i + 1; j++)
-            aBooleanArray272[j] = true;
+	@ObfuscatedSignature(
+		descriptor = "(II)Z",
+		garbageValue = "0"
+	)
+	public static boolean method211(int var0) {
+		return var0 == -1;
+	}
 
-    }
+	public static void method208(int var0, byte[] var1) {
+		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var2.anInt1374 = var1.length - 8;
+		int var3 = var2.get2();
+		int var4 = var2.get2();
+		int var5 = var2.get2();
+		int var6 = var2.get2();
+		byte var7 = 0;
+		Class44_Sub3_Sub2 var8 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var8.anInt1374 = var7;
+		int var28 = var7 + var3 + 2;
+		Class44_Sub3_Sub2 var9 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var9.anInt1374 = var28;
+		var28 += var4;
+		Class44_Sub3_Sub2 var10 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var10.anInt1374 = var28;
+		var28 += var5;
+		Class44_Sub3_Sub2 var11 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var11.anInt1374 = var28;
+		var28 += var6;
+		Class44_Sub3_Sub2 var12 = new Class44_Sub3_Sub2(var1, (byte)1);
+		var12.anInt1374 = var28;
+		Class9 var13 = new Class9(10470, var12);
+		int var14 = var8.get2();
+		int[] var15 = new int[500];
+		int[] var16 = new int[500];
+		int[] var17 = new int[500];
+		int[] var18 = new int[500];
 
-    public static void method208(int i, byte[] abyte0) {
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        if (i >= 0)
-            return;
-        class44_sub3_sub2.anInt1374 = abyte0.length - 8;
-        int j = class44_sub3_sub2.get2();
-        int k = class44_sub3_sub2.get2();
-        int l = class44_sub3_sub2.get2();
-        int i1 = class44_sub3_sub2.get2();
-        int j1 = 0;
-        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        class44_sub3_sub2_1.anInt1374 = j1;
-        j1 += j + 2;
-        Class44_Sub3_Sub2 class44_sub3_sub2_2 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        class44_sub3_sub2_2.anInt1374 = j1;
-        j1 += k;
-        Class44_Sub3_Sub2 class44_sub3_sub2_3 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        class44_sub3_sub2_3.anInt1374 = j1;
-        j1 += l;
-        Class44_Sub3_Sub2 class44_sub3_sub2_4 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        class44_sub3_sub2_4.anInt1374 = j1;
-        j1 += i1;
-        Class44_Sub3_Sub2 class44_sub3_sub2_5 = new Class44_Sub3_Sub2(abyte0, (byte) 1);
-        class44_sub3_sub2_5.anInt1374 = j1;
-        Class9 class9 = new Class9(10470, class44_sub3_sub2_5);
-        int k1 = class44_sub3_sub2_1.get2();
-        int[] ai = new int[500];
-        int[] ai1 = new int[500];
-        int[] ai2 = new int[500];
-        int[] ai3 = new int[500];
-        for (int l1 = 0; l1 < k1; l1++) {
-            int i2 = class44_sub3_sub2_1.get2();
-            Class11 class11 = aClass11Array264[i2] = new Class11();
-            class11.anInt265 = class44_sub3_sub2_4.get1();
-            class11.aClass9_266 = class9;
-            int j2 = class44_sub3_sub2_1.get1();
-            int k2 = -1;
-            int l2 = 0;
-            for (int i3 = 0; i3 < j2; i3++) {
-                int j3 = class44_sub3_sub2_2.get1();
-                if (j3 > 0) {
-                    if (class9.anIntArray255[i3] != 0) {
-                        for (int l3 = i3 - 1; l3 > k2; l3--) {
-                            if (class9.anIntArray255[l3] != 0)
-                                continue;
-                            ai[l2] = l3;
-                            ai1[l2] = 0;
-                            ai2[l2] = 0;
-                            ai3[l2] = 0;
-                            l2++;
-                            break;
-                        }
+		for (int var19 = 0; var19 < var14; ++var19) {
+			int var20 = var8.get2();
+			Class11 var21 = aClass11Array264[var20] = new Class11();
+			var21.anInt265 = var11.get1();
+			var21.aClass9_266 = var13;
+			int var22 = var8.get1();
+			int var23 = -1;
+			int var24 = 0;
 
-                    }
-                    ai[l2] = i3;
-                    char c = '\0';
-                    if (class9.anIntArray255[i3] == 3)
-                        c = '\200';
-                    if ((j3 & 1) != 0)
-                        ai1[l2] = class44_sub3_sub2_3.method492();
-                    else
-                        ai1[l2] = c;
-                    if ((j3 & 2) != 0)
-                        ai2[l2] = class44_sub3_sub2_3.method492();
-                    else
-                        ai2[l2] = c;
-                    if ((j3 & 4) != 0)
-                        ai3[l2] = class44_sub3_sub2_3.method492();
-                    else
-                        ai3[l2] = c;
-                    k2 = i3;
-                    l2++;
-                    if (class9.anIntArray255[i3] == 5)
-                        aBooleanArray272[i2] = false;
-                }
-            }
+			int var25;
+			for (var25 = 0; var25 < var22; ++var25) {
+				int var26 = var9.get1();
+				if (var26 > 0) {
+					if (var13.anIntArray255[var25] != 0) {
+						for (int var27 = var25 - 1; var27 > var23; --var27) {
+							if (var13.anIntArray255[var27] == 0) {
+								var15[var24] = var27;
+								var16[var24] = 0;
+								var17[var24] = 0;
+								var18[var24] = 0;
+								++var24;
+								break;
+							}
+						}
+					}
 
-            class11.anInt267 = l2;
-            class11.anIntArray268 = new int[l2];
-            class11.anIntArray269 = new int[l2];
-            class11.anIntArray270 = new int[l2];
-            class11.anIntArray271 = new int[l2];
-            for (int k3 = 0; k3 < l2; k3++) {
-                class11.anIntArray268[k3] = ai[k3];
-                class11.anIntArray269[k3] = ai1[k3];
-                class11.anIntArray270[k3] = ai2[k3];
-                class11.anIntArray271[k3] = ai3[k3];
-            }
+					var15[var24] = var25;
+					short var29 = 0;
+					if (var13.anIntArray255[var25] == 3) {
+						var29 = 128;
+					}
 
-        }
+					if ((var26 & 1) != 0) {
+						var16[var24] = var10.method492();
+					} else {
+						var16[var24] = var29;
+					}
 
-    }
+					if ((var26 & 2) != 0) {
+						var17[var24] = var10.method492();
+					} else {
+						var17[var24] = var29;
+					}
 
-    public static void method209(byte byte0) {
-        if (byte0 != 1) {
-        } else {
-            aClass11Array264 = null;
-        }
-    }
+					if ((var26 & 4) != 0) {
+						var18[var24] = var10.method492();
+					} else {
+						var18[var24] = var29;
+					}
 
-    public static Class11 method210(int i, int j) {
-        if (j != 6)
-            throw new NullPointerException();
-        if (aClass11Array264 == null)
-            return null;
-        else
-            return aClass11Array264[i];
-    }
+					var23 = var25;
+					++var24;
+					if (var13.anIntArray255[var25] == 5) {
+						aBooleanArray272[var20] = false;
+					}
+				}
+			}
 
-    public static boolean method211(int i, int j) {
-        if (j != 0) {
-            for (int k = 1; k > 0; k++) ;
-        }
-        return i == -1;
-    }
+			var21.anInt267 = var24;
+			var21.anIntArray268 = new int[var24];
+			var21.anIntArray269 = new int[var24];
+			var21.anIntArray270 = new int[var24];
+			var21.anIntArray271 = new int[var24];
+
+			for (var25 = 0; var25 < var24; ++var25) {
+				var21.anIntArray268[var25] = var15[var25];
+				var21.anIntArray269[var25] = var16[var25];
+				var21.anIntArray270[var25] = var17[var25];
+				var21.anIntArray271[var25] = var18[var25];
+			}
+		}
+
+	}
+
+	public static void method207(int var0) {
+		aClass11Array264 = new Class11[var0 + 1];
+		aBooleanArray272 = new boolean[var0 + 1];
+
+		for (int var1 = 0; var1 < var0 + 1; ++var1) {
+			aBooleanArray272[var1] = true;
+		}
+
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "1"
+	)
+	public static void method209() {
+		aClass11Array264 = null;
+	}
 }

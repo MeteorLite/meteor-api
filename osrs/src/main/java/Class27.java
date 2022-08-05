@@ -1,25 +1,20 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
-
 public class Class27 {
+	public boolean aBoolean518;
+	public final int anInt513;
+	public final int anInt514;
+	public final int anInt519;
+	public final int anInt515;
+	public final int anInt516;
+	public final int anInt517;
 
-    public final int anInt513;
-    public final int anInt514;
-    public final int anInt515;
-    public final int anInt516;
-    public final int anInt517;
-    public boolean aBoolean518;
-    public final int anInt519;
-    public Class27(int i, int j, int k, int l, int i1, int j1, boolean flag) {
-        aBoolean518 = true;
-        anInt513 = i;
-        anInt514 = j;
-        anInt515 = k;
-        anInt516 = l;
-        anInt517 = i1;
-        anInt519 = j1;
-        aBoolean518 = flag;
-    }
+	public Class27(int var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
+		this.aBoolean518 = true;
+		this.anInt513 = var1;
+		this.anInt514 = var2;
+		this.anInt515 = var3;
+		this.anInt516 = var4;
+		this.anInt517 = var5;
+		this.anInt519 = var6;
+		this.aBoolean518 = var7;
+	}
 }

@@ -1,29 +1,26 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class Class9 {
+	public final int anInt254;
+	public final int[] anIntArray255;
+	public final int[][] anIntArrayArray256;
 
-    public final int anInt254;
-    public final int[] anIntArray255;
-    public final int[][] anIntArrayArray256;
-    public Class9(int i, Class44_Sub3_Sub2 class44_sub3_sub2) {
-        anInt254 = class44_sub3_sub2.get1();
-        anIntArray255 = new int[anInt254];
-        if (i != 10470) {
-            for (int j = 1; j > 0; j++) ;
-        }
-        anIntArrayArray256 = new int[anInt254][];
-        for (int k = 0; k < anInt254; k++)
-            anIntArray255[k] = class44_sub3_sub2.get1();
+	public Class9(int var1, Class44_Sub3_Sub2 var2) {
+		this.anInt254 = var2.get1();
+		this.anIntArray255 = new int[this.anInt254];
+		this.anIntArrayArray256 = new int[this.anInt254][];
 
-        for (int l = 0; l < anInt254; l++) {
-            int i1 = class44_sub3_sub2.get1();
-            anIntArrayArray256[l] = new int[i1];
-            for (int j1 = 0; j1 < i1; j1++)
-                anIntArrayArray256[l][j1] = class44_sub3_sub2.get1();
+		int var3;
+		for (var3 = 0; var3 < this.anInt254; ++var3) {
+			this.anIntArray255[var3] = var2.get1();
+		}
 
-        }
+		for (var3 = 0; var3 < this.anInt254; ++var3) {
+			int var4 = var2.get1();
+			this.anIntArrayArray256[var3] = new int[var4];
 
-    }
+			for (int var5 = 0; var5 < var4; ++var5) {
+				this.anIntArrayArray256[var3][var5] = var2.get1();
+			}
+		}
+
+	}
 }

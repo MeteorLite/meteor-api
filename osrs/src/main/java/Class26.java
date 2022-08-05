@@ -1,137 +1,163 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class26 {
+	public static Class26[] aClass26Array497;
+	public static int anInt496;
+	public int[] anIntArray501;
+	public int frameStep;
+	public boolean aBoolean504;
+	public int[] primaryFrames;
+	public int anInt498;
+	public int anInt505;
+	public int anInt510;
+	public int anInt509;
+	public int anInt506;
+	public int[] anIntArray503;
+	public int anInt507;
+	public int anInt508;
+	public int[] anIntArray500;
+	public int anInt511;
 
-    public static int anInt496;
-    public static Class26[] aClass26Array497;
-    public static int anInt512;
-    public int anInt498;
-    public int[] primaryFrames;
-    public int[] anIntArray500;
-    public int[] anIntArray501;
-    public int frameStep;
-    public int[] anIntArray503;
-    public boolean aBoolean504;
-    public int anInt505;
-    public int anInt506;
-    public int anInt507;
-    public int anInt508;
-    public int anInt509;
-    public int anInt510;
-    public int anInt511;
-    public Class26() {
-        frameStep = -1;
-        aBoolean504 = false;
-        anInt505 = 5;
-        anInt506 = -1;
-        anInt507 = -1;
-        anInt508 = 99;
-        anInt509 = -1;
-        anInt510 = -1;
-    }
+	public Class26() {
+		this.frameStep = -1;
+		this.aBoolean504 = false;
+		this.anInt505 = 5;
+		this.anInt506 = -1;
+		this.anInt507 = -1;
+		this.anInt508 = 99;
+		this.anInt509 = -1;
+		this.anInt510 = -1;
+	}
 
-    public static void method253(boolean flag, Class47 class47) {
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method546("seq.dat", null), (byte) 1);
-        anInt496 = class44_sub3_sub2.get2();
-        if (flag)
-            return;
-        if (aClass26Array497 == null)
-            aClass26Array497 = new Class26[anInt496];
-        for (int i = 0; i < anInt496; i++) {
-            if (aClass26Array497[i] == null)
-                aClass26Array497[i] = new Class26();
-            aClass26Array497[i].method255((byte) 2, class44_sub3_sub2);
-        }
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "41645"
+	)
+	public int getFrameLength(int var1, int var2) {
+		int var3 = this.anIntArray501[var1];
+		if (var3 == 0) {
+			Class11 var4 = Class11.method210(this.primaryFrames[var1]);
+			if (var4 != null) {
+				var3 = this.anIntArray501[var1] = var4.anInt265;
+			}
+		}
 
-    }
+		if (var3 == 0) {
+			var3 = 1;
+		}
 
-    public int getFrameLength(int i, int j) {
-        if (j != 41645)
-            return 4;
-        int k = anIntArray501[i];
-        if (k == 0) {
-            Class11 class11 = Class11.method210(primaryFrames[i], 6);
-            if (class11 != null)
-                k = anIntArray501[i] = class11.anInt265;
-        }
-        if (k == 0)
-            k = 1;
-        return k;
-    }
+		return var3;
+	}
 
-    public void method255(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2) {
-        if (byte0 == 2) {
-            byte0 = 0;
-        } else {
-            for (int i = 1; i > 0; i++) ;
-        }
-        do {
-            int j = class44_sub3_sub2.get1();
-            if (j == 0)
-                break;
-            if (j == 1) {
-                anInt498 = class44_sub3_sub2.get1();
-                primaryFrames = new int[anInt498];
-                anIntArray500 = new int[anInt498];
-                anIntArray501 = new int[anInt498];
-                for (int k = 0; k < anInt498; k++) {
-                    primaryFrames[k] = class44_sub3_sub2.get2();
-                    anIntArray500[k] = class44_sub3_sub2.get2();
-                    if (anIntArray500[k] == 65535)
-                        anIntArray500[k] = -1;
-                    anIntArray501[k] = class44_sub3_sub2.get2();
-                }
+	public void method255(byte var1, Class44_Sub3_Sub2 var2) {
+		int var3;
+		if (var1 == 2) {
+			boolean var6 = false;
+		} else {
+			for (var3 = 1; var3 > 0; ++var3) {
+			}
+		}
 
-            } else if (j == 2)
-                frameStep = class44_sub3_sub2.get2();
-            else if (j == 3) {
-                int l = class44_sub3_sub2.get1();
-                anIntArray503 = new int[l + 1];
-                for (int i1 = 0; i1 < l; i1++)
-                    anIntArray503[i1] = class44_sub3_sub2.get1();
+		while (true) {
+			while (true) {
+				var3 = var2.get1();
+				if (var3 == 0) {
+					if (this.anInt498 == 0) {
+						this.anInt498 = 1;
+						this.primaryFrames = new int[1];
+						this.primaryFrames[0] = -1;
+						this.anIntArray500 = new int[1];
+						this.anIntArray500[0] = -1;
+						this.anIntArray501 = new int[1];
+						this.anIntArray501[0] = -1;
+					}
 
-                anIntArray503[l] = 0x98967f;
-            } else if (j == 4)
-                aBoolean504 = true;
-            else if (j == 5)
-                anInt505 = class44_sub3_sub2.get1();
-            else if (j == 6)
-                anInt506 = class44_sub3_sub2.get2();
-            else if (j == 7)
-                anInt507 = class44_sub3_sub2.get2();
-            else if (j == 8)
-                anInt508 = class44_sub3_sub2.get1();
-            else if (j == 9)
-                anInt509 = class44_sub3_sub2.get1();
-            else if (j == 10)
-                anInt510 = class44_sub3_sub2.get1();
-            else if (j == 11)
-                anInt511 = class44_sub3_sub2.get1();
-            else
-                System.out.println("Error unrecognised seq config code: " + j);
-        } while (true);
-        if (anInt498 == 0) {
-            anInt498 = 1;
-            primaryFrames = new int[1];
-            primaryFrames[0] = -1;
-            anIntArray500 = new int[1];
-            anIntArray500[0] = -1;
-            anIntArray501 = new int[1];
-            anIntArray501[0] = -1;
-        }
-        if (anInt509 == -1)
-            if (anIntArray503 != null)
-                anInt509 = 2;
-            else
-                anInt509 = 0;
-        if (anInt510 == -1) {
-            if (anIntArray503 != null) {
-                anInt510 = 2;
-                return;
-            }
-            anInt510 = 0;
-        }
-    }
+					if (this.anInt509 == -1) {
+						if (this.anIntArray503 != null) {
+							this.anInt509 = 2;
+						} else {
+							this.anInt509 = 0;
+						}
+					}
+
+					if (this.anInt510 == -1) {
+						if (this.anIntArray503 != null) {
+							this.anInt510 = 2;
+							return;
+						}
+
+						this.anInt510 = 0;
+					}
+
+					return;
+				}
+
+				int var4;
+				if (var3 == 1) {
+					this.anInt498 = var2.get1();
+					this.primaryFrames = new int[this.anInt498];
+					this.anIntArray500 = new int[this.anInt498];
+					this.anIntArray501 = new int[this.anInt498];
+
+					for (var4 = 0; var4 < this.anInt498; ++var4) {
+						this.primaryFrames[var4] = var2.get2();
+						this.anIntArray500[var4] = var2.get2();
+						if (this.anIntArray500[var4] == 65535) {
+							this.anIntArray500[var4] = -1;
+						}
+
+						this.anIntArray501[var4] = var2.get2();
+					}
+				} else if (var3 == 2) {
+					this.frameStep = var2.get2();
+				} else if (var3 != 3) {
+					if (var3 == 4) {
+						this.aBoolean504 = true;
+					} else if (var3 == 5) {
+						this.anInt505 = var2.get1();
+					} else if (var3 == 6) {
+						this.anInt506 = var2.get2();
+					} else if (var3 == 7) {
+						this.anInt507 = var2.get2();
+					} else if (var3 == 8) {
+						this.anInt508 = var2.get1();
+					} else if (var3 == 9) {
+						this.anInt509 = var2.get1();
+					} else if (var3 == 10) {
+						this.anInt510 = var2.get1();
+					} else if (var3 == 11) {
+						this.anInt511 = var2.get1();
+					} else {
+						System.out.println("Error unrecognised seq config code: " + var3);
+					}
+				} else {
+					var4 = var2.get1();
+					this.anIntArray503 = new int[var4 + 1];
+
+					for (int var5 = 0; var5 < var4; ++var5) {
+						this.anIntArray503[var5] = var2.get1();
+					}
+
+					this.anIntArray503[var4] = 9999999;
+				}
+			}
+		}
+	}
+
+	public static void method253(boolean var0, Class47 var1) {
+		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("seq.dat", (byte[])null), (byte)1);
+		anInt496 = var2.get2();
+		if (aClass26Array497 == null) {
+			aClass26Array497 = new Class26[anInt496];
+		}
+
+		for (int var3 = 0; var3 < anInt496; ++var3) {
+			if (aClass26Array497[var3] == null) {
+				aClass26Array497[var3] = new Class26();
+			}
+
+			aClass26Array497[var3].method255((byte)2, var2);
+		}
+
+	}
 }

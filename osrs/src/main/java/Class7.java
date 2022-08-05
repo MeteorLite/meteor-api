@@ -1,171 +1,184 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class7
-        implements Runnable {
+public class Class7 implements Runnable {
+	public boolean aBoolean205;
+	public boolean aBoolean200;
+	public int anInt194;
+	public boolean aBoolean206;
+	public InputStream anInputStream197;
+	public int anInt204;
+	public final int anInt195;
+	public int anInt203;
+	public OutputStream anOutputStream198;
+	public byte[] aByteArray202;
+	public boolean aBoolean196;
+	public Socket aSocket199;
+	public final Game anGame_201;
 
-    public int anInt194;
-    public final int anInt195;
-    public boolean aBoolean196;
-    public InputStream anInputStream197;
-    public OutputStream anOutputStream198;
-    public Socket aSocket199;
-    public boolean aBoolean200;
-    public final Game anGame_201;
-    public byte[] aByteArray202;
-    public int anInt203;
-    public int anInt204;
-    public boolean aBoolean205;
-    public boolean aBoolean206;
-    public Class7(int i, Socket socket, Game game)
-            throws IOException {
-        anInt194 = 416;
-        anInt195 = -2584;
-        aBoolean196 = false;
-        aBoolean200 = false;
-        aBoolean205 = false;
-        aBoolean206 = false;
-        anGame_201 = game;
-        if (i >= 0) {
-            throw new NullPointerException();
-        } else {
-            aSocket199 = socket;
-            aSocket199.setSoTimeout(30000);
-            aSocket199.setTcpNoDelay(true);
-            anInputStream197 = aSocket199.getInputStream();
-            anOutputStream198 = aSocket199.getOutputStream();
-        }
-    }
+	public Class7(int var1, Socket var2, Game var3) throws IOException {
+		this.anInt194 = 416;
+		this.anInt195 = -2584;
+		this.aBoolean196 = false;
+		this.aBoolean200 = false;
+		this.aBoolean205 = false;
+		this.aBoolean206 = false;
+		this.anGame_201 = var3;
+		this.aSocket199 = var2;
+		this.aSocket199.setSoTimeout(30000);
+		this.aSocket199.setTcpNoDelay(true);
+		this.anInputStream197 = this.aSocket199.getInputStream();
+		this.anOutputStream198 = this.aSocket199.getOutputStream();
+	}
 
-    public void method191() {
-        aBoolean200 = true;
-        try {
-            if (anInputStream197 != null)
-                anInputStream197.close();
-            if (anOutputStream198 != null)
-                anOutputStream198.close();
-            if (aSocket199 != null)
-                aSocket199.close();
-        } catch (IOException _ex) {
-            System.out.println("Error closing stream");
-        }
-        aBoolean205 = false;
-        synchronized (this) {
-            notify();
-        }
-        aByteArray202 = null;
-    }
+	public int method193() throws IOException {
+		return this.aBoolean200 ? 0 : this.anInputStream197.available();
+	}
 
-    public int method192()
-            throws IOException {
-        if (aBoolean200)
-            return 0;
-        else
-            return anInputStream197.read();
-    }
+	public void method191() {
+		this.aBoolean200 = true;
 
-    public int method193()
-            throws IOException {
-        if (aBoolean200)
-            return 0;
-        else
-            return anInputStream197.available();
-    }
+		try {
+			if (this.anInputStream197 != null) {
+				this.anInputStream197.close();
+			}
 
-    public void method194(byte[] abyte0, int i, int j)
-            throws IOException {
-        if (aBoolean200)
-            return;
-        int k;
-        for (; j > 0; j -= k) {
-            k = anInputStream197.read(abyte0, i, j);
-            if (k <= 0)
-                throw new IOException("EOF");
-            i += k;
-        }
+			if (this.anOutputStream198 != null) {
+				this.anOutputStream198.close();
+			}
 
-    }
+			if (this.aSocket199 != null) {
+				this.aSocket199.close();
+			}
+		} catch (IOException var4) {
+			System.out.println("Error closing stream");
+		}
 
-    public void method195(int i, int j, byte[] abyte0, int k)
-            throws IOException {
-        if (aBoolean200)
-            return;
-        if (aBoolean206) {
-            aBoolean206 = false;
-            throw new IOException("Error in writer thread");
-        }
-        if (aByteArray202 == null)
-            aByteArray202 = new byte[5000];
-        synchronized (this) {
-            for (int l = 0; l < i; l++) {
-                aByteArray202[anInt204] = abyte0[l + k];
-                anInt204 = (anInt204 + 1) % 5000;
-                if (anInt204 == (anInt203 + 4900) % 5000)
-                    throw new IOException("buffer overflow");
-            }
+		this.aBoolean205 = false;
+		synchronized(this) {
+			this.notify();
+		}
 
-            if (!aBoolean205) {
-                aBoolean205 = true;
-                anGame_201.startRunnable(this, 3);
-            }
-            notify();
-        }
-        if (j != anInt195)
-            anInt194 = -158;
-    }
+		this.aByteArray202 = null;
+	}
 
-    public void run() {
-        while (aBoolean205) {
-            int i;
-            int j;
-            synchronized (this) {
-                if (anInt204 == anInt203)
-                    try {
-                        wait();
-                    } catch (InterruptedException ignored) {
-                    }
-                if (!aBoolean205)
-                    return;
-                j = anInt203;
-                if (anInt204 >= anInt203)
-                    i = anInt204 - anInt203;
-                else
-                    i = 5000 - anInt203;
-            }
-            if (i > 0) {
-                try {
-                    anOutputStream198.write(aByteArray202, j, i);
-                } catch (IOException _ex) {
-                    aBoolean206 = true;
-                }
-                anInt203 = (anInt203 + i) % 5000;
-                try {
-                    if (anInt204 == anInt203)
-                        anOutputStream198.flush();
-                } catch (IOException _ex) {
-                    aBoolean206 = true;
-                }
-            }
-        }
-    }
+	public void method194(byte[] var1, int var2, int var3) throws IOException {
+		if (!this.aBoolean200) {
+			while (var3 > 0) {
+				int var4 = this.anInputStream197.read(var1, var2, var3);
+				if (var4 <= 0) {
+					throw new IOException("EOF");
+				}
 
-    public void method196(boolean flag) {
-        System.out.println("dummy:" + aBoolean200);
-        System.out.println("tcycl:" + anInt203);
-        System.out.println("tnum:" + anInt204);
-        System.out.println("writer:" + aBoolean205);
-        System.out.println("ioerror:" + aBoolean206);
-        if (!flag)
-            aBoolean196 = !aBoolean196;
-        try {
-            System.out.println("available:" + method193());
-        } catch (IOException _ex) {
-        }
-    }
+				var2 += var4;
+				var3 -= var4;
+			}
+
+		}
+	}
+
+	public void method195(int var1, int var2, byte[] var3, int var4) throws IOException {
+		if (!this.aBoolean200) {
+			if (this.aBoolean206) {
+				this.aBoolean206 = false;
+				throw new IOException("Error in writer thread");
+			} else {
+				if (this.aByteArray202 == null) {
+					this.aByteArray202 = new byte[5000];
+				}
+
+				synchronized(this) {
+					for (int var6 = 0; var6 < var1; ++var6) {
+						this.aByteArray202[this.anInt204] = var3[var6 + var4];
+						this.anInt204 = (this.anInt204 + 1) % 5000;
+						if ((this.anInt203 + 4900) % 5000 == this.anInt204) {
+							throw new IOException("buffer overflow");
+						}
+					}
+
+					if (!this.aBoolean205) {
+						this.aBoolean205 = true;
+						this.anGame_201.startRunnable(this, 3);
+					}
+
+					this.notify();
+				}
+
+				if (var2 != this.anInt195) {
+					this.anInt194 = -158;
+				}
+
+			}
+		}
+	}
+
+	public int method192() throws IOException {
+		return this.aBoolean200 ? 0 : this.anInputStream197.read();
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)V",
+		garbageValue = "1"
+	)
+	public void method196() {
+		System.out.println("dummy:" + this.aBoolean200);
+		System.out.println("tcycl:" + this.anInt203);
+		System.out.println("tnum:" + this.anInt204);
+		System.out.println("writer:" + this.aBoolean205);
+		System.out.println("ioerror:" + this.aBoolean206);
+
+		try {
+			System.out.println("available:" + this.method193());
+		} catch (IOException var2) {
+		}
+
+	}
+
+	public void run() {
+		while (this.aBoolean205) {
+			int var1;
+			int var2;
+			synchronized(this) {
+				if (this.anInt204 == this.anInt203) {
+					try {
+						this.wait();
+					} catch (InterruptedException var8) {
+					}
+				}
+
+				if (!this.aBoolean205) {
+					return;
+				}
+
+				var2 = this.anInt203;
+				if (this.anInt204 >= this.anInt203) {
+					var1 = this.anInt204 - this.anInt203;
+				} else {
+					var1 = 5000 - this.anInt203;
+				}
+			}
+
+			if (var1 > 0) {
+				try {
+					this.anOutputStream198.write(this.aByteArray202, var2, var1);
+				} catch (IOException var7) {
+					this.aBoolean206 = true;
+				}
+
+				this.anInt203 = (var1 + this.anInt203) % 5000;
+
+				try {
+					if (this.anInt204 == this.anInt203) {
+						this.anOutputStream198.flush();
+					}
+				} catch (IOException var6) {
+					this.aBoolean206 = true;
+				}
+			}
+		}
+
+	}
 }

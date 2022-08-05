@@ -1,335 +1,436 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
+	public static Class39 aClass39_1680;
+	public Class12 aClass12_1679;
+	public boolean aBoolean1658;
+	public int anInt1655;
+	public long aLong1665;
+	public final int[] anIntArray1661;
+	public int anInt1656;
+	public int anInt1664;
+	public int anInt1659;
+	public String aString1657;
+	public int anInt1660;
+	public final int[] anIntArray1662;
+	public int anInt1663;
+	public boolean aBoolean1677;
+	public long aLong1678;
+	public Model aModel_1672;
+	public int anInt1668;
+	public int anInt1667;
+	public int anInt1669;
+	public int anInt1670;
+	public int anInt1666;
+	public int anInt1671;
+	public int anInt1676;
+	public int anInt1675;
+	public int anInt1673;
+	public int anInt1674;
 
-    public static Class39 aClass39_1680 = new Class39(260, 0);
-    public int anInt1654;
-    public int anInt1655;
-    public int anInt1656;
-    public String aString1657;
-    public boolean aBoolean1658;
-    public int anInt1659;
-    public int anInt1660;
-    public final int[] anIntArray1661;
-    public final int[] anIntArray1662;
-    public int anInt1663;
-    public int anInt1664;
-    public long aLong1665;
-    public int anInt1666;
-    public int anInt1667;
-    public int anInt1668;
-    public int anInt1669;
-    public int anInt1670;
-    public int anInt1671;
-    public Model aModel_1672;
-    public int anInt1673;
-    public int anInt1674;
-    public int anInt1675;
-    public int anInt1676;
-    public boolean aBoolean1677;
-    public long aLong1678;
-    public Class12 aClass12_1679;
-    public Class44_Sub3_Sub4_Sub6_Sub1() {
-        anInt1655 = -12792;
-        anInt1656 = -582;
-        aBoolean1658 = false;
-        anIntArray1661 = new int[12];
-        anIntArray1662 = new int[5];
-        aBoolean1677 = false;
-        aLong1678 = -1L;
-    }
+	static {
+		aClass39_1680 = new Class39(260, 0);
+	}
 
-    public void method534(Class44_Sub3_Sub2 class44_sub3_sub2, int i) {
-        class44_sub3_sub2.anInt1374 = 0;
-        anInt1659 = class44_sub3_sub2.get1();
-        anInt1660 = class44_sub3_sub2.get1();
-        aClass12_1679 = null;
-        for (int j = 0; j < 12; j++) {
-            int k = class44_sub3_sub2.get1();
-            if (k == 0) {
-                anIntArray1661[j] = 0;
-                continue;
-            }
-            int i1 = class44_sub3_sub2.get1();
-            anIntArray1661[j] = (k << 8) + i1;
-            if (j != 0 || anIntArray1661[0] != 65535)
-                continue;
-            aClass12_1679 = Class12.method214(class44_sub3_sub2.get2());
-            break;
-        }
+	public Class44_Sub3_Sub4_Sub6_Sub1() {
+		this.anInt1655 = -12792;
+		this.anInt1656 = -582;
+		this.aBoolean1658 = false;
+		this.anIntArray1661 = new int[12];
+		this.anIntArray1662 = new int[5];
+		this.aBoolean1677 = false;
+		this.aLong1678 = -1L;
+	}
 
-        i = 2 / i;
-        for (int l = 0; l < 5; l++) {
-            int j1 = class44_sub3_sub2.get1();
-            if (j1 < 0 || j1 >= Client.anIntArrayArray1241[l].length)
-                j1 = 0;
-            anIntArray1662[l] = j1;
-        }
+	@ObfuscatedSignature(
+		descriptor = "(Z)LModel;",
+		garbageValue = "1"
+	)
+	public Model method535() {
+		if (this.aClass12_1679 != null) {
+			int var13 = -1;
+			if (super.anInt1627 >= 0 && super.anInt1630 == 0) {
+				var13 = Class26.aClass26Array497[super.anInt1627].primaryFrames[super.anInt1628];
+			} else if (super.anInt1624 >= 0) {
+				var13 = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
+			}
 
-        super.anInt1604 = class44_sub3_sub2.get2();
-        if (super.anInt1604 == 65535)
-            super.anInt1604 = -1;
-        super.anInt1605 = class44_sub3_sub2.get2();
-        if (super.anInt1605 == 65535)
-            super.anInt1605 = -1;
-        super.anInt1606 = class44_sub3_sub2.get2();
-        if (super.anInt1606 == 65535)
-            super.anInt1606 = -1;
-        super.anInt1607 = class44_sub3_sub2.get2();
-        if (super.anInt1607 == 65535)
-            super.anInt1607 = -1;
-        super.anInt1608 = class44_sub3_sub2.get2();
-        if (super.anInt1608 == 65535)
-            super.anInt1608 = -1;
-        super.anInt1609 = class44_sub3_sub2.get2();
-        if (super.anInt1609 == 65535)
-            super.anInt1609 = -1;
-        super.anInt1610 = class44_sub3_sub2.get2();
-        if (super.anInt1610 == 65535)
-            super.anInt1610 = -1;
-        aString1657 = Class48.method551(131, Class48.method548(0, class44_sub3_sub2.get8(0)));
-        anInt1663 = class44_sub3_sub2.get1();
-        anInt1664 = class44_sub3_sub2.get2();
-        aBoolean1658 = true;
-        aLong1665 = 0L;
-        for (int k1 = 0; k1 < 12; k1++) {
-            aLong1665 <<= 4;
-            if (anIntArray1661[k1] >= 256)
-                aLong1665 += anIntArray1661[k1] - 256;
-        }
+			Model var2 = this.aClass12_1679.method216(var13, -1, 811, (int[])null);
+			return var2;
+		} else {
+			long var1 = this.aLong1665;
+			int var3 = -1;
+			int var4 = -1;
+			int var5 = -1;
+			int var6 = -1;
+			if (super.anInt1627 >= 0 && super.anInt1630 == 0) {
+				Class26 var7 = Class26.aClass26Array497[super.anInt1627];
+				var3 = var7.primaryFrames[super.anInt1628];
+				if (super.anInt1624 >= 0 && super.anInt1624 != super.anInt1604) {
+					var4 = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
+				}
 
-        if (anIntArray1661[0] >= 256)
-            aLong1665 += anIntArray1661[0] - 256 >> 4;
-        if (anIntArray1661[1] >= 256)
-            aLong1665 += anIntArray1661[1] - 256 >> 8;
-        for (int l1 = 0; l1 < 5; l1++) {
-            aLong1665 <<= 3;
-            aLong1665 += anIntArray1662[l1];
-        }
+				if (var7.anInt506 >= 0) {
+					var5 = var7.anInt506;
+					var1 += (long)(var5 - this.anIntArray1661[5] << 40);
+				}
 
-        aLong1665 <<= 1;
-        aLong1665 += anInt1659;
-    }
+				if (var7.anInt507 >= 0) {
+					var6 = var7.anInt507;
+					var1 += (long)(var6 - this.anIntArray1661[3] << 48);
+				}
+			} else if (super.anInt1624 >= 0) {
+				var3 = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
+			}
 
-    public Model getModel(boolean flag) {
-        if (!aBoolean1658)
-            return null;
-        Model model = method535(true);
-        if (model == null)
-            return null;
-        super.anInt1645 = model.anInt1394;
-        if (flag)
-            anInt1655 = -399;
-        model.aBoolean1555 = true;
-        if (aBoolean1677)
-            return model;
-        if (super.anInt1632 != -1 && super.anInt1633 != -1) {
-            Class32 class32 = Class32.aClass32Array547[super.anInt1632];
-            Model model_2 = class32.method271();
-            if (model_2 != null) {
-                Model class44_sub3_sub4_sub4_3 = new Model(true, Class11.method211(super.anInt1633, 0), model_2, true, false);
-                class44_sub3_sub4_sub4_3.method516(0, -super.anInt1636, (byte) 10, 0);
-                class44_sub3_sub4_sub4_3.method510(9);
-                class44_sub3_sub4_sub4_3.method511(class32.aClass26_551.primaryFrames[super.anInt1633], -284);
-                class44_sub3_sub4_sub4_3.anIntArrayArray1554 = null;
-                class44_sub3_sub4_sub4_3.anIntArrayArray1553 = null;
-                if (class32.anInt554 != 128 || class32.anInt555 != 128)
-                    class44_sub3_sub4_sub4_3.method519(9, class32.anInt554, class32.anInt554, class32.anInt555);
-                class44_sub3_sub4_sub4_3.method520(64 + class32.anInt557, 850 + class32.anInt558, -30, -50, -30, true);
-                Model[] aclass44_sub3_sub4_sub4_1 = {
-                        model, class44_sub3_sub4_sub4_3
-                };
-                model = new Model(true, (byte) 72, aclass44_sub3_sub4_sub4_1, 2);
-            }
-        }
-        if (aModel_1672 != null) {
-            if (Client.tick >= anInt1668)
-                aModel_1672 = null;
-            if (Client.tick >= anInt1667 && Client.tick < anInt1668) {
-                Model model_1 = aModel_1672;
-                model_1.method516(anInt1669 - super.anInt1599, anInt1670 - anInt1666, (byte) 10, anInt1671 - super.anInt1600);
-                if (super.anInt1646 == 512) {
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                } else if (super.anInt1646 == 1024) {
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                } else if (super.anInt1646 == 1536)
-                    model_1.method514((byte) 89);
-                Model[] aclass44_sub3_sub4_sub4 = {
-                        model, model_1
-                };
-                model = new Model(true, (byte) 72, aclass44_sub3_sub4_sub4, 2);
-                if (super.anInt1646 == 512)
-                    model_1.method514((byte) 89);
-                else if (super.anInt1646 == 1024) {
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                } else if (super.anInt1646 == 1536) {
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                    model_1.method514((byte) 89);
-                }
-                model_1.method516(super.anInt1599 - anInt1669, anInt1666 - anInt1670, (byte) 10, super.anInt1600 - anInt1671);
-            }
-        }
-        model.aBoolean1555 = true;
-        return model;
-    }
+			Model var14 = (Model)aClass39_1680.method339(var1);
+			int var9;
+			int var10;
+			if (var14 == null) {
+				boolean var8 = false;
 
-    public Model method535(boolean flag) {
-        if (!flag) {
-            for (int i = 1; i > 0; i++) ;
-        }
-        if (aClass12_1679 != null) {
-            int j = -1;
-            if (super.anInt1627 >= 0 && super.anInt1630 == 0)
-                j = Class26.aClass26Array497[super.anInt1627].primaryFrames[super.anInt1628];
-            else if (super.anInt1624 >= 0)
-                j = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
-            Model model = aClass12_1679.method216(j, -1, 811, null);
-            return model;
-        }
-        long l = aLong1665;
-        int k = -1;
-        int i1 = -1;
-        int j1 = -1;
-        int k1 = -1;
-        if (super.anInt1627 >= 0 && super.anInt1630 == 0) {
-            Class26 class26 = Class26.aClass26Array497[super.anInt1627];
-            k = class26.primaryFrames[super.anInt1628];
-            if (super.anInt1624 >= 0 && super.anInt1624 != super.anInt1604)
-                i1 = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
-            if (class26.anInt506 >= 0) {
-                j1 = class26.anInt506;
-                l += j1 - anIntArray1661[5] << 40;
-            }
-            if (class26.anInt507 >= 0) {
-                k1 = class26.anInt507;
-                l += k1 - anIntArray1661[3] << 48;
-            }
-        } else if (super.anInt1624 >= 0)
-            k = Class26.aClass26Array497[super.anInt1624].primaryFrames[super.anInt1625];
-        Model model_1 = (Model) aClass39_1680.method339(l);
-        if (model_1 == null) {
-            boolean flag1 = false;
-            for (int l1 = 0; l1 < 12; l1++) {
-                int j2 = anIntArray1661[l1];
-                if (k1 >= 0 && l1 == 3)
-                    j2 = k1;
-                if (j1 >= 0 && l1 == 5)
-                    j2 = j1;
-                if (j2 >= 256 && j2 < 512 && !Class22.aClass22Array455[j2 - 256].method249(3))
-                    flag1 = true;
-                if (j2 >= 512 && !Class14.method220(j2 - 512).method227(anInt1659, 0))
-                    flag1 = true;
-            }
+				for (var9 = 0; var9 < 12; ++var9) {
+					var10 = this.anIntArray1661[var9];
+					if (var6 >= 0 && var9 == 3) {
+						var10 = var6;
+					}
 
-            if (flag1) {
-                if (aLong1678 != -1L)
-                    model_1 = (Model) aClass39_1680.method339(aLong1678);
-                if (model_1 == null)
-                    return null;
-            }
-        }
-        if (model_1 == null) {
-            Model[] aclass44_sub3_sub4_sub4 = new Model[12];
-            int i2 = 0;
-            for (int k2 = 0; k2 < 12; k2++) {
-                int l2 = anIntArray1661[k2];
-                if (k1 >= 0 && k2 == 3)
-                    l2 = k1;
-                if (j1 >= 0 && k2 == 5)
-                    l2 = j1;
-                if (l2 >= 256 && l2 < 512) {
-                    Model class44_sub3_sub4_sub4_3 = Class22.aClass22Array455[l2 - 256].method250((byte) 0);
-                    if (class44_sub3_sub4_sub4_3 != null)
-                        aclass44_sub3_sub4_sub4[i2++] = class44_sub3_sub4_sub4_3;
-                }
-                if (l2 >= 512) {
-                    Model class44_sub3_sub4_sub4_4 = Class14.method220(l2 - 512).method228(-269, anInt1659);
-                    if (class44_sub3_sub4_sub4_4 != null)
-                        aclass44_sub3_sub4_sub4[i2++] = class44_sub3_sub4_sub4_4;
-                }
-            }
+					if (var5 >= 0 && var9 == 5) {
+						var10 = var5;
+					}
 
-            model_1 = new Model(i2, -643, aclass44_sub3_sub4_sub4);
-            for (int i3 = 0; i3 < 5; i3++)
-                if (anIntArray1662[i3] != 0) {
-                    model_1.method517(Client.anIntArrayArray1241[i3][0], Client.anIntArrayArray1241[i3][anIntArray1662[i3]]);
-                    if (i3 == 1)
-                        model_1.method517(Client.anIntArray1134[0], Client.anIntArray1134[anIntArray1662[i3]]);
-                }
+					if (var10 >= 256 && var10 < 512 && !Class22.aClass22Array455[var10 - 256].method249()) {
+						var8 = true;
+					}
 
-            model_1.method510(9);
-            model_1.method520(64, 850, -30, -50, -30, true);
-            aClass39_1680.method340(201, l, model_1);
-            aLong1678 = l;
-        }
-        if (aBoolean1677)
-            return model_1;
-        Model model_2 = Model.A_MODEL___1517;
-        model_2.method505(0, model_1, Class11.method211(k, 0) & Class11.method211(i1, 0));
-        if (k != -1 && i1 != -1)
-            model_2.method512(-32031, Class26.aClass26Array497[super.anInt1627].anIntArray503, k, i1);
-        else if (k != -1)
-            model_2.method511(k, -284);
-        model_2.method507(486);
-        model_2.anIntArrayArray1554 = null;
-        model_2.anIntArrayArray1553 = null;
-        return model_2;
-    }
+					if (var10 >= 512 && !Class14.method220(var10 - 512).method227(this.anInt1659)) {
+						var8 = true;
+					}
+				}
 
-    public Model method536(boolean flag) {
-        if (!aBoolean1658)
-            return null;
-        boolean flag1 = false;
-        for (int i = 0; i < 12; i++) {
-            int j = anIntArray1661[i];
-            if (j >= 256 && j < 512 && !Class22.aClass22Array455[j - 256].method251(0))
-                flag1 = true;
-            if (j >= 512 && !Class14.method220(j - 512).method229(anInt1659, (byte) 1))
-                flag1 = true;
-        }
+				if (var8) {
+					if (this.aLong1678 != -1L) {
+						var14 = (Model)aClass39_1680.method339(this.aLong1678);
+					}
 
-        if (flag1)
-            return null;
-        Model[] aclass44_sub3_sub4_sub4 = new Model[12];
-        int k = 0;
-        for (int l = 0; l < 12; l++) {
-            int i1 = anIntArray1661[l];
-            if (i1 >= 256 && i1 < 512) {
-                Model model_1 = Class22.aClass22Array455[i1 - 256].method252((byte) 7);
-                if (model_1 != null)
-                    aclass44_sub3_sub4_sub4[k++] = model_1;
-            }
-            if (i1 >= 512) {
-                Model model_2 = Class14.method220(i1 - 512).method230(false, anInt1659);
-                if (model_2 != null)
-                    aclass44_sub3_sub4_sub4[k++] = model_2;
-            }
-        }
+					if (var14 == null) {
+						return null;
+					}
+				}
+			}
 
-        Model model = new Model(k, -643, aclass44_sub3_sub4_sub4);
-        for (int j1 = 0; j1 < 5; j1++)
-            if (anIntArray1662[j1] != 0) {
-                model.method517(Client.anIntArrayArray1241[j1][0], Client.anIntArrayArray1241[j1][anIntArray1662[j1]]);
-                if (j1 == 1)
-                    model.method517(Client.anIntArray1134[0], Client.anIntArray1134[anIntArray1662[j1]]);
-            }
+			if (var14 == null) {
+				Model[] var15 = new Model[12];
+				var9 = 0;
 
-        if (!flag)
-            anInt1656 = -127;
-        return model;
-    }
+				for (var10 = 0; var10 < 12; ++var10) {
+					int var11 = this.anIntArray1661[var10];
+					if (var6 >= 0 && var10 == 3) {
+						var11 = var6;
+					}
 
-    public boolean method532(int i) {
-        if (i != 0)
-            anInt1654 = -56;
-        return aBoolean1658;
-    }
+					if (var5 >= 0 && var10 == 5) {
+						var11 = var5;
+					}
 
+					Model var12;
+					if (var11 >= 256 && var11 < 512) {
+						var12 = Class22.aClass22Array455[var11 - 256].method250((byte)0);
+						if (var12 != null) {
+							var15[var9++] = var12;
+						}
+					}
+
+					if (var11 >= 512) {
+						var12 = Class14.method220(var11 - 512).method228(-269, this.anInt1659);
+						if (var12 != null) {
+							var15[var9++] = var12;
+						}
+					}
+				}
+
+				var14 = new Model(var9, -643, var15);
+
+				for (var10 = 0; var10 < 5; ++var10) {
+					if (this.anIntArray1662[var10] != 0) {
+						var14.method517(Client.anIntArrayArray1241[var10][0], Client.anIntArrayArray1241[var10][this.anIntArray1662[var10]]);
+						if (var10 == 1) {
+							var14.method517(Client.anIntArray1134[0], Client.anIntArray1134[this.anIntArray1662[var10]]);
+						}
+					}
+				}
+
+				var14.method510();
+				var14.method520(64, 850, -30, -50, -30, true);
+				aClass39_1680.method340(201, var1, var14);
+				this.aLong1678 = var1;
+			}
+
+			if (this.aBoolean1677) {
+				return var14;
+			} else {
+				Model var16 = Model.A_MODEL___1517;
+				var16.method505(0, var14, Class11.method211(var3) & Class11.method211(var4));
+				if (var3 != -1 && var4 != -1) {
+					var16.method512(-32031, Class26.aClass26Array497[super.anInt1627].anIntArray503, var3, var4);
+				} else if (var3 != -1) {
+					var16.method511(var3);
+				}
+
+				var16.method507(486);
+				var16.anIntArrayArray1554 = null;
+				var16.anIntArrayArray1553 = null;
+				return var16;
+			}
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)LModel;",
+		garbageValue = "0"
+	)
+	public Model getModel(boolean var1) {
+		if (!this.aBoolean1658) {
+			return null;
+		} else {
+			Model var2 = this.method535();
+			if (var2 == null) {
+				return null;
+			} else {
+				super.anInt1645 = var2.anInt1394;
+				var2.aBoolean1555 = true;
+				if (this.aBoolean1677) {
+					return var2;
+				} else {
+					if (super.anInt1632 != -1 && super.anInt1633 != -1) {
+						Class32 var3 = Class32.aClass32Array547[super.anInt1632];
+						Model var4 = var3.method271();
+						if (var4 != null) {
+							Model var5 = new Model(true, Class11.method211(super.anInt1633), var4, true, false);
+							var5.method516(0, -super.anInt1636, (byte)10, 0);
+							var5.method510();
+							var5.method511(var3.aClass26_551.primaryFrames[super.anInt1633]);
+							var5.anIntArrayArray1554 = null;
+							var5.anIntArrayArray1553 = null;
+							if (var3.anInt554 != 128 || var3.anInt555 != 128) {
+								var5.method519(9, var3.anInt554, var3.anInt554, var3.anInt555);
+							}
+
+							var5.method520(var3.anInt557 + 64, var3.anInt558 + 850, -30, -50, -30, true);
+							Model[] var6 = new Model[]{var2, var5};
+							var2 = new Model(true, (byte)72, var6, 2);
+						}
+					}
+
+					if (this.aModel_1672 != null) {
+						if (Client.tick >= this.anInt1668) {
+							this.aModel_1672 = null;
+						}
+
+						if (Client.tick >= this.anInt1667 && Client.tick < this.anInt1668) {
+							Model var7 = this.aModel_1672;
+							var7.method516(this.anInt1669 - super.anInt1599, this.anInt1670 - this.anInt1666, (byte)10, this.anInt1671 - super.anInt1600);
+							if (super.anInt1646 == 512) {
+								var7.method514();
+								var7.method514();
+								var7.method514();
+							} else if (super.anInt1646 == 1024) {
+								var7.method514();
+								var7.method514();
+							} else if (super.anInt1646 == 1536) {
+								var7.method514();
+							}
+
+							Model[] var8 = new Model[]{var2, var7};
+							var2 = new Model(true, (byte)72, var8, 2);
+							if (super.anInt1646 == 512) {
+								var7.method514();
+							} else if (super.anInt1646 == 1024) {
+								var7.method514();
+								var7.method514();
+							} else if (super.anInt1646 == 1536) {
+								var7.method514();
+								var7.method514();
+								var7.method514();
+							}
+
+							var7.method516(super.anInt1599 - this.anInt1669, this.anInt1666 - this.anInt1670, (byte)10, super.anInt1600 - this.anInt1671);
+						}
+					}
+
+					var2.aBoolean1555 = true;
+					return var2;
+				}
+			}
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)LModel;",
+		garbageValue = "1"
+	)
+	public Model method536() {
+		if (!this.aBoolean1658) {
+			return null;
+		} else {
+			boolean var1 = false;
+
+			int var3;
+			for (int var2 = 0; var2 < 12; ++var2) {
+				var3 = this.anIntArray1661[var2];
+				if (var3 >= 256 && var3 < 512 && !Class22.aClass22Array455[var3 - 256].method251()) {
+					var1 = true;
+				}
+
+				if (var3 >= 512 && !Class14.method220(var3 - 512).method229(this.anInt1659, (byte)1)) {
+					var1 = true;
+				}
+			}
+
+			if (var1) {
+				return null;
+			} else {
+				Model[] var7 = new Model[12];
+				var3 = 0;
+
+				int var5;
+				for (int var4 = 0; var4 < 12; ++var4) {
+					var5 = this.anIntArray1661[var4];
+					Model var6;
+					if (var5 >= 256 && var5 < 512) {
+						var6 = Class22.aClass22Array455[var5 - 256].method252((byte)7);
+						if (var6 != null) {
+							var7[var3++] = var6;
+						}
+					}
+
+					if (var5 >= 512) {
+						var6 = Class14.method220(var5 - 512).method230(false, this.anInt1659);
+						if (var6 != null) {
+							var7[var3++] = var6;
+						}
+					}
+				}
+
+				Model var8 = new Model(var3, -643, var7);
+
+				for (var5 = 0; var5 < 5; ++var5) {
+					if (this.anIntArray1662[var5] != 0) {
+						var8.method517(Client.anIntArrayArray1241[var5][0], Client.anIntArrayArray1241[var5][this.anIntArray1662[var5]]);
+						if (var5 == 1) {
+							var8.method517(Client.anIntArray1134[0], Client.anIntArray1134[this.anIntArray1662[var5]]);
+						}
+					}
+				}
+
+				return var8;
+			}
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "0"
+	)
+	public boolean method532() {
+		return this.aBoolean1658;
+	}
+
+	public void method534(Class44_Sub3_Sub2 var1, int var2) {
+		var1.anInt1374 = 0;
+		this.anInt1659 = var1.get1();
+		this.anInt1660 = var1.get1();
+		this.aClass12_1679 = null;
+
+		int var3;
+		int var4;
+		for (var3 = 0; var3 < 12; ++var3) {
+			var4 = var1.get1();
+			if (var4 == 0) {
+				this.anIntArray1661[var3] = 0;
+			} else {
+				int var5 = var1.get1();
+				this.anIntArray1661[var3] = var5 + (var4 << 8);
+				if (var3 == 0 && this.anIntArray1661[0] == 65535) {
+					this.aClass12_1679 = Class12.method214(var1.get2());
+					break;
+				}
+			}
+		}
+
+		var2 = 2 / var2;
+
+		for (var3 = 0; var3 < 5; ++var3) {
+			var4 = var1.get1();
+			if (var4 < 0 || var4 >= Client.anIntArrayArray1241[var3].length) {
+				var4 = 0;
+			}
+
+			this.anIntArray1662[var3] = var4;
+		}
+
+		super.anInt1604 = var1.get2();
+		if (super.anInt1604 == 65535) {
+			super.anInt1604 = -1;
+		}
+
+		super.anInt1605 = var1.get2();
+		if (super.anInt1605 == 65535) {
+			super.anInt1605 = -1;
+		}
+
+		super.anInt1606 = var1.get2();
+		if (super.anInt1606 == 65535) {
+			super.anInt1606 = -1;
+		}
+
+		super.anInt1607 = var1.get2();
+		if (super.anInt1607 == 65535) {
+			super.anInt1607 = -1;
+		}
+
+		super.anInt1608 = var1.get2();
+		if (super.anInt1608 == 65535) {
+			super.anInt1608 = -1;
+		}
+
+		super.anInt1609 = var1.get2();
+		if (super.anInt1609 == 65535) {
+			super.anInt1609 = -1;
+		}
+
+		super.anInt1610 = var1.get2();
+		if (super.anInt1610 == 65535) {
+			super.anInt1610 = -1;
+		}
+
+		this.aString1657 = Class48.method551(131, Class48.method548(0, var1.get8(0)));
+		this.anInt1663 = var1.get1();
+		this.anInt1664 = var1.get2();
+		this.aBoolean1658 = true;
+		this.aLong1665 = 0L;
+
+		for (var3 = 0; var3 < 12; ++var3) {
+			this.aLong1665 <<= 4;
+			if (this.anIntArray1661[var3] >= 256) {
+				this.aLong1665 += (long)(this.anIntArray1661[var3] - 256);
+			}
+		}
+
+		if (this.anIntArray1661[0] >= 256) {
+			this.aLong1665 += (long)(this.anIntArray1661[0] - 256 >> 4);
+		}
+
+		if (this.anIntArray1661[1] >= 256) {
+			this.aLong1665 += (long)(this.anIntArray1661[1] - 256 >> 8);
+		}
+
+		for (var3 = 0; var3 < 5; ++var3) {
+			this.aLong1665 <<= 3;
+			this.aLong1665 += (long)this.anIntArray1662[var3];
+		}
+
+		this.aLong1665 <<= 1;
+		this.aLong1665 += (long)this.anInt1659;
+	}
 }

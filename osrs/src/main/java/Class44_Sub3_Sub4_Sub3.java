@@ -1,116 +1,130 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class44_Sub3_Sub4_Sub3 extends Renderable {
+	public boolean aBoolean1495;
+	public final Class32 aClass32_1484;
+	public boolean aBoolean1483;
+	public final int anInt1486;
+	public final int anInt1491;
+	public double aDouble1496;
+	public double aDouble1499;
+	public final int anInt1485;
+	public final int anInt1487;
+	public double aDouble1497;
+	public double aDouble1500;
+	public final int anInt1493;
+	public int anInt1506;
+	public final int anInt1490;
+	public double aDouble1498;
+	public final int anInt1494;
+	public double aDouble1502;
+	public double aDouble1503;
+	public final int anInt1488;
+	public final int anInt1492;
+	public int anInt1505;
+	public final int anInt1489;
+	public int anInt1504;
+	public double aDouble1501;
+	public int anInt1507;
 
-    public int anInt1482;
-    public boolean aBoolean1483;
-    public final Class32 aClass32_1484;
-    public final int anInt1485;
-    public final int anInt1486;
-    public final int anInt1487;
-    public final int anInt1488;
-    public final int anInt1489;
-    public final int anInt1490;
-    public final int anInt1491;
-    public final int anInt1492;
-    public final int anInt1493;
-    public final int anInt1494;
-    public boolean aBoolean1495;
-    public double aDouble1496;
-    public double aDouble1497;
-    public double aDouble1498;
-    public double aDouble1499;
-    public double aDouble1500;
-    public double aDouble1501;
-    public double aDouble1502;
-    public double aDouble1503;
-    public int anInt1504;
-    public int anInt1505;
-    public int anInt1506;
-    public int anInt1507;
-    public Class44_Sub3_Sub4_Sub3(int i, int j, int k, int l, int i1, int j1, int k1,
-                                  int l1, boolean flag, int i2, int j2, int k2) {
-        aBoolean1483 = false;
-        aBoolean1495 = false;
-        aClass32_1484 = Class32.aClass32Array547[l1];
-        anInt1485 = k1;
-        anInt1486 = i;
-        anInt1487 = k2;
-        anInt1488 = i2;
-        anInt1490 = j1;
-        anInt1491 = l;
-        anInt1492 = i1;
-        anInt1493 = j;
-        anInt1494 = j2;
-        anInt1489 = k;
-        aBoolean1495 = false;
-        if (!flag)
-            aBoolean1483 = !aBoolean1483;
-    }
+	public Class44_Sub3_Sub4_Sub3(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, boolean var9, int var10, int var11, int var12) {
+		this.aBoolean1483 = false;
+		this.aBoolean1495 = false;
+		this.aClass32_1484 = Class32.aClass32Array547[var8];
+		this.anInt1485 = var7;
+		this.anInt1486 = var1;
+		this.anInt1487 = var12;
+		this.anInt1488 = var10;
+		this.anInt1490 = var6;
+		this.anInt1491 = var4;
+		this.anInt1492 = var5;
+		this.anInt1493 = var2;
+		this.anInt1494 = var11;
+		this.anInt1489 = var3;
+		this.aBoolean1495 = false;
+		if (!var9) {
+			this.aBoolean1483 = !this.aBoolean1483;
+		}
 
-    public void method497(int i, int j, int k, byte byte0, int l) {
-        if (!aBoolean1495) {
-            double d = k - anInt1486;
-            double d2 = l - anInt1487;
-            double d3 = Math.sqrt(d * d + d2 * d2);
-            aDouble1496 = (double) anInt1486 + (d * (double) anInt1493) / d3;
-            aDouble1497 = (double) anInt1487 + (d2 * (double) anInt1493) / d3;
-            aDouble1498 = anInt1488;
-        }
-        double d1 = (anInt1491 + 1) - i;
-        aDouble1499 = ((double) k - aDouble1496) / d1;
-        if (byte0 != 7)
-            return;
-        aDouble1500 = ((double) l - aDouble1497) / d1;
-        aDouble1501 = Math.sqrt(aDouble1499 * aDouble1499 + aDouble1500 * aDouble1500);
-        if (!aBoolean1495)
-            aDouble1502 = -aDouble1501 * Math.tan((double) anInt1492 * 0.02454369D);
-        aDouble1503 = (2D * ((double) j - aDouble1498 - aDouble1502 * d1)) / (d1 * d1);
-    }
+	}
 
-    public void method498(int i, boolean flag) {
-        aBoolean1495 = true;
-        aDouble1496 += aDouble1499 * (double) i;
-        aDouble1497 += aDouble1500 * (double) i;
-        aDouble1498 += aDouble1502 * (double) i + 0.5D * aDouble1503 * (double) i * (double) i;
-        aDouble1502 += aDouble1503 * (double) i;
-        anInt1504 = (int) (Math.atan2(aDouble1499, aDouble1500) * 325.94900000000001D) + 1024 & 0x7ff;
-        if (!flag) {
-            for (int j = 1; j > 0; j++) ;
-        }
-        anInt1505 = (int) (Math.atan2(aDouble1502, aDouble1501) * 325.94900000000001D) & 0x7ff;
-        if (aClass32_1484.aClass26_551 != null)
-            for (anInt1507 += i; anInt1507 > aClass32_1484.aClass26_551.getFrameLength(anInt1506, 41645); ) {
-                anInt1507 -= aClass32_1484.aClass26_551.getFrameLength(anInt1506, 41645) + 1;
-                anInt1506++;
-                if (anInt1506 >= aClass32_1484.aClass26_551.anInt498)
-                    anInt1506 = 0;
-            }
+	@ObfuscatedSignature(
+		descriptor = "(Z)LModel;",
+		garbageValue = "0"
+	)
+	public Model getModel(boolean var1) {
+		Model var2 = this.aClass32_1484.method271();
+		if (var2 == null) {
+			return null;
+		} else {
+			int var3 = -1;
+			if (this.aClass32_1484.aClass26_551 != null) {
+				var3 = this.aClass32_1484.aClass26_551.primaryFrames[this.anInt1506];
+			}
 
-    }
+			Model var4 = new Model(true, Class11.method211(var3), var2, true, false);
+			if (var3 != -1) {
+				var4.method510();
+				var4.method511(var3);
+				var4.anIntArrayArray1554 = null;
+				var4.anIntArrayArray1553 = null;
+			}
 
-    public Model getModel(boolean flag) {
-        Model model = aClass32_1484.method271();
-        if (flag)
-            anInt1482 = 341;
-        if (model == null)
-            return null;
-        int i = -1;
-        if (aClass32_1484.aClass26_551 != null)
-            i = aClass32_1484.aClass26_551.primaryFrames[anInt1506];
-        Model model_1 = new Model(true, Class11.method211(i, 0), model, true, false);
-        if (i != -1) {
-            model_1.method510(9);
-            model_1.method511(i, -284);
-            model_1.anIntArrayArray1554 = null;
-            model_1.anIntArrayArray1553 = null;
-        }
-        if (aClass32_1484.anInt554 != 128 || aClass32_1484.anInt555 != 128)
-            model_1.method519(9, aClass32_1484.anInt554, aClass32_1484.anInt554, aClass32_1484.anInt555);
-        model_1.method515((byte) -44, anInt1505);
-        model_1.method520(64 + aClass32_1484.anInt557, 850 + aClass32_1484.anInt558, -30, -50, -30, true);
-        return model_1;
-    }
+			if (this.aClass32_1484.anInt554 != 128 || this.aClass32_1484.anInt555 != 128) {
+				var4.method519(9, this.aClass32_1484.anInt554, this.aClass32_1484.anInt554, this.aClass32_1484.anInt555);
+			}
+
+			var4.method515((byte)-44, this.anInt1505);
+			var4.method520(this.aClass32_1484.anInt557 + 64, this.aClass32_1484.anInt558 + 850, -30, -50, -30, true);
+			return var4;
+		}
+	}
+
+	public void method497(int var1, int var2, int var3, byte var4, int var5) {
+		double var6;
+		if (!this.aBoolean1495) {
+			var6 = (double)(var3 - this.anInt1486);
+			double var8 = (double)(var5 - this.anInt1487);
+			double var10 = Math.sqrt(var6 * var6 + var8 * var8);
+			this.aDouble1496 = (double)this.anInt1486 + var6 * (double)this.anInt1493 / var10;
+			this.aDouble1497 = (double)this.anInt1487 + var8 * (double)this.anInt1493 / var10;
+			this.aDouble1498 = (double)this.anInt1488;
+		}
+
+		var6 = (double)(this.anInt1491 + 1 - var1);
+		this.aDouble1499 = ((double)var3 - this.aDouble1496) / var6;
+		this.aDouble1500 = ((double)var5 - this.aDouble1497) / var6;
+		this.aDouble1501 = Math.sqrt(this.aDouble1499 * this.aDouble1499 + this.aDouble1500 * this.aDouble1500);
+		if (!this.aBoolean1495) {
+			this.aDouble1502 = -this.aDouble1501 * Math.tan((double)this.anInt1492 * 0.02454369D);
+		}
+
+		this.aDouble1503 = 2.0D * ((double)var2 - this.aDouble1498 - this.aDouble1502 * var6) / (var6 * var6);
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(IZ)V",
+		garbageValue = "1"
+	)
+	public void method498(int var1) {
+		this.aBoolean1495 = true;
+		this.aDouble1496 += this.aDouble1499 * (double)var1;
+		this.aDouble1497 += this.aDouble1500 * (double)var1;
+		this.aDouble1498 += this.aDouble1502 * (double)var1 + 0.5D * this.aDouble1503 * (double)var1 * (double)var1;
+		this.aDouble1502 += this.aDouble1503 * (double)var1;
+		this.anInt1504 = (int)(Math.atan2(this.aDouble1499, this.aDouble1500) * 325.949D) + 1024 & 2047;
+		this.anInt1505 = (int)(Math.atan2(this.aDouble1502, this.aDouble1501) * 325.949D) & 2047;
+		if (this.aClass32_1484.aClass26_551 != null) {
+			this.anInt1507 += var1;
+
+			while (this.anInt1507 > this.aClass32_1484.aClass26_551.getFrameLength(this.anInt1506, 41645)) {
+				this.anInt1507 -= this.aClass32_1484.aClass26_551.getFrameLength(this.anInt1506, 41645) + 1;
+				++this.anInt1506;
+				if (this.anInt1506 >= this.aClass32_1484.aClass26_551.anInt498) {
+					this.anInt1506 = 0;
+				}
+			}
+		}
+
+	}
 }

@@ -67,8 +67,8 @@ public class Deob
 	public static void main(String[] args) throws IOException
 	{
 		args = new String[2];
-		args[0] = "./deobfuscator/gamepack-obf.jar";
-		args[1] = "./deobfuscator/gamepack-deob.jar";
+		args[0] = "./deobfuscator/247-obf.jar";
+		args[1] = "./deobfuscator/247-deob.jar";
 
 		logger.info("Deobfuscator revision {}", DeobProperties.getRevision());
 
@@ -81,7 +81,7 @@ public class Deob
 
 		run(group, new ControlFlowDeobfuscator());
 
-		run(group, new RenameUnique());
+		//run(group, new RenameUnique());
 
 		// remove unused methods - this leaves Code with no instructions,
 		// which is not valid, so unused methods is run after
@@ -116,11 +116,11 @@ public class Deob
 
 		run(group, new ExprArgOrder());
 
-		run(group, new Lvt());
+		//run(group, new Lvt());
 
-		run(group, new CastNull());
+		//run(group, new CastNull());
 
-		run(group, new EnumDeobfuscator());
+		//run(group, new EnumDeobfuscator());
 
 		//new OpcodesTransformer().transform(group);
 		//run(group, new PacketHandlerOrder());

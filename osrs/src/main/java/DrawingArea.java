@@ -1,245 +1,279 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class DrawingArea extends Class44_Sub3 {
+	public static boolean aBoolean1348;
+	public static int[] anIntArray1351;
+	public static int anInt1352;
+	public static int anInt1350;
+	public static int anInt1353;
+	public static int anInt1354;
+	public static int anInt1356;
+	public static int anInt1355;
+	public static int anInt1357;
+	public static int anInt1359;
+	public static int anInt1360;
+	public static int anInt1358;
+	public static int anInt1349;
 
-    public static boolean aBoolean1348 = true;
-    public static int anInt1349;
-    public static int anInt1350 = 436;
-    public static int[] anIntArray1351;
-    public static int anInt1352;
-    public static int anInt1353;
-    public static int anInt1354;
-    public static int anInt1355;
-    public static int anInt1356;
-    public static int anInt1357;
-    public static int anInt1358;
-    public static int anInt1359;
-    public static int anInt1360;
-    public static int anInt1361;
-    public DrawingArea() {
-    }
+	static {
+		aBoolean1348 = true;
+		anInt1350 = 436;
+	}
 
-    public static void initDrawingArea(int i, int j, int[] ai, int k) {
-        anIntArray1351 = ai;
-        anInt1352 = i;
-        if (k != 9)
-            anInt1350 = 478;
-        anInt1353 = j;
-        method408(5, j, i, 0, 0);
-    }
+	@ObfuscatedSignature(
+		descriptor = "(II[II)V",
+		garbageValue = "9"
+	)
+	public static void initDrawingArea(int var0, int var1, int[] var2, int var3) {
+		anIntArray1351 = var2;
+		anInt1352 = var0;
+		anInt1353 = var1;
+		method408(5, var1, var0, 0, 0);
+	}
 
-    public static void method407(boolean flag) {
-        anInt1356 = 0;
-        anInt1354 = 0;
-        anInt1357 = anInt1352;
-        if (!flag) {
-        } else {
-            anInt1355 = anInt1353;
-            anInt1358 = anInt1357 - 1;
-            anInt1359 = anInt1357 / 2;
-        }
-    }
+	public static void method411(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if (var3 < anInt1356) {
+			var2 -= anInt1356 - var3;
+			var3 = anInt1356;
+		}
 
-    public static void method408(int i, int j, int k, int l, int i1) {
-        if (l < 0)
-            l = 0;
-        if (i1 < 0)
-            i1 = 0;
-        if (k > anInt1352)
-            k = anInt1352;
-        if (j > anInt1353)
-            j = anInt1353;
-        anInt1356 = l;
-        anInt1354 = i1;
-        anInt1357 = k;
-        anInt1355 = j;
-        anInt1358 = anInt1357 - 1;
-        anInt1359 = anInt1357 / 2;
-        if (i != 5) {
-        } else {
-            anInt1360 = anInt1355 / 2;
-        }
-    }
+		if (var5 < anInt1354) {
+			var0 -= anInt1354 - var5;
+			var5 = anInt1354;
+		}
 
-    public static void method409(int i) {
-        int j = anInt1352 * anInt1353;
-        if (i != 8)
-            return;
-        for (int k = 0; k < j; k++)
-            anIntArray1351[k] = 0;
+		if (var3 + var2 > anInt1357) {
+			var2 = anInt1357 - var3;
+		}
 
-    }
+		if (var5 + var0 > anInt1355) {
+			var0 = anInt1355 - var5;
+		}
 
-    public static void method410(int i, int j, int k, int l, int i1, int j1, int k1) {
-        if (j1 != 0)
-            return;
-        if (i1 < anInt1356) {
-            i -= anInt1356 - i1;
-            i1 = anInt1356;
-        }
-        if (k < anInt1354) {
-            j -= anInt1354 - k;
-            k = anInt1354;
-        }
-        if (i1 + i > anInt1357)
-            i = anInt1357 - i1;
-        if (k + j > anInt1355)
-            j = anInt1355 - k;
-        int l1 = 256 - k1;
-        int i2 = (l >> 16 & 0xff) * k1;
-        int j2 = (l >> 8 & 0xff) * k1;
-        int k2 = (l & 0xff) * k1;
-        int k3 = anInt1352 - i;
-        int l3 = i1 + k * anInt1352;
-        for (int i4 = 0; i4 < j; i4++) {
-            for (int j4 = -i; j4 < 0; j4++) {
-                int l2 = (anIntArray1351[l3] >> 16 & 0xff) * l1;
-                int i3 = (anIntArray1351[l3] >> 8 & 0xff) * l1;
-                int j3 = (anIntArray1351[l3] & 0xff) * l1;
-                int k4 = ((i2 + l2 >> 8) << 16) + ((j2 + i3 >> 8) << 8) + (k2 + j3 >> 8);
-                anIntArray1351[l3++] = k4;
-            }
+		int var6 = anInt1352 - var2;
+		int var7 = var3 + var5 * anInt1352;
 
-            l3 += k3;
-        }
+		for (int var8 = -var0; var8 < 0; ++var8) {
+			for (int var9 = -var2; var9 < 0; ++var9) {
+				anIntArray1351[var7++] = var1;
+			}
 
-    }
+			var7 += var6;
+		}
 
-    public static void method411(int i, int j, int k, int l, int i1, int j1) {
-        if (i1 != 0) {
-            for (int k1 = 1; k1 > 0; k1++) ;
-        }
-        if (l < anInt1356) {
-            k -= anInt1356 - l;
-            l = anInt1356;
-        }
-        if (j1 < anInt1354) {
-            i -= anInt1354 - j1;
-            j1 = anInt1354;
-        }
-        if (l + k > anInt1357)
-            k = anInt1357 - l;
-        if (j1 + i > anInt1355)
-            i = anInt1355 - j1;
-        int l1 = anInt1352 - k;
-        int i2 = l + j1 * anInt1352;
-        for (int j2 = -i; j2 < 0; j2++) {
-            for (int k2 = -k; k2 < 0; k2++)
-                anIntArray1351[i2++] = j;
+	}
 
-            i2 += l1;
-        }
+	public static void method408(int var0, int var1, int var2, int var3, int var4) {
+		if (var3 < 0) {
+			var3 = 0;
+		}
 
-    }
+		if (var4 < 0) {
+			var4 = 0;
+		}
 
-    public static void method412(int i, int j, int k, int l, int i1, int j1) {
-        method414(i, j, l, (byte) 125, i1);
-        if (j1 <= 0) {
-        } else {
-            method414(i, j, l, (byte) 125, (i1 + k) - 1);
-            method416(j, k, l, 384, i1);
-            method416(j, k, (l + i) - 1, 384, i1);
-        }
-    }
+		if (var2 > anInt1352) {
+			var2 = anInt1352;
+		}
 
-    public static void method413(int i, boolean flag, int j, int k, int l, int i1, int j1) {
-        if (!flag) {
-            for (int k1 = 1; k1 > 0; k1++) ;
-        }
-        method415(i, j, j1, k, anInt1349, l);
-        method415(i, (j + i1) - 1, j1, k, anInt1349, l);
-        if (i1 >= 3) {
-            method417(k, i1 - 2, j + 1, true, l, j1);
-            method417((k + i) - 1, i1 - 2, j + 1, true, l, j1);
-        }
-    }
+		if (var1 > anInt1353) {
+			var1 = anInt1353;
+		}
 
-    public static void method414(int i, int j, int k, byte byte0, int l) {
-        if (l < anInt1354 || l >= anInt1355)
-            return;
-        if (k < anInt1356) {
-            i -= anInt1356 - k;
-            k = anInt1356;
-        }
-        if (k + i > anInt1357)
-            i = anInt1357 - k;
-        int i1 = k + l * anInt1352;
-        if (byte0 != 125)
-            return;
-        for (int j1 = 0; j1 < i; j1++)
-            anIntArray1351[i1 + j1] = j;
+		anInt1356 = var3;
+		anInt1354 = var4;
+		anInt1357 = var2;
+		anInt1355 = var1;
+		anInt1358 = anInt1357 - 1;
+		anInt1359 = anInt1357 / 2;
+		anInt1360 = anInt1355 / 2;
+	}
 
-    }
+	public static void method414(int var0, int var1, int var2, byte var3, int var4) {
+		if (var4 >= anInt1354 && var4 < anInt1355) {
+			if (var2 < anInt1356) {
+				var0 -= anInt1356 - var2;
+				var2 = anInt1356;
+			}
 
-    public static void method415(int i, int j, int k, int l, int i1, int j1) {
-        if (j < anInt1354 || j >= anInt1355)
-            return;
-        if (l < anInt1356) {
-            i -= anInt1356 - l;
-            l = anInt1356;
-        }
-        if (l + i > anInt1357)
-            i = anInt1357 - l;
-        int k1 = 256 - k;
-        int l1 = (j1 >> 16 & 0xff) * k;
-        int i2 = (j1 >> 8 & 0xff) * k;
-        int j2 = (j1 & 0xff) * k;
-        int j3 = l + j * anInt1352;
-        for (int k3 = 0; k3 < i; k3++) {
-            int k2 = (anIntArray1351[j3] >> 16 & 0xff) * k1;
-            int l2 = (anIntArray1351[j3] >> 8 & 0xff) * k1;
-            int i3 = (anIntArray1351[j3] & 0xff) * k1;
-            int l3 = ((l1 + k2 >> 8) << 16) + ((i2 + l2 >> 8) << 8) + (j2 + i3 >> 8);
-            anIntArray1351[j3++] = l3;
-        }
+			if (var0 + var2 > anInt1357) {
+				var0 = anInt1357 - var2;
+			}
 
-        if (i1 >= 0)
-            if (i1 <= 0) ;
-    }
+			int var5 = var2 + var4 * anInt1352;
 
-    public static void method416(int i, int j, int k, int l, int i1) {
-        if (k < anInt1356 || k >= anInt1357)
-            return;
-        if (i1 < anInt1354) {
-            j -= anInt1354 - i1;
-            i1 = anInt1354;
-        }
-        if (i1 + j > anInt1355)
-            j = anInt1355 - i1;
-        int j1 = k + i1 * anInt1352;
-        l = 23 / l;
-        for (int k1 = 0; k1 < j; k1++)
-            anIntArray1351[j1 + k1 * anInt1352] = i;
+			for (int var6 = 0; var6 < var0; ++var6) {
+				anIntArray1351[var5 + var6] = var1;
+			}
 
-    }
+		}
+	}
 
-    public static void method417(int i, int j, int k, boolean flag, int l, int i1) {
-        if (i < anInt1356 || i >= anInt1357)
-            return;
-        if (k < anInt1354) {
-            j -= anInt1354 - k;
-            k = anInt1354;
-        }
-        if (k + j > anInt1355)
-            j = anInt1355 - k;
-        int j1 = 256 - i1;
-        int k1 = (l >> 16 & 0xff) * i1;
-        int l1 = (l >> 8 & 0xff) * i1;
-        int i2 = (l & 0xff) * i1;
-        if (!flag)
-            return;
-        int i3 = i + k * anInt1352;
-        for (int j3 = 0; j3 < j; j3++) {
-            int j2 = (anIntArray1351[i3] >> 16 & 0xff) * j1;
-            int k2 = (anIntArray1351[i3] >> 8 & 0xff) * j1;
-            int l2 = (anIntArray1351[i3] & 0xff) * j1;
-            int k3 = ((k1 + j2 >> 8) << 16) + ((l1 + k2 >> 8) << 8) + (i2 + l2 >> 8);
-            anIntArray1351[i3] = k3;
-            i3 += anInt1352;
-        }
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "394"
+	)
+	public static void method412(int var0, int var1, int var2, int var3, int var4) {
+		method414(var0, var1, var3, (byte)125, var4);
+		method414(var0, var1, var3, (byte)125, var2 + var4 - 1);
+		method416(var1, var2, var3, 384, var4);
+		method416(var1, var2, var3 + var0 - 1, 384, var4);
+	}
 
-    }
+	public static void method416(int var0, int var1, int var2, int var3, int var4) {
+		if (var2 >= anInt1356 && var2 < anInt1357) {
+			if (var4 < anInt1354) {
+				var1 -= anInt1354 - var4;
+				var4 = anInt1354;
+			}
 
+			if (var4 + var1 > anInt1355) {
+				var1 = anInt1355 - var4;
+			}
+
+			int var5 = var2 + var4 * anInt1352;
+			var3 = 23 / var3;
+
+			for (int var6 = 0; var6 < var1; ++var6) {
+				anIntArray1351[var5 + var6 * anInt1352] = var0;
+			}
+
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)V",
+		garbageValue = "1"
+	)
+	public static void method407() {
+		anInt1356 = 0;
+		anInt1354 = 0;
+		anInt1357 = anInt1352;
+		anInt1355 = anInt1353;
+		anInt1358 = anInt1357 - 1;
+		anInt1359 = anInt1357 / 2;
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "8"
+	)
+	public static void method409() {
+		int var0 = anInt1352 * anInt1353;
+
+		for (int var1 = 0; var1 < var0; ++var1) {
+			anIntArray1351[var1] = 0;
+		}
+
+	}
+
+	public static void method410(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		if (var4 < anInt1356) {
+			var0 -= anInt1356 - var4;
+			var4 = anInt1356;
+		}
+
+		if (var2 < anInt1354) {
+			var1 -= anInt1354 - var2;
+			var2 = anInt1354;
+		}
+
+		if (var0 + var4 > anInt1357) {
+			var0 = anInt1357 - var4;
+		}
+
+		if (var2 + var1 > anInt1355) {
+			var1 = anInt1355 - var2;
+		}
+
+		int var7 = 256 - var6;
+		int var8 = (var3 >> 16 & 255) * var6;
+		int var9 = (var3 >> 8 & 255) * var6;
+		int var10 = (var3 & 255) * var6;
+		int var11 = anInt1352 - var0;
+		int var12 = var4 + var2 * anInt1352;
+
+		for (int var13 = 0; var13 < var1; ++var13) {
+			for (int var14 = -var0; var14 < 0; ++var14) {
+				int var15 = var7 * (anIntArray1351[var12] >> 16 & 255);
+				int var16 = (anIntArray1351[var12] >> 8 & 255) * var7;
+				int var17 = var7 * (anIntArray1351[var12] & 255);
+				int var18 = (var10 + var17 >> 8) + (var8 + var15 >> 8 << 16) + (var9 + var16 >> 8 << 8);
+				anIntArray1351[var12++] = var18;
+			}
+
+			var12 += var11;
+		}
+
+	}
+
+	public static void method413(int var0, boolean var1, int var2, int var3, int var4, int var5, int var6) {
+		method415(var0, var2, var6, var3, anInt1349, var4);
+		method415(var0, var5 + var2 - 1, var6, var3, anInt1349, var4);
+		if (var5 >= 3) {
+			method417(var3, var5 - 2, var2 + 1, true, var4, var6);
+			method417(var3 + var0 - 1, var5 - 2, var2 + 1, true, var4, var6);
+		}
+
+	}
+
+	public static void method415(int var0, int var1, int var2, int var3, int var4, int var5) {
+		if (var1 >= anInt1354 && var1 < anInt1355) {
+			if (var3 < anInt1356) {
+				var0 -= anInt1356 - var3;
+				var3 = anInt1356;
+			}
+
+			if (var3 + var0 > anInt1357) {
+				var0 = anInt1357 - var3;
+			}
+
+			int var6 = 256 - var2;
+			int var7 = (var5 >> 16 & 255) * var2;
+			int var8 = var2 * (var5 >> 8 & 255);
+			int var9 = (var5 & 255) * var2;
+			int var10 = var3 + anInt1352 * var1;
+
+			for (int var11 = 0; var11 < var0; ++var11) {
+				int var12 = var6 * (anIntArray1351[var10] >> 16 & 255);
+				int var13 = (anIntArray1351[var10] >> 8 & 255) * var6;
+				int var14 = var6 * (anIntArray1351[var10] & 255);
+				int var15 = (var9 + var14 >> 8) + (var7 + var12 >> 8 << 16) + (var8 + var13 >> 8 << 8);
+				anIntArray1351[var10++] = var15;
+			}
+
+			if (var4 >= 0 && var4 <= 0) {
+			}
+
+		}
+	}
+
+	public static void method417(int var0, int var1, int var2, boolean var3, int var4, int var5) {
+		if (var0 >= anInt1356 && var0 < anInt1357) {
+			if (var2 < anInt1354) {
+				var1 -= anInt1354 - var2;
+				var2 = anInt1354;
+			}
+
+			if (var2 + var1 > anInt1355) {
+				var1 = anInt1355 - var2;
+			}
+
+			int var6 = 256 - var5;
+			int var7 = (var4 >> 16 & 255) * var5;
+			int var8 = var5 * (var4 >> 8 & 255);
+			int var9 = var5 * (var4 & 255);
+			int var10 = var0 + var2 * anInt1352;
+
+			for (int var11 = 0; var11 < var1; ++var11) {
+				int var12 = var6 * (anIntArray1351[var10] >> 16 & 255);
+				int var13 = (anIntArray1351[var10] >> 8 & 255) * var6;
+				int var14 = var6 * (anIntArray1351[var10] & 255);
+				int var15 = (var9 + var14 >> 8) + (var7 + var12 >> 8 << 16) + (var8 + var13 >> 8 << 8);
+				anIntArray1351[var10] = var15;
+				var10 += anInt1352;
+			}
+
+		}
+	}
 }

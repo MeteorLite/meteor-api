@@ -1,257 +1,318 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class12 {
+	public static boolean aBoolean274;
+	public static Class39 aClass39_306;
+	public static int anInt279;
+	public static Class12[] aClass12Array278;
+	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_277;
+	public static int[] anIntArray276;
+	public static int anInt275;
+	public int[] anIntArray285;
+	public final int anInt273;
+	public long aLong280;
+	public String aString281;
+	public int anInt298;
+	public int[] anIntArray284;
+	public byte aByte283;
+	public int anInt286;
+	public int anInt287;
+	public String[] aStringArray293;
+	public int[] anIntArray291;
+	public byte[] aByteArray282;
+	public int anInt288;
+	public int anInt289;
+	public int anInt290;
+	public int anInt299;
+	public boolean aBoolean301;
+	public int[] anIntArray292;
+	public int anInt294;
+	public int anInt304;
+	public int anInt302;
+	public int anInt300;
+	public int anInt295;
+	public boolean aBoolean297;
+	public int anInt296;
+	public int anInt303;
+	public int anInt305;
 
-    public static boolean aBoolean274 = true;
-    public static int anInt275;
-    public static int[] anIntArray276;
-    public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_277;
-    public static Class12[] aClass12Array278;
-    public static int anInt279;
-    public static Class39 aClass39_306 = new Class39(30, 0);
-    public final int anInt273;
-    public long aLong280;
-    public String aString281;
-    public byte[] aByteArray282;
-    public byte aByte283;
-    public int[] anIntArray284;
-    public int[] anIntArray285;
-    public int anInt286;
-    public int anInt287;
-    public int anInt288;
-    public int anInt289;
-    public int anInt290;
-    public int[] anIntArray291;
-    public int[] anIntArray292;
-    public String[] aStringArray293;
-    public int anInt294;
-    public int anInt295;
-    public int anInt296;
-    public boolean aBoolean297;
-    public int anInt298;
-    public int anInt299;
-    public int anInt300;
-    public boolean aBoolean301;
-    public int anInt302;
-    public int anInt303;
-    public int anInt304;
-    public int anInt305;
-    public Class12() {
-        anInt273 = -32952;
-        aLong280 = -1L;
-        aByte283 = 1;
-        anInt286 = -1;
-        anInt287 = -1;
-        anInt288 = -1;
-        anInt289 = -1;
-        anInt290 = -1;
-        anInt294 = -1;
-        anInt295 = -1;
-        anInt296 = -1;
-        aBoolean297 = true;
-        anInt298 = -1;
-        anInt299 = 128;
-        anInt300 = 128;
-        aBoolean301 = false;
-        anInt304 = -1;
-        anInt305 = 32;
-    }
+	static {
+		aBoolean274 = true;
+		aClass39_306 = new Class39(30, 0);
+	}
 
-    public static void method212(Class47 class47) {
-        aClass44_Sub3_Sub2_277 = new Class44_Sub3_Sub2(class47.method546("npc.dat", null), (byte) 1);
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method546("npc.idx", null), (byte) 1);
-        anInt275 = class44_sub3_sub2.get2();
-        anIntArray276 = new int[anInt275];
-        int i = 2;
-        for (int j = 0; j < anInt275; j++) {
-            anIntArray276[j] = i;
-            i += class44_sub3_sub2.get2();
-        }
+	public Class12() {
+		this.anInt273 = -32952;
+		this.aLong280 = -1L;
+		this.aByte283 = 1;
+		this.anInt286 = -1;
+		this.anInt287 = -1;
+		this.anInt288 = -1;
+		this.anInt289 = -1;
+		this.anInt290 = -1;
+		this.anInt294 = -1;
+		this.anInt295 = -1;
+		this.anInt296 = -1;
+		this.aBoolean297 = true;
+		this.anInt298 = -1;
+		this.anInt299 = 128;
+		this.anInt300 = 128;
+		this.aBoolean301 = false;
+		this.anInt304 = -1;
+		this.anInt305 = 32;
+	}
 
-        aClass12Array278 = new Class12[20];
-        for (int k = 0; k < 20; k++)
-            aClass12Array278[k] = new Class12();
+	public Model method216(int var1, int var2, int var3, int[] var4) {
+		Model var5 = (Model)aClass39_306.method339(this.aLong280);
+		if (var5 == null) {
+			boolean var6 = false;
+			int[] var7 = this.anIntArray284;
+			int var8 = var7.length;
 
-    }
+			for (int var9 = 0; var9 < var8; ++var9) {
+				int var10 = var7[var9];
+				if (!Model.method504(var10)) {
+					var6 = true;
+				}
+			}
 
-    public static void method213(byte byte0) {
-        aClass39_306 = null;
-        anIntArray276 = null;
-        aClass12Array278 = null;
-        aClass44_Sub3_Sub2_277 = null;
-        if (byte0 == 1) {
-            byte0 = 0;
-        } else {
-            aBoolean274 = !aBoolean274;
-        }
-    }
+			if (var6) {
+				return null;
+			}
 
-    public static Class12 method214(int i) {
-        for (int j = 0; j < 20; j++)
-            if (aClass12Array278[j].aLong280 == (long) i)
-                return aClass12Array278[j];
+			Model[] var12 = new Model[this.anIntArray284.length];
 
-        anInt279 = (anInt279 + 1) % 20;
-        Class12 class12 = aClass12Array278[anInt279] = new Class12();
-        aClass44_Sub3_Sub2_277.anInt1374 = anIntArray276[i];
-        class12.aLong280 = i;
-        class12.method215((byte) 2, aClass44_Sub3_Sub2_277);
-        return class12;
-    }
+			for (var8 = 0; var8 < this.anIntArray284.length; ++var8) {
+				var12[var8] = Model.method503(this.anIntArray284[var8]);
+			}
 
-    public void method215(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2) {
-        if (byte0 == 2) {
-            byte0 = 0;
-        } else {
-            for (int i = 1; i > 0; i++) ;
-        }
-        do {
-            int j = class44_sub3_sub2.get1();
-            if (j == 0)
-                return;
-            if (j == 1) {
-                int k = class44_sub3_sub2.get1();
-                anIntArray284 = new int[k];
-                for (int j1 = 0; j1 < k; j1++)
-                    anIntArray284[j1] = class44_sub3_sub2.get2();
+			if (var12.length == 1) {
+				var5 = var12[0];
+			} else {
+				var5 = new Model(var12.length, -643, var12);
+			}
 
-            } else if (j == 2)
-                aString281 = class44_sub3_sub2.getString();
-            else if (j == 3)
-                aByteArray282 = class44_sub3_sub2.getStringArray(anInt273);
-            else if (j == 12)
-                aByte283 = class44_sub3_sub2.get1Signed();
-            else if (j == 13)
-                anInt286 = class44_sub3_sub2.get2();
-            else if (j == 14)
-                anInt287 = class44_sub3_sub2.get2();
-            else if (j == 17) {
-                anInt287 = class44_sub3_sub2.get2();
-                anInt288 = class44_sub3_sub2.get2();
-                anInt289 = class44_sub3_sub2.get2();
-                anInt290 = class44_sub3_sub2.get2();
-            } else if (j >= 30 && j < 40) {
-                if (aStringArray293 == null)
-                    aStringArray293 = new String[5];
-                aStringArray293[j - 30] = class44_sub3_sub2.getString();
-                if (aStringArray293[j - 30].equalsIgnoreCase("hidden"))
-                    aStringArray293[j - 30] = null;
-            } else if (j == 40) {
-                int l = class44_sub3_sub2.get1();
-                anIntArray291 = new int[l];
-                anIntArray292 = new int[l];
-                for (int k1 = 0; k1 < l; k1++) {
-                    anIntArray291[k1] = class44_sub3_sub2.get2();
-                    anIntArray292[k1] = class44_sub3_sub2.get2();
-                }
+			if (this.anIntArray291 != null) {
+				for (var8 = 0; var8 < this.anIntArray291.length; ++var8) {
+					var5.method517(this.anIntArray291[var8], this.anIntArray292[var8]);
+				}
+			}
 
-            } else if (j == 60) {
-                int i1 = class44_sub3_sub2.get1();
-                anIntArray285 = new int[i1];
-                for (int l1 = 0; l1 < i1; l1++)
-                    anIntArray285[l1] = class44_sub3_sub2.get2();
+			var5.method510();
+			var5.method520(this.anInt302 + 64, this.anInt303 + 850, -30, -50, -30, true);
+			aClass39_306.method340(201, this.aLong280, var5);
+		}
 
-            } else if (j == 90)
-                anInt294 = class44_sub3_sub2.get2();
-            else if (j == 91)
-                anInt295 = class44_sub3_sub2.get2();
-            else if (j == 92)
-                anInt296 = class44_sub3_sub2.get2();
-            else if (j == 93)
-                aBoolean297 = false;
-            else if (j == 95)
-                anInt298 = class44_sub3_sub2.get2();
-            else if (j == 97)
-                anInt299 = class44_sub3_sub2.get2();
-            else if (j == 98)
-                anInt300 = class44_sub3_sub2.get2();
-            else if (j == 99)
-                aBoolean301 = true;
-            else if (j == 100)
-                anInt302 = class44_sub3_sub2.get1Signed();
-            else if (j == 101)
-                anInt303 = class44_sub3_sub2.get1Signed() * 5;
-            else if (j == 102)
-                anInt304 = class44_sub3_sub2.get2();
-            else if (j == 103)
-                anInt305 = class44_sub3_sub2.get2();
-        } while (true);
-    }
+		Model var11 = Model.A_MODEL___1517;
+		var3 = 62 / var3;
+		var11.method505(0, var5, Class11.method211(var1) & Class11.method211(var2));
+		if (var1 != -1 && var2 != -1) {
+			var11.method512(-32031, var4, var1, var2);
+		} else if (var1 != -1) {
+			var11.method511(var1);
+		}
 
-    public Model method216(int i, int j, int k, int[] ai) {
-        Model model = (Model) aClass39_306.method339(aLong280);
-        if (model == null) {
-            boolean flag = false;
-            for (int value : anIntArray284)
-                if (!Model.method504(value))
-                    flag = true;
+		if (this.anInt299 != 128 || this.anInt300 != 128) {
+			var11.method519(9, this.anInt299, this.anInt299, this.anInt300);
+		}
 
-            if (flag)
-                return null;
-            Model[] aclass44_sub3_sub4_sub4 = new Model[anIntArray284.length];
-            for (int i1 = 0; i1 < anIntArray284.length; i1++)
-                aclass44_sub3_sub4_sub4[i1] = Model.method503(anIntArray284[i1], 6);
+		var11.method507(486);
+		var11.anIntArrayArray1554 = null;
+		var11.anIntArrayArray1553 = null;
+		if (this.aByte283 == 1) {
+			var11.aBoolean1555 = true;
+		}
 
-            if (aclass44_sub3_sub4_sub4.length == 1)
-                model = aclass44_sub3_sub4_sub4[0];
-            else
-                model = new Model(aclass44_sub3_sub4_sub4.length, -643, aclass44_sub3_sub4_sub4);
-            if (anIntArray291 != null) {
-                for (int j1 = 0; j1 < anIntArray291.length; j1++)
-                    model.method517(anIntArray291[j1], anIntArray292[j1]);
+		return var11;
+	}
 
-            }
-            model.method510(9);
-            model.method520(64 + anInt302, 850 + anInt303, -30, -50, -30, true);
-            aClass39_306.method340(201, aLong280, model);
-        }
-        Model model_1 = Model.A_MODEL___1517;
-        k = 62 / k;
-        model_1.method505(0, model, Class11.method211(i, 0) & Class11.method211(j, 0));
-        if (i != -1 && j != -1)
-            model_1.method512(-32031, ai, i, j);
-        else if (i != -1)
-            model_1.method511(i, -284);
-        if (anInt299 != 128 || anInt300 != 128)
-            model_1.method519(9, anInt299, anInt299, anInt300);
-        model_1.method507(486);
-        model_1.anIntArrayArray1554 = null;
-        model_1.anIntArrayArray1553 = null;
-        if (aByte283 == 1)
-            model_1.aBoolean1555 = true;
-        return model_1;
-    }
+	@ObfuscatedSignature(
+		descriptor = "(B)LModel;",
+		garbageValue = "0"
+	)
+	public Model method217() {
+		if (this.anIntArray285 == null) {
+			return null;
+		} else {
+			boolean var1 = false;
+			int[] var2 = this.anIntArray285;
+			int var3 = var2.length;
 
-    public Model method217(byte byte0) {
-        if (byte0 != 0) {
-            for (int i = 1; i > 0; i++) ;
-        }
-        if (anIntArray285 == null)
-            return null;
-        boolean flag = false;
-        for (int i : anIntArray285)
-            if (!Model.method504(i))
-                flag = true;
+			int var4;
+			for (var4 = 0; var4 < var3; ++var4) {
+				int var5 = var2[var4];
+				if (!Model.method504(var5)) {
+					var1 = true;
+				}
+			}
 
-        if (flag)
-            return null;
-        Model[] aclass44_sub3_sub4_sub4 = new Model[anIntArray285.length];
-        for (int k = 0; k < anIntArray285.length; k++)
-            aclass44_sub3_sub4_sub4[k] = Model.method503(anIntArray285[k], 6);
+			if (var1) {
+				return null;
+			} else {
+				Model[] var6 = new Model[this.anIntArray285.length];
 
-        Model model;
-        if (aclass44_sub3_sub4_sub4.length == 1)
-            model = aclass44_sub3_sub4_sub4[0];
-        else
-            model = new Model(aclass44_sub3_sub4_sub4.length, -643, aclass44_sub3_sub4_sub4);
-        if (anIntArray291 != null) {
-            for (int l = 0; l < anIntArray291.length; l++)
-                model.method517(anIntArray291[l], anIntArray292[l]);
+				for (var3 = 0; var3 < this.anIntArray285.length; ++var3) {
+					var6[var3] = Model.method503(this.anIntArray285[var3]);
+				}
 
-        }
-        return model;
-    }
+				Model var7;
+				if (var6.length == 1) {
+					var7 = var6[0];
+				} else {
+					var7 = new Model(var6.length, -643, var6);
+				}
 
+				if (this.anIntArray291 != null) {
+					for (var4 = 0; var4 < this.anIntArray291.length; ++var4) {
+						var7.method517(this.anIntArray291[var4], this.anIntArray292[var4]);
+					}
+				}
+
+				return var7;
+			}
+		}
+	}
+
+	public void method215(byte var1, Class44_Sub3_Sub2 var2) {
+		int var3;
+		if (var1 == 2) {
+			boolean var6 = false;
+		} else {
+			for (var3 = 1; var3 > 0; ++var3) {
+			}
+		}
+
+		while (true) {
+			while (true) {
+				var3 = var2.get1();
+				if (var3 == 0) {
+					return;
+				}
+
+				int var4;
+				int var5;
+				if (var3 == 1) {
+					var4 = var2.get1();
+					this.anIntArray284 = new int[var4];
+
+					for (var5 = 0; var5 < var4; ++var5) {
+						this.anIntArray284[var5] = var2.get2();
+					}
+				} else if (var3 == 2) {
+					this.aString281 = var2.getString();
+				} else if (var3 == 3) {
+					this.aByteArray282 = var2.getStringArray(this.anInt273);
+				} else if (var3 == 12) {
+					this.aByte283 = var2.get1Signed();
+				} else if (var3 == 13) {
+					this.anInt286 = var2.get2();
+				} else if (var3 == 14) {
+					this.anInt287 = var2.get2();
+				} else if (var3 == 17) {
+					this.anInt287 = var2.get2();
+					this.anInt288 = var2.get2();
+					this.anInt289 = var2.get2();
+					this.anInt290 = var2.get2();
+				} else if (var3 >= 30 && var3 < 40) {
+					if (this.aStringArray293 == null) {
+						this.aStringArray293 = new String[5];
+					}
+
+					this.aStringArray293[var3 - 30] = var2.getString();
+					if (this.aStringArray293[var3 - 30].equalsIgnoreCase("hidden")) {
+						this.aStringArray293[var3 - 30] = null;
+					}
+				} else if (var3 == 40) {
+					var4 = var2.get1();
+					this.anIntArray291 = new int[var4];
+					this.anIntArray292 = new int[var4];
+
+					for (var5 = 0; var5 < var4; ++var5) {
+						this.anIntArray291[var5] = var2.get2();
+						this.anIntArray292[var5] = var2.get2();
+					}
+				} else if (var3 == 60) {
+					var4 = var2.get1();
+					this.anIntArray285 = new int[var4];
+
+					for (var5 = 0; var5 < var4; ++var5) {
+						this.anIntArray285[var5] = var2.get2();
+					}
+				} else if (var3 == 90) {
+					this.anInt294 = var2.get2();
+				} else if (var3 == 91) {
+					this.anInt295 = var2.get2();
+				} else if (var3 == 92) {
+					this.anInt296 = var2.get2();
+				} else if (var3 == 93) {
+					this.aBoolean297 = false;
+				} else if (var3 == 95) {
+					this.anInt298 = var2.get2();
+				} else if (var3 == 97) {
+					this.anInt299 = var2.get2();
+				} else if (var3 == 98) {
+					this.anInt300 = var2.get2();
+				} else if (var3 == 99) {
+					this.aBoolean301 = true;
+				} else if (var3 == 100) {
+					this.anInt302 = var2.get1Signed();
+				} else if (var3 == 101) {
+					this.anInt303 = var2.get1Signed() * 5;
+				} else if (var3 == 102) {
+					this.anInt304 = var2.get2();
+				} else if (var3 == 103) {
+					this.anInt305 = var2.get2();
+				}
+			}
+		}
+	}
+
+	public static Class12 method214(int var0) {
+		for (int var1 = 0; var1 < 20; ++var1) {
+			if (aClass12Array278[var1].aLong280 == (long)var0) {
+				return aClass12Array278[var1];
+			}
+		}
+
+		anInt279 = (anInt279 + 1) % 20;
+		Class12 var2 = aClass12Array278[anInt279] = new Class12();
+		aClass44_Sub3_Sub2_277.anInt1374 = anIntArray276[var0];
+		var2.aLong280 = (long)var0;
+		var2.method215((byte)2, aClass44_Sub3_Sub2_277);
+		return var2;
+	}
+
+	public static void method213(byte var0) {
+		aClass39_306 = null;
+		anIntArray276 = null;
+		aClass12Array278 = null;
+		aClass44_Sub3_Sub2_277 = null;
+		if (var0 == 1) {
+			boolean var1 = false;
+		} else {
+			aBoolean274 = !aBoolean274;
+		}
+
+	}
+
+	public static void method212(Class47 var0) {
+		aClass44_Sub3_Sub2_277 = new Class44_Sub3_Sub2(var0.method546("npc.dat", (byte[])null), (byte)1);
+		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("npc.idx", (byte[])null), (byte)1);
+		anInt275 = var1.get2();
+		anIntArray276 = new int[anInt275];
+		int var2 = 2;
+
+		int var3;
+		for (var3 = 0; var3 < anInt275; ++var3) {
+			anIntArray276[var3] = var2;
+			var2 += var1.get2();
+		}
+
+		aClass12Array278 = new Class12[20];
+
+		for (var3 = 0; var3 < 20; ++var3) {
+			aClass12Array278[var3] = new Class12();
+		}
+
+	}
 }

@@ -1,378 +1,441 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 import java.util.Random;
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
+	public boolean aBoolean1466;
+	public final int anInt1454;
+	public final Random aRandom1465;
+	public int anInt1464;
+	public int anInt1455;
+	public final int[] anIntArray1463;
+	public boolean aBoolean1456;
+	public final byte[][] aByteArrayArray1458;
+	public final int[] anIntArray1461;
+	public final int[] anIntArray1459;
+	public final int[] anIntArray1460;
+	public final int[] anIntArray1462;
 
-    public int anInt1453;
-    public final int anInt1454;
-    public int anInt1455;
-    public boolean aBoolean1456;
-    public int anInt1457;
-    public final byte[][] aByteArrayArray1458;
-    public final int[] anIntArray1459;
-    public final int[] anIntArray1460;
-    public final int[] anIntArray1461;
-    public final int[] anIntArray1462;
-    public final int[] anIntArray1463;
-    public int anInt1464;
-    public final Random aRandom1465;
-    public boolean aBoolean1466;
-    public Class44_Sub3_Sub1_Sub4(Class47 class47, boolean flag, String s, byte byte0) {
-        anInt1454 = 436;
-        anInt1455 = 436;
-        aBoolean1456 = false;
-        aByteArrayArray1458 = new byte[256][];
-        anIntArray1459 = new int[256];
-        anIntArray1460 = new int[256];
-        anIntArray1461 = new int[256];
-        anIntArray1462 = new int[256];
-        anIntArray1463 = new int[256];
-        aRandom1465 = new Random();
-        aBoolean1466 = false;
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method546(s + ".dat", null), (byte) 1);
-        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(class47.method546("index.dat", null), (byte) 1);
-        byte byte1 = -1;
-        class44_sub3_sub2_1.anInt1374 = class44_sub3_sub2.get2() + 4;
-        int j = class44_sub3_sub2_1.get1();
-        if (j > 0)
-            class44_sub3_sub2_1.anInt1374 += 3 * (j - 1);
-        for (int k = 0; k < 256; k++) {
-            int i = k;
-            anIntArray1461[k] = class44_sub3_sub2_1.get1();
-            anIntArray1462[k] = class44_sub3_sub2_1.get1();
-            int l = anIntArray1459[k] = class44_sub3_sub2_1.get2();
-            int i1 = anIntArray1460[k] = class44_sub3_sub2_1.get2();
-            int j1 = class44_sub3_sub2_1.get1();
-            int k1 = l * i1;
-            aByteArrayArray1458[k] = new byte[k1];
-            if (j1 == 0) {
-                for (int l1 = 0; l1 < k1; l1++)
-                    aByteArrayArray1458[k][l1] = class44_sub3_sub2.get1Signed();
+	public Class44_Sub3_Sub1_Sub4(Class47 var1, boolean var2, String var3, byte var4) {
+		this.anInt1454 = 436;
+		this.anInt1455 = 436;
+		this.aBoolean1456 = false;
+		this.aByteArrayArray1458 = new byte[256][];
+		this.anIntArray1459 = new int[256];
+		this.anIntArray1460 = new int[256];
+		this.anIntArray1461 = new int[256];
+		this.anIntArray1462 = new int[256];
+		this.anIntArray1463 = new int[256];
+		this.aRandom1465 = new Random();
+		this.aBoolean1466 = false;
+		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var1.method546(var3 + ".dat", (byte[])null), (byte)1);
+		Class44_Sub3_Sub2 var6 = new Class44_Sub3_Sub2(var1.method546("index.dat", (byte[])null), (byte)1);
+		boolean var7 = true;
+		var6.anInt1374 = var5.get2() + 4;
+		int var8 = var6.get1();
+		if (var8 > 0) {
+			var6.anInt1374 += 3 * (var8 - 1);
+		}
 
-            } else if (j1 == 1) {
-                for (int i2 = 0; i2 < l; i2++) {
-                    for (int k2 = 0; k2 < i1; k2++)
-                        aByteArrayArray1458[k][i2 + k2 * l] = class44_sub3_sub2.get1Signed();
+		for (int var9 = 0; var9 < 256; ++var9) {
+			this.anIntArray1461[var9] = var6.get1();
+			this.anIntArray1462[var9] = var6.get1();
+			int var11 = this.anIntArray1459[var9] = var6.get2();
+			int var12 = this.anIntArray1460[var9] = var6.get2();
+			int var13 = var6.get1();
+			int var14 = var11 * var12;
+			this.aByteArrayArray1458[var9] = new byte[var14];
+			int var15;
+			int var16;
+			if (var13 == 0) {
+				for (var15 = 0; var15 < var14; ++var15) {
+					this.aByteArrayArray1458[var9][var15] = var5.get1Signed();
+				}
+			} else if (var13 == 1) {
+				for (var15 = 0; var15 < var11; ++var15) {
+					for (var16 = 0; var16 < var12; ++var16) {
+						this.aByteArrayArray1458[var9][var15 + var16 * var11] = var5.get1Signed();
+					}
+				}
+			}
 
-                }
+			if (var12 > this.anInt1464 && var9 < 128) {
+				this.anInt1464 = var12;
+			}
 
-            }
-            if (i1 > anInt1464 && k < 128)
-                anInt1464 = i1;
-            anIntArray1461[k] = 1;
-            anIntArray1463[k] = l + 2;
-            int j2 = 0;
-            for (int l2 = i1 / 7; l2 < i1; l2++)
-                j2 += aByteArrayArray1458[k][l2 * l];
+			this.anIntArray1461[var9] = 1;
+			this.anIntArray1463[var9] = var11 + 2;
+			var15 = 0;
 
-            if (j2 <= i1 / 7) {
-                anIntArray1463[k]--;
-                anIntArray1461[k] = 0;
-            }
-            j2 = 0;
-            for (int i3 = i1 / 7; i3 < i1; i3++)
-                j2 += aByteArrayArray1458[k][(l - 1) + i3 * l];
+			for (var16 = var12 / 7; var16 < var12; ++var16) {
+				var15 += this.aByteArrayArray1458[var9][var16 * var11];
+			}
 
-            if (j2 <= i1 / 7)
-                anIntArray1463[k]--;
-        }
+			int var10002;
+			if (var15 <= var12 / 7) {
+				var10002 = this.anIntArray1463[var9]--;
+				this.anIntArray1461[var9] = 0;
+			}
 
-        if (byte0 == 0)
-            byte0 = 0;
-        else
-            aBoolean1456 = !aBoolean1456;
-        if (flag) {
-            anIntArray1463[32] = anIntArray1463[73];
-        } else {
-            anIntArray1463[32] = anIntArray1463[105];
-        }
-    }
+			var15 = 0;
 
-    public void method455(int i, int j, int k, String s, boolean flag) {
-        method458(i - method457(-43341, s) / 2, s, k, j, true);
-        if (flag)
-            aBoolean1456 = !aBoolean1456;
-    }
+			for (var16 = var12 / 7; var16 < var12; ++var16) {
+				var15 += this.aByteArrayArray1458[var9][var16 * var11 + (var11 - 1)];
+			}
 
-    public void method456(int i, int j, int k, String s, int l, boolean flag) {
-        if (i != 0)
-            aBoolean1456 = !aBoolean1456;
-        method460(s, anInt1454, flag, k, j - method457(-43341, s) / 2, l);
-    }
+			if (var15 <= var12 / 7) {
+				var10002 = this.anIntArray1463[var9]--;
+			}
+		}
 
-    public int method457(int i, String s) {
-        if (s == null)
-            return 0;
-        int j = 0;
-        for (int k = 0; k < s.length(); k++)
-            if (s.charAt(k) == '@' && k + 4 < s.length() && s.charAt(k + 4) == '@')
-                k += 4;
-            else
-                j += anIntArray1463[s.charAt(k)];
+		if (var4 == 0) {
+			boolean var17 = false;
+		} else {
+			this.aBoolean1456 = !this.aBoolean1456;
+		}
 
-        if (i != -43341)
-            return anInt1454;
-        else
-            return j;
-    }
+		if (var2) {
+			this.anIntArray1463[32] = this.anIntArray1463[73];
+		} else {
+			this.anIntArray1463[32] = this.anIntArray1463[105];
+		}
 
-    public void method458(int i, String s, int j, int k, boolean flag) {
-        if (s == null)
-            return;
-        k -= anInt1464;
-        for (int l = 0; l < s.length(); l++) {
-            char c = s.charAt(l);
-            if (c != ' ')
-                method463(aByteArrayArray1458[c], i + anIntArray1461[c], k + anIntArray1462[c], anIntArray1459[c], anIntArray1460[c], j);
-            i += anIntArray1463[c];
-        }
+	}
 
-        if (!flag)
-            anInt1453 = -157;
-    }
+	public int method457(int var1, String var2) {
+		if (var2 == null) {
+			return 0;
+		} else {
+			int var3 = 0;
 
-    public void method459(String s, int i, int j, int k, int l, int i1) {
-        if (s == null)
-            return;
-        j -= method457(-43341, s) / 2;
-        if (l != 6)
-            anInt1457 = -147;
-        i -= anInt1464;
-        for (int j1 = 0; j1 < s.length(); j1++) {
-            char c = s.charAt(j1);
-            if (c != ' ')
-                method463(aByteArrayArray1458[c], j + anIntArray1461[c], i + anIntArray1462[c] + (int) (Math.sin((double) j1 / 2D + (double) i1 / 5D) * 5D), anIntArray1459[c], anIntArray1460[c], k);
-            j += anIntArray1463[c];
-        }
+			for (int var4 = 0; var4 < var2.length(); ++var4) {
+				if (var2.charAt(var4) == '@' && var4 + 4 < var2.length() && var2.charAt(var4 + 4) == '@') {
+					var4 += 4;
+				} else {
+					var3 += this.anIntArray1463[var2.charAt(var4)];
+				}
+			}
 
-    }
+			return var3;
+		}
+	}
 
-    public void method460(String s, int i, boolean flag, int j, int k, int l) {
-        aBoolean1466 = false;
-        int i1 = k;
-        if (s == null)
-            return;
-        j -= anInt1464;
-        for (int j1 = 0; j1 < s.length(); j1++)
-            if (s.charAt(j1) == '@' && j1 + 4 < s.length() && s.charAt(j1 + 4) == '@') {
-                int k1 = method462(s.substring(j1 + 1, j1 + 4), -13619);
-                if (k1 != -1)
-                    l = k1;
-                j1 += 4;
-            } else {
-                char c = s.charAt(j1);
-                if (c != ' ') {
-                    if (flag)
-                        method463(aByteArrayArray1458[c], k + anIntArray1461[c] + 1, j + anIntArray1462[c] + 1, anIntArray1459[c], anIntArray1460[c], 0);
-                    method463(aByteArrayArray1458[c], k + anIntArray1461[c], j + anIntArray1462[c], anIntArray1459[c], anIntArray1460[c], l);
-                }
-                k += anIntArray1463[c];
-            }
+	@ObfuscatedSignature(
+		descriptor = "(ILjava/lang/String;IIZ)V",
+		garbageValue = "1"
+	)
+	public void method458(int var1, String var2, int var3, int var4) {
+		if (var2 != null) {
+			var4 -= this.anInt1464;
 
-        if (i <= 0)
-            return;
-        if (aBoolean1466)
-            DrawingArea.method414(k - i1, 0x800000, i1, (byte) 125, j + (int) ((double) anInt1464 * 0.69999999999999996D));
-    }
+			for (int var5 = 0; var5 < var2.length(); ++var5) {
+				char var6 = var2.charAt(var5);
+				if (var6 != ' ') {
+					this.method463(this.aByteArrayArray1458[var6], this.anIntArray1461[var6] + var1, var4 + this.anIntArray1462[var6], this.anIntArray1459[var6], this.anIntArray1460[var6], var3);
+				}
 
-    public void method461(int i, int j, String s, int k, int l, int i1, boolean flag) {
-        if (s == null)
-            return;
-        aRandom1465.setSeed(i1);
-        int j1 = 192 + (aRandom1465.nextInt() & 0x1f);
-        k -= anInt1464;
-        for (int k1 = 0; k1 < s.length(); k1++)
-            if (s.charAt(k1) == '@' && k1 + 4 < s.length() && s.charAt(k1 + 4) == '@') {
-                int l1 = method462(s.substring(k1 + 1, k1 + 4), -13619);
-                if (l1 != -1)
-                    l = l1;
-                k1 += 4;
-            } else {
-                char c = s.charAt(k1);
-                if (c != ' ') {
-                    if (flag)
-                        method465(k + anIntArray1462[c] + 1, aByteArrayArray1458[c], j + anIntArray1461[c] + 1, 0, anIntArray1460[c], false, 192, anIntArray1459[c]);
-                    method465(k + anIntArray1462[c], aByteArrayArray1458[c], j + anIntArray1461[c], l, anIntArray1460[c], false, j1, anIntArray1459[c]);
-                }
-                j += anIntArray1463[c];
-                if ((aRandom1465.nextInt() & 3) == 0)
-                    j++;
-            }
+				var1 += this.anIntArray1463[var6];
+			}
 
-        if (i == 12122) ;
-    }
+		}
+	}
 
-    public int method462(String s, int i) {
-        if (i != -13619)
-            return anInt1454;
-        if (s.equals("red"))
-            return 0xff0000;
-        if (s.equals("gre"))
-            return 65280;
-        if (s.equals("blu"))
-            return 255;
-        if (s.equals("yel"))
-            return 0xffff00;
-        if (s.equals("cya"))
-            return 65535;
-        if (s.equals("mag"))
-            return 0xff00ff;
-        if (s.equals("whi"))
-            return 0xffffff;
-        if (s.equals("bla"))
-            return 0;
-        if (s.equals("lre"))
-            return 0xff9040;
-        if (s.equals("dre"))
-            return 0x800000;
-        if (s.equals("dbl"))
-            return 128;
-        if (s.equals("or1"))
-            return 0xffb000;
-        if (s.equals("or2"))
-            return 0xff7000;
-        if (s.equals("or3"))
-            return 0xff3000;
-        if (s.equals("gr1"))
-            return 0xc0ff00;
-        if (s.equals("gr2"))
-            return 0x80ff00;
-        if (s.equals("gr3"))
-            return 0x40ff00;
-        if (s.equals("str"))
-            aBoolean1466 = true;
-        return -1;
-    }
+	public void method460(String var1, int var2, boolean var3, int var4, int var5, int var6) {
+		this.aBoolean1466 = false;
+		int var7 = var5;
+		if (var1 != null) {
+			var4 -= this.anInt1464;
 
-    public void method463(byte[] abyte0, int i, int j, int k, int l, int i1) {
-        int j1 = i + j * DrawingArea.anInt1352;
-        int k1 = DrawingArea.anInt1352 - k;
-        int l1 = 0;
-        int i2 = 0;
-        if (j < DrawingArea.anInt1354) {
-            int j2 = DrawingArea.anInt1354 - j;
-            l -= j2;
-            j = DrawingArea.anInt1354;
-            i2 += j2 * k;
-            j1 += j2 * DrawingArea.anInt1352;
-        }
-        if (j + l >= DrawingArea.anInt1355)
-            l -= ((j + l) - DrawingArea.anInt1355) + 1;
-        if (i < DrawingArea.anInt1356) {
-            int k2 = DrawingArea.anInt1356 - i;
-            k -= k2;
-            i = DrawingArea.anInt1356;
-            i2 += k2;
-            j1 += k2;
-            l1 += k2;
-            k1 += k2;
-        }
-        if (i + k >= DrawingArea.anInt1357) {
-            int l2 = ((i + k) - DrawingArea.anInt1357) + 1;
-            k -= l2;
-            l1 += l2;
-            k1 += l2;
-        }
-        if (k <= 0 || l <= 0) {
-        } else {
-            method464(DrawingArea.anIntArray1351, abyte0, i1, i2, j1, k, l, k1, l1);
-        }
-    }
+			for (int var8 = 0; var8 < var1.length(); ++var8) {
+				if (var1.charAt(var8) == '@' && var8 + 4 < var1.length() && var1.charAt(var8 + 4) == '@') {
+					int var10 = this.method462(var1.substring(var8 + 1, var8 + 4));
+					if (var10 != -1) {
+						var6 = var10;
+					}
 
-    public void method464(int[] ai, byte[] abyte0, int i, int j, int k, int l, int i1,
-                          int j1, int k1) {
-        int l1 = -(l >> 2);
-        l = -(l & 3);
-        for (int i2 = -i1; i2 < 0; i2++) {
-            for (int j2 = l1; j2 < 0; j2++) {
-                if (abyte0[j++] != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                if (abyte0[j++] != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                if (abyte0[j++] != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                if (abyte0[j++] != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-            }
+					var8 += 4;
+				} else {
+					char var9 = var1.charAt(var8);
+					if (var9 != ' ') {
+						if (var3) {
+							this.method463(this.aByteArrayArray1458[var9], var5 + this.anIntArray1461[var9] + 1, var4 + this.anIntArray1462[var9] + 1, this.anIntArray1459[var9], this.anIntArray1460[var9], 0);
+						}
 
-            for (int k2 = l; k2 < 0; k2++)
-                if (abyte0[j++] != 0)
-                    ai[k++] = i;
-                else
-                    k++;
+						this.method463(this.aByteArrayArray1458[var9], var5 + this.anIntArray1461[var9], var4 + this.anIntArray1462[var9], this.anIntArray1459[var9], this.anIntArray1460[var9], var6);
+					}
 
-            k += j1;
-            j += k1;
-        }
+					var5 += this.anIntArray1463[var9];
+				}
+			}
 
-    }
+			if (var2 > 0) {
+				if (this.aBoolean1466) {
+					DrawingArea.method414(var5 - var7, 8388608, var7, (byte)125, (int)((double)this.anInt1464 * 0.7D) + var4);
+				}
 
-    public void method465(int i, byte[] abyte0, int j, int k, int l, boolean flag, int i1,
-                          int j1) {
-        int k1 = j + i * DrawingArea.anInt1352;
-        int l1 = DrawingArea.anInt1352 - j1;
-        int i2 = 0;
-        int j2 = 0;
-        if (i < DrawingArea.anInt1354) {
-            int k2 = DrawingArea.anInt1354 - i;
-            l -= k2;
-            i = DrawingArea.anInt1354;
-            j2 += k2 * j1;
-            k1 += k2 * DrawingArea.anInt1352;
-        }
-        if (i + l >= DrawingArea.anInt1355)
-            l -= ((i + l) - DrawingArea.anInt1355) + 1;
-        if (j < DrawingArea.anInt1356) {
-            int l2 = DrawingArea.anInt1356 - j;
-            j1 -= l2;
-            j = DrawingArea.anInt1356;
-            j2 += l2;
-            k1 += l2;
-            i2 += l2;
-            l1 += l2;
-        }
-        if (j + j1 >= DrawingArea.anInt1357) {
-            int i3 = ((j + j1) - DrawingArea.anInt1357) + 1;
-            j1 -= i3;
-            i2 += i3;
-            l1 += i3;
-        }
-        if (j1 <= 0 || l <= 0) {
-        } else {
-            method466(l, abyte0, k, j1, i2, i1, k1, DrawingArea.anIntArray1351, -701, j2, l1);
-            if (!flag) ;
-        }
-    }
+			}
+		}
+	}
 
-    public void method466(int i, byte[] abyte0, int j, int k, int l, int i1, int j1,
-                          int[] ai, int k1, int l1, int i2) {
-        while (k1 >= 0)
-            anInt1455 = -187;
-        j = ((j & 0xff00ff) * i1 & 0xff00ff00) + ((j & 0xff00) * i1 & 0xff0000) >> 8;
-        i1 = 256 - i1;
-        for (int j2 = -i; j2 < 0; j2++) {
-            for (int k2 = -k; k2 < 0; k2++)
-                if (abyte0[l1++] != 0) {
-                    int l2 = ai[j1];
-                    ai[j1++] = (((l2 & 0xff00ff) * i1 & 0xff00ff00) + ((l2 & 0xff00) * i1 & 0xff0000) >> 8) + j;
-                } else {
-                    j1++;
-                }
+	@ObfuscatedSignature(
+		descriptor = "(IIILjava/lang/String;Z)V",
+		garbageValue = "0"
+	)
+	public void method455(int var1, int var2, int var3, String var4) {
+		this.method458(var1 - this.method457(-43341, var4) / 2, var4, var3, var2);
+	}
 
-            j1 += i2;
-            l1 += l;
-        }
+	@ObfuscatedSignature(
+		descriptor = "(IILjava/lang/String;IIIZ)V",
+		garbageValue = "1"
+	)
+	public void method461(int var1, int var2, String var3, int var4, int var5, int var6) {
+		if (var3 != null) {
+			this.aRandom1465.setSeed((long)var6);
+			int var7 = 192 + (this.aRandom1465.nextInt() & 31);
+			var4 -= this.anInt1464;
 
-    }
+			for (int var8 = 0; var8 < var3.length(); ++var8) {
+				if (var3.charAt(var8) == '@' && var8 + 4 < var3.length() && var3.charAt(var8 + 4) == '@') {
+					int var10 = this.method462(var3.substring(var8 + 1, var8 + 4));
+					if (var10 != -1) {
+						var5 = var10;
+					}
+
+					var8 += 4;
+				} else {
+					char var9 = var3.charAt(var8);
+					if (var9 != ' ') {
+						this.method465(var4 + this.anIntArray1462[var9] + 1, this.aByteArrayArray1458[var9], var2 + this.anIntArray1461[var9] + 1, 0, this.anIntArray1460[var9], false, 192, this.anIntArray1459[var9]);
+						this.method465(var4 + this.anIntArray1462[var9], this.aByteArrayArray1458[var9], var2 + this.anIntArray1461[var9], var5, this.anIntArray1460[var9], false, var7, this.anIntArray1459[var9]);
+					}
+
+					var2 += this.anIntArray1463[var9];
+					if ((this.aRandom1465.nextInt() & 3) == 0) {
+						++var2;
+					}
+				}
+			}
+
+			if (var1 == 12122) {
+			}
+
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)I",
+		garbageValue = "-13619"
+	)
+	public int method462(String var1) {
+		if (var1.equals("red")) {
+			return 16711680;
+		} else if (var1.equals("gre")) {
+			return 65280;
+		} else if (var1.equals("blu")) {
+			return 255;
+		} else if (var1.equals("yel")) {
+			return 16776960;
+		} else if (var1.equals("cya")) {
+			return 65535;
+		} else if (var1.equals("mag")) {
+			return 16711935;
+		} else if (var1.equals("whi")) {
+			return 16777215;
+		} else if (var1.equals("bla")) {
+			return 0;
+		} else if (var1.equals("lre")) {
+			return 16748608;
+		} else if (var1.equals("dre")) {
+			return 8388608;
+		} else if (var1.equals("dbl")) {
+			return 128;
+		} else if (var1.equals("or1")) {
+			return 16756736;
+		} else if (var1.equals("or2")) {
+			return 16740352;
+		} else if (var1.equals("or3")) {
+			return 16723968;
+		} else if (var1.equals("gr1")) {
+			return 12648192;
+		} else if (var1.equals("gr2")) {
+			return 8453888;
+		} else if (var1.equals("gr3")) {
+			return 4259584;
+		} else {
+			if (var1.equals("str")) {
+				this.aBoolean1466 = true;
+			}
+
+			return -1;
+		}
+	}
+
+	public void method456(int var1, int var2, int var3, String var4, int var5, boolean var6) {
+		this.method460(var4, this.anInt1454, var6, var3, var2 - this.method457(-43341, var4) / 2, var5);
+	}
+
+	public void method463(byte[] var1, int var2, int var3, int var4, int var5, int var6) {
+		int var7 = var3 * DrawingArea.anInt1352 + var2;
+		int var8 = DrawingArea.anInt1352 - var4;
+		int var9 = 0;
+		int var10 = 0;
+		int var11;
+		if (var3 < DrawingArea.anInt1354) {
+			var11 = DrawingArea.anInt1354 - var3;
+			var5 -= var11;
+			var3 = DrawingArea.anInt1354;
+			var10 += var11 * var4;
+			var7 += var11 * DrawingArea.anInt1352;
+		}
+
+		if (var3 + var5 >= DrawingArea.anInt1355) {
+			var5 -= var3 + var5 - DrawingArea.anInt1355 + 1;
+		}
+
+		if (var2 < DrawingArea.anInt1356) {
+			var11 = DrawingArea.anInt1356 - var2;
+			var4 -= var11;
+			var2 = DrawingArea.anInt1356;
+			var10 += var11;
+			var7 += var11;
+			var9 += var11;
+			var8 += var11;
+		}
+
+		if (var2 + var4 >= DrawingArea.anInt1357) {
+			var11 = var2 + var4 - DrawingArea.anInt1357 + 1;
+			var4 -= var11;
+			var9 += var11;
+			var8 += var11;
+		}
+
+		if (var4 > 0 && var5 > 0) {
+			this.method464(DrawingArea.anIntArray1351, var1, var6, var10, var7, var4, var5, var8, var9);
+		}
+
+	}
+
+	public void method465(int var1, byte[] var2, int var3, int var4, int var5, boolean var6, int var7, int var8) {
+		int var9 = var3 + DrawingArea.anInt1352 * var1;
+		int var10 = DrawingArea.anInt1352 - var8;
+		int var11 = 0;
+		int var12 = 0;
+		int var13;
+		if (var1 < DrawingArea.anInt1354) {
+			var13 = DrawingArea.anInt1354 - var1;
+			var5 -= var13;
+			var1 = DrawingArea.anInt1354;
+			var12 += var13 * var8;
+			var9 += var13 * DrawingArea.anInt1352;
+		}
+
+		if (var5 + var1 >= DrawingArea.anInt1355) {
+			var5 -= var5 + var1 - DrawingArea.anInt1355 + 1;
+		}
+
+		if (var3 < DrawingArea.anInt1356) {
+			var13 = DrawingArea.anInt1356 - var3;
+			var8 -= var13;
+			var3 = DrawingArea.anInt1356;
+			var12 += var13;
+			var9 += var13;
+			var11 += var13;
+			var10 += var13;
+		}
+
+		if (var3 + var8 >= DrawingArea.anInt1357) {
+			var13 = var3 + var8 - DrawingArea.anInt1357 + 1;
+			var8 -= var13;
+			var11 += var13;
+			var10 += var13;
+		}
+
+		if (var8 > 0 && var5 > 0) {
+			this.method466(var5, var2, var4, var8, var11, var7, var9, DrawingArea.anIntArray1351, -701, var12, var10);
+		}
+
+	}
+
+	public void method466(int var1, byte[] var2, int var3, int var4, int var5, int var6, int var7, int[] var8, int var9, int var10, int var11) {
+		var3 = ((var3 & 16711935) * var6 & -16711936) + ((var3 & 65280) * var6 & 16711680) >> 8;
+		var6 = 256 - var6;
+
+		for (int var12 = -var1; var12 < 0; ++var12) {
+			for (int var13 = -var4; var13 < 0; ++var13) {
+				if (var2[var10++] != 0) {
+					int var14 = var8[var7];
+					var8[var7++] = var3 + (((var14 & 16711935) * var6 & -16711936) + ((var14 & 65280) * var6 & 16711680) >> 8);
+				} else {
+					++var7;
+				}
+			}
+
+			var7 += var11;
+			var10 += var5;
+		}
+
+	}
+
+	public void method464(int[] var1, byte[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+		int var10 = -(var6 >> 2);
+		var6 = -(var6 & 3);
+
+		for (int var11 = -var7; var11 < 0; ++var11) {
+			int var12;
+			for (var12 = var10; var12 < 0; ++var12) {
+				if (var2[var4++] != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				if (var2[var4++] != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				if (var2[var4++] != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				if (var2[var4++] != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+			}
+
+			for (var12 = var6; var12 < 0; ++var12) {
+				if (var2[var4++] != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+			}
+
+			var5 += var8;
+			var4 += var9;
+		}
+
+	}
+
+	public void method459(String var1, int var2, int var3, int var4, int var5, int var6) {
+		if (var1 != null) {
+			var3 -= this.method457(-43341, var1) / 2;
+			var2 -= this.anInt1464;
+
+			for (int var7 = 0; var7 < var1.length(); ++var7) {
+				char var8 = var1.charAt(var7);
+				if (var8 != ' ') {
+					this.method463(this.aByteArrayArray1458[var8], var3 + this.anIntArray1461[var8], var2 + this.anIntArray1462[var8] + (int)(Math.sin((double)var7 / 2.0D + (double)var6 / 5.0D) * 5.0D), this.anIntArray1459[var8], this.anIntArray1460[var8], var4);
+				}
+
+				var3 += this.anIntArray1463[var8];
+			}
+
+		}
+	}
 }

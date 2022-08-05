@@ -1,66 +1,80 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class GameObject extends Renderable {
+	public Class26 animation;
+	public boolean aBoolean1468;
+	public int nextFrameTime;
+	public final int objectId;
+	public final int type;
+	public int frame;
+	public final int orientation;
+	public final int minX;
+	public final int minY;
+	public final int maxX;
+	public final int maxY;
+	public int anInt1467;
 
-    public int anInt1467;
-    public boolean aBoolean1468;
-    public final int objectId;
-    public final int type;
-    public final int orientation;
-    public final int minX;
-    public final int minY;
-    public final int maxX;
-    public final int maxY;
-    public Class26 animation;
-    public int frame;
-    public int nextFrameTime;
-    public GameObject(int type, int orientation, int k, int objectId, int maxX, int j1, boolean animating,
-                      int minY, int maxY, int minX) {
-        aBoolean1468 = false;
-        this.objectId = objectId;
-        this.type = type;
-        this.orientation = orientation;
-        this.minX = minX;
-        this.minY = minY;
-        this.maxX = maxX;
-        this.maxY = maxY;
-        animation = Class26.aClass26Array497[k];
-        frame = 0;
-        nextFrameTime = Client.tick;
-        if (j1 != 0)
-            anInt1467 = 429;
-        if (animating && animation.frameStep != -1) {
-            frame = (int) (Math.random() * (double) animation.anInt498);
-            nextFrameTime -= (int) (Math.random() * (double) animation.getFrameLength(frame, 41645));
-        }
-    }
+	public GameObject(int var1, int var2, int var3, int var4, int var5, int var6, boolean var7, int var8, int var9, int var10) {
+		this.aBoolean1468 = false;
+		this.objectId = var4;
+		this.type = var1;
+		this.orientation = var2;
+		this.minX = var10;
+		this.minY = var8;
+		this.maxX = var5;
+		this.maxY = var9;
+		this.animation = Class26.aClass26Array497[var3];
+		this.frame = 0;
+		this.nextFrameTime = Client.tick;
+		if (var6 != 0) {
+			this.anInt1467 = 429;
+		}
 
-    public Model getModel(boolean flag) {
-        if (animation != null) {
-            int step = Client.tick - nextFrameTime;
-            if (step > 100 && animation.frameStep > 0)
-                step = 100;
-            while (step > animation.getFrameLength(frame, 41645)) {
-                step -= animation.getFrameLength(frame, 41645);
-                frame++;
-                if (frame < animation.anInt498)
-                    continue;
-                frame -= animation.frameStep;
-                if (frame >= 0 && frame < animation.anInt498)
-                    continue;
-                animation = null;
-                break;
-            }
-            nextFrameTime = Client.tick - step;
-        }
-        int animationId = -1;
-        if (flag)
-            aBoolean1468 = !aBoolean1468;
-        if (animation != null)
-            animationId = animation.primaryFrames[frame];
-        GameObjectDefinition definition = GameObjectDefinition.get(objectId);
-        return definition.getModel(type, orientation, minX, minY, maxX, maxY, animationId );
-    }
+		if (var7 && this.animation.frameStep != -1) {
+			this.frame = (int)(Math.random() * (double)this.animation.anInt498);
+			this.nextFrameTime -= (int)(Math.random() * (double)this.animation.getFrameLength(this.frame, 41645));
+		}
+
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)LModel;",
+		garbageValue = "0"
+	)
+	public Model getModel(boolean var1) {
+		int var2;
+		if (this.animation != null) {
+			var2 = Client.tick - this.nextFrameTime;
+			if (var2 > 100 && this.animation.frameStep > 0) {
+				var2 = 100;
+			}
+
+			label36: {
+				do {
+					do {
+						if (var2 <= this.animation.getFrameLength(this.frame, 41645)) {
+							break label36;
+						}
+
+						var2 -= this.animation.getFrameLength(this.frame, 41645);
+						++this.frame;
+					} while(this.frame < this.animation.anInt498);
+
+					this.frame -= this.animation.frameStep;
+				} while(this.frame >= 0 && this.frame < this.animation.anInt498);
+
+				this.animation = null;
+			}
+
+			this.nextFrameTime = Client.tick - var2;
+		}
+
+		var2 = -1;
+		if (this.animation != null) {
+			var2 = this.animation.primaryFrames[this.frame];
+		}
+
+		GameObjectDefinition var3 = GameObjectDefinition.get(this.objectId);
+		return var3.getModel(this.type, this.orientation, this.minX, this.minY, this.maxX, this.maxY, var2);
+	}
 }

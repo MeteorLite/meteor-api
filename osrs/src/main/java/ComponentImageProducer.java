@@ -1,76 +1,81 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ColorModel;
+import java.awt.image.DirectColorModel;
+import java.awt.image.ImageConsumer;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.util.Hashtable;
 
-import java.awt.*;
-import java.awt.image.*;
+public class ComponentImageProducer implements ImageProducer, ImageObserver {
+	public ImageConsumer imageConsumer;
+	public final int width;
+	public final int height;
+	public final int[] pixels;
+	public final Image gameImage;
+	public final ColorModel colorModel;
 
-public class ComponentImageProducer
-        implements java.awt.image.ImageProducer, ImageObserver {
-    public final int[] pixels;
-    public final int width;
-    public final int height;
-    public final ColorModel colorModel;
-    public ImageConsumer imageConsumer;
-    public final Image gameImage;
+	public ComponentImageProducer(int var1, int var2, Component var3) {
+		this.width = var2;
+		this.height = var1;
+		this.pixels = new int[var2 * var1];
+		this.colorModel = new DirectColorModel(32, 16711680, 65280, 255);
+		this.gameImage = var3.createImage(this);
+		this.drawPixels();
+		var3.prepareImage(this.gameImage, this);
+		this.drawPixels();
+		var3.prepareImage(this.gameImage, this);
+		this.drawPixels();
+		var3.prepareImage(this.gameImage, this);
+		this.initDrawingArea();
+	}
 
-    public ComponentImageProducer(int height, int width, Component component) {
-        this.width = width;
-        this.height = height;
-        pixels = new int[width * height];
-        colorModel = new DirectColorModel(32, 0xff0000, 65280, 255);
-        gameImage = component.createImage(this);
-        drawPixels();
-        component.prepareImage(gameImage, this);
-        drawPixels();
-        component.prepareImage(gameImage, this);
-        drawPixels();
-        component.prepareImage(gameImage, this);
-        initDrawingArea();
-    }
+	public synchronized void addConsumer(ImageConsumer var1) {
+		this.imageConsumer = var1;
+		var1.setDimensions(this.width, this.height);
+		var1.setProperties((Hashtable)null);
+		var1.setColorModel(this.colorModel);
+		var1.setHints(14);
+	}
 
-    public void initDrawingArea() {
-        DrawingArea.initDrawingArea(width, height, pixels, 9);
-    }
+	public synchronized void drawPixels() {
+		if (this.imageConsumer != null) {
+			this.imageConsumer.setPixels(0, 0, this.width, this.height, this.colorModel, this.pixels, 0, this.width);
+			this.imageConsumer.imageComplete(2);
+		}
 
-    public void drawComponentImage(Graphics g, int x, int y) {
-        drawPixels();
-        g.drawImage(gameImage, x, y, this);
-    }
+	}
 
-    public synchronized void addConsumer(ImageConsumer imageconsumer) {
-        imageConsumer = imageconsumer;
-        imageconsumer.setDimensions(width, height);
-        imageconsumer.setProperties(null);
-        imageconsumer.setColorModel(colorModel);
-        imageconsumer.setHints(14);
-    }
+	public void initDrawingArea() {
+		DrawingArea.initDrawingArea(this.width, this.height, this.pixels, 9);
+	}
 
-    public synchronized boolean isConsumer(ImageConsumer imageconsumer) {
-        return imageConsumer == imageconsumer;
-    }
+	public void drawComponentImage(Graphics var1, int var2, int var3) {
+		this.drawPixels();
+		var1.drawImage(this.gameImage, var2, var3, this);
+	}
 
-    public synchronized void removeConsumer(ImageConsumer imageconsumer) {
-        if (imageConsumer == imageconsumer)
-            imageConsumer = null;
-    }
+	public synchronized boolean isConsumer(ImageConsumer var1) {
+		return var1 == this.imageConsumer;
+	}
 
-    public void startProduction(ImageConsumer imageconsumer) {
-        addConsumer(imageconsumer);
-    }
+	public synchronized void removeConsumer(ImageConsumer var1) {
+		if (var1 == this.imageConsumer) {
+			this.imageConsumer = null;
+		}
 
-    public void requestTopDownLeftRightResend(ImageConsumer imageconsumer) {
-        System.out.println("TDLR");
-    }
+	}
 
-    public synchronized void drawPixels() {
-        if (imageConsumer != null) {
-            imageConsumer.setPixels(0, 0, width, height, colorModel, pixels, 0, width);
-            imageConsumer.imageComplete(2);
-        }
-    }
+	public void startProduction(ImageConsumer var1) {
+		this.addConsumer(var1);
+	}
 
-    public boolean imageUpdate(Image image, int i, int j, int k, int l, int i1) {
-        return true;
-    }
+	public void requestTopDownLeftRightResend(ImageConsumer var1) {
+		System.out.println("TDLR");
+	}
+
+	public boolean imageUpdate(Image var1, int var2, int var3, int var4, int var5, int var6) {
+		return true;
+	}
 }

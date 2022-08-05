@@ -1,545 +1,602 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Image;
+import java.awt.MediaTracker;
+import java.awt.Toolkit;
 import java.awt.image.PixelGrabber;
 
 public class Class44_Sub3_Sub1_Sub2 extends DrawingArea {
+	public int anInt1434;
+	public int anInt1436;
+	public int[] anIntArray1431;
+	public int anInt1421;
+	public int anInt1437;
+	public int anInt1432;
+	public boolean aBoolean1430;
+	public int anInt1435;
+	public int anInt1433;
+	public boolean aBoolean1422;
+	public boolean aBoolean1429;
+	public final byte aByte1423;
+	public final int anInt1424;
+	public final int anInt1425;
+	public final byte aByte1427;
+	public final int anInt1428;
+	public int anInt1426;
 
-    public int anInt1421;
-    public boolean aBoolean1422;
-    public final byte aByte1423;
-    public final int anInt1424;
-    public final int anInt1425;
-    public int anInt1426;
-    public final byte aByte1427;
-    public final int anInt1428;
-    public boolean aBoolean1429;
-    public boolean aBoolean1430;
-    public int[] anIntArray1431;
-    public int anInt1432;
-    public int anInt1433;
-    public int anInt1434;
-    public int anInt1435;
-    public int anInt1436;
-    public int anInt1437;
-    public Class44_Sub3_Sub1_Sub2(int i, int j) {
-        anInt1421 = -407;
-        aBoolean1422 = true;
-        aByte1423 = -65;
-        anInt1424 = 35961;
-        anInt1425 = -676;
-        aByte1427 = 3;
-        anInt1428 = -582;
-        aBoolean1429 = false;
-        aBoolean1430 = false;
-        anIntArray1431 = new int[i * j];
-        anInt1432 = anInt1436 = i;
-        anInt1433 = anInt1437 = j;
-        anInt1434 = anInt1435 = 0;
-    }
-    public Class44_Sub3_Sub1_Sub2(byte[] abyte0, Component component) {
-        anInt1421 = -407;
-        aBoolean1422 = true;
-        aByte1423 = -65;
-        anInt1424 = 35961;
-        anInt1425 = -676;
-        aByte1427 = 3;
-        anInt1428 = -582;
-        aBoolean1429 = false;
-        aBoolean1430 = false;
-        try {
-            Image image = Toolkit.getDefaultToolkit().createImage(abyte0);
-            MediaTracker mediatracker = new MediaTracker(component);
-            mediatracker.addImage(image, 0);
-            mediatracker.waitForAll();
-            anInt1432 = image.getWidth(component);
-            anInt1433 = image.getHeight(component);
-            anInt1436 = anInt1432;
-            anInt1437 = anInt1433;
-            anInt1434 = 0;
-            anInt1435 = 0;
-            anIntArray1431 = new int[anInt1432 * anInt1433];
-            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, anInt1432, anInt1433, anIntArray1431, 0, anInt1432);
-            pixelgrabber.grabPixels();
-        } catch (Exception _ex) {
-            System.out.println("Error converting jpg");
-        }
-    }
-    public Class44_Sub3_Sub1_Sub2(Class47 class47, String s, int i) {
-        anInt1421 = -407;
-        aBoolean1422 = true;
-        aByte1423 = -65;
-        anInt1424 = 35961;
-        anInt1425 = -676;
-        aByte1427 = 3;
-        anInt1428 = -582;
-        aBoolean1429 = false;
-        aBoolean1430 = false;
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method546(s + ".dat", null), (byte) 1);
-        Class44_Sub3_Sub2 class44_sub3_sub2_1 = new Class44_Sub3_Sub2(class47.method546("index.dat", null), (byte) 1);
-        class44_sub3_sub2_1.anInt1374 = class44_sub3_sub2.get2();
-        anInt1436 = class44_sub3_sub2_1.get2();
-        anInt1437 = class44_sub3_sub2_1.get2();
-        int j = class44_sub3_sub2_1.get1();
-        int[] ai = new int[j];
-        for (int k = 0; k < j - 1; k++) {
-            ai[k + 1] = class44_sub3_sub2_1.get3();
-            if (ai[k + 1] == 0)
-                ai[k + 1] = 1;
-        }
+	public Class44_Sub3_Sub1_Sub2(byte[] var1, Component var2) {
+		this.anInt1421 = -407;
+		this.aBoolean1422 = true;
+		this.aByte1423 = -65;
+		this.anInt1424 = 35961;
+		this.anInt1425 = -676;
+		this.aByte1427 = 3;
+		this.anInt1428 = -582;
+		this.aBoolean1429 = false;
+		this.aBoolean1430 = false;
 
-        for (int l = 0; l < i; l++) {
-            class44_sub3_sub2_1.anInt1374 += 2;
-            class44_sub3_sub2.anInt1374 += class44_sub3_sub2_1.get2() * class44_sub3_sub2_1.get2();
-            class44_sub3_sub2_1.anInt1374++;
-        }
+		try {
+			Image var3 = Toolkit.getDefaultToolkit().createImage(var1);
+			MediaTracker var4 = new MediaTracker(var2);
+			var4.addImage(var3, 0);
+			var4.waitForAll();
+			this.anInt1432 = var3.getWidth(var2);
+			this.anInt1433 = var3.getHeight(var2);
+			this.anInt1436 = this.anInt1432;
+			this.anInt1437 = this.anInt1433;
+			this.anInt1434 = 0;
+			this.anInt1435 = 0;
+			this.anIntArray1431 = new int[this.anInt1432 * this.anInt1433];
+			PixelGrabber var5 = new PixelGrabber(var3, 0, 0, this.anInt1432, this.anInt1433, this.anIntArray1431, 0, this.anInt1432);
+			var5.grabPixels();
+		} catch (Exception var6) {
+			System.out.println("Error converting jpg");
+		}
 
-        anInt1434 = class44_sub3_sub2_1.get1();
-        anInt1435 = class44_sub3_sub2_1.get1();
-        anInt1432 = class44_sub3_sub2_1.get2();
-        anInt1433 = class44_sub3_sub2_1.get2();
-        int i1 = class44_sub3_sub2_1.get1();
-        int j1 = anInt1432 * anInt1433;
-        anIntArray1431 = new int[j1];
-        if (i1 == 0) {
-            for (int k1 = 0; k1 < j1; k1++)
-                anIntArray1431[k1] = ai[class44_sub3_sub2.get1()];
+	}
 
-            return;
-        }
-        if (i1 == 1) {
-            for (int l1 = 0; l1 < anInt1432; l1++) {
-                for (int i2 = 0; i2 < anInt1433; i2++)
-                    anIntArray1431[l1 + i2 * anInt1432] = ai[class44_sub3_sub2.get1()];
+	public Class44_Sub3_Sub1_Sub2(int var1, int var2) {
+		this.anInt1421 = -407;
+		this.aBoolean1422 = true;
+		this.aByte1423 = -65;
+		this.anInt1424 = 35961;
+		this.anInt1425 = -676;
+		this.aByte1427 = 3;
+		this.anInt1428 = -582;
+		this.aBoolean1429 = false;
+		this.aBoolean1430 = false;
+		this.anIntArray1431 = new int[var2 * var1];
+		this.anInt1432 = this.anInt1436 = var1;
+		this.anInt1433 = this.anInt1437 = var2;
+		this.anInt1434 = this.anInt1435 = 0;
+	}
 
-            }
+	public Class44_Sub3_Sub1_Sub2(Class47 var1, String var2, int var3) {
+		this.anInt1421 = -407;
+		this.aBoolean1422 = true;
+		this.aByte1423 = -65;
+		this.anInt1424 = 35961;
+		this.anInt1425 = -676;
+		this.aByte1427 = 3;
+		this.anInt1428 = -582;
+		this.aBoolean1429 = false;
+		this.aBoolean1430 = false;
+		Class44_Sub3_Sub2 var4 = new Class44_Sub3_Sub2(var1.method546(var2 + ".dat", (byte[])null), (byte)1);
+		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var1.method546("index.dat", (byte[])null), (byte)1);
+		var5.anInt1374 = var4.get2();
+		this.anInt1436 = var5.get2();
+		this.anInt1437 = var5.get2();
+		int var6 = var5.get1();
+		int[] var7 = new int[var6];
 
-        }
-    }
+		int var8;
+		for (var8 = 0; var8 < var6 - 1; ++var8) {
+			var7[var8 + 1] = var5.get3();
+			if (var7[var8 + 1] == 0) {
+				var7[var8 + 1] = 1;
+			}
+		}
 
-    public void method435(boolean flag) {
-        if (!flag)
-            anInt1421 = 192;
-        DrawingArea.initDrawingArea(anInt1432, anInt1433, anIntArray1431, 9);
-    }
+		for (var8 = 0; var8 < var3; ++var8) {
+			var5.anInt1374 += 2;
+			var4.anInt1374 += var5.get2() * var5.get2();
+			++var5.anInt1374;
+		}
 
-    public void method436(int i, int j, int k, int l) {
-        if (j != 6) {
-            for (int i1 = 1; i1 > 0; i1++) ;
-        }
-        for (int j1 = 0; j1 < anIntArray1431.length; j1++) {
-            int k1 = anIntArray1431[j1];
-            if (k1 != 0) {
-                int l1 = k1 >> 16 & 0xff;
-                l1 += k;
-                if (l1 < 1)
-                    l1 = 1;
-                else if (l1 > 255)
-                    l1 = 255;
-                int i2 = k1 >> 8 & 0xff;
-                i2 += l;
-                if (i2 < 1)
-                    i2 = 1;
-                else if (i2 > 255)
-                    i2 = 255;
-                int j2 = k1 & 0xff;
-                j2 += i;
-                if (j2 < 1)
-                    j2 = 1;
-                else if (j2 > 255)
-                    j2 = 255;
-                anIntArray1431[j1] = (l1 << 16) + (i2 << 8) + j2;
-            }
-        }
+		this.anInt1434 = var5.get1();
+		this.anInt1435 = var5.get1();
+		this.anInt1432 = var5.get2();
+		this.anInt1433 = var5.get2();
+		var8 = var5.get1();
+		int var9 = this.anInt1432 * this.anInt1433;
+		this.anIntArray1431 = new int[var9];
+		int var10;
+		if (var8 == 0) {
+			for (var10 = 0; var10 < var9; ++var10) {
+				this.anIntArray1431[var10] = var7[var4.get1()];
+			}
 
-    }
+		} else {
+			if (var8 == 1) {
+				for (var10 = 0; var10 < this.anInt1432; ++var10) {
+					for (int var11 = 0; var11 < this.anInt1433; ++var11) {
+						this.anIntArray1431[var10 + var11 * this.anInt1432] = var7[var4.get1()];
+					}
+				}
+			}
 
-    public void method437(byte byte0) {
-        int[] ai = new int[anInt1436 * anInt1437];
-        for (int i = 0; i < anInt1433; i++) {
-            if (anInt1432 >= 0)
-                System.arraycopy(anIntArray1431, i * anInt1432, ai, (i + anInt1435) * anInt1436 + (anInt1434), anInt1432);
+		}
+	}
 
-        }
+	public void method438(int var1, boolean var2, int var3) {
+		var3 += this.anInt1434;
+		var1 += this.anInt1435;
+		int var4 = var3 + DrawingArea.anInt1352 * var1;
+		int var5 = 0;
+		int var6 = this.anInt1433;
+		int var7 = this.anInt1432;
+		int var8 = DrawingArea.anInt1352 - var7;
+		int var9 = 0;
+		int var10;
+		if (var1 < DrawingArea.anInt1354) {
+			var10 = DrawingArea.anInt1354 - var1;
+			var6 -= var10;
+			var1 = DrawingArea.anInt1354;
+			var5 += var10 * var7;
+			var4 += var10 * DrawingArea.anInt1352;
+		}
 
-        if (byte0 == 3)
-            byte0 = 0;
-        else
-            aBoolean1429 = !aBoolean1429;
-        anIntArray1431 = ai;
-        anInt1432 = anInt1436;
-        anInt1433 = anInt1437;
-        anInt1434 = 0;
-        anInt1435 = 0;
-    }
+		if (var6 + var1 > DrawingArea.anInt1355) {
+			var6 -= var6 + var1 - DrawingArea.anInt1355;
+		}
 
-    public void method438(int i, boolean flag, int j) {
-        j += anInt1434;
-        i += anInt1435;
-        int k = j + i * DrawingArea.anInt1352;
-        int l = 0;
-        if (flag)
-            return;
-        int i1 = anInt1433;
-        int j1 = anInt1432;
-        int k1 = DrawingArea.anInt1352 - j1;
-        int l1 = 0;
-        if (i < DrawingArea.anInt1354) {
-            int i2 = DrawingArea.anInt1354 - i;
-            i1 -= i2;
-            i = DrawingArea.anInt1354;
-            l += i2 * j1;
-            k += i2 * DrawingArea.anInt1352;
-        }
-        if (i + i1 > DrawingArea.anInt1355)
-            i1 -= (i + i1) - DrawingArea.anInt1355;
-        if (j < DrawingArea.anInt1356) {
-            int j2 = DrawingArea.anInt1356 - j;
-            j1 -= j2;
-            j = DrawingArea.anInt1356;
-            l += j2;
-            k += j2;
-            l1 += j2;
-            k1 += j2;
-        }
-        if (j + j1 > DrawingArea.anInt1357) {
-            int k2 = (j + j1) - DrawingArea.anInt1357;
-            j1 -= k2;
-            l1 += k2;
-            k1 += k2;
-        }
-        if (j1 <= 0 || i1 <= 0) {
-        } else {
-            method439(l1, l, anIntArray1431, aBoolean1422, i1, j1, k1, k, DrawingArea.anIntArray1351);
-        }
-    }
+		if (var3 < DrawingArea.anInt1356) {
+			var10 = DrawingArea.anInt1356 - var3;
+			var7 -= var10;
+			var3 = DrawingArea.anInt1356;
+			var5 += var10;
+			var4 += var10;
+			var9 += var10;
+			var8 += var10;
+		}
 
-    public void method439(int i, int j, int[] ai, boolean flag, int k, int l, int i1,
-                          int j1, int[] ai1) {
-        int k1 = -(l >> 2);
-        if (!flag)
-            anInt1421 = 362;
-        l = -(l & 3);
-        for (int l1 = -k; l1 < 0; l1++) {
-            for (int i2 = k1; i2 < 0; i2++) {
-                ai1[j1++] = ai[j++];
-                ai1[j1++] = ai[j++];
-                ai1[j1++] = ai[j++];
-                ai1[j1++] = ai[j++];
-            }
+		if (var3 + var7 > DrawingArea.anInt1357) {
+			var10 = var3 + var7 - DrawingArea.anInt1357;
+			var7 -= var10;
+			var9 += var10;
+			var8 += var10;
+		}
 
-            for (int j2 = l; j2 < 0; j2++)
-                ai1[j1++] = ai[j++];
+		if (var7 > 0 && var6 > 0) {
+			this.method439(var9, var5, this.anIntArray1431, this.aBoolean1422, var6, var7, var8, var4, DrawingArea.anIntArray1351);
+		}
 
-            j1 += i1;
-            j += i;
-        }
+	}
 
-    }
+	public void method444(int var1, int var2, int var3, int var4, int var5, int[] var6, int var7, int[] var8, int var9, int var10, int var11) {
+		try {
+			int var12 = -var3 / 2;
+			int var13 = -var4 / 2;
+			int var14 = (int)(Math.sin((double)var10 / 326.11D) * 65536.0D);
+			int var15 = (int)(Math.cos((double)var10 / 326.11D) * 65536.0D);
+			var14 = var14 * var1 >> 8;
+			var15 = var15 * var1 >> 8;
+			int var16 = var13 * var14 + var12 * var15 + (var2 << 16);
+			int var17 = var13 * var15 - var12 * var14 + (var7 << 16);
+			int var18 = var5 + var11 * DrawingArea.anInt1352;
 
-    public void method440(byte byte0, int i, int j) {
-        i += anInt1434;
-        j += anInt1435;
-        int k = i + j * DrawingArea.anInt1352;
-        int l = 0;
-        if (byte0 != 7) {
-            for (int i1 = 1; i1 > 0; i1++) ;
-        }
-        int j1 = anInt1433;
-        int k1 = anInt1432;
-        int l1 = DrawingArea.anInt1352 - k1;
-        int i2 = 0;
-        if (j < DrawingArea.anInt1354) {
-            int j2 = DrawingArea.anInt1354 - j;
-            j1 -= j2;
-            j = DrawingArea.anInt1354;
-            l += j2 * k1;
-            k += j2 * DrawingArea.anInt1352;
-        }
-        if (j + j1 > DrawingArea.anInt1355)
-            j1 -= (j + j1) - DrawingArea.anInt1355;
-        if (i < DrawingArea.anInt1356) {
-            int k2 = DrawingArea.anInt1356 - i;
-            k1 -= k2;
-            i = DrawingArea.anInt1356;
-            l += k2;
-            k += k2;
-            i2 += k2;
-            l1 += k2;
-        }
-        if (i + k1 > DrawingArea.anInt1357) {
-            int l2 = (i + k1) - DrawingArea.anInt1357;
-            k1 -= l2;
-            i2 += l2;
-            l1 += l2;
-        }
-        if (k1 <= 0 || j1 <= 0) {
-        } else {
-            method441(DrawingArea.anIntArray1351, anIntArray1431, 0, l, k, k1, j1, l1, i2);
-        }
-    }
+			for (var11 = 0; var11 < var4; ++var11) {
+				int var19 = var8[var11];
+				int var20 = var18 + var19;
+				int var21 = var16 + var15 * var19;
+				int var22 = var17 - var14 * var19;
 
-    public void method441(int[] ai, int[] ai1, int i, int j, int k, int l, int i1,
-                          int j1, int k1) {
-        int l1 = -(l >> 2);
-        l = -(l & 3);
-        for (int i2 = -i1; i2 < 0; i2++) {
-            for (int j2 = l1; j2 < 0; j2++) {
-                i = ai1[j++];
-                if (i != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                i = ai1[j++];
-                if (i != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                i = ai1[j++];
-                if (i != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-                i = ai1[j++];
-                if (i != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-            }
+				for (var5 = -var6[var11]; var5 < 0; ++var5) {
+					DrawingArea.anIntArray1351[var20++] = this.anIntArray1431[this.anInt1432 * (var22 >> 16) + (var21 >> 16)];
+					var21 += var15;
+					var22 -= var14;
+				}
 
-            for (int k2 = l; k2 < 0; k2++) {
-                i = ai1[j++];
-                if (i != 0)
-                    ai[k++] = i;
-                else
-                    k++;
-            }
+				var16 += var14;
+				var17 += var15;
+				var18 += DrawingArea.anInt1352;
+			}
+		} catch (Exception var23) {
+		}
 
-            k += j1;
-            j += k1;
-        }
+	}
 
-    }
+	public void method440(byte var1, int var2, int var3) {
+		var2 += this.anInt1434;
+		var3 += this.anInt1435;
+		int var4 = var3 * DrawingArea.anInt1352 + var2;
+		int var5 = 0;
+		int var6;
+		if (var1 != 7) {
+			for (var6 = 1; var6 > 0; ++var6) {
+			}
+		}
 
-    public void method442(int i, int j, int k, int l) {
-        while (k >= 0)
-            aBoolean1422 = !aBoolean1422;
-        j += anInt1434;
-        i += anInt1435;
-        int i1 = j + i * DrawingArea.anInt1352;
-        int j1 = 0;
-        int k1 = anInt1433;
-        int l1 = anInt1432;
-        int i2 = DrawingArea.anInt1352 - l1;
-        int j2 = 0;
-        if (i < DrawingArea.anInt1354) {
-            int k2 = DrawingArea.anInt1354 - i;
-            k1 -= k2;
-            i = DrawingArea.anInt1354;
-            j1 += k2 * l1;
-            i1 += k2 * DrawingArea.anInt1352;
-        }
-        if (i + k1 > DrawingArea.anInt1355)
-            k1 -= (i + k1) - DrawingArea.anInt1355;
-        if (j < DrawingArea.anInt1356) {
-            int l2 = DrawingArea.anInt1356 - j;
-            l1 -= l2;
-            j = DrawingArea.anInt1356;
-            j1 += l2;
-            i1 += l2;
-            j2 += l2;
-            i2 += l2;
-        }
-        if (j + l1 > DrawingArea.anInt1357) {
-            int i3 = (j + l1) - DrawingArea.anInt1357;
-            l1 -= i3;
-            j2 += i3;
-            i2 += i3;
-        }
-        if (l1 <= 0 || k1 <= 0) {
-        } else {
-            method443(i2, j2, l, l1, DrawingArea.anIntArray1351, 0, i1, anInt1426, j1, k1, anIntArray1431);
-        }
-    }
+		var6 = this.anInt1433;
+		int var7 = this.anInt1432;
+		int var8 = DrawingArea.anInt1352 - var7;
+		int var9 = 0;
+		int var10;
+		if (var3 < DrawingArea.anInt1354) {
+			var10 = DrawingArea.anInt1354 - var3;
+			var6 -= var10;
+			var3 = DrawingArea.anInt1354;
+			var5 += var10 * var7;
+			var4 += var10 * DrawingArea.anInt1352;
+		}
 
-    public void method443(int i, int j, int k, int l, int[] ai, int i1, int j1,
-                          int k1, int l1, int i2, int[] ai1) {
-        int j2 = 256 - k;
-        if (k1 != 0)
-            aBoolean1430 = !aBoolean1430;
-        for (int k2 = -i2; k2 < 0; k2++) {
-            for (int l2 = -l; l2 < 0; l2++) {
-                i1 = ai1[l1++];
-                if (i1 != 0) {
-                    int i3 = ai[j1];
-                    ai[j1++] = ((i1 & 0xff00ff) * k + (i3 & 0xff00ff) * j2 & 0xff00ff00) + ((i1 & 0xff00) * k + (i3 & 0xff00) * j2 & 0xff0000) >> 8;
-                } else {
-                    j1++;
-                }
-            }
+		if (var3 + var6 > DrawingArea.anInt1355) {
+			var6 -= var3 + var6 - DrawingArea.anInt1355;
+		}
 
-            j1 += i;
-            l1 += j;
-        }
+		if (var2 < DrawingArea.anInt1356) {
+			var10 = DrawingArea.anInt1356 - var2;
+			var7 -= var10;
+			var2 = DrawingArea.anInt1356;
+			var5 += var10;
+			var4 += var10;
+			var9 += var10;
+			var8 += var10;
+		}
 
-    }
+		if (var7 + var2 > DrawingArea.anInt1357) {
+			var10 = var7 + var2 - DrawingArea.anInt1357;
+			var7 -= var10;
+			var9 += var10;
+			var8 += var10;
+		}
 
-    public void method444(int i, int j, int k, int l, int i1, int[] ai, int j1,
-                          int[] ai1, int k1, int l1, int i2) {
-        if (k1 >= 0)
-            return;
-        try {
-            int j2 = -k / 2;
-            int k2 = -l / 2;
-            int l2 = (int) (Math.sin((double) l1 / 326.11000000000001D) * 65536D);
-            int i3 = (int) (Math.cos((double) l1 / 326.11000000000001D) * 65536D);
-            l2 = l2 * i >> 8;
-            i3 = i3 * i >> 8;
-            int j3 = (j << 16) + (k2 * l2 + j2 * i3);
-            int k3 = (j1 << 16) + (k2 * i3 - j2 * l2);
-            int l3 = i1 + i2 * DrawingArea.anInt1352;
-            for (i2 = 0; i2 < l; i2++) {
-                int i4 = ai1[i2];
-                int j4 = l3 + i4;
-                int k4 = j3 + i3 * i4;
-                int l4 = k3 - l2 * i4;
-                for (i1 = -ai[i2]; i1 < 0; i1++) {
-                    DrawingArea.anIntArray1351[j4++] = anIntArray1431[(k4 >> 16) + (l4 >> 16) * anInt1432];
-                    k4 += i3;
-                    l4 -= l2;
-                }
+		if (var7 > 0 && var6 > 0) {
+			this.method441(DrawingArea.anIntArray1351, this.anIntArray1431, 0, var5, var4, var7, var6, var8, var9);
+		}
 
-                j3 += l2;
-                k3 += i3;
-                l3 += DrawingArea.anInt1352;
-            }
+	}
 
-        } catch (Exception _ex) {
-        }
-    }
+	public void method435(boolean var1) {
+		if (!var1) {
+			this.anInt1421 = 192;
+		}
 
-    public void method445(int i, int j, int k, int l, double d, int i1,
-                          byte byte0, int j1, int k1) {
-        if (byte0 != -32)
-            aBoolean1430 = !aBoolean1430;
-        try {
-            int l1 = -k1 / 2;
-            int i2 = -j / 2;
-            int j2 = (int) (Math.sin(d) * 65536D);
-            int k2 = (int) (Math.cos(d) * 65536D);
-            j2 = j2 * i1 >> 8;
-            k2 = k2 * i1 >> 8;
-            int l2 = (i << 16) + (i2 * j2 + l1 * k2);
-            int i3 = (j1 << 16) + (i2 * k2 - l1 * j2);
-            int j3 = k + l * DrawingArea.anInt1352;
-            for (l = 0; l < j; l++) {
-                int k3 = j3;
-                int l3 = l2;
-                int i4 = i3;
-                for (k = -k1; k < 0; k++) {
-                    int j4 = anIntArray1431[(l3 >> 16) + (i4 >> 16) * anInt1432];
-                    if (j4 != 0)
-                        DrawingArea.anIntArray1351[k3++] = j4;
-                    else
-                        k3++;
-                    l3 += k2;
-                    i4 -= j2;
-                }
+		DrawingArea.initDrawingArea(this.anInt1432, this.anInt1433, this.anIntArray1431, 9);
+	}
 
-                l2 += j2;
-                i3 += k2;
-                j3 += DrawingArea.anInt1352;
-            }
+	public void method445(int var1, int var2, int var3, int var4, double var5, int var7, byte var8, int var9, int var10) {
+		try {
+			int var11 = -var10 / 2;
+			int var12 = -var2 / 2;
+			int var13 = (int)(Math.sin(var5) * 65536.0D);
+			int var14 = (int)(Math.cos(var5) * 65536.0D);
+			var13 = var13 * var7 >> 8;
+			var14 = var14 * var7 >> 8;
+			int var15 = var12 * var13 + var11 * var14 + (var1 << 16);
+			int var16 = var12 * var14 - var11 * var13 + (var9 << 16);
+			int var17 = var3 + var4 * DrawingArea.anInt1352;
 
-        } catch (Exception _ex) {
-        }
-    }
+			for (var4 = 0; var4 < var2; ++var4) {
+				int var18 = var17;
+				int var19 = var15;
+				int var20 = var16;
 
-    public void method446(int i, int j, Class44_Sub3_Sub1_Sub3 class44_sub3_sub1_sub3, int k) {
-        if (i <= 0) {
-            for (int l = 1; l > 0; l++) ;
-        }
-        j += anInt1434;
-        k += anInt1435;
-        int i1 = j + k * DrawingArea.anInt1352;
-        int j1 = 0;
-        int k1 = anInt1433;
-        int l1 = anInt1432;
-        int i2 = DrawingArea.anInt1352 - l1;
-        int j2 = 0;
-        if (k < DrawingArea.anInt1354) {
-            int k2 = DrawingArea.anInt1354 - k;
-            k1 -= k2;
-            k = DrawingArea.anInt1354;
-            j1 += k2 * l1;
-            i1 += k2 * DrawingArea.anInt1352;
-        }
-        if (k + k1 > DrawingArea.anInt1355)
-            k1 -= (k + k1) - DrawingArea.anInt1355;
-        if (j < DrawingArea.anInt1356) {
-            int l2 = DrawingArea.anInt1356 - j;
-            l1 -= l2;
-            j = DrawingArea.anInt1356;
-            j1 += l2;
-            i1 += l2;
-            j2 += l2;
-            i2 += l2;
-        }
-        if (j + l1 > DrawingArea.anInt1357) {
-            int i3 = (j + l1) - DrawingArea.anInt1357;
-            l1 -= i3;
-            j2 += i3;
-            i2 += i3;
-        }
-        if (l1 <= 0 || k1 <= 0) {
-        } else {
-            method447(DrawingArea.anIntArray1351, i1, j1, k1, 5, j2, l1, 0, class44_sub3_sub1_sub3.aByteArray1445, i2, anIntArray1431);
-        }
-    }
+				for (var3 = -var10; var3 < 0; ++var3) {
+					int var21 = this.anIntArray1431[this.anInt1432 * (var20 >> 16) + (var19 >> 16)];
+					if (var21 != 0) {
+						DrawingArea.anIntArray1351[var18++] = var21;
+					} else {
+						++var18;
+					}
 
-    public void method447(int[] ai, int i, int j, int k, int l, int i1, int j1,
-                          int k1, byte[] abyte0, int l1, int[] ai1) {
-        int i2 = -(j1 >> 2);
-        j1 = -(j1 & 3);
-        if (l != 5)
-            aBoolean1429 = !aBoolean1429;
-        for (int j2 = -k; j2 < 0; j2++) {
-            for (int k2 = i2; k2 < 0; k2++) {
-                k1 = ai1[j++];
-                if (k1 != 0 && abyte0[i] == 0)
-                    ai[i++] = k1;
-                else
-                    i++;
-                k1 = ai1[j++];
-                if (k1 != 0 && abyte0[i] == 0)
-                    ai[i++] = k1;
-                else
-                    i++;
-                k1 = ai1[j++];
-                if (k1 != 0 && abyte0[i] == 0)
-                    ai[i++] = k1;
-                else
-                    i++;
-                k1 = ai1[j++];
-                if (k1 != 0 && abyte0[i] == 0)
-                    ai[i++] = k1;
-                else
-                    i++;
-            }
+					var19 += var14;
+					var20 -= var13;
+				}
 
-            for (int l2 = j1; l2 < 0; l2++) {
-                k1 = ai1[j++];
-                if (k1 != 0 && abyte0[i] == 0)
-                    ai[i++] = k1;
-                else
-                    i++;
-            }
+				var15 += var13;
+				var16 += var14;
+				var17 += DrawingArea.anInt1352;
+			}
+		} catch (Exception var22) {
+		}
 
-            i += l1;
-            j += i1;
-        }
+	}
 
-    }
+	public void method446(int var1, int var2, Class44_Sub3_Sub1_Sub3 var3, int var4) {
+		var2 += this.anInt1434;
+		var4 += this.anInt1435;
+		int var5 = var2 + var4 * DrawingArea.anInt1352;
+		int var6 = 0;
+		int var7 = this.anInt1433;
+		int var8 = this.anInt1432;
+		int var9 = DrawingArea.anInt1352 - var8;
+		int var10 = 0;
+		int var11;
+		if (var4 < DrawingArea.anInt1354) {
+			var11 = DrawingArea.anInt1354 - var4;
+			var7 -= var11;
+			var4 = DrawingArea.anInt1354;
+			var6 += var11 * var8;
+			var5 += var11 * DrawingArea.anInt1352;
+		}
+
+		if (var7 + var4 > DrawingArea.anInt1355) {
+			var7 -= var7 + var4 - DrawingArea.anInt1355;
+		}
+
+		if (var2 < DrawingArea.anInt1356) {
+			var11 = DrawingArea.anInt1356 - var2;
+			var8 -= var11;
+			var2 = DrawingArea.anInt1356;
+			var6 += var11;
+			var5 += var11;
+			var10 += var11;
+			var9 += var11;
+		}
+
+		if (var8 + var2 > DrawingArea.anInt1357) {
+			var11 = var8 + var2 - DrawingArea.anInt1357;
+			var8 -= var11;
+			var10 += var11;
+			var9 += var11;
+		}
+
+		if (var8 > 0 && var7 > 0) {
+			this.method447(DrawingArea.anIntArray1351, var5, var6, var7, 5, var10, var8, 0, var3.aByteArray1445, var9, this.anIntArray1431);
+		}
+
+	}
+
+	public void method447(int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, byte[] var9, int var10, int[] var11) {
+		int var12 = -(var7 >> 2);
+		var7 = -(var7 & 3);
+
+		for (int var13 = -var4; var13 < 0; ++var13) {
+			int var14;
+			for (var14 = var12; var14 < 0; ++var14) {
+				var8 = var11[var3++];
+				if (var8 != 0 && var9[var2] == 0) {
+					var1[var2++] = var8;
+				} else {
+					++var2;
+				}
+
+				var8 = var11[var3++];
+				if (var8 != 0 && var9[var2] == 0) {
+					var1[var2++] = var8;
+				} else {
+					++var2;
+				}
+
+				var8 = var11[var3++];
+				if (var8 != 0 && var9[var2] == 0) {
+					var1[var2++] = var8;
+				} else {
+					++var2;
+				}
+
+				var8 = var11[var3++];
+				if (var8 != 0 && var9[var2] == 0) {
+					var1[var2++] = var8;
+				} else {
+					++var2;
+				}
+			}
+
+			for (var14 = var7; var14 < 0; ++var14) {
+				var8 = var11[var3++];
+				if (var8 != 0 && var9[var2] == 0) {
+					var1[var2++] = var8;
+				} else {
+					++var2;
+				}
+			}
+
+			var2 += var10;
+			var3 += var6;
+		}
+
+	}
+
+	public void method443(int var1, int var2, int var3, int var4, int[] var5, int var6, int var7, int var8, int var9, int var10, int[] var11) {
+		int var12 = 256 - var3;
+		if (var8 != 0) {
+			this.aBoolean1430 = !this.aBoolean1430;
+		}
+
+		for (int var13 = -var10; var13 < 0; ++var13) {
+			for (int var14 = -var4; var14 < 0; ++var14) {
+				var6 = var11[var9++];
+				if (var6 != 0) {
+					int var15 = var5[var7];
+					var5[var7++] = (var3 * (var6 & 65280) + var12 * (var15 & 65280) & 16711680) + ((var15 & 16711935) * var12 + var3 * (var6 & 16711935) & -16711936) >> 8;
+				} else {
+					++var7;
+				}
+			}
+
+			var7 += var1;
+			var9 += var2;
+		}
+
+	}
+
+	public void method441(int[] var1, int[] var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+		int var10 = -(var6 >> 2);
+		var6 = -(var6 & 3);
+
+		for (int var11 = -var7; var11 < 0; ++var11) {
+			int var12;
+			for (var12 = var10; var12 < 0; ++var12) {
+				var3 = var2[var4++];
+				if (var3 != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				var3 = var2[var4++];
+				if (var3 != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				var3 = var2[var4++];
+				if (var3 != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+
+				var3 = var2[var4++];
+				if (var3 != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+			}
+
+			for (var12 = var6; var12 < 0; ++var12) {
+				var3 = var2[var4++];
+				if (var3 != 0) {
+					var1[var5++] = var3;
+				} else {
+					++var5;
+				}
+			}
+
+			var5 += var8;
+			var4 += var9;
+		}
+
+	}
+
+	public void method439(int var1, int var2, int[] var3, boolean var4, int var5, int var6, int var7, int var8, int[] var9) {
+		int var10 = -(var6 >> 2);
+		if (!var4) {
+			this.anInt1421 = 362;
+		}
+
+		var6 = -(var6 & 3);
+
+		for (int var11 = -var5; var11 < 0; ++var11) {
+			int var12;
+			for (var12 = var10; var12 < 0; ++var12) {
+				var9[var8++] = var3[var2++];
+				var9[var8++] = var3[var2++];
+				var9[var8++] = var3[var2++];
+				var9[var8++] = var3[var2++];
+			}
+
+			for (var12 = var6; var12 < 0; ++var12) {
+				var9[var8++] = var3[var2++];
+			}
+
+			var8 += var7;
+			var2 += var1;
+		}
+
+	}
+
+	public void method442(int var1, int var2, int var3, int var4) {
+		var2 += this.anInt1434;
+		var1 += this.anInt1435;
+		int var5 = var2 + DrawingArea.anInt1352 * var1;
+		int var6 = 0;
+		int var7 = this.anInt1433;
+		int var8 = this.anInt1432;
+		int var9 = DrawingArea.anInt1352 - var8;
+		int var10 = 0;
+		int var11;
+		if (var1 < DrawingArea.anInt1354) {
+			var11 = DrawingArea.anInt1354 - var1;
+			var7 -= var11;
+			var1 = DrawingArea.anInt1354;
+			var6 += var11 * var8;
+			var5 += var11 * DrawingArea.anInt1352;
+		}
+
+		if (var7 + var1 > DrawingArea.anInt1355) {
+			var7 -= var7 + var1 - DrawingArea.anInt1355;
+		}
+
+		if (var2 < DrawingArea.anInt1356) {
+			var11 = DrawingArea.anInt1356 - var2;
+			var8 -= var11;
+			var2 = DrawingArea.anInt1356;
+			var6 += var11;
+			var5 += var11;
+			var10 += var11;
+			var9 += var11;
+		}
+
+		if (var8 + var2 > DrawingArea.anInt1357) {
+			var11 = var8 + var2 - DrawingArea.anInt1357;
+			var8 -= var11;
+			var10 += var11;
+			var9 += var11;
+		}
+
+		if (var8 > 0 && var7 > 0) {
+			this.method443(var9, var10, var4, var8, DrawingArea.anIntArray1351, 0, var5, this.anInt1426, var6, var7, this.anIntArray1431);
+		}
+
+	}
+
+	public void method437(byte var1) {
+		int[] var2 = new int[this.anInt1436 * this.anInt1437];
+
+		for (int var3 = 0; var3 < this.anInt1433; ++var3) {
+			if (this.anInt1432 >= 0) {
+				System.arraycopy(this.anIntArray1431, var3 * this.anInt1432, var2, (var3 + this.anInt1435) * this.anInt1436 + this.anInt1434, this.anInt1432);
+			}
+		}
+
+		if (var1 == 3) {
+			boolean var4 = false;
+		} else {
+			this.aBoolean1429 = !this.aBoolean1429;
+		}
+
+		this.anIntArray1431 = var2;
+		this.anInt1432 = this.anInt1436;
+		this.anInt1433 = this.anInt1437;
+		this.anInt1434 = 0;
+		this.anInt1435 = 0;
+	}
+
+	public void method436(int var1, int var2, int var3, int var4) {
+		for (int var5 = 0; var5 < this.anIntArray1431.length; ++var5) {
+			int var6 = this.anIntArray1431[var5];
+			if (var6 != 0) {
+				int var7 = var6 >> 16 & 255;
+				var7 += var3;
+				if (var7 < 1) {
+					var7 = 1;
+				} else if (var7 > 255) {
+					var7 = 255;
+				}
+
+				int var8 = var6 >> 8 & 255;
+				var8 += var4;
+				if (var8 < 1) {
+					var8 = 1;
+				} else if (var8 > 255) {
+					var8 = 255;
+				}
+
+				int var9 = var6 & 255;
+				var9 += var1;
+				if (var9 < 1) {
+					var9 = 1;
+				} else if (var9 > 255) {
+					var9 = 255;
+				}
+
+				this.anIntArray1431[var5] = var9 + (var8 << 8) + (var7 << 16);
+			}
+		}
+
+	}
 }

@@ -1,417 +1,515 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class GameObjectDefinition {
+	public static final Model[] A_MODEL_ARRAY_217;
+	public static Class39 aClass39_252;
+	public static int anInt216;
+	public static GameObjectDefinition[] aClass8Array215;
+	public static Class39 aClass39_253;
+	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_214;
+	public static int[] anIntArray213;
+	public static int anInt212;
+	public int[] anIntArray220;
+	public int[] anIntArray219;
+	public int anInt211;
+	public final int anInt207;
+	public final boolean aBoolean208;
+	public int anInt218;
+	public boolean aBoolean230;
+	public String aString221;
+	public boolean aBoolean210;
+	public boolean aBoolean250;
+	public boolean aBoolean231;
+	public byte[] aByteArray222;
+	public boolean hasActions;
+	public boolean solid;
+	public int[] anIntArray223;
+	public String[] aStringArray237;
+	public boolean walkable;
+	public int[] anIntArray224;
+	public int anInt251;
+	public int sizeX;
+	public int sizeY;
+	public boolean aBoolean240;
+	public int anInt239;
+	public boolean aBoolean232;
+	public int anInt242;
+	public int animationId;
+	public int anInt243;
+	public int anInt234;
+	public byte aByte235;
+	public byte aByte236;
+	public int anInt244;
+	public int anInt245;
+	public int anInt238;
+	public int anInt246;
+	public boolean aBoolean241;
+	public int anInt247;
+	public int anInt248;
+	public boolean aBoolean249;
 
-    public static int anInt212;
-    public static int[] anIntArray213;
-    public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_214;
-    public static GameObjectDefinition[] aClass8Array215;
-    public static int anInt216;
-    public static final Model[] A_MODEL_ARRAY_217 = new Model[4];
-    public static Class39 aClass39_252 = new Class39(500, 0);
-    public static Class39 aClass39_253 = new Class39(30, 0);
-    public final int anInt207;
-    public final boolean aBoolean208;
-    public int anInt209;
-    public boolean aBoolean210;
-    public int anInt211;
-    public int anInt218;
-    public int[] anIntArray219;
-    public int[] anIntArray220;
-    public String aString221;
-    public byte[] aByteArray222;
-    public int[] anIntArray223;
-    public int[] anIntArray224;
-    public int sizeX;
-    public int sizeY;
-    public boolean solid;
-    public boolean walkable;
-    public boolean hasActions;
-    public boolean aBoolean230;
-    public boolean aBoolean231;
-    public boolean aBoolean232;
-    public int animationId;
-    public int anInt234;
-    public byte aByte235;
-    public byte aByte236;
-    public String[] aStringArray237;
-    public int anInt238;
-    public int anInt239;
-    public boolean aBoolean240;
-    public boolean aBoolean241;
-    public int anInt242;
-    public int anInt243;
-    public int anInt244;
-    public int anInt245;
-    public int anInt246;
-    public int anInt247;
-    public int anInt248;
-    public boolean aBoolean249;
-    public boolean aBoolean250;
-    public int anInt251;
-    public GameObjectDefinition() {
-        anInt207 = -32952;
-        aBoolean208 = false;
-        aBoolean210 = false;
-        anInt218 = -1;
-    }
+	static {
+		A_MODEL_ARRAY_217 = new Model[4];
+		aClass39_252 = new Class39(500, 0);
+		aClass39_253 = new Class39(30, 0);
+	}
 
-    public static void method197(Class47 class47) {
-        aClass44_Sub3_Sub2_214 = new Class44_Sub3_Sub2(class47.method546("loc.dat", null), (byte) 1);
-        Class44_Sub3_Sub2 class44_sub3_sub2 = new Class44_Sub3_Sub2(class47.method546("loc.idx", null), (byte) 1);
-        anInt212 = class44_sub3_sub2.get2();
-        anIntArray213 = new int[anInt212];
-        int i = 2;
-        for (int j = 0; j < anInt212; j++) {
-            anIntArray213[j] = i;
-            i += class44_sub3_sub2.get2();
-        }
+	public GameObjectDefinition() {
+		this.anInt207 = -32952;
+		this.aBoolean208 = false;
+		this.aBoolean210 = false;
+		this.anInt218 = -1;
+	}
 
-        aClass8Array215 = new GameObjectDefinition[10];
-        for (int k = 0; k < 10; k++)
-            aClass8Array215[k] = new GameObjectDefinition();
+	public Model method206(int var1, boolean var2, int var3, int var4) {
+		Model var5 = null;
+		long var6;
+		boolean var9;
+		int var10;
+		int var11;
+		if (this.anIntArray220 == null) {
+			if (var4 != 10) {
+				return null;
+			}
 
-    }
+			var6 = (long)((this.anInt218 << 6) + var1) + ((long)(var3 + 1) << 32);
+			Model var8 = (Model)aClass39_253.method339(var6);
+			if (var8 != null) {
+				return var8;
+			}
 
-    public static void method198(byte byte0) {
-        aClass39_252 = null;
-        aClass39_253 = null;
-        anIntArray213 = null;
-        aClass8Array215 = null;
-        aClass44_Sub3_Sub2_214 = null;
-        if (byte0 == 1) {
-            byte0 = 0;
-            return;
-        }
-        for (int i = 1; i > 0; i++) ;
-    }
+			if (this.anIntArray219 == null) {
+				return null;
+			}
 
-    public static GameObjectDefinition get(int i) {
-        for (int j = 0; j < 10; j++)
-            if (aClass8Array215[j].anInt218 == i)
-                return aClass8Array215[j];
+			var9 = this.aBoolean240 ^ var1 > 3;
+			var10 = this.anIntArray219.length;
 
-        anInt216 = (anInt216 + 1) % 10;
-        GameObjectDefinition class8 = aClass8Array215[anInt216];
-        aClass44_Sub3_Sub2_214.anInt1374 = anIntArray213[i];
-        class8.anInt218 = i;
-        class8.method200();
-        class8.method201((byte) 2, aClass44_Sub3_Sub2_214);
-        return class8;
-    }
+			for (var11 = 0; var11 < var10; ++var11) {
+				int var12 = this.anIntArray219[var11];
+				if (var9) {
+					var12 += 65536;
+				}
 
-    public void method200() {
-        anIntArray219 = null;
-        anIntArray220 = null;
-        aString221 = null;
-        aByteArray222 = null;
-        anIntArray223 = null;
-        anIntArray224 = null;
-        sizeX = 1;
-        sizeY = 1;
-        solid = true;
-        walkable = true;
-        hasActions = false;
-        aBoolean230 = false;
-        aBoolean231 = false;
-        aBoolean232 = false;
-        animationId = -1;
-        anInt234 = 16;
-        aByte235 = 0;
-        aByte236 = 0;
-        aStringArray237 = null;
-        anInt238 = -1;
-        anInt239 = -1;
-        aBoolean240 = false;
-        aBoolean241 = true;
-        anInt242 = 128;
-        anInt243 = 128;
-        anInt244 = 128;
-        anInt248 = 0;
-        anInt245 = 0;
-        anInt246 = 0;
-        anInt247 = 0;
-        aBoolean249 = false;
-        aBoolean250 = false;
-        anInt251 = -1;
-    }
+				var5 = (Model)aClass39_252.method339((long)var12);
+				if (var5 == null) {
+					var5 = Model.method503(var12 & 65535);
+					if (var5 == null) {
+						return null;
+					}
 
-    public void method201(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2) {
-        if (byte0 == 2)
-            byte0 = 0;
-        else
-            anInt211 = -350;
-        int i = -1;
-        do {
-            int j = class44_sub3_sub2.get1();
-            if (j == 0)
-                break;
-            if (j == 1) {
-                int k = class44_sub3_sub2.get1();
-                if (k > 0) {
-                    anIntArray220 = new int[k];
-                    anIntArray219 = new int[k];
-                    for (int j1 = 0; j1 < k; j1++) {
-                        anIntArray219[j1] = class44_sub3_sub2.get2();
-                        anIntArray220[j1] = class44_sub3_sub2.get1();
-                    }
+					if (var9) {
+						var5.method518();
+					}
 
-                }
-            } else if (j == 2)
-                aString221 = class44_sub3_sub2.getString();
-            else if (j == 3)
-                aByteArray222 = class44_sub3_sub2.getStringArray(anInt207);
-            else if (j == 5) {
-                int l = class44_sub3_sub2.get1();
-                if (l > 0) {
-                    anIntArray220 = null;
-                    anIntArray219 = new int[l];
-                    for (int k1 = 0; k1 < l; k1++)
-                        anIntArray219[k1] = class44_sub3_sub2.get2();
+					aClass39_252.method340(201, (long)var12, var5);
+				}
 
-                }
-            } else if (j == 14)
-                sizeX = class44_sub3_sub2.get1();
-            else if (j == 15)
-                sizeY = class44_sub3_sub2.get1();
-            else if (j == 17)
-                solid = false;
-            else if (j == 18)
-                walkable = false;
-            else if (j == 19) {
-                i = class44_sub3_sub2.get1();
-                if (i == 1)
-                    hasActions = true;
-            } else if (j == 21)
-                aBoolean230 = true;
-            else if (j == 22)
-                aBoolean231 = true;
-            else if (j == 23)
-                aBoolean232 = true;
-            else if (j == 24) {
-                animationId = class44_sub3_sub2.get2();
-                if (animationId == 65535)
-                    animationId = -1;
-            } else if (j == 28)
-                anInt234 = class44_sub3_sub2.get1();
-            else if (j == 29)
-                aByte235 = class44_sub3_sub2.get1Signed();
-            else if (j == 39)
-                aByte236 = class44_sub3_sub2.get1Signed();
-            else if (j >= 30 && j < 39) {
-                if (aStringArray237 == null)
-                    aStringArray237 = new String[5];
-                aStringArray237[j - 30] = class44_sub3_sub2.getString();
-                if (aStringArray237[j - 30].equalsIgnoreCase("hidden"))
-                    aStringArray237[j - 30] = null;
-            } else if (j == 40) {
-                int i1 = class44_sub3_sub2.get1();
-                anIntArray223 = new int[i1];
-                anIntArray224 = new int[i1];
-                for (int l1 = 0; l1 < i1; l1++) {
-                    anIntArray223[l1] = class44_sub3_sub2.get2();
-                    anIntArray224[l1] = class44_sub3_sub2.get2();
-                }
+				if (var10 > 1) {
+					A_MODEL_ARRAY_217[var11] = var5;
+				}
+			}
 
-            } else if (j == 60)
-                anInt238 = class44_sub3_sub2.get2();
-            else if (j == 62)
-                aBoolean240 = true;
-            else if (j == 64)
-                aBoolean241 = false;
-            else if (j == 65)
-                anInt242 = class44_sub3_sub2.get2();
-            else if (j == 66)
-                anInt243 = class44_sub3_sub2.get2();
-            else if (j == 67)
-                anInt244 = class44_sub3_sub2.get2();
-            else if (j == 68)
-                anInt239 = class44_sub3_sub2.get2();
-            else if (j == 69)
-                anInt248 = class44_sub3_sub2.get1();
-            else if (j == 70)
-                anInt245 = class44_sub3_sub2.get2Signed();
-            else if (j == 71)
-                anInt246 = class44_sub3_sub2.get2Signed();
-            else if (j == 72)
-                anInt247 = class44_sub3_sub2.get2Signed();
-            else if (j == 73)
-                aBoolean249 = true;
-            else if (j == 74)
-                aBoolean250 = true;
-            else if (j == 75)
-                anInt251 = class44_sub3_sub2.get1();
-        } while (true);
-        if (i == -1) {
-            hasActions = anIntArray219 != null && (anIntArray220 == null || anIntArray220[0] == 10);
-            if (aStringArray237 != null)
-                hasActions = true;
-        }
-        if (aBoolean250) {
-            solid = false;
-            walkable = false;
-        }
-        if (anInt251 == -1)
-            anInt251 = solid ? 1 : 0;
-    }
+			if (var10 > 1) {
+				var5 = new Model(var10, -643, A_MODEL_ARRAY_217);
+			}
+		} else {
+			int var13 = -1;
 
-    public boolean method202(int i, int j) {
-        if (i != 0) {
-            for (int k = 1; k > 0; k++) ;
-        }
-        if (anIntArray220 == null) {
-            if (anIntArray219 == null)
-                return true;
-            if (j != 10)
-                return true;
-            boolean flag = true;
-            for (int k : anIntArray219) flag &= Model.method504(k & 0xffff);
+			for (int var14 = 0; var14 < this.anIntArray220.length; ++var14) {
+				if (var4 == this.anIntArray220[var14]) {
+					var13 = var14;
+					break;
+				}
+			}
 
-            return flag;
-        }
-        for (int l = 0; l < anIntArray220.length; l++)
-            if (anIntArray220[l] == j)
-                return Model.method504(anIntArray219[l] & 0xffff);
+			if (var13 == -1) {
+				return null;
+			}
 
-        return true;
-    }
+			var6 = (long)((this.anInt218 << 6) + (var13 << 3) + var1) + ((long)(var3 + 1) << 32);
+			Model var16 = (Model)aClass39_253.method339(var6);
+			if (var16 != null) {
+				return var16;
+			}
 
-    public boolean method203(boolean flag) {
-        if (anIntArray219 == null)
-            return true;
-        boolean flag1 = true;
-        if (!flag)
-            anInt209 = 308;
-        for (int j : anIntArray219) flag1 &= Model.method504(j & 0xffff);
+			var10 = this.anIntArray219[var13];
+			boolean var18 = this.aBoolean240 ^ var1 > 3;
+			if (var18) {
+				var10 += 65536;
+			}
 
-        return flag1;
-    }
+			var5 = (Model)aClass39_252.method339((long)var10);
+			if (var5 == null) {
+				var5 = Model.method503(var10 & 65535);
+				if (var5 == null) {
+					return null;
+				}
 
-    public void method204(byte byte0, Class43_Sub1 class43_sub1) {
-        if (anIntArray219 == null)
-            return;
-        for (int j : anIntArray219) class43_sub1.method397(-21322, 0, j & 0xffff);
+				if (var18) {
+					var5.method518();
+				}
 
-        if (byte0 != 0)
-            aBoolean210 = !aBoolean210;
-    }
+				aClass39_252.method340(201, (long)var10, var5);
+			}
+		}
 
-    public Model getModel(int i, int j, int k, int l, int i1, int j1, int k1) {
-        Model model = method206(j, false, k1, i);
-        if (model == null)
-            return null;
-        if (aBoolean230 || aBoolean231)
-            model = new Model(aBoolean231, (byte) 72, model, aBoolean230);
-        if (aBoolean230) {
-            int l1 = (k + l + i1 + j1) / 4;
-            for (int i2 = 0; i2 < model.anInt1522; i2++) {
-                int j2 = model.anIntArray1523[i2];
-                int k2 = model.anIntArray1525[i2];
-                int l2 = k + ((l - k) * (j2 + 64)) / 128;
-                int i3 = j1 + ((i1 - j1) * (j2 + 64)) / 128;
-                int j3 = l2 + ((i3 - l2) * (k2 + 64)) / 128;
-                model.anIntArray1524[i2] += j3 - l1;
-            }
+		boolean var15 = this.anInt242 != 128 || this.anInt243 != 128 || this.anInt244 != 128;
+		var9 = this.anInt245 != 0 || this.anInt246 != 0 || this.anInt247 != 0;
+		Model var17 = new Model(this.anIntArray223 == null, Class11.method211(var3), var5, true, var1 == 0 && var3 == -1 && !var15 && !var9);
+		if (var3 != -1) {
+			var17.method510();
+			var17.method511(var3);
+			var17.anIntArrayArray1554 = null;
+			var17.anIntArrayArray1553 = null;
+		}
 
-            model.method508(368);
-        }
-        return model;
-    }
+		while (var1-- > 0) {
+			var17.method514();
+		}
 
-    public Model method206(int i, boolean flag, int j, int k) {
-        Model model = null;
-        long l;
-        if (anIntArray220 == null) {
-            if (k != 10)
-                return null;
-            l = (long) ((anInt218 << 6) + i) + ((long) (j + 1) << 32);
-            Model model_1 = (Model) aClass39_253.method339(l);
-            if (model_1 != null)
-                return model_1;
-            if (anIntArray219 == null)
-                return null;
-            boolean flag2 = aBoolean240 ^ (i > 3);
-            int k1 = anIntArray219.length;
-            for (int l1 = 0; l1 < k1; l1++) {
-                int k2 = anIntArray219[l1];
-                if (flag2)
-                    k2 += 0x10000;
-                model = (Model) aClass39_252.method339(k2);
-                if (model == null) {
-                    model = Model.method503(k2 & 0xffff, 6);
-                    if (model == null)
-                        return null;
-                    if (flag2)
-                        model.method518(2);
-                    aClass39_252.method340(201, k2, model);
-                }
-                if (k1 > 1)
-                    A_MODEL_ARRAY_217[l1] = model;
-            }
+		if (this.anIntArray223 != null) {
+			for (var11 = 0; var11 < this.anIntArray223.length; ++var11) {
+				var17.method517(this.anIntArray223[var11], this.anIntArray224[var11]);
+			}
+		}
 
-            if (k1 > 1)
-                model = new Model(k1, -643, A_MODEL_ARRAY_217);
-        } else {
-            int i1 = -1;
-            for (int j1 = 0; j1 < anIntArray220.length; j1++) {
-                if (anIntArray220[j1] != k)
-                    continue;
-                i1 = j1;
-                break;
-            }
+		if (var15) {
+			var17.method519(9, this.anInt244, this.anInt242, this.anInt243);
+		}
 
-            if (i1 == -1)
-                return null;
-            l = (long) ((anInt218 << 6) + (i1 << 3) + i) + ((long) (j + 1) << 32);
-            Model model_2 = (Model) aClass39_253.method339(l);
-            if (model_2 != null)
-                return model_2;
-            int i2 = anIntArray219[i1];
-            boolean flag4 = aBoolean240 ^ (i > 3);
-            if (flag4)
-                i2 += 0x10000;
-            model = (Model) aClass39_252.method339(i2);
-            if (model == null) {
-                model = Model.method503(i2 & 0xffff, 6);
-                if (model == null)
-                    return null;
-                if (flag4)
-                    model.method518(2);
-                aClass39_252.method340(201, i2, model);
-            }
-        }
-        boolean flag1;
-        flag1 = anInt242 != 128 || anInt243 != 128 || anInt244 != 128;
-        boolean flag3;
-        flag3 = anInt245 != 0 || anInt246 != 0 || anInt247 != 0;
-        Model class44_sub3_sub4_sub4_3 = new Model(anIntArray223 == null, Class11.method211(j, 0), model, true, i == 0 && j == -1 && !flag1 && !flag3);
-        if (j != -1) {
-            class44_sub3_sub4_sub4_3.method510(9);
-            class44_sub3_sub4_sub4_3.method511(j, -284);
-            class44_sub3_sub4_sub4_3.anIntArrayArray1554 = null;
-            class44_sub3_sub4_sub4_3.anIntArrayArray1553 = null;
-        }
-        while (i-- > 0)
-            class44_sub3_sub4_sub4_3.method514((byte) 89);
-        if (anIntArray223 != null) {
-            for (int j2 = 0; j2 < anIntArray223.length; j2++)
-                class44_sub3_sub4_sub4_3.method517(anIntArray223[j2], anIntArray224[j2]);
+		if (var9) {
+			var17.method516(this.anInt245, this.anInt246, (byte)10, this.anInt247);
+		}
 
-        }
-        if (flag1)
-            class44_sub3_sub4_sub4_3.method519(9, anInt244, anInt242, anInt243);
-        if (flag3)
-            class44_sub3_sub4_sub4_3.method516(anInt245, anInt246, (byte) 10, anInt247);
-        class44_sub3_sub4_sub4_3.method520(64 + aByte235, 768 + aByte236 * 5, -50, -10, -50, !aBoolean231);
-        if (anInt251 == 1)
-            class44_sub3_sub4_sub4_3.anInt1550 = class44_sub3_sub4_sub4_3.anInt1394;
-        aClass39_253.method340(201, l, class44_sub3_sub4_sub4_3);
-        if (flag)
-            throw new NullPointerException();
-        else
-            return class44_sub3_sub4_sub4_3;
-    }
+		var17.method520(this.aByte235 + 64, this.aByte236 * 5 + 768, -50, -10, -50, !this.aBoolean231);
+		if (this.anInt251 == 1) {
+			var17.anInt1550 = var17.anInt1394;
+		}
 
+		aClass39_253.method340(201, var6, var17);
+		return var17;
+	}
+
+	public boolean method202(int var1, int var2) {
+		if (this.anIntArray220 != null) {
+			for (int var8 = 0; var8 < this.anIntArray220.length; ++var8) {
+				if (var2 == this.anIntArray220[var8]) {
+					return Model.method504(this.anIntArray219[var8] & 65535);
+				}
+			}
+
+			return true;
+		} else if (this.anIntArray219 == null) {
+			return true;
+		} else if (var2 != 10) {
+			return true;
+		} else {
+			boolean var3 = true;
+			int[] var4 = this.anIntArray219;
+			int var5 = var4.length;
+
+			for (int var6 = 0; var6 < var5; ++var6) {
+				int var7 = var4[var6];
+				var3 &= Model.method504(var7 & 65535);
+			}
+
+			return var3;
+		}
+	}
+
+	public Model getModel(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+		Model var8 = this.method206(var2, false, var7, var1);
+		if (var8 == null) {
+			return null;
+		} else {
+			if (this.aBoolean230 || this.aBoolean231) {
+				var8 = new Model(this.aBoolean231, (byte)72, var8, this.aBoolean230);
+			}
+
+			if (this.aBoolean230) {
+				int var9 = (var3 + var5 + var4 + var6) / 4;
+
+				for (int var10 = 0; var10 < var8.anInt1522; ++var10) {
+					int var11 = var8.anIntArray1523[var10];
+					int var12 = var8.anIntArray1525[var10];
+					int var13 = var3 + (var11 + 64) * (var4 - var3) / 128;
+					int var14 = (var11 + 64) * (var5 - var6) / 128 + var6;
+					int var15 = var13 + (var12 + 64) * (var14 - var13) / 128;
+					int[] var10000 = var8.anIntArray1524;
+					var10000[var10] += var15 - var9;
+				}
+
+				var8.method508();
+			}
+
+			return var8;
+		}
+	}
+
+	public void method200() {
+		this.anIntArray219 = null;
+		this.anIntArray220 = null;
+		this.aString221 = null;
+		this.aByteArray222 = null;
+		this.anIntArray223 = null;
+		this.anIntArray224 = null;
+		this.sizeX = 1;
+		this.sizeY = 1;
+		this.solid = true;
+		this.walkable = true;
+		this.hasActions = false;
+		this.aBoolean230 = false;
+		this.aBoolean231 = false;
+		this.aBoolean232 = false;
+		this.animationId = -1;
+		this.anInt234 = 16;
+		this.aByte235 = 0;
+		this.aByte236 = 0;
+		this.aStringArray237 = null;
+		this.anInt238 = -1;
+		this.anInt239 = -1;
+		this.aBoolean240 = false;
+		this.aBoolean241 = true;
+		this.anInt242 = 128;
+		this.anInt243 = 128;
+		this.anInt244 = 128;
+		this.anInt248 = 0;
+		this.anInt245 = 0;
+		this.anInt246 = 0;
+		this.anInt247 = 0;
+		this.aBoolean249 = false;
+		this.aBoolean250 = false;
+		this.anInt251 = -1;
+	}
+
+	public void method201(byte var1, Class44_Sub3_Sub2 var2) {
+		if (var1 == 2) {
+			boolean var7 = false;
+		} else {
+			this.anInt211 = -350;
+		}
+
+		int var3 = -1;
+
+		while (true) {
+			int var5;
+			int var6;
+			do {
+				while (true) {
+					int var4 = var2.get1();
+					if (var4 == 0) {
+						if (var3 == -1) {
+							this.hasActions = this.anIntArray219 != null && (this.anIntArray220 == null || this.anIntArray220[0] == 10);
+							if (this.aStringArray237 != null) {
+								this.hasActions = true;
+							}
+						}
+
+						if (this.aBoolean250) {
+							this.solid = false;
+							this.walkable = false;
+						}
+
+						if (this.anInt251 == -1) {
+							this.anInt251 = this.solid ? 1 : 0;
+						}
+
+						return;
+					}
+
+					if (var4 == 1) {
+						var5 = var2.get1();
+						break;
+					}
+
+					if (var4 == 2) {
+						this.aString221 = var2.getString();
+					} else if (var4 == 3) {
+						this.aByteArray222 = var2.getStringArray(this.anInt207);
+					} else if (var4 == 5) {
+						var5 = var2.get1();
+						if (var5 > 0) {
+							this.anIntArray220 = null;
+							this.anIntArray219 = new int[var5];
+
+							for (var6 = 0; var6 < var5; ++var6) {
+								this.anIntArray219[var6] = var2.get2();
+							}
+						}
+					} else if (var4 == 14) {
+						this.sizeX = var2.get1();
+					} else if (var4 == 15) {
+						this.sizeY = var2.get1();
+					} else if (var4 == 17) {
+						this.solid = false;
+					} else if (var4 == 18) {
+						this.walkable = false;
+					} else if (var4 == 19) {
+						var3 = var2.get1();
+						if (var3 == 1) {
+							this.hasActions = true;
+						}
+					} else if (var4 == 21) {
+						this.aBoolean230 = true;
+					} else if (var4 == 22) {
+						this.aBoolean231 = true;
+					} else if (var4 == 23) {
+						this.aBoolean232 = true;
+					} else if (var4 == 24) {
+						this.animationId = var2.get2();
+						if (this.animationId == 65535) {
+							this.animationId = -1;
+						}
+					} else if (var4 == 28) {
+						this.anInt234 = var2.get1();
+					} else if (var4 == 29) {
+						this.aByte235 = var2.get1Signed();
+					} else if (var4 == 39) {
+						this.aByte236 = var2.get1Signed();
+					} else if (var4 >= 30 && var4 < 39) {
+						if (this.aStringArray237 == null) {
+							this.aStringArray237 = new String[5];
+						}
+
+						this.aStringArray237[var4 - 30] = var2.getString();
+						if (this.aStringArray237[var4 - 30].equalsIgnoreCase("hidden")) {
+							this.aStringArray237[var4 - 30] = null;
+						}
+					} else if (var4 == 40) {
+						var5 = var2.get1();
+						this.anIntArray223 = new int[var5];
+						this.anIntArray224 = new int[var5];
+
+						for (var6 = 0; var6 < var5; ++var6) {
+							this.anIntArray223[var6] = var2.get2();
+							this.anIntArray224[var6] = var2.get2();
+						}
+					} else if (var4 == 60) {
+						this.anInt238 = var2.get2();
+					} else if (var4 == 62) {
+						this.aBoolean240 = true;
+					} else if (var4 == 64) {
+						this.aBoolean241 = false;
+					} else if (var4 == 65) {
+						this.anInt242 = var2.get2();
+					} else if (var4 == 66) {
+						this.anInt243 = var2.get2();
+					} else if (var4 == 67) {
+						this.anInt244 = var2.get2();
+					} else if (var4 == 68) {
+						this.anInt239 = var2.get2();
+					} else if (var4 == 69) {
+						this.anInt248 = var2.get1();
+					} else if (var4 == 70) {
+						this.anInt245 = var2.get2Signed();
+					} else if (var4 == 71) {
+						this.anInt246 = var2.get2Signed();
+					} else if (var4 == 72) {
+						this.anInt247 = var2.get2Signed();
+					} else if (var4 == 73) {
+						this.aBoolean249 = true;
+					} else if (var4 == 74) {
+						this.aBoolean250 = true;
+					} else if (var4 == 75) {
+						this.anInt251 = var2.get1();
+					}
+				}
+			} while(var5 <= 0);
+
+			this.anIntArray220 = new int[var5];
+			this.anIntArray219 = new int[var5];
+
+			for (var6 = 0; var6 < var5; ++var6) {
+				this.anIntArray219[var6] = var2.get2();
+				this.anIntArray220[var6] = var2.get1();
+			}
+		}
+	}
+
+	@ObfuscatedSignature(
+		descriptor = "(Z)Z",
+		garbageValue = "1"
+	)
+	public boolean method203() {
+		if (this.anIntArray219 == null) {
+			return true;
+		} else {
+			boolean var1 = true;
+			int[] var2 = this.anIntArray219;
+			int var3 = var2.length;
+
+			for (int var4 = 0; var4 < var3; ++var4) {
+				int var5 = var2[var4];
+				var1 &= Model.method504(var5 & 65535);
+			}
+
+			return var1;
+		}
+	}
+
+	public void method204(byte var1, Class43_Sub1 var2) {
+		if (this.anIntArray219 != null) {
+			int[] var3 = this.anIntArray219;
+			int var4 = var3.length;
+
+			for (int var5 = 0; var5 < var4; ++var5) {
+				int var6 = var3[var5];
+				var2.method397(-21322, 0, var6 & 65535);
+			}
+
+		}
+	}
+
+	public static GameObjectDefinition get(int var0) {
+		for (int var1 = 0; var1 < 10; ++var1) {
+			if (var0 == aClass8Array215[var1].anInt218) {
+				return aClass8Array215[var1];
+			}
+		}
+
+		anInt216 = (anInt216 + 1) % 10;
+		GameObjectDefinition var2 = aClass8Array215[anInt216];
+		aClass44_Sub3_Sub2_214.anInt1374 = anIntArray213[var0];
+		var2.anInt218 = var0;
+		var2.method200();
+		var2.method201((byte)2, aClass44_Sub3_Sub2_214);
+		return var2;
+	}
+
+	public static void method198(byte var0) {
+		aClass39_252 = null;
+		aClass39_253 = null;
+		anIntArray213 = null;
+		aClass8Array215 = null;
+		aClass44_Sub3_Sub2_214 = null;
+		if (var0 == 1) {
+			boolean var2 = false;
+		} else {
+			for (int var1 = 1; var1 > 0; ++var1) {
+			}
+
+		}
+	}
+
+	public static void method197(Class47 var0) {
+		aClass44_Sub3_Sub2_214 = new Class44_Sub3_Sub2(var0.method546("loc.dat", (byte[])null), (byte)1);
+		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("loc.idx", (byte[])null), (byte)1);
+		anInt212 = var1.get2();
+		anIntArray213 = new int[anInt212];
+		int var2 = 2;
+
+		int var3;
+		for (var3 = 0; var3 < anInt212; ++var3) {
+			anIntArray213[var3] = var2;
+			var2 += var1.get2();
+		}
+
+		aClass8Array215 = new GameObjectDefinition[10];
+
+		for (var3 = 0; var3 < 10; ++var3) {
+			aClass8Array215[var3] = new GameObjectDefinition();
+		}
+
+	}
 }

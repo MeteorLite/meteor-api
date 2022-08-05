@@ -1,202 +1,263 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class45 {
+	public static final byte[] aByteArray767;
+	public boolean aBoolean764;
+	public final RandomAccessFile aRandomAccessFile769;
+	public final RandomAccessFile aRandomAccessFile768;
+	public final int anInt765;
+	public int anInt766;
+	public int anInt771;
+	public final int anInt770;
 
-    public static final byte[] aByteArray767 = new byte[520];
-    public boolean aBoolean764;
-    public final int anInt765;
-    public int anInt766;
-    public final RandomAccessFile aRandomAccessFile768;
-    public final RandomAccessFile aRandomAccessFile769;
-    public final int anInt770;
-    public int anInt771;
-    public Class45(RandomAccessFile randomaccessfile, int i, RandomAccessFile randomaccessfile1, int j, int k) {
-        aBoolean764 = true;
-        anInt765 = 29615;
-        anInt766 = 7228;
-        anInt771 = 65000;
-        anInt770 = j;
-        aRandomAccessFile768 = randomaccessfile;
-        if (i != anInt765) {
-            for (int l = 1; l > 0; l++) ;
-        }
-        aRandomAccessFile769 = randomaccessfile1;
-        anInt771 = k;
-    }
+	static {
+		aByteArray767 = new byte[520];
+	}
 
-    public synchronized byte[] method538(byte byte0, int i) {
-        if (byte0 == 2)
-            byte0 = 0;
-        else
-            throw new NullPointerException();
-        try {
-            method541(i * 6, false, aRandomAccessFile769);
-            int l;
-            for (int j = 0; j < 6; j += l) {
-                l = aRandomAccessFile769.read(aByteArray767, j, 6 - j);
-                if (l == -1)
-                    return null;
-            }
+	public Class45(RandomAccessFile var1, int var2, RandomAccessFile var3, int var4, int var5) {
+		this.aBoolean764 = true;
+		this.anInt765 = 29615;
+		this.anInt766 = 7228;
+		this.anInt771 = 65000;
+		this.anInt770 = var4;
+		this.aRandomAccessFile768 = var1;
+		if (var2 != this.anInt765) {
+			for (int var6 = 1; var6 > 0; ++var6) {
+			}
+		}
 
-            int i1 = ((aByteArray767[0] & 0xff) << 16) + ((aByteArray767[1] & 0xff) << 8) + (aByteArray767[2] & 0xff);
-            int j1 = ((aByteArray767[3] & 0xff) << 16) + ((aByteArray767[4] & 0xff) << 8) + (aByteArray767[5] & 0xff);
-            if (i1 < 0 || i1 > anInt771)
-                return null;
-            if (j1 <= 0 || (long) j1 > aRandomAccessFile768.length() / 520L)
-                return null;
-            byte[] abyte0 = new byte[i1];
-            int k1 = 0;
-            for (int l1 = 0; k1 < i1; l1++) {
-                if (j1 == 0)
-                    return null;
-                method541(j1 * 520, false, aRandomAccessFile768);
-                int k = 0;
-                int i2 = i1 - k1;
-                if (i2 > 512)
-                    i2 = 512;
-                int j2;
-                for (; k < i2 + 8; k += j2) {
-                    j2 = aRandomAccessFile768.read(aByteArray767, k, (i2 + 8) - k);
-                    if (j2 == -1)
-                        return null;
-                }
+		this.aRandomAccessFile769 = var3;
+		this.anInt771 = var5;
+	}
 
-                int k2 = ((aByteArray767[0] & 0xff) << 8) + (aByteArray767[1] & 0xff);
-                int l2 = ((aByteArray767[2] & 0xff) << 8) + (aByteArray767[3] & 0xff);
-                int i3 = ((aByteArray767[4] & 0xff) << 16) + ((aByteArray767[5] & 0xff) << 8) + (aByteArray767[6] & 0xff);
-                int j3 = aByteArray767[7] & 0xff;
-                if (k2 != i || l2 != l1 || j3 != anInt770)
-                    return null;
-                if (i3 < 0 || (long) i3 > aRandomAccessFile768.length() / 520L)
-                    return null;
-                for (int k3 = 0; k3 < i2; k3++)
-                    abyte0[k1++] = aByteArray767[k3 + 8];
+	@ObfuscatedSignature(
+		descriptor = "(Z[BIIB)Z",
+		garbageValue = "-48"
+	)
+	public synchronized boolean method540(boolean var1, byte[] var2, int var3, int var4) {
+		try {
+			int var5;
+			int var6;
+			int var7;
+			if (!var1) {
+				var5 = (int)((this.aRandomAccessFile768.length() + 519L) / 520L);
+				if (var5 == 0) {
+					var5 = 1;
+				}
+			} else {
+				this.method541(var3 * 6, false, this.aRandomAccessFile769);
+				var7 = 0;
 
-                j1 = i3;
-            }
+				while (true) {
+					if (var7 >= 6) {
+						var5 = (aByteArray767[5] & 255) + ((aByteArray767[3] & 255) << 16) + ((aByteArray767[4] & 255) << 8);
+						if (var5 <= 0 || (long)var5 > this.aRandomAccessFile768.length() / 520L) {
+							return false;
+						}
+						break;
+					}
 
-            return abyte0;
-        } catch (IOException _ex) {
-            return null;
-        }
-    }
+					var6 = this.aRandomAccessFile769.read(aByteArray767, var7, 6 - var7);
+					if (var6 == -1) {
+						return false;
+					}
 
-    public synchronized void method539(int i, int j, byte[] abyte0, byte byte0) {
-        if (byte0 == 8)
-            byte0 = 0;
-        else
-            throw new NullPointerException();
-        boolean flag = method540(true, abyte0, j, i, (byte) -48);
-        if (!flag)
-            flag = method540(false, abyte0, j, i, (byte) -48);
-    }
+					var7 += var6;
+				}
+			}
 
-    public synchronized boolean method540(boolean flag, byte[] abyte0, int i, int j, byte byte0) {
-        if (byte0 != -48)
-            anInt766 = 219;
-        try {
-            int k;
-            if (flag) {
-                method541(i * 6, false, aRandomAccessFile769);
-                int j1;
-                for (int l = 0; l < 6; l += j1) {
-                    j1 = aRandomAccessFile769.read(aByteArray767, l, 6 - l);
-                    if (j1 == -1)
-                        return false;
-                }
+			aByteArray767[0] = (byte)(var4 >> 16);
+			aByteArray767[1] = (byte)(var4 >> 8);
+			aByteArray767[2] = (byte)var4;
+			aByteArray767[3] = (byte)(var5 >> 16);
+			aByteArray767[4] = (byte)(var5 >> 8);
+			aByteArray767[5] = (byte)var5;
+			this.method541(var3 * 6, false, this.aRandomAccessFile769);
+			this.aRandomAccessFile769.write(aByteArray767, 0, 6);
+			var6 = 0;
 
-                k = ((aByteArray767[3] & 0xff) << 16) + ((aByteArray767[4] & 0xff) << 8) + (aByteArray767[5] & 0xff);
-                if (k <= 0 || (long) k > aRandomAccessFile768.length() / 520L)
-                    return false;
-            } else {
-                k = (int) ((aRandomAccessFile768.length() + 519L) / 520L);
-                if (k == 0)
-                    k = 1;
-            }
-            aByteArray767[0] = (byte) (j >> 16);
-            aByteArray767[1] = (byte) (j >> 8);
-            aByteArray767[2] = (byte) j;
-            aByteArray767[3] = (byte) (k >> 16);
-            aByteArray767[4] = (byte) (k >> 8);
-            aByteArray767[5] = (byte) k;
-            method541(i * 6, false, aRandomAccessFile769);
-            aRandomAccessFile769.write(aByteArray767, 0, 6);
-            int i1 = 0;
-            for (int k1 = 0; i1 < j; k1++) {
-                int l1 = 0;
-                if (flag) {
-                    method541(k * 520, false, aRandomAccessFile768);
-                    int i2;
-                    int k2;
-                    for (i2 = 0; i2 < 8; i2 += k2) {
-                        k2 = aRandomAccessFile768.read(aByteArray767, i2, 8 - i2);
-                        if (k2 == -1)
-                            break;
-                    }
+			for (var7 = 0; var6 < var4; ++var7) {
+				int var8 = 0;
+				int var9;
+				if (var1) {
+					this.method541(var5 * 520, false, this.aRandomAccessFile768);
 
-                    if (i2 == 8) {
-                        int l2 = ((aByteArray767[0] & 0xff) << 8) + (aByteArray767[1] & 0xff);
-                        int i3 = ((aByteArray767[2] & 0xff) << 8) + (aByteArray767[3] & 0xff);
-                        l1 = ((aByteArray767[4] & 0xff) << 16) + ((aByteArray767[5] & 0xff) << 8) + (aByteArray767[6] & 0xff);
-                        int j3 = aByteArray767[7] & 0xff;
-                        if (l2 != i || i3 != k1 || j3 != anInt770)
-                            return false;
-                        if (l1 < 0 || (long) l1 > aRandomAccessFile768.length() / 520L)
-                            return false;
-                    }
-                }
-                if (l1 == 0) {
-                    flag = false;
-                    l1 = (int) ((aRandomAccessFile768.length() + 519L) / 520L);
-                    if (l1 == 0)
-                        l1++;
-                    if (l1 == k)
-                        l1++;
-                }
-                if (j - i1 <= 512)
-                    l1 = 0;
-                aByteArray767[0] = (byte) (i >> 8);
-                aByteArray767[1] = (byte) i;
-                aByteArray767[2] = (byte) (k1 >> 8);
-                aByteArray767[3] = (byte) k1;
-                aByteArray767[4] = (byte) (l1 >> 16);
-                aByteArray767[5] = (byte) (l1 >> 8);
-                aByteArray767[6] = (byte) l1;
-                aByteArray767[7] = (byte) anInt770;
-                method541(k * 520, false, aRandomAccessFile768);
-                aRandomAccessFile768.write(aByteArray767, 0, 8);
-                int j2 = j - i1;
-                if (j2 > 512)
-                    j2 = 512;
-                aRandomAccessFile768.write(abyte0, i1, j2);
-                i1 += j2;
-                k = l1;
-            }
+					int var10;
+					for (var9 = 0; var9 < 8; var9 += var10) {
+						var10 = this.aRandomAccessFile768.read(aByteArray767, var9, 8 - var9);
+						if (var10 == -1) {
+							break;
+						}
+					}
 
-            return true;
-        } catch (IOException _ex) {
-            return false;
-        }
-    }
+					if (var9 == 8) {
+						label120: {
+							int var11 = (aByteArray767[1] & 255) + ((aByteArray767[0] & 255) << 8);
+							int var12 = (aByteArray767[3] & 255) + ((aByteArray767[2] & 255) << 8);
+							var8 = ((aByteArray767[5] & 255) << 8) + ((aByteArray767[4] & 255) << 16) + (aByteArray767[6] & 255);
+							int var13 = aByteArray767[7] & 255;
+							if (var3 == var11 && var12 == var7 && var13 == this.anInt770) {
+								if (var8 >= 0 && (long)var8 <= this.aRandomAccessFile768.length() / 520L) {
+									break label120;
+								}
 
-    public synchronized void method541(int i, boolean flag, RandomAccessFile randomaccessfile)
-            throws IOException {
-        if (flag)
-            aBoolean764 = !aBoolean764;
-        if (i < 0 || i > 0x3c00000) {
-            System.out.println("Badseek - pos:" + i + " len:" + randomaccessfile.length());
-            i = 0x3c00000;
-            try {
-                Thread.sleep(1000L);
-            } catch (Exception ignored) {
-            }
-        }
-        randomaccessfile.seek(i);
-    }
+								return false;
+							}
 
+							return false;
+						}
+					}
+				}
+
+				if (var8 == 0) {
+					var1 = false;
+					var8 = (int)((this.aRandomAccessFile768.length() + 519L) / 520L);
+					if (var8 == 0) {
+						++var8;
+					}
+
+					if (var8 == var5) {
+						++var8;
+					}
+				}
+
+				if (var4 - var6 <= 512) {
+					var8 = 0;
+				}
+
+				aByteArray767[0] = (byte)(var3 >> 8);
+				aByteArray767[1] = (byte)var3;
+				aByteArray767[2] = (byte)(var7 >> 8);
+				aByteArray767[3] = (byte)var7;
+				aByteArray767[4] = (byte)(var8 >> 16);
+				aByteArray767[5] = (byte)(var8 >> 8);
+				aByteArray767[6] = (byte)var8;
+				aByteArray767[7] = (byte)this.anInt770;
+				this.method541(var5 * 520, false, this.aRandomAccessFile768);
+				this.aRandomAccessFile768.write(aByteArray767, 0, 8);
+				var9 = var4 - var6;
+				if (var9 > 512) {
+					var9 = 512;
+				}
+
+				this.aRandomAccessFile768.write(var2, var6, var9);
+				var6 += var9;
+				var5 = var8;
+			}
+
+			return true;
+		} catch (IOException var14) {
+			return false;
+		}
+	}
+
+	public synchronized void method541(int var1, boolean var2, RandomAccessFile var3) throws IOException {
+		if (var1 < 0 || var1 > 62914560) {
+			System.out.println("Badseek - pos:" + var1 + " len:" + var3.length());
+			var1 = 62914560;
+
+			try {
+				Thread.sleep(1000L);
+			} catch (Exception var5) {
+			}
+		}
+
+		var3.seek((long)var1);
+	}
+
+	public synchronized byte[] method538(byte var1, int var2) {
+		if (var1 == 2) {
+			boolean var18 = false;
+
+			try {
+				this.method541(var2 * 6, false, this.aRandomAccessFile769);
+
+				int var3;
+				int var4;
+				for (var4 = 0; var4 < 6; var4 += var3) {
+					var3 = this.aRandomAccessFile769.read(aByteArray767, var4, 6 - var4);
+					if (var3 == -1) {
+						return null;
+					}
+				}
+
+				var4 = ((aByteArray767[0] & 255) << 16) + (aByteArray767[2] & 255) + ((aByteArray767[1] & 255) << 8);
+				int var5 = (aByteArray767[5] & 255) + ((aByteArray767[3] & 255) << 16) + ((aByteArray767[4] & 255) << 8);
+				if (var4 >= 0 && var4 <= this.anInt771) {
+					if (var5 > 0 && (long)var5 <= this.aRandomAccessFile768.length() / 520L) {
+						byte[] var6 = new byte[var4];
+						int var7 = 0;
+						int var8 = 0;
+
+						while (var7 < var4) {
+							if (var5 == 0) {
+								return null;
+							}
+
+							this.method541(var5 * 520, false, this.aRandomAccessFile768);
+							int var9 = 0;
+							int var10 = var4 - var7;
+							if (var10 > 512) {
+								var10 = 512;
+							}
+
+							while (var9 < var10 + 8) {
+								int var11 = this.aRandomAccessFile768.read(aByteArray767, var9, var10 + 8 - var9);
+								if (var11 == -1) {
+									return null;
+								}
+
+								var9 += var11;
+							}
+
+							int var12 = (aByteArray767[1] & 255) + ((aByteArray767[0] & 255) << 8);
+							int var13 = (aByteArray767[3] & 255) + ((aByteArray767[2] & 255) << 8);
+							int var14 = ((aByteArray767[5] & 255) << 8) + ((aByteArray767[4] & 255) << 16) + (aByteArray767[6] & 255);
+							int var15 = aByteArray767[7] & 255;
+							if (var12 == var2 && var13 == var8 && var15 == this.anInt770) {
+								if (var14 >= 0 && (long)var14 <= this.aRandomAccessFile768.length() / 520L) {
+									for (int var16 = 0; var16 < var10; ++var16) {
+										var6[var7++] = aByteArray767[var16 + 8];
+									}
+
+									var5 = var14;
+									++var8;
+									continue;
+								}
+
+								return null;
+							}
+
+							return null;
+						}
+
+						return var6;
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			} catch (IOException var17) {
+				return null;
+			}
+		} else {
+			throw new NullPointerException();
+		}
+	}
+
+	public synchronized void method539(int var1, int var2, byte[] var3, byte var4) {
+		if (var4 == 8) {
+			boolean var6 = false;
+			boolean var5 = this.method540(true, var3, var2, var1);
+			if (!var5) {
+				this.method540(false, var3, var2, var1);
+			}
+
+		} else {
+			throw new NullPointerException();
+		}
+	}
 }

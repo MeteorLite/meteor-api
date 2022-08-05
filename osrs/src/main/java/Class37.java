@@ -1,518 +1,600 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class Class37 {
+	public static final Class40 aClass40_656;
 
-    public static final Class40 aClass40_656 = new Class40();
+	static {
+		aClass40_656 = new Class40();
+	}
 
-    public static void method329(byte[] abyte0, int i, byte[] abyte1, int j, int k) {
-        synchronized (aClass40_656) {
-            aClass40_656.aByteArray693 = abyte1;
-            aClass40_656.anInt694 = k;
-            aClass40_656.aByteArray698 = abyte0;
-            aClass40_656.anInt699 = 0;
-            aClass40_656.anInt695 = j;
-            aClass40_656.anInt700 = i;
-            aClass40_656.anInt707 = 0;
-            aClass40_656.anInt706 = 0;
-            aClass40_656.anInt696 = 0;
-            aClass40_656.anInt697 = 0;
-            aClass40_656.anInt701 = 0;
-            aClass40_656.anInt702 = 0;
-            aClass40_656.anInt709 = 0;
-            method331(aClass40_656);
-            i -= aClass40_656.anInt700;
-            int l = i;
-        }
-    }
+	public static void method329(byte[] var0, int var1, byte[] var2, int var3, int var4) {
+		synchronized(aClass40_656) {
+			aClass40_656.aByteArray693 = var2;
+			aClass40_656.anInt694 = var4;
+			aClass40_656.aByteArray698 = var0;
+			aClass40_656.anInt699 = 0;
+			aClass40_656.anInt695 = var3;
+			aClass40_656.anInt700 = var1;
+			aClass40_656.anInt707 = 0;
+			aClass40_656.anInt706 = 0;
+			aClass40_656.anInt696 = 0;
+			aClass40_656.anInt697 = 0;
+			aClass40_656.anInt701 = 0;
+			aClass40_656.anInt702 = 0;
+			aClass40_656.anInt709 = 0;
+			method331(aClass40_656);
+			var1 -= aClass40_656.anInt700;
+		}
+	}
 
-    public static void method330(Class40 class40) {
-        byte byte4 = class40.aByte703;
-        int i = class40.anInt704;
-        int j = class40.anInt714;
-        int k = class40.anInt712;
-        int[] ai = Class40.anIntArray717;
-        int l = class40.anInt711;
-        byte[] abyte0 = class40.aByteArray698;
-        int i1 = class40.anInt699;
-        int j1 = class40.anInt700;
-        int k1 = j1;
-        int l1 = class40.anInt731 + 1;
-        label0:
-        do {
-            if (i > 0) {
-                do {
-                    if (j1 == 0)
-                        break label0;
-                    if (i == 1)
-                        break;
-                    abyte0[i1] = byte4;
-                    i--;
-                    i1++;
-                    j1--;
-                } while (true);
-                if (j1 == 0) {
-                    i = 1;
-                    break;
-                }
-                abyte0[i1] = byte4;
-                i1++;
-                j1--;
-            }
-            boolean flag = true;
-            while (flag) {
-                flag = false;
-                if (j == l1) {
-                    i = 0;
-                    break label0;
-                }
-                byte4 = (byte) k;
-                l = ai[l];
-                byte byte0 = (byte) (l & 0xff);
-                l >>= 8;
-                j++;
-                if (byte0 != k) {
-                    k = byte0;
-                    if (j1 == 0) {
-                        i = 1;
-                    } else {
-                        abyte0[i1] = byte4;
-                        i1++;
-                        j1--;
-                        flag = true;
-                        continue;
-                    }
-                    break label0;
-                }
-                if (j != l1)
-                    continue;
-                if (j1 == 0) {
-                    i = 1;
-                    break label0;
-                }
-                abyte0[i1] = byte4;
-                i1++;
-                j1--;
-                flag = true;
-            }
-            i = 2;
-            l = ai[l];
-            byte byte1 = (byte) (l & 0xff);
-            l >>= 8;
-            if (++j != l1)
-                if (byte1 != k) {
-                    k = byte1;
-                } else {
-                    i = 3;
-                    l = ai[l];
-                    byte byte2 = (byte) (l & 0xff);
-                    l >>= 8;
-                    if (++j != l1)
-                        if (byte2 != k) {
-                            k = byte2;
-                        } else {
-                            l = ai[l];
-                            byte byte3 = (byte) (l & 0xff);
-                            l >>= 8;
-                            j++;
-                            i = (byte3 & 0xff) + 4;
-                            l = ai[l];
-                            k = (byte) (l & 0xff);
-                            l >>= 8;
-                            j++;
-                        }
-                }
-        } while (true);
-        int i2 = class40.anInt701;
-        class40.anInt701 += k1 - j1;
-        if (class40.anInt701 < i2)
-            class40.anInt702++;
-        class40.aByte703 = byte4;
-        class40.anInt704 = i;
-        class40.anInt714 = j;
-        class40.anInt712 = k;
-        Class40.anIntArray717 = ai;
-        class40.anInt711 = l;
-        class40.aByteArray698 = abyte0;
-        class40.anInt699 = i1;
-        class40.anInt700 = j1;
-    }
+	public static void method331(Class40 var0) {
+		boolean var1 = false;
+		boolean var2 = false;
+		boolean var3 = false;
+		boolean var4 = false;
+		boolean var5 = false;
+		boolean var6 = false;
+		boolean var7 = false;
+		boolean var8 = false;
+		boolean var9 = false;
+		boolean var10 = false;
+		boolean var11 = false;
+		boolean var12 = false;
+		boolean var13 = false;
+		boolean var14 = false;
+		boolean var15 = false;
+		boolean var16 = false;
+		boolean var17 = false;
+		boolean var18 = false;
+		boolean var19 = false;
+		int var20 = 0;
+		int[] var21 = null;
+		int[] var22 = null;
+		int[] var23 = null;
+		var0.anInt708 = 1;
+		if (Class40.anIntArray717 == null) {
+			Class40.anIntArray717 = new int[var0.anInt708 * 100000];
+		}
 
-    public static void method331(Class40 class40) {
-        boolean flag = false;
-        boolean flag1 = false;
-        boolean flag2 = false;
-        boolean flag3 = false;
-        boolean flag4 = false;
-        boolean flag5 = false;
-        boolean flag6 = false;
-        boolean flag7 = false;
-        boolean flag8 = false;
-        boolean flag9 = false;
-        boolean flag10 = false;
-        boolean flag11 = false;
-        boolean flag12 = false;
-        boolean flag13 = false;
-        boolean flag14 = false;
-        boolean flag15 = false;
-        boolean flag16 = false;
-        boolean flag17 = false;
-        boolean flag18 = false;
-        int k8 = 0;
-        int[] ai = null;
-        int[] ai1 = null;
-        int[] ai2 = null;
-        class40.anInt708 = 1;
-        if (Class40.anIntArray717 == null)
-            Class40.anIntArray717 = new int[class40.anInt708 * 0x186a0];
-        boolean flag19 = true;
-        while (flag19) {
-            byte byte0 = method332(class40);
-            if (byte0 == 23)
-                return;
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            class40.anInt709++;
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method332(class40);
-            byte0 = method333(class40);
-            class40.aBoolean705 = byte0 != 0;
-            if (class40.aBoolean705)
-                System.out.println("PANIC! RANDOMISED BLOCK!");
-            class40.anInt710 = 0;
-            byte0 = method332(class40);
-            class40.anInt710 = class40.anInt710 << 8 | byte0 & 0xff;
-            byte0 = method332(class40);
-            class40.anInt710 = class40.anInt710 << 8 | byte0 & 0xff;
-            byte0 = method332(class40);
-            class40.anInt710 = class40.anInt710 << 8 | byte0 & 0xff;
-            for (int j = 0; j < 16; j++) {
-                byte byte1 = method333(class40);
-                class40.aBooleanArray720[j] = byte1 == 1;
-            }
+		for (boolean var24 = true; var24; var24 = var0.anInt731 + 1 == var0.anInt714 && var0.anInt704 == 0) {
+			byte var25 = method332(var0);
+			if (var25 == 23) {
+				return;
+			}
 
-            for (int k = 0; k < 256; k++)
-                class40.aBooleanArray719[k] = false;
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method332(var0);
+			++var0.anInt709;
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method332(var0);
+			var25 = method333(var0);
+			var0.aBoolean705 = var25 != 0;
+			if (var0.aBoolean705) {
+				System.out.println("PANIC! RANDOMISED BLOCK!");
+			}
 
-            for (int l = 0; l < 16; l++)
-                if (class40.aBooleanArray720[l]) {
-                    for (int i3 = 0; i3 < 16; i3++) {
-                        byte byte2 = method333(class40);
-                        if (byte2 == 1)
-                            class40.aBooleanArray719[l * 16 + i3] = true;
-                    }
+			var0.anInt710 = 0;
+			var25 = method332(var0);
+			var0.anInt710 = var0.anInt710 << 8 | var25 & 255;
+			var25 = method332(var0);
+			var0.anInt710 = var0.anInt710 << 8 | var25 & 255;
+			var25 = method332(var0);
+			var0.anInt710 = var0.anInt710 << 8 | var25 & 255;
 
-                }
+			int var26;
+			for (var26 = 0; var26 < 16; ++var26) {
+				byte var27 = method333(var0);
+				var0.aBooleanArray720[var26] = var27 == 1;
+			}
 
-            method335(class40);
-            int i4 = class40.anInt718 + 2;
-            int j4 = method334(3, class40);
-            int k4 = method334(15, class40);
-            for (int i1 = 0; i1 < k4; i1++) {
-                int j3 = 0;
-                do {
-                    byte byte3 = method333(class40);
-                    if (byte3 == 0)
-                        break;
-                    j3++;
-                } while (true);
-                class40.aByteArray725[i1] = (byte) j3;
-            }
+			for (var26 = 0; var26 < 256; ++var26) {
+				var0.aBooleanArray719[var26] = false;
+			}
 
-            byte[] abyte0 = new byte[6];
-            for (byte byte16 = 0; byte16 < j4; byte16++)
-                abyte0[byte16] = byte16;
+			int var48;
+			for (var26 = 0; var26 < 16; ++var26) {
+				if (var0.aBooleanArray720[var26]) {
+					for (var48 = 0; var48 < 16; ++var48) {
+						byte var28 = method333(var0);
+						if (var28 == 1) {
+							var0.aBooleanArray719[var48 + var26 * 16] = true;
+						}
+					}
+				}
+			}
 
-            for (int j1 = 0; j1 < k4; j1++) {
-                byte byte17 = class40.aByteArray725[j1];
-                byte byte15 = abyte0[byte17];
-                for (; byte17 > 0; byte17--)
-                    abyte0[byte17] = abyte0[byte17 - 1];
+			method335(var0);
+			var26 = var0.anInt718 + 2;
+			var48 = method334(3, var0);
+			int var49 = method334(15, var0);
 
-                abyte0[0] = byte15;
-                class40.aByteArray724[j1] = byte15;
-            }
+			int var30;
+			byte var31;
+			for (int var29 = 0; var29 < var49; ++var29) {
+				var30 = 0;
 
-            for (int k3 = 0; k3 < j4; k3++) {
-                int l6 = method334(5, class40);
-                for (int k1 = 0; k1 < i4; k1++) {
-                    do {
-                        byte byte4 = method333(class40);
-                        if (byte4 == 0)
-                            break;
-                        byte4 = method333(class40);
-                        if (byte4 == 0)
-                            l6++;
-                        else
-                            l6--;
-                    } while (true);
-                    class40.aByteArrayArray726[k3][k1] = (byte) l6;
-                }
+				while (true) {
+					var31 = method333(var0);
+					if (var31 == 0) {
+						var0.aByteArray725[var29] = (byte)var30;
+						break;
+					}
 
-            }
+					++var30;
+				}
+			}
 
-            for (int l3 = 0; l3 < j4; l3++) {
-                byte byte8 = 32;
-                int i = 0;
-                for (int l1 = 0; l1 < i4; l1++) {
-                    if (class40.aByteArrayArray726[l3][l1] > i)
-                        i = class40.aByteArrayArray726[l3][l1];
-                    if (class40.aByteArrayArray726[l3][l1] < byte8)
-                        byte8 = class40.aByteArrayArray726[l3][l1];
-                }
+			byte[] var50 = new byte[6];
 
-                method336(class40.anIntArrayArray727[l3], class40.anIntArrayArray728[l3], class40.anIntArrayArray729[l3], class40.aByteArrayArray726[l3], byte8, i, i4);
-                class40.anIntArray730[l3] = byte8;
-            }
+			for (byte var51 = 0; var51 < var48; var50[var51] = var51++) {
+			}
 
-            int l4 = class40.anInt718 + 1;
-            int l5 = 0x186a0 * class40.anInt708;
-            int i5 = -1;
-            int j5 = 0;
-            for (int i2 = 0; i2 <= 255; i2++)
-                class40.anIntArray713[i2] = 0;
+			byte var32;
+			for (var30 = 0; var30 < var49; ++var30) {
+				var31 = var0.aByteArray725[var30];
 
-            int j9 = 4095;
-            for (int l8 = 15; l8 >= 0; l8--) {
-                for (int i9 = 15; i9 >= 0; i9--) {
-                    class40.aByteArray722[j9] = (byte) (l8 * 16 + i9);
-                    j9--;
-                }
+				for (var32 = var50[var31]; var31 > 0; --var31) {
+					var50[var31] = var50[var31 - 1];
+				}
 
-                class40.anIntArray723[l8] = j9 + 1;
-            }
+				var50[0] = var32;
+				var0.aByteArray724[var30] = var32;
+			}
 
-            int i6 = 0;
-            if (j5 == 0) {
-                i5++;
-                j5 = 50;
-                byte byte12 = class40.aByteArray724[i5];
-                k8 = class40.anIntArray730[byte12];
-                ai = class40.anIntArrayArray727[byte12];
-                ai2 = class40.anIntArrayArray729[byte12];
-                ai1 = class40.anIntArrayArray728[byte12];
-            }
-            j5--;
-            int i7 = k8;
-            int l7;
-            byte byte9;
-            for (l7 = method334(i7, class40); l7 > ai[i7]; l7 = l7 << 1 | byte9) {
-                i7++;
-                byte9 = method333(class40);
-            }
+			int var52;
+			int var53;
+			for (var30 = 0; var30 < var48; ++var30) {
+				var52 = method334(5, var0);
 
-            for (int k5 = ai2[l7 - ai1[i7]]; k5 != l4; )
-                if (k5 == 0 || k5 == 1) {
-                    int j6 = -1;
-                    int k6 = 1;
-                    do {
-                        if (k5 == 0)
-                            j6 += k6;
-                        else if (k5 == 1)
-                            j6 += 2 * k6;
-                        k6 *= 2;
-                        if (j5 == 0) {
-                            i5++;
-                            j5 = 50;
-                            byte byte13 = class40.aByteArray724[i5];
-                            k8 = class40.anIntArray730[byte13];
-                            ai = class40.anIntArrayArray727[byte13];
-                            ai2 = class40.anIntArrayArray729[byte13];
-                            ai1 = class40.anIntArrayArray728[byte13];
-                        }
-                        j5--;
-                        int j7 = k8;
-                        int i8;
-                        byte byte10;
-                        for (i8 = method334(j7, class40); i8 > ai[j7]; i8 = i8 << 1 | byte10) {
-                            j7++;
-                            byte10 = method333(class40);
-                        }
+				for (var53 = 0; var53 < var26; ++var53) {
+					while (true) {
+						byte var33 = method333(var0);
+						if (var33 == 0) {
+							var0.aByteArrayArray726[var30][var53] = (byte)var52;
+							break;
+						}
 
-                        k5 = ai2[i8 - ai1[j7]];
-                    } while (k5 == 0 || k5 == 1);
-                    j6++;
-                    byte byte5 = class40.aByteArray721[class40.aByteArray722[class40.anIntArray723[0]] & 0xff];
-                    class40.anIntArray713[byte5 & 0xff] += j6;
-                    for (; j6 > 0; j6--) {
-                        Class40.anIntArray717[i6] = byte5 & 0xff;
-                        i6++;
-                    }
+						var33 = method333(var0);
+						if (var33 == 0) {
+							++var52;
+						} else {
+							--var52;
+						}
+					}
+				}
+			}
 
-                } else {
-                    int j11 = k5 - 1;
-                    byte byte6;
-                    if (j11 < 16) {
-                        int j10 = class40.anIntArray723[0];
-                        byte6 = class40.aByteArray722[j10 + j11];
-                        for (; j11 > 3; j11 -= 4) {
-                            int k11 = j10 + j11;
-                            class40.aByteArray722[k11] = class40.aByteArray722[k11 - 1];
-                            class40.aByteArray722[k11 - 1] = class40.aByteArray722[k11 - 2];
-                            class40.aByteArray722[k11 - 2] = class40.aByteArray722[k11 - 3];
-                            class40.aByteArray722[k11 - 3] = class40.aByteArray722[k11 - 4];
-                        }
+			int var54;
+			for (var30 = 0; var30 < var48; ++var30) {
+				var31 = 32;
+				var32 = 0;
 
-                        for (; j11 > 0; j11--)
-                            class40.aByteArray722[j10 + j11] = class40.aByteArray722[(j10 + j11) - 1];
+				for (var54 = 0; var54 < var26; ++var54) {
+					if (var0.aByteArrayArray726[var30][var54] > var32) {
+						var32 = var0.aByteArrayArray726[var30][var54];
+					}
 
-                        class40.aByteArray722[j10] = byte6;
-                    } else {
-                        int l10 = j11 / 16;
-                        int i11 = j11 % 16;
-                        int k10 = class40.anIntArray723[l10] + i11;
-                        byte6 = class40.aByteArray722[k10];
-                        for (; k10 > class40.anIntArray723[l10]; k10--)
-                            class40.aByteArray722[k10] = class40.aByteArray722[k10 - 1];
+					if (var0.aByteArrayArray726[var30][var54] < var31) {
+						var31 = var0.aByteArrayArray726[var30][var54];
+					}
+				}
 
-                        class40.anIntArray723[l10]++;
-                        for (; l10 > 0; l10--) {
-                            class40.anIntArray723[l10]--;
-                            class40.aByteArray722[class40.anIntArray723[l10]] = class40.aByteArray722[(class40.anIntArray723[l10 - 1] + 16) - 1];
-                        }
+				method336(var0.anIntArrayArray727[var30], var0.anIntArrayArray728[var30], var0.anIntArrayArray729[var30], var0.aByteArrayArray726[var30], var31, var32, var26);
+				var0.anIntArray730[var30] = var31;
+			}
 
-                        class40.anIntArray723[0]--;
-                        class40.aByteArray722[class40.anIntArray723[0]] = byte6;
-                        if (class40.anIntArray723[0] == 0) {
-                            int i10 = 4095;
-                            for (int k9 = 15; k9 >= 0; k9--) {
-                                for (int l9 = 15; l9 >= 0; l9--) {
-                                    class40.aByteArray722[i10] = class40.aByteArray722[class40.anIntArray723[k9] + l9];
-                                    i10--;
-                                }
+			var30 = var0.anInt718 + 1;
+			var52 = var0.anInt708 * 100000;
+			var53 = -1;
+			byte var55 = 0;
 
-                                class40.anIntArray723[k9] = i10 + 1;
-                            }
+			int var34;
+			for (var34 = 0; var34 <= 255; ++var34) {
+				var0.anIntArray713[var34] = 0;
+			}
 
-                        }
-                    }
-                    class40.anIntArray713[class40.aByteArray721[byte6 & 0xff] & 0xff]++;
-                    Class40.anIntArray717[i6] = class40.aByteArray721[byte6 & 0xff] & 0xff;
-                    i6++;
-                    if (j5 == 0) {
-                        i5++;
-                        j5 = 50;
-                        byte byte14 = class40.aByteArray724[i5];
-                        k8 = class40.anIntArray730[byte14];
-                        ai = class40.anIntArrayArray727[byte14];
-                        ai2 = class40.anIntArrayArray729[byte14];
-                        ai1 = class40.anIntArrayArray728[byte14];
-                    }
-                    j5--;
-                    int k7 = k8;
-                    int j8;
-                    byte byte11;
-                    for (j8 = method334(k7, class40); j8 > ai[k7]; j8 = j8 << 1 | byte11) {
-                        k7++;
-                        byte11 = method333(class40);
-                    }
+			var34 = 4095;
 
-                    k5 = ai2[j8 - ai1[k7]];
-                }
+			int var35;
+			int var36;
+			for (var35 = 15; var35 >= 0; --var35) {
+				for (var36 = 15; var36 >= 0; --var36) {
+					var0.aByteArray722[var34] = (byte)(var36 + var35 * 16);
+					--var34;
+				}
 
-            class40.anInt704 = 0;
-            class40.aByte703 = 0;
-            class40.anIntArray715[0] = 0;
-            System.arraycopy(class40.anIntArray713, 0, class40.anIntArray715, 1, 256);
+				var0.anIntArray723[var35] = var34 + 1;
+			}
 
-            for (int k2 = 1; k2 <= 256; k2++)
-                class40.anIntArray715[k2] += class40.anIntArray715[k2 - 1];
+			var35 = 0;
+			if (var55 == 0) {
+				++var53;
+				var55 = 50;
+				byte var56 = var0.aByteArray724[var53];
+				var20 = var0.anIntArray730[var56];
+				var21 = var0.anIntArrayArray727[var56];
+				var23 = var0.anIntArrayArray729[var56];
+				var22 = var0.anIntArrayArray728[var56];
+			}
 
-            for (int l2 = 0; l2 < i6; l2++) {
-                byte byte7 = (byte) (Class40.anIntArray717[l2] & 0xff);
-                Class40.anIntArray717[class40.anIntArray715[byte7 & 0xff]] |= l2 << 8;
-                class40.anIntArray715[byte7 & 0xff]++;
-            }
+			var54 = var55 - 1;
+			var36 = var20;
 
-            class40.anInt711 = Class40.anIntArray717[class40.anInt710] >> 8;
-            class40.anInt714 = 0;
-            class40.anInt711 = Class40.anIntArray717[class40.anInt711];
-            class40.anInt712 = (byte) (class40.anInt711 & 0xff);
-            class40.anInt711 >>= 8;
-            class40.anInt714++;
-            class40.anInt731 = i6;
-            method330(class40);
-            flag19 = class40.anInt714 == class40.anInt731 + 1 && class40.anInt704 == 0;
-        }
-    }
+			int var37;
+			byte var38;
+			for (var37 = method334(var20, var0); var37 > var21[var36]; var37 = var37 << 1 | var38) {
+				++var36;
+				var38 = method333(var0);
+			}
 
-    public static byte method332(Class40 class40) {
-        return (byte) method334(8, class40);
-    }
+			int var39 = var23[var37 - var22[var36]];
 
-    public static byte method333(Class40 class40) {
-        return (byte) method334(1, class40);
-    }
+			while (true) {
+				int[] var10000;
+				int var10002;
+				while (var39 != var30) {
+					int var40;
+					byte var42;
+					int var43;
+					byte var44;
+					int var58;
+					if (var39 != 0 && var39 != 1) {
+						var40 = var39 - 1;
+						byte var57;
+						if (var40 < 16) {
+							var58 = var0.anIntArray723[0];
 
-    public static int method334(int i, Class40 class40) {
-        int j;
-        do {
-            if (class40.anInt707 >= i) {
-                int k = class40.anInt706 >> class40.anInt707 - i & (1 << i) - 1;
-                class40.anInt707 -= i;
-                j = k;
-                break;
-            }
-            class40.anInt706 = class40.anInt706 << 8 | class40.aByteArray693[class40.anInt694] & 0xff;
-            class40.anInt707 += 8;
-            class40.anInt694++;
-            class40.anInt695--;
-            class40.anInt696++;
-            if (class40.anInt696 == 0)
-                class40.anInt697++;
-        } while (true);
-        return j;
-    }
+							for (var57 = var0.aByteArray722[var58 + var40]; var40 > 3; var40 -= 4) {
+								var43 = var58 + var40;
+								var0.aByteArray722[var43] = var0.aByteArray722[var43 - 1];
+								var0.aByteArray722[var43 - 1] = var0.aByteArray722[var43 - 2];
+								var0.aByteArray722[var43 - 2] = var0.aByteArray722[var43 - 3];
+								var0.aByteArray722[var43 - 3] = var0.aByteArray722[var43 - 4];
+							}
 
-    public static void method335(Class40 class40) {
-        class40.anInt718 = 0;
-        for (int i = 0; i < 256; i++)
-            if (class40.aBooleanArray719[i]) {
-                class40.aByteArray721[class40.anInt718] = (byte) i;
-                class40.anInt718++;
-            }
+							while (var40 > 0) {
+								var0.aByteArray722[var58 + var40] = var0.aByteArray722[var58 + var40 - 1];
+								--var40;
+							}
 
-    }
+							var0.aByteArray722[var58] = var57;
+						} else {
+							var58 = var40 / 16;
+							var43 = var40 % 16;
+							int var60 = var0.anIntArray723[var58] + var43;
 
-    public static void method336(int[] ai, int[] ai1, int[] ai2, byte[] abyte0, int i, int j, int k) {
-        int l = 0;
-        for (int i1 = i; i1 <= j; i1++) {
-            for (int l2 = 0; l2 < k; l2++)
-                if (abyte0[l2] == i1) {
-                    ai2[l] = l2;
-                    l++;
-                }
+							for (var57 = var0.aByteArray722[var60]; var60 > var0.anIntArray723[var58]; --var60) {
+								var0.aByteArray722[var60] = var0.aByteArray722[var60 - 1];
+							}
 
-        }
+							for (var10002 = var0.anIntArray723[var58]++; var58 > 0; --var58) {
+								var10002 = var0.anIntArray723[var58]--;
+								var0.aByteArray722[var0.anIntArray723[var58]] = var0.aByteArray722[var0.anIntArray723[var58 - 1] + 16 - 1];
+							}
 
-        for (int j1 = 0; j1 < 23; j1++)
-            ai1[j1] = 0;
+							var10002 = var0.anIntArray723[0]--;
+							var0.aByteArray722[var0.anIntArray723[0]] = var57;
+							if (var0.anIntArray723[0] == 0) {
+								int var45 = 4095;
 
-        for (int k1 = 0; k1 < k; k1++)
-            ai1[abyte0[k1] + 1]++;
+								for (int var46 = 15; var46 >= 0; --var46) {
+									for (int var47 = 15; var47 >= 0; --var47) {
+										var0.aByteArray722[var45] = var0.aByteArray722[var0.anIntArray723[var46] + var47];
+										--var45;
+									}
 
-        for (int l1 = 1; l1 < 23; l1++)
-            ai1[l1] += ai1[l1 - 1];
+									var0.anIntArray723[var46] = var45 + 1;
+								}
+							}
+						}
 
-        for (int i2 = 0; i2 < 23; i2++)
-            ai[i2] = 0;
+						var10002 = var0.anIntArray713[var0.aByteArray721[var57 & 255] & 255]++;
+						Class40.anIntArray717[var35] = var0.aByteArray721[var57 & 255] & 255;
+						++var35;
+						if (var54 == 0) {
+							++var53;
+							var54 = 50;
+							var42 = var0.aByteArray724[var53];
+							var20 = var0.anIntArray730[var42];
+							var21 = var0.anIntArrayArray727[var42];
+							var23 = var0.anIntArrayArray729[var42];
+							var22 = var0.anIntArrayArray728[var42];
+						}
 
-        int i3 = 0;
-        for (int j2 = i; j2 <= j; j2++) {
-            i3 += ai1[j2 + 1] - ai1[j2];
-            ai[j2] = i3 - 1;
-            i3 <<= 1;
-        }
+						--var54;
+						var58 = var20;
 
-        for (int k2 = i + 1; k2 <= j; k2++)
-            ai1[k2] = (ai[k2 - 1] + 1 << 1) - ai1[k2];
+						for (var43 = method334(var20, var0); var43 > var21[var58]; var43 = var43 << 1 | var44) {
+							++var58;
+							var44 = method333(var0);
+						}
 
-    }
+						var39 = var23[var43 - var22[var58]];
+					} else {
+						var40 = -1;
+						int var41 = 1;
 
+						do {
+							if (var39 == 0) {
+								var40 += var41;
+							} else if (var39 == 1) {
+								var40 += var41 * 2;
+							}
+
+							var41 *= 2;
+							if (var54 == 0) {
+								++var53;
+								var54 = 50;
+								var42 = var0.aByteArray724[var53];
+								var20 = var0.anIntArray730[var42];
+								var21 = var0.anIntArrayArray727[var42];
+								var23 = var0.anIntArrayArray729[var42];
+								var22 = var0.anIntArrayArray728[var42];
+							}
+
+							--var54;
+							var58 = var20;
+
+							for (var43 = method334(var20, var0); var43 > var21[var58]; var43 = var43 << 1 | var44) {
+								++var58;
+								var44 = method333(var0);
+							}
+
+							var39 = var23[var43 - var22[var58]];
+						} while(var39 == 0 || var39 == 1);
+
+						++var40;
+						var42 = var0.aByteArray721[var0.aByteArray722[var0.anIntArray723[0]] & 255];
+						var10000 = var0.anIntArray713;
+
+						for (var10000[var42 & 255] += var40; var40 > 0; --var40) {
+							Class40.anIntArray717[var35] = var42 & 255;
+							++var35;
+						}
+					}
+				}
+
+				var0.anInt704 = 0;
+				var0.aByte703 = 0;
+				var0.anIntArray715[0] = 0;
+				System.arraycopy(var0.anIntArray713, 0, var0.anIntArray715, 1, 256);
+
+				for (var39 = 1; var39 <= 256; ++var39) {
+					var10000 = var0.anIntArray715;
+					var10000[var39] += var0.anIntArray715[var39 - 1];
+				}
+
+				for (var39 = 0; var39 < var35; ++var39) {
+					byte var59 = (byte)(Class40.anIntArray717[var39] & 255);
+					var10000 = Class40.anIntArray717;
+					int var10001 = var0.anIntArray715[var59 & 255];
+					var10000[var10001] |= var39 << 8;
+					var10002 = var0.anIntArray715[var59 & 255]++;
+				}
+
+				var0.anInt711 = Class40.anIntArray717[var0.anInt710] >> 8;
+				var0.anInt714 = 0;
+				var0.anInt711 = Class40.anIntArray717[var0.anInt711];
+				var0.anInt712 = (byte)(var0.anInt711 & 255);
+				var0.anInt711 >>= 8;
+				++var0.anInt714;
+				var0.anInt731 = var35;
+				method330(var0);
+				break;
+			}
+		}
+
+	}
+
+	public static byte method332(Class40 var0) {
+		return (byte)method334(8, var0);
+	}
+
+	public static int method334(int var0, Class40 var1) {
+		while (var1.anInt707 < var0) {
+			var1.anInt706 = var1.anInt706 << 8 | var1.aByteArray693[var1.anInt694] & 255;
+			var1.anInt707 += 8;
+			++var1.anInt694;
+			--var1.anInt695;
+			++var1.anInt696;
+			if (var1.anInt696 == 0) {
+				++var1.anInt697;
+			}
+		}
+
+		int var3 = var1.anInt706 >> var1.anInt707 - var0 & (1 << var0) - 1;
+		var1.anInt707 -= var0;
+		return var3;
+	}
+
+	public static byte method333(Class40 var0) {
+		return (byte)method334(1, var0);
+	}
+
+	public static void method335(Class40 var0) {
+		var0.anInt718 = 0;
+
+		for (int var1 = 0; var1 < 256; ++var1) {
+			if (var0.aBooleanArray719[var1]) {
+				var0.aByteArray721[var0.anInt718] = (byte)var1;
+				++var0.anInt718;
+			}
+		}
+
+	}
+
+	public static void method336(int[] var0, int[] var1, int[] var2, byte[] var3, int var4, int var5, int var6) {
+		int var7 = 0;
+
+		int var8;
+		int var9;
+		for (var8 = var4; var8 <= var5; ++var8) {
+			for (var9 = 0; var9 < var6; ++var9) {
+				if (var8 == var3[var9]) {
+					var2[var7] = var9;
+					++var7;
+				}
+			}
+		}
+
+		for (var8 = 0; var8 < 23; ++var8) {
+			var1[var8] = 0;
+		}
+
+		for (var8 = 0; var8 < var6; ++var8) {
+			++var1[var3[var8] + 1];
+		}
+
+		for (var8 = 1; var8 < 23; ++var8) {
+			var1[var8] += var1[var8 - 1];
+		}
+
+		for (var8 = 0; var8 < 23; ++var8) {
+			var0[var8] = 0;
+		}
+
+		var8 = 0;
+
+		for (var9 = var4; var9 <= var5; ++var9) {
+			var8 += var1[var9 + 1] - var1[var9];
+			var0[var9] = var8 - 1;
+			var8 <<= 1;
+		}
+
+		for (var9 = var4 + 1; var9 <= var5; ++var9) {
+			var1[var9] = (var0[var9 - 1] + 1 << 1) - var1[var9];
+		}
+
+	}
+
+	public static void method330(Class40 var0) {
+		byte var1 = var0.aByte703;
+		int var2 = var0.anInt704;
+		int var3 = var0.anInt714;
+		int var4 = var0.anInt712;
+		int[] var5 = Class40.anIntArray717;
+		int var6 = var0.anInt711;
+		byte[] var7 = var0.aByteArray698;
+		int var8 = var0.anInt699;
+		int var9 = var0.anInt700;
+		int var11 = var0.anInt731 + 1;
+
+		label77:
+		while (true) {
+			if (var2 > 0) {
+				while (true) {
+					if (var9 == 0) {
+						break label77;
+					}
+
+					if (var2 == 1) {
+						if (var9 == 0) {
+							var2 = 1;
+							break label77;
+						}
+
+						var7[var8] = var1;
+						++var8;
+						--var9;
+						break;
+					}
+
+					var7[var8] = var1;
+					--var2;
+					++var8;
+					--var9;
+				}
+			}
+
+			boolean var12 = true;
+
+			byte var13;
+			while (var12) {
+				var12 = false;
+				if (var3 == var11) {
+					var2 = 0;
+					break label77;
+				}
+
+				var1 = (byte)var4;
+				var6 = var5[var6];
+				var13 = (byte)(var6 & 255);
+				var6 >>= 8;
+				++var3;
+				if (var13 != var4) {
+					var4 = var13;
+					if (var9 == 0) {
+						var2 = 1;
+						break label77;
+					}
+
+					var7[var8] = var1;
+					++var8;
+					--var9;
+					var12 = true;
+				} else if (var3 == var11) {
+					if (var9 == 0) {
+						var2 = 1;
+						break label77;
+					}
+
+					var7[var8] = var1;
+					++var8;
+					--var9;
+					var12 = true;
+				}
+			}
+
+			var2 = 2;
+			var6 = var5[var6];
+			var13 = (byte)(var6 & 255);
+			var6 >>= 8;
+			++var3;
+			if (var3 != var11) {
+				if (var13 != var4) {
+					var4 = var13;
+				} else {
+					var2 = 3;
+					var6 = var5[var6];
+					byte var14 = (byte)(var6 & 255);
+					var6 >>= 8;
+					++var3;
+					if (var3 != var11) {
+						if (var14 != var4) {
+							var4 = var14;
+						} else {
+							var6 = var5[var6];
+							byte var15 = (byte)(var6 & 255);
+							var6 >>= 8;
+							++var3;
+							var2 = (var15 & 255) + 4;
+							var6 = var5[var6];
+							var4 = (byte)(var6 & 255);
+							var6 >>= 8;
+							++var3;
+						}
+					}
+				}
+			}
+		}
+
+		int var16 = var0.anInt701;
+		var0.anInt701 += var9 - var9;
+		if (var0.anInt701 < var16) {
+			++var0.anInt702;
+		}
+
+		var0.aByte703 = var1;
+		var0.anInt704 = var2;
+		var0.anInt714 = var3;
+		var0.anInt712 = var4;
+		Class40.anIntArray717 = var5;
+		var0.anInt711 = var6;
+		var0.aByteArray698 = var7;
+		var0.anInt699 = var8;
+		var0.anInt700 = var9;
+	}
 }

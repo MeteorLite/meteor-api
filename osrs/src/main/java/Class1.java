@@ -1,75 +1,81 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class Class1 {
+	public int anInt46;
+	public int anInt50;
+	public int anInt38;
+	public int anInt45;
+	public int anInt40;
+	public int anInt47;
+	public boolean aBoolean39;
+	public int[] anIntArray42;
+	public int anInt49;
+	public int anInt48;
+	public int[] anIntArray41;
+	public int anInt43;
+	public int anInt44;
 
-    public static int anInt51;
-    public int anInt38;
-    public boolean aBoolean39;
-    public int anInt40;
-    public int[] anIntArray41;
-    public int[] anIntArray42;
-    public int anInt43;
-    public int anInt44;
-    public int anInt45;
-    public int anInt46;
-    public int anInt47;
-    public int anInt48;
-    public int anInt49;
-    public int anInt50;
-    public Class1() {
-        anInt38 = 1;
-        aBoolean39 = false;
-    }
+	public Class1() {
+		this.anInt38 = 1;
+		this.aBoolean39 = false;
+	}
 
-    public void method148(byte byte0, Class44_Sub3_Sub2 class44_sub3_sub2) {
-        anInt45 = class44_sub3_sub2.get1();
-        if (byte0 == 2)
-            byte0 = 0;
-        else
-            aBoolean39 = !aBoolean39;
-        anInt43 = class44_sub3_sub2.get4();
-        anInt44 = class44_sub3_sub2.get4();
-        method149(class44_sub3_sub2, 9);
-    }
+	public void method148(byte var1, Class44_Sub3_Sub2 var2) {
+		this.anInt45 = var2.get1();
+		if (var1 == 2) {
+			boolean var3 = false;
+		} else {
+			this.aBoolean39 = !this.aBoolean39;
+		}
 
-    public void method149(Class44_Sub3_Sub2 class44_sub3_sub2, int i) {
-        if (i != 9)
-            return;
-        anInt40 = class44_sub3_sub2.get1();
-        anIntArray41 = new int[anInt40];
-        anIntArray42 = new int[anInt40];
-        for (int j = 0; j < anInt40; j++) {
-            anIntArray41[j] = class44_sub3_sub2.get2();
-            anIntArray42[j] = class44_sub3_sub2.get2();
-        }
+		this.anInt43 = var2.get4();
+		this.anInt44 = var2.get4();
+		this.method149(var2);
+	}
 
-    }
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "0"
+	)
+	public void method150() {
+		this.anInt46 = 0;
+		this.anInt47 = 0;
+		this.anInt48 = 0;
+		this.anInt49 = 0;
+		this.anInt50 = 0;
+	}
 
-    public void method150(int i) {
-        anInt46 = 0;
-        anInt47 = 0;
-        anInt48 = 0;
-        anInt49 = 0;
-        anInt50 = 0;
-        if (i != 0)
-            anInt38 = 193;
-    }
+	@ObfuscatedSignature(
+		descriptor = "(LClass44_Sub3_Sub2;I)V",
+		garbageValue = "9"
+	)
+	public void method149(Class44_Sub3_Sub2 var1) {
+		this.anInt40 = var1.get1();
+		this.anIntArray41 = new int[this.anInt40];
+		this.anIntArray42 = new int[this.anInt40];
 
-    public int method151(byte byte0, int i) {
-        if (byte0 != -7)
-            return anInt38;
-        if (anInt50 >= anInt46) {
-            anInt49 = anIntArray42[anInt47++] << 15;
-            if (anInt47 >= anInt40)
-                anInt47 = anInt40 - 1;
-            anInt46 = (int) (((double) anIntArray41[anInt47] / 65536D) * (double) i);
-            if (anInt46 > anInt50)
-                anInt48 = ((anIntArray42[anInt47] << 15) - anInt49) / (anInt46 - anInt50);
-        }
-        anInt49 += anInt48;
-        anInt50++;
-        return anInt49 - anInt48 >> 15;
-    }
+		for (int var2 = 0; var2 < this.anInt40; ++var2) {
+			this.anIntArray41[var2] = var1.get2();
+			this.anIntArray42[var2] = var1.get2();
+		}
+
+	}
+
+	public int method151(byte var1, int var2) {
+		if (this.anInt50 >= this.anInt46) {
+			this.anInt49 = this.anIntArray42[this.anInt47++] << 15;
+			if (this.anInt47 >= this.anInt40) {
+				this.anInt47 = this.anInt40 - 1;
+			}
+
+			this.anInt46 = (int)((double)this.anIntArray41[this.anInt47] / 65536.0D * (double)var2);
+			if (this.anInt46 > this.anInt50) {
+				this.anInt48 = ((this.anIntArray42[this.anInt47] << 15) - this.anInt49) / (this.anInt46 - this.anInt50);
+			}
+		}
+
+		this.anInt49 += this.anInt48;
+		++this.anInt50;
+		return this.anInt49 - this.anInt48 >> 15;
+	}
 }

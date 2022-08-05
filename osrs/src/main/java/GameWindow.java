@@ -1,26 +1,18 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
-import net.runelite.mapping.Export;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Frame;
+import net.runelite.mapping.ObfuscatedSignature;
 
 public class GameWindow extends Frame {
+	public final Game game;
 
-    public final Game game;
-
-    public GameWindow(Game game, int width, int height, int k) {
-        this.game = game;
-        setTitle("Jagex");
-        //setResizable(false);
-        show();
-        hide();
-        if (k != 0) {
-            throw new NullPointerException();
-        } else {
-            resize(width, height);
-        }
-    }
+	@ObfuscatedSignature(
+		descriptor = "(LGame;III)V",
+		garbageValue = "0"
+	)
+	public GameWindow(Game var1, int var2, int var3, int var4) {
+		this.game = var1;
+		this.setTitle("Jagex");
+		this.show();
+		this.hide();
+		this.resize(var2, var3);
+	}
 }
