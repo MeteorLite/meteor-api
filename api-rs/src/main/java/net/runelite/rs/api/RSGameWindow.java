@@ -39,6 +39,6 @@ public interface RSGameWindow
     @Import("paint")
     void paint$api(Graphics g);
 
-    @Import("getGraphics")
+    @Import("graphics")
     Graphics getGraphics$api();
 }

@@ -4,8 +4,7 @@ import java.lang.Exception
 import java.lang.StringBuilder
 import java.util.*
 
-class Logger{
-    var name: String = ""
+class Logger(var name: String = ""){
     var plugin: String? = null
     var format = "%-35s%s%n"
     fun info(message: Any, vararg replacers: Any) {

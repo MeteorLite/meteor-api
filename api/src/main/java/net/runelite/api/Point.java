@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2017, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,35 +24,37 @@
  */
 package net.runelite.api;
 
-import net.runelite.api.mixins.Inject;
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import lombok.Value;
 
 /**
- * Represents the RuneScape client.
+ * A two-dimensional coordinate on the canvas.
  */
-public interface Client
+@Value
+public class Point
 {
-    boolean isStretchedEnabled();
+	private final int x;
+	private final int y;
 
-    Dimension getRealDimensions();
+	/**
+	 * Gets the distance between this point and another.
+	 *
+	 * @param other other point
+	 * @return the distance
+	 */
+	public int distanceTo(Point other)
+	{
+		return (int) Math.hypot(getX() - other.getX(), getY() - other.getY());
+	}
 
-    Dimension getStretchedDimensions();
-
-    @Inject
-    void setStretchedDimensions(Dimension d);
-
-    boolean isClientThread();
-
-    @Inject
-    void setCallbacks(Callbacks callbacks);
-
-    BufferedImage getGameImage();
-
-    Callbacks getCallbacks();
-
-    Canvas getCanvas();
-
-    void setCanvas(Canvas canvas);
+	/**
+	 * Returns a new point offset by xOff and yOff
+	 *
+	 * @param xOff X offset to apply
+	 * @param yOff Y offset to apply
+	 * @return A new instance of Point, offset by x + xOff and y + yOff
+	 */
+	public Point offset(int xOff, int yOff)
+	{
+		return new Point(x + xOff, y + yOff);
+	}
 }

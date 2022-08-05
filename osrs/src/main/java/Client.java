@@ -156,20 +156,20 @@ public class Client extends Game {
     public int anInt849;
     public int anInt850;
     public boolean aBoolean851;
-    public ImageProducer aImageProducer_852;
-    public ImageProducer aImageProducer_853;
-    public ImageProducer aImageProducer_854;
-    public ImageProducer aImageProducer_855;
-    public ImageProducer aImageProducer_856;
-    public ImageProducer aImageProducer_857;
-    public ImageProducer aImageProducer_858;
-    public ImageProducer aImageProducer_859;
-    public ImageProducer aImageProducer_860;
+    public ComponentImageProducer aComponentImageProducer_852;
+    public ComponentImageProducer aComponentImageProducer_853;
+    public ComponentImageProducer aComponentImageProducer_854;
+    public ComponentImageProducer aComponentImageProducer_855;
+    public ComponentImageProducer aComponentImageProducer_856;
+    public ComponentImageProducer aComponentImageProducer_857;
+    public ComponentImageProducer aComponentImageProducer_858;
+    public ComponentImageProducer aComponentImageProducer_859;
+    public ComponentImageProducer aComponentImageProducer_860;
     public Class5 aClass5_861;
-    public ImageProducer aImageProducer_862;
-    public ImageProducer aImageProducer_863;
-    public ImageProducer imageProducer;
-    public ImageProducer aImageProducer_865;
+    public ComponentImageProducer aComponentImageProducer_862;
+    public ComponentImageProducer aComponentImageProducer_863;
+    public ComponentImageProducer componentImageProducer;
+    public ComponentImageProducer aComponentImageProducer_865;
     public int anInt866;
     public long aLong867;
     public int anInt868;
@@ -290,9 +290,9 @@ public class Client extends Game {
     public int anInt987;
     public int[] anIntArray988;
     public int[] anIntArray989;
-    public ImageProducer aImageProducer_990;
-    public ImageProducer aImageProducer_991;
-    public ImageProducer aImageProducer_992;
+    public ComponentImageProducer aComponentImageProducer_990;
+    public ComponentImageProducer aComponentImageProducer_991;
+    public ComponentImageProducer aComponentImageProducer_992;
     public int anInt993;
     public int anInt994;
     public int anInt995;
@@ -334,15 +334,15 @@ public class Client extends Game {
     public boolean aBoolean1035;
     public int anInt1036;
     public int anInt1037;
-    public ImageProducer aImageProducer_1039;
-    public ImageProducer aImageProducer_1040;
-    public ImageProducer aImageProducer_1041;
-    public ImageProducer aImageProducer_1042;
-    public ImageProducer aImageProducer_1043;
-    public ImageProducer aImageProducer_1044;
-    public ImageProducer aImageProducer_1045;
-    public ImageProducer aImageProducer_1046;
-    public ImageProducer aImageProducer_1047;
+    public ComponentImageProducer aComponentImageProducer_1039;
+    public ComponentImageProducer aComponentImageProducer_1040;
+    public ComponentImageProducer aComponentImageProducer_1041;
+    public ComponentImageProducer aComponentImageProducer_1042;
+    public ComponentImageProducer aComponentImageProducer_1043;
+    public ComponentImageProducer aComponentImageProducer_1044;
+    public ComponentImageProducer aComponentImageProducer_1045;
+    public ComponentImageProducer aComponentImageProducer_1046;
+    public ComponentImageProducer aComponentImageProducer_1047;
     public int[] anIntArray1048;
     public int anInt1049;
     public int anInt1051;
@@ -867,36 +867,36 @@ public class Client extends Game {
     }
 
     public void method16(int i) {
-        if (aImageProducer_1039 != null)
+        if (aComponentImageProducer_1039 != null)
             return;
-        super.aImageProducer_15 = null;
-        aImageProducer_865 = null;
-        aImageProducer_863 = null;
-        aImageProducer_862 = null;
-        imageProducer = null;
-        aImageProducer_990 = null;
-        aImageProducer_991 = null;
-        aImageProducer_992 = null;
-        aImageProducer_1042 = new ImageProducer(265, 128, getGameWindow(aByte1102));
+        super.aComponentImageProducer_15 = null;
+        aComponentImageProducer_865 = null;
+        aComponentImageProducer_863 = null;
+        aComponentImageProducer_862 = null;
+        componentImageProducer = null;
+        aComponentImageProducer_990 = null;
+        aComponentImageProducer_991 = null;
+        aComponentImageProducer_992 = null;
+        aComponentImageProducer_1042 = new ComponentImageProducer(265, 128, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1043 = new ImageProducer(265, 128, getGameWindow(aByte1102));
+        aComponentImageProducer_1043 = new ComponentImageProducer(265, 128, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1039 = new ImageProducer(171, 509, getGameWindow(aByte1102));
+        aComponentImageProducer_1039 = new ComponentImageProducer(171, 509, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1040 = new ImageProducer(132, 360, getGameWindow(aByte1102));
+        aComponentImageProducer_1040 = new ComponentImageProducer(132, 360, getGameWindow(aByte1102));
         DrawingArea.method409(8);
         if (i != -43664) {
             for (int j = 1; j > 0; j++) ;
         }
-        aImageProducer_1041 = new ImageProducer(200, 360, getGameWindow(aByte1102));
+        aComponentImageProducer_1041 = new ComponentImageProducer(200, 360, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1044 = new ImageProducer(238, 202, getGameWindow(aByte1102));
+        aComponentImageProducer_1044 = new ComponentImageProducer(238, 202, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1045 = new ImageProducer(238, 203, getGameWindow(aByte1102));
+        aComponentImageProducer_1045 = new ComponentImageProducer(238, 203, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1046 = new ImageProducer(94, 74, getGameWindow(aByte1102));
+        aComponentImageProducer_1046 = new ComponentImageProducer(94, 74, getGameWindow(aByte1102));
         DrawingArea.method409(8);
-        aImageProducer_1047 = new ImageProducer(94, 75, getGameWindow(aByte1102));
+        aComponentImageProducer_1047 = new ComponentImageProducer(94, 75, getGameWindow(aByte1102));
         DrawingArea.method409(8);
         if (aClass47_942 != null) {
             method59(0);
@@ -1032,7 +1032,7 @@ public class Client extends Game {
 
             aClass44_Sub3_Sub2_843.putOpcode(120);
             class3.method163(collisionMap, false, worldController);
-            imageProducer.initDrawingArea();
+            componentImageProducer.initDrawingArea();
             aClass44_Sub3_Sub2_843.putOpcode(120);
             for (int k5 = 0; k5 < 104; k5++) {
                 for (int j6 = 0; j6 < 104; j6++)
@@ -1530,22 +1530,22 @@ public class Client extends Game {
         anIntArray838 = null;
         anIntArray839 = null;
         aByteArray1088 = null;
-        aImageProducer_862 = null;
-        aImageProducer_863 = null;
-        imageProducer = null;
-        aImageProducer_865 = null;
-        aImageProducer_990 = null;
-        aImageProducer_991 = null;
-        aImageProducer_992 = null;
-        aImageProducer_852 = null;
-        aImageProducer_853 = null;
-        aImageProducer_854 = null;
-        aImageProducer_855 = null;
-        aImageProducer_856 = null;
-        aImageProducer_857 = null;
-        aImageProducer_858 = null;
-        aImageProducer_859 = null;
-        aImageProducer_860 = null;
+        aComponentImageProducer_862 = null;
+        aComponentImageProducer_863 = null;
+        componentImageProducer = null;
+        aComponentImageProducer_865 = null;
+        aComponentImageProducer_990 = null;
+        aComponentImageProducer_991 = null;
+        aComponentImageProducer_992 = null;
+        aComponentImageProducer_852 = null;
+        aComponentImageProducer_853 = null;
+        aComponentImageProducer_854 = null;
+        aComponentImageProducer_855 = null;
+        aComponentImageProducer_856 = null;
+        aComponentImageProducer_857 = null;
+        aComponentImageProducer_858 = null;
+        aComponentImageProducer_859 = null;
+        aComponentImageProducer_860 = null;
         aClass44_Sub3_Sub1_Sub3_1201 = null;
         aClass44_Sub3_Sub1_Sub3_1202 = null;
         aClass44_Sub3_Sub1_Sub3_1203 = null;
@@ -1600,15 +1600,15 @@ public class Client extends Game {
         aStringArray833 = null;
         aLongArray1159 = null;
         anIntArray1073 = null;
-        aImageProducer_1042 = null;
-        aImageProducer_1043 = null;
-        aImageProducer_1039 = null;
-        aImageProducer_1040 = null;
-        aImageProducer_1041 = null;
-        aImageProducer_1044 = null;
-        aImageProducer_1045 = null;
-        aImageProducer_1046 = null;
-        aImageProducer_1047 = null;
+        aComponentImageProducer_1042 = null;
+        aComponentImageProducer_1043 = null;
+        aComponentImageProducer_1039 = null;
+        aComponentImageProducer_1040 = null;
+        aComponentImageProducer_1041 = null;
+        aComponentImageProducer_1044 = null;
+        aComponentImageProducer_1045 = null;
+        aComponentImageProducer_1046 = null;
+        aComponentImageProducer_1047 = null;
         method114(0);
         GameObjectDefinition.method198((byte) 1);
         Class12.method213((byte) 1);
@@ -1621,7 +1621,7 @@ public class Client extends Game {
         Class32.aClass32Array547 = null;
         Class32.aClass39_559 = null;
         Class38.aClass38Array660 = null;
-        super.aImageProducer_15 = null;
+        super.aComponentImageProducer_15 = null;
         Class44_Sub3_Sub4_Sub6_Sub1.aClass39_1680 = null;
         Class44_Sub3_Sub1_Sub1.method418((byte) 1);
         Class36.method277((byte) 1);
@@ -2099,7 +2099,7 @@ public class Client extends Game {
         method126(6905);
         method57(l2, 502);
         method18(31037);
-        imageProducer.drawGameImage(super.graphics, 4, 4);
+        componentImageProducer.drawComponentImage(super.graphics, 4, 4);
         anInt820 = i1;
         anInt821 = j1;
         anInt822 = k1;
@@ -2565,10 +2565,10 @@ public class Client extends Game {
     public void method42(int i) {
         i = 15 / i;
         if (isLowMemory && loadingState == 2 && Class3.anInt68 != clientPlane) {
-            imageProducer.initDrawingArea();
+            componentImageProducer.initDrawingArea();
             aClass44_Sub3_Sub1_Sub4_1076.method455(257, 151, 0, "Loading - please wait.", false);
             aClass44_Sub3_Sub1_Sub4_1076.method455(256, 150, 0xffffff, "Loading - please wait.", false);
-            imageProducer.drawGameImage(super.graphics, 4, 4);
+            componentImageProducer.drawComponentImage(super.graphics, 4, 4);
             loadingState = 1;
             aLong1127 = System.currentTimeMillis();
         }
@@ -3284,13 +3284,13 @@ public class Client extends Game {
         if (flag1)
             aBoolean956 = !aBoolean956;
         method16(anInt845);
-        aImageProducer_1041.initDrawingArea();
+        aComponentImageProducer_1041.initDrawingArea();
         aClass44_Sub3_Sub1_Sub3_1263.method453(aByte1070, 0, 0);
         char c = '\u0168';
         char c1 = '\310';
         if (anInt1005 == 0) {
             int i = c1 / 2 + 80;
-            aClass44_Sub3_Sub1_Sub4_1075.method456(0, c / 2, i, aClass43_Sub1_1015.aString1294, 0x75a9a9, true);
+            aClass44_Sub3_Sub1_Sub4_1075.method456(0, c / 2, i, aClass43_Sub1_1015.loginScreenBottomText, 0x75a9a9, true);
             i = c1 / 2 - 20;
             aClass44_Sub3_Sub1_Sub4_1077.method456(0, c / 2, i, "Welcome to RuneScape", 0xffff00, true);
             i += 30;
@@ -3342,15 +3342,15 @@ public class Client extends Game {
             aClass44_Sub3_Sub1_Sub3_1264.method453(aByte1070, j1 - 73, i2 - 20);
             aClass44_Sub3_Sub1_Sub4_1077.method456(0, j1, i2 + 5, "Cancel", 0xffffff, true);
         }
-        aImageProducer_1041.drawGameImage(super.graphics, 202, 171);
+        aComponentImageProducer_1041.drawComponentImage(super.graphics, 202, 171);
         if (aBoolean917) {
             aBoolean917 = false;
-            aImageProducer_1039.drawGameImage(super.graphics, 128, 0);
-            aImageProducer_1040.drawGameImage(super.graphics, 202, 371);
-            aImageProducer_1044.drawGameImage(super.graphics, 0, 265);
-            aImageProducer_1045.drawGameImage(super.graphics, 562, 265);
-            aImageProducer_1046.drawGameImage(super.graphics, 128, 171);
-            aImageProducer_1047.drawGameImage(super.graphics, 562, 171);
+            aComponentImageProducer_1039.drawComponentImage(super.graphics, 128, 0);
+            aComponentImageProducer_1040.drawComponentImage(super.graphics, 202, 371);
+            aComponentImageProducer_1044.drawComponentImage(super.graphics, 0, 265);
+            aComponentImageProducer_1045.drawComponentImage(super.graphics, 562, 265);
+            aComponentImageProducer_1046.drawComponentImage(super.graphics, 128, 171);
+            aComponentImageProducer_1047.drawComponentImage(super.graphics, 562, 171);
         }
     }
 
@@ -3537,23 +3537,23 @@ public class Client extends Game {
     public void method59(int i) {
         byte[] abyte0 = aClass47_942.method546("title.dat", null);
         Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(abyte0, this);
-        aImageProducer_1042.initDrawingArea();
+        aComponentImageProducer_1042.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 0);
-        aImageProducer_1043.initDrawingArea();
+        aComponentImageProducer_1043.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -637);
-        aImageProducer_1039.initDrawingArea();
+        aComponentImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -128);
-        aImageProducer_1040.initDrawingArea();
+        aComponentImageProducer_1040.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-371, false, -202);
-        aImageProducer_1041.initDrawingArea();
+        aComponentImageProducer_1041.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -202);
-        aImageProducer_1044.initDrawingArea();
+        aComponentImageProducer_1044.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, 0);
-        aImageProducer_1045.initDrawingArea();
+        aComponentImageProducer_1045.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, -562);
-        aImageProducer_1046.initDrawingArea();
+        aComponentImageProducer_1046.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -128);
-        aImageProducer_1047.initDrawingArea();
+        aComponentImageProducer_1047.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -562);
         int[] ai = new int[class44_sub3_sub1_sub2.anInt1432];
         for (int j = 0; j < class44_sub3_sub1_sub2.anInt1433; j++) {
@@ -3565,27 +3565,27 @@ public class Client extends Game {
 
         }
 
-        aImageProducer_1042.initDrawingArea();
+        aComponentImageProducer_1042.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 382);
-        aImageProducer_1043.initDrawingArea();
+        aComponentImageProducer_1043.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, -255);
-        aImageProducer_1039.initDrawingArea();
+        aComponentImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method438(0, false, 254);
-        aImageProducer_1040.initDrawingArea();
+        aComponentImageProducer_1040.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-371, false, 180);
-        aImageProducer_1041.initDrawingArea();
+        aComponentImageProducer_1041.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, 180);
-        aImageProducer_1044.initDrawingArea();
+        aComponentImageProducer_1044.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, 382);
-        aImageProducer_1045.initDrawingArea();
+        aComponentImageProducer_1045.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-265, false, -180);
-        aImageProducer_1046.initDrawingArea();
+        aComponentImageProducer_1046.initDrawingArea();
         anInt1219 += i;
         class44_sub3_sub1_sub2.method438(-171, false, 254);
-        aImageProducer_1047.initDrawingArea();
+        aComponentImageProducer_1047.initDrawingArea();
         class44_sub3_sub1_sub2.method438(-171, false, -180);
         class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(aClass47_942, "logo", 0);
-        aImageProducer_1039.initDrawingArea();
+        aComponentImageProducer_1039.initDrawingArea();
         class44_sub3_sub1_sub2.method440(aByte1070, 382 - class44_sub3_sub1_sub2.anInt1432 / 2 - 128, 18);
         class44_sub3_sub1_sub2 = null;
         abyte0 = null;
@@ -4272,7 +4272,7 @@ public class Client extends Game {
     public void method63(byte byte0) {
         if (byte0 != -29)
             aBoolean899 = !aBoolean899;
-        aImageProducer_865.initDrawingArea();
+        aComponentImageProducer_865.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1243;
         aClass44_Sub3_Sub1_Sub3_1203.method453(aByte1070, 0, 0);
         if (aBoolean1265) {
@@ -4387,8 +4387,8 @@ public class Client extends Game {
         }
         if (aBoolean851 && anInt1254 == 2)
             method15(-593);
-        aImageProducer_865.drawGameImage(super.graphics, 17, 357);
-        imageProducer.initDrawingArea();
+        aComponentImageProducer_865.drawComponentImage(super.graphics, 17, 357);
+        componentImageProducer.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1245;
     }
 
@@ -4646,31 +4646,31 @@ public class Client extends Game {
                 aClass44_Sub3_Sub1_Sub3Array914[l4] = new Class44_Sub3_Sub1_Sub3(class47_2, "mod_icons", l4);
 
             Class44_Sub3_Sub1_Sub2 class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backleft1", 0);
-            aImageProducer_852 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_852 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backleft2", 0);
-            aImageProducer_853 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_853 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backright1", 0);
-            aImageProducer_854 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_854 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backright2", 0);
-            aImageProducer_855 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_855 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backtop1", 0);
-            aImageProducer_856 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_856 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid1", 0);
-            aImageProducer_857 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_857 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid2", 0);
-            aImageProducer_858 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_858 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backvmid3", 0);
-            aImageProducer_859 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_859 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             class44_sub3_sub1_sub2 = new Class44_Sub3_Sub1_Sub2(class47_2, "backhmid2", 0);
-            aImageProducer_860 = new ImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
+            aComponentImageProducer_860 = new ComponentImageProducer(class44_sub3_sub1_sub2.anInt1433, class44_sub3_sub1_sub2.anInt1432, getGameWindow(aByte1102));
             class44_sub3_sub1_sub2.method438(0, false, 0);
             int i5 = (int) (Math.random() * 21D) - 10;
             int j5 = (int) (Math.random() * 21D) - 10;
@@ -5190,7 +5190,7 @@ public class Client extends Game {
             super.drawString(text, i, 7);
             return;
         }
-        aImageProducer_1041.initDrawingArea();
+        aComponentImageProducer_1041.initDrawingArea();
         char c = '\u0168';
         char c1 = '\310';
         byte byte0 = 20;
@@ -5201,19 +5201,19 @@ public class Client extends Game {
         DrawingArea.method411(30, 0x8c1111, i * 3, c / 2 - 150, 0, k + 2);
         DrawingArea.method411(30, 0, 300 - i * 3, (c / 2 - 150) + i * 3, 0, k + 2);
         aClass44_Sub3_Sub1_Sub4_1077.method455(c / 2, (c1 / 2 + 5) - byte0, 0xffffff, text, false);
-        aImageProducer_1041.drawGameImage(super.graphics, 202, 171);
+        aComponentImageProducer_1041.drawComponentImage(super.graphics, 202, 171);
         if (aBoolean917) {
             aBoolean917 = false;
             if (!aBoolean906) {
-                aImageProducer_1042.drawGameImage(super.graphics, 0, 0);
-                aImageProducer_1043.drawGameImage(super.graphics, 637, 0);
+                aComponentImageProducer_1042.drawComponentImage(super.graphics, 0, 0);
+                aComponentImageProducer_1043.drawComponentImage(super.graphics, 637, 0);
             }
-            aImageProducer_1039.drawGameImage(super.graphics, 128, 0);
-            aImageProducer_1040.drawGameImage(super.graphics, 202, 371);
-            aImageProducer_1044.drawGameImage(super.graphics, 0, 265);
-            aImageProducer_1045.drawGameImage(super.graphics, 562, 265);
-            aImageProducer_1046.drawGameImage(super.graphics, 128, 171);
-            aImageProducer_1047.drawGameImage(super.graphics, 562, 171);
+            aComponentImageProducer_1039.drawComponentImage(super.graphics, 128, 0);
+            aComponentImageProducer_1040.drawComponentImage(super.graphics, 202, 371);
+            aComponentImageProducer_1044.drawComponentImage(super.graphics, 0, 265);
+            aComponentImageProducer_1045.drawComponentImage(super.graphics, 562, 265);
+            aComponentImageProducer_1046.drawComponentImage(super.graphics, 128, 171);
+            aComponentImageProducer_1047.drawComponentImage(super.graphics, 562, 171);
         }
     }
 
@@ -5427,13 +5427,13 @@ public class Client extends Game {
             method80(false);
             return;
         }
-        imageProducer.initDrawingArea();
+        componentImageProducer.initDrawingArea();
         aClass44_Sub3_Sub1_Sub4_1076.method455(257, 144, 0, "Connection lost", false);
         aClass44_Sub3_Sub1_Sub4_1076.method455(256, 143, 0xffffff, "Connection lost", false);
         anInt1219 += i;
         aClass44_Sub3_Sub1_Sub4_1076.method455(257, 159, 0, "Please wait - attempting to reestablish", false);
         aClass44_Sub3_Sub1_Sub4_1076.method455(256, 158, 0xffffff, "Please wait - attempting to reestablish", false);
-        imageProducer.drawGameImage(super.graphics, 4, 4);
+        componentImageProducer.drawComponentImage(super.graphics, 4, 4);
         anInt1031 = 0;
         anInt1025 = 0;
         Class7 class7 = aClass7_1108;
@@ -5582,7 +5582,7 @@ public class Client extends Game {
 
         }
 
-        imageProducer.initDrawingArea();
+        componentImageProducer.initDrawingArea();
         anInt987 = 0;
         for (int k2 = 0; k2 < 104; k2++) {
             for (int l2 = 0; l2 < 104; l2++) {
@@ -6115,9 +6115,9 @@ public class Client extends Game {
         if (i != 4)
             anInt1220 = aClass44_Sub3_Sub2_1135.get1();
         aClass44_Sub3_Sub1_Sub2_892 = new Class44_Sub3_Sub1_Sub2(128, 265);
-        System.arraycopy(aImageProducer_1042.pixels, 0, aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, 33920);
+        System.arraycopy(aComponentImageProducer_1042.pixels, 0, aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, 33920);
 
-        System.arraycopy(aImageProducer_1043.pixels, 0, aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, 33920);
+        System.arraycopy(aComponentImageProducer_1043.pixels, 0, aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, 33920);
 
         anIntArray937 = new int[256];
         for (int k1 = 0; k1 < 64; k1++)
@@ -6173,30 +6173,30 @@ public class Client extends Game {
     }
 
     public void method92(int i) {
-        if (aImageProducer_865 != null) {
+        if (aComponentImageProducer_865 != null) {
         } else {
             method114(0);
-            super.aImageProducer_15 = null;
-            aImageProducer_1039 = null;
-            aImageProducer_1040 = null;
-            aImageProducer_1041 = null;
-            aImageProducer_1042 = null;
-            aImageProducer_1043 = null;
+            super.aComponentImageProducer_15 = null;
+            aComponentImageProducer_1039 = null;
+            aComponentImageProducer_1040 = null;
+            aComponentImageProducer_1041 = null;
+            aComponentImageProducer_1042 = null;
+            aComponentImageProducer_1043 = null;
             i = 12 / i;
-            aImageProducer_1044 = null;
-            aImageProducer_1045 = null;
-            aImageProducer_1046 = null;
-            aImageProducer_1047 = null;
-            aImageProducer_865 = new ImageProducer(96, 479, getGameWindow(aByte1102));
-            aImageProducer_863 = new ImageProducer(156, 172, getGameWindow(aByte1102));
+            aComponentImageProducer_1044 = null;
+            aComponentImageProducer_1045 = null;
+            aComponentImageProducer_1046 = null;
+            aComponentImageProducer_1047 = null;
+            aComponentImageProducer_865 = new ComponentImageProducer(96, 479, getGameWindow(aByte1102));
+            aComponentImageProducer_863 = new ComponentImageProducer(156, 172, getGameWindow(aByte1102));
             DrawingArea.method409(8);
             aClass44_Sub3_Sub1_Sub3_1202.method453(aByte1070, 0, 0);
-            aImageProducer_862 = new ImageProducer(261, 190, getGameWindow(aByte1102));
-            imageProducer = new ImageProducer(334, 512, getGameWindow(aByte1102));
+            aComponentImageProducer_862 = new ComponentImageProducer(261, 190, getGameWindow(aByte1102));
+            componentImageProducer = new ComponentImageProducer(334, 512, getGameWindow(aByte1102));
             DrawingArea.method409(8);
-            aImageProducer_990 = new ImageProducer(50, 496, getGameWindow(aByte1102));
-            aImageProducer_991 = new ImageProducer(37, 269, getGameWindow(aByte1102));
-            aImageProducer_992 = new ImageProducer(45, 249, getGameWindow(aByte1102));
+            aComponentImageProducer_990 = new ComponentImageProducer(50, 496, getGameWindow(aByte1102));
+            aComponentImageProducer_991 = new ComponentImageProducer(37, 269, getGameWindow(aByte1102));
+            aComponentImageProducer_992 = new ComponentImageProducer(45, 249, getGameWindow(aByte1102));
             aBoolean917 = true;
         }
     }
@@ -6378,7 +6378,7 @@ public class Client extends Game {
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         }
-        client = new Client();
+        client = this;
         client.createClientFrame(false, 765, 503);
         return;
 /*        anInt1237 = Integer.parseInt(args[0]);
@@ -6417,8 +6417,12 @@ public class Client extends Game {
  */
     }
 
+    public void start() {
+        client.createClientFramePost();
+    }
+
     public void method98(boolean flag) {
-        aImageProducer_862.initDrawingArea();
+        aComponentImageProducer_862.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1244;
         aClass44_Sub3_Sub1_Sub3_1201.method453(aByte1070, 0, 0);
         if (anInt1216 != -1)
@@ -6427,11 +6431,11 @@ public class Client extends Game {
             method127(0, Class5.aClass5Array103[anIntArray954[anInt1013]], 0, 0, (byte) 0);
         if (aBoolean851 && anInt1254 == 1)
             method15(-593);
-        aImageProducer_862.drawGameImage(super.graphics, 553, 205);
+        aComponentImageProducer_862.drawComponentImage(super.graphics, 553, 205);
         if (!flag) {
             for (int i = 1; i > 0; i++) ;
         }
-        imageProducer.initDrawingArea();
+        componentImageProducer.initDrawingArea();
         Class44_Sub3_Sub1_Sub1.anIntArray1409 = anIntArray1245;
     }
 
@@ -6755,7 +6759,7 @@ public class Client extends Game {
     }
 
     public void method103(byte byte0) {
-        aImageProducer_863.initDrawingArea();
+        aComponentImageProducer_863.initDrawingArea();
         if (anInt1031 == 2) {
             byte[] abyte0 = aClass44_Sub3_Sub1_Sub3_1202.aByteArray1445;
             int[] ai = DrawingArea.anIntArray1351;
@@ -6765,7 +6769,7 @@ public class Client extends Game {
                     ai[i5] = 0;
 
             aClass44_Sub3_Sub1_Sub2_1085.method444(256, 25, 33, 33, 0, anIntArray1054, 25, anIntArray883, -582, anInt1206, 0);
-            imageProducer.initDrawingArea();
+            componentImageProducer.initDrawingArea();
             return;
         }
         int i = anInt1206 + anInt1217 & 0x7ff;
@@ -6854,7 +6858,7 @@ public class Client extends Game {
             method33(l4, j2, (byte) -111, aClass44_Sub3_Sub1_Sub2_964);
         }
         DrawingArea.method411(3, 0xffffff, 3, 97, 0, 78);
-        imageProducer.initDrawingArea();
+        componentImageProducer.initDrawingArea();
     }
 
     public void method104(boolean flag) {
@@ -7564,10 +7568,10 @@ public class Client extends Game {
                     aBoolean1169 = true;
                 loadingState = 1;
                 aLong1127 = System.currentTimeMillis();
-                imageProducer.initDrawingArea();
+                componentImageProducer.initDrawingArea();
                 aClass44_Sub3_Sub1_Sub4_1076.method455(257, 151, 0, "Loading - please wait.", false);
                 aClass44_Sub3_Sub1_Sub4_1076.method455(256, 150, 0xffffff, "Loading - please wait.", false);
-                imageProducer.drawGameImage(super.graphics, 4, 4);
+                componentImageProducer.drawComponentImage(super.graphics, 4, 4);
                 int j16 = 0;
                 for (int j19 = (anInt922 - 6) / 8; j19 <= (anInt922 + 6) / 8; j19++) {
                     for (int i21 = (anInt923 - 6) / 8; i21 <= (anInt923 + 6) / 8; i21++)
@@ -9199,7 +9203,7 @@ public class Client extends Game {
             System.arraycopy(anIntArray937, 0, anIntArray936, 0, 256);
 
         }
-        System.arraycopy(aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, aImageProducer_1042.pixels, 0, 33920);
+        System.arraycopy(aClass44_Sub3_Sub1_Sub2_891.anIntArray1431, 0, aComponentImageProducer_1042.pixels, 0, 33920);
 
         int j1 = 0;
         int k1 = 1152;
@@ -9215,8 +9219,8 @@ public class Client extends Game {
                     int i4 = k3;
                     int k4 = 256 - k3;
                     k3 = anIntArray936[k3];
-                    int i5 = aImageProducer_1042.pixels[k1];
-                    aImageProducer_1042.pixels[k1++] = ((k3 & 0xff00ff) * i4 + (i5 & 0xff00ff) * k4 & 0xff00ff00) + ((k3 & 0xff00) * i4 + (i5 & 0xff00) * k4 & 0xff0000) >> 8;
+                    int i5 = aComponentImageProducer_1042.pixels[k1];
+                    aComponentImageProducer_1042.pixels[k1++] = ((k3 & 0xff00ff) * i4 + (i5 & 0xff00ff) * k4 & 0xff00ff00) + ((k3 & 0xff00) * i4 + (i5 & 0xff00) * k4 & 0xff0000) >> 8;
                 } else {
                     k1++;
                 }
@@ -9225,8 +9229,8 @@ public class Client extends Game {
             k1 += k2;
         }
 
-        aImageProducer_1042.drawGameImage(super.graphics, 0, 0);
-        System.arraycopy(aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, aImageProducer_1043.pixels, 0, 33920);
+        aComponentImageProducer_1042.drawComponentImage(super.graphics, 0, 0);
+        System.arraycopy(aClass44_Sub3_Sub1_Sub2_892.anIntArray1431, 0, aComponentImageProducer_1043.pixels, 0, 33920);
 
         j1 = 0;
         k1 = 1176;
@@ -9240,8 +9244,8 @@ public class Client extends Game {
                     int j5 = l4;
                     int k5 = 256 - l4;
                     l4 = anIntArray936[l4];
-                    int l5 = aImageProducer_1043.pixels[k1];
-                    aImageProducer_1043.pixels[k1++] = ((l4 & 0xff00ff) * j5 + (l5 & 0xff00ff) * k5 & 0xff00ff00) + ((l4 & 0xff00) * j5 + (l5 & 0xff00) * k5 & 0xff0000) >> 8;
+                    int l5 = aComponentImageProducer_1043.pixels[k1];
+                    aComponentImageProducer_1043.pixels[k1++] = ((l4 & 0xff00ff) * j5 + (l5 & 0xff00ff) * k5 & 0xff00ff00) + ((l4 & 0xff00) * j5 + (l5 & 0xff00) * k5 & 0xff0000) >> 8;
                 } else {
                     k1++;
                 }
@@ -9251,7 +9255,7 @@ public class Client extends Game {
             k1 += 128 - l3 - j3;
         }
 
-        aImageProducer_1043.drawGameImage(super.graphics, 637, 0);
+        aComponentImageProducer_1043.drawComponentImage(super.graphics, 637, 0);
     }
 
     public void method129(boolean flag) {
@@ -9981,22 +9985,22 @@ public class Client extends Game {
             anInt1220 = -1;
         if (aBoolean917) {
             aBoolean917 = false;
-            aImageProducer_852.drawGameImage(super.graphics, 0, 4);
-            aImageProducer_853.drawGameImage(super.graphics, 0, 357);
-            aImageProducer_854.drawGameImage(super.graphics, 722, 4);
-            aImageProducer_855.drawGameImage(super.graphics, 743, 205);
-            aImageProducer_856.drawGameImage(super.graphics, 0, 0);
-            aImageProducer_857.drawGameImage(super.graphics, 516, 4);
-            aImageProducer_858.drawGameImage(super.graphics, 516, 205);
-            aImageProducer_859.drawGameImage(super.graphics, 496, 357);
-            aImageProducer_860.drawGameImage(super.graphics, 0, 338);
+            aComponentImageProducer_852.drawComponentImage(super.graphics, 0, 4);
+            aComponentImageProducer_853.drawComponentImage(super.graphics, 0, 357);
+            aComponentImageProducer_854.drawComponentImage(super.graphics, 722, 4);
+            aComponentImageProducer_855.drawComponentImage(super.graphics, 743, 205);
+            aComponentImageProducer_856.drawComponentImage(super.graphics, 0, 0);
+            aComponentImageProducer_857.drawComponentImage(super.graphics, 516, 4);
+            aComponentImageProducer_858.drawComponentImage(super.graphics, 516, 205);
+            aComponentImageProducer_859.drawComponentImage(super.graphics, 496, 357);
+            aComponentImageProducer_860.drawComponentImage(super.graphics, 0, 338);
             aBoolean928 = true;
             aBoolean1109 = true;
             aBoolean841 = true;
             aBoolean1141 = true;
             if (loadingState != 2) {
-                imageProducer.drawGameImage(super.graphics, 4, 4);
-                aImageProducer_863.drawGameImage(super.graphics, 550, 4);
+                componentImageProducer.drawComponentImage(super.graphics, 4, 4);
+                aComponentImageProducer_863.drawComponentImage(super.graphics, 550, 4);
             }
         }
         if (loadingState == 2)
@@ -10049,7 +10053,7 @@ public class Client extends Game {
         }
         if (loadingState == 2) {
             method103((byte) 5);
-            aImageProducer_863.drawGameImage(super.graphics, 550, 4);
+            aComponentImageProducer_863.drawComponentImage(super.graphics, 550, 4);
         }
         if (anInt1173 != -1)
             aBoolean841 = true;
@@ -10060,7 +10064,7 @@ public class Client extends Game {
                 aClass44_Sub3_Sub2_843.put1(anInt1013);
             }
             aBoolean841 = false;
-            aImageProducer_992.initDrawingArea();
+            aComponentImageProducer_992.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1180.method453(aByte1070, 0, 0);
             if (anInt1216 == -1) {
                 if (anIntArray954[anInt1013] != -1) {
@@ -10094,8 +10098,8 @@ public class Client extends Game {
                 if (anIntArray954[6] != -1 && (anInt1173 != 6 || tick % 20 < 10))
                     aClass44_Sub3_Sub1_Sub3Array952[6].method453(aByte1070, 208, 13);
             }
-            aImageProducer_992.drawGameImage(super.graphics, 516, 160);
-            aImageProducer_991.initDrawingArea();
+            aComponentImageProducer_992.drawComponentImage(super.graphics, 516, 160);
+            aComponentImageProducer_991.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1179.method453(aByte1070, 0, 0);
             if (anInt1216 == -1) {
                 if (anIntArray954[anInt1013] != -1) {
@@ -10127,12 +10131,12 @@ public class Client extends Game {
                 if (anIntArray954[13] != -1 && (anInt1173 != 13 || tick % 20 < 10))
                     aClass44_Sub3_Sub1_Sub3Array952[12].method453(aByte1070, 226, 2);
             }
-            aImageProducer_991.drawGameImage(super.graphics, 496, 466);
-            imageProducer.initDrawingArea();
+            aComponentImageProducer_991.drawComponentImage(super.graphics, 496, 466);
+            componentImageProducer.initDrawingArea();
         }
         if (aBoolean1141) {
             aBoolean1141 = false;
-            aImageProducer_990.initDrawingArea();
+            aComponentImageProducer_990.initDrawingArea();
             aClass44_Sub3_Sub1_Sub3_1178.method453(aByte1070, 0, 0);
             aClass44_Sub3_Sub1_Sub4_1076.method456(0, 55, 28, "Public chat", 0xffffff, true);
             if (anInt967 == 0)
@@ -10158,8 +10162,8 @@ public class Client extends Game {
             if (anInt805 == 2)
                 aClass44_Sub3_Sub1_Sub4_1076.method456(0, 324, 41, "Off", 0xff0000, true);
             aClass44_Sub3_Sub1_Sub4_1076.method456(0, 458, 33, "Report abuse", 0xffffff, true);
-            aImageProducer_990.drawGameImage(super.graphics, 0, 453);
-            imageProducer.initDrawingArea();
+            aComponentImageProducer_990.drawComponentImage(super.graphics, 0, 453);
+            componentImageProducer.initDrawingArea();
         }
         anInt975 = 0;
     }

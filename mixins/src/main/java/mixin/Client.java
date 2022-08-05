@@ -1,16 +1,35 @@
 package mixin;
 
 import meteor.Logger;
+import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
 abstract class Client implements RSClient {
+
+    @Shadow("client")
+    public static RSClient client;
+
+    @Inject
+    @javax.inject.Inject
+    private Callbacks callbacks;
+
+    @Inject
+    @Override
+    public Callbacks getCallbacks() {
+        return callbacks;
+    }
+
+    @Inject
+    @Override
+    public void setCallbacks(Callbacks callbacks) {
+        this.callbacks = callbacks;
+    }
 
     @Inject
     public static Logger logger = new Logger();
@@ -24,28 +43,66 @@ abstract class Client implements RSClient {
         logger.debug("!Pre-Startup!");
     }
 
+    @Inject
+    public static Canvas gameCanvas;
+
+    @Inject
+    @Override
+    public Canvas getCanvas() {
+        return gameCanvas;
+    }
+
+
+
+    @Inject
+    @Override
+    public void setCanvas(Canvas gameCanvas) {
+        this.gameCanvas =  gameCanvas;
+    }
+
+    @Inject
+    Dimension stretchedDimensions = null;
+
+    @Inject
+    Dimension realDimensions;
+
+    @Inject
+    @Override
+    public BufferedImage getGameImage() {
+        return gameImage;
+    }
+
     @Copy("loginScreen")
     @Replace("loginScreen")
     public void loginScreen$mixin(boolean b, boolean b1) {
         if (gameImage == null) {
             try {
-                gameImage = new BufferedImage(((Frame)getGameWindow()).getWidth(), ((Frame)getGameWindow()).getHeight(), BufferedImage.TYPE_INT_ARGB);
+                gameImage = new BufferedImage(getRealDimensions().width, getRealDimensions().height, BufferedImage.TYPE_INT_ARGB);
+                if (gameCanvas != null) {
+                    gameCanvas.setSize(gameCanvas.getParent().getSize());
+                    stretchedDimensions = new Dimension(gameCanvas.getWidth(), gameCanvas.getHeight());
+                }
             } catch (Exception ignore){
                 ignore.printStackTrace();
             }
         }
         if (gameImage != null) {
             loginScreen$mixin(b, b1);
-            getGameWindow().getGraphics$api().drawImage(gameImage, 0, 0, (Frame)getGameWindow());
-        }
 
+            client.getCallbacks().drawGameImage();
+        }
     }
 
     @Copy("drawFull")
     @Replace("drawFull")
     public void drawFull$mixin(int i) {
         drawFull$mixin(i);
-        getGameWindow().getGraphics$api().drawImage(resize(gameImage, ((Frame)getGameWindow()).getWidth(), ((Frame)getGameWindow()).getHeight()), 0, 0, (Frame)getGameWindow());
+        if (gameCanvas != null) {
+            gameCanvas.setSize(gameCanvas.getParent().getSize());
+            stretchedDimensions = new Dimension(gameCanvas.getWidth(), gameCanvas.getHeight());
+        }
+
+        client.getCallbacks().drawGameImage();
     }
 
     @Inject
@@ -91,5 +148,42 @@ abstract class Client implements RSClient {
             prev.flush();
         }
         return img;
+    }
+
+    @Inject
+    public boolean isStretchEnabled = true;
+
+    //274 has no resizeable, so we can hardcode actual dimensions.
+
+    @Inject
+    @Override
+    public Dimension getRealDimensions() {
+        if (realDimensions == null)
+            realDimensions = new Dimension(765, 503);
+        return realDimensions;
+    }
+
+    @Inject
+    @Override
+    public Dimension getStretchedDimensions() {
+        return stretchedDimensions;
+    }
+
+    @Inject
+    @Override
+    public void setStretchedDimensions(Dimension d) {
+        stretchedDimensions = d;
+    }
+
+    @Inject
+    @Override
+    public boolean isClientThread() {
+        return true;
+    }
+
+    @Inject
+    @Override
+    public boolean isStretchedEnabled() {
+        return isStretchEnabled;
     }
 }

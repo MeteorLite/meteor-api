@@ -5,7 +5,7 @@
 import java.awt.*;
 import java.awt.image.*;
 
-public class ImageProducer
+public class ComponentImageProducer
         implements java.awt.image.ImageProducer, ImageObserver {
     public final int[] pixels;
     public final int width;
@@ -14,7 +14,7 @@ public class ImageProducer
     public ImageConsumer imageConsumer;
     public final Image gameImage;
 
-    public ImageProducer(int height, int width, Component component) {
+    public ComponentImageProducer(int height, int width, Component component) {
         this.width = width;
         this.height = height;
         pixels = new int[width * height];
@@ -33,7 +33,7 @@ public class ImageProducer
         DrawingArea.initDrawingArea(width, height, pixels, 9);
     }
 
-    public void drawGameImage(Graphics g, int x, int y) {
+    public void drawComponentImage(Graphics g, int x, int y) {
         drawPixels();
         g.drawImage(gameImage, x, y, this);
     }

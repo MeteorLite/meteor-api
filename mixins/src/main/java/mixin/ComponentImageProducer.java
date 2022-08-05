@@ -3,16 +3,14 @@ package mixin;
 import meteor.Logger;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
-import net.runelite.rs.api.RSGameWindow;
-import net.runelite.rs.api.RSImageProducer;
+import net.runelite.rs.api.RSComponentImageProducer;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @SuppressWarnings("ALL")
-@Mixin(RSImageProducer.class)
-abstract class ImageProducer extends Frame implements RSImageProducer {
+@Mixin(RSComponentImageProducer.class)
+abstract class ComponentImageProducer extends Frame implements RSComponentImageProducer {
 
     @Shadow("client")
     public static RSClient client;
@@ -28,9 +26,9 @@ abstract class ImageProducer extends Frame implements RSImageProducer {
 
 
 
-    @Copy("drawGameImage")
-    @Replace("drawGameImage")
-    public void drawGameImage(Graphics g, int i, int j) {
+    @Copy("drawComponentImage")
+    @Replace("drawComponentImage")
+    public void drawComponentImage$api(Graphics g, int i, int j) {
         if (gameImage == null) {
             try {
                 gameImage = new BufferedImage(((Frame)client.getGameWindow()).getWidth(), ((Frame)client.getGameWindow()).getHeight(), BufferedImage.TYPE_INT_ARGB);

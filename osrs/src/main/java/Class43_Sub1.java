@@ -42,7 +42,7 @@ public class Class43_Sub1 extends Class43
     public final Class28 aClass28_1291;
     public final Class28 aClass28_1292;
     public final Class28 aClass28_1293;
-    public String aString1294;
+    public String loginScreenBottomText;
     public int anInt1295;
     public int anInt1296;
     public Socket aSocket1297;
@@ -74,7 +74,7 @@ public class Class43_Sub1 extends Class43
         aClass28_1291 = new Class28(-822);
         aClass28_1292 = new Class28(-822);
         aClass28_1293 = new Class28(-822);
-        aString1294 = "";
+        loginScreenBottomText = "";
         aByteArray1304 = new byte[500];
         aByteArray1305 = new byte[65000];
     }
@@ -387,7 +387,7 @@ public class Class43_Sub1 extends Class43
                     }
                 } else {
                     anInt1306 = 0;
-                    aString1294 = "";
+                    loginScreenBottomText = "";
                 }
                 if (aClient1283.aBoolean905 && aSocket1297 != null && anOutputStream1299 != null && (anInt1274 > 0 || aClient1283.aClass45Array1225[0] == null)) {
                     anInt1307++;
@@ -485,7 +485,7 @@ public class Class43_Sub1 extends Class43
                     aBoolean1285 = true;
                     if (anInt1295 < anInt1296)
                         anInt1295++;
-                    aString1294 = "Loading extra files - " + (anInt1295 * 100) / anInt1296 + "%";
+                    loginScreenBottomText = "Loading extra files - " + (anInt1295 * 100) / anInt1296 + "%";
                     anInt1287++;
                     if (anInt1287 == 10)
                         return;
@@ -509,7 +509,7 @@ public class Class43_Sub1 extends Class43
                         aBoolean1285 = true;
                         if (anInt1295 < anInt1296)
                             anInt1295++;
-                        aString1294 = "Loading extra files - " + (anInt1295 * 100) / anInt1296 + "%";
+                        loginScreenBottomText = "Loading extra files - " + (anInt1295 * 100) / anInt1296 + "%";
                         anInt1287++;
                         if (anInt1287 == 10)
                             return;

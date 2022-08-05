@@ -28,7 +28,7 @@ import net.runelite.mapping.Import;
 
 import java.awt.*;
 
-public interface RSImageProducer
+public interface RSComponentImageProducer
 {
     @Import("pixels")
     int[] getPixels$api();

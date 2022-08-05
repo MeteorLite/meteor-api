@@ -11,7 +11,7 @@ public class GameWindow extends Frame {
 
     public final Game game;
 
-    public JPanel panel = new JPanel();
+    public Graphics graphics;
 
     public GameWindow(Game game, int width, int height, int k) {
         this.game = game;
@@ -19,17 +19,11 @@ public class GameWindow extends Frame {
         //setResizable(false);
         show();
         toFront();
+        graphics = this.getGraphics();
         if (k != 0) {
             throw new NullPointerException();
         } else {
-            resize(width + 8, height + 28);
+            resize(width, height);
         }
-    }
-
-    //This fixes a natural offset the game has in the frame
-    public Graphics getGraphics() {
-        Graphics g = super.getGraphics();
-        g.translate(4, 24);
-        return g;
     }
 }

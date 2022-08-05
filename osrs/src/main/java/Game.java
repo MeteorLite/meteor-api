@@ -24,7 +24,7 @@ public class Game extends Applet
     public int gameWidth;
     public int gameHeight;
     public Graphics graphics;
-    public ImageProducer aImageProducer_15;
+    public ComponentImageProducer aComponentImageProducer_15;
     public final Class44_Sub3_Sub1_Sub2[] aClass44_Sub3_Sub1_Sub2Array16;
     public GameWindow gameWindow;
     public boolean shouldFillBackground;
@@ -69,10 +69,15 @@ public class Game extends Applet
         gameWidth = width;
         gameHeight = height;
         gameWindow = new GameWindow(this, gameWidth, gameHeight, 0);
+    }
+
+    public void createClientFramePost() {
         graphics = getGameWindow(aByte2).getGraphics();
-        aImageProducer_15 = new ImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
+        aComponentImageProducer_15 = new ComponentImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
         startRunnable(this, 1);
     }
+
+
 
     public void method2(int i, int j, byte byte0) {
         if (byte0 != 23) {
@@ -80,7 +85,7 @@ public class Game extends Applet
             gameWidth = j;
             gameHeight = i;
             graphics = getGameWindow(aByte2).getGraphics();
-            aImageProducer_15 = new ImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
+            aComponentImageProducer_15 = new ComponentImageProducer(gameHeight, gameWidth, getGameWindow(aByte2));
             startRunnable(this, 1);
         }
     }
@@ -182,15 +187,13 @@ public class Game extends Applet
         if (i != 6568) {
             for (int j = 1; j > 0; j++) ;
         }
-        if (gameWindow != null) {
-            try {
-                Thread.sleep(1000L);
-            } catch (Exception ignored) {
-            }
-            try {
-                System.exit(0);
-            } catch (Throwable ignored) {
-            }
+        try {
+            Thread.sleep(1000L);
+        } catch (Exception ignored) {
+        }
+        try {
+            System.exit(0);
+        } catch (Throwable ignored) {
         }
     }
 
@@ -237,18 +240,14 @@ public class Game extends Applet
     public void mousePressed(MouseEvent mouseEvent) {
         int i = mouseEvent.getX();
         int j = mouseEvent.getY();
-        if (gameWindow != null) {
-            i -= 4;
-            j -= 22;
-        }
         mouseIdleMs = 0;
         mouseEventClickX = i;
         mouseEventClickY = j;
         mouseEventTime = System.currentTimeMillis();
-        if (mouseEvent.isMetaDown()) {
-            mouseEventButtonPressed = 2;
-        } else {
+        if (mouseEvent.getButton() == 1) {
             mouseEventButtonPressed = 1;
+        } else {
+            mouseEventButtonPressed = 2;
         }
         lastMouseButtonPressed = mouseEventButtonPressed;
     }
@@ -273,10 +272,6 @@ public class Game extends Applet
     public void mouseDragged(MouseEvent mouseevent) {
         int i = mouseevent.getX();
         int j = mouseevent.getY();
-        if (gameWindow != null) {
-            i -= 4;
-            j -= 22;
-        }
         mouseIdleMs = 0;
         anInt22 = i;
         anInt23 = j;
@@ -285,10 +280,6 @@ public class Game extends Applet
     public void mouseMoved(MouseEvent mouseevent) {
         int i = mouseevent.getX();
         int j = mouseevent.getY();
-        if (gameWindow != null) {
-            i -= 4;
-            j -= 22;
-        }
         mouseIdleMs = 0;
         anInt22 = i;
         anInt23 = j;
@@ -437,12 +428,8 @@ public class Game extends Applet
     }
 
     public Component getGameWindow(byte byte0) {
-        if (byte0 != 7)
-            throw new NullPointerException();
-        if (gameWindow != null)
-            return gameWindow;
-        else
-            return this;
+
+        return this;
     }
 
     public void startRunnable(Runnable runnable, int priority) {
