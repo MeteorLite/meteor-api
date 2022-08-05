@@ -115,7 +115,7 @@ public class Client extends Game {
 	public int anInt1074;
 	public Class43_Sub1 aClass43_Sub1_1015;
 	public int anInt980;
-	public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_843;
+	public Buffer aBuffer_843;
 	public byte aByte1032;
 	public int anInt1110;
 	public int anInt907;
@@ -126,7 +126,7 @@ public class Client extends Game {
 	public int anInt999;
 	public int anInt1115;
 	public int anInt822;
-	public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_1135;
+	public Buffer aBuffer_1135;
 	public int anInt1220;
 	public int anInt1011;
 	public int clientPlane;
@@ -243,7 +243,7 @@ public class Client extends Game {
 	public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2_1085;
 	public String aString1199;
 	public int anInt1198;
-	public Class44_Sub3_Sub2[] aClass44_Sub3_Sub2Array1125;
+	public Buffer[] aBufferArray1125;
 	public int anInt834;
 	public int[] anIntArray804;
 	public long aLong1127;
@@ -343,7 +343,7 @@ public class Client extends Game {
 	public int anInt874;
 	public int anInt1081;
 	public int[] anIntArray1136;
-	public Class44_Sub3_Sub2 aClass44_Sub3_Sub2_1106;
+	public Buffer aBuffer_1106;
 	public int anInt1072;
 	public int anInt920;
 	public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2_1126;
@@ -542,7 +542,7 @@ public class Client extends Game {
 		this.anIntArray838 = new int[4000];
 		this.anIntArray839 = new int[4000];
 		this.aBoolean841 = false;
-		this.aClass44_Sub3_Sub2_843 = Class44_Sub3_Sub2.method467(-7939, 1);
+		this.aBuffer_843 = Buffer.method467(-7939, 1);
 		this.anIntArray844 = new int[5];
 		this.anInt845 = -43664;
 		this.aByte846 = -120;
@@ -645,7 +645,7 @@ public class Client extends Game {
 		this.anInt1103 = -1;
 		this.aBoolean1104 = false;
 		this.collisionMap = new Class18[4];
-		this.aClass44_Sub3_Sub2_1106 = Class44_Sub3_Sub2.method467(-7939, 1);
+		this.aBuffer_1106 = Buffer.method467(-7939, 1);
 		this.anIntArray1107 = new int[2000];
 		this.aBoolean1109 = false;
 		this.anInt1110 = -1;
@@ -657,10 +657,10 @@ public class Client extends Game {
 		this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120 = new Class44_Sub3_Sub4_Sub6_Sub1[this.anInt1118];
 		this.anIntArray1122 = new int[this.anInt1118];
 		this.anIntArray1124 = new int[this.anInt1118];
-		this.aClass44_Sub3_Sub2Array1125 = new Class44_Sub3_Sub2[this.anInt1118];
+		this.aBufferArray1125 = new Buffer[this.anInt1118];
 		this.aBoolean1128 = false;
 		this.anInt1131 = -1;
-		this.aClass44_Sub3_Sub2_1135 = Class44_Sub3_Sub2.method467(-7939, 1);
+		this.aBuffer_1135 = Buffer.method467(-7939, 1);
 		this.anIntArray1136 = new int[151];
 		this.aBoolean1141 = false;
 		this.aBoolean1146 = false;
@@ -1167,9 +1167,9 @@ public class Client extends Game {
 		this.aClass10_1160 = null;
 		this.aClass43_Sub1_1015.method384();
 		this.aClass43_Sub1_1015 = null;
-		this.aClass44_Sub3_Sub2_843 = null;
-		this.aClass44_Sub3_Sub2_1106 = null;
-		this.aClass44_Sub3_Sub2_1135 = null;
+		this.aBuffer_843 = null;
+		this.aBuffer_1106 = null;
+		this.aBuffer_1135 = null;
 		this.anIntArray830 = null;
 		this.aByteArrayArray886 = null;
 		this.aByteArrayArray953 = null;
@@ -1231,7 +1231,7 @@ public class Client extends Game {
 		this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120 = null;
 		this.anIntArray1122 = null;
 		this.anIntArray1124 = null;
-		this.aClass44_Sub3_Sub2Array1125 = null;
+		this.aBufferArray1125 = null;
 		this.anIntArray1065 = null;
 		this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259 = null;
 		this.anIntArray1261 = null;
@@ -1663,7 +1663,7 @@ public class Client extends Game {
 					if (!isLowMemory) {
 						this.drawString("Unpacking sounds", 90, 7);
 						byte[] var35 = var8.method546("sounds.dat", (byte[])null);
-						Class44_Sub3_Sub2 var17 = new Class44_Sub3_Sub2(var35, (byte)1);
+						Buffer var17 = new Buffer(var35, (byte)1);
 						Class4.method175(false, var17);
 					}
 
@@ -1764,7 +1764,7 @@ public class Client extends Game {
 		descriptor = "(LClass44_Sub3_Sub2;IB)V",
 		garbageValue = "-85"
 	)
-	public void method119(Class44_Sub3_Sub2 var1, int var2) {
+	public void method119(Buffer var1, int var2) {
 		var1.accessBits((byte)4);
 		int var3 = var1.getBit(1, (byte)-96);
 		if (var3 != 0) {
@@ -1909,8 +1909,8 @@ public class Client extends Game {
 			++anInt981;
 			if (anInt981 > 122) {
 				anInt981 = 0;
-				this.aClass44_Sub3_Sub2_843.putOpcode(188);
-				this.aClass44_Sub3_Sub2_843.put1(62);
+				this.aBuffer_843.putOpcode(188);
+				this.aBuffer_843.put1(62);
 			}
 		}
 
@@ -2160,7 +2160,7 @@ public class Client extends Game {
 		if (var1 == 2) {
 			boolean var7 = false;
 		} else {
-			this.aClass44_Sub3_Sub2_843.put1(128);
+			this.aBuffer_843.put1(128);
 		}
 
 		for (int var2 = 0; var2 < this.aByteArrayArray886.length; ++var2) {
@@ -2192,12 +2192,12 @@ public class Client extends Game {
 			this.loadingState = 2;
 			Class3.anInt68 = this.clientPlane;
 			this.method19();
-			this.aClass44_Sub3_Sub2_843.putOpcode(214);
+			this.aBuffer_843.putOpcode(214);
 			return 0;
 		}
 	}
 
-	public void method66(int var1, int var2, Class44_Sub3_Sub2 var3) {
+	public void method66(int var1, int var2, Buffer var3) {
 		int var10000 = var2 + var1;
 		var3.accessBits((byte)4);
 		int var4 = var3.getBit(8, (byte)-96);
@@ -2260,7 +2260,7 @@ public class Client extends Game {
 		}
 	}
 
-	public void method94(int var1, Class44_Sub3_Sub2 var2, int var3) {
+	public void method94(int var1, Buffer var2, int var3) {
 		int var4 = var2.getBit(8, (byte)-96);
 		int var10000 = var3 + var1;
 		int var5;
@@ -2463,7 +2463,7 @@ public class Client extends Game {
 
 	}
 
-	public void method25(int var1, Class44_Sub3_Sub2 var2, int var3) {
+	public void method25(int var1, Buffer var2, int var3) {
 		while (true) {
 			if (var2.anInt1375 + 21 < var3 * 8) {
 				int var4 = var2.getBit(14, (byte)-96);
@@ -2577,15 +2577,15 @@ public class Client extends Game {
 		}
 	}
 
-	public void method145(Class44_Sub3_Sub2 var1, int var2, int var3) {
+	public void method145(Buffer var1, int var2, int var3) {
 		while (true) {
 			if (var1.anInt1375 + 10 < var2 * 8) {
 				int var4 = var1.getBit(11, (byte)-96);
 				if (var4 != 2047) {
 					if (this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var4] == null) {
 						this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var4] = new Class44_Sub3_Sub4_Sub6_Sub1();
-						if (this.aClass44_Sub3_Sub2Array1125[var4] != null) {
-							this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var4].method534(this.aClass44_Sub3_Sub2Array1125[var4], this.anInt801);
+						if (this.aBufferArray1125[var4] != null) {
+							this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var4].method534(this.aBufferArray1125[var4], this.anInt801);
 						}
 					}
 
@@ -2618,15 +2618,15 @@ public class Client extends Game {
 		}
 	}
 
-	public void method101(int var1, int var2, byte var3, Class44_Sub3_Sub4_Sub6_Sub1 var4, Class44_Sub3_Sub2 var5) {
+	public void method101(int var1, int var2, byte var3, Class44_Sub3_Sub4_Sub6_Sub1 var4, Buffer var5) {
 		if (var3 == this.aByte836) {
 			int var6;
 			if ((var1 & 1) == 1) {
 				var6 = var5.get1();
 				byte[] var7 = new byte[var6];
-				Class44_Sub3_Sub2 var8 = new Class44_Sub3_Sub2(var7, (byte)1);
+				Buffer var8 = new Buffer(var7, (byte)1);
 				var5.getArray(var6, var7, 0, 0);
-				this.aClass44_Sub3_Sub2Array1125[var2] = var8;
+				this.aBufferArray1125[var2] = var8;
 				var4.method534(var8, this.anInt801);
 			}
 
@@ -2792,8 +2792,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == -1) {
-					this.aClass7_1108.method194(this.aClass44_Sub3_Sub2_1135.aByteArray1373, 0, 1);
-					this.anInt1220 = this.aClass44_Sub3_Sub2_1135.aByteArray1373[0] & 255;
+					this.aClass7_1108.method194(this.aBuffer_1135.aByteArray1373, 0, 1);
+					this.anInt1220 = this.aBuffer_1135.aByteArray1373[0] & 255;
 					if (this.aClass46_944 != null) {
 						this.anInt1220 = this.anInt1220 - this.aClass46_944.method542() & 255;
 					}
@@ -2807,8 +2807,8 @@ public class Client extends Game {
 						return false;
 					}
 
-					this.aClass7_1108.method194(this.aClass44_Sub3_Sub2_1135.aByteArray1373, 0, 1);
-					this.anInt1219 = this.aClass44_Sub3_Sub2_1135.aByteArray1373[0] & 255;
+					this.aClass7_1108.method194(this.aBuffer_1135.aByteArray1373, 0, 1);
+					this.anInt1219 = this.aBuffer_1135.aByteArray1373[0] & 255;
 					--var1;
 				}
 
@@ -2817,9 +2817,9 @@ public class Client extends Game {
 						return false;
 					}
 
-					this.aClass7_1108.method194(this.aClass44_Sub3_Sub2_1135.aByteArray1373, 0, 2);
-					this.aClass44_Sub3_Sub2_1135.anInt1374 = 0;
-					this.anInt1219 = this.aClass44_Sub3_Sub2_1135.get2();
+					this.aClass7_1108.method194(this.aBuffer_1135.aByteArray1373, 0, 2);
+					this.aBuffer_1135.anInt1374 = 0;
+					this.anInt1219 = this.aBuffer_1135.get2();
 					var1 -= 2;
 				}
 
@@ -2827,20 +2827,20 @@ public class Client extends Game {
 					return false;
 				}
 
-				this.aClass44_Sub3_Sub2_1135.anInt1374 = 0;
-				this.aClass7_1108.method194(this.aClass44_Sub3_Sub2_1135.aByteArray1373, 0, this.anInt1219);
+				this.aBuffer_1135.anInt1374 = 0;
+				this.aClass7_1108.method194(this.aBuffer_1135.aByteArray1373, 0, this.anInt1219);
 				this.anInt1221 = 0;
 				this.anInt1140 = this.anInt1139;
 				this.anInt1139 = this.anInt1138;
 				this.anInt1138 = this.anInt1220;
 				if (this.anInt1220 == 207) {
-					this.anInt818 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt818 = this.aBuffer_1135.get1();
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 241) {
-					this.anInt1013 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt1013 = this.aBuffer_1135.get1();
 					this.aBoolean928 = true;
 					this.aBoolean841 = true;
 					this.anInt1220 = -1;
@@ -2849,8 +2849,8 @@ public class Client extends Game {
 
 				int var22;
 				if (this.anInt1220 == 203) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					byte var48 = this.aClass44_Sub3_Sub2_1135.get1Signed();
+					var22 = this.aBuffer_1135.get2();
+					byte var48 = this.aBuffer_1135.get1Signed();
 					this.anIntArray1172[var22] = var48;
 					if (var48 != this.anIntArray1107[var22]) {
 						this.anIntArray1107[var22] = var48;
@@ -2874,10 +2874,10 @@ public class Client extends Game {
 				int var4;
 				int var5;
 				if (this.anInt1220 == 64) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get1();
-					var3 = this.aClass44_Sub3_Sub2_1135.get1();
-					var4 = this.aClass44_Sub3_Sub2_1135.get1();
-					var5 = this.aClass44_Sub3_Sub2_1135.get1();
+					var22 = this.aBuffer_1135.get1();
+					var3 = this.aBuffer_1135.get1();
+					var4 = this.aBuffer_1135.get1();
+					var5 = this.aBuffer_1135.get1();
 					this.aBooleanArray1161[var22] = true;
 					this.anIntArray998[var22] = var3;
 					this.anIntArray904[var22] = var4;
@@ -2888,13 +2888,13 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 95 || this.anInt1220 == 176 || this.anInt1220 == 219 || this.anInt1220 == 85 || this.anInt1220 == 107 || this.anInt1220 == 52 || this.anInt1220 == 81 || this.anInt1220 == 48 || this.anInt1220 == 173 || this.anInt1220 == 138) {
-					this.method67(this.anInt1220, 220, this.aClass44_Sub3_Sub2_1135);
+					this.method67(this.anInt1220, 220, this.aBuffer_1135);
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 211) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					this.method28(var22);
 					if (this.anInt1216 != -1) {
 						this.anInt1216 = -1;
@@ -2919,7 +2919,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 192) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					Class5.aClass5Array103[var22].anInt152 = 3;
 					Class5.aClass5Array103[var22].anInt153 = (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1662[4] << 18) + (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1662[0] << 24) + (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1661[0] << 12) + aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1661[11] + (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1661[8] << 6);
 					this.anInt1220 = -1;
@@ -2936,7 +2936,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 130) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2Signed();
+					var22 = this.aBuffer_1135.get2Signed();
 					this.anInt1110 = var22;
 					this.aBoolean1109 = true;
 					this.anInt1220 = -1;
@@ -2944,16 +2944,16 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 167) {
-					this.method111(this.anInt1219, (byte)-44, this.aClass44_Sub3_Sub2_1135);
+					this.method111(this.anInt1219, (byte)-44, this.aBuffer_1135);
 					this.aBoolean1249 = false;
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 34) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get1();
-					var4 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get1();
+					var4 = this.aBuffer_1135.get2();
 					if (this.aBoolean1080 && !isLowMemory && this.anInt929 < 50) {
 						this.anIntArray1048[this.anInt929] = var22;
 						this.anIntArray804[this.anInt929] = var3;
@@ -2966,11 +2966,11 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 91) {
-					this.anInt970 = this.aClass44_Sub3_Sub2_1135.get4();
-					this.anInt1010 = this.aClass44_Sub3_Sub2_1135.get2();
-					this.anInt1029 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt887 = this.aClass44_Sub3_Sub2_1135.get2();
-					this.anInt1100 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt970 = this.aBuffer_1135.get4();
+					this.anInt1010 = this.aBuffer_1135.get2();
+					this.anInt1029 = this.aBuffer_1135.get1();
+					this.anInt887 = this.aBuffer_1135.get2();
+					this.anInt1100 = this.aBuffer_1135.get1();
 					if (this.anInt970 != 0 && this.anInt1037 == -1) {
 						signlink.dnslookup(Class48.method550((byte)94, this.anInt970));
 						this.method45();
@@ -3002,8 +3002,8 @@ public class Client extends Game {
 
 				Class5 var39;
 				if (this.anInt1220 == 134) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2Signed();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2Signed();
 					var39 = Class5.aClass5Array103[var22];
 					var39.anInt156 = var3;
 					if (var3 == -1) {
@@ -3016,9 +3016,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 156) {
-					this.anInt1200 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt1200 = this.aBuffer_1135.get1();
 					if (this.anInt1200 == 1) {
-						this.anInt920 = this.aClass44_Sub3_Sub2_1135.get2();
+						this.anInt920 = this.aBuffer_1135.get2();
 					}
 
 					if (this.anInt1200 >= 2 && this.anInt1200 <= 6) {
@@ -3048,13 +3048,13 @@ public class Client extends Game {
 						}
 
 						this.anInt1200 = 2;
-						this.anInt1162 = this.aClass44_Sub3_Sub2_1135.get2();
-						this.anInt1163 = this.aClass44_Sub3_Sub2_1135.get2();
-						this.anInt1164 = this.aClass44_Sub3_Sub2_1135.get1();
+						this.anInt1162 = this.aBuffer_1135.get2();
+						this.anInt1163 = this.aBuffer_1135.get2();
+						this.anInt1164 = this.aBuffer_1135.get1();
 					}
 
 					if (this.anInt1200 == 10) {
-						this.anInt1181 = this.aClass44_Sub3_Sub2_1135.get2();
+						this.anInt1181 = this.aBuffer_1135.get2();
 					}
 
 					this.anInt1220 = -1;
@@ -3066,7 +3066,7 @@ public class Client extends Game {
 						this.aBoolean928 = true;
 					}
 
-					this.anInt921 = this.aClass44_Sub3_Sub2_1135.get2Signed();
+					this.anInt921 = this.aBuffer_1135.get2Signed();
 					this.anInt1220 = -1;
 					return true;
 				}
@@ -3075,7 +3075,7 @@ public class Client extends Game {
 					this.anInt961 = this.anInt1219 / 8;
 
 					for (var22 = 0; var22 < this.anInt961; ++var22) {
-						this.aLongArray817[var22] = this.aClass44_Sub3_Sub2_1135.get8(0);
+						this.aLongArray817[var22] = this.aBuffer_1135.get8(0);
 					}
 
 					this.anInt1220 = -1;
@@ -3083,8 +3083,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 142) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					Class5.aClass5Array103[var22].anInt152 = 2;
 					Class5.aClass5Array103[var22].anInt153 = var3;
 					this.anInt1220 = -1;
@@ -3092,8 +3092,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 215) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get1();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get1();
 					if (var22 == 65535) {
 						var22 = -1;
 					}
@@ -3106,8 +3106,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 153) {
-					this.anInt918 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt919 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt918 = this.aBuffer_1135.get1();
+					this.anInt919 = this.aBuffer_1135.get1();
 
 					for (var22 = this.anInt918; var22 < this.anInt918 + 8; ++var22) {
 						for (var3 = this.anInt919; var3 < this.anInt919 + 8; ++var3) {
@@ -3129,9 +3129,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 114) {
-					this.anInt967 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt972 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt805 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt967 = this.aBuffer_1135.get1();
+					this.anInt972 = this.aBuffer_1135.get1();
+					this.anInt805 = this.aBuffer_1135.get1();
 					this.aBoolean1141 = true;
 					this.aBoolean1109 = true;
 					this.anInt1220 = -1;
@@ -3139,8 +3139,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 158) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					if (this.anInt1011 != -1) {
 						this.anInt1011 = -1;
 						this.aBoolean1109 = true;
@@ -3161,7 +3161,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 240) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2Signed();
+					var22 = this.aBuffer_1135.get2Signed();
 					if (var22 >= 0) {
 						this.method28(var22);
 					}
@@ -3172,12 +3172,12 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 195) {
-					this.anInt918 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt919 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt918 = this.aBuffer_1135.get1();
+					this.anInt919 = this.aBuffer_1135.get1();
 
-					while (this.aClass44_Sub3_Sub2_1135.anInt1374 < this.anInt1219) {
-						var22 = this.aClass44_Sub3_Sub2_1135.get1();
-						this.method67(var22, 220, this.aClass44_Sub3_Sub2_1135);
+					while (this.aBuffer_1135.anInt1374 < this.anInt1219) {
+						var22 = this.aBuffer_1135.get1();
+						this.method67(var22, 220, this.aBuffer_1135);
 					}
 
 					this.anInt1220 = -1;
@@ -3188,7 +3188,7 @@ public class Client extends Game {
 				int var7;
 				String var37;
 				if (this.anInt1220 == 161) {
-					String var43 = this.aClass44_Sub3_Sub2_1135.getString();
+					String var43 = this.aBuffer_1135.getString();
 					long var44;
 					if (var43.endsWith(":tradereq:")) {
 						var37 = var43.substring(0, var43.indexOf(":"));
@@ -3240,7 +3240,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 16) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					this.method28(var22);
 					if (this.anInt1011 != -1) {
 						this.anInt1011 = -1;
@@ -3262,8 +3262,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 44) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var37 = this.aClass44_Sub3_Sub2_1135.getString();
+					var22 = this.aBuffer_1135.get2();
+					var37 = this.aBuffer_1135.getString();
 					Class5.aClass5Array103[var22].aString144 = var37;
 					if (Class5.aClass5Array103[var22].anInt109 == this.anIntArray954[this.anInt1013]) {
 						this.aBoolean928 = true;
@@ -3274,8 +3274,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 245) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get4();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get4();
 					this.anIntArray1172[var22] = var3;
 					if (var3 != this.anIntArray1107[var22]) {
 						this.anIntArray1107[var22] = var3;
@@ -3291,7 +3291,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 166) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					this.method28(var22);
 					if (this.anInt1216 != -1) {
 						this.anInt1216 = -1;
@@ -3308,9 +3308,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 28) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
-					var4 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
+					var4 = this.aBuffer_1135.get2();
 					Class14 var45 = Class14.method220(var3);
 					Class5.aClass5Array103[var22].anInt152 = 4;
 					Class5.aClass5Array103[var22].anInt153 = var3;
@@ -3322,8 +3322,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 54) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					var39 = Class5.aClass5Array103[var22];
 					if (var39 != null && var39.anInt110 == 0) {
 						if (var3 < 0) {
@@ -3367,13 +3367,13 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 194) {
-					this.anInt1031 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt1031 = this.aBuffer_1135.get1();
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 90) {
-					this.anInt1173 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt1173 = this.aBuffer_1135.get1();
 					if (this.anInt1173 == this.anInt1013) {
 						if (this.anInt1173 == 3) {
 							this.anInt1013 = 1;
@@ -3389,7 +3389,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 89) {
-					this.anInt803 = this.aClass44_Sub3_Sub2_1135.get2() * 30;
+					this.anInt803 = this.aBuffer_1135.get2() * 30;
 					this.anInt1220 = -1;
 					return true;
 				}
@@ -3412,7 +3412,7 @@ public class Client extends Game {
 						this.aBoolean928 = true;
 					}
 
-					this.anInt840 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt840 = this.aBuffer_1135.get1();
 					this.anInt1220 = -1;
 					return true;
 				}
@@ -3420,8 +3420,8 @@ public class Client extends Game {
 				int var8;
 				int var27;
 				if (this.anInt1220 == 231) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					if (var22 == this.anInt922 && var3 == this.anInt923 && this.loadingState == 2) {
 						this.anInt1220 = -1;
 						return true;
@@ -3555,7 +3555,7 @@ public class Client extends Game {
 						var46.anInt1312 -= var5;
 						var46.anInt1313 -= var27;
 						if (var46.anInt1312 < 0 || var46.anInt1313 < 0 || var46.anInt1312 >= 104 || var46.anInt1313 >= 104) {
-							var46.unlink();
+							var46.remove();
 						}
 					}
 
@@ -3594,8 +3594,8 @@ public class Client extends Game {
 
 				long var21;
 				if (this.anInt1220 == 247) {
-					var21 = this.aClass44_Sub3_Sub2_1135.get8(0);
-					var4 = this.aClass44_Sub3_Sub2_1135.get1();
+					var21 = this.aBuffer_1135.get8(0);
+					var4 = this.aBuffer_1135.get1();
 					String var30 = Class48.method551(131, Class48.method548(0, var21));
 
 					for (var27 = 0; var27 < this.anInt1115; ++var27) {
@@ -3652,8 +3652,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 10) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					boolean var26 = this.aClass44_Sub3_Sub2_1135.get1() == 1;
+					var22 = this.aBuffer_1135.get2();
+					boolean var26 = this.aBuffer_1135.get1() == 1;
 					Class5.aClass5Array103[var22].aBoolean124 = var26;
 					this.anInt1220 = -1;
 					return true;
@@ -3661,9 +3661,9 @@ public class Client extends Game {
 
 				if (this.anInt1220 == 105) {
 					this.aBoolean928 = true;
-					var22 = this.aClass44_Sub3_Sub2_1135.get1();
-					var3 = this.aClass44_Sub3_Sub2_1135.get4();
-					var4 = this.aClass44_Sub3_Sub2_1135.get1();
+					var22 = this.aBuffer_1135.get1();
+					var3 = this.aBuffer_1135.get4();
+					var4 = this.aBuffer_1135.get1();
 					this.anIntArray1253[var22] = var3;
 					this.anIntArray884[var22] = var4;
 					this.anIntArray1153[var22] = 1;
@@ -3679,7 +3679,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 23) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					if (var22 == 65535) {
 						var22 = -1;
 					}
@@ -3696,8 +3696,8 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 15) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					if (this.aBoolean1069 && !isLowMemory) {
 						this.anInt1183 = var22;
 						this.aBoolean1184 = false;
@@ -3711,11 +3711,11 @@ public class Client extends Game {
 
 				if (this.anInt1220 == 200) {
 					this.aBoolean1008 = true;
-					this.anInt869 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt870 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt871 = this.aClass44_Sub3_Sub2_1135.get2();
-					this.anInt872 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt873 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt869 = this.aBuffer_1135.get1();
+					this.anInt870 = this.aBuffer_1135.get1();
+					this.anInt871 = this.aBuffer_1135.get2();
+					this.anInt872 = this.aBuffer_1135.get1();
+					this.anInt873 = this.aBuffer_1135.get1();
 					if (this.anInt873 >= 100) {
 						this.anInt820 = this.anInt869 * 128 + 64;
 						this.anInt822 = this.anInt870 * 128 + 64;
@@ -3729,15 +3729,15 @@ public class Client extends Game {
 				Class5 var23;
 				if (this.anInt1220 == 172) {
 					this.aBoolean928 = true;
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					var23 = Class5.aClass5Array103[var22];
 
-					while (this.aClass44_Sub3_Sub2_1135.anInt1374 < this.anInt1219) {
-						var4 = this.aClass44_Sub3_Sub2_1135.get1();
-						var5 = this.aClass44_Sub3_Sub2_1135.get2();
-						var27 = this.aClass44_Sub3_Sub2_1135.get1();
+					while (this.aBuffer_1135.anInt1374 < this.anInt1219) {
+						var4 = this.aBuffer_1135.get1();
+						var5 = this.aBuffer_1135.get2();
+						var27 = this.aBuffer_1135.get1();
 						if (var27 == 255) {
-							var27 = this.aClass44_Sub3_Sub2_1135.get4();
+							var27 = this.aBuffer_1135.get4();
 						}
 
 						if (var4 >= 0 && var4 < var23.anIntArray104.length) {
@@ -3751,9 +3751,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 17) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get1();
-					var3 = this.aClass44_Sub3_Sub2_1135.get1();
-					String var25 = this.aClass44_Sub3_Sub2_1135.getString();
+					var22 = this.aBuffer_1135.get1();
+					var3 = this.aBuffer_1135.get1();
+					String var25 = this.aBuffer_1135.getString();
 					if (var22 >= 1 && var22 <= 5) {
 						if (var25.equalsIgnoreCase("null")) {
 							var25 = null;
@@ -3768,23 +3768,23 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 32) {
-					this.anInt918 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt919 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt918 = this.aBuffer_1135.get1();
+					this.anInt919 = this.aBuffer_1135.get1();
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 106) {
 					this.aBoolean928 = true;
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					var23 = Class5.aClass5Array103[var22];
-					var4 = this.aClass44_Sub3_Sub2_1135.get1();
+					var4 = this.aBuffer_1135.get1();
 
 					for (var5 = 0; var5 < var4; ++var5) {
-						var23.anIntArray104[var5] = this.aClass44_Sub3_Sub2_1135.get2();
-						var27 = this.aClass44_Sub3_Sub2_1135.get1();
+						var23.anIntArray104[var5] = this.aBuffer_1135.get2();
+						var27 = this.aBuffer_1135.get1();
 						if (var27 == 255) {
-							var27 = this.aClass44_Sub3_Sub2_1135.get4();
+							var27 = this.aBuffer_1135.get4();
 						}
 
 						var23.anIntArray105[var5] = var27;
@@ -3800,15 +3800,15 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 133) {
-					this.anInt947 = this.aClass44_Sub3_Sub2_1135.get2();
-					this.anInt808 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt947 = this.aBuffer_1135.get2();
+					this.anInt808 = this.aBuffer_1135.get1();
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 129) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					Class5.aClass5Array103[var22].anInt152 = 1;
 					Class5.aClass5Array103[var22].anInt153 = var3;
 					this.anInt1220 = -1;
@@ -3817,11 +3817,11 @@ public class Client extends Game {
 
 				if (this.anInt1220 == 233) {
 					this.aBoolean1008 = true;
-					this.anInt909 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt910 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt911 = this.aClass44_Sub3_Sub2_1135.get2();
-					this.anInt912 = this.aClass44_Sub3_Sub2_1135.get1();
-					this.anInt913 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt909 = this.aBuffer_1135.get1();
+					this.anInt910 = this.aBuffer_1135.get1();
+					this.anInt911 = this.aBuffer_1135.get2();
+					this.anInt912 = this.aBuffer_1135.get1();
+					this.anInt913 = this.aBuffer_1135.get1();
 					if (this.anInt913 >= 100) {
 						var22 = this.anInt909 * 128 + 64;
 						var3 = this.anInt910 * 128 + 64;
@@ -3846,7 +3846,7 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 227) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
 					var23 = Class5.aClass5Array103[var22];
 
 					for (var4 = 0; var4 < var23.anIntArray104.length; ++var4) {
@@ -3859,9 +3859,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 77) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2Signed();
-					var4 = this.aClass44_Sub3_Sub2_1135.get2Signed();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2Signed();
+					var4 = this.aBuffer_1135.get2Signed();
 					Class5 var24 = Class5.aClass5Array103[var22];
 					var24.anInt116 = var3;
 					var24.anInt117 = var4;
@@ -3870,21 +3870,21 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 185) {
-					this.anInt1116 = this.aClass44_Sub3_Sub2_1135.get1();
+					this.anInt1116 = this.aBuffer_1135.get1();
 					this.aBoolean928 = true;
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 197) {
-					this.method143(0, this.anInt1219, this.aClass44_Sub3_Sub2_1135);
+					this.method143(0, this.anInt1219, this.aBuffer_1135);
 					this.anInt1220 = -1;
 					return true;
 				}
 
 				if (this.anInt1220 == 183) {
-					var22 = this.aClass44_Sub3_Sub2_1135.get2();
-					var3 = this.aClass44_Sub3_Sub2_1135.get2();
+					var22 = this.aBuffer_1135.get2();
+					var3 = this.aBuffer_1135.get2();
 					var4 = var3 >> 10 & 31;
 					var5 = var3 >> 5 & 31;
 					var27 = var3 & 31;
@@ -3894,9 +3894,9 @@ public class Client extends Game {
 				}
 
 				if (this.anInt1220 == 235) {
-					var21 = this.aClass44_Sub3_Sub2_1135.get8(0);
-					var4 = this.aClass44_Sub3_Sub2_1135.get4();
-					var5 = this.aClass44_Sub3_Sub2_1135.get1();
+					var21 = this.aBuffer_1135.get8(0);
+					var4 = this.aBuffer_1135.get4();
+					var5 = this.aBuffer_1135.get1();
 					var6 = false;
 
 					for (var7 = 0; var7 < 100; ++var7) {
@@ -3919,7 +3919,7 @@ public class Client extends Game {
 						try {
 							this.anIntArray1068[this.anInt1186] = var4;
 							this.anInt1186 = (this.anInt1186 + 1) % 100;
-							String var28 = Class49.method554((byte)8, this.anInt1219 - 13, this.aClass44_Sub3_Sub2_1135);
+							String var28 = Class49.method554((byte)8, this.anInt1219 - 13, this.aBuffer_1135);
 							var28 = Class41.method352((byte)3, var28);
 							if (var5 != 2 && var5 != 3) {
 								if (var5 == 1) {
@@ -3947,7 +3947,7 @@ public class Client extends Game {
 				StringBuilder var2 = new StringBuilder("T2 - " + this.anInt1220 + "," + this.anInt1139 + "," + this.anInt1140 + " - " + this.anInt1219 + "," + (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0] + this.anInt1055) + "," + (aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0] + this.anInt1056) + " - ");
 
 				for (var3 = 0; var3 < this.anInt1219 && var3 < 50; ++var3) {
-					var2.append(this.aClass44_Sub3_Sub2_1135.aByteArray1373[var3]).append(",");
+					var2.append(this.aBuffer_1135.aByteArray1373[var3]).append(",");
 				}
 
 				signlink.reporterror(var2.toString());
@@ -4066,7 +4066,7 @@ public class Client extends Game {
 
 	}
 
-	public void method99(int var1, byte var2, Class44_Sub3_Sub2 var3) {
+	public void method99(int var1, byte var2, Buffer var3) {
 		for (int var4 = 0; var4 < this.anInt1123; ++var4) {
 			int var5 = this.anIntArray1124[var4];
 			Class44_Sub3_Sub4_Sub6_Sub2 var6 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[var5];
@@ -4171,7 +4171,7 @@ public class Client extends Game {
 
 	}
 
-	public void method75(Class44_Sub3_Sub2 var1, int var2, int var3) {
+	public void method75(Buffer var1, int var2, int var3) {
 		for (int var4 = 0; var4 < this.anInt1123; ++var4) {
 			int var5 = this.anIntArray1124[var4];
 			Class44_Sub3_Sub4_Sub6_Sub1 var6 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var5];
@@ -4453,8 +4453,8 @@ public class Client extends Game {
 		if (this.aBoolean841) {
 			if (this.anInt1173 != -1 && this.anInt1173 == this.anInt1013) {
 				this.anInt1173 = -1;
-				this.aClass44_Sub3_Sub2_843.putOpcode(94);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt1013);
+				this.aBuffer_843.putOpcode(94);
+				this.aBuffer_843.put1(this.anInt1013);
 			}
 
 			this.aBoolean841 = false;
@@ -4675,12 +4675,12 @@ public class Client extends Game {
 				if (!aBoolean1167) {
 					this.aClass10_1160.anInt261 = 0;
 				} else if (super.anInt28 != 0 || this.aClass10_1160.anInt261 >= 40) {
-					this.aClass44_Sub3_Sub2_843.putOpcode(222);
-					this.aClass44_Sub3_Sub2_843.put1(0);
-					var3 = this.aClass44_Sub3_Sub2_843.anInt1374;
+					this.aBuffer_843.putOpcode(222);
+					this.aBuffer_843.put1(0);
+					var3 = this.aBuffer_843.anInt1374;
 					var4 = 0;
 
-					for (var5 = 0; var5 < this.aClass10_1160.anInt261 && var3 - this.aClass44_Sub3_Sub2_843.anInt1374 < 240; ++var5) {
+					for (var5 = 0; var5 < this.aClass10_1160.anInt261 && var3 - this.aBuffer_843.anInt1374 < 240; ++var5) {
 						++var4;
 						var6 = this.aClass10_1160.anIntArray263[var5];
 						if (var6 < 0) {
@@ -4715,19 +4715,19 @@ public class Client extends Game {
 							if (this.anInt983 < 8 && var9 >= -32 && var9 <= 31 && var10 >= -32 && var10 <= 31) {
 								var9 += 32;
 								var10 += 32;
-								this.aClass44_Sub3_Sub2_843.put2(var10 + (var9 << 6) + (this.anInt983 << 12));
+								this.aBuffer_843.put2(var10 + (var9 << 6) + (this.anInt983 << 12));
 								this.anInt983 = 0;
 							} else if (this.anInt983 < 8) {
-								this.aClass44_Sub3_Sub2_843.put3(var8 + (this.anInt983 << 19) + 8388608);
+								this.aBuffer_843.put3(var8 + (this.anInt983 << 19) + 8388608);
 								this.anInt983 = 0;
 							} else {
-								this.aClass44_Sub3_Sub2_843.put4(var8 + (this.anInt983 << 19) + -1073741824);
+								this.aBuffer_843.put4(var8 + (this.anInt983 << 19) + -1073741824);
 								this.anInt983 = 0;
 							}
 						}
 					}
 
-					this.aClass44_Sub3_Sub2_843.putSize(this.aClass44_Sub3_Sub2_843.anInt1374 - var3, this.anInt797);
+					this.aBuffer_843.putSize(this.aBuffer_843.anInt1374 - var3, this.anInt797);
 					if (var4 >= this.aClass10_1160.anInt261) {
 						this.aClass10_1160.anInt261 = 0;
 					} else {
@@ -4770,8 +4770,8 @@ public class Client extends Game {
 				}
 
 				var8 = (int)var15;
-				this.aClass44_Sub3_Sub2_843.putOpcode(20);
-				this.aClass44_Sub3_Sub2_843.put4((var8 << 20) + var6 + (var19 << 19));
+				this.aBuffer_843.putOpcode(20);
+				this.aBuffer_843.put4((var8 << 20) + var6 + (var19 << 19));
 			}
 
 			if (this.anInt1023 > 0) {
@@ -4785,21 +4785,21 @@ public class Client extends Game {
 			if (this.aBoolean1024 && this.anInt1023 <= 0) {
 				this.anInt1023 = 20;
 				this.aBoolean1024 = false;
-				this.aClass44_Sub3_Sub2_843.putOpcode(53);
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt1205);
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt1206);
+				this.aBuffer_843.putOpcode(53);
+				this.aBuffer_843.put2(this.anInt1205);
+				this.aBuffer_843.put2(this.anInt1206);
 			}
 
 			if (super.aBoolean19 && !this.aBoolean945) {
 				this.aBoolean945 = true;
-				this.aClass44_Sub3_Sub2_843.putOpcode(73);
-				this.aClass44_Sub3_Sub2_843.put1(1);
+				this.aBuffer_843.putOpcode(73);
+				this.aBuffer_843.put1(1);
 			}
 
 			if (!super.aBoolean19 && this.aBoolean945) {
 				this.aBoolean945 = false;
-				this.aClass44_Sub3_Sub2_843.putOpcode(73);
-				this.aClass44_Sub3_Sub2_843.put1(0);
+				this.aBuffer_843.putOpcode(73);
+				this.aBuffer_843.put1(0);
 			}
 
 			this.method42(503);
@@ -4890,11 +4890,11 @@ public class Client extends Game {
 								var17.method182(this.anInt894, this.anInt962, 865);
 							}
 
-							this.aClass44_Sub3_Sub2_843.putOpcode(93);
-							this.aClass44_Sub3_Sub2_843.put2(this.anInt893);
-							this.aClass44_Sub3_Sub2_843.put2(this.anInt894);
-							this.aClass44_Sub3_Sub2_843.put2(this.anInt962);
-							this.aClass44_Sub3_Sub2_843.put1(var16);
+							this.aBuffer_843.putOpcode(93);
+							this.aBuffer_843.put2(this.anInt893);
+							this.aBuffer_843.put2(this.anInt894);
+							this.aBuffer_843.put2(this.anInt962);
+							this.aBuffer_843.put1(var16);
 						}
 					} else if ((this.anInt1049 == 1 || this.method65(this.anInt980 - 1)) && this.anInt980 > 2) {
 						this.method95(0);
@@ -4910,7 +4910,7 @@ public class Client extends Game {
 			++anInt1227;
 			if (anInt1227 > 62) {
 				anInt1227 = 0;
-				this.aClass44_Sub3_Sub2_843.putOpcode(89);
+				this.aBuffer_843.putOpcode(89);
 			}
 
 			if (Class36.anInt627 != -1) {
@@ -4957,12 +4957,12 @@ public class Client extends Game {
 			if (super.mouseIdleMs > 4500) {
 				this.anInt1223 = 250;
 				super.mouseIdleMs -= 500;
-				this.aClass44_Sub3_Sub2_843.putOpcode(209);
+				this.aBuffer_843.putOpcode(209);
 			}
 
 			++this.anInt837;
 			if (var1 != 5) {
-				this.anInt1220 = this.aClass44_Sub3_Sub2_1135.get1();
+				this.anInt1220 = this.aBuffer_1135.get1();
 			}
 
 			if (this.anInt837 > 500) {
@@ -5036,13 +5036,13 @@ public class Client extends Game {
 
 			++this.anInt1222;
 			if (this.anInt1222 > 50) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(120);
+				this.aBuffer_843.putOpcode(120);
 			}
 
 			try {
-				if (this.aClass7_1108 != null && this.aClass44_Sub3_Sub2_843.anInt1374 > 0) {
-					this.aClass7_1108.method195(this.aClass44_Sub3_Sub2_843.anInt1374, -2584, this.aClass44_Sub3_Sub2_843.aByteArray1373, 0);
-					this.aClass44_Sub3_Sub2_843.anInt1374 = 0;
+				if (this.aClass7_1108 != null && this.aBuffer_843.anInt1374 > 0) {
+					this.aClass7_1108.method195(this.aBuffer_843.anInt1374, -2584, this.aBuffer_843.aByteArray1373, 0);
+					this.aBuffer_843.anInt1374 = 0;
 					this.anInt1222 = 0;
 				}
 			} catch (IOException var12) {
@@ -5097,7 +5097,7 @@ public class Client extends Game {
 				this.worldController.method279((byte)4, 0);
 			}
 
-			this.aClass44_Sub3_Sub2_843.putOpcode(120);
+			this.aBuffer_843.putOpcode(120);
 
 			byte[] var6;
 			for (var3 = 0; var3 < var2; ++var3) {
@@ -5118,7 +5118,7 @@ public class Client extends Game {
 				}
 			}
 
-			this.aClass44_Sub3_Sub2_843.putOpcode(120);
+			this.aBuffer_843.putOpcode(120);
 
 			for (var3 = 0; var3 < var2; ++var3) {
 				byte[] var11 = this.aByteArrayArray953[var3];
@@ -5129,10 +5129,10 @@ public class Client extends Game {
 				}
 			}
 
-			this.aClass44_Sub3_Sub2_843.putOpcode(120);
+			this.aBuffer_843.putOpcode(120);
 			var10.method163(this.collisionMap, false, this.worldController);
 			this.componentImageProducer.initDrawingArea();
-			this.aClass44_Sub3_Sub2_843.putOpcode(120);
+			this.aBuffer_843.putOpcode(120);
 
 			for (var3 = 0; var3 < 104; ++var3) {
 				for (var4 = 0; var4 < 104; ++var4) {
@@ -5217,7 +5217,7 @@ public class Client extends Game {
 					this.worldController.method289((int)var2.aDouble1498, var2, (int)var2.aDouble1496, -1, (int)var2.aDouble1497, (byte)1, 60, var2.anInt1504, this.clientPlane, false);
 				}
 			} else {
-				var2.unlink();
+				var2.remove();
 			}
 		}
 
@@ -5225,32 +5225,32 @@ public class Client extends Game {
 		this.aBoolean905 &= var1;
 		if (anInt997 > 1174) {
 			anInt997 = 0;
-			this.aClass44_Sub3_Sub2_843.putOpcode(12);
-			this.aClass44_Sub3_Sub2_843.put1(0);
-			int var5 = this.aClass44_Sub3_Sub2_843.anInt1374;
+			this.aBuffer_843.putOpcode(12);
+			this.aBuffer_843.put1(0);
+			int var5 = this.aBuffer_843.anInt1374;
 			if ((int)(Math.random() * 2.0D) == 0) {
-				this.aClass44_Sub3_Sub2_843.put2(11499);
+				this.aBuffer_843.put2(11499);
 			}
 
-			this.aClass44_Sub3_Sub2_843.put2(10548);
+			this.aBuffer_843.put2(10548);
 			if ((int)(Math.random() * 2.0D) == 0) {
-				this.aClass44_Sub3_Sub2_843.put1(139);
+				this.aBuffer_843.put1(139);
 			}
 
 			if ((int)(Math.random() * 2.0D) == 0) {
-				this.aClass44_Sub3_Sub2_843.put1(94);
+				this.aBuffer_843.put1(94);
 			}
 
-			this.aClass44_Sub3_Sub2_843.put2(51693);
-			this.aClass44_Sub3_Sub2_843.put1(16);
-			this.aClass44_Sub3_Sub2_843.put2(15036);
+			this.aBuffer_843.put2(51693);
+			this.aBuffer_843.put1(16);
+			this.aBuffer_843.put2(15036);
 			if ((int)(Math.random() * 2.0D) == 0) {
-				this.aClass44_Sub3_Sub2_843.put1(65);
+				this.aBuffer_843.put1(65);
 			}
 
-			this.aClass44_Sub3_Sub2_843.put1((int)(Math.random() * 256.0D));
-			this.aClass44_Sub3_Sub2_843.put2(22990);
-			this.aClass44_Sub3_Sub2_843.putSize(this.aClass44_Sub3_Sub2_843.anInt1374 - var5, this.anInt797);
+			this.aBuffer_843.put1((int)(Math.random() * 256.0D));
+			this.aBuffer_843.put2(22990);
+			this.aBuffer_843.putSize(this.aBuffer_843.anInt1374 - var5, this.anInt797);
 		}
 
 	}
@@ -5430,7 +5430,7 @@ public class Client extends Game {
 			}
 
 			if (var1.anInt1387 == 93 && this.aClass43_Sub1_1015.method389(var1.anInt1388)) {
-				Class3.method160((byte)-47, new Class44_Sub3_Sub2(var1.aByteArray1389, (byte)1), this.aClass43_Sub1_1015);
+				Class3.method160((byte)-47, new Buffer(var1.aByteArray1389, (byte)1), this.aClass43_Sub1_1015);
 			}
 		}
 	}
@@ -5445,13 +5445,13 @@ public class Client extends Game {
 				if (tick >= var1.anInt1590) {
 					var1.method528(0, this.anInt975);
 					if (var1.aBoolean1597) {
-						var1.unlink();
+						var1.remove();
 					} else {
 						this.worldController.method289(var1.anInt1594, var1, var1.anInt1592, -1, var1.anInt1593, (byte)1, 60, 0, var1.anInt1591, false);
 					}
 				}
 			} else {
-				var1.unlink();
+				var1.remove();
 			}
 		}
 
@@ -5793,7 +5793,7 @@ public class Client extends Game {
 				if (var5 == 0) {
 					boolean var26 = false;
 				} else {
-					this.aClass44_Sub3_Sub2_843.put1(141);
+					this.aBuffer_843.put1(141);
 				}
 
 			}
@@ -6269,11 +6269,11 @@ public class Client extends Game {
 					this.anInt1143 = super.anInt30;
 					this.anInt1145 = 2;
 					this.anInt1144 = 0;
-					this.aClass44_Sub3_Sub2_843.putOpcode(150);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt814);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt812);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt813);
+					this.aBuffer_843.putOpcode(150);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(this.anInt814);
+					this.aBuffer_843.put2(this.anInt812);
+					this.aBuffer_843.put2(this.anInt813);
 				}
 			}
 
@@ -6305,19 +6305,19 @@ public class Client extends Game {
 					this.anInt1143 = super.anInt30;
 					this.anInt1145 = 2;
 					this.anInt1144 = 0;
-					this.aClass44_Sub3_Sub2_843.putOpcode(36);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt814);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt812);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt813);
+					this.aBuffer_843.putOpcode(36);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(this.anInt814);
+					this.aBuffer_843.put2(this.anInt812);
+					this.aBuffer_843.put2(this.anInt813);
 				}
 			}
 
 			if (var5 == 743) {
 				++anInt969;
 				if (anInt969 >= 124) {
-					this.aClass44_Sub3_Sub2_843.putOpcode(201);
-					this.aClass44_Sub3_Sub2_843.put2(37954);
+					this.aBuffer_843.putOpcode(201);
+					this.aBuffer_843.put2(37954);
 				}
 
 				this.method51(var4, 74, var3, 187, var6);
@@ -6334,8 +6334,8 @@ public class Client extends Game {
 			if (var5 == 721) {
 				anInt1232 += var4;
 				if (anInt1232 >= 139) {
-					this.aClass44_Sub3_Sub2_843.putOpcode(219);
-					this.aClass44_Sub3_Sub2_843.put4(0);
+					this.aBuffer_843.putOpcode(219);
+					this.aBuffer_843.put4(0);
 				}
 
 				this.method51(var4, 74, var3, 103, var6);
@@ -6366,11 +6366,11 @@ public class Client extends Game {
 			}
 
 			if (var5 == 563) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(135);
-				this.aClass44_Sub3_Sub2_843.put2(var6);
-				this.aClass44_Sub3_Sub2_843.put2(var3);
-				this.aClass44_Sub3_Sub2_843.put2(var4);
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt1197);
+				this.aBuffer_843.putOpcode(135);
+				this.aBuffer_843.put2(var6);
+				this.aBuffer_843.put2(var3);
+				this.aBuffer_843.put2(var4);
+				this.aBuffer_843.put2(this.anInt1197);
 				this.anInt847 = 0;
 				this.anInt848 = var4;
 				this.anInt849 = var3;
@@ -6386,8 +6386,8 @@ public class Client extends Game {
 
 			Class5 var16;
 			if (var5 == 435) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(9);
-				this.aClass44_Sub3_Sub2_843.put2(var4);
+				this.aBuffer_843.putOpcode(9);
+				this.aBuffer_843.put2(var4);
 				var16 = Class5.aClass5Array103[var4];
 				if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
 					var8 = var16.anIntArrayArray118[0][1];
@@ -6398,9 +6398,9 @@ public class Client extends Game {
 			}
 
 			if (var5 == 810 && this.method51(var4, 74, var3, 60, var6)) {
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt814);
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt812);
-				this.aClass44_Sub3_Sub2_843.put2(this.anInt813);
+				this.aBuffer_843.put2(this.anInt814);
+				this.aBuffer_843.put2(this.anInt812);
+				this.aBuffer_843.put2(this.anInt813);
 			}
 
 			if (var5 == 102) {
@@ -6439,36 +6439,36 @@ public class Client extends Game {
 						if (var5 == 387) {
 							anInt1052 += var6;
 							if (anInt1052 >= 66) {
-								this.aClass44_Sub3_Sub2_843.putOpcode(235);
-								this.aClass44_Sub3_Sub2_843.put1(154);
+								this.aBuffer_843.putOpcode(235);
+								this.aBuffer_843.put1(154);
 							}
 
-							this.aClass44_Sub3_Sub2_843.putOpcode(98);
+							this.aBuffer_843.putOpcode(98);
 						}
 
 						if (var5 == 185) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(174);
+							this.aBuffer_843.putOpcode(174);
 						}
 
 						if (var5 == 639) {
 							++anInt900;
 							if (anInt900 >= 52) {
-								this.aClass44_Sub3_Sub2_843.putOpcode(80);
-								this.aClass44_Sub3_Sub2_843.put1(131);
+								this.aBuffer_843.putOpcode(80);
+								this.aBuffer_843.put1(131);
 							}
 
-							this.aClass44_Sub3_Sub2_843.putOpcode(109);
+							this.aBuffer_843.putOpcode(109);
 						}
 
 						if (var5 == 27) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(196);
+							this.aBuffer_843.putOpcode(196);
 						}
 
 						if (var5 == 499) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(166);
+							this.aBuffer_843.putOpcode(166);
 						}
 
-						this.aClass44_Sub3_Sub2_843.put2(var6);
+						this.aBuffer_843.put2(var6);
 					}
 				}
 
@@ -6481,44 +6481,44 @@ public class Client extends Game {
 						this.anInt1145 = 2;
 						this.anInt1144 = 0;
 						if (var5 == 309) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(223);
+							this.aBuffer_843.putOpcode(223);
 						}
 
 						if (var5 == 242) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(236);
+							this.aBuffer_843.putOpcode(236);
 						}
 
 						if (var5 == 852) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(147);
+							this.aBuffer_843.putOpcode(147);
 						}
 
 						if (var5 == 793) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(189);
+							this.aBuffer_843.putOpcode(189);
 						}
 
 						if (var5 == 209) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(233);
+							this.aBuffer_843.putOpcode(233);
 						}
 
-						this.aClass44_Sub3_Sub2_843.put2(var6);
+						this.aBuffer_843.put2(var6);
 					}
 				}
 
 				if (var5 == 582 || var5 == 113 || var5 == 555 || var5 == 331 || var5 == 354) {
 					if (var5 == 331) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(179);
+						this.aBuffer_843.putOpcode(179);
 					}
 
 					if (var5 == 113) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(82);
+						this.aBuffer_843.putOpcode(82);
 					}
 
 					if (var5 == 555) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(239);
+						this.aBuffer_843.putOpcode(239);
 					}
 
 					if (var5 == 354) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(46);
+						this.aBuffer_843.putOpcode(46);
 					}
 
 					if (var5 == 582) {
@@ -6527,16 +6527,16 @@ public class Client extends Game {
 						}
 
 						if (anInt1157 >= 133) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(250);
-							this.aClass44_Sub3_Sub2_843.put2(6118);
+							this.aBuffer_843.putOpcode(250);
+							this.aBuffer_843.put2(6118);
 						}
 
-						this.aClass44_Sub3_Sub2_843.putOpcode(74);
+						this.aBuffer_843.putOpcode(74);
 					}
 
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(var3);
-					this.aClass44_Sub3_Sub2_843.put2(var4);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(var3);
+					this.aBuffer_843.put2(var4);
 					this.anInt847 = 0;
 					this.anInt848 = var4;
 					this.anInt849 = var3;
@@ -6551,8 +6551,8 @@ public class Client extends Game {
 				}
 
 				if (var5 == 997 && !this.aBoolean1168) {
-					this.aClass44_Sub3_Sub2_843.putOpcode(72);
-					this.aClass44_Sub3_Sub2_843.put2(var4);
+					this.aBuffer_843.putOpcode(72);
+					this.aBuffer_843.put2(var4);
 					this.aBoolean1168 = true;
 				}
 
@@ -6578,9 +6578,9 @@ public class Client extends Game {
 						this.anInt1143 = super.anInt30;
 						this.anInt1145 = 2;
 						this.anInt1144 = 0;
-						this.aClass44_Sub3_Sub2_843.putOpcode(181);
-						this.aClass44_Sub3_Sub2_843.put2(var6);
-						this.aClass44_Sub3_Sub2_843.put2(this.anInt1197);
+						this.aBuffer_843.putOpcode(181);
+						this.aBuffer_843.put2(var6);
+						this.aBuffer_843.put2(this.anInt1197);
 					}
 				}
 
@@ -6631,8 +6631,8 @@ public class Client extends Game {
 					}
 
 					if (var24) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(9);
-						this.aClass44_Sub3_Sub2_843.put2(var4);
+						this.aBuffer_843.putOpcode(9);
+						this.aBuffer_843.put2(var4);
 					}
 				}
 
@@ -6650,11 +6650,11 @@ public class Client extends Game {
 					if (var5 == 662) {
 						anInt1151 += this.anInt1056;
 						if (anInt1151 >= 118) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(41);
-							this.aClass44_Sub3_Sub2_843.put4(0);
+							this.aBuffer_843.putOpcode(41);
+							this.aBuffer_843.put4(0);
 						}
 
-						this.aClass44_Sub3_Sub2_843.putOpcode(117);
+						this.aBuffer_843.putOpcode(117);
 					}
 
 					if (var5 == 139) {
@@ -6663,34 +6663,34 @@ public class Client extends Game {
 						}
 
 						if (anInt1195 >= 123) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(25);
-							this.aClass44_Sub3_Sub2_843.put4(0);
+							this.aBuffer_843.putOpcode(25);
+							this.aBuffer_843.put4(0);
 						}
 
-						this.aClass44_Sub3_Sub2_843.putOpcode(247);
+						this.aBuffer_843.putOpcode(247);
 					}
 
 					if (var5 == 224) {
 						anInt880 += var4;
 						if (anInt880 >= 75) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(0);
-							this.aClass44_Sub3_Sub2_843.put1(19);
+							this.aBuffer_843.putOpcode(0);
+							this.aBuffer_843.put1(19);
 						}
 
-						this.aClass44_Sub3_Sub2_843.putOpcode(62);
+						this.aBuffer_843.putOpcode(62);
 					}
 
 					if (var5 == 617) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(108);
+						this.aBuffer_843.putOpcode(108);
 					}
 
 					if (var5 == 778) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(169);
+						this.aBuffer_843.putOpcode(169);
 					}
 
-					this.aClass44_Sub3_Sub2_843.put2(var3 + this.anInt1055);
-					this.aClass44_Sub3_Sub2_843.put2(var4 + this.anInt1056);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
+					this.aBuffer_843.put2(var3 + this.anInt1055);
+					this.aBuffer_843.put2(var4 + this.anInt1056);
+					this.aBuffer_843.put2(var6);
 				}
 
 				if (var5 == 1071) {
@@ -6712,24 +6712,24 @@ public class Client extends Game {
 								if (var5 == 507) {
 									anInt1052 += var6;
 									if (anInt1052 >= 66) {
-										this.aClass44_Sub3_Sub2_843.putOpcode(235);
-										this.aClass44_Sub3_Sub2_843.put1(154);
+										this.aBuffer_843.putOpcode(235);
+										this.aBuffer_843.put1(154);
 									}
 
-									this.aClass44_Sub3_Sub2_843.putOpcode(98);
+									this.aBuffer_843.putOpcode(98);
 								}
 
 								if (var5 == 957) {
 									++anInt900;
 									if (anInt900 >= 52) {
-										this.aClass44_Sub3_Sub2_843.putOpcode(80);
-										this.aClass44_Sub3_Sub2_843.put1(131);
+										this.aBuffer_843.putOpcode(80);
+										this.aBuffer_843.put1(131);
 									}
 
-									this.aClass44_Sub3_Sub2_843.putOpcode(109);
+									this.aBuffer_843.putOpcode(109);
 								}
 
-								this.aClass44_Sub3_Sub2_843.put2(this.anIntArray1122[var11]);
+								this.aBuffer_843.put2(this.anIntArray1122[var11]);
 								var10 = true;
 								break;
 							}
@@ -6749,20 +6749,20 @@ public class Client extends Game {
 						this.anInt1143 = super.anInt30;
 						this.anInt1145 = 2;
 						this.anInt1144 = 0;
-						this.aClass44_Sub3_Sub2_843.putOpcode(240);
-						this.aClass44_Sub3_Sub2_843.put2(var6);
-						this.aClass44_Sub3_Sub2_843.put2(this.anInt1197);
+						this.aBuffer_843.putOpcode(240);
+						this.aBuffer_843.put2(var6);
+						this.aBuffer_843.put2(this.anInt1197);
 					}
 				}
 
 				if (var5 == 398) {
-					this.aClass44_Sub3_Sub2_843.putOpcode(136);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(var3);
-					this.aClass44_Sub3_Sub2_843.put2(var4);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt814);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt812);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt813);
+					this.aBuffer_843.putOpcode(136);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(var3);
+					this.aBuffer_843.put2(var4);
+					this.aBuffer_843.put2(this.anInt814);
+					this.aBuffer_843.put2(this.anInt812);
+					this.aBuffer_843.put2(this.anInt813);
 					this.anInt847 = 0;
 					this.anInt848 = var4;
 					this.anInt849 = var3;
@@ -6784,32 +6784,32 @@ public class Client extends Game {
 					if (var5 == 681) {
 						++anInt1028;
 						if (anInt1028 >= 116) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(24);
-							this.aClass44_Sub3_Sub2_843.put3(13018169);
+							this.aBuffer_843.putOpcode(24);
+							this.aBuffer_843.put3(13018169);
 						}
 
-						this.aClass44_Sub3_Sub2_843.putOpcode(216);
+						this.aBuffer_843.putOpcode(216);
 					}
 
 					if (var5 == 100) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(42);
+						this.aBuffer_843.putOpcode(42);
 					}
 
 					if (var5 == 694) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(185);
+						this.aBuffer_843.putOpcode(185);
 					}
 
 					if (var5 == 962) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(2);
+						this.aBuffer_843.putOpcode(2);
 					}
 
 					if (var5 == 795) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(123);
+						this.aBuffer_843.putOpcode(123);
 					}
 
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(var3);
-					this.aClass44_Sub3_Sub2_843.put2(var4);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(var3);
+					this.aBuffer_843.put2(var4);
 					this.anInt847 = 0;
 					this.anInt848 = var4;
 					this.anInt849 = var3;
@@ -6848,15 +6848,15 @@ public class Client extends Game {
 					this.anInt1143 = super.anInt30;
 					this.anInt1145 = 2;
 					this.anInt1144 = 0;
-					this.aClass44_Sub3_Sub2_843.putOpcode(91);
-					this.aClass44_Sub3_Sub2_843.put2(var3 + this.anInt1055);
-					this.aClass44_Sub3_Sub2_843.put2(var4 + this.anInt1056);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt1197);
+					this.aBuffer_843.putOpcode(91);
+					this.aBuffer_843.put2(var3 + this.anInt1055);
+					this.aBuffer_843.put2(var4 + this.anInt1056);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(this.anInt1197);
 				}
 
 				if (var5 == 899 && this.method51(var4, 74, var3, 213, var6)) {
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt1197);
+					this.aBuffer_843.put2(this.anInt1197);
 				}
 
 				if (var5 == 625) {
@@ -6873,13 +6873,13 @@ public class Client extends Game {
 					this.anInt1143 = super.anInt30;
 					this.anInt1145 = 2;
 					this.anInt1144 = 0;
-					this.aClass44_Sub3_Sub2_843.putOpcode(39);
-					this.aClass44_Sub3_Sub2_843.put2(var3 + this.anInt1055);
-					this.aClass44_Sub3_Sub2_843.put2(var4 + this.anInt1056);
-					this.aClass44_Sub3_Sub2_843.put2(var6);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt814);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt812);
-					this.aClass44_Sub3_Sub2_843.put2(this.anInt813);
+					this.aBuffer_843.putOpcode(39);
+					this.aBuffer_843.put2(var3 + this.anInt1055);
+					this.aBuffer_843.put2(var4 + this.anInt1056);
+					this.aBuffer_843.put2(var6);
+					this.aBuffer_843.put2(this.anInt814);
+					this.aBuffer_843.put2(this.anInt812);
+					this.aBuffer_843.put2(this.anInt813);
 				}
 
 				if (var5 == 274) {
@@ -6908,8 +6908,8 @@ public class Client extends Game {
 
 				} else {
 					if (var5 == 225) {
-						this.aClass44_Sub3_Sub2_843.putOpcode(9);
-						this.aClass44_Sub3_Sub2_843.put2(var4);
+						this.aBuffer_843.putOpcode(9);
+						this.aBuffer_843.put2(var4);
 						var16 = Class5.aClass5Array103[var4];
 						if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
 							var8 = var16.anIntArrayArray118[0][1];
@@ -7009,7 +7009,7 @@ public class Client extends Game {
 		garbageValue = "0"
 	)
 	public void method45() {
-		this.aClass44_Sub3_Sub2_843.putOpcode(51);
+		this.aBuffer_843.putOpcode(51);
 		if (this.anInt1216 != -1) {
 			this.anInt1216 = -1;
 			this.aBoolean928 = true;
@@ -7768,35 +7768,35 @@ public class Client extends Game {
 			var24 = this.anIntArray838[var18];
 			var25 = this.anIntArray839[var18];
 			if (var12 == 0) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(207);
-				this.aClass44_Sub3_Sub2_843.put1(var23 + var23 + 3);
+				this.aBuffer_843.putOpcode(207);
+				this.aBuffer_843.put1(var23 + var23 + 3);
 			}
 
 			if (var12 == 1) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(86);
-				this.aClass44_Sub3_Sub2_843.put1(var23 + var23 + 3 + 14);
+				this.aBuffer_843.putOpcode(86);
+				this.aBuffer_843.put1(var23 + var23 + 3 + 14);
 			}
 
 			if (var12 == 2) {
-				this.aClass44_Sub3_Sub2_843.putOpcode(138);
-				this.aClass44_Sub3_Sub2_843.put1(var23 + var23 + 3);
+				this.aBuffer_843.putOpcode(138);
+				this.aBuffer_843.put1(var23 + var23 + 3);
 			}
 
 			if (super.anIntArray32[5] == 1) {
-				this.aClass44_Sub3_Sub2_843.put1(1);
+				this.aBuffer_843.put1(1);
 			} else {
-				this.aClass44_Sub3_Sub2_843.put1(0);
+				this.aBuffer_843.put1(0);
 			}
 
-			this.aClass44_Sub3_Sub2_843.put2(var24 + this.anInt1055);
-			this.aClass44_Sub3_Sub2_843.put2(var25 + this.anInt1056);
+			this.aBuffer_843.put2(var24 + this.anInt1055);
+			this.aBuffer_843.put2(var25 + this.anInt1056);
 			this.anInt1025 = this.anIntArray838[0];
 			this.anInt1026 = this.anIntArray839[0];
 
 			for (int var26 = 1; var26 < var23; ++var26) {
 				--var18;
-				this.aClass44_Sub3_Sub2_843.put1(this.anIntArray838[var18] - var24);
-				this.aClass44_Sub3_Sub2_843.put1(this.anIntArray839[var18] - var25);
+				this.aBuffer_843.put1(this.anIntArray838[var18] - var24);
+				this.aBuffer_843.put1(this.anIntArray839[var18] - var25);
 			}
 
 			return true;
@@ -7824,10 +7824,10 @@ public class Client extends Game {
 			this.aClass7_1108 = new Class7(-158, this.method72(portOffset + 43594), this);
 			long var4 = Class48.method547(var1);
 			int var6 = (int)(var4 >> 16 & 31L);
-			this.aClass44_Sub3_Sub2_843.anInt1374 = 0;
-			this.aClass44_Sub3_Sub2_843.put1(14);
-			this.aClass44_Sub3_Sub2_843.put1(var6);
-			this.aClass7_1108.method195(2, -2584, this.aClass44_Sub3_Sub2_843.aByteArray1373, 0);
+			this.aBuffer_843.anInt1374 = 0;
+			this.aBuffer_843.put1(14);
+			this.aBuffer_843.put1(var6);
+			this.aClass7_1108.method195(2, -2584, this.aBuffer_843.aByteArray1373, 0);
 
 			int var7;
 			for (var7 = 0; var7 < 8; ++var7) {
@@ -7837,45 +7837,45 @@ public class Client extends Game {
 			var7 = this.aClass7_1108.method192();
 			int var9;
 			if (var7 == 0) {
-				this.aClass7_1108.method194(this.aClass44_Sub3_Sub2_1135.aByteArray1373, 0, 8);
-				this.aClass44_Sub3_Sub2_1135.anInt1374 = 0;
-				this.aLong1231 = this.aClass44_Sub3_Sub2_1135.get8(0);
+				this.aClass7_1108.method194(this.aBuffer_1135.aByteArray1373, 0, 8);
+				this.aBuffer_1135.anInt1374 = 0;
+				this.aLong1231 = this.aBuffer_1135.get8(0);
 				int[] var8 = new int[]{(int)(Math.random() * 9.9999999E7D), (int)(Math.random() * 9.9999999E7D), (int)(this.aLong1231 >> 32), (int)this.aLong1231};
-				this.aClass44_Sub3_Sub2_843.anInt1374 = 0;
-				this.aClass44_Sub3_Sub2_843.put1(10);
-				this.aClass44_Sub3_Sub2_843.put4(var8[0]);
-				this.aClass44_Sub3_Sub2_843.put4(var8[1]);
-				this.aClass44_Sub3_Sub2_843.put4(var8[2]);
-				this.aClass44_Sub3_Sub2_843.put4(var8[3]);
-				this.aClass44_Sub3_Sub2_843.put4(signlink.uid);
-				this.aClass44_Sub3_Sub2_843.putString(var1);
-				this.aClass44_Sub3_Sub2_843.putString(var2);
-				this.aClass44_Sub3_Sub2_843.rsa(modulus, exponent);
-				this.aClass44_Sub3_Sub2_1106.anInt1374 = 0;
+				this.aBuffer_843.anInt1374 = 0;
+				this.aBuffer_843.put1(10);
+				this.aBuffer_843.put4(var8[0]);
+				this.aBuffer_843.put4(var8[1]);
+				this.aBuffer_843.put4(var8[2]);
+				this.aBuffer_843.put4(var8[3]);
+				this.aBuffer_843.put4(signlink.uid);
+				this.aBuffer_843.putString(var1);
+				this.aBuffer_843.putString(var2);
+				this.aBuffer_843.rsa(modulus, exponent);
+				this.aBuffer_1106.anInt1374 = 0;
 				if (var3) {
-					this.aClass44_Sub3_Sub2_1106.put1(18);
+					this.aBuffer_1106.put1(18);
 				} else {
-					this.aClass44_Sub3_Sub2_1106.put1(16);
+					this.aBuffer_1106.put1(16);
 				}
 
-				this.aClass44_Sub3_Sub2_1106.put1(this.aClass44_Sub3_Sub2_843.anInt1374 + 1 + 1 + 36 + 2);
-				this.aClass44_Sub3_Sub2_1106.put1(255);
-				this.aClass44_Sub3_Sub2_1106.put2(274);
-				this.aClass44_Sub3_Sub2_1106.put1(isLowMemory ? 1 : 0);
+				this.aBuffer_1106.put1(this.aBuffer_843.anInt1374 + 1 + 1 + 36 + 2);
+				this.aBuffer_1106.put1(255);
+				this.aBuffer_1106.put2(274);
+				this.aBuffer_1106.put1(isLowMemory ? 1 : 0);
 
 				for (var9 = 0; var9 < 9; ++var9) {
-					this.aClass44_Sub3_Sub2_1106.put4(this.anIntArray885[var9]);
+					this.aBuffer_1106.put4(this.anIntArray885[var9]);
 				}
 
-				this.aClass44_Sub3_Sub2_1106.putArray(this.aClass44_Sub3_Sub2_843.aByteArray1373, false, 0, this.aClass44_Sub3_Sub2_843.anInt1374);
-				this.aClass44_Sub3_Sub2_843.aClass46_1378 = new Class46(true, var8);
+				this.aBuffer_1106.putArray(this.aBuffer_843.aByteArray1373, false, 0, this.aBuffer_843.anInt1374);
+				this.aBuffer_843.aClass46_1378 = new Class46(true, var8);
 
 				for (var9 = 0; var9 < 4; ++var9) {
 					var8[var9] += 50;
 				}
 
 				this.aClass46_944 = new Class46(true, var8);
-				this.aClass7_1108.method195(this.aClass44_Sub3_Sub2_1106.anInt1374, -2584, this.aClass44_Sub3_Sub2_1106.aByteArray1373, 0);
+				this.aClass7_1108.method195(this.aBuffer_1106.anInt1374, -2584, this.aBuffer_1106.aByteArray1373, 0);
 				var7 = this.aClass7_1108.method192();
 			}
 
@@ -7897,8 +7897,8 @@ public class Client extends Game {
 					super.aBoolean19 = true;
 					this.aBoolean945 = true;
 					this.aBoolean905 = true;
-					this.aClass44_Sub3_Sub2_843.anInt1374 = 0;
-					this.aClass44_Sub3_Sub2_1135.anInt1374 = 0;
+					this.aBuffer_843.anInt1374 = 0;
+					this.aBuffer_1135.anInt1374 = 0;
 					this.anInt1220 = -1;
 					this.anInt1138 = -1;
 					this.anInt1139 = -1;
@@ -7935,7 +7935,7 @@ public class Client extends Game {
 
 					for (var14 = 0; var14 < this.anInt1118; ++var14) {
 						this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var14] = null;
-						this.aClass44_Sub3_Sub2Array1125[var14] = null;
+						this.aBufferArray1125[var14] = null;
 					}
 
 					for (var14 = 0; var14 < 16384; ++var14) {
@@ -8031,8 +8031,8 @@ public class Client extends Game {
 					this.aString933 = "Please wait 1 minute and try again.";
 				} else if (var7 == 15) {
 					this.aBoolean905 = true;
-					this.aClass44_Sub3_Sub2_843.anInt1374 = 0;
-					this.aClass44_Sub3_Sub2_1135.anInt1374 = 0;
+					this.aBuffer_843.anInt1374 = 0;
+					this.aBuffer_1135.anInt1374 = 0;
 					this.anInt1220 = -1;
 					this.anInt1138 = -1;
 					this.anInt1139 = -1;
@@ -8177,7 +8177,7 @@ public class Client extends Game {
 
 			try {
 				DataInputStream var5 = this.method84("crc" + (int)(Math.random() * 9.9999999E7D) + "-" + 274);
-				Class44_Sub3_Sub2 var6 = new Class44_Sub3_Sub2(new byte[40], (byte)1);
+				Buffer var6 = new Buffer(new byte[40], (byte)1);
 				var5.readFully(var6.aByteArray1373, 0, 40);
 				var5.close();
 
@@ -8732,8 +8732,8 @@ public class Client extends Game {
 		++anInt996;
 		if (anInt996 > 112) {
 			anInt996 = 0;
-			this.aClass44_Sub3_Sub2_843.putOpcode(52);
-			this.aClass44_Sub3_Sub2_843.put1(50);
+			this.aBuffer_843.putOpcode(52);
+			this.aBuffer_843.put1(50);
 		}
 
 	}
@@ -8776,7 +8776,7 @@ public class Client extends Game {
 					DataInputStream var13 = this.method84(var3 + var4);
 					byte[] var14 = new byte[6];
 					var13.readFully(var14, 0, 6);
-					Class44_Sub3_Sub2 var15 = new Class44_Sub3_Sub2(var14, (byte)1);
+					Buffer var15 = new Buffer(var14, (byte)1);
 					var15.anInt1374 = 3;
 					int var16 = var15.get3() + 6;
 					int var17 = 6;
@@ -8966,8 +8966,8 @@ public class Client extends Game {
 					this.anIntArray1073[this.anInt1115] = 0;
 					++this.anInt1115;
 					this.aBoolean928 = true;
-					this.aClass44_Sub3_Sub2_843.putOpcode(13);
-					this.aClass44_Sub3_Sub2_843.put8(var2, 0);
+					this.aBuffer_843.putOpcode(13);
+					this.aBuffer_843.put8(var2, 0);
 				}
 			}
 		}
@@ -9113,8 +9113,8 @@ public class Client extends Game {
 						this.aLongArray1159[var5] = this.aLongArray1159[var5 + 1];
 					}
 
-					this.aClass44_Sub3_Sub2_843.putOpcode(106);
-					this.aClass44_Sub3_Sub2_843.put8(var2, 0);
+					this.aBuffer_843.putOpcode(106);
+					this.aBuffer_843.put8(var2, 0);
 					return;
 				}
 			}
@@ -9370,7 +9370,7 @@ public class Client extends Game {
 				var4.anInt1320 = 0;
 				this.method81(-452, var4);
 			} else {
-				var4.unlink();
+				var4.remove();
 			}
 		}
 
@@ -9775,8 +9775,8 @@ public class Client extends Game {
 
 				this.aLongArray817[this.anInt961++] = var1;
 				this.aBoolean928 = true;
-				this.aClass44_Sub3_Sub2_843.putOpcode(255);
-				this.aClass44_Sub3_Sub2_843.put8(var1, 0);
+				this.aBuffer_843.putOpcode(255);
+				this.aBuffer_843.put8(var1, 0);
 			}
 		}
 	}
@@ -9913,26 +9913,26 @@ public class Client extends Game {
 			++anInt1132;
 			if (anInt1132 > 1086) {
 				anInt1132 = 0;
-				this.aClass44_Sub3_Sub2_843.putOpcode(149);
-				this.aClass44_Sub3_Sub2_843.put1(0);
-				int var10 = this.aClass44_Sub3_Sub2_843.anInt1374;
+				this.aBuffer_843.putOpcode(149);
+				this.aBuffer_843.put1(0);
+				int var10 = this.aBuffer_843.anInt1374;
 				if ((int)(Math.random() * 2.0D) == 0) {
-					this.aClass44_Sub3_Sub2_843.put2(16791);
+					this.aBuffer_843.put2(16791);
 				}
 
-				this.aClass44_Sub3_Sub2_843.put1(254);
-				this.aClass44_Sub3_Sub2_843.put2((int)(Math.random() * 65536.0D));
-				this.aClass44_Sub3_Sub2_843.put2(16128);
-				this.aClass44_Sub3_Sub2_843.put2(52610);
-				this.aClass44_Sub3_Sub2_843.put2((int)(Math.random() * 65536.0D));
-				this.aClass44_Sub3_Sub2_843.put2(55420);
+				this.aBuffer_843.put1(254);
+				this.aBuffer_843.put2((int)(Math.random() * 65536.0D));
+				this.aBuffer_843.put2(16128);
+				this.aBuffer_843.put2(52610);
+				this.aBuffer_843.put2((int)(Math.random() * 65536.0D));
+				this.aBuffer_843.put2(55420);
 				if ((int)(Math.random() * 2.0D) == 0) {
-					this.aClass44_Sub3_Sub2_843.put2(35025);
+					this.aBuffer_843.put2(35025);
 				}
 
-				this.aClass44_Sub3_Sub2_843.put2(46628);
-				this.aClass44_Sub3_Sub2_843.put1((int)(Math.random() * 256.0D));
-				this.aClass44_Sub3_Sub2_843.putSize(this.aClass44_Sub3_Sub2_843.anInt1374 - var10, this.anInt797);
+				this.aBuffer_843.put2(46628);
+				this.aBuffer_843.put1((int)(Math.random() * 256.0D));
+				this.aBuffer_843.putSize(this.aBuffer_843.anInt1374 - var10, this.anInt797);
 			}
 
 			if (var8 != 10 && var8 != 11 && var8 != 22) {
@@ -9961,17 +9961,17 @@ public class Client extends Game {
 			this.anInt1143 = super.anInt30;
 			this.anInt1145 = 2;
 			this.anInt1144 = 0;
-			this.aClass44_Sub3_Sub2_843.putOpcode(var4);
-			this.aClass44_Sub3_Sub2_843.put2(var3 + this.anInt1055);
-			this.aClass44_Sub3_Sub2_843.put2(this.anInt1056 + var1);
-			this.aClass44_Sub3_Sub2_843.put2(var6);
+			this.aBuffer_843.putOpcode(var4);
+			this.aBuffer_843.put2(var3 + this.anInt1055);
+			this.aBuffer_843.put2(this.anInt1056 + var1);
+			this.aBuffer_843.put2(var6);
 			return true;
 		}
 	}
 
 	public void method123(boolean var1, long var2) {
 		if (var1) {
-			this.anInt1220 = this.aClass44_Sub3_Sub2_1135.get1();
+			this.anInt1220 = this.aBuffer_1135.get1();
 		}
 
 		if (var2 != 0L) {
@@ -9983,8 +9983,8 @@ public class Client extends Game {
 						System.arraycopy(this.aLongArray817, var4 + 1, this.aLongArray817, var4, this.anInt961 - var4);
 					}
 
-					this.aClass44_Sub3_Sub2_843.putOpcode(101);
-					this.aClass44_Sub3_Sub2_843.put8(var2, 0);
+					this.aBuffer_843.putOpcode(101);
+					this.aBuffer_843.put8(var2, 0);
 					return;
 				}
 			}
@@ -10403,7 +10403,7 @@ public class Client extends Game {
 			++anInt1101;
 			if (anInt1101 > 57) {
 				anInt1101 = 0;
-				this.aClass44_Sub3_Sub2_843.putOpcode(100);
+				this.aBuffer_843.putOpcode(100);
 			}
 		}
 
@@ -10451,7 +10451,7 @@ public class Client extends Game {
 		return var2 < 999999999 ? String.valueOf(var2) : "*";
 	}
 
-	public void method67(int var1, int var2, Class44_Sub3_Sub2 var3) {
+	public void method67(int var1, int var2, Buffer var3) {
 		var2 = 58 / var2;
 		int var4;
 		int var5;
@@ -10549,7 +10549,7 @@ public class Client extends Game {
 						if (var29 != null) {
 							for (var31 = (Class44_Sub3_Sub4_Sub2)var29.peekFront(); var31 != null; var31 = (Class44_Sub3_Sub4_Sub2)var29.getPrevious(this.aByte958)) {
 								if ((var7 & 32767) == var31.anInt1480) {
-									var31.unlink();
+									var31.remove();
 									break;
 								}
 							}
@@ -11155,7 +11155,7 @@ public class Client extends Game {
 				if (var1.delayUntilSpawn == 0) {
 					if (var1.id < 0 || Class3.isModelCached(var1.id, var1.type, 469)) {
 						this.despawnGameObject(var1.anInt1315, var1.anInt1311, var1.anInt1312, var1.type, false, var1.id, var1.anInt1310, var1.anInt1313);
-						var1.unlink();
+						var1.remove();
 					}
 				} else {
 					if (var1.anInt1320 > 0) {
@@ -11166,9 +11166,9 @@ public class Client extends Game {
 						this.despawnGameObject(var1.anInt1318, var1.anInt1311, var1.anInt1312, var1.anInt1319, false, var1.anInt1317, var1.anInt1310, var1.anInt1313);
 						var1.anInt1320 = -1;
 						if (var1.anInt1317 == var1.id && var1.id == -1) {
-							var1.unlink();
+							var1.remove();
 						} else if (var1.anInt1317 == var1.id && var1.anInt1318 == var1.anInt1315 && var1.anInt1319 == var1.type) {
-							var1.unlink();
+							var1.remove();
 						}
 					}
 				}
@@ -11192,7 +11192,7 @@ public class Client extends Game {
 							var2 = true;
 						}
 					} else {
-						Class44_Sub3_Sub2 var3 = Class4.method176(this.anIntArray1048[var1], this.anIntArray804[var1]);
+						Buffer var3 = Class4.method176(this.anIntArray1048[var1], this.anIntArray804[var1]);
 						if (System.currentTimeMillis() + (long)(var3.anInt1374 / 22) > this.aLong1079 + (long)(this.anInt874 / 22)) {
 							this.anInt874 = var3.anInt1374;
 							this.aLong1079 = System.currentTimeMillis();
@@ -11240,7 +11240,7 @@ public class Client extends Game {
 
 	}
 
-	public void method111(int var1, byte var2, Class44_Sub3_Sub2 var3) {
+	public void method111(int var1, byte var2, Buffer var3) {
 		this.anInt1064 = 0;
 		this.anInt1123 = 0;
 		this.method119(var3, var1);
@@ -11388,7 +11388,7 @@ public class Client extends Game {
 
 	}
 
-	public void method143(int var1, int var2, Class44_Sub3_Sub2 var3) {
+	public void method143(int var1, int var2, Buffer var3) {
 		this.anInt1064 = 0;
 		this.anInt1123 = 0;
 		var2 += var1;
@@ -11573,17 +11573,17 @@ public class Client extends Game {
 					int var10 = aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 - var8 >> 7;
 					boolean var11 = this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var9, 0, 0, 0, aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, true, 0, var10, (byte)9, 1);
 					if (var11) {
-						this.aClass44_Sub3_Sub2_843.put1(var2);
-						this.aClass44_Sub3_Sub2_843.put1(var3);
-						this.aClass44_Sub3_Sub2_843.put2(this.anInt1206);
-						this.aClass44_Sub3_Sub2_843.put1(57);
-						this.aClass44_Sub3_Sub2_843.put1(this.anInt1217);
-						this.aClass44_Sub3_Sub2_843.put1(this.anInt1170);
-						this.aClass44_Sub3_Sub2_843.put1(89);
-						this.aClass44_Sub3_Sub2_843.put2(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599);
-						this.aClass44_Sub3_Sub2_843.put2(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600);
-						this.aClass44_Sub3_Sub2_843.put1(this.anInt1006);
-						this.aClass44_Sub3_Sub2_843.put1(63);
+						this.aBuffer_843.put1(var2);
+						this.aBuffer_843.put1(var3);
+						this.aBuffer_843.put2(this.anInt1206);
+						this.aBuffer_843.put1(57);
+						this.aBuffer_843.put1(this.anInt1217);
+						this.aBuffer_843.put1(this.anInt1170);
+						this.aBuffer_843.put1(89);
+						this.aBuffer_843.put2(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599);
+						this.aBuffer_843.put2(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600);
+						this.aBuffer_843.put1(this.anInt1006);
+						this.aBuffer_843.put1(63);
 					}
 				}
 			}
@@ -11694,30 +11694,30 @@ public class Client extends Game {
 				this.anInt967 = (this.anInt967 + 1) % 4;
 				this.aBoolean1141 = true;
 				this.aBoolean1109 = true;
-				this.aClass44_Sub3_Sub2_843.putOpcode(154);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt967);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt972);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt805);
+				this.aBuffer_843.putOpcode(154);
+				this.aBuffer_843.put1(this.anInt967);
+				this.aBuffer_843.put1(this.anInt972);
+				this.aBuffer_843.put1(this.anInt805);
 			}
 
 			if (super.anInt29 >= 135 && super.anInt29 <= 235 && super.anInt30 >= 467 && super.anInt30 <= 499) {
 				this.anInt972 = (this.anInt972 + 1) % 3;
 				this.aBoolean1141 = true;
 				this.aBoolean1109 = true;
-				this.aClass44_Sub3_Sub2_843.putOpcode(154);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt967);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt972);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt805);
+				this.aBuffer_843.putOpcode(154);
+				this.aBuffer_843.put1(this.anInt967);
+				this.aBuffer_843.put1(this.anInt972);
+				this.aBuffer_843.put1(this.anInt805);
 			}
 
 			if (super.anInt29 >= 273 && super.anInt29 <= 373 && super.anInt30 >= 467 && super.anInt30 <= 499) {
 				this.anInt805 = (this.anInt805 + 1) % 3;
 				this.aBoolean1141 = true;
 				this.aBoolean1109 = true;
-				this.aClass44_Sub3_Sub2_843.putOpcode(154);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt967);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt972);
-				this.aClass44_Sub3_Sub2_843.put1(this.anInt805);
+				this.aBuffer_843.putOpcode(154);
+				this.aBuffer_843.put1(this.anInt967);
+				this.aBuffer_843.put1(this.anInt972);
+				this.aBuffer_843.put1(this.anInt805);
 			}
 
 			if (super.anInt29 >= 412 && super.anInt29 <= 512 && super.anInt30 >= 467 && super.anInt30 <= 499) {
@@ -11948,8 +11948,8 @@ public class Client extends Game {
 		++anInt1038;
 		if (anInt1038 > 192) {
 			anInt1038 = 0;
-			this.aClass44_Sub3_Sub2_843.putOpcode(230);
-			this.aClass44_Sub3_Sub2_843.put1(232);
+			this.aBuffer_843.putOpcode(230);
+			this.aBuffer_843.put1(232);
 		}
 
 		while (true) {
@@ -11995,22 +11995,22 @@ public class Client extends Game {
 							}
 
 							if (this.anInt1051 == 3 && this.aString984.length() > 0) {
-								this.aClass44_Sub3_Sub2_843.putOpcode(139);
-								this.aClass44_Sub3_Sub2_843.put1(0);
-								var2 = this.aClass44_Sub3_Sub2_843.anInt1374;
-								this.aClass44_Sub3_Sub2_843.put8(this.aLong867, 0);
-								Class49.method555(this.aString984, (byte)126, this.aClass44_Sub3_Sub2_843);
-								this.aClass44_Sub3_Sub2_843.putSize(this.aClass44_Sub3_Sub2_843.anInt1374 - var2, this.anInt797);
+								this.aBuffer_843.putOpcode(139);
+								this.aBuffer_843.put1(0);
+								var2 = this.aBuffer_843.anInt1374;
+								this.aBuffer_843.put8(this.aLong867, 0);
+								Class49.method555(this.aString984, (byte)126, this.aBuffer_843);
+								this.aBuffer_843.putSize(this.aBuffer_843.anInt1374 - var2, this.anInt797);
 								this.aString984 = Class48.method552(this.aString984);
 								this.aString984 = Class41.method352((byte)3, this.aString984);
 								this.method49(-476, 6, Class48.method551(131, Class48.method548(0, this.aLong867)), this.aString984);
 								if (this.anInt972 == 2) {
 									this.anInt972 = 1;
 									this.aBoolean1141 = true;
-									this.aClass44_Sub3_Sub2_843.putOpcode(154);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt967);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt972);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt805);
+									this.aBuffer_843.putOpcode(154);
+									this.aBuffer_843.put1(this.anInt967);
+									this.aBuffer_843.put1(this.anInt972);
+									this.aBuffer_843.put1(this.anInt805);
 								}
 							}
 
@@ -12044,8 +12044,8 @@ public class Client extends Game {
 								} catch (Exception var5) {
 								}
 
-								this.aClass44_Sub3_Sub2_843.putOpcode(102);
-								this.aClass44_Sub3_Sub2_843.put4(var2);
+								this.aBuffer_843.putOpcode(102);
+								this.aBuffer_843.put4(var2);
 							}
 
 							this.aBoolean1104 = false;
@@ -12080,9 +12080,9 @@ public class Client extends Game {
 							}
 
 							if (this.aString1009.startsWith("::")) {
-								this.aClass44_Sub3_Sub2_843.putOpcode(224);
-								this.aClass44_Sub3_Sub2_843.put1(this.aString1009.length() - 1);
-								this.aClass44_Sub3_Sub2_843.putString(this.aString1009.substring(2));
+								this.aBuffer_843.putOpcode(224);
+								this.aBuffer_843.put1(this.aString1009.length() - 1);
+								this.aBuffer_843.putString(this.aString1009.substring(2));
 							} else {
 								byte var6 = 0;
 								if (this.aString1009.startsWith("yellow:")) {
@@ -12156,13 +12156,13 @@ public class Client extends Game {
 									this.aString1009 = this.aString1009.substring(7);
 								}
 
-								this.aClass44_Sub3_Sub2_843.putOpcode(253);
-								this.aClass44_Sub3_Sub2_843.put1(0);
-								int var4 = this.aClass44_Sub3_Sub2_843.anInt1374;
-								this.aClass44_Sub3_Sub2_843.put1(var6);
-								this.aClass44_Sub3_Sub2_843.put1(var3);
-								Class49.method555(this.aString1009, (byte)126, this.aClass44_Sub3_Sub2_843);
-								this.aClass44_Sub3_Sub2_843.putSize(this.aClass44_Sub3_Sub2_843.anInt1374 - var4, this.anInt797);
+								this.aBuffer_843.putOpcode(253);
+								this.aBuffer_843.put1(0);
+								int var4 = this.aBuffer_843.anInt1374;
+								this.aBuffer_843.put1(var6);
+								this.aBuffer_843.put1(var3);
+								Class49.method555(this.aString1009, (byte)126, this.aBuffer_843);
+								this.aBuffer_843.putSize(this.aBuffer_843.anInt1374 - var4, this.anInt797);
 								this.aString1009 = Class48.method552(this.aString1009);
 								this.aString1009 = Class41.method352((byte)3, this.aString1009);
 								aClass44_Sub3_Sub4_Sub6_Sub1_1252.aString1611 = this.aString1009;
@@ -12180,10 +12180,10 @@ public class Client extends Game {
 								if (this.anInt967 == 2) {
 									this.anInt967 = 3;
 									this.aBoolean1141 = true;
-									this.aClass44_Sub3_Sub2_843.putOpcode(154);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt967);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt972);
-									this.aClass44_Sub3_Sub2_843.put1(this.anInt805);
+									this.aBuffer_843.putOpcode(154);
+									this.aBuffer_843.put1(this.anInt967);
+									this.aBuffer_843.put1(this.anInt972);
+									this.aBuffer_843.put1(this.anInt805);
 								}
 							}
 
@@ -12319,24 +12319,24 @@ public class Client extends Game {
 					if (var3 >= 601 && var3 <= 612) {
 						this.method45();
 						if (this.aString951.length() > 0) {
-							this.aClass44_Sub3_Sub2_843.putOpcode(137);
-							this.aClass44_Sub3_Sub2_843.put8(Class48.method547(this.aString951), 0);
-							this.aClass44_Sub3_Sub2_843.put1(var3 - 601);
-							this.aClass44_Sub3_Sub2_843.put1(this.aBoolean1128 ? 1 : 0);
+							this.aBuffer_843.putOpcode(137);
+							this.aBuffer_843.put8(Class48.method547(this.aString951), 0);
+							this.aBuffer_843.put1(var3 - 601);
+							this.aBuffer_843.put1(this.aBoolean1128 ? 1 : 0);
 						}
 					}
 
 					return false;
 				} else {
-					this.aClass44_Sub3_Sub2_843.putOpcode(125);
-					this.aClass44_Sub3_Sub2_843.put1(this.aBoolean982 ? 0 : 1);
+					this.aBuffer_843.putOpcode(125);
+					this.aBuffer_843.put1(this.aBoolean982 ? 0 : 1);
 
 					for (var4 = 0; var4 < 7; ++var4) {
-						this.aClass44_Sub3_Sub2_843.put1(this.anIntArray810[var4]);
+						this.aBuffer_843.put1(this.anIntArray810[var4]);
 					}
 
 					for (var4 = 0; var4 < 5; ++var4) {
-						this.aClass44_Sub3_Sub2_843.put1(this.anIntArray1089[var4]);
+						this.aBuffer_843.put1(this.anIntArray1089[var4]);
 					}
 
 					return true;

@@ -49,7 +49,7 @@ public class Class26 {
 		return var3;
 	}
 
-	public void method255(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method255(byte var1, Buffer var2) {
 		int var3;
 		if (var1 == 2) {
 			boolean var6 = false;
@@ -145,7 +145,7 @@ public class Class26 {
 	}
 
 	public static void method253(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("seq.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("seq.dat", (byte[])null), (byte)1);
 		anInt496 = var2.get2();
 		if (aClass26Array497 == null) {
 			aClass26Array497 = new Class26[anInt496];

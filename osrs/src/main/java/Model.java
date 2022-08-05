@@ -388,15 +388,15 @@ public class Model extends Renderable {
 		}
 
 		this.anIntArray1536 = new int[this.anInt1526];
-		Class44_Sub3_Sub2 var4 = new Class44_Sub3_Sub2(var3.aByteArray435, (byte)1);
+		Buffer var4 = new Buffer(var3.aByteArray435, (byte)1);
 		var4.anInt1374 = var3.anInt439;
-		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var3.aByteArray435, (byte)1);
+		Buffer var5 = new Buffer(var3.aByteArray435, (byte)1);
 		var5.anInt1374 = var3.anInt440;
-		Class44_Sub3_Sub2 var6 = new Class44_Sub3_Sub2(var3.aByteArray435, (byte)1);
+		Buffer var6 = new Buffer(var3.aByteArray435, (byte)1);
 		var6.anInt1374 = var3.anInt441;
-		Class44_Sub3_Sub2 var7 = new Class44_Sub3_Sub2(var3.aByteArray435, (byte)1);
+		Buffer var7 = new Buffer(var3.aByteArray435, (byte)1);
 		var7.anInt1374 = var3.anInt442;
-		Class44_Sub3_Sub2 var8 = new Class44_Sub3_Sub2(var3.aByteArray435, (byte)1);
+		Buffer var8 = new Buffer(var3.aByteArray435, (byte)1);
 		var8.anInt1374 = var3.anInt443;
 		int var9 = 0;
 		int var10 = 0;
@@ -2093,7 +2093,7 @@ public class Model extends Renderable {
 			var14.anInt437 = 0;
 			var14.anInt438 = 0;
 		} else {
-			Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1, (byte)1);
+			Buffer var2 = new Buffer(var1, (byte)1);
 			var2.anInt1374 = var1.length - 18;
 			Class21 var3 = aClass21Array1557[var0] = new Class21();
 			var3.aByteArray435 = var1;

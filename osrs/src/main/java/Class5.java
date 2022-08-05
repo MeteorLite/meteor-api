@@ -158,7 +158,7 @@ public class Class5 {
 	)
 	public static void method181(Class47 var0, Class47 var1, Class44_Sub3_Sub1_Sub4[] var2) {
 		aClass39_166 = new Class39(50000, 0);
-		Class44_Sub3_Sub2 var3 = new Class44_Sub3_Sub2(var0.method546("data", (byte[])null), (byte)1);
+		Buffer var3 = new Buffer(var0.method546("data", (byte[])null), (byte)1);
 		int var4 = -1;
 		int var5 = var3.get2();
 		aClass5Array103 = new Class5[var5];

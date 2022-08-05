@@ -49,7 +49,7 @@ public class Class32 {
 		}
 	}
 
-	public void method270(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method270(byte var1, Buffer var2) {
 		if (var1 == 2) {
 			boolean var4 = false;
 		} else {
@@ -92,7 +92,7 @@ public class Class32 {
 	}
 
 	public static void method269(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("spotanim.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("spotanim.dat", (byte[])null), (byte)1);
 		anInt546 = var2.get2();
 		if (aClass32Array547 == null) {
 			aClass32Array547 = new Class32[anInt546];

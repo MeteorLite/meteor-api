@@ -6,7 +6,7 @@ public class Class14 {
 	public static boolean aBoolean324;
 	public static int anInt323;
 	public static Class14[] aClass14Array322;
-	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_321;
+	public static Buffer aBuffer_321;
 	public static int[] anIntArray320;
 	public static Class39 aClass39_365;
 	public static int anInt319;
@@ -240,7 +240,7 @@ public class Class14 {
 		this.anInt363 = 0;
 	}
 
-	public void method222(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method222(byte var1, Buffer var2) {
 		while (true) {
 			int var3 = var2.get1();
 			if (var3 == 0) {
@@ -465,10 +465,10 @@ public class Class14 {
 
 		anInt323 = (anInt323 + 1) % 10;
 		Class14 var2 = aClass14Array322[anInt323];
-		aClass44_Sub3_Sub2_321.anInt1374 = anIntArray320[var0];
+		aBuffer_321.anInt1374 = anIntArray320[var0];
 		var2.anInt325 = var0;
 		var2.method221();
-		var2.method222((byte)2, aClass44_Sub3_Sub2_321);
+		var2.method222((byte)2, aBuffer_321);
 		if (var2.anInt358 != -1) {
 			var2.method223();
 		}
@@ -487,7 +487,7 @@ public class Class14 {
 		if (var1 == 0) {
 			Class44_Sub3_Sub1_Sub2 var4 = (Class44_Sub3_Sub1_Sub2)aClass39_365.method339((long)var0);
 			if (var4 != null && var3 != var4.anInt1437 && var4.anInt1437 != -1) {
-				var4.unlink();
+				var4.remove();
 				var4 = null;
 			}
 
@@ -639,12 +639,12 @@ public class Class14 {
 		aClass39_365 = null;
 		anIntArray320 = null;
 		aClass14Array322 = null;
-		aClass44_Sub3_Sub2_321 = null;
+		aBuffer_321 = null;
 	}
 
 	public static void method218(Class47 var0) {
-		aClass44_Sub3_Sub2_321 = new Class44_Sub3_Sub2(var0.method546("obj.dat", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("obj.idx", (byte[])null), (byte)1);
+		aBuffer_321 = new Buffer(var0.method546("obj.dat", (byte[])null), (byte)1);
+		Buffer var1 = new Buffer(var0.method546("obj.idx", (byte[])null), (byte)1);
 		anInt319 = var1.get2();
 		anIntArray320 = new int[anInt319];
 		int var2 = 2;

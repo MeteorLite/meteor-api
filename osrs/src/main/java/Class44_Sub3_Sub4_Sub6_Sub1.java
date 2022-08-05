@@ -336,7 +336,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
 		return this.aBoolean1658;
 	}
 
-	public void method534(Class44_Sub3_Sub2 var1, int var2) {
+	public void method534(Buffer var1, int var2) {
 		var1.anInt1374 = 0;
 		this.anInt1659 = var1.get1();
 		this.anInt1660 = var1.get1();

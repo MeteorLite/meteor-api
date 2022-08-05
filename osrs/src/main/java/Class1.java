@@ -20,7 +20,7 @@ public class Class1 {
 		this.aBoolean39 = false;
 	}
 
-	public void method148(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method148(byte var1, Buffer var2) {
 		this.anInt45 = var2.get1();
 		if (var1 == 2) {
 			boolean var3 = false;
@@ -49,7 +49,7 @@ public class Class1 {
 		descriptor = "(LClass44_Sub3_Sub2;I)V",
 		garbageValue = "9"
 	)
-	public void method149(Class44_Sub3_Sub2 var1) {
+	public void method149(Buffer var1) {
 		this.anInt40 = var1.get1();
 		this.anIntArray41 = new int[this.anInt40];
 		this.anIntArray42 = new int[this.anInt40];

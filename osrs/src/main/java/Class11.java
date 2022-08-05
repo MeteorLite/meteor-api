@@ -28,26 +28,26 @@ public class Class11 {
 	}
 
 	public static void method208(int var0, byte[] var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var2 = new Buffer(var1, (byte)1);
 		var2.anInt1374 = var1.length - 8;
 		int var3 = var2.get2();
 		int var4 = var2.get2();
 		int var5 = var2.get2();
 		int var6 = var2.get2();
 		byte var7 = 0;
-		Class44_Sub3_Sub2 var8 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var8 = new Buffer(var1, (byte)1);
 		var8.anInt1374 = var7;
 		int var28 = var7 + var3 + 2;
-		Class44_Sub3_Sub2 var9 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var9 = new Buffer(var1, (byte)1);
 		var9.anInt1374 = var28;
 		var28 += var4;
-		Class44_Sub3_Sub2 var10 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var10 = new Buffer(var1, (byte)1);
 		var10.anInt1374 = var28;
 		var28 += var5;
-		Class44_Sub3_Sub2 var11 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var11 = new Buffer(var1, (byte)1);
 		var11.anInt1374 = var28;
 		var28 += var6;
-		Class44_Sub3_Sub2 var12 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var12 = new Buffer(var1, (byte)1);
 		var12.anInt1374 = var28;
 		Class9 var13 = new Class9(10470, var12);
 		int var14 = var8.get2();

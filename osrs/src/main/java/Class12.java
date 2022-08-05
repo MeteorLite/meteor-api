@@ -5,7 +5,7 @@ public class Class12 {
 	public static Class39 aClass39_306;
 	public static int anInt279;
 	public static Class12[] aClass12Array278;
-	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_277;
+	public static Buffer aBuffer_277;
 	public static int[] anIntArray276;
 	public static int anInt275;
 	public int[] anIntArray285;
@@ -173,7 +173,7 @@ public class Class12 {
 		}
 	}
 
-	public void method215(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method215(byte var1, Buffer var2) {
 		int var3;
 		if (var1 == 2) {
 			boolean var6 = false;
@@ -276,9 +276,9 @@ public class Class12 {
 
 		anInt279 = (anInt279 + 1) % 20;
 		Class12 var2 = aClass12Array278[anInt279] = new Class12();
-		aClass44_Sub3_Sub2_277.anInt1374 = anIntArray276[var0];
+		aBuffer_277.anInt1374 = anIntArray276[var0];
 		var2.aLong280 = (long)var0;
-		var2.method215((byte)2, aClass44_Sub3_Sub2_277);
+		var2.method215((byte)2, aBuffer_277);
 		return var2;
 	}
 
@@ -286,7 +286,7 @@ public class Class12 {
 		aClass39_306 = null;
 		anIntArray276 = null;
 		aClass12Array278 = null;
-		aClass44_Sub3_Sub2_277 = null;
+		aBuffer_277 = null;
 		if (var0 == 1) {
 			boolean var1 = false;
 		} else {
@@ -296,8 +296,8 @@ public class Class12 {
 	}
 
 	public static void method212(Class47 var0) {
-		aClass44_Sub3_Sub2_277 = new Class44_Sub3_Sub2(var0.method546("npc.dat", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("npc.idx", (byte[])null), (byte)1);
+		aBuffer_277 = new Buffer(var0.method546("npc.dat", (byte[])null), (byte)1);
+		Buffer var1 = new Buffer(var0.method546("npc.idx", (byte[])null), (byte)1);
 		anInt275 = var1.get2();
 		anIntArray276 = new int[anInt275];
 		int var2 = 2;

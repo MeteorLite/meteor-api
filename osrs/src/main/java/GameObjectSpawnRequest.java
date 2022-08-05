@@ -1,4 +1,4 @@
-public class GameObjectSpawnRequest extends Class44 {
+public class GameObjectSpawnRequest extends Node {
 	public int anInt1311;
 	public int delayUntilSpawn;
 	public int anInt1310;

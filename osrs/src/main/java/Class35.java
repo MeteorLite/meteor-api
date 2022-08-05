@@ -11,7 +11,7 @@ public class Class35 {
 		aBoolean578 = true;
 	}
 
-	public void method276(Class44_Sub3_Sub2 var1, byte var2, int var3) {
+	public void method276(Buffer var1, byte var2, int var3) {
 		while (true) {
 			int var4 = var1.get1();
 			if (var4 == 0) {
@@ -31,7 +31,7 @@ public class Class35 {
 	}
 
 	public static void method275(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("varbit.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("varbit.dat", (byte[])null), (byte)1);
 		anInt579 = var2.get2();
 		if (aClass35Array580 == null) {
 			aClass35Array580 = new Class35[anInt579];

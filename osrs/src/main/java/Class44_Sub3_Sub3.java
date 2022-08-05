@@ -1,4 +1,4 @@
-public class Class44_Sub3_Sub3 extends Class44_Sub3 {
+public class Class44_Sub3_Sub3 extends DualNode {
 	public boolean aBoolean1391;
 	public int anInt1387;
 	public int anInt1388;

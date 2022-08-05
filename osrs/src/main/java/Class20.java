@@ -144,7 +144,7 @@ public class Class20 {
 		return var4;
 	}
 
-	public void method244(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method244(byte var1, Buffer var2) {
 		while (true) {
 			int var3 = var2.get1();
 			if (var3 == 0) {
@@ -169,7 +169,7 @@ public class Class20 {
 	}
 
 	public static void method243(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("flo.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("flo.dat", (byte[])null), (byte)1);
 		anInt422 = var2.get2();
 		if (aClass20Array423 == null) {
 			aClass20Array423 = new Class20[anInt422];

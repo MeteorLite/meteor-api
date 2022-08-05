@@ -105,7 +105,7 @@ public class Class2 {
 		}
 	}
 
-	public void method156(Class44_Sub3_Sub2 var1, byte var2, Class1 var3) {
+	public void method156(Buffer var1, byte var2, Class1 var3) {
 		int var4 = var1.get1();
 		this.anIntArray55[0] = var4 >> 4;
 		this.anIntArray55[1] = var4 & 15;

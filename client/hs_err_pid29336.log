@@ -504,11 +504,11 @@ Deoptimization events (20 events):
 Event: 6.516 Thread 0x0000025e74b66800 DEOPT PACKING pc=0x0000025e56411a60 sp=0x000000fcc131e4d0
 Event: 6.516 Thread 0x0000025e74b66800 DEOPT UNPACKING pc=0x0000025e4e8023a3 sp=0x000000fcc131e448 mode 2
 Event: 6.577 Thread 0x0000025e74b66800 Uncommon trap: trap_request=0xffffffde fr.pc=0x0000025e56411a60 relative=0x0000000000000520
-Event: 6.577 Thread 0x0000025e74b66800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000025e56411a60 method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$Node; @ 128 c2
+Event: 6.577 Thread 0x0000025e74b66800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000025e56411a60 method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$DualNode; @ 128 c2
 Event: 6.577 Thread 0x0000025e74b66800 DEOPT PACKING pc=0x0000025e56411a60 sp=0x000000fcc131e4d0
 Event: 6.577 Thread 0x0000025e74b66800 DEOPT UNPACKING pc=0x0000025e4e8023a3 sp=0x000000fcc131e448 mode 2
 Event: 6.699 Thread 0x0000025e74b66800 Uncommon trap: trap_request=0xffffffde fr.pc=0x0000025e56411a60 relative=0x0000000000000520
-Event: 6.699 Thread 0x0000025e74b66800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000025e56411a60 method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$Node; @ 128 c2
+Event: 6.699 Thread 0x0000025e74b66800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x0000025e56411a60 method=java.util.HashMap.getNode(Ljava/lang/Object;)Ljava/util/HashMap$DualNode; @ 128 c2
 Event: 6.699 Thread 0x0000025e74b66800 DEOPT PACKING pc=0x0000025e56411a60 sp=0x000000fcc131e4f0
 Event: 6.699 Thread 0x0000025e74b66800 DEOPT UNPACKING pc=0x0000025e4e8023a3 sp=0x000000fcc131e468 mode 2
 Event: 8.168 Thread 0x0000025e74b64ff0 DEOPT PACKING pc=0x0000025e4efffaec sp=0x000000fcc151ef20

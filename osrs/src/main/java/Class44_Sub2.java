@@ -1,4 +1,4 @@
-public class Class44_Sub2 extends Class44 {
+public class Class44_Sub2 extends Node {
 	public final Class30[] aClass30Array1333;
 	public final int[] anIntArray1334;
 	public Class27 aClass27_1326;

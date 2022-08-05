@@ -43,7 +43,7 @@ public class Class6 {
 		this.anInt184 = 500;
 	}
 
-	public void method190(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method190(byte var1, Buffer var2) {
 		this.aClass1_169 = new Class1();
 		this.aClass1_169.method148((byte)2, var2);
 		this.aClass1_170 = new Class1();

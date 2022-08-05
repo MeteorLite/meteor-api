@@ -850,7 +850,7 @@ public class Class3 {
 	}
 
 	public void method158(boolean var1, int var2, byte[] var3, int var4, int var5, int var6) {
-		Class44_Sub3_Sub2 var7 = new Class44_Sub3_Sub2(var3, (byte)1);
+		Buffer var7 = new Buffer(var3, (byte)1);
 
 		for (int var8 = 0; var8 < 4; ++var8) {
 			for (int var9 = 0; var9 < 64; ++var9) {
@@ -920,7 +920,7 @@ public class Class3 {
 	}
 
 	public void method161(int var1, byte[] var2, boolean var3, Class36 var4, int var5, Class18[] var6) {
-		Class44_Sub3_Sub2 var7 = new Class44_Sub3_Sub2(var2, (byte)1);
+		Buffer var7 = new Buffer(var2, (byte)1);
 		int var8 = -1;
 
 		while (true) {
@@ -1011,7 +1011,7 @@ public class Class3 {
 
 	public static boolean method159(byte var0, byte[] var1, int var2, int var3) {
 		boolean var4 = true;
-		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var1, (byte)1);
+		Buffer var5 = new Buffer(var1, (byte)1);
 		int var6 = -1;
 
 		label55:
@@ -1324,7 +1324,7 @@ public class Class3 {
 		return var3 >> 19 & 255;
 	}
 
-	public static void method160(byte var0, Class44_Sub3_Sub2 var1, Class43_Sub1 var2) {
+	public static void method160(byte var0, Buffer var1, Class43_Sub1 var2) {
 		int var3 = -1;
 
 		while (true) {

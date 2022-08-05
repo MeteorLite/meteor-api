@@ -1,6 +1,6 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class DrawingArea extends Class44_Sub3 {
+public class DrawingArea extends DualNode {
 	public static boolean aBoolean1348;
 	public static int[] anIntArray1351;
 	public static int anInt1352;

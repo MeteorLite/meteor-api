@@ -28,7 +28,7 @@ public class Class38 {
 		this.anInt673 = -1;
 	}
 
-	public void method338(Class44_Sub3_Sub2 var1, byte var2, int var3) {
+	public void method338(Buffer var1, byte var2, int var3) {
 		int var4;
 		if (var2 == 6) {
 			boolean var5 = false;
@@ -76,7 +76,7 @@ public class Class38 {
 	}
 
 	public static void method337(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("varp.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("varp.dat", (byte[])null), (byte)1);
 		anInt661 = 0;
 		anInt659 = var2.get2();
 		if (aClass38Array660 == null) {

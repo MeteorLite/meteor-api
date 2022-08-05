@@ -46,14 +46,14 @@ public class Class47 {
 	}
 
 	public void method545(int var1, byte[] var2) {
-		Class44_Sub3_Sub2 var3 = new Class44_Sub3_Sub2(var2, (byte)1);
+		Buffer var3 = new Buffer(var2, (byte)1);
 		int var4 = var3.get3();
 		int var5 = var3.get3();
 		if (var5 != var4) {
 			byte[] var6 = new byte[var4];
 			Class37.method329(var6, var4, var2, var5, 6);
 			this.aByteArray781 = var6;
-			var3 = new Class44_Sub3_Sub2(this.aByteArray781, (byte)1);
+			var3 = new Buffer(this.aByteArray781, (byte)1);
 			this.aBoolean787 = true;
 		} else {
 			this.aByteArray781 = var2;

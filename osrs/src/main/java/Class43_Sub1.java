@@ -109,7 +109,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 			return null;
 		} else {
 			synchronized(this.aClass31_1288) {
-				var1.method405();
+				var1.unlinktwo();
 			}
 
 			if (var1.aByteArray1389 == null) {
@@ -461,7 +461,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 								this.aClass28_1292.method256(this.aClass44_Sub3_Sub3_1301);
 							}
 						} else {
-							this.aClass44_Sub3_Sub3_1301.unlink();
+							this.aClass44_Sub3_Sub3_1301.remove();
 						}
 
 						this.aClass44_Sub3_Sub3_1301 = null;
@@ -510,7 +510,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 							this.aClass28_1292.method256(this.aClass44_Sub3_Sub3_1301);
 						}
 					} else {
-						this.aClass44_Sub3_Sub3_1301.unlink();
+						this.aClass44_Sub3_Sub3_1301.remove();
 					}
 				}
 
@@ -572,12 +572,12 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 
 		byte[] var5;
 		int var6;
-		Class44_Sub3_Sub2 var7;
+		Buffer var7;
 		int var8;
 		for (int var4 = 0; var4 < 4; ++var4) {
 			var5 = var1.method546(var3[var4], (byte[])null);
 			var6 = var5.length / 2;
-			var7 = new Class44_Sub3_Sub2(var5, (byte)1);
+			var7 = new Buffer(var5, (byte)1);
 			this.anIntArrayArray1271[var4] = new int[var6];
 			this.aByteArrayArray1273[var4] = new byte[var6];
 
@@ -592,7 +592,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		for (int var11 = 0; var11 < 4; ++var11) {
 			byte[] var12 = var1.method546(var10[var11], (byte[])null);
 			var13 = var12.length / 4;
-			Class44_Sub3_Sub2 var14 = new Class44_Sub3_Sub2(var12, (byte)1);
+			Buffer var14 = new Buffer(var12, (byte)1);
 			this.anIntArrayArray1272[var11] = new int[var13];
 
 			for (int var9 = 0; var9 < var13; ++var9) {
@@ -613,7 +613,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		}
 
 		var5 = var1.method546("map_index", (byte[])null);
-		var7 = new Class44_Sub3_Sub2(var5, (byte)1);
+		var7 = new Buffer(var5, (byte)1);
 		var6 = var5.length / 7;
 		this.anIntArray1276 = new int[var6];
 		this.anIntArray1277 = new int[var6];
@@ -628,7 +628,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		}
 
 		var5 = var1.method546("anim_index", (byte[])null);
-		var7 = new Class44_Sub3_Sub2(var5, (byte)1);
+		var7 = new Buffer(var5, (byte)1);
 		var6 = var5.length / 2;
 		this.anIntArray1280 = new int[var6];
 
@@ -637,7 +637,7 @@ public class Class43_Sub1 extends Class43 implements Runnable {
 		}
 
 		var5 = var1.method546("midi_index", (byte[])null);
-		var7 = new Class44_Sub3_Sub2(var5, (byte)1);
+		var7 = new Buffer(var5, (byte)1);
 		var6 = var5.length;
 		this.anIntArray1281 = new int[var6];
 

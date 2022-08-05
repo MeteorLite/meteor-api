@@ -708,21 +708,21 @@ public class Class41 {
 	}
 
 	public static void method342(Class47 var0) {
-		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("fragmentsenc.txt", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var0.method546("badenc.txt", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var3 = new Class44_Sub3_Sub2(var0.method546("domainenc.txt", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var4 = new Class44_Sub3_Sub2(var0.method546("tldlist.txt", (byte[])null), (byte)1);
+		Buffer var1 = new Buffer(var0.method546("fragmentsenc.txt", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var0.method546("badenc.txt", (byte[])null), (byte)1);
+		Buffer var3 = new Buffer(var0.method546("domainenc.txt", (byte[])null), (byte)1);
+		Buffer var4 = new Buffer(var0.method546("tldlist.txt", (byte[])null), (byte)1);
 		method343(var1, var2, var3, var4);
 	}
 
-	public static void method343(Class44_Sub3_Sub2 var0, Class44_Sub3_Sub2 var1, Class44_Sub3_Sub2 var2, Class44_Sub3_Sub2 var3) {
+	public static void method343(Buffer var0, Buffer var1, Buffer var2, Buffer var3) {
 		method345(804, var1);
 		method346(var2);
 		method347(-534, var0);
 		method344(var3);
 	}
 
-	public static void method345(int var0, Class44_Sub3_Sub2 var1) {
+	public static void method345(int var0, Buffer var1) {
 		int var2 = var1.get4();
 		aCharArrayArray746 = new char[var2][];
 		aByteArrayArrayArray747 = new byte[var2][][];
@@ -734,7 +734,7 @@ public class Class41 {
 		descriptor = "(LClass44_Sub3_Sub2;[[[B[[CZ)V",
 		garbageValue = "0"
 	)
-	public static void method348(Class44_Sub3_Sub2 var0, byte[][][] var1, char[][] var2) {
+	public static void method348(Buffer var0, byte[][][] var1, char[][] var2) {
 		for (int var3 = 0; var3 < var2.length; ++var3) {
 			char[] var4 = new char[var0.get1()];
 
@@ -761,13 +761,13 @@ public class Class41 {
 		descriptor = "(LClass44_Sub3_Sub2;Z)V",
 		garbageValue = "0"
 	)
-	public static void method346(Class44_Sub3_Sub2 var0) {
+	public static void method346(Buffer var0) {
 		int var1 = var0.get4();
 		aCharArrayArray748 = new char[var1][];
 		method349(false, aCharArrayArray748, var0);
 	}
 
-	public static void method349(boolean var0, char[][] var1, Class44_Sub3_Sub2 var2) {
+	public static void method349(boolean var0, char[][] var1, Buffer var2) {
 		for (int var3 = 0; var3 < var1.length; ++var3) {
 			char[] var4 = new char[var2.get1()];
 
@@ -780,7 +780,7 @@ public class Class41 {
 
 	}
 
-	public static void method347(int var0, Class44_Sub3_Sub2 var1) {
+	public static void method347(int var0, Buffer var1) {
 		anIntArray745 = new int[var1.get4()];
 
 		for (int var2 = 0; var2 < anIntArray745.length; ++var2) {
@@ -793,7 +793,7 @@ public class Class41 {
 		descriptor = "(LClass44_Sub3_Sub2;B)V",
 		garbageValue = "14"
 	)
-	public static void method344(Class44_Sub3_Sub2 var0) {
+	public static void method344(Buffer var0) {
 		int var1 = var0.get4();
 		aCharArrayArray749 = new char[var1][];
 		anIntArray750 = new int[var1];

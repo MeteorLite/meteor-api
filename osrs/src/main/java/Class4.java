@@ -3,7 +3,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class Class4 {
 	public static final Class4[] aClass4Array94;
 	public static final int[] anIntArray95;
-	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_97;
+	public static Buffer aBuffer_97;
 	public static byte[] aByteArray96;
 	public final byte aByte92;
 	public int anInt99;
@@ -91,32 +91,32 @@ public class Class4 {
 		}
 	}
 
-	public Class44_Sub3_Sub2 method179(int var1, byte var2) {
+	public Buffer method179(int var1, byte var2) {
 		int var3 = this.method180(var1);
-		aClass44_Sub3_Sub2_97.anInt1374 = 0;
-		aClass44_Sub3_Sub2_97.put4(1380533830);
-		aClass44_Sub3_Sub2_97.put4LE(true, var3 + 36);
-		aClass44_Sub3_Sub2_97.put4(1463899717);
-		aClass44_Sub3_Sub2_97.put4(1718449184);
-		aClass44_Sub3_Sub2_97.put4LE(true, 16);
-		aClass44_Sub3_Sub2_97.put2LE(false, 1);
-		aClass44_Sub3_Sub2_97.put2LE(false, 1);
-		aClass44_Sub3_Sub2_97.put4LE(true, 22050);
-		aClass44_Sub3_Sub2_97.put4LE(true, 22050);
-		aClass44_Sub3_Sub2_97.put2LE(false, 1);
-		aClass44_Sub3_Sub2_97.put2LE(false, 8);
-		aClass44_Sub3_Sub2_97.put4(1684108385);
-		aClass44_Sub3_Sub2_97.put4LE(true, var3);
+		aBuffer_97.anInt1374 = 0;
+		aBuffer_97.put4(1380533830);
+		aBuffer_97.put4LE(true, var3 + 36);
+		aBuffer_97.put4(1463899717);
+		aBuffer_97.put4(1718449184);
+		aBuffer_97.put4LE(true, 16);
+		aBuffer_97.put2LE(false, 1);
+		aBuffer_97.put2LE(false, 1);
+		aBuffer_97.put4LE(true, 22050);
+		aBuffer_97.put4LE(true, 22050);
+		aBuffer_97.put2LE(false, 1);
+		aBuffer_97.put2LE(false, 8);
+		aBuffer_97.put4(1684108385);
+		aBuffer_97.put4LE(true, var3);
 		if (var2 != this.aByte92) {
 			throw new NullPointerException();
 		} else {
-			Class44_Sub3_Sub2 var10000 = aClass44_Sub3_Sub2_97;
+			Buffer var10000 = aBuffer_97;
 			var10000.anInt1374 += var3;
-			return aClass44_Sub3_Sub2_97;
+			return aBuffer_97;
 		}
 	}
 
-	public void method177(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method177(byte var1, Buffer var2) {
 		for (int var3 = 0; var3 < 10; ++var3) {
 			int var4 = var2.get1();
 			if (var4 != 0) {
@@ -177,7 +177,7 @@ public class Class4 {
 		descriptor = "(IIB)LClass44_Sub3_Sub2;",
 		garbageValue = "5"
 	)
-	public static Class44_Sub3_Sub2 method176(int var0, int var1) {
+	public static Buffer method176(int var0, int var1) {
 		if (aClass4Array94[var0] != null) {
 			Class4 var2 = aClass4Array94[var0];
 			return var2.method179(var1, (byte)5);
@@ -186,9 +186,9 @@ public class Class4 {
 		}
 	}
 
-	public static void method175(boolean var0, Class44_Sub3_Sub2 var1) {
+	public static void method175(boolean var0, Buffer var1) {
 		aByteArray96 = new byte[441000];
-		aClass44_Sub3_Sub2_97 = new Class44_Sub3_Sub2(aByteArray96, (byte)1);
+		aBuffer_97 = new Buffer(aByteArray96, (byte)1);
 		Class6.method187();
 
 		while (true) {

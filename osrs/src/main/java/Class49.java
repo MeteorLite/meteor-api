@@ -7,7 +7,7 @@ public class Class49 {
 		aCharArray796 = new char[]{' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'};
 	}
 
-	public static void method555(String var0, byte var1, Class44_Sub3_Sub2 var2) {
+	public static void method555(String var0, byte var1, Buffer var2) {
 		if (var0.length() > 80) {
 			var0 = var0.substring(0, 80);
 		}
@@ -51,7 +51,7 @@ public class Class49 {
 
 	}
 
-	public static String method554(byte var0, int var1, Class44_Sub3_Sub2 var2) {
+	public static String method554(byte var0, int var1, Buffer var2) {
 		int var3 = 0;
 		int var4 = -1;
 

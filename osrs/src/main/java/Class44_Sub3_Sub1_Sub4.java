@@ -27,8 +27,8 @@ public class Class44_Sub3_Sub1_Sub4 extends DrawingArea {
 		this.anIntArray1463 = new int[256];
 		this.aRandom1465 = new Random();
 		this.aBoolean1466 = false;
-		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var1.method546(var3 + ".dat", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var6 = new Class44_Sub3_Sub2(var1.method546("index.dat", (byte[])null), (byte)1);
+		Buffer var5 = new Buffer(var1.method546(var3 + ".dat", (byte[])null), (byte)1);
+		Buffer var6 = new Buffer(var1.method546("index.dat", (byte[])null), (byte)1);
 		boolean var7 = true;
 		var6.anInt1374 = var5.get2() + 4;
 		int var8 = var6.get1();

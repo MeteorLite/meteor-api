@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class44_Sub3_Sub2 extends Class44_Sub3 {
+public class Buffer extends DualNode {
 	public static final int[] anIntArray1377;
 	public static final Class28 aClass28_1382;
 	public static final Class28 aClass28_1383;
@@ -54,7 +54,7 @@ public class Class44_Sub3_Sub2 extends Class44_Sub3 {
 		descriptor = "([BB)V",
 		garbageValue = "1"
 	)
-	public Class44_Sub3_Sub2(byte[] var1, byte var2) {
+	public Buffer(byte[] var1, byte var2) {
 		this.aCharArray1385 = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
 		this.aBoolean1362 = true;
 		this.anInt1363 = 9;
@@ -75,7 +75,7 @@ public class Class44_Sub3_Sub2 extends Class44_Sub3 {
 		descriptor = "(B)V",
 		garbageValue = "3"
 	)
-	public Class44_Sub3_Sub2(byte var1) {
+	public Buffer(byte var1) {
 		this.aCharArray1385 = new char[]{'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'};
 		this.aBoolean1362 = true;
 		this.anInt1363 = 9;
@@ -307,18 +307,18 @@ public class Class44_Sub3_Sub2 extends Class44_Sub3 {
 		this.putArray(var7, false, 0, var7.length);
 	}
 
-	public static Class44_Sub3_Sub2 method467(int var0, int var1) {
+	public static Buffer method467(int var0, int var1) {
 		synchronized(aClass28_1383) {
-			Class44_Sub3_Sub2 var3 = null;
+			Buffer var3 = null;
 			if (var1 == 0 && anInt1379 > 0) {
 				--anInt1379;
-				var3 = (Class44_Sub3_Sub2)aClass28_1382.method258();
+				var3 = (Buffer)aClass28_1382.method258();
 			} else if (var1 == 1 && anInt1380 > 0) {
 				--anInt1380;
-				var3 = (Class44_Sub3_Sub2)aClass28_1383.method258();
+				var3 = (Buffer)aClass28_1383.method258();
 			} else if (var1 == 2 && anInt1381 > 0) {
 				--anInt1381;
-				var3 = (Class44_Sub3_Sub2)aClass28_1384.method258();
+				var3 = (Buffer)aClass28_1384.method258();
 			}
 
 			if (var3 != null) {
@@ -327,7 +327,7 @@ public class Class44_Sub3_Sub2 extends Class44_Sub3 {
 			}
 		}
 
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2((byte)3);
+		Buffer var2 = new Buffer((byte)3);
 		var2.anInt1374 = 0;
 		if (var1 == 0) {
 			var2.aByteArray1373 = new byte[100];

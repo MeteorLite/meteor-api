@@ -6,7 +6,7 @@ public class GameObjectDefinition {
 	public static int anInt216;
 	public static GameObjectDefinition[] aClass8Array215;
 	public static Class39 aClass39_253;
-	public static Class44_Sub3_Sub2 aClass44_Sub3_Sub2_214;
+	public static Buffer aBuffer_214;
 	public static int[] anIntArray213;
 	public static int anInt212;
 	public int[] anIntArray220;
@@ -283,7 +283,7 @@ public class GameObjectDefinition {
 		this.anInt251 = -1;
 	}
 
-	public void method201(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method201(byte var1, Buffer var2) {
 		if (var1 == 2) {
 			boolean var7 = false;
 		} else {
@@ -470,10 +470,10 @@ public class GameObjectDefinition {
 
 		anInt216 = (anInt216 + 1) % 10;
 		GameObjectDefinition var2 = aClass8Array215[anInt216];
-		aClass44_Sub3_Sub2_214.anInt1374 = anIntArray213[var0];
+		aBuffer_214.anInt1374 = anIntArray213[var0];
 		var2.anInt218 = var0;
 		var2.method200();
-		var2.method201((byte)2, aClass44_Sub3_Sub2_214);
+		var2.method201((byte)2, aBuffer_214);
 		return var2;
 	}
 
@@ -482,7 +482,7 @@ public class GameObjectDefinition {
 		aClass39_253 = null;
 		anIntArray213 = null;
 		aClass8Array215 = null;
-		aClass44_Sub3_Sub2_214 = null;
+		aBuffer_214 = null;
 		if (var0 == 1) {
 			boolean var2 = false;
 		} else {
@@ -493,8 +493,8 @@ public class GameObjectDefinition {
 	}
 
 	public static void method197(Class47 var0) {
-		aClass44_Sub3_Sub2_214 = new Class44_Sub3_Sub2(var0.method546("loc.dat", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var1 = new Class44_Sub3_Sub2(var0.method546("loc.idx", (byte[])null), (byte)1);
+		aBuffer_214 = new Buffer(var0.method546("loc.dat", (byte[])null), (byte)1);
+		Buffer var1 = new Buffer(var0.method546("loc.idx", (byte[])null), (byte)1);
 		anInt212 = var1.get2();
 		anIntArray213 = new int[anInt212];
 		int var2 = 2;

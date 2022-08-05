@@ -1,26 +1,26 @@
 public class Class31 {
-	public Class44_Sub3 aClass44_Sub3_544;
-	public final Class44_Sub3 aClass44_Sub3_543;
+	public DualNode aDualNode_544;
+	public final DualNode aDualNode_543;
 	public boolean aBoolean542;
 
 	public Class31(byte var1) {
 		this.aBoolean542 = true;
-		this.aClass44_Sub3_543 = new Class44_Sub3();
+		this.aDualNode_543 = new DualNode();
 		if (var1 == 8) {
 			boolean var2 = false;
-			this.aClass44_Sub3_543.aClass44_Sub3_1345 = this.aClass44_Sub3_543;
-			this.aClass44_Sub3_543.aClass44_Sub3_1346 = this.aClass44_Sub3_543;
+			this.aDualNode_543.previous = this.aDualNode_543;
+			this.aDualNode_543.next = this.aDualNode_543;
 		} else {
 			throw new NullPointerException();
 		}
 	}
 
-	public Class44_Sub3 method265() {
-		Class44_Sub3 var1 = this.aClass44_Sub3_543.aClass44_Sub3_1345;
-		if (var1 == this.aClass44_Sub3_543) {
+	public DualNode method265() {
+		DualNode var1 = this.aDualNode_543.previous;
+		if (var1 == this.aDualNode_543) {
 			return null;
 		} else {
-			var1.method405();
+			var1.unlinktwo();
 			return var1;
 		}
 	}
@@ -28,42 +28,42 @@ public class Class31 {
 	public int method268() {
 		int var1 = 0;
 
-		for (Class44_Sub3 var2 = this.aClass44_Sub3_543.aClass44_Sub3_1345; var2 != this.aClass44_Sub3_543; var2 = var2.aClass44_Sub3_1345) {
+		for (DualNode var2 = this.aDualNode_543.previous; var2 != this.aDualNode_543; var2 = var2.previous) {
 			++var1;
 		}
 
 		return var1;
 	}
 
-	public void method264(Class44_Sub3 var1) {
-		if (var1.aClass44_Sub3_1346 != null) {
-			var1.method405();
+	public void method264(DualNode var1) {
+		if (var1.next != null) {
+			var1.unlinktwo();
 		}
 
-		var1.aClass44_Sub3_1346 = this.aClass44_Sub3_543.aClass44_Sub3_1346;
-		var1.aClass44_Sub3_1345 = this.aClass44_Sub3_543;
-		var1.aClass44_Sub3_1346.aClass44_Sub3_1345 = var1;
-		var1.aClass44_Sub3_1345.aClass44_Sub3_1346 = var1;
+		var1.next = this.aDualNode_543.next;
+		var1.previous = this.aDualNode_543;
+		var1.next.previous = var1;
+		var1.previous.next = var1;
 	}
 
-	public Class44_Sub3 method266() {
-		Class44_Sub3 var1 = this.aClass44_Sub3_543.aClass44_Sub3_1345;
-		if (var1 == this.aClass44_Sub3_543) {
-			this.aClass44_Sub3_544 = null;
+	public DualNode method266() {
+		DualNode var1 = this.aDualNode_543.previous;
+		if (var1 == this.aDualNode_543) {
+			this.aDualNode_544 = null;
 			return null;
 		} else {
-			this.aClass44_Sub3_544 = var1.aClass44_Sub3_1345;
+			this.aDualNode_544 = var1.previous;
 			return var1;
 		}
 	}
 
-	public Class44_Sub3 method267(byte var1) {
-		Class44_Sub3 var2 = this.aClass44_Sub3_544;
-		if (var2 == this.aClass44_Sub3_543) {
-			this.aClass44_Sub3_544 = null;
+	public DualNode method267(byte var1) {
+		DualNode var2 = this.aDualNode_544;
+		if (var2 == this.aDualNode_543) {
+			this.aDualNode_544 = null;
 			return null;
 		} else {
-			this.aClass44_Sub3_544 = var2.aClass44_Sub3_1345;
+			this.aDualNode_544 = var2.previous;
 			if (var1 == 0) {
 				boolean var3 = false;
 			} else {

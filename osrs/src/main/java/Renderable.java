@@ -1,6 +1,6 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Renderable extends Class44_Sub3 {
+public class Renderable extends DualNode {
 	public int anInt1394;
 	public Class25[] aClass25Array1393;
 

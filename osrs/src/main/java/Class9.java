@@ -3,7 +3,7 @@ public class Class9 {
 	public final int[] anIntArray255;
 	public final int[][] anIntArrayArray256;
 
-	public Class9(int var1, Class44_Sub3_Sub2 var2) {
+	public Class9(int var1, Buffer var2) {
 		this.anInt254 = var2.get1();
 		this.anIntArray255 = new int[this.anInt254];
 		this.anIntArrayArray256 = new int[this.anInt254][];

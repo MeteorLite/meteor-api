@@ -80,8 +80,8 @@ public class Class44_Sub3_Sub1_Sub2 extends DrawingArea {
 		this.anInt1428 = -582;
 		this.aBoolean1429 = false;
 		this.aBoolean1430 = false;
-		Class44_Sub3_Sub2 var4 = new Class44_Sub3_Sub2(var1.method546(var2 + ".dat", (byte[])null), (byte)1);
-		Class44_Sub3_Sub2 var5 = new Class44_Sub3_Sub2(var1.method546("index.dat", (byte[])null), (byte)1);
+		Buffer var4 = new Buffer(var1.method546(var2 + ".dat", (byte[])null), (byte)1);
+		Buffer var5 = new Buffer(var1.method546("index.dat", (byte[])null), (byte)1);
 		var5.anInt1374 = var4.get2();
 		this.anInt1436 = var5.get2();
 		this.anInt1437 = var5.get2();

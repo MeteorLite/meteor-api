@@ -114,7 +114,7 @@ public class Class22 {
 		}
 	}
 
-	public void method248(byte var1, Class44_Sub3_Sub2 var2) {
+	public void method248(byte var1, Buffer var2) {
 		while (true) {
 			int var3 = var2.get1();
 			if (var3 == 0) {
@@ -145,7 +145,7 @@ public class Class22 {
 	}
 
 	public static void method247(boolean var0, Class47 var1) {
-		Class44_Sub3_Sub2 var2 = new Class44_Sub3_Sub2(var1.method546("idk.dat", (byte[])null), (byte)1);
+		Buffer var2 = new Buffer(var1.method546("idk.dat", (byte[])null), (byte)1);
 		anInt454 = var2.get2();
 		if (aClass22Array455 == null) {
 			aClass22Array455 = new Class22[anInt454];

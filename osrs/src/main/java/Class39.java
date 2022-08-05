@@ -10,7 +10,7 @@ public class Class39 {
 	public int anInt677;
 	public boolean aBoolean676;
 	public int anInt678;
-	public final Class44_Sub3 aClass44_Sub3_679;
+	public final DualNode aDualNode_679;
 
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
@@ -20,7 +20,7 @@ public class Class39 {
 		this.anInt674 = 7228;
 		this.aBoolean675 = false;
 		this.aBoolean676 = false;
-		this.aClass44_Sub3_679 = new Class44_Sub3();
+		this.aDualNode_679 = new DualNode();
 		this.aClass31_683 = new Class31((byte)8);
 		this.anInt680 = var1;
 		this.anInt681 = var1;
@@ -29,19 +29,19 @@ public class Class39 {
 
 	public void method341() {
 		while (true) {
-			Class44_Sub3 var1 = this.aClass31_683.method265();
+			DualNode var1 = this.aClass31_683.method265();
 			if (var1 == null) {
 				this.anInt681 = this.anInt680;
 				return;
 			}
 
-			var1.unlink();
-			var1.method405();
+			var1.remove();
+			var1.unlinktwo();
 		}
 	}
 
-	public Class44_Sub3 method339(long var1) {
-		Class44_Sub3 var3 = (Class44_Sub3)this.aClass42_682.method380(var1);
+	public DualNode method339(long var1) {
+		DualNode var3 = (DualNode)this.aClass42_682.method380(var1);
 		if (var3 != null) {
 			this.aClass31_683.method264(var3);
 			++this.anInt678;
@@ -52,16 +52,16 @@ public class Class39 {
 		return var3;
 	}
 
-	public void method340(int var1, long var2, Class44_Sub3 var4) {
+	public void method340(int var1, long var2, DualNode var4) {
 		var1 = 72 / var1;
 		if (this.anInt681 == 0) {
-			Class44_Sub3 var5 = this.aClass31_683.method265();
-			var5.unlink();
-			var5.method405();
-			if (var5 == this.aClass44_Sub3_679) {
-				Class44_Sub3 var6 = this.aClass31_683.method265();
-				var6.unlink();
-				var6.method405();
+			DualNode var5 = this.aClass31_683.method265();
+			var5.remove();
+			var5.unlinktwo();
+			if (var5 == this.aDualNode_679) {
+				DualNode var6 = this.aClass31_683.method265();
+				var6.remove();
+				var6.unlinktwo();
 			}
 		} else {
 			--this.anInt681;
