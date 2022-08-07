@@ -5594,7 +5594,7 @@ public class Client extends JagApplet {
 				outBuffer.putInt(signlink.uid);
 				outBuffer.putString(username);
 				outBuffer.putString(password);
-				outBuffer.rsa(modulus, JAGEX_PUBLIC_KEY);
+				outBuffer.rsa(modulus, exponent);
 				tempBuffer.position = 0;
 				if (reconnecting)
 					tempBuffer.putByte(18);
@@ -11265,10 +11265,7 @@ public class Client extends JagApplet {
 	public byte aByteArrayArray838[][];
 	public String aString839;
 	public static BigInteger modulus = new BigInteger(
-			"10051659244892395241378706791458839162708097633758895893165574483116036324859810971713810"
-					+ "71717263802271123852081331836104932865146310771295686506222818494242547097209979770"
-					+ "32323965440119940461256560855776288036858499479246523106432074729155099646507878668"
-					+ "916590641593396107544803321312668869645912252279416619");
+			"163023865537213522397334924260203755523852961791937493861500393656298444880857297530101396906480277717693240354151613575694561551100882376740963090885340440835894715448770277959977114798221797872055336296339342187242804501656059771348461530063989383317583523877008079446024222811116899563688931199563064378709");
 	public static int anInt841;
 	public int anIntArray842[] = { 0xffff00, 0xff0000, 65280, 65535, 0xff00ff, 0xffffff };
 	public int anIntArray843[];
@@ -11748,8 +11745,8 @@ public class Client extends JagApplet {
 	public int anIntArray1313[];
 	public volatile boolean aBoolean1314;
 	public int anInt1315;
-	public static BigInteger JAGEX_PUBLIC_KEY = new BigInteger(
-			"58778699976184461502525193738213253649000149147835990136706041084440742975821");
+	public static BigInteger exponent = new BigInteger(
+			"65537");
 	public byte aByte1317;
 	public int anInt1318;
 	public int anInt1319;
