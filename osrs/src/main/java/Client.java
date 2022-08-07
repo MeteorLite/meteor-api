@@ -22,7 +22,7 @@ import java.util.zip.CRC32;
 import sign.signlink;
 
 @SuppressWarnings("serial")
-public class client extends JagApplet {
+public class Client extends JagApplet {
 
 	public void method14(String s, int i) {
 		if (s == null || s.length() == 0) {
@@ -153,7 +153,7 @@ public class client extends JagApplet {
 			}
 			signlink.storeid = Integer.parseInt(args[4]);
 			signlink.startpriv(InetAddress.getLocalHost());
-			client cl = new client();
+			Client cl = new Client();
 			cl.start(765, 503);
 			return;
 		} catch (Exception exception) {
@@ -5594,7 +5594,7 @@ public class client extends JagApplet {
 				outBuffer.putInt(signlink.uid);
 				outBuffer.putString(username);
 				outBuffer.putString(password);
-				outBuffer.rsa(JAGEX_MODULUS, JAGEX_PUBLIC_KEY);
+				outBuffer.rsa(modulus, JAGEX_PUBLIC_KEY);
 				tempBuffer.position = 0;
 				if (reconnecting)
 					tempBuffer.putByte(18);
@@ -11066,7 +11066,7 @@ public class client extends JagApplet {
 		}
 	}
 
-	public client() {
+	public Client() {
 		archiveHashes = new int[9];
 		aString839 = "";
 		anIntArray843 = new int[Class42.anInt700];
@@ -11264,8 +11264,11 @@ public class client extends JagApplet {
 	public int archiveHashes[];
 	public byte aByteArrayArray838[][];
 	public String aString839;
-	public static BigInteger JAGEX_MODULUS = new BigInteger(
-			"7162900525229798032761816791230527296329313291232324290237849263501208207972894053929065636522363163621000728841182238772712427862772219676577293600221789");
+	public static BigInteger modulus = new BigInteger(
+			"10051659244892395241378706791458839162708097633758895893165574483116036324859810971713810"
+					+ "71717263802271123852081331836104932865146310771295686506222818494242547097209979770"
+					+ "32323965440119940461256560855776288036858499479246523106432074729155099646507878668"
+					+ "916590641593396107544803321312668869645912252279416619");
 	public static int anInt841;
 	public int anIntArray842[] = { 0xffff00, 0xff0000, 65280, 65535, 0xff00ff, 0xffffff };
 	public int anIntArray843[];

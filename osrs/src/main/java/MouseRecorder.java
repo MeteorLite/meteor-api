@@ -4,7 +4,7 @@
 
 public class MouseRecorder implements Runnable {
 
-	public MouseRecorder(client _client) {
+	public MouseRecorder(Client _client) {
 		running = true;
 		mouseY = new int[500];
 		lock = new Object();
@@ -31,7 +31,7 @@ public class MouseRecorder implements Runnable {
 	public boolean running;
 	public int mouseY[];
 	public Object lock;
-	public client client;
+	public Client client;
 	public int pos;
 	public int mouseX[];
 }

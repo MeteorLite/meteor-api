@@ -378,7 +378,7 @@ public class OnDemandFetcher extends ModelProvider implements Runnable {
 		return false;
 	}
 
-	public void init(Archive archive, client client1) {
+	public void init(Archive archive, Client client1) {
 		String as[] = { "model_version", "anim_version", "midi_version", "map_version" };
 		for (int i = 0; i < 4; i++) {
 			byte abyte0[] = archive.get(as[i]);
@@ -535,7 +535,7 @@ public class OnDemandFetcher extends ModelProvider implements Runnable {
 				if (l - aLong1378 < 4000L)
 					return;
 				aLong1378 = l;
-				aSocket1355 = _client.openSocket(43594 + client.portOffset);
+				aSocket1355 = _client.openSocket(43594 + Client.portOffset);
 				in = aSocket1355.getInputStream();
 				anOutputStream1349 = aSocket1355.getOutputStream();
 				anOutputStream1349.write(15);
@@ -651,7 +651,7 @@ public class OnDemandFetcher extends ModelProvider implements Runnable {
 	public InputStream in;
 	public byte aByte1371;
 	public FileNode currentFile;
-	public client _client;
+	public Client _client;
 	public LinkedList aClass6_1374;
 	public int anInt1375;
 	public int anIntArray1376[];

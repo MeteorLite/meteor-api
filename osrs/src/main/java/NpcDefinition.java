@@ -155,7 +155,7 @@ public class NpcDefinition {
 			int k = class49.varpId;
 			int l = class49.anInt827;
 			int i1 = class49.anInt828;
-			int j1 = client.anIntArray1214[i1 - l];
+			int j1 = Client.anIntArray1214[i1 - l];
 			j = aClient629.anIntArray1039[k] >> l & j1;
 		} else if (anInt659 != -1)
 			j = aClient629.anIntArray1039[anInt659];
@@ -242,7 +242,7 @@ public class NpcDefinition {
 			int j = class49.varpId;
 			int k = class49.anInt827;
 			int l = class49.anInt828;
-			int i1 = client.anIntArray1214[l - k];
+			int i1 = Client.anIntArray1214[l - k];
 			i = aClient629.anIntArray1039[j] >> k & i1;
 		} else if (anInt659 != -1)
 			i = aClient629.anIntArray1039[anInt659];
@@ -302,7 +302,7 @@ public class NpcDefinition {
 	public int anIntArray626[];
 	public int anInt627;
 	public long id;
-	public static client aClient629;
+	public static Client aClient629;
 	public int anInt630;
 	public boolean aBoolean631;
 	public int anInt632;

@@ -55,7 +55,7 @@ public class JagInterface {
 		if (type == 2)
 			model = NpcDefinition.forId(id).getHeadModel();
 		if (type == 3)
-			model = client.thisPlayer.getHeadModel();
+			model = Client.thisPlayer.getHeadModel();
 		if (type == 4)
 			model = item.getUncachedModel(50);
 		if (type == 5)

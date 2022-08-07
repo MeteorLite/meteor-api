@@ -13,7 +13,7 @@ public class Class50_Sub1_Sub4_Sub5 extends Entity {
 			int k = class49.varpId;
 			int l = class49.anInt827;
 			int i1 = class49.anInt828;
-			int j1 = client.anIntArray1214[i1 - l];
+			int j1 = Client.anIntArray1214[i1 - l];
 			j = aClient1723.anIntArray1039[k] >> l & j1;
 		} else if (anInt1726 != -1)
 			j = aClient1723.anIntArray1039[anInt1726];
@@ -35,7 +35,7 @@ public class Class50_Sub1_Sub4_Sub5 extends Entity {
 		if (i != -1) {
 			aClass14_1724 = Animation.animations[i];
 			anInt1730 = 0;
-			anInt1729 = client.pulseCycle - 1;
+			anInt1729 = Client.pulseCycle - 1;
 			if (flag && aClass14_1724.anInt298 != -1) {
 				anInt1730 = (int) (Math.random() * aClass14_1724.anInt294);
 				anInt1729 -= (int) (Math.random() * aClass14_1724.method205(0, anInt1730));
@@ -53,7 +53,7 @@ public class Class50_Sub1_Sub4_Sub5 extends Entity {
 	public Model getModel() {
 		int i = -1;
 		if (aClass14_1724 != null) {
-			int j = client.pulseCycle - anInt1729;
+			int j = Client.pulseCycle - anInt1729;
 			if (j > 100 && aClass14_1724.anInt298 > 0)
 				j = 100;
 			while (j > aClass14_1724.method205(0, anInt1730)) {
@@ -67,7 +67,7 @@ public class Class50_Sub1_Sub4_Sub5 extends Entity {
 				aClass14_1724 = null;
 				break;
 			}
-			anInt1729 = client.pulseCycle - j;
+			anInt1729 = Client.pulseCycle - j;
 			if (aClass14_1724 != null)
 				i = aClass14_1724.anIntArray295[anInt1730];
 		}
@@ -94,7 +94,7 @@ public class Class50_Sub1_Sub4_Sub5 extends Entity {
 	public int anInt1720;
 	public int anInt1721;
 	public int anInt1722;
-	public static client aClient1723;
+	public static Client aClient1723;
 	public Animation aClass14_1724;
 	public int anInt1725;
 	public int anInt1726;

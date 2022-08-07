@@ -27,7 +27,7 @@ public class ObjectDefinition {
 			int k = class49.varpId;
 			int l = class49.anInt827;
 			int i1 = class49.anInt828;
-			int j1 = client.anIntArray1214[i1 - l];
+			int j1 = Client.anIntArray1214[i1 - l];
 			j = aClient770.anIntArray1039[k] >> l & j1;
 		} else if (anInt781 != -1)
 			j = aClient770.anIntArray1039[anInt781];
@@ -435,7 +435,7 @@ public class ObjectDefinition {
 	public static JagBuffer buf;
 	public int anInt768;
 	public boolean aBoolean769;
-	public static client aClient770;
+	public static Client aClient770;
 	public static Model aClass50_Sub1_Sub4_Sub4Array771[] = new Model[4];
 	public static boolean lowMemory;
 	public int id;

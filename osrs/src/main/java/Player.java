@@ -39,10 +39,10 @@ public class Player extends Actor {
 		Model model = new Model(k, subModels);
 		for (int j1 = 0; j1 < 5; j1++)
 			if (colors[j1] != 0) {
-				model.replaceColor(client.anIntArrayArray1008[j1][0],
-						client.anIntArrayArray1008[j1][colors[j1]]);
+				model.replaceColor(Client.anIntArrayArray1008[j1][0],
+						Client.anIntArrayArray1008[j1][colors[j1]]);
 				if (j1 == 1)
-					model.replaceColor(client.anIntArray1268[0], client.anIntArray1268[colors[j1]]);
+					model.replaceColor(Client.anIntArray1268[0], Client.anIntArray1268[colors[j1]]);
 			}
 
 		return model;
@@ -128,10 +128,10 @@ public class Player extends Actor {
 			class50_sub1_sub4_sub4_1 = new Model(l1, aclass50_sub1_sub4_sub4);
 			for (int l2 = 0; l2 < 5; l2++)
 				if (colors[l2] != 0) {
-					class50_sub1_sub4_sub4_1.replaceColor(client.anIntArrayArray1008[l2][0],
-							client.anIntArrayArray1008[l2][colors[l2]]);
+					class50_sub1_sub4_sub4_1.replaceColor(Client.anIntArrayArray1008[l2][0],
+							Client.anIntArrayArray1008[l2][colors[l2]]);
 					if (l2 == 1)
-						class50_sub1_sub4_sub4_1.replaceColor(client.anIntArray1268[0], client.anIntArray1268[colors[l2]]);
+						class50_sub1_sub4_sub4_1.replaceColor(Client.anIntArray1268[0], Client.anIntArray1268[colors[l2]]);
 				}
 
 			class50_sub1_sub4_sub4_1.method584(7);
@@ -189,9 +189,9 @@ public class Player extends Actor {
 			}
 		}
 		if (aClass50_Sub1_Sub4_Sub4_1746 != null) {
-			if (client.pulseCycle >= anInt1765)
+			if (Client.pulseCycle >= anInt1765)
 				aClass50_Sub1_Sub4_Sub4_1746 = null;
-			if (client.pulseCycle >= anInt1764 && client.pulseCycle < anInt1765) {
+			if (Client.pulseCycle >= anInt1764 && Client.pulseCycle < anInt1765) {
 				Model class50_sub1_sub4_sub4_1 = aClass50_Sub1_Sub4_Sub4_1746;
 				class50_sub1_sub4_sub4_1.method590(anInt1743 - super.unitX, anInt1745 - super.unitY, false,
 						anInt1744 - anInt1750);
@@ -252,7 +252,7 @@ public class Player extends Actor {
 
 		for (int l = 0; l < 5; l++) {
 			int j1 = buf.getByte();
-			if (j1 < 0 || j1 >= client.anIntArrayArray1008[l].length)
+			if (j1 < 0 || j1 >= Client.anIntArrayArray1008[l].length)
 				j1 = 0;
 			colors[l] = j1;
 		}
