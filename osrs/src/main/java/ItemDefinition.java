@@ -1,669 +1,558 @@
-import net.runelite.mapping.ObfuscatedSignature;
+// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
 public class ItemDefinition {
 
-  public static int anInt317;
-  public static Class39 aClass39_364;
-  public static boolean aBoolean324;
-  public static int anInt323;
-  public static ItemDefinition[] aItemDefinitionArray322;
-  public static Buffer aBuffer_321;
-  public static int[] anIntArray320;
-  public static Class39 aClass39_365;
-  public static int anInt319;
-  public int anInt351;
-  public int anInt343;
-  public int anInt326;
-  public int[] anIntArray355;
-  public int anInt358;
-  public final int anInt315;
-  public int anInt352;
-  public int anInt344;
-  public int anInt349;
-  public String aString327;
-  public boolean aBoolean318;
-  public int anInt353;
-  public int anInt325;
-  public int anInt354;
-  public int anInt346;
-  public int[] anIntArray356;
-  public byte[] aByteArray328;
-  public int anInt347;
-  public int anInt350;
-  public int[] anIntArray329;
-  public int[] anIntArray330;
-  public int anInt331;
-  public int anInt332;
-  public int anInt359;
-  public int anInt333;
-  public int anInt335;
-  public int anInt339;
-  public int anInt360;
-  public int anInt361;
-  public byte aByte345;
-  public int anInt336;
-  public boolean aBoolean338;
-  public int anInt337;
-  public byte aByte348;
-  public boolean aBoolean340;
-  public int anInt334;
-  public String[] aStringArray341;
-  public String[] aStringArray342;
-  public int anInt362;
-  public int anInt363;
-  public int anInt357;
+	public boolean method211(int i) {
+		int k = anInt334;
+		int l = anInt361;
+		if (i == 1) {
+			k = anInt375;
+			l = anInt362;
+		}
+		if (k == -1)
+			return true;
+		boolean flag = true;
+		if (!Model.isDownloaded(k))
+			flag = false;
+		if (l != -1 && !Model.isDownloaded(l))
+			flag = false;
+		return flag;
+	}
+	
+	public static ItemDefinition forId(int id) {
+		for (int j = 0; j < 10; j++)
+			if (cache[j].id == id)
+				return cache[j];
+
+		cachePos = (cachePos + 1) % 10;
+		ItemDefinition def = cache[cachePos];
+		buf.position = indices[id];
+		def.id = id;
+		def.reset();
+		def.init(buf);
+		if (def.notedGraphicsId != -1)
+			def.toNote();
+		if (!memberServer && def.members) {
+			def.name = "Members Object";
+			def.description = "Login to a members' server to use this object.".getBytes();
+			def.groundActions = null;
+			def.inventoryActions = null;
+			def.team = 0;
+		}
+		return def;
+	}
+
+	public Model method213(byte byte0, int i) {
+		int j = anInt353;
+		int k = anInt331;
+		int l = anInt370;
+		if (i == 1) {
+			j = anInt326;
+			k = anInt355;
+			l = anInt367;
+		}
+		if (j == -1)
+			return null;
+		Model class50_sub1_sub4_sub4 = Model.forId(j);
+		if (byte0 != -98)
+			throw new NullPointerException();
+		if (k != -1)
+			if (l != -1) {
+				Model class50_sub1_sub4_sub4_1 = Model.forId(k);
+				Model class50_sub1_sub4_sub4_3 = Model.forId(l);
+				Model aclass50_sub1_sub4_sub4_1[] = { class50_sub1_sub4_sub4,
+						class50_sub1_sub4_sub4_1, class50_sub1_sub4_sub4_3 };
+				class50_sub1_sub4_sub4 = new Model(3, aclass50_sub1_sub4_sub4_1);
+			} else {
+				Model class50_sub1_sub4_sub4_2 = Model.forId(k);
+				Model aclass50_sub1_sub4_sub4[] = { class50_sub1_sub4_sub4, class50_sub1_sub4_sub4_2 };
+				class50_sub1_sub4_sub4 = new Model(2, aclass50_sub1_sub4_sub4);
+			}
+		if (i == 0 && aByte378 != 0)
+			class50_sub1_sub4_sub4.method590(0, 0, false, aByte378);
+		if (i == 1 && aByte330 != 0)
+			class50_sub1_sub4_sub4.method590(0, 0, false, aByte330);
+		if (srcColors != null) {
+			for (int color = 0; color < srcColors.length; color++)
+				class50_sub1_sub4_sub4.replaceColor(srcColors[color], destColors[color]);
+
+		}
+		return class50_sub1_sub4_sub4;
+	}
+
+	public static void unpack(Archive archive) {
+		buf = new JagBuffer(archive.get("obj.dat"));
+		JagBuffer objectIndexVector = new JagBuffer(archive.get("obj.idx"));
+		count = objectIndexVector.getShort();
+		indices = new int[count];
+		int index = 2;
+		for (int j = 0; j < count; j++) {
+			indices[j] = index;
+			index += objectIndexVector.getShort();
+		}
+
+		cache = new ItemDefinition[10];
+		for (int k = 0; k < 10; k++)
+			cache[k] = new ItemDefinition();
+
+	}
+
+	public void toNote() {
+		ItemDefinition graphics = forId(notedGraphicsId);
+		modelId = graphics.modelId;
+		modelScale = graphics.modelScale;
+		modelRotationX = graphics.modelRotationX;
+		modelRotationY = graphics.modelRotationY;
+		anInt339 = graphics.anInt339;
+		modelOffsetX = graphics.modelOffsetX;
+		modelOffsetY = graphics.modelOffsetY;
+		srcColors = graphics.srcColors;
+		destColors = graphics.destColors;
+		ItemDefinition info = forId(notedInfoId);
+		name = info.name;
+		members = info.members;
+		value = info.value;
+		String prefix = "a";
+		char firstChar = info.name.charAt(0);
+		if (firstChar == 'A' || firstChar == 'E' || firstChar == 'I' || firstChar == 'O' || firstChar == 'U')
+			prefix = "an";
+		description = ("Swap this note at any bank for " + prefix + " " + info.name + ".").getBytes();
+		stackable = true;
+	}
+
+	public boolean method216(int i, int j) {
+		while (i >= 0)
+			aBoolean350 = !aBoolean350;
+		int k = anInt353;
+		int l = anInt331;
+		int i1 = anInt370;
+		if (j == 1) {
+			k = anInt326;
+			l = anInt355;
+			i1 = anInt367;
+		}
+		if (k == -1)
+			return true;
+		boolean flag = true;
+		if (!Model.isDownloaded(k))
+			flag = false;
+		if (l != -1 && !Model.isDownloaded(l))
+			flag = false;
+		if (i1 != -1 && !Model.isDownloaded(i1))
+			flag = false;
+		return flag;
+	}
+
+	public Model getUncachedModel(int amount) {
+		if (stackIds != null && amount > 1) {
+			int stackId = -1;
+			for (int l = 0; l < 10; l++)
+				if (amount >= stackAmounts[l] && stackAmounts[l] != 0)
+					stackId = stackIds[l];
+
+			if (stackId != -1)
+				return forId(stackId).getUncachedModel(1);
+		}
+		Model class50_sub1_sub4_sub4 = Model.forId(modelId);
+		if (class50_sub1_sub4_sub4 == null)
+			return null;
+		if (srcColors != null) {
+			for (int i1 = 0; i1 < srcColors.length; i1++)
+				class50_sub1_sub4_sub4.replaceColor(srcColors[i1], destColors[i1]);
+
+		}
+		return class50_sub1_sub4_sub4;
+	}
+
+	public void init(JagBuffer vec) {
+		do {
+			int i = vec.getByte();
+			if (i == 0)
+				return;
+			if (i == 1)
+				modelId = vec.getShort();
+			else if (i == 2)
+				name = vec.getString();
+			else if (i == 3)
+				description = vec.getStringBytes();
+			else if (i == 4)
+				modelScale = vec.getShort();
+			else if (i == 5)
+				modelRotationX = vec.getShort();
+			else if (i == 6)
+				modelRotationY = vec.getShort();
+			else if (i == 7) {
+				modelOffsetX = vec.getShort();
+				if (modelOffsetX > 32767)
+					modelOffsetX -= 0x10000;
+			} else if (i == 8) {
+				modelOffsetY = vec.getShort();
+				if (modelOffsetY > 32767)
+					modelOffsetY -= 0x10000;
+			} else if (i == 10)
+				anInt372 = vec.getShort();
+			else if (i == 11)
+				stackable = true;
+			else if (i == 12)
+				value = vec.getInt();
+			else if (i == 16)
+				members = true;
+			else if (i == 23) {
+				anInt353 = vec.getShort();
+				aByte378 = vec.getSignedByte();
+			} else if (i == 24)
+				anInt331 = vec.getShort();
+			else if (i == 25) {
+				anInt326 = vec.getShort();
+				aByte330 = vec.getSignedByte();
+			} else if (i == 26)
+				anInt355 = vec.getShort();
+			else if (i >= 30 && i < 35) {
+				if (groundActions == null)
+					groundActions = new String[5];
+				groundActions[i - 30] = vec.getString();
+				if (groundActions[i - 30].equalsIgnoreCase("hidden"))
+					groundActions[i - 30] = null;
+			} else if (i >= 35 && i < 40) {
+				if (inventoryActions == null)
+					inventoryActions = new String[5];
+				inventoryActions[i - 35] = vec.getString();
+			} else if (i == 40) {
+				int colorCount = vec.getByte();
+				srcColors = new int[colorCount];
+				destColors = new int[colorCount];
+				for (int k = 0; k < colorCount; k++) {
+					srcColors[k] = vec.getShort();
+					destColors[k] = vec.getShort();
+				}
+
+			} else if (i == 78)
+				anInt370 = vec.getShort();
+			else if (i == 79)
+				anInt367 = vec.getShort();
+			else if (i == 90)
+				anInt334 = vec.getShort();
+			else if (i == 91)
+				anInt375 = vec.getShort();
+			else if (i == 92)
+				anInt361 = vec.getShort();
+			else if (i == 93)
+				anInt362 = vec.getShort();
+			else if (i == 95)
+				anInt339 = vec.getShort();
+			else if (i == 97)
+				notedInfoId = vec.getShort();
+			else if (i == 98)
+				notedGraphicsId = vec.getShort();
+			else if (i >= 100 && i < 110) {
+				if (stackIds == null) {
+					stackIds = new int[10];
+					stackAmounts = new int[10];
+				}
+				stackIds[i - 100] = vec.getShort();
+				stackAmounts[i - 100] = vec.getShort();
+			} else if (i == 110)
+				anInt366 = vec.getShort();
+			else if (i == 111)
+				anInt357 = vec.getShort();
+			else if (i == 112)
+				anInt368 = vec.getShort();
+			else if (i == 113)
+				anInt354 = vec.getSignedByte();
+			else if (i == 114)
+				anInt358 = vec.getSignedByte() * 5;
+			else if (i == 115)
+				team = vec.getByte();
+		} while (true);
+	}
+
+	public Model getGenderModel(int gender) {
+		int j = anInt334;
+		int k = anInt361;
+		if (gender == 1) {
+			j = anInt375;
+			k = anInt362;
+		}
+		if (j == -1)
+			return null;
+		Model class50_sub1_sub4_sub4 = Model.forId(j);
+		if (k != -1) {
+			Model class50_sub1_sub4_sub4_1 = Model.forId(k);
+			Model aclass50_sub1_sub4_sub4[] = { class50_sub1_sub4_sub4, class50_sub1_sub4_sub4_1 };
+			class50_sub1_sub4_sub4 = new Model(2, aclass50_sub1_sub4_sub4);
+		}
+		if (srcColors != null) {
+			for (int l = 0; l < srcColors.length; l++)
+				class50_sub1_sub4_sub4.replaceColor(srcColors[l], destColors[l]);
+
+		}
+		return class50_sub1_sub4_sub4;
+	}
+
+	public Model getModel(int amount) {
+		if (stackIds != null && amount > 1) {
+			int stackId = -1;
+			for (int pos = 0; pos < 10; pos++)
+				if (amount >= stackAmounts[pos] && stackAmounts[pos] != 0)
+					stackId = stackIds[pos];
+
+			if (stackId != -1)
+				return forId(stackId).getModel(1);
+		}
+		Model model = (Model) aClass33_337.get(id);
+		if (model != null)
+			return model;
+		model = Model.forId(modelId);
+		if (model == null)
+			return null;
+		if (anInt366 != 128 || anInt357 != 128 || anInt368 != 128)
+			model.method593(anInt357, anInt368, 9, anInt366);
+		if (srcColors != null) {
+			for (int l = 0; l < srcColors.length; l++)
+				model.replaceColor(srcColors[l], destColors[l]);
+
+		}
+		model.method594(64 + anInt354, 768 + anInt358, -50, -10, -50, true);
+		model.aBoolean1680 = true;
+		aClass33_337.put(model, id);
+		return model;
+	}
+
+	public static RgbSprite method221(byte byte0, int i, int j, int k) {
+		if (i == 0) {
+			RgbSprite class50_sub1_sub1_sub1 = (RgbSprite) aClass33_346.get(k);
+			if (class50_sub1_sub1_sub1 != null && class50_sub1_sub1_sub1.anInt1495 != j
+					&& class50_sub1_sub1_sub1.anInt1495 != -1) {
+				class50_sub1_sub1_sub1.unlink();
+				class50_sub1_sub1_sub1 = null;
+			}
+			if (class50_sub1_sub1_sub1 != null)
+				return class50_sub1_sub1_sub1;
+		}
+		ItemDefinition class16 = forId(k);
+		if (class16.stackIds == null)
+			j = -1;
+		if (j > 1) {
+			int l = -1;
+			for (int i1 = 0; i1 < 10; i1++)
+				if (j >= class16.stackAmounts[i1] && class16.stackAmounts[i1] != 0)
+					l = class16.stackIds[i1];
+
+			if (l != -1)
+				class16 = forId(l);
+		}
+		Model class50_sub1_sub4_sub4 = class16.getModel(1);
+		if (class50_sub1_sub4_sub4 == null)
+			return null;
+		RgbSprite class50_sub1_sub1_sub1_2 = null;
+		if (class16.notedGraphicsId != -1) {
+			class50_sub1_sub1_sub1_2 = method221((byte) -33, -1, 10, class16.notedInfoId);
+			if (class50_sub1_sub1_sub1_2 == null)
+				return null;
+		}
+		RgbSprite class50_sub1_sub1_sub1_1 = new RgbSprite(32, 32);
+		int j1 = ThreeDimensionalCanvas.anInt1532;
+		int k1 = ThreeDimensionalCanvas.anInt1533;
+		int ai[] = ThreeDimensionalCanvas.anIntArray1538;
+		int ai1[] = Drawable.anIntArray1424;
+		int l1 = Drawable.width;
+		int i2 = Drawable.height;
+		int j2 = Drawable.anInt1429;
+		int k2 = Drawable.anInt1430;
+		int l2 = Drawable.anInt1427;
+		int i3 = Drawable.anInt1428;
+		ThreeDimensionalCanvas.aBoolean1530 = false;
+		Drawable.method444(32, 32, class50_sub1_sub1_sub1_1.anIntArray1489);
+		Drawable.method449(32, 0, 0, (byte) -24, 32, 0);
+		ThreeDimensionalCanvas.method493(568);
+		int j3 = class16.modelScale;
+		if (i == -1)
+			j3 = (int) (j3 * 1.5D);
+		if (i > 0)
+			j3 = (int) (j3 * 1.04D);
+		int k3 = ThreeDimensionalCanvas.sineTable[class16.modelRotationX] * j3 >> 16;
+		int l3 = ThreeDimensionalCanvas.cosineTable[class16.modelRotationX] * j3 >> 16;
+		class50_sub1_sub4_sub4.method598(0, class16.modelRotationY, class16.anInt339, class16.modelRotationX, class16.modelOffsetX, k3
+				+ ((Entity) (class50_sub1_sub4_sub4)).height / 2 + class16.modelOffsetY, l3
+				+ class16.modelOffsetY);
+		for (int l4 = 31; l4 >= 0; l4--) {
+			for (int i4 = 31; i4 >= 0; i4--)
+				if (class50_sub1_sub1_sub1_1.anIntArray1489[l4 + i4 * 32] == 0)
+					if (l4 > 0 && class50_sub1_sub1_sub1_1.anIntArray1489[(l4 - 1) + i4 * 32] > 1)
+						class50_sub1_sub1_sub1_1.anIntArray1489[l4 + i4 * 32] = 1;
+					else if (i4 > 0 && class50_sub1_sub1_sub1_1.anIntArray1489[l4 + (i4 - 1) * 32] > 1)
+						class50_sub1_sub1_sub1_1.anIntArray1489[l4 + i4 * 32] = 1;
+					else if (l4 < 31 && class50_sub1_sub1_sub1_1.anIntArray1489[l4 + 1 + i4 * 32] > 1)
+						class50_sub1_sub1_sub1_1.anIntArray1489[l4 + i4 * 32] = 1;
+					else if (i4 < 31 && class50_sub1_sub1_sub1_1.anIntArray1489[l4 + (i4 + 1) * 32] > 1)
+						class50_sub1_sub1_sub1_1.anIntArray1489[l4 + i4 * 32] = 1;
+
+		}
+
+		if (i > 0) {
+			for (int i5 = 31; i5 >= 0; i5--) {
+				for (int j4 = 31; j4 >= 0; j4--)
+					if (class50_sub1_sub1_sub1_1.anIntArray1489[i5 + j4 * 32] == 0)
+						if (i5 > 0 && class50_sub1_sub1_sub1_1.anIntArray1489[(i5 - 1) + j4 * 32] == 1)
+							class50_sub1_sub1_sub1_1.anIntArray1489[i5 + j4 * 32] = i;
+						else if (j4 > 0 && class50_sub1_sub1_sub1_1.anIntArray1489[i5 + (j4 - 1) * 32] == 1)
+							class50_sub1_sub1_sub1_1.anIntArray1489[i5 + j4 * 32] = i;
+						else if (i5 < 31 && class50_sub1_sub1_sub1_1.anIntArray1489[i5 + 1 + j4 * 32] == 1)
+							class50_sub1_sub1_sub1_1.anIntArray1489[i5 + j4 * 32] = i;
+						else if (j4 < 31 && class50_sub1_sub1_sub1_1.anIntArray1489[i5 + (j4 + 1) * 32] == 1)
+							class50_sub1_sub1_sub1_1.anIntArray1489[i5 + j4 * 32] = i;
+
+			}
+
+		} else if (i == 0) {
+			for (int j5 = 31; j5 >= 0; j5--) {
+				for (int k4 = 31; k4 >= 0; k4--)
+					if (class50_sub1_sub1_sub1_1.anIntArray1489[j5 + k4 * 32] == 0 && j5 > 0 && k4 > 0
+							&& class50_sub1_sub1_sub1_1.anIntArray1489[(j5 - 1) + (k4 - 1) * 32] > 0)
+						class50_sub1_sub1_sub1_1.anIntArray1489[j5 + k4 * 32] = 0x302020;
+
+			}
+
+		}
+		if (class16.notedGraphicsId != -1) {
+			int k5 = class50_sub1_sub1_sub1_2.anInt1494;
+			int l5 = class50_sub1_sub1_sub1_2.anInt1495;
+			class50_sub1_sub1_sub1_2.anInt1494 = 32;
+			class50_sub1_sub1_sub1_2.anInt1495 = 32;
+			class50_sub1_sub1_sub1_2.method461(0, 0, -488);
+			class50_sub1_sub1_sub1_2.anInt1494 = k5;
+			class50_sub1_sub1_sub1_2.anInt1495 = l5;
+		}
+		if (i == 0)
+			aClass33_346.put(class50_sub1_sub1_sub1_1, k);
+		Drawable.method444(l1, i2, ai1);
+		Drawable.method446(l2, j2, i3, k2, true);
+		ThreeDimensionalCanvas.anInt1532 = j1;
+		ThreeDimensionalCanvas.anInt1533 = k1;
+		ThreeDimensionalCanvas.anIntArray1538 = ai;
+		ThreeDimensionalCanvas.aBoolean1530 = true;
+		if (class16.stackable)
+			class50_sub1_sub1_sub1_1.anInt1494 = 33;
+		else
+			class50_sub1_sub1_sub1_1.anInt1494 = 32;
+		class50_sub1_sub1_sub1_1.anInt1495 = j;
+		if (byte0 != -33)
+			throw new NullPointerException();
+		else
+			return class50_sub1_sub1_sub1_1;
+	}
+
+	public static void method222(boolean flag) {
+		aClass33_337 = null;
+		if (flag) {
+			for (int i = 1; i > 0; i++);
+		}
+		aClass33_346 = null;
+		indices = null;
+		cache = null;
+		buf = null;
+	}
+
+	public void reset() {
+		modelId = 0;
+		name = null;
+		description = null;
+		srcColors = null;
+		destColors = null;
+		modelScale = 2000;
+		modelRotationX = 0;
+		modelRotationY = 0;
+		anInt339 = 0;
+		modelOffsetX = 0;
+		modelOffsetY = 0;
+		anInt372 = -1;
+		stackable = false;
+		value = 1;
+		members = false;
+		groundActions = null;
+		inventoryActions = null;
+		anInt353 = -1;
+		anInt331 = -1;
+		aByte378 = 0;
+		anInt326 = -1;
+		anInt355 = -1;
+		aByte330 = 0;
+		anInt370 = -1;
+		anInt367 = -1;
+		anInt334 = -1;
+		anInt361 = -1;
+		anInt375 = -1;
+		anInt362 = -1;
+		stackIds = null;
+		stackAmounts = null;
+		notedInfoId = -1;
+		notedGraphicsId = -1;
+		anInt366 = 128;
+		anInt357 = 128;
+		anInt368 = 128;
+		anInt354 = 0;
+		anInt358 = 0;
+		team = 0;
+	}
+
+	public ItemDefinition() {
+		anInt351 = -68;
+		id = -1;
+	}
+
+	public int anInt326;
+	public int modelOffsetX;
+	public byte description[];
+	public String name;
+	public byte aByte330;
+	public int anInt331;
+	public int team;
+	public int notedInfoId;
+	public int anInt334;
+	public static int count;
+	public static ItemDefinition cache[];
+	public static LruHashTable aClass33_337 = new LruHashTable(50);
+	public String groundActions[];
+	public int anInt339;
+	public int modelOffsetY;
+	public int destColors[];
+	public static int indices[];
+	public int notedGraphicsId;
+	public static boolean memberServer = true;
+	public int value;
+	public static LruHashTable aClass33_346 = new LruHashTable(100);
+	public static byte aByte347 = 6;
+	public String inventoryActions[];
+	public static boolean aBoolean350 = true;
+	public int anInt351;
+	public static int cachePos;
+	public int anInt353;
+	public int anInt354;
+	public int anInt355;
+	public int modelRotationY;
+	public int anInt357;
+	public int anInt358;
+	public int modelRotationX;
+	public int modelId;
+	public int anInt361;
+	public int anInt362;
+	public int id;
+	public int srcColors[];
+	public int stackIds[];
+	public int anInt366;
+	public int anInt367;
+	public int anInt368;
+	public int modelScale;
+	public int anInt370;
+	public boolean stackable;
+	public int anInt372;
+	public static JagBuffer buf;
+	public boolean aBoolean374;
+	public int anInt375;
+	public int stackAmounts[];
+	public boolean members;
+	public byte aByte378;
 
-  static {
-    anInt317 = 5;
-    aBoolean324 = true;
-    aClass39_364 = new Class39(50, 0);
-    aClass39_365 = new Class39(100, 0);
-  }
-
-  public ItemDefinition() {
-    this.anInt315 = -32952;
-    this.aBoolean318 = true;
-    this.anInt325 = -1;
-  }
-
-  public Model getModel(int var1) {
-    int var3;
-    if (this.anIntArray355 != null && var1 > 1) {
-      int var2 = -1;
-
-      for (var3 = 0; var3 < 10; ++var3) {
-        if (var1 >= this.anIntArray356[var3] && this.anIntArray356[var3] != 0) {
-          var2 = this.anIntArray355[var3];
-        }
-      }
-
-      if (var2 != -1) {
-        return get(var2).getModel(1);
-      }
-    }
-
-    Model var4 = (Model) aClass39_364.method339(this.anInt325);
-    if (var4 != null) {
-      return var4;
-    } else {
-      var4 = Model.method503(this.anInt326);
-      if (var4 == null) {
-        return null;
-      } else {
-        if (this.anInt359 != 128 || this.anInt360 != 128 || this.anInt361 != 128) {
-          var4.method519(9, this.anInt361, this.anInt359, this.anInt360);
-        }
-
-        if (this.anIntArray329 != null) {
-          for (var3 = 0; var3 < this.anIntArray329.length; ++var3) {
-            var4.method517(this.anIntArray329[var3], this.anIntArray330[var3]);
-          }
-        }
-
-        var4.method520(this.anInt362 + 64, this.anInt363 + 768, -50, -10, -50, true);
-        var4.aBoolean1555 = true;
-        aClass39_364.method340(201, this.anInt325, var4);
-        return var4;
-      }
-    }
-  }
-
-  public Model method225(byte var1, int var2) {
-    int var4;
-    if (this.anIntArray355 != null && var2 > 1) {
-      int var3 = -1;
-
-      for (var4 = 0; var4 < 10; ++var4) {
-        if (var2 >= this.anIntArray356[var4] && this.anIntArray356[var4] != 0) {
-          var3 = this.anIntArray355[var4];
-        }
-      }
-
-      if (var3 != -1) {
-        return get(var3).method225((byte) 7, 1);
-      }
-    }
-
-    Model var6 = Model.method503(this.anInt326);
-    if (var1 == 7) {
-      boolean var5 = false;
-      if (var6 == null) {
-        return null;
-      } else {
-        if (this.anIntArray329 != null) {
-          for (var4 = 0; var4 < this.anIntArray329.length; ++var4) {
-            var6.method517(this.anIntArray329[var4], this.anIntArray330[var4]);
-          }
-        }
-
-        return var6;
-      }
-    } else {
-      throw new NullPointerException();
-    }
-  }
-
-  public boolean method229(int var1, byte var2) {
-    int var3 = this.anInt351;
-    int var4 = this.anInt352;
-    if (var1 == 1) {
-      var3 = this.anInt353;
-      var4 = this.anInt354;
-    }
-
-    if (var3 == -1) {
-      return true;
-    } else {
-      boolean var5 = true;
-      if (var2 == 1) {
-        boolean var6 = false;
-        if (!Model.method504(var3)) {
-          var5 = false;
-        }
-
-        if (var4 != -1 && !Model.method504(var4)) {
-          var5 = false;
-        }
-
-        return var5;
-      } else {
-        throw new NullPointerException();
-      }
-    }
-  }
-
-  public Model method230(boolean var1, int var2) {
-    int var3 = this.anInt351;
-    int var4 = this.anInt352;
-    if (var2 == 1) {
-      var3 = this.anInt353;
-      var4 = this.anInt354;
-    }
-
-    if (var3 == -1) {
-      return null;
-    } else {
-      Model var5 = Model.method503(var3);
-      if (var4 != -1) {
-        Model var6 = Model.method503(var4);
-        Model[] var7 = new Model[]{var5, var6};
-        var5 = new Model(2, -643, var7);
-      }
-
-      if (this.anIntArray329 != null) {
-        for (int var8 = 0; var8 < this.anIntArray329.length; ++var8) {
-          var5.method517(this.anIntArray329[var8], this.anIntArray330[var8]);
-        }
-      }
-
-      return var5;
-    }
-  }
-
-  public void method221() {
-    this.anInt326 = 0;
-    this.aString327 = null;
-    this.aByteArray328 = null;
-    this.anIntArray329 = null;
-    this.anIntArray330 = null;
-    this.anInt331 = 2000;
-    this.anInt332 = 0;
-    this.anInt333 = 0;
-    this.anInt334 = 0;
-    this.anInt335 = 0;
-    this.anInt336 = 0;
-    this.anInt337 = -1;
-    this.aBoolean338 = false;
-    this.anInt339 = 1;
-    this.aBoolean340 = false;
-    this.aStringArray341 = null;
-    this.aStringArray342 = null;
-    this.anInt343 = -1;
-    this.anInt344 = -1;
-    this.aByte345 = 0;
-    this.anInt346 = -1;
-    this.anInt347 = -1;
-    this.aByte348 = 0;
-    this.anInt349 = -1;
-    this.anInt350 = -1;
-    this.anInt351 = -1;
-    this.anInt352 = -1;
-    this.anInt353 = -1;
-    this.anInt354 = -1;
-    this.anIntArray355 = null;
-    this.anIntArray356 = null;
-    this.anInt357 = -1;
-    this.anInt358 = -1;
-    this.anInt359 = 128;
-    this.anInt360 = 128;
-    this.anInt361 = 128;
-    this.anInt362 = 0;
-    this.anInt363 = 0;
-  }
-
-  public void method222(byte var1, Buffer var2) {
-    while (true) {
-      int var3 = var2.readUByte();
-      if (var3 == 0) {
-        return;
-      }
-
-      if (var3 == 1) {
-        this.anInt326 = var2.readUShort();
-      } else if (var3 == 2) {
-        this.aString327 = var2.readString();
-      } else if (var3 == 3) {
-        this.aByteArray328 = var2.readStringArray(this.anInt315);
-      } else if (var3 == 4) {
-        this.anInt331 = var2.readUShort();
-      } else if (var3 == 5) {
-        this.anInt332 = var2.readUShort();
-      } else if (var3 == 6) {
-        this.anInt333 = var2.readUShort();
-      } else if (var3 == 7) {
-        this.anInt335 = var2.readUShort();
-        if (this.anInt335 > 32767) {
-          this.anInt335 -= 65536;
-        }
-      } else if (var3 == 8) {
-        this.anInt336 = var2.readUShort();
-        if (this.anInt336 > 32767) {
-          this.anInt336 -= 65536;
-        }
-      } else if (var3 == 10) {
-        this.anInt337 = var2.readUShort();
-      } else if (var3 == 11) {
-        this.aBoolean338 = true;
-      } else if (var3 == 12) {
-        this.anInt339 = var2.readInt();
-      } else if (var3 == 16) {
-        this.aBoolean340 = true;
-      } else if (var3 == 23) {
-        this.anInt343 = var2.readUShort();
-        this.aByte345 = var2.readByte();
-      } else if (var3 == 24) {
-        this.anInt344 = var2.readUShort();
-      } else if (var3 == 25) {
-        this.anInt346 = var2.readUShort();
-        this.aByte348 = var2.readByte();
-      } else if (var3 == 26) {
-        this.anInt347 = var2.readUShort();
-      } else if (var3 >= 30 && var3 < 35) {
-        if (this.aStringArray341 == null) {
-          this.aStringArray341 = new String[5];
-        }
-
-        this.aStringArray341[var3 - 30] = var2.readString();
-        if (this.aStringArray341[var3 - 30].equalsIgnoreCase("hidden")) {
-          this.aStringArray341[var3 - 30] = null;
-        }
-      } else if (var3 >= 35 && var3 < 40) {
-        if (this.aStringArray342 == null) {
-          this.aStringArray342 = new String[5];
-        }
-
-        this.aStringArray342[var3 - 35] = var2.readString();
-      } else if (var3 == 40) {
-        int var4 = var2.readUByte();
-        this.anIntArray329 = new int[var4];
-        this.anIntArray330 = new int[var4];
-
-        for (int var5 = 0; var5 < var4; ++var5) {
-          this.anIntArray329[var5] = var2.readUShort();
-          this.anIntArray330[var5] = var2.readUShort();
-        }
-      } else if (var3 == 78) {
-        this.anInt349 = var2.readUShort();
-      } else if (var3 == 79) {
-        this.anInt350 = var2.readUShort();
-      } else if (var3 == 90) {
-        this.anInt351 = var2.readUShort();
-      } else if (var3 == 91) {
-        this.anInt353 = var2.readUShort();
-      } else if (var3 == 92) {
-        this.anInt352 = var2.readUShort();
-      } else if (var3 == 93) {
-        this.anInt354 = var2.readUShort();
-      } else if (var3 == 95) {
-        this.anInt334 = var2.readUShort();
-      } else if (var3 == 97) {
-        this.anInt357 = var2.readUShort();
-      } else if (var3 == 98) {
-        this.anInt358 = var2.readUShort();
-      } else if (var3 >= 100 && var3 < 110) {
-        if (this.anIntArray355 == null) {
-          this.anIntArray355 = new int[10];
-          this.anIntArray356 = new int[10];
-        }
-
-        this.anIntArray355[var3 - 100] = var2.readUShort();
-        this.anIntArray356[var3 - 100] = var2.readUShort();
-      } else if (var3 == 110) {
-        this.anInt359 = var2.readUShort();
-      } else if (var3 == 111) {
-        this.anInt360 = var2.readUShort();
-      } else if (var3 == 112) {
-        this.anInt361 = var2.readUShort();
-      } else if (var3 == 113) {
-        this.anInt362 = var2.readByte();
-      } else if (var3 == 114) {
-        this.anInt363 = var2.readByte() * 5;
-      }
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(Z)V",
-      garbageValue = "0"
-  )
-  public void method223() {
-    ItemDefinition var1 = get(this.anInt358);
-    this.anInt326 = var1.anInt326;
-    this.anInt331 = var1.anInt331;
-    this.anInt332 = var1.anInt332;
-    this.anInt333 = var1.anInt333;
-    this.anInt334 = var1.anInt334;
-    this.anInt335 = var1.anInt335;
-    this.anInt336 = var1.anInt336;
-    this.anIntArray329 = var1.anIntArray329;
-    this.anIntArray330 = var1.anIntArray330;
-    ItemDefinition var2 = get(this.anInt357);
-    this.aString327 = var2.aString327;
-    this.aBoolean340 = var2.aBoolean340;
-    this.anInt339 = var2.anInt339;
-    String var3 = "a";
-    char var4 = var2.aString327.charAt(0);
-    if (var4 == 'A' || var4 == 'E' || var4 == 'I' || var4 == 'O' || var4 == 'U') {
-      var3 = "an";
-    }
-
-    this.aByteArray328 = ("Swap this note at any bank for " + var3 + " " + var2.aString327
-        + ".").getBytes();
-    this.aBoolean338 = true;
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(II)Z",
-      garbageValue = "0"
-  )
-  public boolean method227(int var1) {
-    int var2 = this.anInt343;
-    int var3 = this.anInt344;
-    int var4 = this.anInt349;
-    if (var1 == 1) {
-      var2 = this.anInt346;
-      var3 = this.anInt347;
-      var4 = this.anInt350;
-    }
-
-    if (var2 == -1) {
-      return true;
-    } else {
-      boolean var5 = Model.method504(var2);
-      if (var3 != -1 && !Model.method504(var3)) {
-        var5 = false;
-      }
-
-      if (var4 != -1 && !Model.method504(var4)) {
-        var5 = false;
-      }
-
-      return var5;
-    }
-  }
-
-  public Model method228(int var1, int var2) {
-    int var3 = this.anInt343;
-    int var4 = this.anInt344;
-    int var5 = this.anInt349;
-    if (var2 == 1) {
-      var3 = this.anInt346;
-      var4 = this.anInt347;
-      var5 = this.anInt350;
-    }
-
-    if (var3 == -1) {
-      return null;
-    } else {
-      Model var6 = Model.method503(var3);
-      if (var4 != -1) {
-        Model var7;
-        if (var5 != -1) {
-          var7 = Model.method503(var4);
-          Model var8 = Model.method503(var5);
-          Model[] var9 = new Model[]{var6, var7, var8};
-          var6 = new Model(3, -643, var9);
-        } else {
-          var7 = Model.method503(var4);
-          Model[] var11 = new Model[]{var6, var7};
-          var6 = new Model(2, -643, var11);
-        }
-      }
-
-      if (var2 == 0 && this.aByte345 != 0) {
-        var6.method516(0, this.aByte345, (byte) 10, 0);
-      }
-
-      if (var2 == 1 && this.aByte348 != 0) {
-        var6.method516(0, this.aByte348, (byte) 10, 0);
-      }
-
-      if (this.anIntArray329 != null) {
-        for (int var10 = 0; var10 < this.anIntArray329.length; ++var10) {
-          var6.method517(this.anIntArray329[var10], this.anIntArray330[var10]);
-        }
-      }
-
-      return var6;
-    }
-  }
-
-  public static ItemDefinition get(int var0) {
-    for (int var1 = 0; var1 < 10; ++var1) {
-      if (var0 == aItemDefinitionArray322[var1].anInt325) {
-        return aItemDefinitionArray322[var1];
-      }
-    }
-
-    anInt323 = (anInt323 + 1) % 10;
-    ItemDefinition var2 = aItemDefinitionArray322[anInt323];
-    aBuffer_321.offset = anIntArray320[var0];
-    var2.anInt325 = var0;
-    var2.method221();
-    var2.method222((byte) 2, aBuffer_321);
-    if (var2.anInt358 != -1) {
-      var2.method223();
-    }
-
-    if (!aBoolean324 && var2.aBoolean340) {
-      var2.aString327 = "Members Object";
-      var2.aByteArray328 = "Login to a members' server to use this object.".getBytes();
-      var2.aStringArray341 = null;
-      var2.aStringArray342 = null;
-    }
-
-    return var2;
-  }
-
-  public static Class44_Sub3_Sub1_Sub2 method226(int var0, int var1, int var2, int var3) {
-    if (var1 == 0) {
-      Class44_Sub3_Sub1_Sub2 var4 = (Class44_Sub3_Sub1_Sub2) aClass39_365.method339(var0);
-      if (var4 != null && var3 != var4.anInt1437 && var4.anInt1437 != -1) {
-        var4.removeNode();
-        var4 = null;
-      }
-
-      if (var4 != null) {
-        return var4;
-      }
-    }
-
-    ItemDefinition var23 = get(var0);
-    if (var23.anIntArray355 == null) {
-      var3 = -1;
-    }
-
-    if (var3 > 1) {
-      int var5 = -1;
-
-      for (int var6 = 0; var6 < 10; ++var6) {
-        if (var3 >= var23.anIntArray356[var6] && var23.anIntArray356[var6] != 0) {
-          var5 = var23.anIntArray355[var6];
-        }
-      }
-
-      if (var5 != -1) {
-        var23 = get(var5);
-      }
-    }
-
-    Model var24 = var23.getModel(1);
-    if (var24 == null) {
-      return null;
-    } else {
-      Class44_Sub3_Sub1_Sub2 var25 = null;
-      if (var23.anInt358 != -1) {
-        var25 = method226(var23.anInt357, -1, 45926, 10);
-        if (var25 == null) {
-          return null;
-        }
-      }
-
-      Class44_Sub3_Sub1_Sub2 var7 = new Class44_Sub3_Sub1_Sub2(32, 32);
-      int var8 = Class44_Sub3_Sub1_Sub1.anInt1403;
-      int var9 = Class44_Sub3_Sub1_Sub1.anInt1404;
-      int[] var10 = Class44_Sub3_Sub1_Sub1.anIntArray1409;
-      int[] var11 = Statics.anIntArray1351;
-      int var12 = Statics.anInt1352;
-      int var13 = Statics.anInt1353;
-      int var14 = Statics.anInt1356;
-      int var15 = Statics.anInt1357;
-      int var16 = Statics.anInt1354;
-      int var17 = Statics.anInt1355;
-      Class44_Sub3_Sub1_Sub1.aBoolean1401 = false;
-      Statics.initDrawingArea(32, 32, var7.anIntArray1431, 9);
-      Statics.method411(32, 0, 32, 0, 0, 0);
-      Class44_Sub3_Sub1_Sub1.method419();
-      int var18 = var23.anInt331;
-      if (var1 == -1) {
-        var18 = (int) ((double) var18 * 1.5D);
-      }
-
-      if (var1 > 0) {
-        var18 = (int) ((double) var18 * 1.04D);
-      }
-
-      int var19 = var18 * Class44_Sub3_Sub1_Sub1.anIntArray1407[var23.anInt332] >> 16;
-      int var20 = var18 * Class44_Sub3_Sub1_Sub1.anIntArray1408[var23.anInt332] >> 16;
-      var24.method523(0, var23.anInt333, var23.anInt334, var23.anInt332, var23.anInt335,
-          var24.anInt1394 / 2 + var19 + var23.anInt336, var20 + var23.anInt336);
-
-      int var21;
-      int var22;
-      for (var21 = 31; var21 >= 0; --var21) {
-        for (var22 = 31; var22 >= 0; --var22) {
-          if (var7.anIntArray1431[var21 + var22 * 32] == 0) {
-            if (var21 > 0 && var7.anIntArray1431[var22 * 32 + (var21 - 1)] > 1) {
-              var7.anIntArray1431[var21 + var22 * 32] = 1;
-            } else if (var22 > 0 && var7.anIntArray1431[var21 + (var22 - 1) * 32] > 1) {
-              var7.anIntArray1431[var21 + var22 * 32] = 1;
-            } else if (var21 < 31 && var7.anIntArray1431[var21 + var22 * 32 + 1] > 1) {
-              var7.anIntArray1431[var21 + var22 * 32] = 1;
-            } else if (var22 < 31 && var7.anIntArray1431[(var22 + 1) * 32 + var21] > 1) {
-              var7.anIntArray1431[var21 + var22 * 32] = 1;
-            }
-          }
-        }
-      }
-
-      if (var1 > 0) {
-        for (var21 = 31; var21 >= 0; --var21) {
-          for (var22 = 31; var22 >= 0; --var22) {
-            if (var7.anIntArray1431[var21 + var22 * 32] == 0) {
-              if (var21 > 0 && var7.anIntArray1431[var22 * 32 + (var21 - 1)] == 1) {
-                var7.anIntArray1431[var21 + var22 * 32] = var1;
-              } else if (var22 > 0 && var7.anIntArray1431[var21 + (var22 - 1) * 32] == 1) {
-                var7.anIntArray1431[var21 + var22 * 32] = var1;
-              } else if (var21 < 31 && var7.anIntArray1431[var21 + var22 * 32 + 1] == 1) {
-                var7.anIntArray1431[var21 + var22 * 32] = var1;
-              } else if (var22 < 31 && var7.anIntArray1431[(var22 + 1) * 32 + var21] == 1) {
-                var7.anIntArray1431[var21 + var22 * 32] = var1;
-              }
-            }
-          }
-        }
-      } else if (var1 == 0) {
-        for (var21 = 31; var21 >= 0; --var21) {
-          for (var22 = 31; var22 >= 0; --var22) {
-            if (var7.anIntArray1431[var21 + var22 * 32] == 0 && var21 > 0 && var22 > 0
-                && var7.anIntArray1431[var21 - 1 + (var22 - 1) * 32] > 0) {
-              var7.anIntArray1431[var21 + var22 * 32] = 3153952;
-            }
-          }
-        }
-      }
-
-      if (var23.anInt358 != -1) {
-        var21 = var25.anInt1436;
-        var22 = var25.anInt1437;
-        var25.anInt1436 = 32;
-        var25.anInt1437 = 32;
-        var25.method440((byte) 7, 0, 0);
-        var25.anInt1436 = var21;
-        var25.anInt1437 = var22;
-      }
-
-      if (var1 == 0) {
-        aClass39_365.method340(201, var0, var7);
-      }
-
-      Statics.initDrawingArea(var12, var13, var11, 9);
-      Statics.method408(5, var17, var15, var14, var16);
-      Class44_Sub3_Sub1_Sub1.anInt1403 = var8;
-      Class44_Sub3_Sub1_Sub1.anInt1404 = var9;
-      Class44_Sub3_Sub1_Sub1.anIntArray1409 = var10;
-      Class44_Sub3_Sub1_Sub1.aBoolean1401 = true;
-      if (var23.aBoolean338) {
-        var7.anInt1436 = 33;
-      } else {
-        var7.anInt1436 = 32;
-      }
-
-      var7.anInt1437 = var3;
-      return var7;
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "1"
-  )
-  public static void method219() {
-    aClass39_364 = null;
-    aClass39_365 = null;
-    anIntArray320 = null;
-    aItemDefinitionArray322 = null;
-    aBuffer_321 = null;
-  }
-
-  public static void method218(Class47 var0) {
-    aBuffer_321 = new Buffer(var0.method546("obj.dat", null), (byte) 1);
-    Buffer var1 = new Buffer(var0.method546("obj.idx", null), (byte) 1);
-    anInt319 = var1.readUShort();
-    anIntArray320 = new int[anInt319];
-    int var2 = 2;
-
-    int var3;
-    for (var3 = 0; var3 < anInt319; ++var3) {
-      anIntArray320[var3] = var2;
-      var2 += var1.readUShort();
-    }
-
-    aItemDefinitionArray322 = new ItemDefinition[10];
-
-    for (var3 = 0; var3 < 10; ++var3) {
-      aItemDefinitionArray322[var3] = new ItemDefinition();
-    }
-
-  }
 }

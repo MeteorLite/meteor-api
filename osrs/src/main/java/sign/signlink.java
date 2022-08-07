@@ -1,3 +1,8 @@
+// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+// Source File Name:   signlink.java
+
 package sign;
 
 import java.applet.Applet;
@@ -14,337 +19,268 @@ import java.net.URL;
 
 public class signlink implements Runnable {
 
-  public static int threadreqpri;
-  public static int midifade;
-  public static String dns;
-  public static int storeid;
-  public static String urlreq;
-  public static int socketreq;
-  public static String errorname;
-  public static String savereq;
-  public static boolean active;
-  public static boolean reporterror;
-  public static final Applet mainapp;
-  public static int threadliveid;
-  public static int wavevol;
-  public static byte[] savebuf;
-  public static Runnable threadreq;
-  public static String midi;
-  public static String dnsreq;
-  public static RandomAccessFile cache_dat;
-  public static boolean sunjava;
-  public static int midipos;
-  public static int wavepos;
-  public static int midivol;
-  public static DataInputStream urlstream;
-  public static Socket socket;
-  public static boolean waveplay;
-  public static final RandomAccessFile[] cache_idx;
-  public static int savelen;
-  public static boolean midiplay;
-  public static InetAddress socketip;
-  public static String wave;
-  public static int uid;
+	public static void startpriv(InetAddress inetaddress) {
+		threadliveid = (int) (Math.random() * 99999999D);
+		if (active) {
+			try {
+				Thread.sleep(500L);
+			} catch (Exception _ex) {
+			}
+			active = false;
+		}
+		socketreq = 0;
+		threadreq = null;
+		dnsreq = null;
+		savereq = null;
+		urlreq = null;
+		socketip = inetaddress;
+		Thread thread = new Thread(new signlink());
+		thread.setDaemon(true);
+		thread.start();
+		while (!active)
+			try {
+				Thread.sleep(50L);
+			} catch (Exception _ex) {
+			}
+	}
 
-  static {
-    storeid = 32;
-    cache_dat = null;
-    cache_idx = new RandomAccessFile[5];
-    mainapp = null;
-    socket = null;
-    threadreqpri = 1;
-    threadreq = null;
-    dnsreq = null;
-    dns = null;
-    urlreq = null;
-    urlstream = null;
-    savereq = null;
-    savebuf = null;
-    midi = null;
-    wave = null;
-    reporterror = true;
-    errorname = "";
-  }
+	public void run() {
+		active = true;
+		String s = findcachedir();
+		uid = getuid(s);
+		try {
+			File file = new File(s + "main_file_cache.dat");
+			if (file.exists() && file.length() > 0x3200000L)
+				file.delete();
+			cache_dat = new RandomAccessFile(s + "main_file_cache.dat", "rw");
+			for (int j = 0; j < 5; j++)
+				cache_idx[j] = new RandomAccessFile(s + "main_file_cache.idx" + j, "rw");
 
-  public void run() {
-    active = true;
-    String var1 = findcachedir();
-    uid = getuid(var1);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+		for (int i = threadliveid; threadliveid == i;) {
+			if (socketreq != 0) {
+				try {
+					socket = new Socket(socketip, socketreq);
+				} catch (Exception _ex) {
+					socket = null;
+				}
+				socketreq = 0;
+			} else if (threadreq != null) {
+				Thread thread = new Thread(threadreq);
+				thread.setDaemon(true);
+				thread.start();
+				thread.setPriority(threadreqpri);
+				threadreq = null;
+			} else if (dnsreq != null) {
+				try {
+					dns = InetAddress.getByName(dnsreq).getHostName();
+				} catch (Exception _ex) {
+					dns = "unknown";
+				}
+				dnsreq = null;
+			} else if (savereq != null) {
+				if (savebuf != null)
+					try {
+						FileOutputStream fileoutputstream = new FileOutputStream(s + savereq);
+						fileoutputstream.write(savebuf, 0, savelen);
+						fileoutputstream.close();
+					} catch (Exception _ex) {
+					}
+				if (waveplay) {
+					wave = s + savereq;
+					waveplay = false;
+				}
+				if (midiplay) {
+					midi = s + savereq;
+					midiplay = false;
+				}
+				savereq = null;
+			} else if (urlreq != null) {
+				try {
+					urlstream = new DataInputStream((new URL(mainapp.getCodeBase(), urlreq)).openStream());
+				} catch (Exception _ex) {
+					urlstream = null;
+				}
+				urlreq = null;
+			}
+			try {
+				Thread.sleep(50L);
+			} catch (Exception _ex) {
+			}
+		}
 
-    try {
-      File var2 = new File(var1 + "main_file_cache.dat");
-      if (var2.exists() && var2.length() > 52428800L) {
-        var2.delete();
-      }
+	}
 
-      cache_dat = new RandomAccessFile(var1 + "main_file_cache.dat", "rw");
+	public static String findcachedir() {
+		return "./cache/";
+	}
 
-      for (int var3 = 0; var3 < 5; ++var3) {
-        cache_idx[var3] = new RandomAccessFile(var1 + "main_file_cache.idx" + var3, "rw");
-      }
-    } catch (Exception var9) {
-      var9.printStackTrace();
-    }
+	/*
+	 * String as[] = { "c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/",
+	 * "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", "~/",
+	 * "/tmp/", "", "c:/rscache", "/rscache" }; if(storeid < 32 || storeid > 34)
+	 * storeid = 32; String s = ".file_store_" + storeid; for(int i = 0; i <
+	 * as.length; i++) try { String s1 = as[i]; if(s1.length() > 0) { File file
+	 * = new File(s1); if(!file.exists()) continue; } File file1 = new File(s1 +
+	 * s); if(file1.exists() || file1.mkdir()) return s1 + s + "/"; }
+	 * catch(Exception _ex) { }
+	 * 
+	 * return null; }
+	 */
 
-    int var10 = threadliveid;
+	public static int getuid(String s) {
+		try {
+			File file = new File(s + "uid.dat");
+			if (!file.exists() || file.length() < 4L) {
+				DataOutputStream dataoutputstream = new DataOutputStream(new FileOutputStream(s + "uid.dat"));
+				dataoutputstream.writeInt((int) (Math.random() * 99999999D));
+				dataoutputstream.close();
+			}
+		} catch (Exception _ex) {
+		}
+		try {
+			DataInputStream datainputstream = new DataInputStream(new FileInputStream(s + "uid.dat"));
+			int i = datainputstream.readInt();
+			datainputstream.close();
+			return i + 1;
+		} catch (Exception _ex) {
+			return 0;
+		}
+	}
 
-    while (var10 == threadliveid) {
-      if (socketreq != 0) {
-        try {
-          socket = new Socket(socketip, socketreq);
-        } catch (Exception var4) {
-          socket = null;
-        }
+	public static synchronized Socket opensocket(int i) throws IOException {
+		for (socketreq = i; socketreq != 0;)
+			try {
+				Thread.sleep(50L);
+			} catch (Exception _ex) {
+			}
 
-        socketreq = 0;
-      } else if (threadreq != null) {
-        Thread var11 = new Thread(threadreq);
-        var11.setDaemon(true);
-        var11.start();
-        var11.setPriority(threadreqpri);
-        threadreq = null;
-      } else if (dnsreq != null) {
-        try {
-          dns = InetAddress.getByName(dnsreq).getHostName();
-        } catch (Exception var8) {
-          dns = "unknown";
-        }
+		if (socket == null)
+			throw new IOException("could not open socket");
+		else
+			return socket;
+	}
 
-        dnsreq = null;
-      } else if (savereq != null) {
-        if (savebuf != null) {
-          try {
-            FileOutputStream var12 = new FileOutputStream(var1 + savereq);
-            var12.write(savebuf, 0, savelen);
-            var12.close();
-          } catch (Exception var7) {
-            //ignore
-          }
-        }
+	public static synchronized DataInputStream openurl(String s) throws IOException {
+		for (urlreq = s; urlreq != null;)
+			try {
+				Thread.sleep(50L);
+			} catch (Exception _ex) {
+			}
 
-        if (waveplay) {
-          wave = var1 + savereq;
-          waveplay = false;
-        }
+		if (urlstream == null)
+			throw new IOException("could not open: " + s);
+		else
+			return urlstream;
+	}
 
-        if (midiplay) {
-          midi = var1 + savereq;
-          midiplay = false;
-        }
+	public static synchronized void dnslookup(String s) {
+		dns = s;
+		dnsreq = s;
+	}
 
-        savereq = null;
-      } else if (urlreq != null) {
-        try {
-          urlstream = new DataInputStream((new URL(mainapp.getCodeBase(), urlreq)).openStream());
-        } catch (Exception var6) {
-          urlstream = null;
-        }
+	public static synchronized void startthread(Runnable runnable, int i) {
+		threadreqpri = i;
+		threadreq = runnable;
+	}
 
-        urlreq = null;
-      }
+	public static synchronized boolean wavesave(byte abyte0[], int i) {
+		if (i > 0x1e8480)
+			return false;
+		if (savereq != null) {
+			return false;
+		} else {
+			wavepos = (wavepos + 1) % 5;
+			savelen = i;
+			savebuf = abyte0;
+			waveplay = true;
+			savereq = "sound" + wavepos + ".wav";
+			return true;
+		}
+	}
 
-      try {
-        Thread.sleep(50L);
-      } catch (Exception var5) {
-        //ignore
-      }
-    }
+	public static synchronized boolean wavereplay() {
+		if (savereq != null) {
+			return false;
+		} else {
+			savebuf = null;
+			waveplay = true;
+			savereq = "sound" + wavepos + ".wav";
+			return true;
+		}
+	}
 
-  }
+	public static synchronized void midisave(byte abyte0[], int i) {
+		if (i > 0x1e8480)
+			return;
+		if (savereq != null) {
+			return;
+		} else {
+			midipos = (midipos + 1) % 5;
+			savelen = i;
+			savebuf = abyte0;
+			midiplay = true;
+			savereq = "jingle" + midipos + ".mid";
+			return;
+		}
+	}
 
-  public static synchronized boolean wavereplay() {
-    if (savereq != null) {
-      return false;
-    } else {
-      savebuf = null;
-      waveplay = true;
-      savereq = "sound" + wavepos + ".wav";
-      return true;
-    }
-  }
+	public static void reporterror(String s) {
+		if (!reporterror)
+			return;
+		if (!active)
+			return;
+		System.out.println("Error: " + s);
+		try {
+			s = s.replace(':', '_');
+			s = s.replace('@', '_');
+			s = s.replace('&', '_');
+			s = s.replace('#', '_');
+			DataInputStream datainputstream = openurl("reporterror" + 377 + ".cgi?error=" + errorname + " " + s);
+			for (int read = datainputstream.read(); (read != 10 && read != -1); read = datainputstream.read());
+			datainputstream.close();
+			return;
+		} catch (IOException _ex) {
+			return;
+		}
+	}
 
-  public static synchronized boolean wavesave(byte[] var0, int var1) {
-    if (var1 > 2000000) {
-      return false;
-    } else if (savereq != null) {
-      return false;
-    } else {
-      wavepos = (wavepos + 1) % 5;
-      savelen = var1;
-      savebuf = var0;
-      waveplay = true;
-      savereq = "sound" + wavepos + ".wav";
-      return true;
-    }
-  }
+	public signlink() {
+	}
 
-  public static String findcachedir() {
-    String[] var0 = new String[]{"c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/",
-        "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/", "~/", "/tmp/", "",
-        "c:/rscache", "/rscache"};
-    if (storeid < 32 || storeid > 34) {
-      storeid = 32;
-    }
+	public static final int clientversion = 377;
+	public static int uid;
+	public static int storeid = 32;
+	public static RandomAccessFile cache_dat = null;
+	public static RandomAccessFile cache_idx[] = new RandomAccessFile[5];
+	public static boolean sunjava;
+	public static Applet mainapp = null;
+	public static boolean active;
+	public static int threadliveid;
+	public static InetAddress socketip;
+	public static int socketreq;
+	public static Socket socket = null;
+	public static int threadreqpri = 1;
+	public static Runnable threadreq = null;
+	public static String dnsreq = null;
+	public static String dns = null;
+	public static String urlreq = null;
+	public static DataInputStream urlstream = null;
+	public static int savelen;
+	public static String savereq = null;
+	public static byte savebuf[] = null;
+	public static boolean midiplay;
+	public static int midipos;
+	public static String midi = null;
+	public static int midivol;
+	public static int midifade;
+	public static boolean waveplay;
+	public static int wavepos;
+	public static String wave = null;
+	public static int wavevol;
+	public static boolean reporterror = true;
+	public static String errorname = "";
 
-    String var1 = ".file_store_" + storeid;
-    String[] var2 = var0;
-    int var3 = var0.length;
-
-    for (int var4 = 0; var4 < var3; ++var4) {
-      String var5 = var2[var4];
-
-      try {
-        File var7;
-        if (var5.length() > 0) {
-          var7 = new File(var5);
-          if (!var7.exists()) {
-            continue;
-          }
-        }
-
-        var7 = new File(var5 + var1);
-        if (var7.exists() || var7.mkdir()) {
-          return var5 + var1 + "/";
-        }
-      } catch (Exception var8) {
-        //ignore
-      }
-    }
-
-    return null;
-  }
-
-  public static synchronized Socket opensocket(int var0) throws IOException {
-    socketreq = var0;
-
-    while (socketreq != 0) {
-      try {
-        Thread.sleep(50L);
-      } catch (Exception var2) {
-        //ignore
-      }
-    }
-
-    if (socket == null) {
-      throw new IOException("could not open socket");
-    } else {
-      return socket;
-    }
-  }
-
-  public static synchronized void midisave(byte[] var0, int var1) {
-    if (var1 <= 2000000) {
-      if (savereq == null) {
-        midipos = (midipos + 1) % 5;
-        savelen = var1;
-        savebuf = var0;
-        midiplay = true;
-        savereq = "jingle" + midipos + ".mid";
-      }
-
-    }
-  }
-
-  public static synchronized DataInputStream openurl(String var0) throws IOException {
-    urlreq = var0;
-
-    while (urlreq != null) {
-      try {
-        Thread.sleep(50L);
-      } catch (Exception var2) {
-        //ignore
-      }
-    }
-
-    if (urlstream == null) {
-      throw new IOException("could not open: " + var0);
-    } else {
-      return urlstream;
-    }
-  }
-
-  public static void reporterror(String var0) {
-    if (reporterror) {
-      if (active) {
-        System.out.println("Error: " + var0);
-
-        try {
-          var0 = var0.replace(':', '_');
-          var0 = var0.replace('@', '_');
-          var0 = var0.replace('&', '_');
-          var0 = var0.replace('#', '_');
-          DataInputStream var1 = openurl("reporterror274.cgi?error=" + errorname + " " + var0);
-          var1.readLine();
-          var1.close();
-        } catch (IOException var2) {
-          //ignore
-        }
-
-      }
-    }
-  }
-
-  public static void startpriv(InetAddress var0) {
-    threadliveid = (int) (Math.random() * 9.9999999E7D);
-    if (active) {
-      try {
-        Thread.sleep(500L);
-      } catch (Exception var4) {
-        //ignore
-      }
-
-      active = false;
-    }
-
-    socketreq = 0;
-    threadreq = null;
-    dnsreq = null;
-    savereq = null;
-    urlreq = null;
-    socketip = var0;
-    Thread var1 = new Thread(new signlink());
-    var1.setDaemon(true);
-    var1.start();
-
-    while (!active) {
-      try {
-        Thread.sleep(50L);
-      } catch (Exception var3) {
-        //ignore
-      }
-    }
-
-  }
-
-  public static int getuid(String var0) {
-    try {
-      File var1 = new File(var0 + "uid.dat");
-      if (!var1.exists() || var1.length() < 4L) {
-        DataOutputStream var2 = new DataOutputStream(new FileOutputStream(var0 + "uid.dat"));
-        var2.writeInt((int) (Math.random() * 9.9999999E7D));
-        var2.close();
-      }
-    } catch (Exception var4) {
-      //ignore
-    }
-
-    try {
-      DataInputStream var5 = new DataInputStream(new FileInputStream(var0 + "uid.dat"));
-      int var6 = var5.readInt();
-      var5.close();
-      return var6 + 1;
-    } catch (Exception var3) {
-      return 0;
-    }
-  }
-
-  public static synchronized void dnslookup(String var0) {
-    dns = var0;
-    dnsreq = var0;
-  }
-
-  public static synchronized void startthread(Runnable var0, int var1) {
-    threadreqpri = var1;
-    threadreq = var0;
-  }
 }

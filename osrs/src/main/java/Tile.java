@@ -1,126 +1,40 @@
-import net.runelite.mapping.ObfuscatedSignature;
+// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
 
-public class Tile {
+public class Tile extends Node {
 
-  public Node aNode_524;
-  public final Node aNode_523;
-  public boolean aBoolean520;
-  public boolean aBoolean521;
-  public int anInt522;
+	public Tile(int i, int j, int k) {
+		aBoolean1396 = false;
+		aClass5Array1408 = new Class5[5];
+		anIntArray1409 = new int[5];
+		anInt1400 = anInt1397 = i;
+		anInt1398 = j;
+		anInt1399 = k;
+	}
 
-  @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "-822"
-  )
-  public Tile(int var1) {
-    this.aBoolean520 = true;
-    this.aBoolean521 = true;
-    this.anInt522 = -676;
-    this.aNode_523 = new Node();
-    this.aNode_523.previousNode = this.aNode_523;
-    this.aNode_523.nextNode = this.aNode_523;
-  }
-
-  public Node peekFront() {
-    Node var1 = this.aNode_523.previousNode;
-    if (var1 == this.aNode_523) {
-      this.aNode_524 = null;
-      return null;
-    } else {
-      this.aNode_524 = var1.previousNode;
-      return var1;
-    }
-  }
-
-  public void method256(Node var1) {
-    if (var1.nextNode != null) {
-      var1.removeNode();
-    }
-
-    var1.nextNode = this.aNode_523.nextNode;
-    var1.previousNode = this.aNode_523;
-    var1.nextNode.previousNode = var1;
-    var1.previousNode.nextNode = var1;
-  }
-
-  public void method263() {
-    if (this.aNode_523.previousNode != this.aNode_523) {
-      while (true) {
-        Node var1 = this.aNode_523.previousNode;
-        if (var1 == this.aNode_523) {
-          return;
-        }
-
-        var1.removeNode();
-      }
-    }
-  }
-
-  public Node method258() {
-    Node var1 = this.aNode_523.previousNode;
-    if (var1 == this.aNode_523) {
-      return null;
-    } else {
-      var1.removeNode();
-      return var1;
-    }
-  }
-
-  public Node getPrevious(byte var1) {
-    Node var2 = this.aNode_524;
-    if (var2 == this.aNode_523) {
-      this.aNode_524 = null;
-      return null;
-    } else {
-      this.aNode_524 = var2.previousNode;
-      if (var1 == 0) {
-        boolean var3 = false;
-      } else {
-        this.aBoolean521 = !this.aBoolean521;
-      }
-
-      return var2;
-    }
-  }
-
-  public void method257(boolean var1, Node var2) {
-    if (var2.nextNode != null) {
-      var2.removeNode();
-    }
-
-    var2.nextNode = this.aNode_523;
-    var2.previousNode = this.aNode_523.previousNode;
-    var2.nextNode.previousNode = var2;
-    var2.previousNode.nextNode = var2;
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(Z)LClass44;",
-      garbageValue = "0"
-  )
-  public Node method260() {
-    Node var1 = this.aNode_523.nextNode;
-    if (var1 == this.aNode_523) {
-      this.aNode_524 = null;
-      return null;
-    } else {
-      this.aNode_524 = var1.nextNode;
-      return var1;
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(Z)LClass44;",
-      garbageValue = "0"
-  )
-  public Node method262() {
-    Node var1 = this.aNode_524;
-    if (var1 == this.aNode_523) {
-      this.aNode_524 = null;
-      return null;
-    } else {
-      this.aNode_524 = var1.nextNode;
-      return var1;
-    }
-  }
+	public boolean aBoolean1396;
+	public int anInt1397;
+	public int anInt1398;
+	public int anInt1399;
+	public int anInt1400;
+	public Class3 aClass3_1401;
+	public Class20 aClass20_1402;
+	public Class44 aClass44_1403;
+	public Class35 aClass35_1404;
+	public Class28 aClass28_1405;
+	public Class10 aClass10_1406;
+	public int anInt1407;
+	public Class5 aClass5Array1408[];
+	public int anIntArray1409[];
+	public int anInt1410;
+	public int anInt1411;
+	public boolean aBoolean1412;
+	public boolean aBoolean1413;
+	public boolean aBoolean1414;
+	public int anInt1415;
+	public int anInt1416;
+	public int anInt1417;
+	public int anInt1418;
+	public Tile aClass50_Sub3_1419;
 }

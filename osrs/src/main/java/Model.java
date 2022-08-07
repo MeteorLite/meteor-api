@@ -1,2334 +1,1955 @@
-import net.runelite.mapping.ObfuscatedSignature;
-
-public class Model extends Renderable {
-
-  public static boolean[] aBooleanArray1560;
-  public static int[] anIntArray1585;
-  public static int anInt1577;
-  public static final Model A_MODEL___1517;
-  public static int[] anIntArray1567;
-  public static int anInt1583;
-  public static int[] anIntArray1586;
-  public static int anInt1578;
-  public static Class21[] aClass21Array1557;
-  public static int[] anIntArray1518;
-  public static int anInt1579;
-  public static int[] anIntArray1519;
-  public static int[] anIntArray1569;
-  public static int[] anIntArray1520;
-  public static int[] anIntArray1566;
-  public static boolean[] aBooleanArray1559;
-  public static int[] anIntArray1573;
-  public static int[] anIntArray1521;
-  public static int[][] anIntArrayArray1568;
-  public static int[] anIntArray1561;
-  public static final int[] anIntArray1574;
-  public static int[] anIntArray1564;
-  public static int anInt1516;
-  public static int[] anIntArray1565;
-  public static int[] anIntArray1562;
-  public static final int[] anIntArray1575;
-  public static int[] anIntArray1563;
-  public static int[] anIntArray1588;
-  public static int anInt1581;
-  public static int[][] anIntArrayArray1570;
-  public static final int[] anIntArray1576;
-  public static final int[] anIntArray1584;
-  public static int anInt1582;
-  public static int[] anIntArray1571;
-  public static int[] anIntArray1572;
-  public static int[] anIntArray1587;
-  public static boolean aBoolean1580;
-
-  private static Class43_Sub1 aClass43_1558;
-  public int anInt1548;
-  public int[][] anIntArrayArray1553;
-  public int[] anIntArray1551;
-  public int[] anIntArray1523;
-  public int anInt1522;
-  public int anInt1526;
-  public boolean aBoolean1508;
-  public int anInt1547;
-  public int anInt1546;
-  public int[] anIntArray1527;
-  public int[] anIntArray1552;
-  public int[] anIntArray1536;
-  public int[] anIntArray1524;
-  public int[] anIntArray1525;
-  public int[] anIntArray1530;
-  public byte aByte1509;
-  public Class25[] aClass25Array1556;
-  public int[] anIntArray1534;
-  public int[] anIntArray1528;
-  public int[] anIntArray1533;
-  public int[][] anIntArrayArray1554;
-  public int anInt1542;
-  public byte aByte1510;
-  public int[] anIntArray1529;
-  public int anInt1538;
-  public int[] anIntArray1535;
-  public int anInt1543;
-  public int anInt1512;
-  public boolean aBoolean1555;
-  public int[] anIntArray1531;
-  public int anInt1544;
-  public int anInt1513;
-  public int anInt1545;
-  public boolean aBoolean1514;
-  public int[] anIntArray1532;
-  public int anInt1549;
-  public int[] anIntArray1539;
-  public int[] anIntArray1540;
-  public int anInt1537;
-  public int[] anIntArray1541;
-  public int anInt1550;
-
-  static {
-    A_MODEL___1517 = new Model((byte) 7);
-    anIntArray1518 = new int[2000];
-    anIntArray1519 = new int[2000];
-    anIntArray1520 = new int[2000];
-    anIntArray1521 = new int[2000];
-    aBooleanArray1559 = new boolean[4096];
-    aBooleanArray1560 = new boolean[4096];
-    anIntArray1561 = new int[4096];
-    anIntArray1562 = new int[4096];
-    anIntArray1563 = new int[4096];
-    anIntArray1564 = new int[4096];
-    anIntArray1565 = new int[4096];
-    anIntArray1566 = new int[4096];
-    anIntArray1567 = new int[1500];
-    anIntArrayArray1568 = new int[1500][512];
-    anIntArray1569 = new int[12];
-    anIntArrayArray1570 = new int[12][2000];
-    anIntArray1571 = new int[2000];
-    anIntArray1572 = new int[2000];
-    anIntArray1573 = new int[12];
-    anIntArray1574 = new int[10];
-    anIntArray1575 = new int[10];
-    anIntArray1576 = new int[10];
-    anIntArray1584 = new int[1000];
-    anIntArray1585 = Class44_Sub3_Sub1_Sub1.anIntArray1407;
-    anIntArray1586 = Class44_Sub3_Sub1_Sub1.anIntArray1408;
-    anIntArray1587 = Class44_Sub3_Sub1_Sub1.anIntArray1419;
-    anIntArray1588 = Class44_Sub3_Sub1_Sub1.anIntArray1406;
-  }
-
-  public Model(byte var1) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    if (this.aByte1509 != var1) {
-      for (int var2 = 1; var2 > 0; ++var2) {
-      }
-    }
-
-  }
-
-  public Model(int var1, int var2, Model[] var3) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    ++anInt1516;
-    boolean var4 = false;
-    boolean var5 = false;
-    boolean var6 = false;
-    boolean var7 = false;
-    this.anInt1522 = 0;
-    this.anInt1526 = 0;
-    this.anInt1538 = 0;
-    this.anInt1537 = -1;
-
-    int var8;
-    Model var9;
-    for (var8 = 0; var8 < var1; ++var8) {
-      var9 = var3[var8];
-      if (var9 != null) {
-        this.anInt1522 += var9.anInt1522;
-        this.anInt1526 += var9.anInt1526;
-        this.anInt1538 += var9.anInt1538;
-        var4 |= var9.anIntArray1533 != null;
-        if (var9.anIntArray1534 != null) {
-          var5 = true;
-        } else {
-          if (this.anInt1537 == -1) {
-            this.anInt1537 = var9.anInt1537;
-          }
-
-          if (this.anInt1537 != var9.anInt1537) {
-            var5 = true;
-          }
-        }
-
-        var6 |= var9.anIntArray1535 != null;
-        var7 |= var9.anIntArray1552 != null;
-      }
-    }
-
-    this.anIntArray1523 = new int[this.anInt1522];
-    this.anIntArray1524 = new int[this.anInt1522];
-    this.anIntArray1525 = new int[this.anInt1522];
-    this.anIntArray1551 = new int[this.anInt1522];
-    this.anIntArray1527 = new int[this.anInt1526];
-    this.anIntArray1528 = new int[this.anInt1526];
-    this.anIntArray1529 = new int[this.anInt1526];
-    this.anIntArray1539 = new int[this.anInt1538];
-    this.anIntArray1540 = new int[this.anInt1538];
-    this.anIntArray1541 = new int[this.anInt1538];
-    if (var4) {
-      this.anIntArray1533 = new int[this.anInt1526];
-    }
-
-    if (var5) {
-      this.anIntArray1534 = new int[this.anInt1526];
-    }
-
-    if (var6) {
-      this.anIntArray1535 = new int[this.anInt1526];
-    }
-
-    if (var7) {
-      this.anIntArray1552 = new int[this.anInt1526];
-    }
-
-    this.anIntArray1536 = new int[this.anInt1526];
-    this.anInt1522 = 0;
-    this.anInt1526 = 0;
-    this.anInt1538 = 0;
-
-    for (var8 = 0; var8 < var1; ++var8) {
-      var9 = var3[var8];
-      if (var9 != null) {
-        int var10;
-        for (var10 = 0; var10 < var9.anInt1526; ++var10) {
-          if (var4) {
-            if (var9.anIntArray1533 == null) {
-              this.anIntArray1533[this.anInt1526] = 0;
-            } else {
-              this.anIntArray1533[this.anInt1526] = var9.anIntArray1533[var10];
-            }
-          }
-
-          if (var5) {
-            if (var9.anIntArray1534 == null) {
-              this.anIntArray1534[this.anInt1526] = var9.anInt1537;
-            } else {
-              this.anIntArray1534[this.anInt1526] = var9.anIntArray1534[var10];
-            }
-          }
-
-          if (var6) {
-            if (var9.anIntArray1535 == null) {
-              this.anIntArray1535[this.anInt1526] = 0;
-            } else {
-              this.anIntArray1535[this.anInt1526] = var9.anIntArray1535[var10];
-            }
-          }
-
-          if (var7 && var9.anIntArray1552 != null) {
-            this.anIntArray1552[this.anInt1526] = var9.anIntArray1552[var10];
-          }
-
-          this.anIntArray1536[this.anInt1526] = var9.anIntArray1536[var10];
-          this.anIntArray1527[this.anInt1526] = this.method506(var9, var9.anIntArray1527[var10]);
-          this.anIntArray1528[this.anInt1526] = this.method506(var9, var9.anIntArray1528[var10]);
-          this.anIntArray1529[this.anInt1526] = this.method506(var9, var9.anIntArray1529[var10]);
-          ++this.anInt1526;
-        }
-
-        for (var10 = 0; var10 < var9.anInt1538; ++var10) {
-          this.anIntArray1539[this.anInt1538] = this.method506(var9, var9.anIntArray1539[var10]);
-          this.anIntArray1540[this.anInt1538] = this.method506(var9, var9.anIntArray1540[var10]);
-          this.anIntArray1541[this.anInt1538] = this.method506(var9, var9.anIntArray1541[var10]);
-          ++this.anInt1538;
-        }
-      }
-    }
-
-  }
-
-  public Model(boolean var1, byte var2, Model var3, boolean var4) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    ++anInt1516;
-    this.anInt1522 = var3.anInt1522;
-    this.anInt1526 = var3.anInt1526;
-    this.anInt1538 = var3.anInt1538;
-    if (var4) {
-      this.anIntArray1524 = new int[this.anInt1522];
-      System.arraycopy(var3.anIntArray1524, 0, this.anIntArray1524, 0, this.anInt1522);
-    } else {
-      this.anIntArray1524 = var3.anIntArray1524;
-    }
-
-    if (var1) {
-      this.anIntArray1530 = new int[this.anInt1526];
-      this.anIntArray1531 = new int[this.anInt1526];
-      this.anIntArray1532 = new int[this.anInt1526];
-
-      int var5;
-      for (var5 = 0; var5 < this.anInt1526; ++var5) {
-        this.anIntArray1530[var5] = var3.anIntArray1530[var5];
-        this.anIntArray1531[var5] = var3.anIntArray1531[var5];
-        this.anIntArray1532[var5] = var3.anIntArray1532[var5];
-      }
-
-      this.anIntArray1533 = new int[this.anInt1526];
-      if (var3.anIntArray1533 == null) {
-        for (var5 = 0; var5 < this.anInt1526; ++var5) {
-          this.anIntArray1533[var5] = 0;
-        }
-      } else {
-        System.arraycopy(var3.anIntArray1533, 0, this.anIntArray1533, 0, this.anInt1526);
-      }
-
-      super.aClass25Array1393 = new Class25[this.anInt1522];
-
-      for (var5 = 0; var5 < this.anInt1522; ++var5) {
-        Class25 var6 = super.aClass25Array1393[var5] = new Class25();
-        Class25 var7 = var3.aClass25Array1393[var5];
-        var6.anInt492 = var7.anInt492;
-        var6.anInt493 = var7.anInt493;
-        var6.anInt494 = var7.anInt494;
-        var6.anInt495 = var7.anInt495;
-      }
-
-      this.aClass25Array1556 = var3.aClass25Array1556;
-    } else {
-      this.anIntArray1530 = var3.anIntArray1530;
-      this.anIntArray1531 = var3.anIntArray1531;
-      this.anIntArray1532 = var3.anIntArray1532;
-      this.anIntArray1533 = var3.anIntArray1533;
-    }
-
-    this.anIntArray1523 = var3.anIntArray1523;
-    this.anIntArray1525 = var3.anIntArray1525;
-    this.anIntArray1536 = var3.anIntArray1536;
-    this.anIntArray1535 = var3.anIntArray1535;
-    this.anIntArray1534 = var3.anIntArray1534;
-    this.anInt1537 = var3.anInt1537;
-    this.anIntArray1527 = var3.anIntArray1527;
-    this.anIntArray1528 = var3.anIntArray1528;
-    this.anIntArray1529 = var3.anIntArray1529;
-    this.anIntArray1539 = var3.anIntArray1539;
-    this.anIntArray1540 = var3.anIntArray1540;
-    if (var2 != this.aByte1510) {
-      this.aBoolean1508 = !this.aBoolean1508;
-    }
-
-    this.anIntArray1541 = var3.anIntArray1541;
-    super.anInt1394 = var3.anInt1394;
-    this.anInt1547 = var3.anInt1547;
-    this.anInt1546 = var3.anInt1546;
-    this.anInt1549 = var3.anInt1549;
-    this.anInt1548 = var3.anInt1548;
-    this.anInt1542 = var3.anInt1542;
-    this.anInt1544 = var3.anInt1544;
-    this.anInt1545 = var3.anInt1545;
-    this.anInt1543 = var3.anInt1543;
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "2"
-  )
-  public Model(int var1, int var2) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    ++anInt1516;
-    Class21 var3 = aClass21Array1557[var1];
-    this.anInt1522 = var3.anInt436;
-    this.anInt1526 = var3.anInt437;
-    this.anInt1538 = var3.anInt438;
-    this.anIntArray1523 = new int[this.anInt1522];
-    this.anIntArray1524 = new int[this.anInt1522];
-    this.anIntArray1525 = new int[this.anInt1522];
-    this.anIntArray1527 = new int[this.anInt1526];
-    this.anIntArray1528 = new int[this.anInt1526];
-    this.anIntArray1529 = new int[this.anInt1526];
-    this.anIntArray1539 = new int[this.anInt1538];
-    this.anIntArray1540 = new int[this.anInt1538];
-    this.anIntArray1541 = new int[this.anInt1538];
-    if (var3.anInt443 >= 0) {
-      this.anIntArray1551 = new int[this.anInt1522];
-    }
-
-    if (var3.anInt447 >= 0) {
-      this.anIntArray1533 = new int[this.anInt1526];
-    }
-
-    if (var3.anInt448 >= 0) {
-      this.anIntArray1534 = new int[this.anInt1526];
-    } else {
-      this.anInt1537 = -var3.anInt448 - 1;
-    }
-
-    if (var3.anInt449 >= 0) {
-      this.anIntArray1535 = new int[this.anInt1526];
-    }
-
-    if (var3.anInt450 >= 0) {
-      this.anIntArray1552 = new int[this.anInt1526];
-    }
-
-    this.anIntArray1536 = new int[this.anInt1526];
-    Buffer var4 = new Buffer(var3.aByteArray435, (byte) 1);
-    var4.offset = var3.anInt439;
-    Buffer var5 = new Buffer(var3.aByteArray435, (byte) 1);
-    var5.offset = var3.anInt440;
-    Buffer var6 = new Buffer(var3.aByteArray435, (byte) 1);
-    var6.offset = var3.anInt441;
-    Buffer var7 = new Buffer(var3.aByteArray435, (byte) 1);
-    var7.offset = var3.anInt442;
-    Buffer var8 = new Buffer(var3.aByteArray435, (byte) 1);
-    var8.offset = var3.anInt443;
-    int var9 = 0;
-    int var10 = 0;
-    int var11 = 0;
-
-    int var12;
-    int var13;
-    int var14;
-    int var15;
-    int var16;
-    for (var12 = 0; var12 < this.anInt1522; ++var12) {
-      var13 = var4.readUByte();
-      var14 = 0;
-      if ((var13 & 1) != 0) {
-        var14 = var5.readShortSmart();
-      }
-
-      var15 = 0;
-      if ((var13 & 2) != 0) {
-        var15 = var6.readShortSmart();
-      }
-
-      var16 = 0;
-      if ((var13 & 4) != 0) {
-        var16 = var7.readShortSmart();
-      }
-
-      this.anIntArray1523[var12] = var9 + var14;
-      this.anIntArray1524[var12] = var10 + var15;
-      this.anIntArray1525[var12] = var11 + var16;
-      var9 = this.anIntArray1523[var12];
-      var10 = this.anIntArray1524[var12];
-      var11 = this.anIntArray1525[var12];
-      if (this.anIntArray1551 != null) {
-        this.anIntArray1551[var12] = var8.readUByte();
-      }
-    }
-
-    var4.offset = var3.anInt446;
-    var5.offset = var3.anInt447;
-    var6.offset = var3.anInt448;
-    var7.offset = var3.anInt449;
-    var8.offset = var3.anInt450;
-
-    for (var12 = 0; var12 < this.anInt1526; ++var12) {
-      this.anIntArray1536[var12] = var4.readUShort();
-      if (this.anIntArray1533 != null) {
-        this.anIntArray1533[var12] = var5.readUByte();
-      }
-
-      if (this.anIntArray1534 != null) {
-        this.anIntArray1534[var12] = var6.readUByte();
-      }
-
-      if (this.anIntArray1535 != null) {
-        this.anIntArray1535[var12] = var7.readUByte();
-      }
-
-      if (this.anIntArray1552 != null) {
-        this.anIntArray1552[var12] = var8.readUByte();
-      }
-    }
-
-    var4.offset = var3.anInt444;
-    var5.offset = var3.anInt445;
-    var12 = 0;
-    var13 = 0;
-    var14 = 0;
-    var15 = 0;
-
-    for (var16 = 0; var16 < this.anInt1526; ++var16) {
-      int var17 = var5.readUByte();
-      if (var17 == 1) {
-        var12 = var4.readShortSmart() + var15;
-        var13 = var4.readShortSmart() + var12;
-        var14 = var4.readShortSmart() + var13;
-        var15 = var14;
-        this.anIntArray1527[var16] = var12;
-        this.anIntArray1528[var16] = var13;
-        this.anIntArray1529[var16] = var14;
-      }
-
-      if (var17 == 2) {
-        var13 = var14;
-        var14 = var4.readShortSmart() + var15;
-        var15 = var14;
-        this.anIntArray1527[var16] = var12;
-        this.anIntArray1528[var16] = var13;
-        this.anIntArray1529[var16] = var14;
-      }
-
-      if (var17 == 3) {
-        var12 = var14;
-        var14 = var4.readShortSmart() + var15;
-        var15 = var14;
-        this.anIntArray1527[var16] = var12;
-        this.anIntArray1528[var16] = var13;
-        this.anIntArray1529[var16] = var14;
-      }
-
-      if (var17 == 4) {
-        int var18 = var12;
-        var12 = var13;
-        var13 = var18;
-        var14 = var4.readShortSmart() + var15;
-        var15 = var14;
-        this.anIntArray1527[var16] = var12;
-        this.anIntArray1528[var16] = var18;
-        this.anIntArray1529[var16] = var14;
-      }
-    }
-
-    var4.offset = var3.anInt451;
-
-    for (var16 = 0; var16 < this.anInt1538; ++var16) {
-      this.anIntArray1539[var16] = var4.readUShort();
-      this.anIntArray1540[var16] = var4.readUShort();
-      this.anIntArray1541[var16] = var4.readUShort();
-    }
-
-  }
-
-  public Model(boolean var1, boolean var2, Model var3, boolean var4, boolean var5) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    ++anInt1516;
-    this.anInt1522 = var3.anInt1522;
-    this.anInt1526 = var3.anInt1526;
-    this.anInt1538 = var3.anInt1538;
-    int var6;
-    if (var5) {
-      this.anIntArray1523 = var3.anIntArray1523;
-      this.anIntArray1524 = var3.anIntArray1524;
-      this.anIntArray1525 = var3.anIntArray1525;
-    } else {
-      this.anIntArray1523 = new int[this.anInt1522];
-      this.anIntArray1524 = new int[this.anInt1522];
-      this.anIntArray1525 = new int[this.anInt1522];
-
-      for (var6 = 0; var6 < this.anInt1522; ++var6) {
-        this.anIntArray1523[var6] = var3.anIntArray1523[var6];
-        this.anIntArray1524[var6] = var3.anIntArray1524[var6];
-        this.anIntArray1525[var6] = var3.anIntArray1525[var6];
-      }
-    }
-
-    if (var1) {
-      this.anIntArray1536 = var3.anIntArray1536;
-    } else {
-      this.anIntArray1536 = new int[this.anInt1526];
-      System.arraycopy(var3.anIntArray1536, 0, this.anIntArray1536, 0, this.anInt1526);
-    }
-
-    if (var2) {
-      this.anIntArray1535 = var3.anIntArray1535;
-    } else {
-      this.anIntArray1535 = new int[this.anInt1526];
-      if (var3.anIntArray1535 == null) {
-        for (var6 = 0; var6 < this.anInt1526; ++var6) {
-          this.anIntArray1535[var6] = 0;
-        }
-      } else {
-        System.arraycopy(var3.anIntArray1535, 0, this.anIntArray1535, 0, this.anInt1526);
-      }
-    }
-
-    this.anIntArray1551 = var3.anIntArray1551;
-    this.anIntArray1552 = var3.anIntArray1552;
-    this.anIntArray1533 = var3.anIntArray1533;
-    this.anIntArray1527 = var3.anIntArray1527;
-    this.anIntArray1528 = var3.anIntArray1528;
-    this.anIntArray1529 = var3.anIntArray1529;
-    this.anIntArray1534 = var3.anIntArray1534;
-    this.anInt1537 = var3.anInt1537;
-    this.anIntArray1539 = var3.anIntArray1539;
-    this.anIntArray1540 = var3.anIntArray1540;
-    this.anIntArray1541 = var3.anIntArray1541;
-  }
-
-  public Model(boolean var1, byte var2, Model[] var3, int var4) {
-    this.aBoolean1508 = true;
-    this.aByte1509 = 7;
-    this.aByte1510 = 72;
-    this.anInt1512 = -643;
-    this.anInt1513 = 368;
-    this.aBoolean1514 = false;
-    this.aBoolean1555 = false;
-    ++anInt1516;
-    boolean var5 = false;
-    boolean var6 = false;
-    boolean var7 = false;
-    boolean var8 = false;
-    this.anInt1522 = 0;
-    this.anInt1526 = 0;
-    this.anInt1538 = 0;
-    this.anInt1537 = -1;
-    if (var2 != this.aByte1510) {
-      throw new NullPointerException();
-    } else {
-      int var9;
-      Model var10;
-      for (var9 = 0; var9 < var4; ++var9) {
-        var10 = var3[var9];
-        if (var10 != null) {
-          this.anInt1522 += var10.anInt1522;
-          this.anInt1526 += var10.anInt1526;
-          this.anInt1538 += var10.anInt1538;
-          var5 |= var10.anIntArray1533 != null;
-          if (var10.anIntArray1534 != null) {
-            var6 = true;
-          } else {
-            if (this.anInt1537 == -1) {
-              this.anInt1537 = var10.anInt1537;
-            }
-
-            if (this.anInt1537 != var10.anInt1537) {
-              var6 = true;
-            }
-          }
-
-          var7 |= var10.anIntArray1535 != null;
-          var8 |= var10.anIntArray1536 != null;
-        }
-      }
-
-      this.anIntArray1523 = new int[this.anInt1522];
-      this.anIntArray1524 = new int[this.anInt1522];
-      this.anIntArray1525 = new int[this.anInt1522];
-      this.anIntArray1527 = new int[this.anInt1526];
-      this.anIntArray1528 = new int[this.anInt1526];
-      this.anIntArray1529 = new int[this.anInt1526];
-      this.anIntArray1530 = new int[this.anInt1526];
-      this.anIntArray1531 = new int[this.anInt1526];
-      this.anIntArray1532 = new int[this.anInt1526];
-      this.anIntArray1539 = new int[this.anInt1538];
-      this.anIntArray1540 = new int[this.anInt1538];
-      this.anIntArray1541 = new int[this.anInt1538];
-      if (var5) {
-        this.anIntArray1533 = new int[this.anInt1526];
-      }
-
-      if (var6) {
-        this.anIntArray1534 = new int[this.anInt1526];
-      }
-
-      if (var7) {
-        this.anIntArray1535 = new int[this.anInt1526];
-      }
-
-      if (var8) {
-        this.anIntArray1536 = new int[this.anInt1526];
-      }
-
-      this.anInt1522 = 0;
-      this.anInt1526 = 0;
-      this.anInt1538 = 0;
-
-      for (var9 = 0; var9 < var4; ++var9) {
-        var10 = var3[var9];
-        if (var10 != null) {
-          int var11 = this.anInt1522;
-
-          int var12;
-          for (var12 = 0; var12 < var10.anInt1522; ++var12) {
-            this.anIntArray1523[this.anInt1522] = var10.anIntArray1523[var12];
-            this.anIntArray1524[this.anInt1522] = var10.anIntArray1524[var12];
-            this.anIntArray1525[this.anInt1522] = var10.anIntArray1525[var12];
-            ++this.anInt1522;
-          }
-
-          for (var12 = 0; var12 < var10.anInt1526; ++var12) {
-            this.anIntArray1527[this.anInt1526] = var11 + var10.anIntArray1527[var12];
-            this.anIntArray1528[this.anInt1526] = var11 + var10.anIntArray1528[var12];
-            this.anIntArray1529[this.anInt1526] = var11 + var10.anIntArray1529[var12];
-            this.anIntArray1530[this.anInt1526] = var10.anIntArray1530[var12];
-            this.anIntArray1531[this.anInt1526] = var10.anIntArray1531[var12];
-            this.anIntArray1532[this.anInt1526] = var10.anIntArray1532[var12];
-            if (var5) {
-              if (var10.anIntArray1533 == null) {
-                this.anIntArray1533[this.anInt1526] = 0;
-              } else {
-                this.anIntArray1533[this.anInt1526] = var10.anIntArray1533[var12];
-              }
-            }
-
-            if (var6) {
-              if (var10.anIntArray1534 == null) {
-                this.anIntArray1534[this.anInt1526] = var10.anInt1537;
-              } else {
-                this.anIntArray1534[this.anInt1526] = var10.anIntArray1534[var12];
-              }
-            }
-
-            if (var7) {
-              if (var10.anIntArray1535 == null) {
-                this.anIntArray1535[this.anInt1526] = 0;
-              } else {
-                this.anIntArray1535[this.anInt1526] = var10.anIntArray1535[var12];
-              }
-            }
-
-            if (var8 && var10.anIntArray1536 != null) {
-              this.anIntArray1536[this.anInt1526] = var10.anIntArray1536[var12];
-            }
-
-            ++this.anInt1526;
-          }
-
-          for (var12 = 0; var12 < var10.anInt1538; ++var12) {
-            this.anIntArray1539[this.anInt1538] = var11 + var10.anIntArray1539[var12];
-            this.anIntArray1540[this.anInt1538] = var11 + var10.anIntArray1540[var12];
-            this.anIntArray1541[this.anInt1538] = var11 + var10.anIntArray1541[var12];
-            ++this.anInt1538;
-          }
-        }
-      }
-
-      this.method507(486);
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-284"
-  )
-  public void method511(int var1) {
-    if (this.anIntArrayArray1553 != null) {
-      if (var1 != -1) {
-        Class11 var2 = Class11.method210(var1);
-        if (var2 != null) {
-          Class9 var3 = var2.aClass9_266;
-          anInt1577 = 0;
-          anInt1578 = 0;
-          anInt1579 = 0;
-
-          for (int var4 = 0; var4 < var2.anInt267; ++var4) {
-            int var5 = var2.anIntArray268[var4];
-            this.method513(var3.anIntArray255[var5], var3.anIntArrayArray256[var5],
-                var2.anIntArray269[var4], var2.anIntArray270[var4], var2.anIntArray271[var4]);
-          }
-
-        }
-      }
-    }
-  }
-
-  public void method526(int var1) {
-    int var2 = Class44_Sub3_Sub1_Sub1.anInt1403;
-    int var3 = Class44_Sub3_Sub1_Sub1.anInt1404;
-    int var4 = 0;
-    int var5 = this.anIntArray1527[var1];
-    int var6 = this.anIntArray1528[var1];
-    int var7 = this.anIntArray1529[var1];
-    int var8 = anIntArray1566[var5];
-    int var9 = anIntArray1566[var6];
-    int var10 = anIntArray1566[var7];
-    int var11;
-    int var12;
-    int var13;
-    int var14;
-    if (var8 >= 50) {
-      anIntArray1574[var4] = anIntArray1561[var5];
-      anIntArray1575[var4] = anIntArray1562[var5];
-      anIntArray1576[var4++] = this.anIntArray1530[var1];
-    } else {
-      var11 = anIntArray1564[var5];
-      var12 = anIntArray1565[var5];
-      var13 = this.anIntArray1530[var1];
-      if (var10 >= 50) {
-        var14 = anIntArray1588[var10 - var8] * (50 - var8);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var7] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var7] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1532[var1] - var13) * var14 >> 16);
-      }
-
-      if (var9 >= 50) {
-        var14 = anIntArray1588[var9 - var8] * (50 - var8);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var6] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var6] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1531[var1] - var13) * var14 >> 16);
-      }
-    }
-
-    if (var9 >= 50) {
-      anIntArray1574[var4] = anIntArray1561[var6];
-      anIntArray1575[var4] = anIntArray1562[var6];
-      anIntArray1576[var4++] = this.anIntArray1531[var1];
-    } else {
-      var11 = anIntArray1564[var6];
-      var12 = anIntArray1565[var6];
-      var13 = this.anIntArray1531[var1];
-      if (var8 >= 50) {
-        var14 = anIntArray1588[var8 - var9] * (50 - var9);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var5] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var5] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1530[var1] - var13) * var14 >> 16);
-      }
-
-      if (var10 >= 50) {
-        var14 = anIntArray1588[var10 - var9] * (50 - var9);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var7] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var7] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1532[var1] - var13) * var14 >> 16);
-      }
-    }
-
-    if (var10 >= 50) {
-      anIntArray1574[var4] = anIntArray1561[var7];
-      anIntArray1575[var4] = anIntArray1562[var7];
-      anIntArray1576[var4++] = this.anIntArray1532[var1];
-    } else {
-      var11 = anIntArray1564[var7];
-      var12 = anIntArray1565[var7];
-      var13 = this.anIntArray1532[var1];
-      if (var9 >= 50) {
-        var14 = anIntArray1588[var9 - var10] * (50 - var10);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var6] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var6] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1531[var1] - var13) * var14 >> 16);
-      }
-
-      if (var8 >= 50) {
-        var14 = anIntArray1588[var8 - var10] * (50 - var10);
-        anIntArray1574[var4] =
-            var2 + (var11 + ((anIntArray1564[var5] - var11) * var14 >> 16) << 9) / 50;
-        anIntArray1575[var4] =
-            var3 + (var12 + ((anIntArray1565[var5] - var12) * var14 >> 16) << 9) / 50;
-        anIntArray1576[var4++] = var13 + ((this.anIntArray1530[var1] - var13) * var14 >> 16);
-      }
-    }
-
-    var11 = anIntArray1574[0];
-    var12 = anIntArray1574[1];
-    var13 = anIntArray1574[2];
-    var14 = anIntArray1575[0];
-    int var15 = anIntArray1575[1];
-    int var16 = anIntArray1575[2];
-    if ((var11 - var12) * (var16 - var15) - (var14 - var15) * (var13 - var12) > 0) {
-      Class44_Sub3_Sub1_Sub1.aBoolean1399 = false;
-      int var17;
-      int var18;
-      int var19;
-      int var20;
-      int var21;
-      if (var4 == 3) {
-        if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Statics.anInt1358
-            || var12 > Statics.anInt1358 || var13 > Statics.anInt1358) {
-          Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
-        }
-
-        if (this.anIntArray1533 == null) {
-          var17 = 0;
-        } else {
-          var17 = this.anIntArray1533[var1] & 3;
-        }
-
-        if (var17 == 0) {
-          Class44_Sub3_Sub1_Sub1.method429(var14, var15, var16, var11, var12, var13,
-              anIntArray1576[0], anIntArray1576[1], anIntArray1576[2]);
-        } else if (var17 == 1) {
-          Class44_Sub3_Sub1_Sub1.method431(var14, var15, var16, var11, var12, var13,
-              anIntArray1587[this.anIntArray1530[var1]]);
-        } else if (var17 == 2) {
-          var18 = this.anIntArray1533[var1] >> 2;
-          var19 = this.anIntArray1539[var18];
-          var20 = this.anIntArray1540[var18];
-          var21 = this.anIntArray1541[var18];
-          Class44_Sub3_Sub1_Sub1.method433(var14, var15, var16, var11, var12, var13,
-              anIntArray1576[0], anIntArray1576[1], anIntArray1576[2], anIntArray1564[var19],
-              anIntArray1564[var20], anIntArray1564[var21], anIntArray1565[var19],
-              anIntArray1565[var20], anIntArray1565[var21], anIntArray1566[var19],
-              anIntArray1566[var20], anIntArray1566[var21], this.anIntArray1536[var1]);
-        } else if (var17 == 3) {
-          var18 = this.anIntArray1533[var1] >> 2;
-          var19 = this.anIntArray1539[var18];
-          var20 = this.anIntArray1540[var18];
-          var21 = this.anIntArray1541[var18];
-          Class44_Sub3_Sub1_Sub1.method433(var14, var15, var16, var11, var12, var13,
-              this.anIntArray1530[var1], this.anIntArray1530[var1], this.anIntArray1530[var1],
-              anIntArray1564[var19], anIntArray1564[var20], anIntArray1564[var21],
-              anIntArray1565[var19], anIntArray1565[var20], anIntArray1565[var21],
-              anIntArray1566[var19], anIntArray1566[var20], anIntArray1566[var21],
-              this.anIntArray1536[var1]);
-        }
-      }
-
-      if (var4 == 4) {
-        if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Statics.anInt1358
-            || var12 > Statics.anInt1358 || var13 > Statics.anInt1358 || anIntArray1574[3] < 0
-            || anIntArray1574[3] > Statics.anInt1358) {
-          Class44_Sub3_Sub1_Sub1.aBoolean1399 = true;
-        }
-
-        if (this.anIntArray1533 == null) {
-          var17 = 0;
-        } else {
-          var17 = this.anIntArray1533[var1] & 3;
-        }
-
-        if (var17 == 0) {
-          Class44_Sub3_Sub1_Sub1.method429(var14, var15, var16, var11, var12, var13,
-              anIntArray1576[0], anIntArray1576[1], anIntArray1576[2]);
-          Class44_Sub3_Sub1_Sub1.method429(var14, var16, anIntArray1575[3], var11, var13,
-              anIntArray1574[3], anIntArray1576[0], anIntArray1576[2], anIntArray1576[3]);
-          return;
-        }
-
-        if (var17 == 1) {
-          var18 = anIntArray1587[this.anIntArray1530[var1]];
-          Class44_Sub3_Sub1_Sub1.method431(var14, var15, var16, var11, var12, var13, var18);
-          Class44_Sub3_Sub1_Sub1.method431(var14, var16, anIntArray1575[3], var11, var13,
-              anIntArray1574[3], var18);
-          return;
-        }
-
-        if (var17 == 2) {
-          var18 = this.anIntArray1533[var1] >> 2;
-          var19 = this.anIntArray1539[var18];
-          var20 = this.anIntArray1540[var18];
-          var21 = this.anIntArray1541[var18];
-          Class44_Sub3_Sub1_Sub1.method433(var14, var15, var16, var11, var12, var13,
-              anIntArray1576[0], anIntArray1576[1], anIntArray1576[2], anIntArray1564[var19],
-              anIntArray1564[var20], anIntArray1564[var21], anIntArray1565[var19],
-              anIntArray1565[var20], anIntArray1565[var21], anIntArray1566[var19],
-              anIntArray1566[var20], anIntArray1566[var21], this.anIntArray1536[var1]);
-          Class44_Sub3_Sub1_Sub1.method433(var14, var16, anIntArray1575[3], var11, var13,
-              anIntArray1574[3], anIntArray1576[0], anIntArray1576[2], anIntArray1576[3],
-              anIntArray1564[var19], anIntArray1564[var20], anIntArray1564[var21],
-              anIntArray1565[var19], anIntArray1565[var20], anIntArray1565[var21],
-              anIntArray1566[var19], anIntArray1566[var20], anIntArray1566[var21],
-              this.anIntArray1536[var1]);
-          return;
-        }
-
-        if (var17 == 3) {
-          var18 = this.anIntArray1533[var1] >> 2;
-          var19 = this.anIntArray1539[var18];
-          var20 = this.anIntArray1540[var18];
-          var21 = this.anIntArray1541[var18];
-          Class44_Sub3_Sub1_Sub1.method433(var14, var15, var16, var11, var12, var13,
-              this.anIntArray1530[var1], this.anIntArray1530[var1], this.anIntArray1530[var1],
-              anIntArray1564[var19], anIntArray1564[var20], anIntArray1564[var21],
-              anIntArray1565[var19], anIntArray1565[var20], anIntArray1565[var21],
-              anIntArray1566[var19], anIntArray1566[var20], anIntArray1566[var21],
-              this.anIntArray1536[var1]);
-          Class44_Sub3_Sub1_Sub1.method433(var14, var16, anIntArray1575[3], var11, var13,
-              anIntArray1574[3], this.anIntArray1530[var1], this.anIntArray1530[var1],
-              this.anIntArray1530[var1], anIntArray1564[var19], anIntArray1564[var20],
-              anIntArray1564[var21], anIntArray1565[var19], anIntArray1565[var20],
-              anIntArray1565[var21], anIntArray1566[var19], anIntArray1566[var20],
-              anIntArray1566[var21], this.anIntArray1536[var1]);
-        }
-      }
-    }
-
-  }
-
-  public void method505(int var1, Model var2, boolean var3) {
-    this.anInt1522 = var2.anInt1522;
-    this.anInt1526 = var2.anInt1526;
-    this.anInt1538 = var2.anInt1538;
-    if (anIntArray1518.length < this.anInt1522) {
-      anIntArray1518 = new int[this.anInt1522 + 100];
-      anIntArray1519 = new int[this.anInt1522 + 100];
-      anIntArray1520 = new int[this.anInt1522 + 100];
-    }
-
-    this.anIntArray1523 = anIntArray1518;
-    this.anIntArray1524 = anIntArray1519;
-    this.anIntArray1525 = anIntArray1520;
-
-    int var4;
-    for (var4 = 0; var4 < this.anInt1522; ++var4) {
-      this.anIntArray1523[var4] = var2.anIntArray1523[var4];
-      this.anIntArray1524[var4] = var2.anIntArray1524[var4];
-      this.anIntArray1525[var4] = var2.anIntArray1525[var4];
-    }
-
-    if (var3) {
-      this.anIntArray1535 = var2.anIntArray1535;
-    } else {
-      if (anIntArray1521.length < this.anInt1526) {
-        anIntArray1521 = new int[this.anInt1526 + 100];
-      }
-
-      this.anIntArray1535 = anIntArray1521;
-      if (var2.anIntArray1535 == null) {
-        for (var4 = 0; var4 < this.anInt1526; ++var4) {
-          this.anIntArray1535[var4] = 0;
-        }
-      } else if (this.anInt1526 >= 0) {
-        System.arraycopy(var2.anIntArray1535, 0, this.anIntArray1535, 0, this.anInt1526);
-      }
-    }
-
-    this.anIntArray1533 = var2.anIntArray1533;
-    this.anIntArray1536 = var2.anIntArray1536;
-    this.anIntArray1534 = var2.anIntArray1534;
-    this.anInt1537 = var2.anInt1537;
-    this.anIntArrayArray1554 = var2.anIntArrayArray1554;
-    this.anIntArrayArray1553 = var2.anIntArrayArray1553;
-    this.anIntArray1527 = var2.anIntArray1527;
-    this.anIntArray1528 = var2.anIntArray1528;
-    this.anIntArray1529 = var2.anIntArray1529;
-    this.anIntArray1530 = var2.anIntArray1530;
-    this.anIntArray1531 = var2.anIntArray1531;
-    this.anIntArray1532 = var2.anIntArray1532;
-    this.anIntArray1539 = var2.anIntArray1539;
-    this.anIntArray1540 = var2.anIntArray1540;
-    this.anIntArray1541 = var2.anIntArray1541;
-  }
-
-  public void method517(int var1, int var2) {
-    for (int var3 = 0; var3 < this.anInt1526; ++var3) {
-      if (this.anIntArray1536[var3] == var1) {
-        this.anIntArray1536[var3] = var2;
-      }
-    }
-
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "9"
-  )
-  public void method510() {
-    int[] var1;
-    int var2;
-    int var10002;
-    int var3;
-    int var4;
-    if (this.anIntArray1551 != null) {
-      var1 = new int[256];
-      var2 = 0;
-
-      for (var3 = 0; var3 < this.anInt1522; ++var3) {
-        var4 = this.anIntArray1551[var3];
-        var10002 = var1[var4]++;
-        if (var4 > var2) {
-          var2 = var4;
-        }
-      }
-
-      this.anIntArrayArray1553 = new int[var2 + 1][];
-
-      for (var3 = 0; var3 <= var2; ++var3) {
-        this.anIntArrayArray1553[var3] = new int[var1[var3]];
-        var1[var3] = 0;
-      }
-
-      for (var3 = 0; var3 < this.anInt1522; this.anIntArrayArray1553[var4][var1[var4]++] = var3++) {
-        var4 = this.anIntArray1551[var3];
-      }
-
-      this.anIntArray1551 = null;
-    }
-
-    if (this.anIntArray1552 != null) {
-      var1 = new int[256];
-      var2 = 0;
-
-      for (var3 = 0; var3 < this.anInt1526; ++var3) {
-        var4 = this.anIntArray1552[var3];
-        var10002 = var1[var4]++;
-        if (var4 > var2) {
-          var2 = var4;
-        }
-      }
-
-      this.anIntArrayArray1554 = new int[var2 + 1][];
-
-      for (var3 = 0; var3 <= var2; ++var3) {
-        this.anIntArrayArray1554[var3] = new int[var1[var3]];
-        var1[var3] = 0;
-      }
-
-      for (var3 = 0; var3 < this.anInt1526; this.anIntArrayArray1554[var4][var1[var4]++] = var3++) {
-        var4 = this.anIntArray1552[var3];
-      }
-
-      this.anIntArray1552 = null;
-    }
-
-  }
-
-  public void method495(int var1, int var2, int var3, int var4, int var5, int var6, int var7,
-      int var8, int var9) {
-    int var10 = var5 * var8 - var4 * var6 >> 16;
-    int var11 = var2 * var7 + var3 * var10 >> 16;
-    int var12 = var3 * this.anInt1546 >> 16;
-    int var13 = var11 + var12;
-    if (var13 > 50 && var11 < 3500) {
-      int var14 = var8 * var4 + var5 * var6 >> 16;
-      int var15 = var14 - this.anInt1546 << 9;
-      if (var15 / var13 < Statics.anInt1359) {
-        int var16 = var14 + this.anInt1546 << 9;
-        if (var16 / var13 > -Statics.anInt1359) {
-          int var17 = var3 * var7 - var10 * var2 >> 16;
-          int var18 = var2 * this.anInt1546 >> 16;
-          int var19 = var17 + var18 << 9;
-          if (var19 / var13 > -Statics.anInt1360) {
-            int var20 = (var3 * super.anInt1394 >> 16) + var18;
-            int var21 = var17 - var20 << 9;
-            if (var21 / var13 < Statics.anInt1360) {
-              int var22 = var12 + (var2 * super.anInt1394 >> 16);
-              boolean var23 = var11 - var22 <= 50;
-              boolean var24 = false;
-              int var25;
-              int var26;
-              int var27;
-              if (var9 > 0 && aBoolean1580) {
-                var25 = var11 - var12;
-                if (var25 <= 50) {
-                  var25 = 50;
-                }
-
-                if (var14 > 0) {
-                  var15 /= var13;
-                  var16 /= var25;
-                } else {
-                  var16 /= var13;
-                  var15 /= var25;
-                }
-
-                if (var17 > 0) {
-                  var21 /= var13;
-                  var19 /= var25;
-                } else {
-                  var19 /= var13;
-                  var21 /= var25;
-                }
-
-                var26 = anInt1581 - Class44_Sub3_Sub1_Sub1.anInt1403;
-                var27 = anInt1582 - Class44_Sub3_Sub1_Sub1.anInt1404;
-                if (var26 > var15 && var26 < var16 && var27 > var21 && var27 < var19) {
-                  if (this.aBoolean1555) {
-                    anIntArray1584[anInt1583++] = var9;
-                  } else {
-                    var24 = true;
-                  }
-                }
-              }
-
-              var25 = Class44_Sub3_Sub1_Sub1.anInt1403;
-              var26 = Class44_Sub3_Sub1_Sub1.anInt1404;
-              var27 = 0;
-              int var28 = 0;
-              if (var1 != 0) {
-                var27 = anIntArray1585[var1];
-                var28 = anIntArray1586[var1];
-              }
-
-              for (int var29 = 0; var29 < this.anInt1522; ++var29) {
-                int var30 = this.anIntArray1523[var29];
-                int var31 = this.anIntArray1524[var29];
-                int var32 = this.anIntArray1525[var29];
-                int var33;
-                if (var1 != 0) {
-                  var33 = var32 * var27 + var30 * var28 >> 16;
-                  var32 = var32 * var28 - var30 * var27 >> 16;
-                  var30 = var33;
-                }
-
-                var30 += var6;
-                var31 += var7;
-                var32 += var8;
-                var33 = var32 * var4 + var5 * var30 >> 16;
-                var32 = var5 * var32 - var30 * var4 >> 16;
-                var30 = var33;
-                var33 = var3 * var31 - var32 * var2 >> 16;
-                var32 = var31 * var2 + var3 * var32 >> 16;
-                anIntArray1563[var29] = var32 - var11;
-                if (var32 >= 50) {
-                  anIntArray1561[var29] = var25 + (var30 << 9) / var32;
-                  anIntArray1562[var29] = var26 + (var33 << 9) / var32;
-                } else {
-                  anIntArray1561[var29] = -5000;
-                  var23 = true;
-                }
-
-                if (var23 || this.anInt1538 > 0) {
-                  anIntArray1564[var29] = var30;
-                  anIntArray1565[var29] = var33;
-                  anIntArray1566[var29] = var32;
-                }
-              }
-
-              try {
-                this.method524(var23, var24, var9);
-              } catch (Exception var34) {
-                //ignore
-              }
-
-            }
-          }
-        }
-      }
-    }
-  }
-
-  public void method512(int var1, int[] var2, int var3, int var4) {
-    if (var3 != -1) {
-      if (var2 != null && var4 != -1) {
-        Class11 var5 = Class11.method210(var3);
-        if (var5 != null) {
-          Class11 var6 = Class11.method210(var4);
-          if (var6 == null) {
-            this.method511(var3);
-          } else {
-            Class9 var7 = var5.aClass9_266;
-            anInt1577 = 0;
-            anInt1578 = 0;
-            anInt1579 = 0;
-            byte var8 = 0;
-            int var12 = var8 + 1;
-            int var9 = var2[var8];
-
-            int var10;
-            int var11;
-            for (var10 = 0; var10 < var5.anInt267; ++var10) {
-              for (var11 = var5.anIntArray268[var10]; var11 > var9; var9 = var2[var12++]) {
-              }
-
-              if (var11 != var9 || var7.anIntArray255[var11] == 0) {
-                this.method513(var7.anIntArray255[var11], var7.anIntArrayArray256[var11],
-                    var5.anIntArray269[var10], var5.anIntArray270[var10],
-                    var5.anIntArray271[var10]);
-              }
-            }
-
-            anInt1577 = 0;
-            anInt1578 = 0;
-            anInt1579 = 0;
-            var8 = 0;
-            var12 = var8 + 1;
-            var9 = var2[var8];
-
-            for (var10 = 0; var10 < var6.anInt267; ++var10) {
-              for (var11 = var6.anIntArray268[var10]; var11 > var9; var9 = var2[var12++]) {
-              }
-
-              if (var11 == var9 || var7.anIntArray255[var11] == 0) {
-                this.method513(var7.anIntArray255[var11], var7.anIntArrayArray256[var11],
-                    var6.anIntArray269[var10], var6.anIntArray270[var10],
-                    var6.anIntArray271[var10]);
-              }
-            }
-
-          }
-        }
-      } else {
-        this.method511(var3);
-      }
-    }
-  }
-
-  public void method525(int var1) {
-    if (aBooleanArray1560[var1]) {
-      this.method526(var1);
-    } else {
-      int var2 = this.anIntArray1527[var1];
-      int var3 = this.anIntArray1528[var1];
-      int var4 = this.anIntArray1529[var1];
-      Class44_Sub3_Sub1_Sub1.aBoolean1399 = aBooleanArray1559[var1];
-      if (this.anIntArray1535 == null) {
-        Class44_Sub3_Sub1_Sub1.anInt1402 = 0;
-      } else {
-        Class44_Sub3_Sub1_Sub1.anInt1402 = this.anIntArray1535[var1];
-      }
-
-      int var5;
-      if (this.anIntArray1533 == null) {
-        var5 = 0;
-      } else {
-        var5 = this.anIntArray1533[var1] & 3;
-      }
-
-      if (var5 == 0) {
-        Class44_Sub3_Sub1_Sub1.method429(anIntArray1562[var2], anIntArray1562[var3],
-            anIntArray1562[var4], anIntArray1561[var2], anIntArray1561[var3], anIntArray1561[var4],
-            this.anIntArray1530[var1], this.anIntArray1531[var1], this.anIntArray1532[var1]);
-      } else if (var5 == 1) {
-        Class44_Sub3_Sub1_Sub1.method431(anIntArray1562[var2], anIntArray1562[var3],
-            anIntArray1562[var4], anIntArray1561[var2], anIntArray1561[var3], anIntArray1561[var4],
-            anIntArray1587[this.anIntArray1530[var1]]);
-      } else {
-        int var6;
-        int var7;
-        int var8;
-        int var9;
-        if (var5 == 2) {
-          var6 = this.anIntArray1533[var1] >> 2;
-          var7 = this.anIntArray1539[var6];
-          var8 = this.anIntArray1540[var6];
-          var9 = this.anIntArray1541[var6];
-          Class44_Sub3_Sub1_Sub1.method433(anIntArray1562[var2], anIntArray1562[var3],
-              anIntArray1562[var4], anIntArray1561[var2], anIntArray1561[var3],
-              anIntArray1561[var4], this.anIntArray1530[var1], this.anIntArray1531[var1],
-              this.anIntArray1532[var1], anIntArray1564[var7], anIntArray1564[var8],
-              anIntArray1564[var9], anIntArray1565[var7], anIntArray1565[var8],
-              anIntArray1565[var9], anIntArray1566[var7], anIntArray1566[var8],
-              anIntArray1566[var9], this.anIntArray1536[var1]);
-        } else {
-          if (var5 == 3) {
-            var6 = this.anIntArray1533[var1] >> 2;
-            var7 = this.anIntArray1539[var6];
-            var8 = this.anIntArray1540[var6];
-            var9 = this.anIntArray1541[var6];
-            Class44_Sub3_Sub1_Sub1.method433(anIntArray1562[var2], anIntArray1562[var3],
-                anIntArray1562[var4], anIntArray1561[var2], anIntArray1561[var3],
-                anIntArray1561[var4], this.anIntArray1530[var1], this.anIntArray1530[var1],
-                this.anIntArray1530[var1], anIntArray1564[var7], anIntArray1564[var8],
-                anIntArray1564[var9], anIntArray1565[var7], anIntArray1565[var8],
-                anIntArray1565[var9], anIntArray1566[var7], anIntArray1566[var8],
-                anIntArray1566[var9], this.anIntArray1536[var1]);
-          }
-
-        }
-      }
-    }
-  }
-
-  public void method516(int var1, int var2, byte var3, int var4) {
-    for (int var5 = 0; var5 < this.anInt1522; ++var5) {
-      int[] var10000 = this.anIntArray1523;
-      var10000[var5] += var1;
-      var10000 = this.anIntArray1524;
-      var10000[var5] += var2;
-      var10000 = this.anIntArray1525;
-      var10000[var5] += var4;
-    }
-
-  }
-
-  public void method519(int var1, int var2, int var3, int var4) {
-    for (int var5 = 0; var5 < this.anInt1522; ++var5) {
-      this.anIntArray1523[var5] = var3 * this.anIntArray1523[var5] / 128;
-      this.anIntArray1524[var5] = var4 * this.anIntArray1524[var5] / 128;
-      this.anIntArray1525[var5] = var2 * this.anIntArray1525[var5] / 128;
-    }
-
-  }
-
-  public void method521(int var1, int var2, int var3, int var4, int var5) {
-    int var6;
-    for (var6 = 0; var6 < this.anInt1526; ++var6) {
-      int var7 = this.anIntArray1527[var6];
-      int var8 = this.anIntArray1528[var6];
-      int var9 = this.anIntArray1529[var6];
-      int var10;
-      if (this.anIntArray1533 == null) {
-        var10 = this.anIntArray1536[var6];
-        Class25 var11 = super.aClass25Array1393[var7];
-        int var12 = (var4 * var11.anInt493 + var5 * var11.anInt494 + var3 * var11.anInt492) / (var2
-            * var11.anInt495) + var1;
-        this.anIntArray1530[var6] = method522(var10, var12, 0);
-        var11 = super.aClass25Array1393[var8];
-        var12 = (var4 * var11.anInt493 + var5 * var11.anInt494 + var3 * var11.anInt492) / (var2
-            * var11.anInt495) + var1;
-        this.anIntArray1531[var6] = method522(var10, var12, 0);
-        var11 = super.aClass25Array1393[var9];
-        var12 = (var4 * var11.anInt493 + var5 * var11.anInt494 + var3 * var11.anInt492) / (var2
-            * var11.anInt495) + var1;
-        this.anIntArray1532[var6] = method522(var10, var12, 0);
-      } else if ((this.anIntArray1533[var6] & 1) == 0) {
-        var10 = this.anIntArray1536[var6];
-        int var14 = this.anIntArray1533[var6];
-        Class25 var15 = super.aClass25Array1393[var7];
-        int var13 = (var4 * var15.anInt493 + var5 * var15.anInt494 + var3 * var15.anInt492) / (var2
-            * var15.anInt495) + var1;
-        this.anIntArray1530[var6] = method522(var10, var13, var14);
-        var15 = super.aClass25Array1393[var8];
-        var13 = (var4 * var15.anInt493 + var5 * var15.anInt494 + var3 * var15.anInt492) / (var2
-            * var15.anInt495) + var1;
-        this.anIntArray1531[var6] = method522(var10, var13, var14);
-        var15 = super.aClass25Array1393[var9];
-        var13 = (var4 * var15.anInt493 + var5 * var15.anInt494 + var3 * var15.anInt492) / (var2
-            * var15.anInt495) + var1;
-        this.anIntArray1532[var6] = method522(var10, var13, var14);
-      }
-    }
-
-    super.aClass25Array1393 = null;
-    this.aClass25Array1556 = null;
-    this.anIntArray1551 = null;
-    this.anIntArray1552 = null;
-    if (this.anIntArray1533 != null) {
-      for (var6 = 0; var6 < this.anInt1526; ++var6) {
-        if ((this.anIntArray1533[var6] & 2) == 2) {
-          return;
-        }
-      }
-    }
-
-    this.anIntArray1536 = null;
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "368"
-  )
-  public void method508() {
-    super.anInt1394 = 0;
-    this.anInt1547 = 0;
-
-    for (int var1 = 0; var1 < this.anInt1522; ++var1) {
-      int var2 = this.anIntArray1524[var1];
-      if (-var2 > super.anInt1394) {
-        super.anInt1394 = -var2;
-      }
-
-      if (var2 > this.anInt1547) {
-        this.anInt1547 = var2;
-      }
-    }
-
-    this.anInt1549 = (int) (
-        Math.sqrt(this.anInt1546 * this.anInt1546 + super.anInt1394 * super.anInt1394)
-            + 0.99D);
-    this.anInt1548 = this.anInt1549 + (int) (
-        Math.sqrt(this.anInt1546 * this.anInt1546 + this.anInt1547 * this.anInt1547)
-            + 0.99D);
-  }
-
-  public void method524(boolean var1, boolean var2, int var3) {
-    int var4;
-    for (var4 = 0; var4 < this.anInt1548; ++var4) {
-      anIntArray1567[var4] = 0;
-    }
-
-    int var5;
-    int var6;
-    int var7;
-    int var8;
-    int var9;
-    int var10;
-    int var11;
-    for (var4 = 0; var4 < this.anInt1526; ++var4) {
-      if (this.anIntArray1533 == null || this.anIntArray1533[var4] != -1) {
-        var5 = this.anIntArray1527[var4];
-        var6 = this.anIntArray1528[var4];
-        var7 = this.anIntArray1529[var4];
-        var8 = anIntArray1561[var5];
-        var9 = anIntArray1561[var6];
-        var10 = anIntArray1561[var7];
-        if (var1 && (var8 == -5000 || var9 == -5000 || var10 == -5000)) {
-          aBooleanArray1560[var4] = true;
-          var11 = (anIntArray1563[var5] + anIntArray1563[var6] + anIntArray1563[var7]) / 3
-              + this.anInt1549;
-          anIntArrayArray1568[var11][anIntArray1567[var11]++] = var4;
-        } else {
-          if (var2 && this.method527(anInt1581, anInt1582, anIntArray1562[var5],
-              anIntArray1562[var6], anIntArray1562[var7], var8, var9, var10)) {
-            anIntArray1584[anInt1583++] = var3;
-            var2 = false;
-          }
-
-          if ((var8 - var9) * (anIntArray1562[var7] - anIntArray1562[var6]) - (var10 - var9) * (
-              anIntArray1562[var5] - anIntArray1562[var6]) > 0) {
-            aBooleanArray1560[var4] = false;
-            aBooleanArray1559[var4] = var8 < 0 || var9 < 0 || var10 < 0 || var8 > Statics.anInt1358
-                || var9 > Statics.anInt1358 || var10 > Statics.anInt1358;
-            var11 = (anIntArray1563[var5] + anIntArray1563[var6] + anIntArray1563[var7]) / 3
-                + this.anInt1549;
-            anIntArrayArray1568[var11][anIntArray1567[var11]++] = var4;
-          }
-        }
-      }
-    }
-
-    int[] var16;
-    if (this.anIntArray1534 == null) {
-      for (var4 = this.anInt1548 - 1; var4 >= 0; --var4) {
-        var5 = anIntArray1567[var4];
-        if (var5 > 0) {
-          var16 = anIntArrayArray1568[var4];
-
-          for (var7 = 0; var7 < var5; ++var7) {
-            this.method525(var16[var7]);
-          }
-        }
-      }
-
-    } else {
-      for (var4 = 0; var4 < 12; ++var4) {
-        anIntArray1569[var4] = 0;
-        anIntArray1573[var4] = 0;
-      }
-
-      for (var4 = this.anInt1548 - 1; var4 >= 0; --var4) {
-        var5 = anIntArray1567[var4];
-        if (var5 > 0) {
-          var16 = anIntArrayArray1568[var4];
-
-          for (var7 = 0; var7 < var5; ++var7) {
-            var8 = var16[var7];
-            var9 = this.anIntArray1534[var8];
-            var10 = anIntArray1569[var9]++;
-            anIntArrayArray1570[var9][var10] = var8;
-            if (var9 < 10) {
-              int[] var10000 = anIntArray1573;
-              var10000[var9] += var4;
-            } else if (var9 == 10) {
-              anIntArray1571[var10] = var4;
-            } else {
-              anIntArray1572[var10] = var4;
-            }
-          }
-        }
-      }
-
-      var4 = 0;
-      if (anIntArray1569[1] > 0 || anIntArray1569[2] > 0) {
-        var4 = (anIntArray1573[1] + anIntArray1573[2]) / (anIntArray1569[1] + anIntArray1569[2]);
-      }
-
-      var5 = 0;
-      if (anIntArray1569[3] > 0 || anIntArray1569[4] > 0) {
-        var5 = (anIntArray1573[3] + anIntArray1573[4]) / (anIntArray1569[3] + anIntArray1569[4]);
-      }
-
-      var6 = 0;
-      if (anIntArray1569[6] > 0 || anIntArray1569[8] > 0) {
-        var6 = (anIntArray1573[8] + anIntArray1573[6]) / (anIntArray1569[8] + anIntArray1569[6]);
-      }
-
-      var7 = 0;
-      var8 = anIntArray1569[10];
-      int[] var17 = anIntArrayArray1570[10];
-      int[] var18 = anIntArray1571;
-      if (var7 == var8) {
-        var7 = 0;
-        var8 = anIntArray1569[11];
-        var17 = anIntArrayArray1570[11];
-        var18 = anIntArray1572;
-      }
-
-      if (var7 < var8) {
-        var11 = var18[var7];
-      } else {
-        var11 = -1000;
-      }
-
-      for (int var12 = 0; var12 < 10; ++var12) {
-        while (var12 == 0 && var11 > var4) {
-          this.method525(var17[var7++]);
-          if (var7 == var8 && var17 != anIntArrayArray1570[11]) {
-            var7 = 0;
-            var8 = anIntArray1569[11];
-            var17 = anIntArrayArray1570[11];
-            var18 = anIntArray1572;
-          }
-
-          if (var7 < var8) {
-            var11 = var18[var7];
-          } else {
-            var11 = -1000;
-          }
-        }
-
-        while (var12 == 3 && var11 > var5) {
-          this.method525(var17[var7++]);
-          if (var7 == var8 && var17 != anIntArrayArray1570[11]) {
-            var7 = 0;
-            var8 = anIntArray1569[11];
-            var17 = anIntArrayArray1570[11];
-            var18 = anIntArray1572;
-          }
-
-          if (var7 < var8) {
-            var11 = var18[var7];
-          } else {
-            var11 = -1000;
-          }
-        }
-
-        while (var12 == 5 && var11 > var6) {
-          this.method525(var17[var7++]);
-          if (var7 == var8 && var17 != anIntArrayArray1570[11]) {
-            var7 = 0;
-            var8 = anIntArray1569[11];
-            var17 = anIntArrayArray1570[11];
-            var18 = anIntArray1572;
-          }
-
-          if (var7 < var8) {
-            var11 = var18[var7];
-          } else {
-            var11 = -1000;
-          }
-        }
-
-        int var13 = anIntArray1569[var12];
-        int[] var14 = anIntArrayArray1570[var12];
-
-        for (int var15 = 0; var15 < var13; ++var15) {
-          this.method525(var14[var15]);
-        }
-      }
-
-      while (var11 != -1000) {
-        this.method525(var17[var7++]);
-        if (var7 == var8 && var17 != anIntArrayArray1570[11]) {
-          var7 = 0;
-          var17 = anIntArrayArray1570[11];
-          var8 = anIntArray1569[11];
-          var18 = anIntArray1572;
-        }
-
-        if (var7 < var8) {
-          var11 = var18[var7];
-        } else {
-          var11 = -1000;
-        }
-      }
-
-    }
-  }
-
-  public void method507(int var1) {
-    super.anInt1394 = 0;
-    this.anInt1546 = 0;
-    this.anInt1547 = 0;
-    var1 = 65 / var1;
-
-    for (int var2 = 0; var2 < this.anInt1522; ++var2) {
-      int var3 = this.anIntArray1523[var2];
-      int var4 = this.anIntArray1524[var2];
-      int var5 = this.anIntArray1525[var2];
-      if (-var4 > super.anInt1394) {
-        super.anInt1394 = -var4;
-      }
-
-      if (var4 > this.anInt1547) {
-        this.anInt1547 = var4;
-      }
-
-      int var6 = var3 * var3 + var5 * var5;
-      if (var6 > this.anInt1546) {
-        this.anInt1546 = var6;
-      }
-    }
-
-    this.anInt1546 = (int) (Math.sqrt(this.anInt1546) + 0.99D);
-    this.anInt1549 = (int) (
-        Math.sqrt(this.anInt1546 * this.anInt1546 + super.anInt1394 * super.anInt1394)
-            + 0.99D);
-    this.anInt1548 = this.anInt1549 + (int) (
-        Math.sqrt(this.anInt1546 * this.anInt1546 + this.anInt1547 * this.anInt1547)
-            + 0.99D);
-  }
-
-  public void method520(int var1, int var2, int var3, int var4, int var5, boolean var6) {
-    int var7 = (int) Math.sqrt(var5 * var5 + var3 * var3 + var4 * var4);
-    int var8 = var7 * var2 >> 8;
-    if (this.anIntArray1530 == null) {
-      this.anIntArray1530 = new int[this.anInt1526];
-      this.anIntArray1531 = new int[this.anInt1526];
-      this.anIntArray1532 = new int[this.anInt1526];
-    }
-
-    int var9;
-    if (super.aClass25Array1393 == null) {
-      super.aClass25Array1393 = new Class25[this.anInt1522];
-
-      for (var9 = 0; var9 < this.anInt1522; ++var9) {
-        super.aClass25Array1393[var9] = new Class25();
-      }
-    }
-
-    for (var9 = 0; var9 < this.anInt1526; ++var9) {
-      int var10 = this.anIntArray1527[var9];
-      int var11 = this.anIntArray1528[var9];
-      int var12 = this.anIntArray1529[var9];
-      int var13 = this.anIntArray1523[var11] - this.anIntArray1523[var10];
-      int var14 = this.anIntArray1524[var11] - this.anIntArray1524[var10];
-      int var15 = this.anIntArray1525[var11] - this.anIntArray1525[var10];
-      int var16 = this.anIntArray1523[var12] - this.anIntArray1523[var10];
-      int var17 = this.anIntArray1524[var12] - this.anIntArray1524[var10];
-      int var18 = this.anIntArray1525[var12] - this.anIntArray1525[var10];
-      int var19 = var14 * var18 - var17 * var15;
-      int var20 = var15 * var16 - var18 * var13;
-
-      int var21;
-      for (var21 = var13 * var17 - var16 * var14;
-          var19 > 8192 || var20 > 8192 || var21 > 8192 || var19 < -8192 || var20 < -8192
-              || var21 < -8192; var21 >>= 1) {
-        var19 >>= 1;
-        var20 >>= 1;
-      }
-
-      int var22 = (int) Math.sqrt(var19 * var19 + var20 * var20 + var21 * var21);
-      if (var22 <= 0) {
-        var22 = 1;
-      }
-
-      var19 = var19 * 256 / var22;
-      var20 = var20 * 256 / var22;
-      var21 = var21 * 256 / var22;
-      if (this.anIntArray1533 != null && (this.anIntArray1533[var9] & 1) != 0) {
-        int var26 = (var20 * var4 + var5 * var21 + var3 * var19) / (var8 / 2 + var8) + var1;
-        this.anIntArray1530[var9] = method522(this.anIntArray1536[var9], var26,
-            this.anIntArray1533[var9]);
-      } else {
-        Class25 var23 = super.aClass25Array1393[var10];
-        var23.anInt492 += var19;
-        var23.anInt493 += var20;
-        var23.anInt494 += var21;
-        ++var23.anInt495;
-        var23 = super.aClass25Array1393[var11];
-        var23.anInt492 += var19;
-        var23.anInt493 += var20;
-        var23.anInt494 += var21;
-        ++var23.anInt495;
-        var23 = super.aClass25Array1393[var12];
-        var23.anInt492 += var19;
-        var23.anInt493 += var20;
-        var23.anInt494 += var21;
-        ++var23.anInt495;
-      }
-    }
-
-    if (var6) {
-      this.method521(var1, var8, var3, var4, var5);
-    } else {
-      this.aClass25Array1556 = new Class25[this.anInt1522];
-
-      for (var9 = 0; var9 < this.anInt1522; ++var9) {
-        Class25 var24 = super.aClass25Array1393[var9];
-        Class25 var25 = this.aClass25Array1556[var9] = new Class25();
-        var25.anInt492 = var24.anInt492;
-        var25.anInt493 = var24.anInt493;
-        var25.anInt494 = var24.anInt494;
-        var25.anInt495 = var24.anInt495;
-      }
-    }
-
-    if (var6) {
-      this.method507(486);
-    } else {
-      this.method509();
-    }
-
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "0"
-  )
-  public void method509() {
-    super.anInt1394 = 0;
-    this.anInt1546 = 0;
-    this.anInt1547 = 0;
-    this.anInt1542 = 999999;
-    this.anInt1543 = -999999;
-    this.anInt1544 = -99999;
-    this.anInt1545 = 99999;
-
-    for (int var1 = 0; var1 < this.anInt1522; ++var1) {
-      int var2 = this.anIntArray1523[var1];
-      int var3 = this.anIntArray1524[var1];
-      int var4 = this.anIntArray1525[var1];
-      if (var2 < this.anInt1542) {
-        this.anInt1542 = var2;
-      }
-
-      if (var2 > this.anInt1543) {
-        this.anInt1543 = var2;
-      }
-
-      if (var4 < this.anInt1545) {
-        this.anInt1545 = var4;
-      }
-
-      if (var4 > this.anInt1544) {
-        this.anInt1544 = var4;
-      }
-
-      if (-var3 > super.anInt1394) {
-        super.anInt1394 = -var3;
-      }
-
-      if (var3 > this.anInt1547) {
-        this.anInt1547 = var3;
-      }
-
-      int var5 = var2 * var2 + var4 * var4;
-      if (var5 > this.anInt1546) {
-        this.anInt1546 = var5;
-      }
-    }
-
-    this.anInt1546 = (int) Math.sqrt(this.anInt1546);
-    this.anInt1549 = (int) Math.sqrt(
-        this.anInt1546 * this.anInt1546 + super.anInt1394 * super.anInt1394);
-    this.anInt1548 = this.anInt1549 + (int) Math.sqrt(
-        this.anInt1546 * this.anInt1546 + this.anInt1547 * this.anInt1547);
-  }
-
-  public void method515(byte var1, int var2) {
-    int var3 = anIntArray1585[var2];
-    int var4 = anIntArray1586[var2];
-
-    for (int var5 = 0; var5 < this.anInt1522; ++var5) {
-      int var6 = var4 * this.anIntArray1524[var5] - var3 * this.anIntArray1525[var5] >> 16;
-      this.anIntArray1525[var5] =
-          var3 * this.anIntArray1524[var5] + var4 * this.anIntArray1525[var5] >> 16;
-      this.anIntArray1524[var5] = var6;
-    }
-
-  }
-
-  public void method513(int var1, int[] var2, int var3, int var4, int var5) {
-    int var6 = var2.length;
-    int var9;
-    int var10;
-    int[] var12;
-    int var14;
-    int var15;
-    int var16;
-    if (var1 == 0) {
-      int var22 = 0;
-      anInt1577 = 0;
-      anInt1578 = 0;
-      anInt1579 = 0;
-      int[] var23 = var2;
-      var9 = var2.length;
-
-      for (var10 = 0; var10 < var9; ++var10) {
-        int var24 = var23[var10];
-        if (var24 < this.anIntArrayArray1553.length) {
-          var12 = this.anIntArrayArray1553[var24];
-          int[] var25 = var12;
-          var14 = var12.length;
-
-          for (var15 = 0; var15 < var14; ++var15) {
-            var16 = var25[var15];
-            anInt1577 += this.anIntArray1523[var16];
-            anInt1578 += this.anIntArray1524[var16];
-            anInt1579 += this.anIntArray1525[var16];
-            ++var22;
-          }
-        }
-      }
-
-      if (var22 > 0) {
-        anInt1577 = var3 + anInt1577 / var22;
-        anInt1578 = var4 + anInt1578 / var22;
-        anInt1579 = var5 + anInt1579 / var22;
-      } else {
-        anInt1577 = var3;
-        anInt1578 = var4;
-        anInt1579 = var5;
-      }
-    } else {
-      int[] var7;
-      int var8;
-      int[] var11;
-      int var13;
-      int[] var10000;
-      if (var1 == 1) {
-        var7 = var2;
-        var8 = var2.length;
-
-        for (var9 = 0; var9 < var8; ++var9) {
-          var10 = var7[var9];
-          if (var10 < this.anIntArrayArray1553.length) {
-            var11 = this.anIntArrayArray1553[var10];
-            var12 = var11;
-            var13 = var11.length;
-
-            for (var14 = 0; var14 < var13; ++var14) {
-              var15 = var12[var14];
-              var10000 = this.anIntArray1523;
-              var10000[var15] += var3;
-              var10000 = this.anIntArray1524;
-              var10000[var15] += var4;
-              var10000 = this.anIntArray1525;
-              var10000[var15] += var5;
-            }
-          }
-        }
-
-      } else if (var1 == 2) {
-        var7 = var2;
-        var8 = var2.length;
-
-        for (var9 = 0; var9 < var8; ++var9) {
-          var10 = var7[var9];
-          if (var10 < this.anIntArrayArray1553.length) {
-            var11 = this.anIntArrayArray1553[var10];
-            var12 = var11;
-            var13 = var11.length;
-
-            for (var14 = 0; var14 < var13; ++var14) {
-              var15 = var12[var14];
-              var10000 = this.anIntArray1523;
-              var10000[var15] -= anInt1577;
-              var10000 = this.anIntArray1524;
-              var10000[var15] -= anInt1578;
-              var10000 = this.anIntArray1525;
-              var10000[var15] -= anInt1579;
-              var16 = (var3 & 255) * 8;
-              int var17 = (var4 & 255) * 8;
-              int var18 = (var5 & 255) * 8;
-              int var19;
-              int var20;
-              int var21;
-              if (var18 != 0) {
-                var19 = anIntArray1585[var18];
-                var20 = anIntArray1586[var18];
-                var21 =
-                    var19 * this.anIntArray1524[var15] + var20 * this.anIntArray1523[var15] >> 16;
-                this.anIntArray1524[var15] =
-                    var20 * this.anIntArray1524[var15] - var19 * this.anIntArray1523[var15] >> 16;
-                this.anIntArray1523[var15] = var21;
-              }
-
-              if (var16 != 0) {
-                var19 = anIntArray1585[var16];
-                var20 = anIntArray1586[var16];
-                var21 =
-                    var20 * this.anIntArray1524[var15] - var19 * this.anIntArray1525[var15] >> 16;
-                this.anIntArray1525[var15] =
-                    var19 * this.anIntArray1524[var15] + var20 * this.anIntArray1525[var15] >> 16;
-                this.anIntArray1524[var15] = var21;
-              }
-
-              if (var17 != 0) {
-                var19 = anIntArray1585[var17];
-                var20 = anIntArray1586[var17];
-                var21 =
-                    var19 * this.anIntArray1525[var15] + var20 * this.anIntArray1523[var15] >> 16;
-                this.anIntArray1525[var15] =
-                    var20 * this.anIntArray1525[var15] - var19 * this.anIntArray1523[var15] >> 16;
-                this.anIntArray1523[var15] = var21;
-              }
-
-              var10000 = this.anIntArray1523;
-              var10000[var15] += anInt1577;
-              var10000 = this.anIntArray1524;
-              var10000[var15] += anInt1578;
-              var10000 = this.anIntArray1525;
-              var10000[var15] += anInt1579;
-            }
-          }
-        }
-
-      } else if (var1 == 3) {
-        var7 = var2;
-        var8 = var2.length;
-
-        for (var9 = 0; var9 < var8; ++var9) {
-          var10 = var7[var9];
-          if (var10 < this.anIntArrayArray1553.length) {
-            var11 = this.anIntArrayArray1553[var10];
-            var12 = var11;
-            var13 = var11.length;
-
-            for (var14 = 0; var14 < var13; ++var14) {
-              var15 = var12[var14];
-              var10000 = this.anIntArray1523;
-              var10000[var15] -= anInt1577;
-              var10000 = this.anIntArray1524;
-              var10000[var15] -= anInt1578;
-              var10000 = this.anIntArray1525;
-              var10000[var15] -= anInt1579;
-              this.anIntArray1523[var15] = var3 * this.anIntArray1523[var15] / 128;
-              this.anIntArray1524[var15] = var4 * this.anIntArray1524[var15] / 128;
-              this.anIntArray1525[var15] = var5 * this.anIntArray1525[var15] / 128;
-              var10000 = this.anIntArray1523;
-              var10000[var15] += anInt1577;
-              var10000 = this.anIntArray1524;
-              var10000[var15] += anInt1578;
-              var10000 = this.anIntArray1525;
-              var10000[var15] += anInt1579;
-            }
-          }
-        }
-
-      } else {
-        if (var1 == 5 && this.anIntArrayArray1554 != null && this.anIntArray1535 != null) {
-          var7 = var2;
-          var8 = var2.length;
-
-          for (var9 = 0; var9 < var8; ++var9) {
-            var10 = var7[var9];
-            if (var10 < this.anIntArrayArray1554.length) {
-              var11 = this.anIntArrayArray1554[var10];
-              var12 = var11;
-              var13 = var11.length;
-
-              for (var14 = 0; var14 < var13; ++var14) {
-                var15 = var12[var14];
-                var10000 = this.anIntArray1535;
-                var10000[var15] += var3 * 8;
-                if (this.anIntArray1535[var15] < 0) {
-                  this.anIntArray1535[var15] = 0;
-                }
-
-                if (this.anIntArray1535[var15] > 255) {
-                  this.anIntArray1535[var15] = 255;
-                }
-              }
-            }
-          }
-        }
-
-      }
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(I)V",
-      garbageValue = "2"
-  )
-  public void method518() {
-    int var1;
-    for (var1 = 0; var1 < this.anInt1522; ++var1) {
-      this.anIntArray1525[var1] = -this.anIntArray1525[var1];
-    }
-
-    for (var1 = 0; var1 < this.anInt1526; ++var1) {
-      int var2 = this.anIntArray1527[var1];
-      this.anIntArray1527[var1] = this.anIntArray1529[var1];
-      this.anIntArray1529[var1] = var2;
-    }
-
-  }
-
-  public boolean method527(int var1, int var2, int var3, int var4, int var5, int var6, int var7,
-      int var8) {
-    if (var2 < var3 && var2 < var4 && var2 < var5) {
-      return false;
-    } else if (var2 > var3 && var2 > var4 && var2 > var5) {
-      return false;
-    } else if (var1 < var6 && var1 < var7 && var1 < var8) {
-      return false;
-    } else {
-      return var1 <= var6 || var1 <= var7 || var1 <= var8;
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(B)V",
-      garbageValue = "89"
-  )
-  public void method514() {
-    for (int var1 = 0; var1 < this.anInt1522; ++var1) {
-      int var2 = this.anIntArray1523[var1];
-      this.anIntArray1523[var1] = this.anIntArray1525[var1];
-      this.anIntArray1525[var1] = -var2;
-    }
-
-  }
-
-  public void method523(int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-    int var8 = Class44_Sub3_Sub1_Sub1.anInt1403;
-    int var9 = Class44_Sub3_Sub1_Sub1.anInt1404;
-    int var10 = anIntArray1585[var1];
-    int var11 = anIntArray1586[var1];
-    int var12 = anIntArray1585[var2];
-    int var13 = anIntArray1586[var2];
-    int var14 = anIntArray1585[var3];
-    int var15 = anIntArray1586[var3];
-    int var16 = anIntArray1585[var4];
-    int var17 = anIntArray1586[var4];
-    int var18 = var16 * var6 + var17 * var7 >> 16;
-
-    for (int var19 = 0; var19 < this.anInt1522; ++var19) {
-      int var20 = this.anIntArray1523[var19];
-      int var21 = this.anIntArray1524[var19];
-      int var22 = this.anIntArray1525[var19];
-      int var23;
-      if (var3 != 0) {
-        var23 = var21 * var14 + var20 * var15 >> 16;
-        var21 = var21 * var15 - var20 * var14 >> 16;
-        var20 = var23;
-      }
-
-      if (var1 != 0) {
-        var23 = var21 * var11 - var22 * var10 >> 16;
-        var22 = var21 * var10 + var22 * var11 >> 16;
-        var21 = var23;
-      }
-
-      if (var2 != 0) {
-        var23 = var22 * var12 + var20 * var13 >> 16;
-        var22 = var22 * var13 - var20 * var12 >> 16;
-        var20 = var23;
-      }
-
-      var20 += var5;
-      var21 += var6;
-      var22 += var7;
-      var23 = var21 * var17 - var22 * var16 >> 16;
-      var22 = var21 * var16 + var22 * var17 >> 16;
-      anIntArray1563[var19] = var22 - var18;
-      anIntArray1561[var19] = var8 + (var20 << 9) / var22;
-      anIntArray1562[var19] = var9 + (var23 << 9) / var22;
-      if (this.anInt1538 > 0) {
-        anIntArray1564[var19] = var20;
-        anIntArray1565[var19] = var23;
-        anIntArray1566[var19] = var22;
-      }
-    }
-
-    try {
-      this.method524(false, false, 0);
-    } catch (Exception var24) {
-      //ignore
-    }
-
-  }
-
-  public int method506(Model var1, int var2) {
-    int var3 = -1;
-    int var4 = var1.anIntArray1523[var2];
-    int var5 = var1.anIntArray1524[var2];
-    int var6 = var1.anIntArray1525[var2];
-
-    for (int var7 = 0; var7 < this.anInt1522; ++var7) {
-      if (var4 == this.anIntArray1523[var7] && var5 == this.anIntArray1524[var7]
-          && var6 == this.anIntArray1525[var7]) {
-        var3 = var7;
-        break;
-      }
-    }
-
-    if (var3 == -1) {
-      this.anIntArray1523[this.anInt1522] = var4;
-      this.anIntArray1524[this.anInt1522] = var5;
-      this.anIntArray1525[this.anInt1522] = var6;
-      if (var1.anIntArray1551 != null) {
-        this.anIntArray1551[this.anInt1522] = var1.anIntArray1551[var2];
-      }
-
-      var3 = this.anInt1522++;
-    }
-
-    return var3;
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(II)LModel;",
-      garbageValue = "6"
-  )
-  public static Model method503(int var0) {
-    if (aClass21Array1557 == null) {
-      return null;
-    } else {
-      Class21 var1 = aClass21Array1557[var0];
-      if (var1 == null) {
-        aClass43_1558.method382(var0);
-        return null;
-      } else {
-        return new Model(var0, 2);
-      }
-    }
-  }
-
-  public static boolean method504(int var0) {
-    if (aClass21Array1557 == null) {
-      return false;
-    } else {
-      Class21 var1 = aClass21Array1557[var0];
-      if (var1 == null) {
-        aClass43_1558.method382(var0);
-        return false;
-      } else {
-        return true;
-      }
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(I[BI)V",
-      garbageValue = "6"
-  )
-  public static void method501(int var0, byte[] var1) {
-    if (var1 == null) {
-      Class21 var14 = aClass21Array1557[var0] = new Class21();
-      var14.anInt436 = 0;
-      var14.anInt437 = 0;
-      var14.anInt438 = 0;
-    } else {
-      Buffer var2 = new Buffer(var1, (byte) 1);
-      var2.offset = var1.length - 18;
-      Class21 var3 = aClass21Array1557[var0] = new Class21();
-      var3.aByteArray435 = var1;
-      var3.anInt436 = var2.readUShort();
-      var3.anInt437 = var2.readUShort();
-      var3.anInt438 = var2.readUByte();
-      int var4 = var2.readUByte();
-      int var5 = var2.readUByte();
-      int var6 = var2.readUByte();
-      int var7 = var2.readUByte();
-      int var8 = var2.readUByte();
-      int var9 = var2.readUShort();
-      int var10 = var2.readUShort();
-      int var11 = var2.readUShort();
-      int var12 = var2.readUShort();
-      byte var13 = 0;
-      var3.anInt439 = var13;
-      int var15 = var13 + var3.anInt436;
-      var3.anInt445 = var15;
-      var15 += var3.anInt437;
-      var3.anInt448 = var15;
-      if (var5 == 255) {
-        var15 += var3.anInt437;
-      } else {
-        var3.anInt448 = -var5 - 1;
-      }
-
-      var3.anInt450 = var15;
-      if (var7 == 1) {
-        var15 += var3.anInt437;
-      } else {
-        var3.anInt450 = -1;
-      }
-
-      var3.anInt447 = var15;
-      if (var4 == 1) {
-        var15 += var3.anInt437;
-      } else {
-        var3.anInt447 = -1;
-      }
-
-      var3.anInt443 = var15;
-      if (var8 == 1) {
-        var15 += var3.anInt436;
-      } else {
-        var3.anInt443 = -1;
-      }
-
-      var3.anInt449 = var15;
-      if (var6 == 1) {
-        var15 += var3.anInt437;
-      } else {
-        var3.anInt449 = -1;
-      }
-
-      var3.anInt444 = var15;
-      var15 += var12;
-      var3.anInt446 = var15;
-      var15 += var3.anInt437 * 2;
-      var3.anInt451 = var15;
-      var15 += var3.anInt438 * 6;
-      var3.anInt440 = var15;
-      var15 += var9;
-      var3.anInt441 = var15;
-      var15 += var10;
-      var3.anInt442 = var15;
-      int var10000 = var15 + var11;
-    }
-  }
-
-  @ObfuscatedSignature(
-      descriptor = "(II)V",
-      garbageValue = "-6375"
-  )
-  public static void method502(int var0) {
-    aClass21Array1557[var0] = null;
-  }
-
-  public static int method522(int var0, int var1, int var2) {
-    if ((var2 & 2) == 2) {
-      if (var1 < 0) {
-        var1 = 0;
-      } else if (var1 > 127) {
-        var1 = 127;
-      }
-
-      var1 = 127 - var1;
-      return var1;
-    } else {
-      var1 = (var0 & 127) * var1 >> 7;
-      if (var1 < 2) {
-        var1 = 2;
-      } else if (var1 > 126) {
-        var1 = 126;
-      }
-
-      return (var0 & 65408) + var1;
-    }
-  }
-
-  public static void method500(int var0, Class43_Sub1 var1) {
-    aClass21Array1557 = new Class21[var0];
-    aClass43_1558 = var1;
-  }
-
-  public static void method499(byte var0) {
-    aClass21Array1557 = null;
-    aBooleanArray1559 = null;
-    aBooleanArray1560 = null;
-    anIntArray1561 = null;
-    anIntArray1562 = null;
-    anIntArray1563 = null;
-    anIntArray1564 = null;
-    anIntArray1565 = null;
-    anIntArray1566 = null;
-    anIntArray1567 = null;
-    anIntArrayArray1568 = null;
-    anIntArray1569 = null;
-    anIntArrayArray1570 = null;
-    anIntArray1571 = null;
-    if (var0 == 1) {
-      boolean var1 = false;
-      anIntArray1572 = null;
-      anIntArray1573 = null;
-      anIntArray1585 = null;
-      anIntArray1586 = null;
-      anIntArray1587 = null;
-      anIntArray1588 = null;
-    }
-  }
+// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+
+public class Model extends Entity {
+
+	public static void method573(boolean flag) {
+		aClass26Array1682 = null;
+		aBooleanArray1684 = null;
+		aBooleanArray1685 = null;
+		anIntArray1686 = null;
+		anIntArray1687 = null;
+		anIntArray1688 = null;
+		anIntArray1689 = null;
+		anIntArray1690 = null;
+		anIntArray1691 = null;
+		anIntArray1692 = null;
+		anIntArrayArray1693 = null;
+		anIntArray1694 = null;
+		anIntArrayArray1695 = null;
+		anIntArray1696 = null;
+		anIntArray1697 = null;
+		anIntArray1698 = null;
+		anIntArray1710 = null;
+		anIntArray1711 = null;
+		anIntArray1712 = null;
+		if (flag) {
+			return;
+		} else {
+			anIntArray1713 = null;
+			return;
+		}
+	}
+
+	public static void method574(int i, ModelProvider class32) {
+		aClass26Array1682 = new Class26[i];
+		aClass32_1683 = class32;
+	}
+
+	public static void method575(byte abyte0[], int i, byte byte0) {
+		if (byte0 != 7)
+			return;
+		if (abyte0 == null) {
+			Class26 class26 = aClass26Array1682[i] = new Class26();
+			class26.anInt534 = 0;
+			class26.anInt535 = 0;
+			class26.anInt536 = 0;
+			return;
+		}
+		JagBuffer class50_sub1_sub2 = new JagBuffer(abyte0);
+		class50_sub1_sub2.position = abyte0.length - 18;
+		Class26 class26_1 = aClass26Array1682[i] = new Class26();
+		class26_1.aByteArray533 = abyte0;
+		class26_1.anInt534 = class50_sub1_sub2.getShort();
+		class26_1.anInt535 = class50_sub1_sub2.getShort();
+		class26_1.anInt536 = class50_sub1_sub2.getByte();
+		int j = class50_sub1_sub2.getByte();
+		int k = class50_sub1_sub2.getByte();
+		int l = class50_sub1_sub2.getByte();
+		int i1 = class50_sub1_sub2.getByte();
+		int j1 = class50_sub1_sub2.getByte();
+		int k1 = class50_sub1_sub2.getShort();
+		int l1 = class50_sub1_sub2.getShort();
+		int i2 = class50_sub1_sub2.getShort();
+		int j2 = class50_sub1_sub2.getShort();
+		int k2 = 0;
+		class26_1.anInt537 = k2;
+		k2 += class26_1.anInt534;
+		class26_1.anInt543 = k2;
+		k2 += class26_1.anInt535;
+		class26_1.anInt546 = k2;
+		if (k == 255)
+			k2 += class26_1.anInt535;
+		else
+			class26_1.anInt546 = -k - 1;
+		class26_1.anInt548 = k2;
+		if (i1 == 1)
+			k2 += class26_1.anInt535;
+		else
+			class26_1.anInt548 = -1;
+		class26_1.anInt545 = k2;
+		if (j == 1)
+			k2 += class26_1.anInt535;
+		else
+			class26_1.anInt545 = -1;
+		class26_1.anInt541 = k2;
+		if (j1 == 1)
+			k2 += class26_1.anInt534;
+		else
+			class26_1.anInt541 = -1;
+		class26_1.anInt547 = k2;
+		if (l == 1)
+			k2 += class26_1.anInt535;
+		else
+			class26_1.anInt547 = -1;
+		class26_1.anInt542 = k2;
+		k2 += j2;
+		class26_1.anInt544 = k2;
+		k2 += class26_1.anInt535 * 2;
+		class26_1.anInt549 = k2;
+		k2 += class26_1.anInt536 * 6;
+		class26_1.anInt538 = k2;
+		k2 += k1;
+		class26_1.anInt539 = k2;
+		k2 += l1;
+		class26_1.anInt540 = k2;
+		k2 += i2;
+	}
+
+	public static void method576(int i, int j) {
+		if (j != 1) {
+			return;
+		} else {
+			aClass26Array1682[i] = null;
+			return;
+		}
+	}
+
+	public static Model forId(int i) {
+		if (aClass26Array1682 == null)
+			return null;
+		Class26 class26 = aClass26Array1682[i];
+		if (class26 == null) {
+			aClass32_1683.requestModel(i);
+			return null;
+		} else {
+			return new Model(i, -478);
+		}
+	}
+
+	public static boolean isDownloaded(int id) {
+		if (aClass26Array1682 == null)
+			return false;
+		Class26 class26 = aClass26Array1682[id];
+		if (class26 == null) {
+			aClass32_1683.requestModel(id);
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Model(int i) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		if (i <= 0)
+			anInt1640 = -110;
+	}
+
+	public Model(int i, int j) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		anInt1642++;
+		Class26 class26 = aClass26Array1682[i];
+		anInt1648 = class26.anInt534;
+		anInt1652 = class26.anInt535;
+		anInt1664 = class26.anInt536;
+		anIntArray1649 = new int[anInt1648];
+		anIntArray1650 = new int[anInt1648];
+		anIntArray1651 = new int[anInt1648];
+		anIntArray1653 = new int[anInt1652];
+		anIntArray1654 = new int[anInt1652];
+		anIntArray1655 = new int[anInt1652];
+		anIntArray1665 = new int[anInt1664];
+		anIntArray1666 = new int[anInt1664];
+		anIntArray1667 = new int[anInt1664];
+		if (class26.anInt541 >= 0)
+			anIntArray1676 = new int[anInt1648];
+		if (class26.anInt545 >= 0)
+			anIntArray1659 = new int[anInt1652];
+		if (class26.anInt546 >= 0)
+			anIntArray1660 = new int[anInt1652];
+		else
+			anInt1663 = -class26.anInt546 - 1;
+		if (class26.anInt547 >= 0)
+			anIntArray1661 = new int[anInt1652];
+		if (class26.anInt548 >= 0)
+			anIntArray1677 = new int[anInt1652];
+		colors = new int[anInt1652];
+		JagBuffer class50_sub1_sub2 = new JagBuffer(class26.aByteArray533);
+		class50_sub1_sub2.position = class26.anInt537;
+		JagBuffer class50_sub1_sub2_1 = new JagBuffer(class26.aByteArray533);
+		class50_sub1_sub2_1.position = class26.anInt538;
+		JagBuffer class50_sub1_sub2_2 = new JagBuffer(class26.aByteArray533);
+		class50_sub1_sub2_2.position = class26.anInt539;
+		if (j >= 0)
+			aBoolean1641 = !aBoolean1641;
+		JagBuffer class50_sub1_sub2_3 = new JagBuffer(class26.aByteArray533);
+		class50_sub1_sub2_3.position = class26.anInt540;
+		JagBuffer class50_sub1_sub2_4 = new JagBuffer(class26.aByteArray533);
+		class50_sub1_sub2_4.position = class26.anInt541;
+		int k = 0;
+		int l = 0;
+		int i1 = 0;
+		for (int j1 = 0; j1 < anInt1648; j1++) {
+			int k1 = class50_sub1_sub2.getByte();
+			int i2 = 0;
+			if ((k1 & 1) != 0)
+				i2 = class50_sub1_sub2_1.getSignedSmart();
+			int k2 = 0;
+			if ((k1 & 2) != 0)
+				k2 = class50_sub1_sub2_2.getSignedSmart();
+			int i3 = 0;
+			if ((k1 & 4) != 0)
+				i3 = class50_sub1_sub2_3.getSignedSmart();
+			anIntArray1649[j1] = k + i2;
+			anIntArray1650[j1] = l + k2;
+			anIntArray1651[j1] = i1 + i3;
+			k = anIntArray1649[j1];
+			l = anIntArray1650[j1];
+			i1 = anIntArray1651[j1];
+			if (anIntArray1676 != null)
+				anIntArray1676[j1] = class50_sub1_sub2_4.getByte();
+		}
+
+		class50_sub1_sub2.position = class26.anInt544;
+		class50_sub1_sub2_1.position = class26.anInt545;
+		class50_sub1_sub2_2.position = class26.anInt546;
+		class50_sub1_sub2_3.position = class26.anInt547;
+		class50_sub1_sub2_4.position = class26.anInt548;
+		for (int l1 = 0; l1 < anInt1652; l1++) {
+			colors[l1] = class50_sub1_sub2.getShort();
+			if (anIntArray1659 != null)
+				anIntArray1659[l1] = class50_sub1_sub2_1.getByte();
+			if (anIntArray1660 != null)
+				anIntArray1660[l1] = class50_sub1_sub2_2.getByte();
+			if (anIntArray1661 != null)
+				anIntArray1661[l1] = class50_sub1_sub2_3.getByte();
+			if (anIntArray1677 != null)
+				anIntArray1677[l1] = class50_sub1_sub2_4.getByte();
+		}
+
+		class50_sub1_sub2.position = class26.anInt542;
+		class50_sub1_sub2_1.position = class26.anInt543;
+		int j2 = 0;
+		int l2 = 0;
+		int j3 = 0;
+		int k3 = 0;
+		for (int l3 = 0; l3 < anInt1652; l3++) {
+			int i4 = class50_sub1_sub2_1.getByte();
+			if (i4 == 1) {
+				j2 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = j2;
+				l2 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = l2;
+				j3 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = j3;
+				anIntArray1653[l3] = j2;
+				anIntArray1654[l3] = l2;
+				anIntArray1655[l3] = j3;
+			}
+			if (i4 == 2) {
+				l2 = j3;
+				j3 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = j3;
+				anIntArray1653[l3] = j2;
+				anIntArray1654[l3] = l2;
+				anIntArray1655[l3] = j3;
+			}
+			if (i4 == 3) {
+				j2 = j3;
+				j3 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = j3;
+				anIntArray1653[l3] = j2;
+				anIntArray1654[l3] = l2;
+				anIntArray1655[l3] = j3;
+			}
+			if (i4 == 4) {
+				int k4 = j2;
+				j2 = l2;
+				l2 = k4;
+				j3 = class50_sub1_sub2.getSignedSmart() + k3;
+				k3 = j3;
+				anIntArray1653[l3] = j2;
+				anIntArray1654[l3] = l2;
+				anIntArray1655[l3] = j3;
+			}
+		}
+
+		class50_sub1_sub2.position = class26.anInt549;
+		for (int j4 = 0; j4 < anInt1664; j4++) {
+			anIntArray1665[j4] = class50_sub1_sub2.getShort();
+			anIntArray1666[j4] = class50_sub1_sub2.getShort();
+			anIntArray1667[j4] = class50_sub1_sub2.getShort();
+		}
+
+	}
+
+	public Model(int i, Model subModels[]) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		anInt1642++;
+		boolean flag = false;
+		boolean flag1 = false;
+		boolean flag2 = false;
+		boolean flag3 = false;
+		anInt1648 = 0;
+		anInt1652 = 0;
+		anInt1664 = 0;
+		anInt1663 = -1;
+		for (int j = 0; j < i; j++) {
+			Model class50_sub1_sub4_sub4 = subModels[j];
+			if (class50_sub1_sub4_sub4 != null) {
+				anInt1648 += class50_sub1_sub4_sub4.anInt1648;
+				anInt1652 += class50_sub1_sub4_sub4.anInt1652;
+				anInt1664 += class50_sub1_sub4_sub4.anInt1664;
+				flag |= class50_sub1_sub4_sub4.anIntArray1659 != null;
+				if (class50_sub1_sub4_sub4.anIntArray1660 != null) {
+					flag1 = true;
+				} else {
+					if (anInt1663 == -1)
+						anInt1663 = class50_sub1_sub4_sub4.anInt1663;
+					if (anInt1663 != class50_sub1_sub4_sub4.anInt1663)
+						flag1 = true;
+				}
+				flag2 |= class50_sub1_sub4_sub4.anIntArray1661 != null;
+				flag3 |= class50_sub1_sub4_sub4.anIntArray1677 != null;
+			}
+		}
+
+		anIntArray1649 = new int[anInt1648];
+		anIntArray1650 = new int[anInt1648];
+		anIntArray1651 = new int[anInt1648];
+		anIntArray1676 = new int[anInt1648];
+		anIntArray1653 = new int[anInt1652];
+		anIntArray1654 = new int[anInt1652];
+		anIntArray1655 = new int[anInt1652];
+		anIntArray1665 = new int[anInt1664];
+		anIntArray1666 = new int[anInt1664];
+		anIntArray1667 = new int[anInt1664];
+		if (flag)
+			anIntArray1659 = new int[anInt1652];
+		if (flag1)
+			anIntArray1660 = new int[anInt1652];
+		if (flag2)
+			anIntArray1661 = new int[anInt1652];
+		if (flag3)
+			anIntArray1677 = new int[anInt1652];
+		colors = new int[anInt1652];
+		anInt1648 = 0;
+		anInt1652 = 0;
+		anInt1664 = 0;
+		int k = 0;
+		for (int l = 0; l < i; l++) {
+			Model class50_sub1_sub4_sub4_1 = subModels[l];
+			if (class50_sub1_sub4_sub4_1 != null) {
+				for (int i1 = 0; i1 < class50_sub1_sub4_sub4_1.anInt1652; i1++) {
+					if (flag)
+						if (class50_sub1_sub4_sub4_1.anIntArray1659 == null) {
+							anIntArray1659[anInt1652] = 0;
+						} else {
+							int j1 = class50_sub1_sub4_sub4_1.anIntArray1659[i1];
+							if ((j1 & 2) == 2)
+								j1 += k << 2;
+							anIntArray1659[anInt1652] = j1;
+						}
+					if (flag1)
+						if (class50_sub1_sub4_sub4_1.anIntArray1660 == null)
+							anIntArray1660[anInt1652] = class50_sub1_sub4_sub4_1.anInt1663;
+						else
+							anIntArray1660[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1660[i1];
+					if (flag2)
+						if (class50_sub1_sub4_sub4_1.anIntArray1661 == null)
+							anIntArray1661[anInt1652] = 0;
+						else
+							anIntArray1661[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1661[i1];
+					if (flag3 && class50_sub1_sub4_sub4_1.anIntArray1677 != null)
+						anIntArray1677[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1677[i1];
+					colors[anInt1652] = class50_sub1_sub4_sub4_1.colors[i1];
+					anIntArray1653[anInt1652] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1653[i1]);
+					anIntArray1654[anInt1652] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1654[i1]);
+					anIntArray1655[anInt1652] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1655[i1]);
+					anInt1652++;
+				}
+
+				for (int k1 = 0; k1 < class50_sub1_sub4_sub4_1.anInt1664; k1++) {
+					anIntArray1665[anInt1664] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1665[k1]);
+					anIntArray1666[anInt1664] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1666[k1]);
+					anIntArray1667[anInt1664] = method580(class50_sub1_sub4_sub4_1,
+							class50_sub1_sub4_sub4_1.anIntArray1667[k1]);
+					anInt1664++;
+				}
+
+				k += class50_sub1_sub4_sub4_1.anInt1664;
+			}
+		}
+
+	}
+
+	public Model(int i, boolean flag, int j, Model aclass50_sub1_sub4_sub4[]) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		anInt1642++;
+		boolean flag1 = false;
+		boolean flag2 = false;
+		boolean flag3 = false;
+		boolean flag4 = false;
+		anInt1648 = 0;
+		anInt1652 = 0;
+		anInt1664 = 0;
+		anInt1663 = -1;
+		for (int k = 0; k < i; k++) {
+			Model class50_sub1_sub4_sub4 = aclass50_sub1_sub4_sub4[k];
+			if (class50_sub1_sub4_sub4 != null) {
+				anInt1648 += class50_sub1_sub4_sub4.anInt1648;
+				anInt1652 += class50_sub1_sub4_sub4.anInt1652;
+				anInt1664 += class50_sub1_sub4_sub4.anInt1664;
+				flag1 |= class50_sub1_sub4_sub4.anIntArray1659 != null;
+				if (class50_sub1_sub4_sub4.anIntArray1660 != null) {
+					flag2 = true;
+				} else {
+					if (anInt1663 == -1)
+						anInt1663 = class50_sub1_sub4_sub4.anInt1663;
+					if (anInt1663 != class50_sub1_sub4_sub4.anInt1663)
+						flag2 = true;
+				}
+				flag3 |= class50_sub1_sub4_sub4.anIntArray1661 != null;
+				flag4 |= class50_sub1_sub4_sub4.colors != null;
+			}
+		}
+
+		anIntArray1649 = new int[anInt1648];
+		anIntArray1650 = new int[anInt1648];
+		anIntArray1651 = new int[anInt1648];
+		anIntArray1653 = new int[anInt1652];
+		anIntArray1654 = new int[anInt1652];
+		anIntArray1655 = new int[anInt1652];
+		anIntArray1656 = new int[anInt1652];
+		anIntArray1657 = new int[anInt1652];
+		anIntArray1658 = new int[anInt1652];
+		anIntArray1665 = new int[anInt1664];
+		anIntArray1666 = new int[anInt1664];
+		anIntArray1667 = new int[anInt1664];
+		if (flag1)
+			anIntArray1659 = new int[anInt1652];
+		if (flag2)
+			anIntArray1660 = new int[anInt1652];
+		if (flag3)
+			anIntArray1661 = new int[anInt1652];
+		if (flag4)
+			colors = new int[anInt1652];
+		anInt1648 = 0;
+		if (j != 0)
+			throw new NullPointerException();
+		anInt1652 = 0;
+		anInt1664 = 0;
+		int l = 0;
+		for (int i1 = 0; i1 < i; i1++) {
+			Model class50_sub1_sub4_sub4_1 = aclass50_sub1_sub4_sub4[i1];
+			if (class50_sub1_sub4_sub4_1 != null) {
+				int j1 = anInt1648;
+				for (int k1 = 0; k1 < class50_sub1_sub4_sub4_1.anInt1648; k1++) {
+					anIntArray1649[anInt1648] = class50_sub1_sub4_sub4_1.anIntArray1649[k1];
+					anIntArray1650[anInt1648] = class50_sub1_sub4_sub4_1.anIntArray1650[k1];
+					anIntArray1651[anInt1648] = class50_sub1_sub4_sub4_1.anIntArray1651[k1];
+					anInt1648++;
+				}
+
+				for (int l1 = 0; l1 < class50_sub1_sub4_sub4_1.anInt1652; l1++) {
+					anIntArray1653[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1653[l1] + j1;
+					anIntArray1654[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1654[l1] + j1;
+					anIntArray1655[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1655[l1] + j1;
+					anIntArray1656[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1656[l1];
+					anIntArray1657[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1657[l1];
+					anIntArray1658[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1658[l1];
+					if (flag1)
+						if (class50_sub1_sub4_sub4_1.anIntArray1659 == null) {
+							anIntArray1659[anInt1652] = 0;
+						} else {
+							int i2 = class50_sub1_sub4_sub4_1.anIntArray1659[l1];
+							if ((i2 & 2) == 2)
+								i2 += l << 2;
+							anIntArray1659[anInt1652] = i2;
+						}
+					if (flag2)
+						if (class50_sub1_sub4_sub4_1.anIntArray1660 == null)
+							anIntArray1660[anInt1652] = class50_sub1_sub4_sub4_1.anInt1663;
+						else
+							anIntArray1660[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1660[l1];
+					if (flag3)
+						if (class50_sub1_sub4_sub4_1.anIntArray1661 == null)
+							anIntArray1661[anInt1652] = 0;
+						else
+							anIntArray1661[anInt1652] = class50_sub1_sub4_sub4_1.anIntArray1661[l1];
+					if (flag4 && class50_sub1_sub4_sub4_1.colors != null)
+						colors[anInt1652] = class50_sub1_sub4_sub4_1.colors[l1];
+					anInt1652++;
+				}
+
+				for (int j2 = 0; j2 < class50_sub1_sub4_sub4_1.anInt1664; j2++) {
+					anIntArray1665[anInt1664] = class50_sub1_sub4_sub4_1.anIntArray1665[j2] + j1;
+					anIntArray1666[anInt1664] = class50_sub1_sub4_sub4_1.anIntArray1666[j2] + j1;
+					anIntArray1667[anInt1664] = class50_sub1_sub4_sub4_1.anIntArray1667[j2] + j1;
+					anInt1664++;
+				}
+
+				l += class50_sub1_sub4_sub4_1.anInt1664;
+			}
+		}
+
+		method581(anInt1636);
+	}
+
+	public Model(boolean flag, boolean flag1, boolean flag2,
+			Model class50_sub1_sub4_sub4, boolean flag3) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		anInt1642++;
+		anInt1648 = class50_sub1_sub4_sub4.anInt1648;
+		anInt1652 = class50_sub1_sub4_sub4.anInt1652;
+		anInt1664 = class50_sub1_sub4_sub4.anInt1664;
+		if (flag1)
+			anInt1640 = 498;
+		if (flag) {
+			anIntArray1649 = class50_sub1_sub4_sub4.anIntArray1649;
+			anIntArray1650 = class50_sub1_sub4_sub4.anIntArray1650;
+			anIntArray1651 = class50_sub1_sub4_sub4.anIntArray1651;
+		} else {
+			anIntArray1649 = new int[anInt1648];
+			anIntArray1650 = new int[anInt1648];
+			anIntArray1651 = new int[anInt1648];
+			for (int i = 0; i < anInt1648; i++) {
+				anIntArray1649[i] = class50_sub1_sub4_sub4.anIntArray1649[i];
+				anIntArray1650[i] = class50_sub1_sub4_sub4.anIntArray1650[i];
+				anIntArray1651[i] = class50_sub1_sub4_sub4.anIntArray1651[i];
+			}
+
+		}
+		if (flag2) {
+			colors = class50_sub1_sub4_sub4.colors;
+		} else {
+			colors = new int[anInt1652];
+			for (int j = 0; j < anInt1652; j++)
+				colors[j] = class50_sub1_sub4_sub4.colors[j];
+
+		}
+		if (flag3) {
+			anIntArray1661 = class50_sub1_sub4_sub4.anIntArray1661;
+		} else {
+			anIntArray1661 = new int[anInt1652];
+			if (class50_sub1_sub4_sub4.anIntArray1661 == null) {
+				for (int k = 0; k < anInt1652; k++)
+					anIntArray1661[k] = 0;
+
+			} else {
+				for (int l = 0; l < anInt1652; l++)
+					anIntArray1661[l] = class50_sub1_sub4_sub4.anIntArray1661[l];
+
+			}
+		}
+		anIntArray1676 = class50_sub1_sub4_sub4.anIntArray1676;
+		anIntArray1677 = class50_sub1_sub4_sub4.anIntArray1677;
+		anIntArray1659 = class50_sub1_sub4_sub4.anIntArray1659;
+		anIntArray1653 = class50_sub1_sub4_sub4.anIntArray1653;
+		anIntArray1654 = class50_sub1_sub4_sub4.anIntArray1654;
+		anIntArray1655 = class50_sub1_sub4_sub4.anIntArray1655;
+		anIntArray1660 = class50_sub1_sub4_sub4.anIntArray1660;
+		anInt1663 = class50_sub1_sub4_sub4.anInt1663;
+		anIntArray1665 = class50_sub1_sub4_sub4.anIntArray1665;
+		anIntArray1666 = class50_sub1_sub4_sub4.anIntArray1666;
+		anIntArray1667 = class50_sub1_sub4_sub4.anIntArray1667;
+	}
+
+	public Model(boolean flag, boolean flag1, int i, Model class50_sub1_sub4_sub4) {
+		anInt1636 = 932;
+		anInt1637 = 426;
+		aBoolean1638 = false;
+		aBoolean1639 = true;
+		anInt1640 = -252;
+		aBoolean1641 = false;
+		aBoolean1680 = false;
+		anInt1642++;
+		anInt1648 = class50_sub1_sub4_sub4.anInt1648;
+		anInt1652 = class50_sub1_sub4_sub4.anInt1652;
+		anInt1664 = class50_sub1_sub4_sub4.anInt1664;
+		if (flag) {
+			anIntArray1650 = new int[anInt1648];
+			for (int j = 0; j < anInt1648; j++)
+				anIntArray1650[j] = class50_sub1_sub4_sub4.anIntArray1650[j];
+
+		} else {
+			anIntArray1650 = class50_sub1_sub4_sub4.anIntArray1650;
+		}
+		if (flag1) {
+			anIntArray1656 = new int[anInt1652];
+			anIntArray1657 = new int[anInt1652];
+			anIntArray1658 = new int[anInt1652];
+			for (int k = 0; k < anInt1652; k++) {
+				anIntArray1656[k] = class50_sub1_sub4_sub4.anIntArray1656[k];
+				anIntArray1657[k] = class50_sub1_sub4_sub4.anIntArray1657[k];
+				anIntArray1658[k] = class50_sub1_sub4_sub4.anIntArray1658[k];
+			}
+
+			anIntArray1659 = new int[anInt1652];
+			if (class50_sub1_sub4_sub4.anIntArray1659 == null) {
+				for (int l = 0; l < anInt1652; l++)
+					anIntArray1659[l] = 0;
+
+			} else {
+				for (int i1 = 0; i1 < anInt1652; i1++)
+					anIntArray1659[i1] = class50_sub1_sub4_sub4.anIntArray1659[i1];
+
+			}
+			super.normals = new VertexNormal[anInt1648];
+			for (int j1 = 0; j1 < anInt1648; j1++) {
+				VertexNormal class40 = super.normals[j1] = new VertexNormal();
+				VertexNormal class40_1 = ((Entity) (class50_sub1_sub4_sub4)).normals[j1];
+				class40.x = class40_1.x;
+				class40.y = class40_1.y;
+				class40.z = class40_1.z;
+				class40.magnitude = class40_1.magnitude;
+			}
+
+			aClass40Array1681 = class50_sub1_sub4_sub4.aClass40Array1681;
+		} else {
+			anIntArray1656 = class50_sub1_sub4_sub4.anIntArray1656;
+			anIntArray1657 = class50_sub1_sub4_sub4.anIntArray1657;
+			anIntArray1658 = class50_sub1_sub4_sub4.anIntArray1658;
+			anIntArray1659 = class50_sub1_sub4_sub4.anIntArray1659;
+		}
+		anIntArray1649 = class50_sub1_sub4_sub4.anIntArray1649;
+		anIntArray1651 = class50_sub1_sub4_sub4.anIntArray1651;
+		if (i != 0)
+			aBoolean1638 = !aBoolean1638;
+		colors = class50_sub1_sub4_sub4.colors;
+		anIntArray1661 = class50_sub1_sub4_sub4.anIntArray1661;
+		anIntArray1660 = class50_sub1_sub4_sub4.anIntArray1660;
+		anInt1663 = class50_sub1_sub4_sub4.anInt1663;
+		anIntArray1653 = class50_sub1_sub4_sub4.anIntArray1653;
+		anIntArray1654 = class50_sub1_sub4_sub4.anIntArray1654;
+		anIntArray1655 = class50_sub1_sub4_sub4.anIntArray1655;
+		anIntArray1665 = class50_sub1_sub4_sub4.anIntArray1665;
+		anIntArray1666 = class50_sub1_sub4_sub4.anIntArray1666;
+		anIntArray1667 = class50_sub1_sub4_sub4.anIntArray1667;
+		super.height = ((Entity) (class50_sub1_sub4_sub4)).height;
+		anInt1672 = class50_sub1_sub4_sub4.anInt1672;
+		anInt1671 = class50_sub1_sub4_sub4.anInt1671;
+		anInt1674 = class50_sub1_sub4_sub4.anInt1674;
+		anInt1673 = class50_sub1_sub4_sub4.anInt1673;
+		anInt1669 = class50_sub1_sub4_sub4.anInt1669;
+		anInt1670 = class50_sub1_sub4_sub4.anInt1670;
+		anInt1668 = class50_sub1_sub4_sub4.anInt1668;
+	}
+
+	public void method579(boolean flag, Model class50_sub1_sub4_sub4, int i) {
+		anInt1648 = class50_sub1_sub4_sub4.anInt1648;
+		anInt1652 = class50_sub1_sub4_sub4.anInt1652;
+		anInt1664 = class50_sub1_sub4_sub4.anInt1664;
+		if (anIntArray1644.length < anInt1648) {
+			anIntArray1644 = new int[anInt1648 + 100];
+			anIntArray1645 = new int[anInt1648 + 100];
+			anIntArray1646 = new int[anInt1648 + 100];
+		}
+		anIntArray1649 = anIntArray1644;
+		anIntArray1650 = anIntArray1645;
+		if (i != 1244)
+			return;
+		anIntArray1651 = anIntArray1646;
+		for (int j = 0; j < anInt1648; j++) {
+			anIntArray1649[j] = class50_sub1_sub4_sub4.anIntArray1649[j];
+			anIntArray1650[j] = class50_sub1_sub4_sub4.anIntArray1650[j];
+			anIntArray1651[j] = class50_sub1_sub4_sub4.anIntArray1651[j];
+		}
+
+		if (flag) {
+			anIntArray1661 = class50_sub1_sub4_sub4.anIntArray1661;
+		} else {
+			if (anIntArray1647.length < anInt1652)
+				anIntArray1647 = new int[anInt1652 + 100];
+			anIntArray1661 = anIntArray1647;
+			if (class50_sub1_sub4_sub4.anIntArray1661 == null) {
+				for (int k = 0; k < anInt1652; k++)
+					anIntArray1661[k] = 0;
+
+			} else {
+				for (int l = 0; l < anInt1652; l++)
+					anIntArray1661[l] = class50_sub1_sub4_sub4.anIntArray1661[l];
+
+			}
+		}
+		anIntArray1659 = class50_sub1_sub4_sub4.anIntArray1659;
+		colors = class50_sub1_sub4_sub4.colors;
+		anIntArray1660 = class50_sub1_sub4_sub4.anIntArray1660;
+		anInt1663 = class50_sub1_sub4_sub4.anInt1663;
+		anIntArrayArray1679 = class50_sub1_sub4_sub4.anIntArrayArray1679;
+		anIntArrayArray1678 = class50_sub1_sub4_sub4.anIntArrayArray1678;
+		anIntArray1653 = class50_sub1_sub4_sub4.anIntArray1653;
+		anIntArray1654 = class50_sub1_sub4_sub4.anIntArray1654;
+		anIntArray1655 = class50_sub1_sub4_sub4.anIntArray1655;
+		anIntArray1656 = class50_sub1_sub4_sub4.anIntArray1656;
+		anIntArray1657 = class50_sub1_sub4_sub4.anIntArray1657;
+		anIntArray1658 = class50_sub1_sub4_sub4.anIntArray1658;
+		anIntArray1665 = class50_sub1_sub4_sub4.anIntArray1665;
+		anIntArray1666 = class50_sub1_sub4_sub4.anIntArray1666;
+		anIntArray1667 = class50_sub1_sub4_sub4.anIntArray1667;
+	}
+
+	public int method580(Model class50_sub1_sub4_sub4, int i) {
+		int j = -1;
+		int k = class50_sub1_sub4_sub4.anIntArray1649[i];
+		int l = class50_sub1_sub4_sub4.anIntArray1650[i];
+		int i1 = class50_sub1_sub4_sub4.anIntArray1651[i];
+		for (int j1 = 0; j1 < anInt1648; j1++) {
+			if (k != anIntArray1649[j1] || l != anIntArray1650[j1] || i1 != anIntArray1651[j1])
+				continue;
+			j = j1;
+			break;
+		}
+
+		if (j == -1) {
+			anIntArray1649[anInt1648] = k;
+			anIntArray1650[anInt1648] = l;
+			anIntArray1651[anInt1648] = i1;
+			if (class50_sub1_sub4_sub4.anIntArray1676 != null)
+				anIntArray1676[anInt1648] = class50_sub1_sub4_sub4.anIntArray1676[i];
+			j = anInt1648++;
+		}
+		return j;
+	}
+
+	public void method581(int i) {
+		super.height = 0;
+		anInt1671 = 0;
+		anInt1672 = 0;
+		for (int j = 0; j < anInt1648; j++) {
+			int k = anIntArray1649[j];
+			int l = anIntArray1650[j];
+			int i1 = anIntArray1651[j];
+			if (-l > super.height)
+				super.height = -l;
+			if (l > anInt1672)
+				anInt1672 = l;
+			int j1 = k * k + i1 * i1;
+			if (j1 > anInt1671)
+				anInt1671 = j1;
+		}
+
+		anInt1671 = (int) (Math.sqrt(anInt1671) + 0.98999999999999999D);
+		anInt1674 = (int) (Math.sqrt(anInt1671 * anInt1671 + super.height * super.height) + 0.98999999999999999D);
+		i = 64 / i;
+		anInt1673 = anInt1674 + (int) (Math.sqrt(anInt1671 * anInt1671 + anInt1672 * anInt1672) + 0.98999999999999999D);
+	}
+
+	public void method582(int i) {
+		super.height = 0;
+		if (i != 6)
+			return;
+		anInt1672 = 0;
+		for (int j = 0; j < anInt1648; j++) {
+			int k = anIntArray1650[j];
+			if (-k > super.height)
+				super.height = -k;
+			if (k > anInt1672)
+				anInt1672 = k;
+		}
+
+		anInt1674 = (int) (Math.sqrt(anInt1671 * anInt1671 + super.height * super.height) + 0.98999999999999999D);
+		anInt1673 = anInt1674 + (int) (Math.sqrt(anInt1671 * anInt1671 + anInt1672 * anInt1672) + 0.98999999999999999D);
+	}
+
+	public void method583(int i) {
+		super.height = 0;
+		anInt1671 = 0;
+		anInt1672 = 0;
+		int j = 32767;
+		int k = -32767;
+		int l = -32767;
+		int i1 = 32767;
+		for (int j1 = 0; j1 < anInt1648; j1++) {
+			int k1 = anIntArray1649[j1];
+			int l1 = anIntArray1650[j1];
+			int i2 = anIntArray1651[j1];
+			if (k1 < j)
+				j = k1;
+			if (k1 > k)
+				k = k1;
+			if (i2 < i1)
+				i1 = i2;
+			if (i2 > l)
+				l = i2;
+			if (-l1 > super.height)
+				super.height = -l1;
+			if (l1 > anInt1672)
+				anInt1672 = l1;
+			int j2 = k1 * k1 + i2 * i2;
+			if (j2 > anInt1671)
+				anInt1671 = j2;
+		}
+
+		anInt1671 = (int) Math.sqrt(anInt1671);
+		anInt1674 = (int) Math.sqrt(anInt1671 * anInt1671 + super.height * super.height);
+		anInt1673 = anInt1674 + (int) Math.sqrt(anInt1671 * anInt1671 + anInt1672 * anInt1672);
+		anInt1669 = (j << 16) + (k & 0xffff);
+		if (i <= 0)
+			anInt1637 = 50;
+		anInt1670 = (l << 16) + (i1 & 0xffff);
+	}
+
+	public void method584(int i) {
+		if (i != 7)
+			return;
+		if (anIntArray1676 != null) {
+			int ai[] = new int[256];
+			int j = 0;
+			for (int l = 0; l < anInt1648; l++) {
+				int j1 = anIntArray1676[l];
+				ai[j1]++;
+				if (j1 > j)
+					j = j1;
+			}
+
+			anIntArrayArray1678 = new int[j + 1][];
+			for (int k1 = 0; k1 <= j; k1++) {
+				anIntArrayArray1678[k1] = new int[ai[k1]];
+				ai[k1] = 0;
+			}
+
+			for (int j2 = 0; j2 < anInt1648; j2++) {
+				int l2 = anIntArray1676[j2];
+				anIntArrayArray1678[l2][ai[l2]++] = j2;
+			}
+
+			anIntArray1676 = null;
+		}
+		if (anIntArray1677 != null) {
+			int ai1[] = new int[256];
+			int k = 0;
+			for (int i1 = 0; i1 < anInt1652; i1++) {
+				int l1 = anIntArray1677[i1];
+				ai1[l1]++;
+				if (l1 > k)
+					k = l1;
+			}
+
+			anIntArrayArray1679 = new int[k + 1][];
+			for (int i2 = 0; i2 <= k; i2++) {
+				anIntArrayArray1679[i2] = new int[ai1[i2]];
+				ai1[i2] = 0;
+			}
+
+			for (int k2 = 0; k2 < anInt1652; k2++) {
+				int i3 = anIntArray1677[k2];
+				anIntArrayArray1679[i3][ai1[i3]++] = k2;
+			}
+
+			anIntArray1677 = null;
+		}
+	}
+
+	public void method585(int i, byte byte0) {
+		if (anIntArrayArray1678 == null)
+			return;
+		if (i == -1)
+			return;
+		Class21 class21 = Class21.method238(i);
+		if (class21 == null)
+			return;
+		Class41 class41 = class21.aClass41_432;
+		if (byte0 == 6)
+			byte0 = 0;
+		else
+			return;
+		anInt1702 = 0;
+		anInt1703 = 0;
+		anInt1704 = 0;
+		for (int j = 0; j < class21.anInt433; j++) {
+			int k = class21.anIntArray434[j];
+			method587(class41.anIntArray698[k], class41.anIntArrayArray699[k], class21.anIntArray435[j],
+					class21.anIntArray436[j], class21.anIntArray437[j]);
+		}
+
+	}
+
+	public void method586(int i, int j, int k, int ai[]) {
+		if (k == -1)
+			return;
+		if (ai == null || i == -1) {
+			method585(k, (byte) 6);
+			return;
+		}
+		Class21 class21 = Class21.method238(k);
+		if (class21 == null)
+			return;
+		Class21 class21_1 = Class21.method238(i);
+		if (class21_1 == null) {
+			method585(k, (byte) 6);
+			return;
+		}
+		Class41 class41 = class21.aClass41_432;
+		anInt1702 = 0;
+		if (j != 0)
+			aBoolean1641 = !aBoolean1641;
+		anInt1703 = 0;
+		anInt1704 = 0;
+		int l = 0;
+		int i1 = ai[l++];
+		for (int j1 = 0; j1 < class21.anInt433; j1++) {
+			int k1;
+			for (k1 = class21.anIntArray434[j1]; k1 > i1; i1 = ai[l++]);
+			if (k1 != i1 || class41.anIntArray698[k1] == 0)
+				method587(class41.anIntArray698[k1], class41.anIntArrayArray699[k1], class21.anIntArray435[j1],
+						class21.anIntArray436[j1], class21.anIntArray437[j1]);
+		}
+
+		anInt1702 = 0;
+		anInt1703 = 0;
+		anInt1704 = 0;
+		l = 0;
+		i1 = ai[l++];
+		for (int l1 = 0; l1 < class21_1.anInt433; l1++) {
+			int i2;
+			for (i2 = class21_1.anIntArray434[l1]; i2 > i1; i1 = ai[l++]);
+			if (i2 == i1 || class41.anIntArray698[i2] == 0)
+				method587(class41.anIntArray698[i2], class41.anIntArrayArray699[i2], class21_1.anIntArray435[l1],
+						class21_1.anIntArray436[l1], class21_1.anIntArray437[l1]);
+		}
+
+	}
+
+	public void method587(int i, int ai[], int j, int k, int l) {
+		int i1 = ai.length;
+		if (i == 0) {
+			int j1 = 0;
+			anInt1702 = 0;
+			anInt1703 = 0;
+			anInt1704 = 0;
+			for (int k2 = 0; k2 < i1; k2++) {
+				int l3 = ai[k2];
+				if (l3 < anIntArrayArray1678.length) {
+					int ai5[] = anIntArrayArray1678[l3];
+					for (int i5 = 0; i5 < ai5.length; i5++) {
+						int j6 = ai5[i5];
+						anInt1702 += anIntArray1649[j6];
+						anInt1703 += anIntArray1650[j6];
+						anInt1704 += anIntArray1651[j6];
+						j1++;
+					}
+
+				}
+			}
+
+			if (j1 > 0) {
+				anInt1702 = anInt1702 / j1 + j;
+				anInt1703 = anInt1703 / j1 + k;
+				anInt1704 = anInt1704 / j1 + l;
+				return;
+			} else {
+				anInt1702 = j;
+				anInt1703 = k;
+				anInt1704 = l;
+				return;
+			}
+		}
+		if (i == 1) {
+			for (int k1 = 0; k1 < i1; k1++) {
+				int l2 = ai[k1];
+				if (l2 < anIntArrayArray1678.length) {
+					int ai1[] = anIntArrayArray1678[l2];
+					for (int i4 = 0; i4 < ai1.length; i4++) {
+						int j5 = ai1[i4];
+						anIntArray1649[j5] += j;
+						anIntArray1650[j5] += k;
+						anIntArray1651[j5] += l;
+					}
+
+				}
+			}
+
+			return;
+		}
+		if (i == 2) {
+			for (int l1 = 0; l1 < i1; l1++) {
+				int i3 = ai[l1];
+				if (i3 < anIntArrayArray1678.length) {
+					int ai2[] = anIntArrayArray1678[i3];
+					for (int j4 = 0; j4 < ai2.length; j4++) {
+						int k5 = ai2[j4];
+						anIntArray1649[k5] -= anInt1702;
+						anIntArray1650[k5] -= anInt1703;
+						anIntArray1651[k5] -= anInt1704;
+						int k6 = (j & 0xff) * 8;
+						int l6 = (k & 0xff) * 8;
+						int i7 = (l & 0xff) * 8;
+						if (i7 != 0) {
+							int j7 = anIntArray1710[i7];
+							int i8 = anIntArray1711[i7];
+							int l8 = anIntArray1650[k5] * j7 + anIntArray1649[k5] * i8 >> 16;
+							anIntArray1650[k5] = anIntArray1650[k5] * i8 - anIntArray1649[k5] * j7 >> 16;
+							anIntArray1649[k5] = l8;
+						}
+						if (k6 != 0) {
+							int k7 = anIntArray1710[k6];
+							int j8 = anIntArray1711[k6];
+							int i9 = anIntArray1650[k5] * j8 - anIntArray1651[k5] * k7 >> 16;
+							anIntArray1651[k5] = anIntArray1650[k5] * k7 + anIntArray1651[k5] * j8 >> 16;
+							anIntArray1650[k5] = i9;
+						}
+						if (l6 != 0) {
+							int l7 = anIntArray1710[l6];
+							int k8 = anIntArray1711[l6];
+							int j9 = anIntArray1651[k5] * l7 + anIntArray1649[k5] * k8 >> 16;
+							anIntArray1651[k5] = anIntArray1651[k5] * k8 - anIntArray1649[k5] * l7 >> 16;
+							anIntArray1649[k5] = j9;
+						}
+						anIntArray1649[k5] += anInt1702;
+						anIntArray1650[k5] += anInt1703;
+						anIntArray1651[k5] += anInt1704;
+					}
+
+				}
+			}
+
+			return;
+		}
+		if (i == 3) {
+			for (int i2 = 0; i2 < i1; i2++) {
+				int j3 = ai[i2];
+				if (j3 < anIntArrayArray1678.length) {
+					int ai3[] = anIntArrayArray1678[j3];
+					for (int k4 = 0; k4 < ai3.length; k4++) {
+						int l5 = ai3[k4];
+						anIntArray1649[l5] -= anInt1702;
+						anIntArray1650[l5] -= anInt1703;
+						anIntArray1651[l5] -= anInt1704;
+						anIntArray1649[l5] = (anIntArray1649[l5] * j) / 128;
+						anIntArray1650[l5] = (anIntArray1650[l5] * k) / 128;
+						anIntArray1651[l5] = (anIntArray1651[l5] * l) / 128;
+						anIntArray1649[l5] += anInt1702;
+						anIntArray1650[l5] += anInt1703;
+						anIntArray1651[l5] += anInt1704;
+					}
+
+				}
+			}
+
+			return;
+		}
+		if (i == 5 && anIntArrayArray1679 != null && anIntArray1661 != null) {
+			for (int j2 = 0; j2 < i1; j2++) {
+				int k3 = ai[j2];
+				if (k3 < anIntArrayArray1679.length) {
+					int ai4[] = anIntArrayArray1679[k3];
+					for (int l4 = 0; l4 < ai4.length; l4++) {
+						int i6 = ai4[l4];
+						anIntArray1661[i6] += j * 8;
+						if (anIntArray1661[i6] < 0)
+							anIntArray1661[i6] = 0;
+						if (anIntArray1661[i6] > 255)
+							anIntArray1661[i6] = 255;
+					}
+
+				}
+			}
+
+		}
+	}
+
+	public void method588(boolean flag) {
+		if (!flag)
+			return;
+		for (int i = 0; i < anInt1648; i++) {
+			int j = anIntArray1649[i];
+			anIntArray1649[i] = anIntArray1651[i];
+			anIntArray1651[i] = -j;
+		}
+
+	}
+
+	public void method589(int i, int j) {
+		int k = anIntArray1710[i];
+		int l = anIntArray1711[i];
+		for (int i1 = 0; i1 < anInt1648; i1++) {
+			int j1 = anIntArray1650[i1] * l - anIntArray1651[i1] * k >> 16;
+			anIntArray1651[i1] = anIntArray1650[i1] * k + anIntArray1651[i1] * l >> 16;
+			anIntArray1650[i1] = j1;
+		}
+
+		j = 61 / j;
+	}
+
+	public void method590(int i, int j, boolean flag, int k) {
+		if (flag)
+			anInt1636 = -310;
+		for (int l = 0; l < anInt1648; l++) {
+			anIntArray1649[l] += i;
+			anIntArray1650[l] += k;
+			anIntArray1651[l] += j;
+		}
+
+	}
+
+	public void replaceColor(int oldColor, int newColor) {
+		for (int i = 0; i < anInt1652; i++)
+			if (colors[i] == oldColor)
+				colors[i] = newColor;
+
+	}
+
+	public void method592(int i) {
+		if (i != 0) {
+			for (int j = 1; j > 0; j++);
+		}
+		for (int k = 0; k < anInt1648; k++)
+			anIntArray1651[k] = -anIntArray1651[k];
+
+		for (int l = 0; l < anInt1652; l++) {
+			int i1 = anIntArray1653[l];
+			anIntArray1653[l] = anIntArray1655[l];
+			anIntArray1655[l] = i1;
+		}
+
+	}
+
+	public void method593(int i, int j, int k, int l) {
+		for (int i1 = 0; i1 < anInt1648; i1++) {
+			anIntArray1649[i1] = (anIntArray1649[i1] * l) / 128;
+			anIntArray1650[i1] = (anIntArray1650[i1] * i) / 128;
+			anIntArray1651[i1] = (anIntArray1651[i1] * j) / 128;
+		}
+
+		if (k != 9)
+			anInt1636 = 322;
+	}
+
+	public void method594(int i, int j, int k, int l, int i1, boolean flag) {
+		int j1 = (int) Math.sqrt(k * k + l * l + i1 * i1);
+		int k1 = j * j1 >> 8;
+		if (anIntArray1656 == null) {
+			anIntArray1656 = new int[anInt1652];
+			anIntArray1657 = new int[anInt1652];
+			anIntArray1658 = new int[anInt1652];
+		}
+		if (super.normals == null) {
+			super.normals = new VertexNormal[anInt1648];
+			for (int l1 = 0; l1 < anInt1648; l1++)
+				super.normals[l1] = new VertexNormal();
+
+		}
+		for (int i2 = 0; i2 < anInt1652; i2++) {
+			int j2 = anIntArray1653[i2];
+			int l2 = anIntArray1654[i2];
+			int i3 = anIntArray1655[i2];
+			int j3 = anIntArray1649[l2] - anIntArray1649[j2];
+			int k3 = anIntArray1650[l2] - anIntArray1650[j2];
+			int l3 = anIntArray1651[l2] - anIntArray1651[j2];
+			int i4 = anIntArray1649[i3] - anIntArray1649[j2];
+			int j4 = anIntArray1650[i3] - anIntArray1650[j2];
+			int k4 = anIntArray1651[i3] - anIntArray1651[j2];
+			int l4 = k3 * k4 - j4 * l3;
+			int i5 = l3 * i4 - k4 * j3;
+			int j5;
+			for (j5 = j3 * j4 - i4 * k3; l4 > 8192 || i5 > 8192 || j5 > 8192 || l4 < -8192 || i5 < -8192 || j5 < -8192; j5 >>= 1) {
+				l4 >>= 1;
+				i5 >>= 1;
+			}
+
+			int k5 = (int) Math.sqrt(l4 * l4 + i5 * i5 + j5 * j5);
+			if (k5 <= 0)
+				k5 = 1;
+			l4 = (l4 * 256) / k5;
+			i5 = (i5 * 256) / k5;
+			j5 = (j5 * 256) / k5;
+			if (anIntArray1659 == null || (anIntArray1659[i2] & 1) == 0) {
+				VertexNormal class40_2 = super.normals[j2];
+				class40_2.x += l4;
+				class40_2.y += i5;
+				class40_2.z += j5;
+				class40_2.magnitude++;
+				class40_2 = super.normals[l2];
+				class40_2.x += l4;
+				class40_2.y += i5;
+				class40_2.z += j5;
+				class40_2.magnitude++;
+				class40_2 = super.normals[i3];
+				class40_2.x += l4;
+				class40_2.y += i5;
+				class40_2.z += j5;
+				class40_2.magnitude++;
+			} else {
+				int l5 = i + (k * l4 + l * i5 + i1 * j5) / (k1 + k1 / 2);
+				anIntArray1656[i2] = method597(colors[i2], l5, anIntArray1659[i2]);
+			}
+		}
+
+		if (flag) {
+			method596(i, k1, k, l, i1);
+		} else {
+			aClass40Array1681 = new VertexNormal[anInt1648];
+			for (int k2 = 0; k2 < anInt1648; k2++) {
+				VertexNormal class40 = super.normals[k2];
+				VertexNormal class40_1 = aClass40Array1681[k2] = new VertexNormal();
+				class40_1.x = class40.x;
+				class40_1.y = class40.y;
+				class40_1.z = class40.z;
+				class40_1.magnitude = class40.magnitude;
+			}
+
+			anInt1668 = (i << 16) + (k1 & 0xffff);
+		}
+		if (flag) {
+			method581(anInt1636);
+			return;
+		} else {
+			method583(426);
+			return;
+		}
+	}
+
+	public void method595(int i, int j, int k, int l) {
+		int i1 = anInt1668 >> 16;
+		int j1 = (anInt1668 << 16) >> 16;
+		if (k != 0) {
+			for (int k1 = 1; k1 > 0; k1++);
+		}
+		method596(i1, j1, l, i, j);
+	}
+
+	public void method596(int i, int j, int k, int l, int i1) {
+		for (int j1 = 0; j1 < anInt1652; j1++) {
+			int k1 = anIntArray1653[j1];
+			int i2 = anIntArray1654[j1];
+			int j2 = anIntArray1655[j1];
+			if (anIntArray1659 == null) {
+				int i3 = colors[j1];
+				VertexNormal class40 = super.normals[k1];
+				int k2 = i + (k * class40.x + l * class40.y + i1 * class40.z)
+						/ (j * class40.magnitude);
+				anIntArray1656[j1] = method597(i3, k2, 0);
+				class40 = super.normals[i2];
+				k2 = i + (k * class40.x + l * class40.y + i1 * class40.z) / (j * class40.magnitude);
+				anIntArray1657[j1] = method597(i3, k2, 0);
+				class40 = super.normals[j2];
+				k2 = i + (k * class40.x + l * class40.y + i1 * class40.z) / (j * class40.magnitude);
+				anIntArray1658[j1] = method597(i3, k2, 0);
+			} else if ((anIntArray1659[j1] & 1) == 0) {
+				int j3 = colors[j1];
+				int k3 = anIntArray1659[j1];
+				VertexNormal class40_1 = super.normals[k1];
+				int l2 = i + (k * class40_1.x + l * class40_1.y + i1 * class40_1.z)
+						/ (j * class40_1.magnitude);
+				anIntArray1656[j1] = method597(j3, l2, k3);
+				class40_1 = super.normals[i2];
+				l2 = i + (k * class40_1.x + l * class40_1.y + i1 * class40_1.z)
+						/ (j * class40_1.magnitude);
+				anIntArray1657[j1] = method597(j3, l2, k3);
+				class40_1 = super.normals[j2];
+				l2 = i + (k * class40_1.x + l * class40_1.y + i1 * class40_1.z)
+						/ (j * class40_1.magnitude);
+				anIntArray1658[j1] = method597(j3, l2, k3);
+			}
+		}
+
+		super.normals = null;
+		aClass40Array1681 = null;
+		anIntArray1676 = null;
+		anIntArray1677 = null;
+		if (anIntArray1659 != null) {
+			for (int l1 = 0; l1 < anInt1652; l1++)
+				if ((anIntArray1659[l1] & 2) == 2)
+					return;
+
+		}
+		colors = null;
+	}
+
+	public static int method597(int i, int j, int k) {
+		if ((k & 2) == 2) {
+			if (j < 0)
+				j = 0;
+			else if (j > 127)
+				j = 127;
+			j = 127 - j;
+			return j;
+		}
+		j = j * (i & 0x7f) >> 7;
+		if (j < 2)
+			j = 2;
+		else if (j > 126)
+			j = 126;
+		return (i & 0xff80) + j;
+	}
+
+	public void method598(int i, int j, int k, int l, int i1, int j1, int k1) {
+		int l1 = ThreeDimensionalCanvas.anInt1532;
+		int i2 = ThreeDimensionalCanvas.anInt1533;
+		int j2 = anIntArray1710[i];
+		int k2 = anIntArray1711[i];
+		int l2 = anIntArray1710[j];
+		int i3 = anIntArray1711[j];
+		int j3 = anIntArray1710[k];
+		int k3 = anIntArray1711[k];
+		int l3 = anIntArray1710[l];
+		int i4 = anIntArray1711[l];
+		int j4 = j1 * l3 + k1 * i4 >> 16;
+		for (int k4 = 0; k4 < anInt1648; k4++) {
+			int l4 = anIntArray1649[k4];
+			int i5 = anIntArray1650[k4];
+			int j5 = anIntArray1651[k4];
+			if (k != 0) {
+				int k5 = i5 * j3 + l4 * k3 >> 16;
+				i5 = i5 * k3 - l4 * j3 >> 16;
+				l4 = k5;
+			}
+			if (i != 0) {
+				int l5 = i5 * k2 - j5 * j2 >> 16;
+				j5 = i5 * j2 + j5 * k2 >> 16;
+				i5 = l5;
+			}
+			if (j != 0) {
+				int i6 = j5 * l2 + l4 * i3 >> 16;
+				j5 = j5 * i3 - l4 * l2 >> 16;
+				l4 = i6;
+			}
+			l4 += i1;
+			i5 += j1;
+			j5 += k1;
+			int j6 = i5 * i4 - j5 * l3 >> 16;
+			j5 = i5 * l3 + j5 * i4 >> 16;
+			i5 = j6;
+			anIntArray1688[k4] = j5 - j4;
+			anIntArray1686[k4] = l1 + (l4 << 9) / j5;
+			anIntArray1687[k4] = i2 + (i5 << 9) / j5;
+			if (anInt1664 > 0) {
+				anIntArray1689[k4] = l4;
+				anIntArray1690[k4] = i5;
+				anIntArray1691[k4] = j5;
+			}
+		}
+
+		try {
+			method599(false, false, 0);
+			return;
+		} catch (Exception _ex) {
+			return;
+		}
+	}
+
+	@Override
+	public void method560(int i, int j, int k, int l, int i1, int j1, int k1, int l1, int i2) {
+		int j2 = l1 * i1 - j1 * l >> 16;
+		int k2 = k1 * j + j2 * k >> 16;
+		int l2 = anInt1671 * k >> 16;
+		int i3 = k2 + l2;
+		if (i3 <= 50 || k2 >= 3500)
+			return;
+		int j3 = l1 * l + j1 * i1 >> 16;
+		int k3 = j3 - anInt1671 << 9;
+		if (k3 / i3 >= Drawable.anInt1432)
+			return;
+		int l3 = j3 + anInt1671 << 9;
+		if (l3 / i3 <= -Drawable.anInt1432)
+			return;
+		int i4 = k1 * k - j2 * j >> 16;
+		int j4 = anInt1671 * j >> 16;
+		int k4 = i4 + j4 << 9;
+		if (k4 / i3 <= -Drawable.anInt1433)
+			return;
+		int l4 = j4 + (super.height * k >> 16);
+		int i5 = i4 - l4 << 9;
+		if (i5 / i3 >= Drawable.anInt1433)
+			return;
+		int j5 = l2 + (super.height * j >> 16);
+		boolean flag = false;
+		if (k2 - j5 <= 50)
+			flag = true;
+		boolean flag1 = false;
+		if (i2 > 0 && aBoolean1705) {
+			int k5 = k2 - l2;
+			if (k5 <= 50)
+				k5 = 50;
+			if (j3 > 0) {
+				k3 /= i3;
+				l3 /= k5;
+			} else {
+				l3 /= i3;
+				k3 /= k5;
+			}
+			if (i4 > 0) {
+				i5 /= i3;
+				k4 /= k5;
+			} else {
+				k4 /= i3;
+				i5 /= k5;
+			}
+			int i6 = anInt1706 - ThreeDimensionalCanvas.anInt1532;
+			int k6 = anInt1707 - ThreeDimensionalCanvas.anInt1533;
+			if (i6 > k3 && i6 < l3 && k6 > i5 && k6 < k4)
+				if (aBoolean1680)
+					anIntArray1709[anInt1708++] = i2;
+				else
+					flag1 = true;
+		}
+		int l5 = ThreeDimensionalCanvas.anInt1532;
+		int j6 = ThreeDimensionalCanvas.anInt1533;
+		int l6 = 0;
+		int i7 = 0;
+		if (i != 0) {
+			l6 = anIntArray1710[i];
+			i7 = anIntArray1711[i];
+		}
+		for (int j7 = 0; j7 < anInt1648; j7++) {
+			int k7 = anIntArray1649[j7];
+			int l7 = anIntArray1650[j7];
+			int i8 = anIntArray1651[j7];
+			if (i != 0) {
+				int j8 = i8 * l6 + k7 * i7 >> 16;
+				i8 = i8 * i7 - k7 * l6 >> 16;
+				k7 = j8;
+			}
+			k7 += j1;
+			l7 += k1;
+			i8 += l1;
+			int k8 = i8 * l + k7 * i1 >> 16;
+			i8 = i8 * i1 - k7 * l >> 16;
+			k7 = k8;
+			k8 = l7 * k - i8 * j >> 16;
+			i8 = l7 * j + i8 * k >> 16;
+			l7 = k8;
+			anIntArray1688[j7] = i8 - k2;
+			if (i8 >= 50) {
+				anIntArray1686[j7] = l5 + (k7 << 9) / i8;
+				anIntArray1687[j7] = j6 + (l7 << 9) / i8;
+			} else {
+				anIntArray1686[j7] = -5000;
+				flag = true;
+			}
+			if (flag || anInt1664 > 0) {
+				anIntArray1689[j7] = k7;
+				anIntArray1690[j7] = l7;
+				anIntArray1691[j7] = i8;
+			}
+		}
+
+		try {
+			method599(flag, flag1, i2);
+			return;
+		} catch (Exception _ex) {
+			return;
+		}
+	}
+
+	public void method599(boolean flag, boolean flag1, int i) {
+		for (int j = 0; j < anInt1673; j++)
+			anIntArray1692[j] = 0;
+
+		for (int k = 0; k < anInt1652; k++)
+			if (anIntArray1659 == null || anIntArray1659[k] != -1) {
+				int l = anIntArray1653[k];
+				int k1 = anIntArray1654[k];
+				int j2 = anIntArray1655[k];
+				int i3 = anIntArray1686[l];
+				int l3 = anIntArray1686[k1];
+				int k4 = anIntArray1686[j2];
+				if (flag && (i3 == -5000 || l3 == -5000 || k4 == -5000)) {
+					aBooleanArray1685[k] = true;
+					int j5 = (anIntArray1688[l] + anIntArray1688[k1] + anIntArray1688[j2]) / 3 + anInt1674;
+					anIntArrayArray1693[j5][anIntArray1692[j5]++] = k;
+				} else {
+					if (flag1
+							&& method602(anInt1706, anInt1707, anIntArray1687[l], anIntArray1687[k1],
+									anIntArray1687[j2], i3, l3, k4)) {
+						anIntArray1709[anInt1708++] = i;
+						flag1 = false;
+					}
+					if ((i3 - l3) * (anIntArray1687[j2] - anIntArray1687[k1])
+							- (anIntArray1687[l] - anIntArray1687[k1]) * (k4 - l3) > 0) {
+						aBooleanArray1685[k] = false;
+						if (i3 < 0 || l3 < 0 || k4 < 0 || i3 > Drawable.anInt1431
+								|| l3 > Drawable.anInt1431 || k4 > Drawable.anInt1431)
+							aBooleanArray1684[k] = true;
+						else
+							aBooleanArray1684[k] = false;
+						int k5 = (anIntArray1688[l] + anIntArray1688[k1] + anIntArray1688[j2]) / 3 + anInt1674;
+						anIntArrayArray1693[k5][anIntArray1692[k5]++] = k;
+					}
+				}
+			}
+
+		if (anIntArray1660 == null) {
+			for (int i1 = anInt1673 - 1; i1 >= 0; i1--) {
+				int l1 = anIntArray1692[i1];
+				if (l1 > 0) {
+					int ai[] = anIntArrayArray1693[i1];
+					for (int j3 = 0; j3 < l1; j3++)
+						method600(ai[j3]);
+
+				}
+			}
+
+			return;
+		}
+		for (int j1 = 0; j1 < 12; j1++) {
+			anIntArray1694[j1] = 0;
+			anIntArray1698[j1] = 0;
+		}
+
+		for (int i2 = anInt1673 - 1; i2 >= 0; i2--) {
+			int k2 = anIntArray1692[i2];
+			if (k2 > 0) {
+				int ai1[] = anIntArrayArray1693[i2];
+				for (int i4 = 0; i4 < k2; i4++) {
+					int l4 = ai1[i4];
+					int l5 = anIntArray1660[l4];
+					int j6 = anIntArray1694[l5]++;
+					anIntArrayArray1695[l5][j6] = l4;
+					if (l5 < 10)
+						anIntArray1698[l5] += i2;
+					else if (l5 == 10)
+						anIntArray1696[j6] = i2;
+					else
+						anIntArray1697[j6] = i2;
+				}
+
+			}
+		}
+
+		int l2 = 0;
+		if (anIntArray1694[1] > 0 || anIntArray1694[2] > 0)
+			l2 = (anIntArray1698[1] + anIntArray1698[2]) / (anIntArray1694[1] + anIntArray1694[2]);
+		int k3 = 0;
+		if (anIntArray1694[3] > 0 || anIntArray1694[4] > 0)
+			k3 = (anIntArray1698[3] + anIntArray1698[4]) / (anIntArray1694[3] + anIntArray1694[4]);
+		int j4 = 0;
+		if (anIntArray1694[6] > 0 || anIntArray1694[8] > 0)
+			j4 = (anIntArray1698[6] + anIntArray1698[8]) / (anIntArray1694[6] + anIntArray1694[8]);
+		int i6 = 0;
+		int k6 = anIntArray1694[10];
+		int ai2[] = anIntArrayArray1695[10];
+		int ai3[] = anIntArray1696;
+		if (i6 == k6) {
+			i6 = 0;
+			k6 = anIntArray1694[11];
+			ai2 = anIntArrayArray1695[11];
+			ai3 = anIntArray1697;
+		}
+		int i5;
+		if (i6 < k6)
+			i5 = ai3[i6];
+		else
+			i5 = -1000;
+		for (int l6 = 0; l6 < 10; l6++) {
+			while (l6 == 0 && i5 > l2) {
+				method600(ai2[i6++]);
+				if (i6 == k6 && ai2 != anIntArrayArray1695[11]) {
+					i6 = 0;
+					k6 = anIntArray1694[11];
+					ai2 = anIntArrayArray1695[11];
+					ai3 = anIntArray1697;
+				}
+				if (i6 < k6)
+					i5 = ai3[i6];
+				else
+					i5 = -1000;
+			}
+			while (l6 == 3 && i5 > k3) {
+				method600(ai2[i6++]);
+				if (i6 == k6 && ai2 != anIntArrayArray1695[11]) {
+					i6 = 0;
+					k6 = anIntArray1694[11];
+					ai2 = anIntArrayArray1695[11];
+					ai3 = anIntArray1697;
+				}
+				if (i6 < k6)
+					i5 = ai3[i6];
+				else
+					i5 = -1000;
+			}
+			while (l6 == 5 && i5 > j4) {
+				method600(ai2[i6++]);
+				if (i6 == k6 && ai2 != anIntArrayArray1695[11]) {
+					i6 = 0;
+					k6 = anIntArray1694[11];
+					ai2 = anIntArrayArray1695[11];
+					ai3 = anIntArray1697;
+				}
+				if (i6 < k6)
+					i5 = ai3[i6];
+				else
+					i5 = -1000;
+			}
+			int i7 = anIntArray1694[l6];
+			int ai4[] = anIntArrayArray1695[l6];
+			for (int j7 = 0; j7 < i7; j7++)
+				method600(ai4[j7]);
+
+		}
+
+		while (i5 != -1000) {
+			method600(ai2[i6++]);
+			if (i6 == k6 && ai2 != anIntArrayArray1695[11]) {
+				i6 = 0;
+				ai2 = anIntArrayArray1695[11];
+				k6 = anIntArray1694[11];
+				ai3 = anIntArray1697;
+			}
+			if (i6 < k6)
+				i5 = ai3[i6];
+			else
+				i5 = -1000;
+		}
+	}
+
+	public void method600(int i) {
+		if (aBooleanArray1685[i]) {
+			method601(i);
+			return;
+		}
+		int j = anIntArray1653[i];
+		int k = anIntArray1654[i];
+		int l = anIntArray1655[i];
+		ThreeDimensionalCanvas.aBoolean1528 = aBooleanArray1684[i];
+		if (anIntArray1661 == null)
+			ThreeDimensionalCanvas.anInt1531 = 0;
+		else
+			ThreeDimensionalCanvas.anInt1531 = anIntArray1661[i];
+		int i1;
+		if (anIntArray1659 == null)
+			i1 = 0;
+		else
+			i1 = anIntArray1659[i] & 3;
+		if (i1 == 0) {
+			ThreeDimensionalCanvas.method503(anIntArray1687[j], anIntArray1687[k], anIntArray1687[l],
+					anIntArray1686[j], anIntArray1686[k], anIntArray1686[l], anIntArray1656[i], anIntArray1657[i],
+					anIntArray1658[i]);
+			return;
+		}
+		if (i1 == 1) {
+			ThreeDimensionalCanvas.method505(anIntArray1687[j], anIntArray1687[k], anIntArray1687[l],
+					anIntArray1686[j], anIntArray1686[k], anIntArray1686[l], anIntArray1712[anIntArray1656[i]]);
+			return;
+		}
+		if (i1 == 2) {
+			int j1 = anIntArray1659[i] >> 2;
+			int l1 = anIntArray1665[j1];
+			int j2 = anIntArray1666[j1];
+			int l2 = anIntArray1667[j1];
+			ThreeDimensionalCanvas.method507(anIntArray1687[j], anIntArray1687[k], anIntArray1687[l],
+					anIntArray1686[j], anIntArray1686[k], anIntArray1686[l], anIntArray1656[i], anIntArray1657[i],
+					anIntArray1658[i], anIntArray1689[l1], anIntArray1689[j2], anIntArray1689[l2], anIntArray1690[l1],
+					anIntArray1690[j2], anIntArray1690[l2], anIntArray1691[l1], anIntArray1691[j2], anIntArray1691[l2],
+					colors[i]);
+			return;
+		}
+		if (i1 == 3) {
+			int k1 = anIntArray1659[i] >> 2;
+			int i2 = anIntArray1665[k1];
+			int k2 = anIntArray1666[k1];
+			int i3 = anIntArray1667[k1];
+			ThreeDimensionalCanvas.method507(anIntArray1687[j], anIntArray1687[k], anIntArray1687[l],
+					anIntArray1686[j], anIntArray1686[k], anIntArray1686[l], anIntArray1656[i], anIntArray1656[i],
+					anIntArray1656[i], anIntArray1689[i2], anIntArray1689[k2], anIntArray1689[i3], anIntArray1690[i2],
+					anIntArray1690[k2], anIntArray1690[i3], anIntArray1691[i2], anIntArray1691[k2], anIntArray1691[i3],
+					colors[i]);
+		}
+	}
+
+	public void method601(int i) {
+		int j = ThreeDimensionalCanvas.anInt1532;
+		int k = ThreeDimensionalCanvas.anInt1533;
+		int l = 0;
+		int i1 = anIntArray1653[i];
+		int j1 = anIntArray1654[i];
+		int k1 = anIntArray1655[i];
+		int l1 = anIntArray1691[i1];
+		int i2 = anIntArray1691[j1];
+		int j2 = anIntArray1691[k1];
+		if (l1 >= 50) {
+			anIntArray1699[l] = anIntArray1686[i1];
+			anIntArray1700[l] = anIntArray1687[i1];
+			anIntArray1701[l++] = anIntArray1656[i];
+		} else {
+			int k2 = anIntArray1689[i1];
+			int k3 = anIntArray1690[i1];
+			int k4 = anIntArray1656[i];
+			if (j2 >= 50) {
+				int k5 = (50 - l1) * anIntArray1713[j2 - l1];
+				anIntArray1699[l] = j + (k2 + ((anIntArray1689[k1] - k2) * k5 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (k3 + ((anIntArray1690[k1] - k3) * k5 >> 16) << 9) / 50;
+				anIntArray1701[l++] = k4 + ((anIntArray1658[i] - k4) * k5 >> 16);
+			}
+			if (i2 >= 50) {
+				int l5 = (50 - l1) * anIntArray1713[i2 - l1];
+				anIntArray1699[l] = j + (k2 + ((anIntArray1689[j1] - k2) * l5 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (k3 + ((anIntArray1690[j1] - k3) * l5 >> 16) << 9) / 50;
+				anIntArray1701[l++] = k4 + ((anIntArray1657[i] - k4) * l5 >> 16);
+			}
+		}
+		if (i2 >= 50) {
+			anIntArray1699[l] = anIntArray1686[j1];
+			anIntArray1700[l] = anIntArray1687[j1];
+			anIntArray1701[l++] = anIntArray1657[i];
+		} else {
+			int l2 = anIntArray1689[j1];
+			int l3 = anIntArray1690[j1];
+			int l4 = anIntArray1657[i];
+			if (l1 >= 50) {
+				int i6 = (50 - i2) * anIntArray1713[l1 - i2];
+				anIntArray1699[l] = j + (l2 + ((anIntArray1689[i1] - l2) * i6 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (l3 + ((anIntArray1690[i1] - l3) * i6 >> 16) << 9) / 50;
+				anIntArray1701[l++] = l4 + ((anIntArray1656[i] - l4) * i6 >> 16);
+			}
+			if (j2 >= 50) {
+				int j6 = (50 - i2) * anIntArray1713[j2 - i2];
+				anIntArray1699[l] = j + (l2 + ((anIntArray1689[k1] - l2) * j6 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (l3 + ((anIntArray1690[k1] - l3) * j6 >> 16) << 9) / 50;
+				anIntArray1701[l++] = l4 + ((anIntArray1658[i] - l4) * j6 >> 16);
+			}
+		}
+		if (j2 >= 50) {
+			anIntArray1699[l] = anIntArray1686[k1];
+			anIntArray1700[l] = anIntArray1687[k1];
+			anIntArray1701[l++] = anIntArray1658[i];
+		} else {
+			int i3 = anIntArray1689[k1];
+			int i4 = anIntArray1690[k1];
+			int i5 = anIntArray1658[i];
+			if (i2 >= 50) {
+				int k6 = (50 - j2) * anIntArray1713[i2 - j2];
+				anIntArray1699[l] = j + (i3 + ((anIntArray1689[j1] - i3) * k6 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (i4 + ((anIntArray1690[j1] - i4) * k6 >> 16) << 9) / 50;
+				anIntArray1701[l++] = i5 + ((anIntArray1657[i] - i5) * k6 >> 16);
+			}
+			if (l1 >= 50) {
+				int l6 = (50 - j2) * anIntArray1713[l1 - j2];
+				anIntArray1699[l] = j + (i3 + ((anIntArray1689[i1] - i3) * l6 >> 16) << 9) / 50;
+				anIntArray1700[l] = k + (i4 + ((anIntArray1690[i1] - i4) * l6 >> 16) << 9) / 50;
+				anIntArray1701[l++] = i5 + ((anIntArray1656[i] - i5) * l6 >> 16);
+			}
+		}
+		int j3 = anIntArray1699[0];
+		int j4 = anIntArray1699[1];
+		int j5 = anIntArray1699[2];
+		int i7 = anIntArray1700[0];
+		int j7 = anIntArray1700[1];
+		int k7 = anIntArray1700[2];
+		if ((j3 - j4) * (k7 - j7) - (i7 - j7) * (j5 - j4) > 0) {
+			ThreeDimensionalCanvas.aBoolean1528 = false;
+			if (l == 3) {
+				if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Drawable.anInt1431 || j4 > Drawable.anInt1431
+						|| j5 > Drawable.anInt1431)
+					ThreeDimensionalCanvas.aBoolean1528 = true;
+				int l7;
+				if (anIntArray1659 == null)
+					l7 = 0;
+				else
+					l7 = anIntArray1659[i] & 3;
+				if (l7 == 0)
+					ThreeDimensionalCanvas.method503(i7, j7, k7, j3, j4, j5, anIntArray1701[0], anIntArray1701[1],
+							anIntArray1701[2]);
+				else if (l7 == 1)
+					ThreeDimensionalCanvas.method505(i7, j7, k7, j3, j4, j5, anIntArray1712[anIntArray1656[i]]);
+				else if (l7 == 2) {
+					int j8 = anIntArray1659[i] >> 2;
+					int k9 = anIntArray1665[j8];
+					int k10 = anIntArray1666[j8];
+					int k11 = anIntArray1667[j8];
+					ThreeDimensionalCanvas.method507(i7, j7, k7, j3, j4, j5, anIntArray1701[0], anIntArray1701[1],
+							anIntArray1701[2], anIntArray1689[k9], anIntArray1689[k10], anIntArray1689[k11],
+							anIntArray1690[k9], anIntArray1690[k10], anIntArray1690[k11], anIntArray1691[k9],
+							anIntArray1691[k10], anIntArray1691[k11], colors[i]);
+				} else if (l7 == 3) {
+					int k8 = anIntArray1659[i] >> 2;
+					int l9 = anIntArray1665[k8];
+					int l10 = anIntArray1666[k8];
+					int l11 = anIntArray1667[k8];
+					ThreeDimensionalCanvas.method507(i7, j7, k7, j3, j4, j5, anIntArray1656[i], anIntArray1656[i],
+							anIntArray1656[i], anIntArray1689[l9], anIntArray1689[l10], anIntArray1689[l11],
+							anIntArray1690[l9], anIntArray1690[l10], anIntArray1690[l11], anIntArray1691[l9],
+							anIntArray1691[l10], anIntArray1691[l11], colors[i]);
+				}
+			}
+			if (l == 4) {
+				if (j3 < 0 || j4 < 0 || j5 < 0 || j3 > Drawable.anInt1431 || j4 > Drawable.anInt1431
+						|| j5 > Drawable.anInt1431 || anIntArray1699[3] < 0
+						|| anIntArray1699[3] > Drawable.anInt1431)
+					ThreeDimensionalCanvas.aBoolean1528 = true;
+				int i8;
+				if (anIntArray1659 == null)
+					i8 = 0;
+				else
+					i8 = anIntArray1659[i] & 3;
+				if (i8 == 0) {
+					ThreeDimensionalCanvas.method503(i7, j7, k7, j3, j4, j5, anIntArray1701[0], anIntArray1701[1],
+							anIntArray1701[2]);
+					ThreeDimensionalCanvas.method503(i7, k7, anIntArray1700[3], j3, j5, anIntArray1699[3],
+							anIntArray1701[0], anIntArray1701[2], anIntArray1701[3]);
+					return;
+				}
+				if (i8 == 1) {
+					int l8 = anIntArray1712[anIntArray1656[i]];
+					ThreeDimensionalCanvas.method505(i7, j7, k7, j3, j4, j5, l8);
+					ThreeDimensionalCanvas.method505(i7, k7, anIntArray1700[3], j3, j5, anIntArray1699[3], l8);
+					return;
+				}
+				if (i8 == 2) {
+					int i9 = anIntArray1659[i] >> 2;
+					int i10 = anIntArray1665[i9];
+					int i11 = anIntArray1666[i9];
+					int i12 = anIntArray1667[i9];
+					ThreeDimensionalCanvas.method507(i7, j7, k7, j3, j4, j5, anIntArray1701[0], anIntArray1701[1],
+							anIntArray1701[2], anIntArray1689[i10], anIntArray1689[i11], anIntArray1689[i12],
+							anIntArray1690[i10], anIntArray1690[i11], anIntArray1690[i12], anIntArray1691[i10],
+							anIntArray1691[i11], anIntArray1691[i12], colors[i]);
+					ThreeDimensionalCanvas.method507(i7, k7, anIntArray1700[3], j3, j5, anIntArray1699[3],
+							anIntArray1701[0], anIntArray1701[2], anIntArray1701[3], anIntArray1689[i10],
+							anIntArray1689[i11], anIntArray1689[i12], anIntArray1690[i10], anIntArray1690[i11],
+							anIntArray1690[i12], anIntArray1691[i10], anIntArray1691[i11], anIntArray1691[i12],
+							colors[i]);
+					return;
+				}
+				if (i8 == 3) {
+					int j9 = anIntArray1659[i] >> 2;
+					int j10 = anIntArray1665[j9];
+					int j11 = anIntArray1666[j9];
+					int j12 = anIntArray1667[j9];
+					ThreeDimensionalCanvas.method507(i7, j7, k7, j3, j4, j5, anIntArray1656[i], anIntArray1656[i],
+							anIntArray1656[i], anIntArray1689[j10], anIntArray1689[j11], anIntArray1689[j12],
+							anIntArray1690[j10], anIntArray1690[j11], anIntArray1690[j12], anIntArray1691[j10],
+							anIntArray1691[j11], anIntArray1691[j12], colors[i]);
+					ThreeDimensionalCanvas.method507(i7, k7, anIntArray1700[3], j3, j5, anIntArray1699[3],
+							anIntArray1656[i], anIntArray1656[i], anIntArray1656[i], anIntArray1689[j10],
+							anIntArray1689[j11], anIntArray1689[j12], anIntArray1690[j10], anIntArray1690[j11],
+							anIntArray1690[j12], anIntArray1691[j10], anIntArray1691[j11], anIntArray1691[j12],
+							colors[i]);
+				}
+			}
+		}
+	}
+
+	public boolean method602(int i, int j, int k, int l, int i1, int j1, int k1, int l1) {
+		if (j < k && j < l && j < i1)
+			return false;
+		if (j > k && j > l && j > i1)
+			return false;
+		if (i < j1 && i < k1 && i < l1)
+			return false;
+		return i <= j1 || i <= k1 || i <= l1;
+	}
+
+	public int anInt1636;
+	public int anInt1637;
+	public boolean aBoolean1638;
+	public boolean aBoolean1639;
+	public int anInt1640;
+	public boolean aBoolean1641;
+	public static int anInt1642;
+	public static Model aClass50_Sub1_Sub4_Sub4_1643 = new Model(852);
+	public static int anIntArray1644[] = new int[2000];
+	public static int anIntArray1645[] = new int[2000];
+	public static int anIntArray1646[] = new int[2000];
+	public static int anIntArray1647[] = new int[2000];
+	public int anInt1648;
+	public int anIntArray1649[];
+	public int anIntArray1650[];
+	public int anIntArray1651[];
+	public int anInt1652;
+	public int anIntArray1653[];
+	public int anIntArray1654[];
+	public int anIntArray1655[];
+	public int anIntArray1656[];
+	public int anIntArray1657[];
+	public int anIntArray1658[];
+	public int anIntArray1659[];
+	public int anIntArray1660[];
+	public int anIntArray1661[];
+	public int colors[];
+	public int anInt1663;
+	public int anInt1664;
+	public int anIntArray1665[];
+	public int anIntArray1666[];
+	public int anIntArray1667[];
+	public int anInt1668;
+	public int anInt1669;
+	public int anInt1670;
+	public int anInt1671;
+	public int anInt1672;
+	public int anInt1673;
+	public int anInt1674;
+	public int anInt1675;
+	public int anIntArray1676[];
+	public int anIntArray1677[];
+	public int anIntArrayArray1678[][];
+	public int anIntArrayArray1679[][];
+	public boolean aBoolean1680;
+	public VertexNormal aClass40Array1681[];
+	public static Class26 aClass26Array1682[];
+	public static ModelProvider aClass32_1683;
+	public static boolean aBooleanArray1684[] = new boolean[4096];
+	public static boolean aBooleanArray1685[] = new boolean[4096];
+	public static int anIntArray1686[] = new int[4096];
+	public static int anIntArray1687[] = new int[4096];
+	public static int anIntArray1688[] = new int[4096];
+	public static int anIntArray1689[] = new int[4096];
+	public static int anIntArray1690[] = new int[4096];
+	public static int anIntArray1691[] = new int[4096];
+	public static int anIntArray1692[] = new int[1500];
+	public static int anIntArrayArray1693[][] = new int[1500][512];
+	public static int anIntArray1694[] = new int[12];
+	public static int anIntArrayArray1695[][] = new int[12][2000];
+	public static int anIntArray1696[] = new int[2000];
+	public static int anIntArray1697[] = new int[2000];
+	public static int anIntArray1698[] = new int[12];
+	public static int anIntArray1699[] = new int[10];
+	public static int anIntArray1700[] = new int[10];
+	public static int anIntArray1701[] = new int[10];
+	public static int anInt1702;
+	public static int anInt1703;
+	public static int anInt1704;
+	public static boolean aBoolean1705;
+	public static int anInt1706;
+	public static int anInt1707;
+	public static int anInt1708;
+	public static int anIntArray1709[] = new int[1000];
+	public static int anIntArray1710[];
+	public static int anIntArray1711[];
+	public static int anIntArray1712[];
+	public static int anIntArray1713[];
+
+	static {
+		anIntArray1710 = ThreeDimensionalCanvas.sineTable;
+		anIntArray1711 = ThreeDimensionalCanvas.cosineTable;
+		anIntArray1712 = ThreeDimensionalCanvas.anIntArray1548;
+		anIntArray1713 = ThreeDimensionalCanvas.anIntArray1535;
+	}
 }

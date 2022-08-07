@@ -1,16 +1,26 @@
+// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) 
+
 public class Node {
 
-  public Node nextNode;
-  public Node previousNode;
-  public long key;
+	public void unlink() {
+		if (previous == null) {
+			return;
+		} else {
+			previous.next = next;
+			next.previous = previous;
+			next = null;
+			previous = null;
+			return;
+		}
+	}
 
-  public void removeNode() {
-    if (this.nextNode != null) {
-      this.nextNode.previousNode = this.previousNode;
-      this.previousNode.nextNode = this.nextNode;
-      this.previousNode = null;
-      this.nextNode = null;
-    }
+	public Node() {
+	}
 
-  }
+	public long id;
+	public Node next;
+	public Node previous;
+
 }
