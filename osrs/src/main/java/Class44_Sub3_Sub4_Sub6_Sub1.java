@@ -104,7 +104,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
             var8 = true;
           }
 
-          if (var10 >= 512 && !Class14.method220(var10 - 512).method227(this.anInt1659)) {
+          if (var10 >= 512 && !ItemDefinition.get(var10 - 512).method227(this.anInt1659)) {
             var8 = true;
           }
         }
@@ -143,7 +143,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
           }
 
           if (var11 >= 512) {
-            var12 = Class14.method220(var11 - 512).method228(-269, this.anInt1659);
+            var12 = ItemDefinition.get(var11 - 512).method228(-269, this.anInt1659);
             if (var12 != null) {
               var15[var9++] = var12;
             }
@@ -288,7 +288,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
           var1 = true;
         }
 
-        if (var3 >= 512 && !Class14.method220(var3 - 512).method229(this.anInt1659, (byte) 1)) {
+        if (var3 >= 512 && !ItemDefinition.get(var3 - 512).method229(this.anInt1659, (byte) 1)) {
           var1 = true;
         }
       }
@@ -311,7 +311,7 @@ public class Class44_Sub3_Sub4_Sub6_Sub1 extends Class44_Sub3_Sub4_Sub6 {
           }
 
           if (var5 >= 512) {
-            var6 = Class14.method220(var5 - 512).method230(false, this.anInt1659);
+            var6 = ItemDefinition.get(var5 - 512).method230(false, this.anInt1659);
             if (var6 != null) {
               var7[var3++] = var6;
             }

@@ -68,7 +68,7 @@ public class Client extends Game {
   public int anInt994;
   public ComponentImageProducer aComponentImageProducer_862;
   public Class44_Sub3_Sub1_Sub2 aClass44_Sub3_Sub1_Sub2_1027;
-  public Class28 aClass28_924;
+  public Tile aClass28_924;
   public int anInt1223;
   public int anInt803;
   public boolean aBoolean1017;
@@ -81,7 +81,7 @@ public class Client extends Game {
   public int anInt845;
   public int anInt868;
   public boolean aBoolean971;
-  public Class28 aClass28_1156;
+  public Tile aClass28_1156;
   public int anInt908;
   public boolean aBoolean1053;
   public ComponentImageProducer aComponentImageProducer_865;
@@ -99,9 +99,9 @@ public class Client extends Game {
   public Class47 aClass47_942;
   public int anInt811;
   public Class45[] aClass45Array1225;
-  public Class28[][][] aClass28ArrayArrayArray816;
+  public Tile[][][] tiles;
   public int[] anIntArray885;
-  public Class28 pendingObjectSpawns;
+  public Tile pendingObjectSpawns;
   public int anInt1200;
   public boolean aBoolean917;
   public Class7 aClass7_1108;
@@ -130,7 +130,7 @@ public class Client extends Game {
   public Buffer buffer;
   public int incomingPacketOpcode;
   public int anInt1011;
-  public int clientPlane;
+  public int plane;
   public String[] aStringArray950;
   public int[] anIntArray1193;
   public byte aByte1070;
@@ -185,7 +185,7 @@ public class Client extends Game {
   public ComponentImageProducer aComponentImageProducer_852;
   public int[] anIntArray937;
   public Class44_Sub3_Sub1_Sub2[] aClass44_Sub3_Sub1_Sub2Array1215;
-  public int anInt918;
+  public int baseX;
   public boolean aBoolean898;
   public int[] anIntArray948;
   public long[] aLongArray1159;
@@ -211,7 +211,7 @@ public class Client extends Game {
   public boolean aBoolean1249;
   public Class44_Sub3_Sub1_Sub3 aClass44_Sub3_Sub1_Sub3_1264;
   public Class10 aClass10_1160;
-  public int anInt919;
+  public int baseY;
   public int anInt1026;
   public int anInt1248;
   public int[] anIntArray831;
@@ -234,7 +234,7 @@ public class Client extends Game {
   public String aString815;
   public int[] anIntArray1092;
   public int[] anIntArray830;
-  public int anInt947;
+  public int playerIndex;
   public ComponentImageProducer aComponentImageProducer_1040;
   public String aString1147;
   public int anInt1254;
@@ -544,7 +544,7 @@ public class Client extends Game {
     this.anIntArray804 = new int[50];
     this.anInt806 = 477;
     this.anIntArray810 = new int[7];
-    this.aClass28ArrayArrayArray816 = new Class28[4][104][104];
+    this.tiles = new Tile[4][104][104];
     this.aLongArray817 = new long[100];
     this.aBoolean819 = false;
     this.anInt825 = 3353893;
@@ -555,7 +555,7 @@ public class Client extends Game {
     this.anIntArray838 = new int[4000];
     this.anIntArray839 = new int[4000];
     this.aBoolean841 = false;
-    this.aBuffer_843 = Buffer.method467(-7939, 1);
+    this.aBuffer_843 = Buffer.createBuffer(-7939, 1);
     this.anIntArray844 = new int[5];
     this.anInt845 = -43664;
     this.aByte846 = -120;
@@ -575,7 +575,7 @@ public class Client extends Game {
     this.aBoolean906 = false;
     this.aClass44_Sub3_Sub1_Sub3Array914 = new Class44_Sub3_Sub1_Sub3[2];
     this.aBoolean917 = false;
-    this.aClass28_924 = new Class28(-822);
+    this.aClass28_924 = new Tile(-822);
     this.aBoolean928 = false;
     this.aBoolean930 = true;
     this.anInt931 = 78;
@@ -587,7 +587,7 @@ public class Client extends Game {
     this.aClass44_Sub3_Sub1_Sub2Array943 = new Class44_Sub3_Sub1_Sub2[100];
     this.aBoolean945 = true;
     this.anInt946 = 12122;
-    this.anInt947 = -1;
+    this.playerIndex = -1;
     this.anIntArray948 = new int[100];
     this.aStringArray949 = new String[100];
     this.aStringArray950 = new String[100];
@@ -658,7 +658,7 @@ public class Client extends Game {
     this.anInt1103 = -1;
     this.aBoolean1104 = false;
     this.collisionMap = new Class18[4];
-    this.aBuffer_1106 = Buffer.method467(-7939, 1);
+    this.aBuffer_1106 = Buffer.createBuffer(-7939, 1);
     this.anIntArray1107 = new int[2000];
     this.aBoolean1109 = false;
     this.anInt1110 = -1;
@@ -673,7 +673,7 @@ public class Client extends Game {
     this.aBufferArray1125 = new Buffer[this.anInt1118];
     this.aBoolean1128 = false;
     this.anInt1131 = -1;
-    this.buffer = Buffer.method467(-7939, 1);
+    this.buffer = Buffer.createBuffer(-7939, 1);
     this.anIntArray1136 = new int[151];
     this.aBoolean1141 = false;
     this.aBoolean1146 = false;
@@ -683,7 +683,7 @@ public class Client extends Game {
     this.anIntArray1150 = new int[151];
     this.aBoolean1152 = true;
     this.levels = new int[25];
-    this.aClass28_1156 = new Class28(-822);
+    this.aClass28_1156 = new Tile(-822);
     this.anInt1158 = 2301979;
     this.aLongArray1159 = new long[200];
     this.aBooleanArray1161 = new boolean[5];
@@ -710,7 +710,7 @@ public class Client extends Game {
     this.anInt1218 = 2;
     this.aClass45Array1225 = new Class45[5];
     this.aBoolean1226 = true;
-    this.pendingObjectSpawns = new Class28(-822);
+    this.pendingObjectSpawns = new Tile(-822);
     this.anInt1242 = -1;
     this.anInt1247 = 2;
     this.aBoolean1249 = false;
@@ -1066,7 +1066,7 @@ public class Client extends Game {
 
   public void method30(int var1, int var2, int var3, int var4) {
     if (var2 >= 128 && var3 >= 128 && var2 <= 13056 && var3 <= 13056) {
-      int var5 = this.method50(var2, var3, 0, this.clientPlane) - var4;
+      int var5 = this.method50(var2, var3, 0, this.plane) - var4;
       var2 -= this.anInt820;
       var5 -= this.anInt821;
       var3 -= this.anInt822;
@@ -1272,7 +1272,7 @@ public class Client extends Game {
     this.anIntArray1065 = null;
     this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259 = null;
     this.anIntArray1261 = null;
-    this.aClass28ArrayArrayArray816 = null;
+    this.tiles = null;
     this.pendingObjectSpawns = null;
     this.aClass28_1156 = null;
     this.aClass28_924 = null;
@@ -1301,7 +1301,7 @@ public class Client extends Game {
     this.method114(0);
     GameObjectDefinition.method198((byte) 1);
     Class12.method213((byte) 1);
-    Class14.method219();
+    ItemDefinition.method219();
     Class20.aClass20Array423 = null;
     Class22.aClass22Array455 = null;
     Class5.aClass5Array103 = null;
@@ -1733,13 +1733,13 @@ public class Client extends Game {
           Class26.method253(false, var32);
           GameObjectDefinition.method197(var32);
           Class20.method243(false, var32);
-          Class14.method218(var32);
+          ItemDefinition.method218(var32);
           Class12.method212(var32);
           Class22.method247(false, var32);
           Class32.method269(false, var32);
           Class38.method337(false, var32);
           Class35.method275(false, var32);
-          Class14.aBoolean324 = isMembersWorld;
+          ItemDefinition.aBoolean324 = isMembersWorld;
           if (!isLowMemory) {
             this.drawString("Unpacking sounds", 90, 7);
             byte[] var35 = var8.method546("sounds.dat", null);
@@ -1883,7 +1883,7 @@ public class Client extends Game {
 
           } else {
             if (var4 == 3) {
-              this.clientPlane = var1.readBit(2, (byte) -96);
+              this.plane = var1.readBit(2, (byte) -96);
               var5 = var1.readBit(7, (byte) -96);
               var6 = var1.readBit(7, (byte) -96);
               var7 = var1.readBit(1, (byte) -96);
@@ -1923,7 +1923,7 @@ public class Client extends Game {
       var3 = this.anInt1206 + this.anInt888 & 2047;
       this.method17(this.anInt1022, true, var2,
           this.method50(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599,
-              aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600, 0, this.clientPlane) - 50,
+              aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600, 0, this.plane) - 50,
           this.anInt1021, var3, var2 * 3 + 600);
     }
 
@@ -2033,9 +2033,9 @@ public class Client extends Game {
         if (var7 >= 0 && var7 < 104 && var8 >= 0 && var8 < 104) {
           if (var5.aModel_1672 != null && tick >= var5.anInt1667 && tick < var5.anInt1668) {
             var5.aBoolean1677 = false;
-            var5.anInt1666 = this.method50(var5.anInt1599, var5.anInt1600, 0, this.clientPlane);
+            var5.anInt1666 = this.method50(var5.anInt1599, var5.anInt1600, 0, this.plane);
             this.worldController.method290(-23687, var5.anInt1676, var5.anInt1601, var5.anInt1675,
-                var5.anInt1666, var5.anInt1673, 60, var5.anInt1599, this.clientPlane, var5,
+                var5.anInt1666, var5.anInt1673, 60, var5.anInt1599, this.plane, var5,
                 var5.anInt1600, var5.anInt1674, var6);
           } else {
             if ((var5.anInt1599 & 127) == 64 && (var5.anInt1600 & 127) == 64) {
@@ -2046,9 +2046,9 @@ public class Client extends Game {
               this.anIntArrayArray1020[var7][var8] = this.anInt868;
             }
 
-            var5.anInt1666 = this.method50(var5.anInt1599, var5.anInt1600, 0, this.clientPlane);
+            var5.anInt1666 = this.method50(var5.anInt1599, var5.anInt1600, 0, this.plane);
             this.worldController.method289(var5.anInt1666, var5, var5.anInt1599, var6,
-                var5.anInt1600, (byte) 1, 60, var5.anInt1601, this.clientPlane, var5.aBoolean1602);
+                var5.anInt1600, (byte) 1, 60, var5.anInt1601, this.plane, var5.aBoolean1602);
           }
         }
       }
@@ -2105,7 +2105,7 @@ public class Client extends Game {
           if (var8 == 4) {
             var11 = Class5.aClass5Array103[var4[var6++]];
             var12 = var4[var6++];
-            if (var12 >= 0 && var12 < Class14.anInt319 && (!Class14.method220(var12).aBoolean340
+            if (var12 >= 0 && var12 < ItemDefinition.anInt319 && (!ItemDefinition.get(var12).aBoolean340
                 || isMembersWorld)) {
               for (var13 = 0; var13 < var11.anIntArray104.length; ++var13) {
                 if (var12 + 1 == var11.anIntArray104[var13]) {
@@ -2143,7 +2143,7 @@ public class Client extends Game {
           if (var8 == 10) {
             var11 = Class5.aClass5Array103[var4[var6++]];
             var12 = var4[var6++] + 1;
-            if (var12 >= 0 && var12 < Class14.anInt319 && (!Class14.method220(var12).aBoolean340
+            if (var12 >= 0 && var12 < ItemDefinition.anInt319 && (!ItemDefinition.get(var12).aBoolean340
                 || isMembersWorld)) {
               for (var13 = 0; var13 < var11.anIntArray104.length; ++var13) {
                 if (var12 == var11.anIntArray104[var13]) {
@@ -2292,7 +2292,7 @@ public class Client extends Game {
       return -4;
     } else {
       this.loadingState = 2;
-      Class3.anInt68 = this.clientPlane;
+      Class3.anInt68 = this.plane;
       this.method19();
       this.aBuffer_843.writeOpcode(214);
       return 0;
@@ -2441,9 +2441,9 @@ public class Client extends Game {
           }
 
           this.worldController.method289(
-              this.method50(var4.anInt1599, var4.anInt1600, 0, this.clientPlane), var4,
+              this.method50(var4.anInt1599, var4.anInt1600, 0, this.plane), var4,
               var4.anInt1599, var5, var4.anInt1600, (byte) 1, (var4.anInt1603 - 1) * 64 + 60,
-              var4.anInt1601, this.clientPlane, var4.aBoolean1602);
+              var4.anInt1601, this.plane, var4.aBoolean1602);
         }
       }
     }
@@ -3160,8 +3160,8 @@ public class Client extends Game {
     GameObjectDefinition.aClass39_252.method341();
     GameObjectDefinition.aClass39_253.method341();
     Class12.aClass39_306.method341();
-    Class14.aClass39_364.method341();
-    Class14.aClass39_365.method341();
+    ItemDefinition.aClass39_364.method341();
+    ItemDefinition.aClass39_365.method341();
     Class44_Sub3_Sub4_Sub6_Sub1.aClass39_1680.method341();
     Class32.aClass39_559.method341();
   }
@@ -3632,7 +3632,7 @@ public class Client extends Game {
     }
 
     int var2;
-    for (var2 = 0; var2 < 5 && Packets.handleServerPacket(this); ++var2) {
+    for (var2 = 0; var2 < 100 && Packets.handleServerPacket(this); ++var2) {
     }
 
     if (this.aBoolean905) {
@@ -3876,7 +3876,7 @@ public class Client extends Game {
               && this.anInt980 > 2) {
             this.method95(0);
           } else if (this.anInt980 > 0) {
-            this.method60((byte) 6, this.anInt980 - 1);
+            Packets.handleClientPacket(this, (byte) 6, this.anInt980 - 1);
           }
 
           this.anInt847 = 10;
@@ -4071,7 +4071,7 @@ public class Client extends Game {
       }
 
       if (Class3.aBoolean67) {
-        this.worldController.method279((byte) 4, this.clientPlane);
+        this.worldController.method279((byte) 4, this.plane);
       } else {
         this.worldController.method279((byte) 4, 0);
       }
@@ -4116,7 +4116,7 @@ public class Client extends Game {
 
       for (var3 = 0; var3 < 104; ++var3) {
         for (var4 = 0; var4 < 104; ++var4) {
-          this.method52(var3, var4);
+          this.spawnGroundItem(var3, var4);
         }
       }
 
@@ -4172,7 +4172,7 @@ public class Client extends Game {
     for (Class44_Sub3_Sub4_Sub3 var2 = (Class44_Sub3_Sub4_Sub3) this.aClass28_1156.peekFront();
         var2 != null;
         var2 = (Class44_Sub3_Sub4_Sub3) this.aClass28_1156.getPrevious(this.aByte958)) {
-      if (var2.anInt1485 == this.clientPlane && tick <= var2.anInt1491) {
+      if (var2.anInt1485 == this.plane && tick <= var2.anInt1491) {
         if (tick >= var2.anInt1490) {
           if (var2.anInt1494 > 0) {
             Class44_Sub3_Sub4_Sub6_Sub2 var3 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[
@@ -4188,7 +4188,7 @@ public class Client extends Game {
           if (var2.anInt1494 < 0) {
             int var6 = -var2.anInt1494 - 1;
             Class44_Sub3_Sub4_Sub6_Sub1 var4;
-            if (var6 == this.anInt947) {
+            if (var6 == this.playerIndex) {
               var4 = aClass44_Sub3_Sub4_Sub6_Sub1_1252;
             } else {
               var4 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var6];
@@ -4204,7 +4204,7 @@ public class Client extends Game {
 
           var2.method498(this.anInt975);
           this.worldController.method289((int) var2.aDouble1498, var2, (int) var2.aDouble1496, -1,
-              (int) var2.aDouble1497, (byte) 1, 60, var2.anInt1504, this.clientPlane, false);
+              (int) var2.aDouble1497, (byte) 1, 60, var2.anInt1504, this.plane, false);
         }
       } else {
         var2.removeNode();
@@ -4444,7 +4444,7 @@ public class Client extends Game {
     for (Class44_Sub3_Sub4_Sub5 var1 = (Class44_Sub3_Sub4_Sub5) this.aClass28_924.peekFront();
         var1 != null;
         var1 = (Class44_Sub3_Sub4_Sub5) this.aClass28_924.getPrevious(this.aByte958)) {
-      if (var1.anInt1591 == this.clientPlane && !var1.aBoolean1597) {
+      if (var1.anInt1591 == this.plane && !var1.aBoolean1597) {
         if (tick >= var1.anInt1590) {
           var1.method528(0, this.anInt975);
           if (var1.aBoolean1597) {
@@ -4545,7 +4545,7 @@ public class Client extends Game {
                         var23 = 16777215;
                       }
 
-                      Class44_Sub3_Sub1_Sub2 var24 = Class14.method226(var22, var23, 45926,
+                      Class44_Sub3_Sub1_Sub2 var24 = ItemDefinition.method226(var22, var23, 45926,
                           var14.anIntArray105[var27]);
                       if (var24 != null) {
                         int var25;
@@ -4797,7 +4797,7 @@ public class Client extends Game {
                 for (var17 = 0; var17 < var14.anInt114; ++var17) {
                   for (var18 = 0; var18 < var14.anInt113; ++var18) {
                     if (var14.anIntArray104[var16] > 0) {
-                      Class14 var19 = Class14.method220(var14.anIntArray104[var16] - 1);
+                      ItemDefinition var19 = ItemDefinition.get(var14.anIntArray104[var16] - 1);
                       String var20 = var19.aString327;
                       if (var19.aBoolean338 || var14.anIntArray105[var16] != 1) {
                         var20 =
@@ -5088,7 +5088,7 @@ public class Client extends Game {
       if (var3 != var1) {
         var1 = var3;
         int var9;
-        if (var6 == 2 && this.worldController.getConfig(this.clientPlane, var4, var5, var3) >= 0) {
+        if (var6 == 2 && this.worldController.getConfig(this.plane, var4, var5, var3) >= 0) {
           GameObjectDefinition var8 = GameObjectDefinition.get(var7);
           if (this.anInt811 == 1) {
             this.aStringArray1114[this.anInt980] =
@@ -5200,16 +5200,16 @@ public class Client extends Game {
         }
 
         if (var6 == 3) {
-          Class28 var14 = this.aClass28ArrayArrayArray816[this.clientPlane][var4][var5];
+          Tile var14 = this.tiles[this.plane][var4][var5];
           if (var14 != null) {
-            for (Class44_Sub3_Sub4_Sub2 var17 = (Class44_Sub3_Sub4_Sub2) var14.method260();
-                var17 != null; var17 = (Class44_Sub3_Sub4_Sub2) var14.method262()) {
-              Class14 var16 = Class14.method220(var17.anInt1480);
+            for (Item var17 = (Item) var14.method260();
+                var17 != null; var17 = (Item) var14.method262()) {
+              ItemDefinition var16 = ItemDefinition.get(var17.id);
               if (this.anInt811 == 1) {
                 this.aStringArray1114[this.anInt980] =
                     "Use " + this.aString815 + " with @lre@" + var16.aString327;
                 this.anIntArray1193[this.anInt980] = 111;
-                this.anIntArray1194[this.anInt980] = var17.anInt1480;
+                this.anIntArray1194[this.anInt980] = var17.id;
                 this.anIntArray1191[this.anInt980] = var4;
                 this.anIntArray1192[this.anInt980] = var5;
                 ++this.anInt980;
@@ -5218,7 +5218,7 @@ public class Client extends Game {
                   this.aStringArray1114[this.anInt980] =
                       this.aString1199 + " @lre@" + var16.aString327;
                   this.anIntArray1193[this.anInt980] = 370;
-                  this.anIntArray1194[this.anInt980] = var17.anInt1480;
+                  this.anIntArray1194[this.anInt980] = var17.id;
                   this.anIntArray1191[this.anInt980] = var4;
                   this.anIntArray1192[this.anInt980] = var5;
                   ++this.anInt980;
@@ -5248,14 +5248,14 @@ public class Client extends Game {
                       this.anIntArray1193[this.anInt980] = 662;
                     }
 
-                    this.anIntArray1194[this.anInt980] = var17.anInt1480;
+                    this.anIntArray1194[this.anInt980] = var17.id;
                     this.anIntArray1191[this.anInt980] = var4;
                     this.anIntArray1192[this.anInt980] = var5;
                     ++this.anInt980;
                   } else if (var11 == 2) {
                     this.aStringArray1114[this.anInt980] = "Take @lre@" + var16.aString327;
                     this.anIntArray1193[this.anInt980] = 617;
-                    this.anIntArray1194[this.anInt980] = var17.anInt1480;
+                    this.anIntArray1194[this.anInt980] = var17.id;
                     this.anIntArray1191[this.anInt980] = var4;
                     this.anIntArray1192[this.anInt980] = var5;
                     ++this.anInt980;
@@ -5264,7 +5264,7 @@ public class Client extends Game {
 
                 this.aStringArray1114[this.anInt980] = "Examine @lre@" + var16.aString327;
                 this.anIntArray1193[this.anInt980] = 1152;
-                this.anIntArray1194[this.anInt980] = var17.anInt1480;
+                this.anIntArray1194[this.anInt980] = var17.id;
                 this.anIntArray1191[this.anInt980] = var4;
                 this.anIntArray1192[this.anInt980] = var5;
                 ++this.anInt980;
@@ -5294,730 +5294,10 @@ public class Client extends Game {
     }
   }
 
-  public void method60(byte var1, int var2) {
-    if (var2 >= 0) {
-      if (this.aBoolean1104) {
-        this.aBoolean1104 = false;
-        this.aBoolean1109 = true;
-      }
-
-      int var3 = this.anIntArray1191[var2];
-      int var4 = this.anIntArray1192[var2];
-      int var5 = this.anIntArray1193[var2];
-      int var6 = this.anIntArray1194[var2];
-      if (this.aByte1071 == var1) {
-        boolean var13 = false;
-      } else {
-        this.anInt1113 = -128;
-      }
-
-      if (var5 >= 2000) {
-        var5 -= 2000;
-      }
-
-      Class44_Sub3_Sub4_Sub6_Sub2 var7;
-      if (var5 == 829) {
-        var7 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[var6];
-        if (var7 != null) {
-          this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var7.anIntArray1649[0],
-              1, 1, 0, aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-              var7.anIntArray1650[0], (byte) 9, 2);
-          this.anInt1142 = super.anInt29;
-          this.anInt1143 = super.anInt30;
-          this.anInt1145 = 2;
-          this.anInt1144 = 0;
-          this.aBuffer_843.writeOpcode(150);
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(this.anInt814);
-          this.aBuffer_843.writeShort(this.anInt812);
-          this.aBuffer_843.writeShort(this.anInt813);
-        }
-      }
-
-      int var8;
-      String var14;
-      if (var5 == 524) {
-        var14 = this.aStringArray1114[var2];
-        var8 = var14.indexOf("@whi@");
-        if (var8 != -1) {
-          this.method45();
-          this.aString951 = var14.substring(var8 + 5).trim();
-          this.aBoolean1128 = false;
-
-          for (int var9 = 0; var9 < Class5.aClass5Array103.length; ++var9) {
-            if (Class5.aClass5Array103[var9] != null
-                && Class5.aClass5Array103[var9].anInt112 == 600) {
-              this.anInt1081 = this.anInt1037 = Class5.aClass5Array103[var9].anInt109;
-              break;
-            }
-          }
-        }
-      }
-
-      Class44_Sub3_Sub4_Sub6_Sub1 var15;
-      if (var5 == 275) {
-        var15 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var6];
-        if (var15 != null) {
-          this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-              var15.anIntArray1649[0], 1, 1, 0, aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0],
-              0, false, 0, var15.anIntArray1650[0], (byte) 9, 2);
-          this.anInt1142 = super.anInt29;
-          this.anInt1143 = super.anInt30;
-          this.anInt1145 = 2;
-          this.anInt1144 = 0;
-          this.aBuffer_843.writeOpcode(36);
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(this.anInt814);
-          this.aBuffer_843.writeShort(this.anInt812);
-          this.aBuffer_843.writeShort(this.anInt813);
-        }
-      }
-
-      if (var5 == 743) {
-        ++anInt969;
-        if (anInt969 >= 124) {
-          this.aBuffer_843.writeOpcode(201);
-          this.aBuffer_843.writeShort(37954);
-        }
-
-        this.method51(var4, 74, var3, 187, var6);
-      }
-
-      if (var5 == 718) {
-        if (!this.aBoolean851) {
-          this.worldController.method316(super.anInt29 - 4, super.anInt30 - 4, this.aByte1034);
-        } else {
-          this.worldController.method316(var3 - 4, var4 - 4, this.aByte1034);
-        }
-      }
-
-      if (var5 == 721) {
-        anInt1232 += var4;
-        if (anInt1232 >= 139) {
-          this.aBuffer_843.writeOpcode(219);
-          this.aBuffer_843.writeInt(0);
-        }
-
-        this.method51(var4, 74, var3, 103, var6);
-      }
-
-      long var20;
-      if (var5 == 605 || var5 == 47 || var5 == 513 || var5 == 884) {
-        var14 = this.aStringArray1114[var2];
-        var8 = var14.indexOf("@whi@");
-        if (var8 != -1) {
-          var20 = Statics.method547(var14.substring(var8 + 5).trim());
-          if (var5 == 605) {
-            this.method102(199, var20);
-          }
-
-          if (var5 == 47) {
-            this.method96(var20);
-          }
-
-          if (var5 == 513) {
-            this.method62(0, var20);
-          }
-
-          if (var5 == 884) {
-            this.method123(this.aBoolean974, var20);
-          }
-        }
-      }
-
-      if (var5 == 563) {
-        this.aBuffer_843.writeOpcode(135);
-        this.aBuffer_843.writeShort(var6);
-        this.aBuffer_843.writeShort(var3);
-        this.aBuffer_843.writeShort(var4);
-        this.aBuffer_843.writeShort(this.anInt1197);
-        this.anInt847 = 0;
-        this.anInt848 = var4;
-        this.anInt849 = var3;
-        this.anInt850 = 2;
-        if (Class5.aClass5Array103[var4].anInt109 == this.anInt1037) {
-          this.anInt850 = 1;
-        }
-
-        if (Class5.aClass5Array103[var4].anInt109 == this.anInt1011) {
-          this.anInt850 = 3;
-        }
-      }
-
-      Class5 var16;
-      if (var5 == 435) {
-        this.aBuffer_843.writeOpcode(9);
-        this.aBuffer_843.writeShort(var4);
-        var16 = Class5.aClass5Array103[var4];
-        if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
-          var8 = var16.anIntArrayArray118[0][1];
-          this.anIntArray1107[var8] = 1 - this.anIntArray1107[var8];
-          this.method40(false, var8);
-          this.aBoolean928 = true;
-        }
-      }
-
-      if (var5 == 810 && this.method51(var4, 74, var3, 60, var6)) {
-        this.aBuffer_843.writeShort(this.anInt814);
-        this.aBuffer_843.writeShort(this.anInt812);
-        this.aBuffer_843.writeShort(this.anInt813);
-      }
-
-      if (var5 == 102) {
-        this.anInt811 = 1;
-        this.anInt812 = var3;
-        this.anInt813 = var4;
-        this.anInt814 = var6;
-        this.aString815 = Class14.method220(var6).aString327;
-        this.anInt1196 = 0;
-        this.aBoolean928 = true;
-      } else {
-        Class14 var17;
-        String var21;
-        if (var5 == 1328) {
-          var17 = Class14.method220(var6);
-          Class5 var18 = Class5.aClass5Array103[var4];
-          if (var18 != null && var18.anIntArray105[var3] >= 100000) {
-            var21 = var18.anIntArray105[var3] + " x " + var17.aString327;
-          } else if (var17.aByteArray328 != null) {
-            var21 = new String(var17.aByteArray328);
-          } else {
-            var21 = "It's a " + var17.aString327 + ".";
-          }
-
-          this.method49(-476, 0, "", var21);
-        }
-
-        if (var5 == 639 || var5 == 499 || var5 == 27 || var5 == 387 || var5 == 185) {
-          var15 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var6];
-          if (var15 != null) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-                var15.anIntArray1649[0], 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-                var15.anIntArray1650[0], (byte) 9, 2);
-            this.anInt1142 = super.anInt29;
-            this.anInt1143 = super.anInt30;
-            this.anInt1145 = 2;
-            this.anInt1144 = 0;
-            if (var5 == 387) {
-              anInt1052 += var6;
-              if (anInt1052 >= 66) {
-                this.aBuffer_843.writeOpcode(235);
-                this.aBuffer_843.writeByte(154);
-              }
-
-              this.aBuffer_843.writeOpcode(98);
-            }
-
-            if (var5 == 185) {
-              this.aBuffer_843.writeOpcode(174);
-            }
-
-            if (var5 == 639) {
-              ++anInt900;
-              if (anInt900 >= 52) {
-                this.aBuffer_843.writeOpcode(80);
-                this.aBuffer_843.writeByte(131);
-              }
-
-              this.aBuffer_843.writeOpcode(109);
-            }
-
-            if (var5 == 27) {
-              this.aBuffer_843.writeOpcode(196);
-            }
-
-            if (var5 == 499) {
-              this.aBuffer_843.writeOpcode(166);
-            }
-
-            this.aBuffer_843.writeShort(var6);
-          }
-        }
-
-        if (var5 == 242 || var5 == 209 || var5 == 309 || var5 == 852 || var5 == 793) {
-          var7 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[var6];
-          if (var7 != null) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-                var7.anIntArray1649[0], 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-                var7.anIntArray1650[0], (byte) 9, 2);
-            this.anInt1142 = super.anInt29;
-            this.anInt1143 = super.anInt30;
-            this.anInt1145 = 2;
-            this.anInt1144 = 0;
-            if (var5 == 309) {
-              this.aBuffer_843.writeOpcode(223);
-            }
-
-            if (var5 == 242) {
-              this.aBuffer_843.writeOpcode(236);
-            }
-
-            if (var5 == 852) {
-              this.aBuffer_843.writeOpcode(147);
-            }
-
-            if (var5 == 793) {
-              this.aBuffer_843.writeOpcode(189);
-            }
-
-            if (var5 == 209) {
-              this.aBuffer_843.writeOpcode(233);
-            }
-
-            this.aBuffer_843.writeShort(var6);
-          }
-        }
-
-        if (var5 == 582 || var5 == 113 || var5 == 555 || var5 == 331 || var5 == 354) {
-          if (var5 == 331) {
-            this.aBuffer_843.writeOpcode(179);
-          }
-
-          if (var5 == 113) {
-            this.aBuffer_843.writeOpcode(82);
-          }
-
-          if (var5 == 555) {
-            this.aBuffer_843.writeOpcode(239);
-          }
-
-          if (var5 == 354) {
-            this.aBuffer_843.writeOpcode(46);
-          }
-
-          if (var5 == 582) {
-            if ((var6 & 3) == 0) {
-              ++anInt1157;
-            }
-
-            if (anInt1157 >= 133) {
-              this.aBuffer_843.writeOpcode(250);
-              this.aBuffer_843.writeShort(6118);
-            }
-
-            this.aBuffer_843.writeOpcode(74);
-          }
-
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(var3);
-          this.aBuffer_843.writeShort(var4);
-          this.anInt847 = 0;
-          this.anInt848 = var4;
-          this.anInt849 = var3;
-          this.anInt850 = 2;
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1037) {
-            this.anInt850 = 1;
-          }
-
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1011) {
-            this.anInt850 = 3;
-          }
-        }
-
-        if (var5 == 997 && !this.aBoolean1168) {
-          this.aBuffer_843.writeOpcode(72);
-          this.aBuffer_843.writeShort(var4);
-          this.aBoolean1168 = true;
-        }
-
-        String var19;
-        if (var5 == 1714) {
-          var7 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[var6];
-          if (var7 != null) {
-            if (var7.aClass12_1682.aByteArray282 != null) {
-              var19 = new String(var7.aClass12_1682.aByteArray282);
-            } else {
-              var19 = "It's a " + var7.aClass12_1682.aString281 + ".";
-            }
-
-            this.method49(-476, 0, "", var19);
-          }
-        }
-
-        if (var5 == 240) {
-          var7 = this.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[var6];
-          if (var7 != null) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-                var7.anIntArray1649[0], 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-                var7.anIntArray1650[0], (byte) 9, 2);
-            this.anInt1142 = super.anInt29;
-            this.anInt1143 = super.anInt30;
-            this.anInt1145 = 2;
-            this.anInt1144 = 0;
-            this.aBuffer_843.writeOpcode(181);
-            this.aBuffer_843.writeShort(var6);
-            this.aBuffer_843.writeShort(this.anInt1197);
-          }
-        }
-
-        int var11;
-        if (var5 == 902) {
-          var14 = this.aStringArray1114[var2];
-          var8 = var14.indexOf("@whi@");
-          if (var8 != -1) {
-            var20 = Statics.method547(var14.substring(var8 + 5).trim());
-            var11 = -1;
-
-            for (int var12 = 0; var12 < this.anInt1115; ++var12) {
-              if (this.aLongArray1159[var12] == var20) {
-                var11 = var12;
-                break;
-              }
-            }
-
-            if (var11 != -1 && this.anIntArray1073[var11] > 0) {
-              this.aBoolean1109 = true;
-              this.aBoolean1104 = false;
-              this.aBoolean1265 = true;
-              this.aString984 = "";
-              this.anInt1051 = 3;
-              this.aLong867 = this.aLongArray1159[var11];
-              this.aString1019 = "Enter message to send to " + this.aStringArray833[var11];
-            }
-          }
-        }
-
-        if (var5 == 1381) {
-          int var22 = var6 >> 14 & 32767;
-          GameObjectDefinition var23 = GameObjectDefinition.get(var22);
-          if (var23.aByteArray222 != null) {
-            var21 = new String(var23.aByteArray222);
-          } else {
-            var21 = "It's a " + var23.aString221 + ".";
-          }
-
-          this.method49(-476, 0, "", var21);
-        }
-
-        if (var5 == 231) {
-          var16 = Class5.aClass5Array103[var4];
-          boolean var24 = true;
-          if (var16.anInt112 > 0) {
-            var24 = this.method113(var16, this.anInt1185);
-          }
-
-          if (var24) {
-            this.aBuffer_843.writeOpcode(9);
-            this.aBuffer_843.writeShort(var4);
-          }
-        }
-
-        boolean var25;
-        if (var5 == 139 || var5 == 778 || var5 == 617 || var5 == 224 || var5 == 662) {
-          var25 = this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 0, 0, 0,
-              aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9, 2);
-          if (!var25) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9,
-                2);
-          }
-
-          this.anInt1142 = super.anInt29;
-          this.anInt1143 = super.anInt30;
-          this.anInt1145 = 2;
-          this.anInt1144 = 0;
-          if (var5 == 662) {
-            anInt1151 += this.anInt1056;
-            if (anInt1151 >= 118) {
-              this.aBuffer_843.writeOpcode(41);
-              this.aBuffer_843.writeInt(0);
-            }
-
-            this.aBuffer_843.writeOpcode(117);
-          }
-
-          if (var5 == 139) {
-            if ((var3 & 3) == 0) {
-              ++anInt1195;
-            }
-
-            if (anInt1195 >= 123) {
-              this.aBuffer_843.writeOpcode(25);
-              this.aBuffer_843.writeInt(0);
-            }
-
-            this.aBuffer_843.writeOpcode(247);
-          }
-
-          if (var5 == 224) {
-            anInt880 += var4;
-            if (anInt880 >= 75) {
-              this.aBuffer_843.writeOpcode(0);
-              this.aBuffer_843.writeByte(19);
-            }
-
-            this.aBuffer_843.writeOpcode(62);
-          }
-
-          if (var5 == 617) {
-            this.aBuffer_843.writeOpcode(108);
-          }
-
-          if (var5 == 778) {
-            this.aBuffer_843.writeOpcode(169);
-          }
-
-          this.aBuffer_843.writeShort(var3 + this.anInt1055);
-          this.aBuffer_843.writeShort(var4 + this.anInt1056);
-          this.aBuffer_843.writeShort(var6);
-        }
-
-        if (var5 == 1071) {
-          this.method51(var4, 74, var3, 127, var6);
-        }
-
-        if (var5 == 507 || var5 == 957) {
-          var14 = this.aStringArray1114[var2];
-          var8 = var14.indexOf("@whi@");
-          if (var8 != -1) {
-            var14 = var14.substring(var8 + 5).trim();
-            var21 = Statics.method551(131, Statics.method548(0, Statics.method547(var14)));
-            boolean var10 = false;
-
-            for (var11 = 0; var11 < this.anInt1121; ++var11) {
-              Class44_Sub3_Sub4_Sub6_Sub1 var26 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[this.anIntArray1122[var11]];
-              if (var26 != null && var26.aString1657 != null && var26.aString1657.equalsIgnoreCase(
-                  var21)) {
-                this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-                    var26.anIntArray1649[0], 1, 1, 0,
-                    aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-                    var26.anIntArray1650[0], (byte) 9, 2);
-                if (var5 == 507) {
-                  anInt1052 += var6;
-                  if (anInt1052 >= 66) {
-                    this.aBuffer_843.writeOpcode(235);
-                    this.aBuffer_843.writeByte(154);
-                  }
-
-                  this.aBuffer_843.writeOpcode(98);
-                }
-
-                if (var5 == 957) {
-                  ++anInt900;
-                  if (anInt900 >= 52) {
-                    this.aBuffer_843.writeOpcode(80);
-                    this.aBuffer_843.writeByte(131);
-                  }
-
-                  this.aBuffer_843.writeOpcode(109);
-                }
-
-                this.aBuffer_843.writeShort(this.anIntArray1122[var11]);
-                var10 = true;
-                break;
-              }
-            }
-
-            if (!var10) {
-              this.method49(-476, 0, "", "Unable to find " + var21);
-            }
-          }
-        }
-
-        if (var5 == 131) {
-          var15 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var6];
-          if (var15 != null) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
-                var15.anIntArray1649[0], 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
-                var15.anIntArray1650[0], (byte) 9, 2);
-            this.anInt1142 = super.anInt29;
-            this.anInt1143 = super.anInt30;
-            this.anInt1145 = 2;
-            this.anInt1144 = 0;
-            this.aBuffer_843.writeOpcode(240);
-            this.aBuffer_843.writeShort(var6);
-            this.aBuffer_843.writeShort(this.anInt1197);
-          }
-        }
-
-        if (var5 == 398) {
-          this.aBuffer_843.writeOpcode(136);
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(var3);
-          this.aBuffer_843.writeShort(var4);
-          this.aBuffer_843.writeShort(this.anInt814);
-          this.aBuffer_843.writeShort(this.anInt812);
-          this.aBuffer_843.writeShort(this.anInt813);
-          this.anInt847 = 0;
-          this.anInt848 = var4;
-          this.anInt849 = var3;
-          this.anInt850 = 2;
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1037) {
-            this.anInt850 = 1;
-          }
-
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1011) {
-            this.anInt850 = 3;
-          }
-        }
-
-        if (var5 == 737) {
-          this.method45();
-        }
-
-        if (var5 == 694 || var5 == 962 || var5 == 795 || var5 == 681 || var5 == 100) {
-          if (var5 == 681) {
-            ++anInt1028;
-            if (anInt1028 >= 116) {
-              this.aBuffer_843.writeOpcode(24);
-              this.aBuffer_843.writeMedium(13018169);
-            }
-
-            this.aBuffer_843.writeOpcode(216);
-          }
-
-          if (var5 == 100) {
-            this.aBuffer_843.writeOpcode(42);
-          }
-
-          if (var5 == 694) {
-            this.aBuffer_843.writeOpcode(185);
-          }
-
-          if (var5 == 962) {
-            this.aBuffer_843.writeOpcode(2);
-          }
-
-          if (var5 == 795) {
-            this.aBuffer_843.writeOpcode(123);
-          }
-
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(var3);
-          this.aBuffer_843.writeShort(var4);
-          this.anInt847 = 0;
-          this.anInt848 = var4;
-          this.anInt849 = var3;
-          this.anInt850 = 2;
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1037) {
-            this.anInt850 = 1;
-          }
-
-          if (Class5.aClass5Array103[var4].anInt109 == this.anInt1011) {
-            this.anInt850 = 3;
-          }
-        }
-
-        if (var5 == 357) {
-          this.method51(var4, 74, var3, 157, var6);
-        }
-
-        if (var5 == 1152) {
-          var17 = Class14.method220(var6);
-          if (var17.aByteArray328 != null) {
-            var19 = new String(var17.aByteArray328);
-          } else {
-            var19 = "It's a " + var17.aString327 + ".";
-          }
-
-          this.method49(-476, 0, "", var19);
-        }
-
-        if (var5 == 370) {
-          var25 = this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 0, 0, 0,
-              aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9, 2);
-          if (!var25) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9,
-                2);
-          }
-
-          this.anInt1142 = super.anInt29;
-          this.anInt1143 = super.anInt30;
-          this.anInt1145 = 2;
-          this.anInt1144 = 0;
-          this.aBuffer_843.writeOpcode(91);
-          this.aBuffer_843.writeShort(var3 + this.anInt1055);
-          this.aBuffer_843.writeShort(var4 + this.anInt1056);
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(this.anInt1197);
-        }
-
-        if (var5 == 899 && this.method51(var4, 74, var3, 213, var6)) {
-          this.aBuffer_843.writeShort(this.anInt1197);
-        }
-
-        if (var5 == 625) {
-          this.method51(var4, 74, var3, 215, var6);
-        }
-
-        if (var5 == 111) {
-          var25 = this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 0, 0, 0,
-              aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9, 2);
-          if (!var25) {
-            this.method39(aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var3, 1, 1, 0,
-                aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, var4, (byte) 9,
-                2);
-          }
-
-          this.anInt1142 = super.anInt29;
-          this.anInt1143 = super.anInt30;
-          this.anInt1145 = 2;
-          this.anInt1144 = 0;
-          this.aBuffer_843.writeOpcode(39);
-          this.aBuffer_843.writeShort(var3 + this.anInt1055);
-          this.aBuffer_843.writeShort(var4 + this.anInt1056);
-          this.aBuffer_843.writeShort(var6);
-          this.aBuffer_843.writeShort(this.anInt814);
-          this.aBuffer_843.writeShort(this.anInt812);
-          this.aBuffer_843.writeShort(this.anInt813);
-        }
-
-        if (var5 == 274) {
-          var16 = Class5.aClass5Array103[var4];
-          this.anInt1196 = 1;
-          this.anInt1197 = var4;
-          this.anInt1198 = var16.anInt163;
-          this.anInt811 = 0;
-          this.aBoolean928 = true;
-          var19 = var16.aString161;
-          if (var19.contains(" ")) {
-            var19 = var19.substring(0, var19.indexOf(" "));
-          }
-
-          var21 = var16.aString161;
-          if (var21.contains(" ")) {
-            var21 = var21.substring(var21.indexOf(" ") + 1);
-          }
-
-          this.aString1199 = var19 + " " + var16.aString162 + " " + var21;
-          if (this.anInt1198 == 16) {
-            this.aBoolean928 = true;
-            this.anInt1013 = 3;
-            this.aBoolean841 = true;
-          }
-
-        } else {
-          if (var5 == 225) {
-            this.aBuffer_843.writeOpcode(9);
-            this.aBuffer_843.writeShort(var4);
-            var16 = Class5.aClass5Array103[var4];
-            if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
-              var8 = var16.anIntArrayArray118[0][1];
-              if (var16.anIntArray120[0] != this.anIntArray1107[var8]) {
-                this.anIntArray1107[var8] = var16.anIntArray120[0];
-                this.method40(false, var8);
-                this.aBoolean928 = true;
-              }
-            }
-          }
-
-          this.anInt811 = 0;
-          this.anInt1196 = 0;
-          this.aBoolean928 = true;
-        }
-      }
-    }
-  }
-
   public void despawnGameObject(int var1, int var2, int var3, int var4, boolean var5, int var6,
       int var7, int var8) {
     if (var3 >= 1 && var8 >= 1 && var3 <= 102 && var8 <= 102) {
-      if (isLowMemory && var7 != this.clientPlane) {
+      if (isLowMemory && var7 != this.plane) {
         return;
       }
 
@@ -6234,7 +5514,7 @@ public class Client extends Game {
                     this.anInt962 = var21;
                     this.anInt963 = var12.anInt108;
                     if (var12.anIntArray104[var21] > 0) {
-                      Class14 var18 = Class14.method220(var12.anIntArray104[var21] - 1);
+                      ItemDefinition var18 = ItemDefinition.get(var12.anIntArray104[var21] - 1);
                       if (this.anInt811 == 1 && var12.aBoolean131) {
                         if (var12.anInt108 != this.anInt813 || var21 != this.anInt812) {
                           this.aStringArray1114[this.anInt980] =
@@ -6617,22 +5897,22 @@ public class Client extends Game {
 
   }
 
-  public void method52(int var1, int var2) {
-    Class28 var3 = this.aClass28ArrayArrayArray816[this.clientPlane][var1][var2];
+  public void spawnGroundItem(int var1, int var2) {
+    Tile var3 = this.tiles[this.plane][var1][var2];
     if (var3 == null) {
-      this.worldController.method299(this.clientPlane, var1, var2);
+      this.worldController.method299(this.plane, var1, var2);
     } else {
       int var4 = -99999999;
-      Class44_Sub3_Sub4_Sub2 var5 = null;
+      Item var5 = null;
 
-      Class44_Sub3_Sub4_Sub2 var6;
+      Item var6;
       int var8;
-      for (var6 = (Class44_Sub3_Sub4_Sub2) var3.peekFront(); var6 != null;
-          var6 = (Class44_Sub3_Sub4_Sub2) var3.getPrevious(this.aByte958)) {
-        Class14 var7 = Class14.method220(var6.anInt1480);
+      for (var6 = (Item) var3.peekFront(); var6 != null;
+          var6 = (Item) var3.getPrevious(this.aByte958)) {
+        ItemDefinition var7 = ItemDefinition.get(var6.id);
         var8 = var7.anInt339;
         if (var7.aBoolean338) {
-          var8 *= var6.anInt1481 + 1;
+          var8 *= var6.quantity + 1;
         }
 
         if (var8 > var4) {
@@ -6643,23 +5923,23 @@ public class Client extends Game {
 
       var3.method257(false, var5);
       var6 = null;
-      Class44_Sub3_Sub4_Sub2 var9 = null;
+      Item var9 = null;
 
-      for (Class44_Sub3_Sub4_Sub2 var10 = (Class44_Sub3_Sub4_Sub2) var3.peekFront(); var10 != null;
-          var10 = (Class44_Sub3_Sub4_Sub2) var3.getPrevious(this.aByte958)) {
-        if (var10.anInt1480 != var5.anInt1480 && var6 == null) {
+      for (Item var10 = (Item) var3.peekFront(); var10 != null;
+          var10 = (Item) var3.getPrevious(this.aByte958)) {
+        if (var10.id != var5.id && var6 == null) {
           var6 = var10;
         }
 
-        if (var10.anInt1480 != var5.anInt1480 && var10.anInt1480 != var6.anInt1480
+        if (var10.id != var5.id && var10.id != var6.id
             && var9 == null) {
           var9 = var10;
         }
       }
 
       var8 = (var2 << 7) + var1 + 1610612736;
-      this.worldController.method285(var2, var8, this.clientPlane, var6, var5, (byte) 5, var1,
-          this.method50(var1 * 128 + 64, var2 * 128 + 64, 0, this.clientPlane), var9);
+      this.worldController.method285(var2, var8, this.plane, var6, var5, (byte) 5, var1,
+          this.method50(var1 * 128 + 64, var2 * 128 + 64, 0, this.plane), var9);
     }
   }
 
@@ -6717,7 +5997,7 @@ public class Client extends Game {
     this.anIntArray839[var17] = var1;
     boolean var19 = false;
     int var20 = this.anIntArray838.length;
-    int[][] var21 = this.collisionMap[this.clientPlane].anIntArrayArray411;
+    int[][] var21 = this.collisionMap[this.plane].anIntArrayArray411;
 
     int var22;
     while (var18 != var28) {
@@ -6730,20 +6010,20 @@ public class Client extends Game {
       }
 
       if (var7 != 0) {
-        if ((var7 < 5 || var7 == 10) && this.collisionMap[this.clientPlane].method240(false, var15,
+        if ((var7 < 5 || var7 == 10) && this.collisionMap[this.plane].method240(false, var15,
             var9, var2, var10, var7 - 1, var16)) {
           var19 = true;
           break;
         }
 
-        if (var7 < 10 && this.collisionMap[this.clientPlane].method241(var2, var10, var15, var7 - 1,
+        if (var7 < 10 && this.collisionMap[this.plane].method241(var2, var10, var15, var7 - 1,
             var9, var16)) {
           var19 = true;
           break;
         }
       }
 
-      if (var3 != 0 && var4 != 0 && this.collisionMap[this.clientPlane].method242(var2, var3, var5,
+      if (var3 != 0 && var4 != 0 && this.collisionMap[this.plane].method242(var2, var3, var5,
           1, var10, var16, var15, var4)) {
         var19 = true;
         break;
@@ -7082,12 +6362,12 @@ public class Client extends Game {
           for (var14 = 0; var14 < 4; ++var14) {
             for (var9 = 0; var9 < 104; ++var9) {
               for (int var10 = 0; var10 < 104; ++var10) {
-                this.aClass28ArrayArrayArray816[var14][var9][var10] = null;
+                this.tiles[var14][var9][var10] = null;
               }
             }
           }
 
-          this.pendingObjectSpawns = new Class28(-822);
+          this.pendingObjectSpawns = new Tile(-822);
           this.anInt1116 = 0;
           this.anInt1115 = 0;
           this.anInt1110 = -1;
@@ -7834,7 +7114,7 @@ public class Client extends Game {
 
     for (var6 = 0; var6 < 104; ++var6) {
       for (var7 = 0; var7 < 104; ++var7) {
-        int var8 = this.worldController.getGroundDecorationHash(this.clientPlane, var6, var7);
+        int var8 = this.worldController.getGroundDecorationHash(this.plane, var6, var7);
         if (var8 != 0) {
           var8 = var8 >> 14 & 32767;
           int var9 = GameObjectDefinition.get(var8).anInt238;
@@ -7845,7 +7125,7 @@ public class Client extends Game {
                 && var9 != 48) {
               byte var12 = 104;
               byte var13 = 104;
-              int[][] var14 = this.collisionMap[this.clientPlane].anIntArrayArray411;
+              int[][] var14 = this.collisionMap[this.plane].anIntArrayArray411;
 
               for (int var15 = 0; var15 < 10; ++var15) {
                 int var16 = (int) (Math.random() * 4.0D);
@@ -8141,8 +7421,8 @@ public class Client extends Game {
       int var3 = this.anInt822 >> 7;
       int var4 = aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599 >> 7;
       int var5 = aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 >> 7;
-      if ((this.tileFlags[this.clientPlane][var2][var3] & 4) != 0) {
-        var1 = this.clientPlane;
+      if ((this.tileFlags[this.plane][var2][var3] & 4) != 0) {
+        var1 = this.plane;
       }
 
       int var6;
@@ -8172,8 +7452,8 @@ public class Client extends Game {
             --var2;
           }
 
-          if ((this.tileFlags[this.clientPlane][var2][var3] & 4) != 0) {
-            var1 = this.clientPlane;
+          if ((this.tileFlags[this.plane][var2][var3] & 4) != 0) {
+            var1 = this.plane;
           }
 
           var9 += var8;
@@ -8185,8 +7465,8 @@ public class Client extends Game {
               --var3;
             }
 
-            if ((this.tileFlags[this.clientPlane][var2][var3] & 4) != 0) {
-              var1 = this.clientPlane;
+            if ((this.tileFlags[this.plane][var2][var3] & 4) != 0) {
+              var1 = this.plane;
             }
           }
         }
@@ -8201,8 +7481,8 @@ public class Client extends Game {
             --var3;
           }
 
-          if ((this.tileFlags[this.clientPlane][var2][var3] & 4) != 0) {
-            var1 = this.clientPlane;
+          if ((this.tileFlags[this.plane][var2][var3] & 4) != 0) {
+            var1 = this.plane;
           }
 
           var9 += var8;
@@ -8214,28 +7494,28 @@ public class Client extends Game {
               --var2;
             }
 
-            if ((this.tileFlags[this.clientPlane][var2][var3] & 4) != 0) {
-              var1 = this.clientPlane;
+            if ((this.tileFlags[this.plane][var2][var3] & 4) != 0) {
+              var1 = this.plane;
             }
           }
         }
       }
     }
 
-    if ((this.tileFlags[this.clientPlane][aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599 >> 7][
+    if ((this.tileFlags[this.plane][aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599 >> 7][
         aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 >> 7] & 4) != 0) {
-      var1 = this.clientPlane;
+      var1 = this.plane;
     }
 
     return var1;
   }
 
   public int method121(int var1) {
-    int var2 = this.method50(this.anInt820, this.anInt822, 0, this.clientPlane);
+    int var2 = this.method50(this.anInt820, this.anInt822, 0, this.plane);
     this.incomingPacketSize += var1;
     return var2 - this.anInt821 < 800
-        && (this.tileFlags[this.clientPlane][this.anInt820 >> 7][this.anInt822 >> 7] & 4) != 0
-        ? this.clientPlane : 3;
+        && (this.tileFlags[this.plane][this.anInt820 >> 7][this.anInt822 >> 7] & 4) != 0
+        ? this.plane : 3;
   }
 
   @ObfuscatedSignature(
@@ -8632,7 +7912,7 @@ public class Client extends Game {
       int var6;
       if (var1.anInt1621 >= 32768) {
         var6 = var1.anInt1621 - 32768;
-        if (var6 == this.anInt947) {
+        if (var6 == this.playerIndex) {
           var6 = this.anInt1119;
         }
 
@@ -9093,7 +8373,7 @@ public class Client extends Game {
 
   public boolean method51(int var1, int var2, int var3, int var4, int var5) {
     int var6 = var5 >> 14 & 32767;
-    int var7 = this.worldController.getConfig(this.clientPlane, var3, var1, var5);
+    int var7 = this.worldController.getConfig(this.plane, var3, var1, var5);
     if (var7 == -1) {
       return false;
     } else {
@@ -9689,12 +8969,12 @@ public class Client extends Game {
 
   public void method67(int var1, int var2, Buffer var3) {
     var2 = 58 / var2;
-    int var4;
-    int var5;
-    int var6;
-    int var7;
-    int var8;
-    int var9;
+    int param0;
+    int param1;
+    int param2;
+    int param3;
+    int param4;
+    int param5;
     int var10;
     int var11;
     if (var1 != 138 && var1 != 173) {
@@ -9703,38 +8983,38 @@ public class Client extends Game {
       int var14;
       int var35;
       if (var1 == 48) {
-        var4 = var3.readUByte();
-        var5 = (var4 >> 4 & 7) + this.anInt918;
-        var6 = (var4 & 7) + this.anInt919;
-        var7 = var3.readUByte();
-        var8 = var7 >> 2;
-        var9 = var7 & 3;
-        var10 = this.anIntArray973[var8];
+        param0 = var3.readUByte();
+        param1 = (param0 >> 4 & 7) + this.baseX;
+        param2 = (param0 & 7) + this.baseY;
+        param3 = var3.readUByte();
+        param4 = param3 >> 2;
+        param5 = param3 & 3;
+        var10 = this.anIntArray973[param4];
         var11 = var3.readUShort();
-        if (var5 >= 0 && var6 >= 0 && var5 < 103 && var6 < 103) {
-          var12 = this.anIntArrayArrayArray957[this.clientPlane][var5][var6];
-          var13 = this.anIntArrayArrayArray957[this.clientPlane][var5 + 1][var6];
-          var14 = this.anIntArrayArrayArray957[this.clientPlane][var5 + 1][var6 + 1];
-          var35 = this.anIntArrayArrayArray957[this.clientPlane][var5][var6 + 1];
+        if (param1 >= 0 && param2 >= 0 && param1 < 103 && param2 < 103) {
+          var12 = this.anIntArrayArrayArray957[this.plane][param1][param2];
+          var13 = this.anIntArrayArrayArray957[this.plane][param1 + 1][param2];
+          var14 = this.anIntArrayArrayArray957[this.plane][param1 + 1][param2 + 1];
+          var35 = this.anIntArrayArrayArray957[this.plane][param1][param2 + 1];
           if (var10 == 0) {
-            Class33 var37 = this.worldController.method300((byte) -31, var6, this.clientPlane,
-                var5);
+            Class33 var37 = this.worldController.method300((byte) -31, param2, this.plane,
+                param1);
             if (var37 != null) {
               int var41 = var37.anInt567 >> 14 & 32767;
-              if (var8 == 2) {
-                var37.aRenderable_565 = new GameObject(2, var9 + 4, var11, var41, var14,
+              if (param4 == 2) {
+                var37.aRenderable_565 = new GameObject(2, param5 + 4, var11, var41, var14,
                     this.anInt907, false, var13, var35, var12);
-                var37.aRenderable_566 = new GameObject(2, var9 + 1 & 3, var11, var41, var14,
+                var37.aRenderable_566 = new GameObject(2, param5 + 1 & 3, var11, var41, var14,
                     this.anInt907, false, var13, var35, var12);
               } else {
-                var37.aRenderable_565 = new GameObject(var8, var9, var11, var41, var14,
+                var37.aRenderable_565 = new GameObject(param4, param5, var11, var41, var14,
                     this.anInt907, false, var13, var35, var12);
               }
             }
           }
 
           if (var10 == 1) {
-            Class13 var38 = this.worldController.method301(var5, (byte) 1, this.clientPlane, var6);
+            Class13 var38 = this.worldController.method301(param1, (byte) 1, this.plane, param2);
             if (var38 != null) {
               var38.aRenderable_312 = new GameObject(4, 0, var11, var38.anInt313 >> 14 & 32767,
                   var14, this.anInt907, false, var13, var35, var12);
@@ -9742,78 +9022,79 @@ public class Client extends Game {
           }
 
           if (var10 == 2) {
-            Class30 var39 = this.worldController.method302(var5, this.clientPlane, this.aBoolean881,
-                var6);
-            if (var8 == 11) {
-              var8 = 10;
+            Class30 var39 = this.worldController.method302(param1, this.plane, this.aBoolean881,
+                param2);
+            if (param4 == 11) {
+              param4 = 10;
             }
 
             if (var39 != null) {
-              var39.aRenderable_532 = new GameObject(var8, var9, var11,
+              var39.aRenderable_532 = new GameObject(param4, param5, var11,
                   var39.anInt540 >> 14 & 32767, var14, this.anInt907, false, var13, var35, var12);
             }
           }
 
           if (var10 == 3) {
-            Class17 var42 = this.worldController.method303(var5, this.clientPlane, var6);
+            Class17 var42 = this.worldController.method303(param1, this.plane, param2);
             if (var42 != null) {
-              var42.aRenderable_397 = new GameObject(22, var9, var11, var42.anInt398 >> 14 & 32767,
+              var42.aRenderable_397 = new GameObject(22, param5, var11, var42.anInt398 >> 14 & 32767,
                   var14, this.anInt907, false, var13, var35, var12);
             }
           }
         }
 
       } else {
-        Class44_Sub3_Sub4_Sub2 var31;
+        Item item;
         if (var1 == 81) {
-          var4 = var3.readUByte();
-          var5 = (var4 >> 4 & 7) + this.anInt918;
-          var6 = (var4 & 7) + this.anInt919;
-          var7 = var3.readUShort();
-          var8 = var3.readUShort();
-          if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-            var31 = new Class44_Sub3_Sub4_Sub2();
-            var31.anInt1480 = var7;
-            var31.anInt1481 = var8;
-            if (this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6] == null) {
-              this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6] = new Class28(-822);
+
+          int x = var3.readUShort() - client.baseX;
+          int y = var3.readUShort() - client.baseY;
+          param3 = var3.readUShort();               //id
+          param4 = var3.readUShort();               //quantity
+          System.out.println("spawning item: " + param3 + " bx: " + client.baseX + " by: " + client.baseY + " x:" + x + " y:" + y);
+          if (x >= 0 && y >= 0 && x < 104 && y < 104) {
+            item = new Item();
+            item.id = param3;
+            item.quantity = param4;
+            if (this.tiles[this.plane][x][y] == null) {
+              this.tiles[this.plane][x][y] = new Tile(-822);
             }
 
-            this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6].method256(var31);
-            this.method52(var5, var6);
+            this.tiles[this.plane][x][y].method256(item);
+            this.spawnGroundItem(x, y);
           }
 
         } else if (var1 == 52) {
-          var4 = var3.readUByte();
-          var5 = (var4 >> 4 & 7) + this.anInt918;
-          var6 = (var4 & 7) + this.anInt919;
-          var7 = var3.readUShort();
-          if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-            Class28 var29 = this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6];
+          param0 = var3.readUByte();
+          param1 = (param0 >> 4 & 7) + this.baseX;
+          param2 = (param0 & 7) + this.baseY;
+          param3 = var3.readUShort();
+          if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104) {
+            Tile var29 = this.tiles[this.plane][param1][param2];
             if (var29 != null) {
-              for (var31 = (Class44_Sub3_Sub4_Sub2) var29.peekFront(); var31 != null;
-                  var31 = (Class44_Sub3_Sub4_Sub2) var29.getPrevious(this.aByte958)) {
-                if ((var7 & 32767) == var31.anInt1480) {
-                  var31.removeNode();
+              for (item = (Item) var29.peekFront(); item != null;
+                  item = (Item) var29.getPrevious(this.aByte958)) {
+                if ((param3 & 32767) == item.id) {
+                  item.removeNode();
                   break;
                 }
               }
 
               if (var29.peekFront() == null) {
-                this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6] = null;
+                this.tiles[this.plane][param1][param2] = null;
               }
 
-              this.method52(var5, var6);
+              this.spawnGroundItem(param1, param2);
             }
           }
 
         } else if (var1 == 107) {
-          var4 = var3.readUByte();
-          var5 = (var4 >> 4 & 7) + this.anInt918;
-          var6 = (var4 & 7) + this.anInt919;
-          var7 = var5 + var3.readByte();
-          var8 = var6 + var3.readByte();
-          var9 = var3.readShort();
+          param0 = var3.readUByte();
+          param1 = (param0 >> 4 & 7) + this.baseX;
+          param2 = (param0 & 7) + this.baseY;
+          param3 = param1 + var3.readByte();
+          param4 = param2 + var3.readByte();
+          param5 = var3.readShort();
           var10 = var3.readUShort();
           var11 = var3.readUByte() * 4;
           var12 = var3.readUByte() * 4;
@@ -9821,64 +9102,65 @@ public class Client extends Game {
           var14 = var3.readUShort();
           var35 = var3.readUByte();
           int var36 = var3.readUByte();
-          if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104 && var7 >= 0 && var8 >= 0
-              && var7 < 104 && var8 < 104) {
-            var5 = var5 * 128 + 64;
-            var6 = var6 * 128 + 64;
-            var7 = var7 * 128 + 64;
-            var8 = var8 * 128 + 64;
-            Class44_Sub3_Sub4_Sub3 var40 = new Class44_Sub3_Sub4_Sub3(var5, var36, var12,
-                var14 + tick, var35, var13 + tick, this.clientPlane, var10, this.aBoolean930,
-                this.method50(var5, var6, 0, this.clientPlane) - var11, var9, var6);
-            var40.method497(var13 + tick, this.method50(var7, var8, 0, this.clientPlane) - var12,
-                var7, (byte) 7, var8);
+          if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104 && param3 >= 0 && param4 >= 0
+              && param3 < 104 && param4 < 104) {
+            param1 = param1 * 128 + 64;
+            param2 = param2 * 128 + 64;
+            param3 = param3 * 128 + 64;
+            param4 = param4 * 128 + 64;
+            Class44_Sub3_Sub4_Sub3 var40 = new Class44_Sub3_Sub4_Sub3(param1, var36, var12,
+                var14 + tick, var35, var13 + tick, this.plane, var10, this.aBoolean930,
+                this.method50(param1, param2, 0, this.plane) - var11, param5, param2);
+            var40.method497(var13 + tick, this.method50(param3, param4, 0, this.plane) - var12,
+                param3, (byte) 7, param4);
             this.aClass28_1156.method256(var40);
           }
 
         } else if (var1 == 85) {
-          var4 = var3.readUByte();
-          var5 = (var4 >> 4 & 7) + this.anInt918;
-          var6 = (var4 & 7) + this.anInt919;
-          var7 = var3.readUShort();
-          var8 = var3.readUByte();
-          var9 = var3.readUShort();
-          if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-            var5 = var5 * 128 + 64;
-            var6 = var6 * 128 + 64;
-            Class44_Sub3_Sub4_Sub5 var33 = new Class44_Sub3_Sub4_Sub5(var9, var6, var5,
-                this.clientPlane, 0, this.method50(var5, var6, 0, this.clientPlane) - var8, var7,
+          param0 = var3.readUByte();
+          param1 = (param0 >> 4 & 7) + this.baseX;
+          param2 = (param0 & 7) + this.baseY;
+          param3 = var3.readUShort();
+          param4 = var3.readUByte();
+          param5 = var3.readUShort();
+          if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104) {
+            param1 = param1 * 128 + 64;
+            param2 = param2 * 128 + 64;
+            Class44_Sub3_Sub4_Sub5 var33 = new Class44_Sub3_Sub4_Sub5(param5, param2, param1,
+                this.plane, 0, this.method50(param1, param2, 0, this.plane) - param4, param3,
                 tick);
             this.aClass28_924.method256(var33);
           }
 
-        } else if (var1 == 219) {
-          var4 = var3.readUByte();
-          var5 = (var4 >> 4 & 7) + this.anInt918;
-          var6 = (var4 & 7) + this.anInt919;
-          var7 = var3.readUShort();
-          var8 = var3.readUShort();
-          var9 = var3.readUShort();
-          if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104 && var9 != this.anInt947) {
-            Class44_Sub3_Sub4_Sub2 var32 = new Class44_Sub3_Sub4_Sub2();
-            var32.anInt1480 = var7;
-            var32.anInt1481 = var8;
-            if (this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6] == null) {
-              this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6] = new Class28(-822);
+
+        } else if (var1 == 219) {    //Spawns Item for everyone excluding player with matching index
+          param0 = var3.readUByte();  //Packed Offset
+          param1 = (param0 >> 4 & 7) + this.baseX;
+          param2 = (param0 & 7) + this.baseY;
+          param3 = var3.readUShort(); //ID
+          param4 = var3.readUShort(); //Quantity
+          param5 = var3.readUShort(); //Player Index
+          if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104 && param5 != this.playerIndex) {
+            item = new Item();
+            item.id = param3;
+            item.quantity = param4;
+            if (this.tiles[this.plane][param1][param2] == null) {
+              this.tiles[this.plane][param1][param2] = new Tile(-822);
             }
 
-            this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6].method256(var32);
-            this.method52(var5, var6);
+            this.tiles[this.plane][param1][param2].method256(item);
+            this.spawnGroundItem(param1, param2);
           }
 
         } else {
           if (var1 == 176) {
-            var4 = var3.readUByte();
-            var5 = (var4 >> 4 & 7) + this.anInt918;
-            var6 = (var4 & 7) + this.anInt919;
-            var7 = var3.readUByte();
-            var8 = var7 >> 2;
-            var9 = var7 & 3;
-            var10 = this.anIntArray973[var8];
+            param0 = var3.readUByte();
+            param1 = (param0 >> 4 & 7) + this.baseX;
+            param2 = (param0 & 7) + this.baseY;
+            param3 = var3.readUByte();
+            param4 = param3 >> 2;
+            param5 = param3 & 3;
+            var10 = this.anIntArray973[param4];
             var11 = var3.readUShort();
             var12 = var3.readUShort();
             var13 = var3.readUShort();
@@ -9888,7 +9170,7 @@ public class Client extends Game {
             byte var17 = var3.readByte();
             byte var18 = var3.readByte();
             Class44_Sub3_Sub4_Sub6_Sub1 var19;
-            if (var14 == this.anInt947) {
+            if (var14 == this.playerIndex) {
               var19 = aClass44_Sub3_Sub4_Sub6_Sub1_1252;
             } else {
               var19 = this.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[var14];
@@ -9896,28 +9178,28 @@ public class Client extends Game {
 
             if (var19 != null) {
               GameObjectDefinition var20 = GameObjectDefinition.get(var11);
-              int var21 = this.anIntArrayArrayArray957[this.clientPlane][var5][var6];
-              int var22 = this.anIntArrayArrayArray957[this.clientPlane][var5 + 1][var6];
-              int var23 = this.anIntArrayArrayArray957[this.clientPlane][var5 + 1][var6 + 1];
-              int var24 = this.anIntArrayArrayArray957[this.clientPlane][var5][var6 + 1];
-              Model var25 = var20.getModel(var8, var9, var21, var22, var23, var24, -1);
+              int var21 = this.anIntArrayArrayArray957[this.plane][param1][param2];
+              int var22 = this.anIntArrayArrayArray957[this.plane][param1 + 1][param2];
+              int var23 = this.anIntArrayArrayArray957[this.plane][param1 + 1][param2 + 1];
+              int var24 = this.anIntArrayArrayArray957[this.plane][param1][param2 + 1];
+              Model var25 = var20.getModel(param4, param5, var21, var22, var23, var24, -1);
               if (var25 != null) {
-                this.method82(var6, 4823, var13 + 1, -1, this.clientPlane, 0, var5, var10, 0,
+                this.method82(param2, 4823, var13 + 1, -1, this.plane, 0, param1, var10, 0,
                     var12 + 1);
                 var19.anInt1667 = var12 + tick;
                 var19.anInt1668 = var13 + tick;
                 var19.aModel_1672 = var25;
                 int var26 = var20.sizeX;
                 int var27 = var20.sizeY;
-                if (var9 == 1 || var9 == 3) {
+                if (param5 == 1 || param5 == 3) {
                   var26 = var20.sizeY;
                   var27 = var20.sizeX;
                 }
 
-                var19.anInt1669 = var26 * 64 + var5 * 128;
-                var19.anInt1671 = var27 * 64 + var6 * 128;
+                var19.anInt1669 = var26 * 64 + param1 * 128;
+                var19.anInt1671 = var27 * 64 + param2 * 128;
                 var19.anInt1670 = this.method50(var19.anInt1669, var19.anInt1671, 0,
-                    this.clientPlane);
+                    this.plane);
                 byte var28;
                 if (var15 > var17) {
                   var28 = var15;
@@ -9931,34 +9213,34 @@ public class Client extends Game {
                   var18 = var28;
                 }
 
-                var19.anInt1673 = var5 + var15;
-                var19.anInt1675 = var5 + var17;
-                var19.anInt1674 = var6 + var16;
-                var19.anInt1676 = var6 + var18;
+                var19.anInt1673 = param1 + var15;
+                var19.anInt1675 = param1 + var17;
+                var19.anInt1674 = param2 + var16;
+                var19.anInt1676 = param2 + var18;
               }
             }
           }
 
           if (var1 == 95) {
-            var4 = var3.readUByte();
-            var5 = (var4 >> 4 & 7) + this.anInt918;
-            var6 = (var4 & 7) + this.anInt919;
-            var7 = var3.readUShort();
-            var8 = var3.readUShort();
-            var9 = var3.readUShort();
-            if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-              Class28 var30 = this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6];
+            param0 = var3.readUByte();
+            param1 = (param0 >> 4 & 7) + this.baseX;
+            param2 = (param0 & 7) + this.baseY;
+            param3 = var3.readUShort();
+            param4 = var3.readUShort();
+            param5 = var3.readUShort();
+            if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104) {
+              Tile var30 = this.tiles[this.plane][param1][param2];
               if (var30 != null) {
-                for (Class44_Sub3_Sub4_Sub2 var34 = (Class44_Sub3_Sub4_Sub2) var30.peekFront();
+                for (Item var34 = (Item) var30.peekFront();
                     var34 != null;
-                    var34 = (Class44_Sub3_Sub4_Sub2) var30.getPrevious(this.aByte958)) {
-                  if ((var7 & 32767) == var34.anInt1480 && var8 == var34.anInt1481) {
-                    var34.anInt1481 = var9;
+                    var34 = (Item) var30.getPrevious(this.aByte958)) {
+                  if ((param3 & 32767) == var34.id && param4 == var34.quantity) {
+                    var34.quantity = param5;
                     break;
                   }
                 }
 
-                this.method52(var5, var6);
+                this.spawnGroundItem(param1, param2);
               }
             }
           }
@@ -9966,21 +9248,21 @@ public class Client extends Game {
         }
       }
     } else {
-      var4 = var3.readUByte();
-      var5 = (var4 >> 4 & 7) + this.anInt918;
-      var6 = (var4 & 7) + this.anInt919;
-      var7 = var3.readUByte();
-      var8 = var7 >> 2;
-      var9 = var7 & 3;
-      var10 = this.anIntArray973[var8];
+      param0 = var3.readUByte();
+      param1 = (param0 >> 4 & 7) + this.baseX;
+      param2 = (param0 & 7) + this.baseY;
+      param3 = var3.readUByte();
+      param4 = param3 >> 2;
+      param5 = param3 & 3;
+      var10 = this.anIntArray973[param4];
       if (var1 == 173) {
         var11 = -1;
       } else {
         var11 = var3.readUShort();
       }
 
-      if (var5 >= 0 && var6 >= 0 && var5 < 104 && var6 < 104) {
-        this.method82(var6, 4823, -1, var11, this.clientPlane, var9, var5, var10, var8, 0);
+      if (param1 >= 0 && param2 >= 0 && param1 < 104 && param2 < 104) {
+        this.method82(param2, 4823, -1, var11, this.plane, param5, param1, var10, param4, 0);
       }
 
     }
@@ -10007,7 +9289,7 @@ public class Client extends Game {
           Class44_Sub3_Sub1_Sub1.method427(-42222, 0.6D);
         }
 
-        Class14.aClass39_365.method341();
+        ItemDefinition.aClass39_365.method341();
         this.aBoolean917 = true;
       }
 
@@ -10302,7 +9584,7 @@ public class Client extends Game {
         int var8;
         for (var5 = 0; var5 < 104; ++var5) {
           for (var6 = 0; var6 < 104; ++var6) {
-            Class28 var17 = this.aClass28ArrayArrayArray816[this.clientPlane][var5][var6];
+            Tile var17 = this.tiles[this.plane][var5][var6];
             if (var17 != null) {
               var8 = var5 * 4 + 2 - aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1599 / 32;
               int var9 = var6 * 4 + 2 - aClass44_Sub3_Sub4_Sub6_Sub1_1252.anInt1600 / 32;
@@ -10391,7 +9673,7 @@ public class Client extends Game {
 
   public void method42(int var1) {
     var1 = 15 / var1;
-    if (isLowMemory && this.loadingState == 2 && this.clientPlane != Class3.anInt68) {
+    if (isLowMemory && this.loadingState == 2 && this.plane != Class3.anInt68) {
       this.componentImageProducer.initDrawingArea();
       this.aClass44_Sub3_Sub1_Sub4_1076.method455(257, 151, 0, "Loading - please wait.");
       this.aClass44_Sub3_Sub1_Sub4_1076.method455(256, 150, 16777215, "Loading - please wait.");
@@ -10406,14 +9688,14 @@ public class Client extends Game {
         signlink.reporterror(
             this.aString1147 + " glcfb " + this.aLong1231 + "," + var2 + "," + isLowMemory + ","
                 + this.aClass45Array1225[0] + "," + this.aClass43_Sub1_1015.method393() + ","
-                + this.clientPlane + "," + this.anInt922 + "," + this.anInt923);
+                + this.plane + "," + this.anInt922 + "," + this.anInt923);
         this.aLong1127 = System.currentTimeMillis();
       }
     }
 
-    if (this.loadingState == 2 && this.clientPlane != this.anInt934) {
-      this.anInt934 = this.clientPlane;
-      this.method79(this.clientPlane);
+    if (this.loadingState == 2 && this.plane != this.anInt934) {
+      this.anInt934 = this.plane;
+      this.method79(this.plane);
     }
 
   }
@@ -10797,7 +10079,7 @@ public class Client extends Game {
             }
 
             if (var8 != -1) {
-              this.method60((byte) 6, var8);
+              Packets.handleClientPacket(this, (byte) 6, var8);
             }
 
             this.aBoolean851 = false;
@@ -10845,14 +10127,13 @@ public class Client extends Game {
           }
 
           if (var2 == 1 && this.anInt980 > 0) {
-            this.method60((byte) 6, this.anInt980 - 1);
+            Packets.handleClientPacket(this, (byte) 6, this.anInt980 - 1);
           }
 
           if (var2 == 2 && this.anInt980 > 0) {
             this.method95(0);
           }
         }
-
       }
     }
   }
@@ -11112,13 +10393,13 @@ public class Client extends Game {
 
       int var4 = this.anInt1021 >> 7;
       int var5 = this.anInt1022 >> 7;
-      int var6 = this.method50(this.anInt1021, this.anInt1022, 0, this.clientPlane);
+      int var6 = this.method50(this.anInt1021, this.anInt1022, 0, this.plane);
       int var7 = 0;
       int var8;
       if (var4 > 3 && var5 > 3 && var4 < 100 && var5 < 100) {
         for (var8 = var4 - 4; var8 <= var4 + 4; ++var8) {
           for (int var9 = var5 - 4; var9 <= var5 + 4; ++var9) {
-            int var10 = this.clientPlane;
+            int var10 = this.plane;
             if (var10 < 3 && (this.tileFlags[1][var8][var9] & 2) == 2) {
               ++var10;
             }
@@ -11164,7 +10445,7 @@ public class Client extends Game {
   public void method116() {
     int var1 = this.anInt869 * 128 + 64;
     int var2 = this.anInt870 * 128 + 64;
-    int var3 = this.method50(var1, var2, 0, this.clientPlane) - this.anInt871;
+    int var3 = this.method50(var1, var2, 0, this.plane) - this.anInt871;
     if (this.anInt820 < var1) {
       this.anInt820 += this.anInt872 + (var1 - this.anInt820) * this.anInt873 / 1000;
       if (this.anInt820 > var1) {
@@ -11209,7 +10490,7 @@ public class Client extends Game {
 
     var1 = this.anInt909 * 128 + 64;
     var2 = this.anInt910 * 128 + 64;
-    var3 = this.method50(var1, var2, 0, this.clientPlane) - this.anInt911;
+    var3 = this.method50(var1, var2, 0, this.plane) - this.anInt911;
     int var4 = var1 - this.anInt820;
     int var5 = var3 - this.anInt821;
     int var6 = var2 - this.anInt822;

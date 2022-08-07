@@ -14,8 +14,8 @@ public class Class43_Sub1 implements Runnable {
   public int[] anIntArray1281;
   public boolean aBoolean1282;
   public int anInt1286;
-  public final Class28 aClass28_1293;
-  public final Class28 aClass28_1292;
+  public final Tile aClass28_1293;
+  public final Tile aClass28_1292;
   public Client aClient1283;
   public Socket aSocket1297;
   public InputStream anInputStream1298;
@@ -24,7 +24,7 @@ public class Class43_Sub1 implements Runnable {
   public int anInt1268;
   public byte[] aByteArray1275;
   public boolean aBoolean1267;
-  public final Class28 aClass28_1289;
+  public final Tile aClass28_1289;
   public final int[][] anIntArrayArray1271;
   public int anInt1309;
   public int[] anIntArray1278;
@@ -34,7 +34,7 @@ public class Class43_Sub1 implements Runnable {
   public int[] anIntArray1279;
   public long aLong1308;
   public int anInt1274;
-  public final Class28 aClass28_1291;
+  public final Tile aClass28_1291;
   public OutputStream anOutputStream1299;
   public final byte aByte1269;
   public boolean aBoolean1285;
@@ -43,7 +43,7 @@ public class Class43_Sub1 implements Runnable {
   public int[] anIntArray1277;
   public final byte[][] aByteArrayArray1273;
   public int anInt1300;
-  public final Class28 aClass28_1290;
+  public final Tile aClass28_1290;
   public final int[][] anIntArrayArray1272;
   public Class44_Sub3_Sub3 aClass44_Sub3_Sub3_1301;
   public final byte[] aByteArray1305;
@@ -65,11 +65,11 @@ public class Class43_Sub1 implements Runnable {
     this.aCRC32_1284 = new CRC32();
     this.aBoolean1285 = false;
     this.aClass31_1288 = new Class31((byte) 8);
-    this.aClass28_1289 = new Class28(-822);
-    this.aClass28_1290 = new Class28(-822);
-    this.aClass28_1291 = new Class28(-822);
-    this.aClass28_1292 = new Class28(-822);
-    this.aClass28_1293 = new Class28(-822);
+    this.aClass28_1289 = new Tile(-822);
+    this.aClass28_1290 = new Tile(-822);
+    this.aClass28_1291 = new Tile(-822);
+    this.aClass28_1292 = new Tile(-822);
+    this.aClass28_1293 = new Tile(-822);
     this.loginScreenBottomText = "";
     this.aByteArray1304 = new byte[500];
     this.aByteArray1305 = new byte[65000];
@@ -384,7 +384,7 @@ public class Class43_Sub1 implements Runnable {
           }
 
           this.loginScreenBottomText =
-              "Loading extra files - " + this.anInt1295 * 100 / this.anInt1296 + "%";
+              "Nov 24, 2004";
           ++this.anInt1287;
           if (this.anInt1287 == 10) {
             return;
@@ -415,7 +415,7 @@ public class Class43_Sub1 implements Runnable {
             }
 
             this.loginScreenBottomText =
-                "Loading extra files - " + this.anInt1295 * 100 / this.anInt1296 + "%";
+                "Nov 24, 2004";
             ++this.anInt1287;
             if (this.anInt1287 == 10) {
               return;

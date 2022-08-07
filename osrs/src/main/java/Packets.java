@@ -7,15 +7,754 @@ public class Packets {
   public static final int[] packetSizes;
 
   static {
-    packetSizes = new int[]{0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 4, 2, -1, 0, 0, 0, 0, 0,
-        2, 0, 0, 0, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 0, 0, 0, 4, 0, 0, 0, 3,
-        0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 5, 0, 1,
-        0, 6, 0, 0, 0, 2, 1, 10, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, -2, 15, 0, 0, 0, 0, 0, 0,
-        3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 4, 2, 0, 0, 3, 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 6, 0, 4, 0, 0, -1, 0, 0, 0, 0, 2, -2, 0, 0, 0, 0, -2, 2, 0,
-        0, 14, 0, 0, 0, 0, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 1, -2, 0, -2, 0, 0, 6, 0, 0, 3, 0,
-        0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 4, 0, 6, 0,
-        -1, 0, 0, 0, 0, 2, 1, 0, 0, 0, 6, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    packetSizes = new int[]{
+        0, 0, 0, -2, 0, 0, 0, 0, 0, 0, //9
+        3, 0, 0, 0, 0, 4, 2, -1, 0, 0,//19
+        0, 0, 0, 2, 0, 0, 0, 0, 6, 0,//29
+        2, 0, 8, 0, 5, 0, 0, 0, 0, 0,//39
+        0, 0, 0, 0, -2, 0, 0, 0, 4, 0,//49
+        0, 0, 3, 0, 4, 0, 0, 0, 0, 0,//59
+        0, 0, 0, 0, 4, 0, 0, 2, 0, 0,//69
+        0, 0, 0, 0, 0, 0, 0, 6, 0, 0,//79
+        0, 8, 0, 1, 0, 6, 0, 0, 0, 2,//89
+        1, 10, 0, 0, 0, 7, 0, 0, 0, 0,//99
+        0, 0, 0, 0, 0, 6, -2, 15, 0, 0,//109
+        0, 0, 0, 0, 3, 0, 0, 0, 0, 0,//119
+        0, 0, 0, 0, 0, 6, 0, 0, 0, 4,//129
+        2, 0, 0, 3, 4, 0, 0, 0, 4, 0,//139
+        0, 0, 4, 0, 0, 0, 0, 0, 0, 0,//149
+        0, 0, 0, 2, 0, 0, 6, 0, 4, 0,//159
+        0, -1, 0, 0, 0, 0, 2, -2, 0, 0,//169
+        0, 0, -2, 2, 0, 0, 14, 0, 0, 0,//179
+        0, 0, 0, 4, 0, 1, 0, 0, 0, 0, 0,//189
+        0, 2, 0, 1, -2, 0, -2, 0, 0, 6,//199
+        0, 0, 3, 0, 0, 0, 1, 0, 0, 0,//209
+        2, 0, 0, 0, 3, 0, 0, 0, 7, 0,//219
+        0, 0, 0, 0, 0, 0, 2, 0, 0, 0,//229
+        4, 0, 6, 0, -1, 0, 0, 0, 0, 2,//239
+        1, 0, 0, 0, 6, 0, 9, 0, 0, 0,//249
+        0, 0, 0, 0, 0, 0};
+  }
+
+  public static void handleClientPacket(Client c, byte var1, int var2) {
+    if (var2 >= 0) {
+      if (c.aBoolean1104) {
+        c.aBoolean1104 = false;
+        c.aBoolean1109 = true;
+      }
+
+      int slot = c.anIntArray1191[var2];
+      int interfaceId = c.anIntArray1192[var2];
+      int var5 = c.anIntArray1193[var2];
+      int id = c.anIntArray1194[var2];
+      if (c.aByte1071 == var1) {
+        boolean var13 = false;
+      } else {
+        c.anInt1113 = -128;
+      }
+
+      if (var5 >= 2000) {
+        var5 -= 2000;
+      }
+
+      Class44_Sub3_Sub4_Sub6_Sub2 var7;
+      if (var5 == 829) {
+        var7 = c.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[id];
+        if (var7 != null) {
+          c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], var7.anIntArray1649[0],
+              1, 1, 0, Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+              var7.anIntArray1650[0], (byte) 9, 2);
+          c.anInt1142 = c.anInt29;
+          c.anInt1143 = c.anInt30;
+          c.anInt1145 = 2;
+          c.anInt1144 = 0;
+          c.aBuffer_843.writeOpcode(150);
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(c.anInt814);
+          c.aBuffer_843.writeShort(c.anInt812);
+          c.aBuffer_843.writeShort(c.anInt813);
+        }
+      }
+
+      int var8;
+      String var14;
+      if (var5 == 524) {
+        var14 = c.aStringArray1114[var2];
+        var8 = var14.indexOf("@whi@");
+        if (var8 != -1) {
+          c.method45();
+          c.aString951 = var14.substring(var8 + 5).trim();
+          c.aBoolean1128 = false;
+
+          for (int var9 = 0; var9 < Class5.aClass5Array103.length; ++var9) {
+            if (Class5.aClass5Array103[var9] != null
+                && Class5.aClass5Array103[var9].anInt112 == 600) {
+              c.anInt1081 = c.anInt1037 = Class5.aClass5Array103[var9].anInt109;
+              break;
+            }
+          }
+        }
+      }
+
+      Class44_Sub3_Sub4_Sub6_Sub1 var15;
+      if (var5 == 275) {
+        var15 = c.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[id];
+        if (var15 != null) {
+          c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+              var15.anIntArray1649[0], 1, 1, 0, Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0],
+              0, false, 0, var15.anIntArray1650[0], (byte) 9, 2);
+          c.anInt1142 = c.anInt29;
+          c.anInt1143 = c.anInt30;
+          c.anInt1145 = 2;
+          c.anInt1144 = 0;
+          c.aBuffer_843.writeOpcode(36);
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(c.anInt814);
+          c.aBuffer_843.writeShort(c.anInt812);
+          c.aBuffer_843.writeShort(c.anInt813);
+        }
+      }
+
+      if (var5 == 743) {
+        ++Client.anInt969;
+        if (Client.anInt969 >= 124) {
+          c.aBuffer_843.writeOpcode(201);
+          c.aBuffer_843.writeShort(37954);
+        }
+
+        c.method51(interfaceId, 74, slot, 187, id);
+      }
+
+      if (var5 == 718) {
+        if (!c.aBoolean851) {
+          c.worldController.method316(c.anInt29 - 4, c.anInt30 - 4, c.aByte1034);
+        } else {
+          c.worldController.method316(slot - 4, interfaceId - 4, c.aByte1034);
+        }
+      }
+
+      if (var5 == 721) {
+        Client.anInt1232 += interfaceId;
+        if (Client.anInt1232 >= 139) {
+          c.aBuffer_843.writeOpcode(219);
+          c.aBuffer_843.writeInt(0);
+        }
+
+        c.method51(interfaceId, 74, slot, 103, id);
+      }
+
+      long var20;
+      if (var5 == 605 || var5 == 47 || var5 == 513 || var5 == 884) {
+        var14 = c.aStringArray1114[var2];
+        var8 = var14.indexOf("@whi@");
+        if (var8 != -1) {
+          var20 = Statics.method547(var14.substring(var8 + 5).trim());
+          if (var5 == 605) {
+            c.method102(199, var20);
+          }
+
+          if (var5 == 47) {
+            c.method96(var20);
+          }
+
+          if (var5 == 513) {
+            c.method62(0, var20);
+          }
+
+          if (var5 == 884) {
+            c.method123(c.aBoolean974, var20);
+          }
+        }
+      }
+
+      if (var5 == 563) {
+        c.aBuffer_843.writeOpcode(135);
+        c.aBuffer_843.writeShort(id);
+        c.aBuffer_843.writeShort(slot);
+        c.aBuffer_843.writeShort(interfaceId);
+        c.aBuffer_843.writeShort(c.anInt1197);
+        c.anInt847 = 0;
+        c.anInt848 = interfaceId;
+        c.anInt849 = slot;
+        c.anInt850 = 2;
+        if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1037) {
+          c.anInt850 = 1;
+        }
+
+        if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1011) {
+          c.anInt850 = 3;
+        }
+      }
+
+      Class5 var16;
+      if (var5 == 435) {
+        c.aBuffer_843.writeOpcode(9);
+        c.aBuffer_843.writeShort(interfaceId);
+        var16 = Class5.aClass5Array103[interfaceId];
+        if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
+          var8 = var16.anIntArrayArray118[0][1];
+          c.anIntArray1107[var8] = 1 - c.anIntArray1107[var8];
+          c.method40(false, var8);
+          c.aBoolean928 = true;
+        }
+      }
+
+      if (var5 == 810 && c.method51(interfaceId, 74, slot, 60, id)) {
+        c.aBuffer_843.writeShort(c.anInt814);
+        c.aBuffer_843.writeShort(c.anInt812);
+        c.aBuffer_843.writeShort(c.anInt813);
+      }
+
+      if (var5 == 102) {
+        c.anInt811 = 1;
+        c.anInt812 = slot;
+        c.anInt813 = interfaceId;
+        c.anInt814 = id;
+        c.aString815 = ItemDefinition.get(id).aString327;
+        c.anInt1196 = 0;
+        c.aBoolean928 = true;
+      } else {
+        ItemDefinition var17;
+        String var21;
+        if (var5 == 1328) {
+          var17 = ItemDefinition.get(id);
+          Class5 var18 = Class5.aClass5Array103[interfaceId];
+          if (var18 != null && var18.anIntArray105[slot] >= 100000) {
+            var21 = var18.anIntArray105[slot] + " x " + var17.aString327;
+          } else if (var17.aByteArray328 != null) {
+            var21 = new String(var17.aByteArray328);
+          } else {
+            var21 = "It's a " + var17.aString327 + ".";
+          }
+
+          c.method49(-476, 0, "", var21);
+        }
+
+        if (var5 == 639 || var5 == 499 || var5 == 27 || var5 == 387 || var5 == 185) {
+          var15 = c.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[id];
+          if (var15 != null) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+                var15.anIntArray1649[0], 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+                var15.anIntArray1650[0], (byte) 9, 2);
+            c.anInt1142 = c.anInt29;
+            c.anInt1143 = c.anInt30;
+            c.anInt1145 = 2;
+            c.anInt1144 = 0;
+            if (var5 == 387) {
+              Client.anInt1052 += id;
+              if (Client.anInt1052 >= 66) {
+                c.aBuffer_843.writeOpcode(235);
+                c.aBuffer_843.writeByte(154);
+              }
+
+              c.aBuffer_843.writeOpcode(98);
+            }
+
+            if (var5 == 185) {
+              c.aBuffer_843.writeOpcode(174);
+            }
+
+            if (var5 == 639) {
+              ++Client.anInt900;
+              if (Client.anInt900 >= 52) {
+                c.aBuffer_843.writeOpcode(80);
+                c.aBuffer_843.writeByte(131);
+              }
+
+              c.aBuffer_843.writeOpcode(109);
+            }
+
+            if (var5 == 27) {
+              c.aBuffer_843.writeOpcode(196);
+            }
+
+            if (var5 == 499) {
+              c.aBuffer_843.writeOpcode(166);
+            }
+
+            c.aBuffer_843.writeShort(id);
+          }
+        }
+
+        if (var5 == 242 || var5 == 209 || var5 == 309 || var5 == 852 || var5 == 793) {
+          var7 = c.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[id];
+          if (var7 != null) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+                var7.anIntArray1649[0], 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+                var7.anIntArray1650[0], (byte) 9, 2);
+            c.anInt1142 = c.anInt29;
+            c.anInt1143 = c.anInt30;
+            c.anInt1145 = 2;
+            c.anInt1144 = 0;
+            if (var5 == 309) {
+              c.aBuffer_843.writeOpcode(223);
+            }
+
+            if (var5 == 242) {
+              c.aBuffer_843.writeOpcode(236);
+            }
+
+            if (var5 == 852) {
+              c.aBuffer_843.writeOpcode(147);
+            }
+
+            if (var5 == 793) {
+              c.aBuffer_843.writeOpcode(189);
+            }
+
+            if (var5 == 209) {
+              c.aBuffer_843.writeOpcode(233);
+            }
+
+            c.aBuffer_843.writeShort(id);
+          }
+        }
+
+        if (var5 == 582 || var5 == 113 || var5 == 555 || var5 == 331 || var5 == 354) {
+          if (var5 == 331) {
+            c.aBuffer_843.writeOpcode(179);
+          }
+
+          if (var5 == 113) {
+            c.aBuffer_843.writeOpcode(82);
+          }
+
+          if (var5 == 555) {
+            c.aBuffer_843.writeOpcode(239);
+          }
+
+          if (var5 == 354) {
+            c.aBuffer_843.writeOpcode(46);
+          }
+
+          if (var5 == 582) {
+            if ((id & 3) == 0) {
+              ++Client.anInt1157;
+            }
+
+            if (Client.anInt1157 >= 133) {
+              c.aBuffer_843.writeOpcode(250);
+              c.aBuffer_843.writeShort(6118);
+            }
+
+            c.aBuffer_843.writeOpcode(74);
+          }
+
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(slot);
+          c.aBuffer_843.writeShort(interfaceId);
+          c.anInt847 = 0;
+          c.anInt848 = interfaceId;
+          c.anInt849 = slot;
+          c.anInt850 = 2;
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1037) {
+            c.anInt850 = 1;
+          }
+
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1011) {
+            c.anInt850 = 3;
+          }
+        }
+
+        if (var5 == 997 && !c.aBoolean1168) {
+          c.aBuffer_843.writeOpcode(72);
+          c.aBuffer_843.writeShort(interfaceId);
+          c.aBoolean1168 = true;
+        }
+
+        String var19;
+        if (var5 == 1714) {
+          var7 = c.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[id];
+          if (var7 != null) {
+            if (var7.aClass12_1682.aByteArray282 != null) {
+              var19 = new String(var7.aClass12_1682.aByteArray282);
+            } else {
+              var19 = "It's a " + var7.aClass12_1682.aString281 + ".";
+            }
+
+            c.method49(-476, 0, "", var19);
+          }
+        }
+
+        if (var5 == 240) {
+          var7 = c.aClass44_Sub3_Sub4_Sub6_Sub2Array1259[id];
+          if (var7 != null) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+                var7.anIntArray1649[0], 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+                var7.anIntArray1650[0], (byte) 9, 2);
+            c.anInt1142 = c.anInt29;
+            c.anInt1143 = c.anInt30;
+            c.anInt1145 = 2;
+            c.anInt1144 = 0;
+            c.aBuffer_843.writeOpcode(181);
+            c.aBuffer_843.writeShort(id);
+            c.aBuffer_843.writeShort(c.anInt1197);
+          }
+        }
+
+        int var11;
+        if (var5 == 902) {
+          var14 = c.aStringArray1114[var2];
+          var8 = var14.indexOf("@whi@");
+          if (var8 != -1) {
+            var20 = Statics.method547(var14.substring(var8 + 5).trim());
+            var11 = -1;
+
+            for (int var12 = 0; var12 < c.anInt1115; ++var12) {
+              if (c.aLongArray1159[var12] == var20) {
+                var11 = var12;
+                break;
+              }
+            }
+
+            if (var11 != -1 && c.anIntArray1073[var11] > 0) {
+              c.aBoolean1109 = true;
+              c.aBoolean1104 = false;
+              c.aBoolean1265 = true;
+              c.aString984 = "";
+              c.anInt1051 = 3;
+              c.aLong867 = c.aLongArray1159[var11];
+              c.aString1019 = "Enter message to send to " + c.aStringArray833[var11];
+            }
+          }
+        }
+
+        if (var5 == 1381) {
+          int var22 = id >> 14 & 32767;
+          GameObjectDefinition var23 = GameObjectDefinition.get(var22);
+          if (var23.aByteArray222 != null) {
+            var21 = new String(var23.aByteArray222);
+          } else {
+            var21 = "It's a " + var23.aString221 + ".";
+          }
+
+          c.method49(-476, 0, "", var21);
+        }
+
+        if (var5 == 231) {
+          var16 = Class5.aClass5Array103[interfaceId];
+          boolean var24 = true;
+          if (var16.anInt112 > 0) {
+            var24 = c.method113(var16, c.anInt1185);
+          }
+
+          if (var24) {
+            c.aBuffer_843.writeOpcode(9);
+            c.aBuffer_843.writeShort(interfaceId);
+          }
+        }
+
+        boolean var25;
+        if (var5 == 139 || var5 == 778 || var5 == 617 || var5 == 224 || var5 == 662) {
+          var25 = c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 0, 0, 0,
+              Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9, 2);
+          if (!var25) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9,
+                2);
+          }
+
+          c.anInt1142 = c.anInt29;
+          c.anInt1143 = c.anInt30;
+          c.anInt1145 = 2;
+          c.anInt1144 = 0;
+          if (var5 == 662) {
+            Client.anInt1151 += c.anInt1056;
+            if (Client.anInt1151 >= 118) {
+              c.aBuffer_843.writeOpcode(41);
+              c.aBuffer_843.writeInt(0);
+            }
+
+            c.aBuffer_843.writeOpcode(117);
+          }
+
+          if (var5 == 139) {
+            if ((slot & 3) == 0) {
+              ++Client.anInt1195;
+            }
+
+            if (Client.anInt1195 >= 123) {
+              c.aBuffer_843.writeOpcode(25);
+              c.aBuffer_843.writeInt(0);
+            }
+
+            c.aBuffer_843.writeOpcode(247);
+          }
+
+          if (var5 == 224) {
+            Client.anInt880 += interfaceId;
+            if (Client.anInt880 >= 75) {
+              c.aBuffer_843.writeOpcode(0);
+              c.aBuffer_843.writeByte(19);
+            }
+
+            c.aBuffer_843.writeOpcode(62);
+          }
+
+          if (var5 == 617) {
+            c.aBuffer_843.writeOpcode(108);
+          }
+
+          if (var5 == 778) {
+            c.aBuffer_843.writeOpcode(169);
+          }
+
+          c.aBuffer_843.writeShort(slot + c.anInt1055);
+          c.aBuffer_843.writeShort(interfaceId + c.anInt1056);
+          c.aBuffer_843.writeShort(id);
+        }
+
+        if (var5 == 1071) {
+          c.method51(interfaceId, 74, slot, 127, id);
+        }
+
+        if (var5 == 507 || var5 == 957) {
+          var14 = c.aStringArray1114[var2];
+          var8 = var14.indexOf("@whi@");
+          if (var8 != -1) {
+            var14 = var14.substring(var8 + 5).trim();
+            var21 = Statics.method551(131, Statics.method548(0, Statics.method547(var14)));
+            boolean var10 = false;
+
+            for (var11 = 0; var11 < c.anInt1121; ++var11) {
+              Class44_Sub3_Sub4_Sub6_Sub1 var26 = c.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[c.anIntArray1122[var11]];
+              if (var26 != null && var26.aString1657 != null && var26.aString1657.equalsIgnoreCase(
+                  var21)) {
+                c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+                    var26.anIntArray1649[0], 1, 1, 0,
+                    Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+                    var26.anIntArray1650[0], (byte) 9, 2);
+                if (var5 == 507) {
+                  Client.anInt1052 += id;
+                  if (Client.anInt1052 >= 66) {
+                    c.aBuffer_843.writeOpcode(235);
+                    c.aBuffer_843.writeByte(154);
+                  }
+
+                  c.aBuffer_843.writeOpcode(98);
+                }
+
+                if (var5 == 957) {
+                  ++Client.anInt900;
+                  if (Client.anInt900 >= 52) {
+                    c.aBuffer_843.writeOpcode(80);
+                    c.aBuffer_843.writeByte(131);
+                  }
+
+                  c.aBuffer_843.writeOpcode(109);
+                }
+
+                c.aBuffer_843.writeShort(c.anIntArray1122[var11]);
+                var10 = true;
+                break;
+              }
+            }
+
+            if (!var10) {
+              c.method49(-476, 0, "", "Unable to find " + var21);
+            }
+          }
+        }
+
+        if (var5 == 131) {
+          var15 = c.aClass44_Sub3_Sub4_Sub6_Sub1Array1120[id];
+          if (var15 != null) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0],
+                var15.anIntArray1649[0], 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0,
+                var15.anIntArray1650[0], (byte) 9, 2);
+            c.anInt1142 = c.anInt29;
+            c.anInt1143 = c.anInt30;
+            c.anInt1145 = 2;
+            c.anInt1144 = 0;
+            c.aBuffer_843.writeOpcode(240);
+            c.aBuffer_843.writeShort(id);
+            c.aBuffer_843.writeShort(c.anInt1197);
+          }
+        }
+
+        if (var5 == 398) {
+          c.aBuffer_843.writeOpcode(136);
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(slot);
+          c.aBuffer_843.writeShort(interfaceId);
+          c.aBuffer_843.writeShort(c.anInt814);
+          c.aBuffer_843.writeShort(c.anInt812);
+          c.aBuffer_843.writeShort(c.anInt813);
+          c.anInt847 = 0;
+          c.anInt848 = interfaceId;
+          c.anInt849 = slot;
+          c.anInt850 = 2;
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1037) {
+            c.anInt850 = 1;
+          }
+
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1011) {
+            c.anInt850 = 3;
+          }
+        }
+
+        if (var5 == 737) {
+          c.method45();
+        }
+
+        if (var5 == 694 || var5 == 962 || var5 == 795 || var5 == 681 || var5 == 100) {
+          if (var5 == 681) {
+            ++Client.anInt1028;
+            if (Client.anInt1028 >= 116) {
+              c.aBuffer_843.writeOpcode(24);
+              c.aBuffer_843.writeMedium(13018169);
+            }
+
+            c.aBuffer_843.writeOpcode(216);
+          }
+
+          if (var5 == 100) {
+            c.aBuffer_843.writeOpcode(42);
+          }
+
+          //First Item Option
+          if (var5 == 694) {
+            c.aBuffer_843.writeOpcode(185);
+          }
+
+          if (var5 == 962) {
+            c.aBuffer_843.writeOpcode(2);
+          }
+
+          if (var5 == 795) {
+            c.aBuffer_843.writeOpcode(123);
+          }
+
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(slot);
+          c.aBuffer_843.writeShort(interfaceId);
+          c.anInt847 = 0;
+          c.anInt848 = interfaceId;
+          c.anInt849 = slot;
+          c.anInt850 = 2;
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1037) {
+            c.anInt850 = 1;
+          }
+
+          if (Class5.aClass5Array103[interfaceId].anInt109 == c.anInt1011) {
+            c.anInt850 = 3;
+          }
+        }
+
+        if (var5 == 357) {
+          c.method51(interfaceId, 74, slot, 157, id);
+        }
+
+        if (var5 == 1152) {
+          var17 = ItemDefinition.get(id);
+          if (var17.aByteArray328 != null) {
+            var19 = new String(var17.aByteArray328);
+          } else {
+            var19 = "It's a " + var17.aString327 + ".";
+          }
+
+          c.method49(-476, 0, "", var19);
+        }
+
+        if (var5 == 370) {
+          var25 = c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 0, 0, 0,
+              Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9, 2);
+          if (!var25) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9,
+                2);
+          }
+
+          c.anInt1142 = c.anInt29;
+          c.anInt1143 = c.anInt30;
+          c.anInt1145 = 2;
+          c.anInt1144 = 0;
+          c.aBuffer_843.writeOpcode(91);
+          c.aBuffer_843.writeShort(slot + c.anInt1055);
+          c.aBuffer_843.writeShort(interfaceId + c.anInt1056);
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(c.anInt1197);
+        }
+
+        if (var5 == 899 && c.method51(interfaceId, 74, slot, 213, id)) {
+          c.aBuffer_843.writeShort(c.anInt1197);
+        }
+
+        if (var5 == 625) {
+          c.method51(interfaceId, 74, slot, 215, id);
+        }
+
+        if (var5 == 111) {
+          var25 = c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 0, 0, 0,
+              Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9, 2);
+          if (!var25) {
+            c.method39(Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1650[0], slot, 1, 1, 0,
+                Client.aClass44_Sub3_Sub4_Sub6_Sub1_1252.anIntArray1649[0], 0, false, 0, interfaceId, (byte) 9,
+                2);
+          }
+
+          c.anInt1142 = c.anInt29;
+          c.anInt1143 = c.anInt30;
+          c.anInt1145 = 2;
+          c.anInt1144 = 0;
+          c.aBuffer_843.writeOpcode(39);
+          c.aBuffer_843.writeShort(slot + c.anInt1055);
+          c.aBuffer_843.writeShort(interfaceId + c.anInt1056);
+          c.aBuffer_843.writeShort(id);
+          c.aBuffer_843.writeShort(c.anInt814);
+          c.aBuffer_843.writeShort(c.anInt812);
+          c.aBuffer_843.writeShort(c.anInt813);
+        }
+
+        if (var5 == 274) {
+          var16 = Class5.aClass5Array103[interfaceId];
+          c.anInt1196 = 1;
+          c.anInt1197 = interfaceId;
+          c.anInt1198 = var16.anInt163;
+          c.anInt811 = 0;
+          c.aBoolean928 = true;
+          var19 = var16.aString161;
+          if (var19.contains(" ")) {
+            var19 = var19.substring(0, var19.indexOf(" "));
+          }
+
+          var21 = var16.aString161;
+          if (var21.contains(" ")) {
+            var21 = var21.substring(var21.indexOf(" ") + 1);
+          }
+
+          c.aString1199 = var19 + " " + var16.aString162 + " " + var21;
+          if (c.anInt1198 == 16) {
+            c.aBoolean928 = true;
+            c.anInt1013 = 3;
+            c.aBoolean841 = true;
+          }
+
+        } else {
+          if (var5 == 225) {
+            c.aBuffer_843.writeOpcode(9);
+            c.aBuffer_843.writeShort(interfaceId);
+            var16 = Class5.aClass5Array103[interfaceId];
+            if (var16.anIntArrayArray118 != null && var16.anIntArrayArray118[0][0] == 5) {
+              var8 = var16.anIntArrayArray118[0][1];
+              if (var16.anIntArray120[0] != c.anIntArray1107[var8]) {
+                c.anIntArray1107[var8] = var16.anIntArray120[0];
+                c.method40(false, var8);
+                c.aBoolean928 = true;
+              }
+            }
+          }
+
+          c.anInt811 = 0;
+          c.anInt1196 = 0;
+          c.aBoolean928 = true;
+        }
+      }
+    }
   }
 
   @ObfuscatedSignature(
@@ -358,15 +1097,16 @@ public class Packets {
           return true;
         }
 
+        //Update Chunk
         if (client.incomingPacketOpcode == 153) {
-          client.anInt918 = client.buffer.readUByte();
-          client.anInt919 = client.buffer.readUByte();
+          client.baseX = client.buffer.readUByte();
+          client.baseY = client.buffer.readUByte();
 
-          for (var22 = client.anInt918; var22 < client.anInt918 + 8; ++var22) {
-            for (var3 = client.anInt919; var3 < client.anInt919 + 8; ++var3) {
-              if (client.aClass28ArrayArrayArray816[client.clientPlane][var22][var3] != null) {
-                client.aClass28ArrayArrayArray816[client.clientPlane][var22][var3] = null;
-                client.method52(var22, var3);
+          for (var22 = client.baseX; var22 < client.baseX + 8; ++var22) {
+            for (var3 = client.baseY; var3 < client.baseY + 8; ++var3) {
+              if (client.tiles[client.plane][var22][var3] != null) {
+                client.tiles[client.plane][var22][var3] = null;
+                client.spawnGroundItem(var22, var3);
               }
             }
           }
@@ -376,9 +1116,9 @@ public class Packets {
               var47 != null;
               var47 = (GameObjectSpawnRequest) client.pendingObjectSpawns.getPrevious(
                   client.aByte958)) {
-            if (var47.anInt1312 >= client.anInt918 && var47.anInt1312 < client.anInt918 + 8
-                && var47.anInt1313 >= client.anInt919 && var47.anInt1313 < client.anInt919 + 8
-                && var47.anInt1310 == client.clientPlane) {
+            if (var47.anInt1312 >= client.baseX && var47.anInt1312 < client.baseX + 8
+                && var47.anInt1313 >= client.baseY && var47.anInt1313 < client.baseY + 8
+                && var47.anInt1310 == client.plane) {
               var47.delayUntilSpawn = 0;
             }
           }
@@ -431,8 +1171,8 @@ public class Packets {
         }
 
         if (client.incomingPacketOpcode == 195) {
-          client.anInt918 = client.buffer.readUByte();
-          client.anInt919 = client.buffer.readUByte();
+          client.baseX = client.buffer.readUByte();
+          client.baseY = client.buffer.readUByte();
 
           while (client.buffer.offset < client.incomingPacketSize) {
             var22 = client.buffer.readUByte();
@@ -570,7 +1310,7 @@ public class Packets {
           var22 = client.buffer.readUShort();
           var3 = client.buffer.readUShort();
           var4 = client.buffer.readUShort();
-          Class14 var45 = Class14.method220(var3);
+          ItemDefinition var45 = ItemDefinition.get(var3);
           Class5.aClass5Array103[var22].anInt152 = 4;
           Class5.aClass5Array103[var22].anInt153 = var3;
           Class5.aClass5Array103[var22].anInt159 = var45.anInt332;
@@ -808,10 +1548,10 @@ public class Packets {
 
               for (int var17 = 0; var17 < 4; ++var17) {
                 if (var15 >= 0 && var16 >= 0 && var15 < 104 && var16 < 104) {
-                  client.aClass28ArrayArrayArray816[var17][var13][var14]
-                      = client.aClass28ArrayArrayArray816[var17][var15][var16];
+                  client.tiles[var17][var13][var14]
+                      = client.tiles[var17][var15][var16];
                 } else {
-                  client.aClass28ArrayArrayArray816[var17][var13][var14] = null;
+                  client.tiles[var17][var13][var14] = null;
                 }
               }
             }
@@ -994,7 +1734,7 @@ public class Packets {
             client.anInt820 = client.anInt869 * 128 + 64;
             client.anInt822 = client.anInt870 * 128 + 64;
             client.anInt821 =
-                client.method50(client.anInt820, client.anInt822, 0, client.clientPlane)
+                client.method50(client.anInt820, client.anInt822, 0, client.plane)
                     - client.anInt871;
           }
 
@@ -1044,8 +1784,8 @@ public class Packets {
         }
 
         if (client.incomingPacketOpcode == 32) {
-          client.anInt918 = client.buffer.readUByte();
-          client.anInt919 = client.buffer.readUByte();
+          client.baseX = client.buffer.readInt();
+          client.baseY = client.buffer.readInt();
           client.incomingPacketOpcode = -1;
           return true;
         }
@@ -1076,7 +1816,7 @@ public class Packets {
         }
 
         if (client.incomingPacketOpcode == 133) {
-          client.anInt947 = client.buffer.readUShort();
+          client.playerIndex = client.buffer.readUShort();
           client.anInt808 = client.buffer.readUByte();
           client.incomingPacketOpcode = -1;
           return true;
@@ -1101,7 +1841,7 @@ public class Packets {
           if (client.anInt913 >= 100) {
             var22 = client.anInt909 * 128 + 64;
             var3 = client.anInt910 * 128 + 64;
-            var4 = client.method50(var22, var3, 0, client.clientPlane) - client.anInt911;
+            var4 = client.method50(var22, var3, 0, client.plane) - client.anInt911;
             var5 = var22 - client.anInt820;
             var27 = var4 - client.anInt821;
             var7 = var3 - client.anInt822;

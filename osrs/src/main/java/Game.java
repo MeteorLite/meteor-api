@@ -241,7 +241,8 @@ public class Game extends Applet implements Runnable, MouseListener, MouseMotion
           this.anInt30 = this.mouseEventClickY;
           this.aLong31 = this.mouseEventTime;
           this.mouseEventButtonPressed = 0;
-          this.anInt34 = this.anInt35;
+			this.method7(0);
+			this.anInt34 = this.anInt35;
           var4 += var2;
         }
 
@@ -334,6 +335,12 @@ public class Game extends Applet implements Runnable, MouseListener, MouseMotion
   )
   public void method9() {
   }
+
+	public void method7(int var1) {
+		if (var1 == 0) {
+		}
+
+	}
 
   public void start() {
     if (this.anInt6 >= 0) {

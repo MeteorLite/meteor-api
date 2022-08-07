@@ -6,7 +6,7 @@ public class Class36 {
   public static int[] anIntArray630;
   public static int anInt632;
   public static int anInt612;
-  public static Class28 aClass28_634;
+  public static Tile aClass28_634;
   public static int anInt604;
   public static boolean aBoolean624;
   public static final int anInt629;
@@ -93,7 +93,7 @@ public class Class36 {
     anInt627 = -1;
     anInt628 = -1;
     aClass23Array633 = new Class23[500];
-    aClass28_634 = new Class28(-822);
+    aClass28_634 = new Tile(-822);
     aBooleanArrayArrayArrayArray648 = new boolean[8][32][51][51];
     anInt629 = 4;
     anIntArray630 = new int[anInt629];

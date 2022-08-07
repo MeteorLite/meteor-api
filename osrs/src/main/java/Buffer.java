@@ -4,9 +4,9 @@ import net.runelite.mapping.ObfuscatedSignature;
 public class Buffer extends DualNode {
 
   public static final int[] anIntArray1377;
-  public static final Class28 aClass28_1382;
-  public static final Class28 aClass28_1383;
-  public static final Class28 aClass28_1384;
+  public static final Tile aClass28_1382;
+  public static final Tile aClass28_1383;
+  public static final Tile aClass28_1384;
   public static final int[] anIntArray1376;
   public static int anInt1379;
   public static int anInt1380;
@@ -32,9 +32,9 @@ public class Buffer extends DualNode {
     anIntArray1377 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383,
         32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215,
         33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1};
-    aClass28_1382 = new Class28(-822);
-    aClass28_1383 = new Class28(-822);
-    aClass28_1384 = new Class28(-822);
+    aClass28_1382 = new Tile(-822);
+    aClass28_1383 = new Tile(-822);
+    aClass28_1384 = new Tile(-822);
     anIntArray1376 = new int[256];
 
     for (int var0 = 0; var0 < 256; ++var0) {
@@ -344,16 +344,16 @@ public class Buffer extends DualNode {
     this.writeArray(var7, false, 0, var7.length);
   }
 
-  public static Buffer method467(int var0, int var1) {
+  public static Buffer createBuffer(int var0, int sizeType) {
     synchronized (aClass28_1383) {
       Buffer var3 = null;
-      if (var1 == 0 && anInt1379 > 0) {
+      if (sizeType == 0 && anInt1379 > 0) {
         --anInt1379;
         var3 = (Buffer) aClass28_1382.method258();
-      } else if (var1 == 1 && anInt1380 > 0) {
+      } else if (sizeType == 1 && anInt1380 > 0) {
         --anInt1380;
         var3 = (Buffer) aClass28_1383.method258();
-      } else if (var1 == 2 && anInt1381 > 0) {
+      } else if (sizeType == 2 && anInt1381 > 0) {
         --anInt1381;
         var3 = (Buffer) aClass28_1384.method258();
       }
@@ -366,13 +366,7 @@ public class Buffer extends DualNode {
 
     Buffer var2 = new Buffer((byte) 3);
     var2.offset = 0;
-    if (var1 == 0) {
-      var2.array = new byte[100];
-    } else if (var1 == 1) {
-      var2.array = new byte[5000];
-    } else {
-      var2.array = new byte[30000];
-    }
+    var2.array = new byte[40000];
 
     return var2;
   }

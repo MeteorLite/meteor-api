@@ -1,6 +1,6 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class28 {
+public class Tile {
 
   public Node aNode_524;
   public final Node aNode_523;
@@ -12,7 +12,7 @@ public class Class28 {
       descriptor = "(I)V",
       garbageValue = "-822"
   )
-  public Class28(int var1) {
+  public Tile(int var1) {
     this.aBoolean520 = true;
     this.aBoolean521 = true;
     this.anInt522 = -676;

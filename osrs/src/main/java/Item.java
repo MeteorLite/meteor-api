@@ -1,12 +1,12 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class44_Sub3_Sub4_Sub2 extends Renderable {
+public class Item extends Renderable {
 
-  public int anInt1480;
+  public int id;
   public boolean aBoolean1479;
-  public int anInt1481;
+  public int quantity;
 
-  public Class44_Sub3_Sub4_Sub2() {
+  public Item() {
     this.aBoolean1479 = false;
   }
 
@@ -15,7 +15,7 @@ public class Class44_Sub3_Sub4_Sub2 extends Renderable {
       garbageValue = "0"
   )
   public Model getModel(boolean var1) {
-    Class14 var2 = Class14.method220(this.anInt1480);
-    return var2.method224(this.anInt1481);
+    ItemDefinition definition = ItemDefinition.get(this.id);
+    return definition.getModel(this.quantity);
   }
 }

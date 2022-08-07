@@ -1,12 +1,12 @@
 import net.runelite.mapping.ObfuscatedSignature;
 
-public class Class14 {
+public class ItemDefinition {
 
   public static int anInt317;
   public static Class39 aClass39_364;
   public static boolean aBoolean324;
   public static int anInt323;
-  public static Class14[] aClass14Array322;
+  public static ItemDefinition[] aItemDefinitionArray322;
   public static Buffer aBuffer_321;
   public static int[] anIntArray320;
   public static Class39 aClass39_365;
@@ -60,13 +60,13 @@ public class Class14 {
     aClass39_365 = new Class39(100, 0);
   }
 
-  public Class14() {
+  public ItemDefinition() {
     this.anInt315 = -32952;
     this.aBoolean318 = true;
     this.anInt325 = -1;
   }
 
-  public Model method224(int var1) {
+  public Model getModel(int var1) {
     int var3;
     if (this.anIntArray355 != null && var1 > 1) {
       int var2 = -1;
@@ -78,7 +78,7 @@ public class Class14 {
       }
 
       if (var2 != -1) {
-        return method220(var2).method224(1);
+        return get(var2).getModel(1);
       }
     }
 
@@ -120,7 +120,7 @@ public class Class14 {
       }
 
       if (var3 != -1) {
-        return method220(var3).method225((byte) 7, 1);
+        return get(var3).method225((byte) 7, 1);
       }
     }
 
@@ -357,7 +357,7 @@ public class Class14 {
       garbageValue = "0"
   )
   public void method223() {
-    Class14 var1 = method220(this.anInt358);
+    ItemDefinition var1 = get(this.anInt358);
     this.anInt326 = var1.anInt326;
     this.anInt331 = var1.anInt331;
     this.anInt332 = var1.anInt332;
@@ -367,7 +367,7 @@ public class Class14 {
     this.anInt336 = var1.anInt336;
     this.anIntArray329 = var1.anIntArray329;
     this.anIntArray330 = var1.anIntArray330;
-    Class14 var2 = method220(this.anInt357);
+    ItemDefinition var2 = get(this.anInt357);
     this.aString327 = var2.aString327;
     this.aBoolean340 = var2.aBoolean340;
     this.anInt339 = var2.anInt339;
@@ -458,15 +458,15 @@ public class Class14 {
     }
   }
 
-  public static Class14 method220(int var0) {
+  public static ItemDefinition get(int var0) {
     for (int var1 = 0; var1 < 10; ++var1) {
-      if (var0 == aClass14Array322[var1].anInt325) {
-        return aClass14Array322[var1];
+      if (var0 == aItemDefinitionArray322[var1].anInt325) {
+        return aItemDefinitionArray322[var1];
       }
     }
 
     anInt323 = (anInt323 + 1) % 10;
-    Class14 var2 = aClass14Array322[anInt323];
+    ItemDefinition var2 = aItemDefinitionArray322[anInt323];
     aBuffer_321.offset = anIntArray320[var0];
     var2.anInt325 = var0;
     var2.method221();
@@ -498,7 +498,7 @@ public class Class14 {
       }
     }
 
-    Class14 var23 = method220(var0);
+    ItemDefinition var23 = get(var0);
     if (var23.anIntArray355 == null) {
       var3 = -1;
     }
@@ -513,11 +513,11 @@ public class Class14 {
       }
 
       if (var5 != -1) {
-        var23 = method220(var5);
+        var23 = get(var5);
       }
     }
 
-    Model var24 = var23.method224(1);
+    Model var24 = var23.getModel(1);
     if (var24 == null) {
       return null;
     } else {
@@ -642,7 +642,7 @@ public class Class14 {
     aClass39_364 = null;
     aClass39_365 = null;
     anIntArray320 = null;
-    aClass14Array322 = null;
+    aItemDefinitionArray322 = null;
     aBuffer_321 = null;
   }
 
@@ -659,10 +659,10 @@ public class Class14 {
       var2 += var1.readUShort();
     }
 
-    aClass14Array322 = new Class14[10];
+    aItemDefinitionArray322 = new ItemDefinition[10];
 
     for (var3 = 0; var3 < 10; ++var3) {
-      aClass14Array322[var3] = new Class14();
+      aItemDefinitionArray322[var3] = new ItemDefinition();
     }
 
   }

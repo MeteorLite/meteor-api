@@ -89,7 +89,7 @@ public class Class5 {
       }
 
       if (var1 == 4) {
-        var3 = Class14.method220(var2).method225((byte) 7, 50);
+        var3 = ItemDefinition.get(var2).method225((byte) 7, 50);
       }
 
       if (var1 == 5) {
