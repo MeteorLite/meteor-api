@@ -212,6 +212,14 @@ public class SignLink implements Runnable {
 	threadreq = runnable;
     }
 
+		/*
+		Back in the day, Jagex used JavaScript to play sound and songs.
+		So there isn't an actual midi/wav player in the client
+
+		What they did was either extract from cache or request it
+		Either way it would be unpacked in the cache folder with the familiar jingle1.midi/sound1.wav
+		Here we disable the saves minimally to avoid bloating the cache dir needlessly
+		 */
     public static synchronized boolean wavesave(byte abyte0[], int i) {
 	if (i > 0x1e8480) {
 	    return false;
@@ -223,7 +231,7 @@ public class SignLink implements Runnable {
 	    savelen = i;
 	    savebuf = abyte0;
 	    waveplay = true;
-	    savereq = "sound" + wavepos + ".wav";
+	    savereq = null; //"sound" + wavepos + ".wav";
 	    return true;
 	}
     }
@@ -234,7 +242,7 @@ public class SignLink implements Runnable {
 	} else {
 	    savebuf = null;
 	    waveplay = true;
-	    savereq = "sound" + wavepos + ".wav";
+	    savereq = null; //"sound" + wavepos + ".wav";
 	    return true;
 	}
     }
@@ -250,7 +258,7 @@ public class SignLink implements Runnable {
 	    savelen = i;
 	    savebuf = abyte0;
 	    midiplay = true;
-	    savereq = null; //"jingle" + midipos + ".mid"; //Don't save midis, just play them
+	    savereq = null; //"jingle" + midipos + ".mid";
 	    return;
 	}
     }

@@ -1,4 +1,4 @@
-import audio.music.MidiPlayer;
+import audio.music.AudioPlayer;
 import java.applet.AppletContext;
 import java.awt.Color;
 import java.awt.Component;
@@ -2355,6 +2355,8 @@ public class Client extends GameStub {
           pendingSoundDelays[pendingSounds] = delay + Track.delays[id];
           pendingSounds++;
         }
+        Track.tracks[id].pack(0);
+        AudioPlayer.playSound(Track.output);
         incomingPacketOpcode = -1;
         return true;
       }
@@ -6008,9 +6010,9 @@ public class Client extends GameStub {
       ItemDefinition.membersServer = membersServer;
       if (!lowMemory) {
         method13(90, true, "Unpacking sounds");
-        byte[] abyte0 = class2_5.extract("sounds.dat");
-        Buffer class50_sub1_sub2 = new Buffer(abyte0);
-        Track.load(class50_sub1_sub2);
+        byte[] sounds = class2_5.extract("sounds.dat");
+        Buffer soundsBuffer = new Buffer(sounds);
+        Track.load(soundsBuffer);
       }
       method13(95, true, "Unpacking interfaces");
       Class50_Sub1_Sub1_Sub2[] aclass50_sub1_sub1_sub2 = {
@@ -7239,57 +7241,57 @@ public class Client extends GameStub {
       incomingPacketOpcode = -1;
     }
     do {
-      OnDemandNode class50_sub1_sub3;
+      OnDemandNode onDemandRequest;
       do {
-        class50_sub1_sub3 = requester.method330();
-        if (class50_sub1_sub3 == null) {
+        onDemandRequest = requester.method330();
+        if (onDemandRequest == null) {
           return;
         }
-        if (class50_sub1_sub3.type == 0) {
-          Model.method575(class50_sub1_sub3.aByteArray1470,
-              class50_sub1_sub3.id, (byte) 7);
-          if ((requester.method325(class50_sub1_sub3.id, -493) & 0x62) != 0) {
+        if (onDemandRequest.type == 0) {
+          Model.method575(onDemandRequest.aByteArray1470,
+              onDemandRequest.id, (byte) 7);
+          if ((requester.method325(onDemandRequest.id, -493) & 0x62) != 0) {
             aBoolean1181 = true;
             if (anInt988 != -1 || anInt1191 != -1) {
               aBoolean1240 = true;
             }
           }
         }
-        if (class50_sub1_sub3.type == 1
-            && class50_sub1_sub3.aByteArray1470 != null) {
-          Animation.load(class50_sub1_sub3.aByteArray1470);
+        if (onDemandRequest.type == 1
+            && onDemandRequest.aByteArray1470 != null) {
+          Animation.load(onDemandRequest.aByteArray1470);
         }
-        if (class50_sub1_sub3.type == 2
-            && class50_sub1_sub3.id == nextSong
-            && class50_sub1_sub3.aByteArray1470 != null) {
-          MidiPlayer.playSong(class50_sub1_sub3.aByteArray1470);
-          method24(songChanging, class50_sub1_sub3.aByteArray1470,
+        if (onDemandRequest.type == 2
+            && onDemandRequest.id == nextSong
+            && onDemandRequest.aByteArray1470 != null) {
+          AudioPlayer.playSong(onDemandRequest.aByteArray1470);
+          method24(songChanging, onDemandRequest.aByteArray1470,
               659);
         }
-        if (class50_sub1_sub3.type == 3 && anInt1071 == 1) {
+        if (onDemandRequest.type == 3 && anInt1071 == 1) {
           for (int i = 0; i < aByteArrayArray838.length; i++) {
-            if (anIntArray857[i] == class50_sub1_sub3.id) {
-              aByteArrayArray838[i] = class50_sub1_sub3.aByteArray1470;
-              if (class50_sub1_sub3.aByteArray1470 == null) {
+            if (anIntArray857[i] == onDemandRequest.id) {
+              aByteArrayArray838[i] = onDemandRequest.aByteArray1470;
+              if (onDemandRequest.aByteArray1470 == null) {
                 anIntArray857[i] = -1;
               }
               break;
             }
-            if (anIntArray858[i] != class50_sub1_sub3.id) {
+            if (anIntArray858[i] != onDemandRequest.id) {
               continue;
             }
-            aByteArrayArray1232[i] = class50_sub1_sub3.aByteArray1470;
-            if (class50_sub1_sub3.aByteArray1470 == null) {
+            aByteArrayArray1232[i] = onDemandRequest.aByteArray1470;
+            if (onDemandRequest.aByteArray1470 == null) {
               anIntArray858[i] = -1;
             }
             break;
           }
 
         }
-      } while (class50_sub1_sub3.type != 93
-          || !requester.method334(class50_sub1_sub3.id, false));
+      } while (onDemandRequest.type != 93
+          || !requester.method334(onDemandRequest.id, false));
       Region.method169(requester, new Buffer(
-          class50_sub1_sub3.aByteArray1470), (byte) -3);
+          onDemandRequest.aByteArray1470), (byte) -3);
     } while (true);
   }
 

@@ -12,17 +12,17 @@ public class Track {
     synthesizers = new Synthesizer[10];
   }
 
-  public static void load(Buffer buffer) {
+  public static void load(Buffer soundsBuffer) {
     output = new byte[0x6baa8];
     riffBuffer = new Buffer(output);
     Synthesizer.init();
     do {
-      int i = buffer.readUShort();
+      int i = soundsBuffer.readUShort();
       if (i == 65535) {
         return;
       }
       tracks[i] = new Track();
-      tracks[i].decode(buffer);
+      tracks[i].decode(soundsBuffer);
       delays[i] = tracks[i].calculateDelay();
     } while (true);
   }

@@ -1,14 +1,23 @@
 package audio.music;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequencer;
 import javax.sound.midi.Soundbank;
 import javax.sound.midi.Synthesizer;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class MidiPlayer {
+public class AudioPlayer {
 
   static Soundbank soundfont;
   static Sequencer sequencer;
@@ -22,7 +31,24 @@ public class MidiPlayer {
 
   private static Thread fadeThread;
 
-  public static void playSong(byte[] nextSong) {
+  public static void playSound(byte[] sound)
+      throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    AudioSystem.getAudioInputStream(new ByteArrayInputStream(sound));
+
+    AudioInputStream stream;
+    AudioFormat format;
+    DataLine.Info info;
+    Clip clip;
+
+    stream = AudioSystem.getAudioInputStream(new ByteArrayInputStream(sound));
+    format = stream.getFormat();
+    info = new DataLine.Info(Clip.class, format);
+    clip = (Clip) AudioSystem.getLine(info);
+    clip.open(stream);
+    clip.start();
+  }
+
+  public static void playSong(byte[] song) {
     try {
       if (soundfont == null) {
         soundfont = MidiSystem.getSoundbank(
@@ -38,9 +64,9 @@ public class MidiPlayer {
       }
 
       if (isRunning) {
-        fadeOut(nextSong);
+        fadeOut(song);
       } else {
-        fadeIn(nextSong);
+        fadeIn(song);
       }
     } catch (Exception e) {
       e.printStackTrace();
