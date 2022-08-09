@@ -1,3 +1,4 @@
+import audio.music.MidiPlayer;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,15 +45,15 @@ public class OnDemandRequester extends Requester implements Runnable {
   public int[] anIntArray1366;
   public int anInt1367;
   public int anInt1368;
-  public Queue aClass9_1369;
+  public Queue priorityRequests;
   public InputStream anInputStream1370;
   public byte aByte1371;
-  public Class50_Sub1_Sub3 aClass50_Sub1_Sub3_1372;
+  public OnDemandNode aClass50_Sub1_Sub3_1372;
   public Client aClient1373;
   public Deque aClass6_1374;
   public int anInt1375;
   public int[] anIntArray1376;
-  public int[][] anIntArrayArray1377;
+  public int[][] fileVersions;
   public long aLong1378;
   public int anInt1379;
   public boolean aBoolean1380;
@@ -72,10 +73,10 @@ public class OnDemandRequester extends Requester implements Runnable {
     aByteArray1359 = new byte[65000];
     aByteArray1364 = new byte[500];
     anInt1367 = 591;
-    aClass9_1369 = new Queue();
+    priorityRequests = new Queue();
     aByte1371 = 6;
     aClass6_1374 = new Deque();
-    anIntArrayArray1377 = new int[4][];
+    fileVersions = new int[4][];
     aBoolean1380 = false;
   }
 
@@ -94,12 +95,12 @@ public class OnDemandRequester extends Requester implements Runnable {
             + (aByteArray1364[4] & 0xff);
         int l1 = aByteArray1364[5] & 0xff;
         aClass50_Sub1_Sub3_1372 = null;
-        for (Class50_Sub1_Sub3 class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+        for (OnDemandNode class50_sub1_sub3 = (OnDemandNode) aClass6_1374
             .method158(); class50_sub1_sub3 != null;
-            class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+            class50_sub1_sub3 = (OnDemandNode) aClass6_1374
                 .method160()) {
-          if (class50_sub1_sub3.anInt1467 == k
-              && class50_sub1_sub3.anInt1468 == i1) {
+          if (class50_sub1_sub3.type == k
+              && class50_sub1_sub3.id == i1) {
             aClass50_Sub1_Sub3_1372 = class50_sub1_sub3;
           }
           if (aClass50_Sub1_Sub3_1372 != null) {
@@ -112,7 +113,7 @@ public class OnDemandRequester extends Requester implements Runnable {
           if (k1 == 0) {
             SignLink.reporterror("Rej: " + k + "," + i1);
             aClass50_Sub1_Sub3_1372.aByteArray1470 = null;
-            if (aClass50_Sub1_Sub3_1372.aBoolean1471) {
+            if (aClass50_Sub1_Sub3_1372.priority) {
               synchronized (aClass6_1357) {
                 aClass6_1357.method155(aClass50_Sub1_Sub3_1372);
               }
@@ -151,16 +152,16 @@ public class OnDemandRequester extends Requester implements Runnable {
         if (anInt1362 + anInt1361 >= abyte0.length
             && aClass50_Sub1_Sub3_1372 != null) {
           if (aClient1373.aClass23Array1228[0] != null) {
-            aClient1373.aClass23Array1228[aClass50_Sub1_Sub3_1372.anInt1467 + 1]
+            aClient1373.aClass23Array1228[aClass50_Sub1_Sub3_1372.type + 1]
                 .put(abyte0, abyte0.length,
-                    aClass50_Sub1_Sub3_1372.anInt1468);
+                    aClass50_Sub1_Sub3_1372.id);
           }
-          if (!aClass50_Sub1_Sub3_1372.aBoolean1471
-              && aClass50_Sub1_Sub3_1372.anInt1467 == 3) {
-            aClass50_Sub1_Sub3_1372.aBoolean1471 = true;
-            aClass50_Sub1_Sub3_1372.anInt1467 = 93;
+          if (!aClass50_Sub1_Sub3_1372.priority
+              && aClass50_Sub1_Sub3_1372.type == 3) {
+            aClass50_Sub1_Sub3_1372.priority = true;
+            aClass50_Sub1_Sub3_1372.type = 93;
           }
-          if (aClass50_Sub1_Sub3_1372.aBoolean1471) {
+          if (aClass50_Sub1_Sub3_1372.priority) {
             synchronized (aClass6_1357) {
               aClass6_1357.method155(aClass50_Sub1_Sub3_1372);
             }
@@ -202,14 +203,14 @@ public class OnDemandRequester extends Requester implements Runnable {
       if (anInt1341 == 0) {
         break;
       }
-      Class50_Sub1_Sub3 class50_sub1_sub3;
+      OnDemandNode class50_sub1_sub3;
       synchronized (aClass6_1358) {
-        class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1358
+        class50_sub1_sub3 = (OnDemandNode) aClass6_1358
             .method157();
       }
       while (class50_sub1_sub3 != null) {
-        if (aByteArrayArray1337[class50_sub1_sub3.anInt1467][class50_sub1_sub3.anInt1468] != 0) {
-          aByteArrayArray1337[class50_sub1_sub3.anInt1467][class50_sub1_sub3.anInt1468] = 0;
+        if (aByteArrayArray1337[class50_sub1_sub3.type][class50_sub1_sub3.id] != 0) {
+          aByteArrayArray1337[class50_sub1_sub3.type][class50_sub1_sub3.id] = 0;
           aClass6_1374.method155(class50_sub1_sub3);
           method342(anInt1345, class50_sub1_sub3);
           aBoolean1338 = true;
@@ -224,7 +225,7 @@ public class OnDemandRequester extends Requester implements Runnable {
           }
         }
         synchronized (aClass6_1358) {
-          class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1358
+          class50_sub1_sub3 = (OnDemandNode) aClass6_1358
               .method157();
         }
       }
@@ -234,10 +235,10 @@ public class OnDemandRequester extends Requester implements Runnable {
         for (int l = 0; l < k; l++) {
           if (abyte0[l] == anInt1341) {
             abyte0[l] = 0;
-            Class50_Sub1_Sub3 class50_sub1_sub3_1 = new Class50_Sub1_Sub3();
-            class50_sub1_sub3_1.anInt1467 = j;
-            class50_sub1_sub3_1.anInt1468 = l;
-            class50_sub1_sub3_1.aBoolean1471 = false;
+            OnDemandNode class50_sub1_sub3_1 = new OnDemandNode();
+            class50_sub1_sub3_1.type = j;
+            class50_sub1_sub3_1.id = l;
+            class50_sub1_sub3_1.priority = false;
             aClass6_1374.method155(class50_sub1_sub3_1);
             method342(anInt1345, class50_sub1_sub3_1);
             aBoolean1338 = true;
@@ -266,11 +267,11 @@ public class OnDemandRequester extends Requester implements Runnable {
     if (aClient1373.aClass23Array1228[0] == null) {
       return;
     }
-    if (anIntArrayArray1377[j][k] == 0) {
+    if (fileVersions[j][k] == 0) {
       return;
     }
     byte[] abyte0 = aClient1373.aClass23Array1228[j + 1].decompress(k);
-    if (method341(abyte0, 764, anIntArrayArray1377[j][k],
+    if (method341(abyte0, 764, fileVersions[j][k],
         anIntArrayArray1344[j][k])) {
       return;
     }
@@ -288,45 +289,47 @@ public class OnDemandRequester extends Requester implements Runnable {
     return anIntArray1366[i] == 1;
   }
 
-  public void request(int i, int j) {
-    if (i < 0 || i > anIntArrayArray1377.length || j < 0
-        || j > anIntArrayArray1377[i].length) {
+  public void request(int type, int id) {
+    if (type < 0 || type > fileVersions.length || id < 0
+        || id > fileVersions[type].length) {
       return;
     }
-    if (anIntArrayArray1377[i][j] == 0) {
+    if (fileVersions[type][id] == 0) {
       return;
     }
-    synchronized (aClass9_1369) {
-      for (Class50_Sub1_Sub3 class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass9_1369
-          .getFront(); class50_sub1_sub3 != null;
-          class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass9_1369
+
+    synchronized (priorityRequests) {
+
+      for (OnDemandNode onDemandRequests = (OnDemandNode) priorityRequests
+          .getFront(); onDemandRequests != null;
+          onDemandRequests = (OnDemandNode) priorityRequests
               .getNext()) {
-        if (class50_sub1_sub3.anInt1467 == i
-            && class50_sub1_sub3.anInt1468 == j) {
+        if (onDemandRequests.type == type
+            && onDemandRequests.id == id) {
           return;
         }
       }
 
-      Class50_Sub1_Sub3 class50_sub1_sub3_1 = new Class50_Sub1_Sub3();
-      class50_sub1_sub3_1.anInt1467 = i;
-      class50_sub1_sub3_1.anInt1468 = j;
-      class50_sub1_sub3_1.aBoolean1471 = true;
+      OnDemandNode onDemandRequest = new OnDemandNode();
+      onDemandRequest.type = type;
+      onDemandRequest.id = id;
+      onDemandRequest.priority = true;
       synchronized (aClass6_1340) {
-        aClass6_1340.method155(class50_sub1_sub3_1);
+        aClass6_1340.method155(onDemandRequest);
       }
-      aClass9_1369.insertBack(class50_sub1_sub3_1);
+      priorityRequests.insertBack(onDemandRequest);
     }
   }
 
-  public Class50_Sub1_Sub3 method330() {
-    Class50_Sub1_Sub3 class50_sub1_sub3;
+  public OnDemandNode method330() {
+    OnDemandNode class50_sub1_sub3;
     synchronized (aClass6_1357) {
-      class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1357.method157();
+      class50_sub1_sub3 = (OnDemandNode) aClass6_1357.method157();
     }
     if (class50_sub1_sub3 == null) {
       return null;
     }
-    synchronized (aClass9_1369) {
+    synchronized (priorityRequests) {
       class50_sub1_sub3.unlinkCacheable();
     }
     if (class50_sub1_sub3.aByteArray1470 == null) {
@@ -387,11 +390,11 @@ public class OnDemandRequester extends Requester implements Runnable {
         }
 
         boolean flag = false;
-        for (Class50_Sub1_Sub3 class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+        for (OnDemandNode class50_sub1_sub3 = (OnDemandNode) aClass6_1374
             .method158(); class50_sub1_sub3 != null;
-            class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+            class50_sub1_sub3 = (OnDemandNode) aClass6_1374
                 .method160()) {
-          if (class50_sub1_sub3.aBoolean1471) {
+          if (class50_sub1_sub3.priority) {
             flag = true;
             class50_sub1_sub3.anInt1469++;
             if (class50_sub1_sub3.anInt1469 > 50) {
@@ -402,9 +405,9 @@ public class OnDemandRequester extends Requester implements Runnable {
         }
 
         if (!flag) {
-          for (Class50_Sub1_Sub3 class50_sub1_sub3_1 = (Class50_Sub1_Sub3) aClass6_1374
+          for (OnDemandNode class50_sub1_sub3_1 = (OnDemandNode) aClass6_1374
               .method158(); class50_sub1_sub3_1 != null;
-              class50_sub1_sub3_1 = (Class50_Sub1_Sub3) aClass6_1374
+              class50_sub1_sub3_1 = (OnDemandNode) aClass6_1374
                   .method160()) {
             flag = true;
             class50_sub1_sub3_1.anInt1469++;
@@ -461,11 +464,11 @@ public class OnDemandRequester extends Requester implements Runnable {
     if (i != 0) {
       return;
     }
-    for (Class50_Sub1_Sub3 class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+    for (OnDemandNode class50_sub1_sub3 = (OnDemandNode) aClass6_1374
         .method158(); class50_sub1_sub3 != null;
-        class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1374
+        class50_sub1_sub3 = (OnDemandNode) aClass6_1374
             .method160()) {
-      if (class50_sub1_sub3.aBoolean1471) {
+      if (class50_sub1_sub3.priority) {
         anInt1342++;
       } else {
         anInt1343++;
@@ -473,15 +476,15 @@ public class OnDemandRequester extends Requester implements Runnable {
     }
 
     while (anInt1342 < 10) {
-      Class50_Sub1_Sub3 class50_sub1_sub3_1 = (Class50_Sub1_Sub3) aClass6_1351
+      OnDemandNode class50_sub1_sub3_1 = (OnDemandNode) aClass6_1351
           .method157();
       if (class50_sub1_sub3_1 == null) {
         break;
       }
-      if (aByteArrayArray1337[class50_sub1_sub3_1.anInt1467][class50_sub1_sub3_1.anInt1468] != 0) {
+      if (aByteArrayArray1337[class50_sub1_sub3_1.type][class50_sub1_sub3_1.id] != 0) {
         anInt1334++;
       }
-      aByteArrayArray1337[class50_sub1_sub3_1.anInt1467][class50_sub1_sub3_1.anInt1468] = 0;
+      aByteArrayArray1337[class50_sub1_sub3_1.type][class50_sub1_sub3_1.id] = 0;
       aClass6_1374.method155(class50_sub1_sub3_1);
       anInt1342++;
       method342(anInt1345, class50_sub1_sub3_1);
@@ -504,8 +507,8 @@ public class OnDemandRequester extends Requester implements Runnable {
   }
 
   public int method333() {
-    synchronized (aClass9_1369) {
-      int i = aClass9_1369.size();
+    synchronized (priorityRequests) {
+      int i = priorityRequests.size();
       return i;
     }
   }
@@ -530,10 +533,10 @@ public class OnDemandRequester extends Requester implements Runnable {
       byte[] abyte0 = archive.extract(as[i]);
       int j = abyte0.length / 2;
       Buffer class50_sub1_sub2 = new Buffer(abyte0);
-      anIntArrayArray1377[i] = new int[j];
+      fileVersions[i] = new int[j];
       aByteArrayArray1337[i] = new byte[j];
       for (int l = 0; l < j; l++) {
-        anIntArrayArray1377[i][l] = class50_sub1_sub2.readUShort();
+        fileVersions[i][l] = class50_sub1_sub2.readUShort();
       }
 
     }
@@ -551,7 +554,7 @@ public class OnDemandRequester extends Requester implements Runnable {
     }
 
     byte[] abyte2 = archive.extract("model_index");
-    int j1 = anIntArrayArray1377[0].length;
+    int j1 = fileVersions[0].length;
     aByteArray1335 = new byte[j1];
     for (int k1 = 0; k1 < j1; k1++) {
       if (k1 < abyte2.length) {
@@ -609,7 +612,7 @@ public class OnDemandRequester extends Requester implements Runnable {
     if (aClient1373.aClass23Array1228[0] == null) {
       return;
     }
-    if (anIntArrayArray1377[j][i] == 0) {
+    if (fileVersions[j][i] == 0) {
       return;
     }
     if (aByteArrayArray1337[j][i] == 0) {
@@ -618,22 +621,22 @@ public class OnDemandRequester extends Requester implements Runnable {
     if (anInt1341 == 0) {
       return;
     }
-    Class50_Sub1_Sub3 class50_sub1_sub3 = new Class50_Sub1_Sub3();
+    OnDemandNode class50_sub1_sub3 = new OnDemandNode();
     if (byte0 != -113) {
       anInt1367 = 244;
     }
-    class50_sub1_sub3.anInt1467 = j;
-    class50_sub1_sub3.anInt1468 = i;
-    class50_sub1_sub3.aBoolean1471 = false;
+    class50_sub1_sub3.type = j;
+    class50_sub1_sub3.id = i;
+    class50_sub1_sub3.priority = false;
     synchronized (aClass6_1358) {
       aClass6_1358.method155(class50_sub1_sub3);
     }
   }
 
   public void method338(boolean flag) {
-    Class50_Sub1_Sub3 class50_sub1_sub3;
+    OnDemandNode class50_sub1_sub3;
     synchronized (aClass6_1340) {
-      class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1340.method157();
+      class50_sub1_sub3 = (OnDemandNode) aClass6_1340.method157();
     }
     if (!flag) {
       for (int i = 1; i > 0; i++) {
@@ -643,14 +646,14 @@ public class OnDemandRequester extends Requester implements Runnable {
       aBoolean1338 = true;
       byte[] abyte0 = null;
       if (aClient1373.aClass23Array1228[0] != null) {
-        abyte0 = aClient1373.aClass23Array1228[class50_sub1_sub3.anInt1467 + 1]
-            .decompress(class50_sub1_sub3.anInt1468);
+        abyte0 = aClient1373.aClass23Array1228[class50_sub1_sub3.type + 1]
+            .decompress(class50_sub1_sub3.id);
       }
       if (!method341(
           abyte0,
           764,
-          anIntArrayArray1377[class50_sub1_sub3.anInt1467][class50_sub1_sub3.anInt1468],
-          anIntArrayArray1344[class50_sub1_sub3.anInt1467][class50_sub1_sub3.anInt1468])) {
+          fileVersions[class50_sub1_sub3.type][class50_sub1_sub3.id],
+          anIntArrayArray1344[class50_sub1_sub3.type][class50_sub1_sub3.id])) {
         abyte0 = null;
       }
       synchronized (aClass6_1340) {
@@ -662,7 +665,7 @@ public class OnDemandRequester extends Requester implements Runnable {
             aClass6_1357.method155(class50_sub1_sub3);
           }
         }
-        class50_sub1_sub3 = (Class50_Sub1_Sub3) aClass6_1340
+        class50_sub1_sub3 = (OnDemandNode) aClass6_1340
             .method157();
       }
     }
@@ -676,7 +679,7 @@ public class OnDemandRequester extends Requester implements Runnable {
     if (j != -31140) {
       aBoolean1380 = !aBoolean1380;
     }
-    return anIntArrayArray1377[i].length;
+    return fileVersions[i].length;
   }
 
   public boolean method341(byte[] abyte0, int i, int j, int k) {
@@ -695,7 +698,7 @@ public class OnDemandRequester extends Requester implements Runnable {
     return j1 == k;
   }
 
-  public void method342(int i, Class50_Sub1_Sub3 class50_sub1_sub3) {
+  public void method342(int i, OnDemandNode class50_sub1_sub3) {
     if (i != 0) {
       return;
     }
@@ -716,10 +719,10 @@ public class OnDemandRequester extends Requester implements Runnable {
 
         anInt1353 = 0;
       }
-      aByteArray1364[0] = (byte) class50_sub1_sub3.anInt1467;
-      aByteArray1364[1] = (byte) (class50_sub1_sub3.anInt1468 >> 8);
-      aByteArray1364[2] = (byte) class50_sub1_sub3.anInt1468;
-      if (class50_sub1_sub3.aBoolean1471) {
+      aByteArray1364[0] = (byte) class50_sub1_sub3.type;
+      aByteArray1364[1] = (byte) (class50_sub1_sub3.id >> 8);
+      aByteArray1364[2] = (byte) class50_sub1_sub3.id;
+      if (class50_sub1_sub3.priority) {
         aByteArray1364[3] = 2;
       } else if (!aClient1373.aBoolean1137) {
         aByteArray1364[3] = 1;

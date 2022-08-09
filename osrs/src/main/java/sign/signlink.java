@@ -250,7 +250,7 @@ public class SignLink implements Runnable {
 	    savelen = i;
 	    savebuf = abyte0;
 	    midiplay = true;
-	    savereq = "jingle" + midipos + ".mid";
+	    savereq = null; //"jingle" + midipos + ".mid"; //Don't save midis, just play them
 	    return;
 	}
     }

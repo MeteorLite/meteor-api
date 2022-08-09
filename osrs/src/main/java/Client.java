@@ -1,3 +1,4 @@
+import audio.music.MidiPlayer;
 import java.applet.AppletContext;
 import java.awt.Color;
 import java.awt.Component;
@@ -13,6 +14,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Logger;
 import java.util.zip.CRC32;
 import packets.ServerPackets;
 import sign.SignLink;
@@ -1121,7 +1123,7 @@ public class Client extends GameStub {
     aClass50_Sub1_Sub1_Sub1Array1079 = null;
     aClass50_Sub1_Sub1_Sub1Array954 = null;
     aClass50_Sub1_Sub1_Sub1Array896 = null;
-    method50(false);
+    stopMusic(false);
     outgoingBuffer = null;
     loginBuffer = null;
     buffer = null;
@@ -1852,7 +1854,7 @@ public class Client extends GameStub {
     } catch (IOException _ex) {
       method59(1);
 		} catch (Exception exception) {
-      method124(true);
+      disconnect(true);
     }
   }
 
@@ -2433,7 +2435,7 @@ public class Client extends GameStub {
       }
 
       if (ServerPackets.PLAY_SONG.equals(incomingPacketOpcode)) {
-        int songID = buffer.readShortLESub();
+        int songID = buffer.readShort();
         if (songID == 65535) {
           songID = -1;
         }
@@ -2442,6 +2444,7 @@ public class Client extends GameStub {
           songChanging = true;
           requester.request(2, nextSong);
         }
+        Logger.getAnonymousLogger().info("currentSong :" + songID);
         currentSong = songID;
         incomingPacketOpcode = -1;
         return true;
@@ -2576,7 +2579,7 @@ public class Client extends GameStub {
         return true;
       }
       if (incomingPacketOpcode == 5) {
-        method124(true);
+        disconnect(true);
         incomingPacketOpcode = -1;
         return false;
       }
@@ -3550,7 +3553,7 @@ public class Client extends GameStub {
       }
       SignLink.reporterror("T1 - " + incomingPacketOpcode + "," + anInt869 + " - "
           + anInt904 + "," + anInt905);
-      method124(true);
+      disconnect(true);
     } catch (IOException _ex) {
       method59(1);
     } catch (Exception exception) {
@@ -3565,7 +3568,7 @@ public class Client extends GameStub {
       }
 
       SignLink.reporterror(s1);
-      method124(true);
+      disconnect(true);
     }
     return true;
   }
@@ -4569,7 +4572,7 @@ public class Client extends GameStub {
     SpotAnimation.aClass33_566.method347();
   }
 
-  public void method50(boolean flag) {
+  public void stopMusic(boolean flag) {
     SignLink.midiplay = false;
     if (flag) {
       anInt1119 = 466;
@@ -4990,7 +4993,7 @@ public class Client extends GameStub {
 
   public void method59(int i) {
     if (anInt873 > 0) {
-      method124(true);
+      disconnect(true);
       return;
     }
     method125(-332, "Please wait - attempting to reestablish",
@@ -5005,7 +5008,7 @@ public class Client extends GameStub {
     anInt850 = 0;
     method79(aString1092, aString1093, true);
     if (!aBoolean1137) {
-      method124(true);
+      disconnect(true);
     }
     try {
       class17.close();
@@ -7236,42 +7239,43 @@ public class Client extends GameStub {
       incomingPacketOpcode = -1;
     }
     do {
-      Class50_Sub1_Sub3 class50_sub1_sub3;
+      OnDemandNode class50_sub1_sub3;
       do {
         class50_sub1_sub3 = requester.method330();
         if (class50_sub1_sub3 == null) {
           return;
         }
-        if (class50_sub1_sub3.anInt1467 == 0) {
+        if (class50_sub1_sub3.type == 0) {
           Model.method575(class50_sub1_sub3.aByteArray1470,
-              class50_sub1_sub3.anInt1468, (byte) 7);
-          if ((requester.method325(class50_sub1_sub3.anInt1468, -493) & 0x62) != 0) {
+              class50_sub1_sub3.id, (byte) 7);
+          if ((requester.method325(class50_sub1_sub3.id, -493) & 0x62) != 0) {
             aBoolean1181 = true;
             if (anInt988 != -1 || anInt1191 != -1) {
               aBoolean1240 = true;
             }
           }
         }
-        if (class50_sub1_sub3.anInt1467 == 1
+        if (class50_sub1_sub3.type == 1
             && class50_sub1_sub3.aByteArray1470 != null) {
           Animation.load(class50_sub1_sub3.aByteArray1470);
         }
-        if (class50_sub1_sub3.anInt1467 == 2
-            && class50_sub1_sub3.anInt1468 == nextSong
+        if (class50_sub1_sub3.type == 2
+            && class50_sub1_sub3.id == nextSong
             && class50_sub1_sub3.aByteArray1470 != null) {
+          MidiPlayer.playSong(class50_sub1_sub3.aByteArray1470);
           method24(songChanging, class50_sub1_sub3.aByteArray1470,
               659);
         }
-        if (class50_sub1_sub3.anInt1467 == 3 && anInt1071 == 1) {
+        if (class50_sub1_sub3.type == 3 && anInt1071 == 1) {
           for (int i = 0; i < aByteArrayArray838.length; i++) {
-            if (anIntArray857[i] == class50_sub1_sub3.anInt1468) {
+            if (anIntArray857[i] == class50_sub1_sub3.id) {
               aByteArrayArray838[i] = class50_sub1_sub3.aByteArray1470;
               if (class50_sub1_sub3.aByteArray1470 == null) {
                 anIntArray857[i] = -1;
               }
               break;
             }
-            if (anIntArray858[i] != class50_sub1_sub3.anInt1468) {
+            if (anIntArray858[i] != class50_sub1_sub3.id) {
               continue;
             }
             aByteArrayArray1232[i] = class50_sub1_sub3.aByteArray1470;
@@ -7282,8 +7286,8 @@ public class Client extends GameStub {
           }
 
         }
-      } while (class50_sub1_sub3.anInt1467 != 93
-          || !requester.method334(class50_sub1_sub3.anInt1468, false));
+      } while (class50_sub1_sub3.type != 93
+          || !requester.method334(class50_sub1_sub3.id, false));
       Region.method169(requester, new Buffer(
           class50_sub1_sub3.aByteArray1470), (byte) -3);
     } while (true);
@@ -9516,7 +9520,7 @@ public class Client extends GameStub {
           songChanging = true;
           requester.request(2, nextSong);
         } else {
-          method50(false);
+          stopMusic(false);
         }
         previousSong = 0;
       }
@@ -10103,7 +10107,7 @@ public class Client extends GameStub {
 
   }
 
-  public boolean method116(int i, int j, byte[] abyte0) {
+  public boolean saveWaveFile(int i, int j, byte[] abyte0) {
     if (i < 3 || i > 3) {
       throw new NullPointerException();
     }
@@ -11704,7 +11708,7 @@ public class Client extends GameStub {
     }
   }
 
-  public void method124(boolean flag) {
+  public void disconnect(boolean flag) {
     try {
       if (primaryConnection != null) {
         primaryConnection.close();
@@ -11724,7 +11728,7 @@ public class Client extends GameStub {
     }
 
     System.gc();
-    method50(false);
+    stopMusic(false);
     currentSong = -1;
     nextSong = -1;
     previousSong = 0;
@@ -13754,15 +13758,15 @@ public class Client extends GameStub {
               flag = true;
             }
           } else {
-            Buffer class50_sub1_sub2 = Track.data(
+            Buffer soundBuffer = Track.data(
                 pendingSoundTypes[j], pendingSoundIDs[j]);
             if (System.currentTimeMillis()
-                + (long) (class50_sub1_sub2.offset / 22) > aLong1250
+                + (long) (soundBuffer.offset / 22) > aLong1250
                 + (long) (anInt1179 / 22)) {
-              anInt1179 = class50_sub1_sub2.offset;
+              anInt1179 = soundBuffer.offset;
               aLong1250 = System.currentTimeMillis();
-              if (method116(3, class50_sub1_sub2.offset,
-                  class50_sub1_sub2.payload)) {
+              if (saveWaveFile(3, soundBuffer.offset,
+                  soundBuffer.payload)) {
                 anInt1272 = pendingSoundIDs[j];
                 anInt935 = pendingSoundTypes[j];
               } else {
