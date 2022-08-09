@@ -1,67 +1,68 @@
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
+public class VarBit {
 
-public class Varbit {
-
-	public static void unpack(Archive archive) {
-		JagBuffer buf = new JagBuffer(archive.get("varbit.dat"));
-		count = buf.getShort();
-
-		if (aClass49Array824 == null)
-			aClass49Array824 = new Varbit[count];
-
-		for (int id = 0; id < count; id++) {
-			if (aClass49Array824[id] == null)
-				aClass49Array824[id] = new Varbit();
-			aClass49Array824[id].init(id, buf);
-			if (aClass49Array824[id].aBoolean829)
-				Varp.aClass43Array704[aClass49Array824[id].varpId].aBoolean716 = true;
-		}
-
-		if (buf.position != buf.buffer.length)
-			System.out.println("varbit load mismatch");
+    public static void method440(Archive archive) {
+	Buffer buffer = new Buffer(archive.extract("varbit.dat"));
+	length = buffer.readUShort();
+	if (varbits == null) {
+	    varbits = new VarBit[length];
+	}
+	for (int i = 0; i < length; i++) {
+	    if (varbits[i] == null) {
+		varbits[i] = new VarBit();
+	    }
+	    varbits[i].readValues(buffer, i);
+	    if (varbits[i].aBoolean829) {
+		Varp.aClass43Array704[varbits[i].anInt826].aBoolean716 = true;
+	    }
 	}
 
-	public void init(int j, JagBuffer buf) {
-		do {
-			int attribute = buf.getByte();
-			if (attribute == 0)
-				return;
-			if (attribute == 1) {
-				varpId = buf.getShort();
-				anInt827 = buf.getByte();
-				anInt828 = buf.getByte();
-			} else if (attribute == 10)
-				aString825 = buf.getString();
-			else if (attribute == 2)
-				aBoolean829 = true;
-			else if (attribute == 3)
-				anInt830 = buf.getInt();
-			else if (attribute == 4)
-				anInt831 = buf.getInt();
-			else if (attribute == 5)
-				aBoolean832 = false;
-			else
-				System.out.println("Error unrecognised config code: " + attribute);
-		} while (true);
+	if (buffer.offset != buffer.payload.length) {
+	    System.out.println("varbit load mismatch");
 	}
+    }
 
-	public Varbit() {
-		aBoolean829 = false;
-		anInt830 = -1;
-		aBoolean832 = true;
-	}
+    public void readValues(Buffer buffer, int index) {
+	do {
+	    int opcode = buffer.readUByte();
+	    if (opcode == 0) {
+		return;
+	    }
+	    if (opcode == 1) {
+		anInt826 = buffer.readUShort();
+		anInt827 = buffer.readUByte();
+		anInt828 = buffer.readUByte();
+	    } else if (opcode == 10) {
+		aString825 = buffer.readJString();
+	    } else if (opcode == 2) {
+		aBoolean829 = true;
+	    } else if (opcode == 3) {
+		anInt830 = buffer.readInt();
+	    } else if (opcode == 4) {
+		anInt831 = buffer.readInt();
+	    } else if (opcode == 5) {
+		aBoolean832 = false;
+	    } else {
+		System.out.println("Error unrecognised config code: " + opcode);
+	    }
+	} while (true);
+    }
 
-	public int anInt822;
-	public static int count;
-	public static Varbit aClass49Array824[];
-	public String aString825;
-	public int varpId;
-	public int anInt827;
-	public int anInt828;
-	public boolean aBoolean829;
-	public int anInt830;
-	public int anInt831;
-	public boolean aBoolean832;
+    public VarBit() {
+	aBoolean829 = false;
+	anInt830 = -1;
+	aBoolean832 = true;
+    }
+
+    public int anInt822;
+    public static int length;
+    public static VarBit varbits[];
+    public String aString825;
+    public int anInt826;
+    public int anInt827;
+    public int anInt828;
+    public boolean aBoolean829;
+    public int anInt830;
+    public int anInt831;
+    public boolean aBoolean832;
+
 }

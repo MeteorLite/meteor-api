@@ -66,10 +66,6 @@ public class Deob
 
 	public static void main(String[] args) throws IOException
 	{
-		args = new String[2];
-		args[0] = "./deobfuscator/247-obf.jar";
-		args[1] = "./deobfuscator/247-deob.jar";
-
 		logger.info("Deobfuscator revision {}", DeobProperties.getRevision());
 
 		Stopwatch stopwatch = Stopwatch.createStarted();

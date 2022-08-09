@@ -1,39 +1,39 @@
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class HashTable {
 
-	public HashTable(int _size) {
-		size = _size;
-		buckets = new Node[_size];
-		for (int pos = 0; pos < _size; pos++) {
-			Node bucket = buckets[pos] = new Node();
-			bucket.next = bucket;
-			bucket.previous = bucket;
-		}
-	}
+  public int bucketCount;
+  public Node[] buckets;
 
-	public Node get(long id) {
-		Node bucket = buckets[(int) (id & (size - 1))];
-		for (Node node = bucket.next; node != bucket; node = node.next)
-			if (node.id == id)
-				return node;
-		return null;
-	}
+  public HashTable(int i) {
+    bucketCount = i;
+    buckets = new Node[i];
+    for (int j = 0; j < i; j++) {
+      Node node = buckets[j] = new Node();
+      node.aClass50_834 = node;
+      node.aClass50_835 = node;
+    }
+  }
 
-	public void put(Node node, long id) {
-		if (node.previous != null)
-			node.unlink();
-		Node bucket = buckets[(int) (id & (size - 1))];
-		node.previous = bucket.previous;
-		node.next = bucket;
-		node.previous.next = node;
-		node.next.previous = node;
-		node.id = id;
-		return;
-	}
+  public Node method233(long l) {
+    Node class50 = buckets[(int) (l & (long) (bucketCount - 1))];
+    for (Node class50_1 = class50.aClass50_834; class50_1 != class50;
+        class50_1 = class50_1.aClass50_834) {
+      if (class50_1.uid == l) {
+        return class50_1;
+      }
+    }
 
-	public int size;
-	public Node buckets[];
+    return null;
+  }
+
+  public void method234(Node node, long uid) {
+    if (node.aClass50_835 != null) {
+      node.unlink();
+    }
+    Node class50_1 = buckets[(int) (uid & (long) (bucketCount - 1))];
+    node.aClass50_835 = class50_1.aClass50_835;
+    node.aClass50_834 = class50_1;
+    node.aClass50_835.aClass50_834 = node;
+    node.aClass50_834.aClass50_835 = node;
+    node.uid = uid;
+  }
 }

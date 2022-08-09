@@ -1,135 +1,138 @@
-// Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) 
-
 public class Animation {
 
-	public static void unpack(Archive archive) {
-		JagBuffer buf = new JagBuffer(archive.get("seq.dat"));
-		count = buf.getShort();
-		if (animations == null)
-			animations = new Animation[count];
-		for (int id = 0; id < count; id++) {
-			if (animations[id] == null)
-				animations[id] = new Animation();
-			animations[id].init(buf);
-		}
-	}
+  public static int anInt428 = 217;
+  public static boolean aBoolean429;
+  public static Animation[] animations;
+  public static boolean[] aBooleanArray438;
+  public int anInt431;
+  public Skins aClass41_432;
+  public int stepCount;
+  public int[] opcodeLinkTable;
+  public int[] anIntArray435;
+  public int[] anIntArray436;
+  public int[] anIntArray437;
+  public Animation() {
+  }
 
-	public int method205(int i, int j) {
-		int k = anIntArray297[j];
-		if (i != 0)
-			return 1;
-		if (k == 0) {
-			Class21 class21 = Class21.method238(anIntArray295[j]);
-			if (class21 != null)
-				k = anIntArray297[j] = class21.anInt431;
-		}
-		if (k == 0)
-			k = 1;
-		return k;
-	}
+  public static void init(int size) {
+    animations = new Animation[size + 1];
+    aBooleanArray438 = new boolean[size + 1];
+    for (int j = 0; j < size + 1; j++) {
+      aBooleanArray438[j] = true;
+    }
 
-	public void init(JagBuffer buf) {
-		do {
-			int attribute = buf.getByte();
-			if (attribute == 0)
-				break;
-			if (attribute == 1) {
-				anInt294 = buf.getByte();
-				anIntArray295 = new int[anInt294];
-				anIntArray296 = new int[anInt294];
-				anIntArray297 = new int[anInt294];
-				for (int j = 0; j < anInt294; j++) {
-					anIntArray295[j] = buf.getShort();
-					anIntArray296[j] = buf.getShort();
-					if (anIntArray296[j] == 65535)
-						anIntArray296[j] = -1;
-					anIntArray297[j] = buf.getShort();
-				}
+  }
 
-			} else if (attribute == 2)
-				anInt298 = buf.getShort();
-			else if (attribute == 3) {
-				int k = buf.getByte();
-				anIntArray299 = new int[k + 1];
-				for (int l = 0; l < k; l++)
-					anIntArray299[l] = buf.getByte();
+  public static void load(byte[] data) {
+    Buffer buffer = new Buffer(data);
+    buffer.offset = data.length - 8;
+    int i = buffer.readUShort();
+    int j = buffer.readUShort();
+    int k = buffer.readUShort();
+    int l = buffer.readUShort();
+    int i1 = 0;
+    Buffer class50_sub1_sub2_1 = new Buffer(data);
+    class50_sub1_sub2_1.offset = i1;
+    i1 += i + 2;
+    Buffer class50_sub1_sub2_2 = new Buffer(data);
+    class50_sub1_sub2_2.offset = i1;
+    i1 += j;
+    Buffer class50_sub1_sub2_3 = new Buffer(data);
+    class50_sub1_sub2_3.offset = i1;
+    i1 += k;
+    Buffer class50_sub1_sub2_4 = new Buffer(data);
+    class50_sub1_sub2_4.offset = i1;
+    i1 += l;
+    Buffer class50_sub1_sub2_5 = new Buffer(data);
+    class50_sub1_sub2_5.offset = i1;
+    Skins skins = new Skins(class50_sub1_sub2_5);
+    int j1 = class50_sub1_sub2_1.readUShort();
+    int[] ai = new int[500];
+    int[] ai1 = new int[500];
+    int[] ai2 = new int[500];
+    int[] ai3 = new int[500];
+    for (int k1 = 0; k1 < j1; k1++) {
+      int l1 = class50_sub1_sub2_1.readUShort();
+      Animation animation = animations[l1] = new Animation();
+      animation.anInt431 = class50_sub1_sub2_4.readUByte();
+      animation.aClass41_432 = skins;
+      int i2 = class50_sub1_sub2_1.readUByte();
+      int j2 = -1;
+      int stepCount = 0;
+      for (int l2 = 0; l2 < i2; l2++) {
+        int i3 = class50_sub1_sub2_2.readUByte();
+        if (i3 > 0) {
+          if (skins.opcodes[l2] != 0) {
+            for (int k3 = l2 - 1; k3 > j2; k3--) {
+              if (skins.opcodes[k3] != 0) {
+                continue;
+              }
+              ai[stepCount] = k3;
+              ai1[stepCount] = 0;
+              ai2[stepCount] = 0;
+              ai3[stepCount] = 0;
+              stepCount++;
+              break;
+            }
 
-				anIntArray299[k] = 0x98967f;
-			} else if (attribute == 4)
-				aBoolean300 = true;
-			else if (attribute == 5)
-				anInt301 = buf.getByte();
-			else if (attribute == 6)
-				anInt302 = buf.getShort();
-			else if (attribute == 7)
-				anInt303 = buf.getShort();
-			else if (attribute == 8)
-				anInt304 = buf.getByte();
-			else if (attribute == 9)
-				anInt305 = buf.getByte();
-			else if (attribute == 10)
-				anInt306 = buf.getByte();
-			else if (attribute == 11)
-				anInt307 = buf.getByte();
-			else if (attribute == 12)
-				anInt308 = buf.getInt();
-			else
-				System.out.println("Error unrecognised seq config code: " + attribute);
-		} while (true);
-		if (anInt294 == 0) {
-			anInt294 = 1;
-			anIntArray295 = new int[1];
-			anIntArray295[0] = -1;
-			anIntArray296 = new int[1];
-			anIntArray296[0] = -1;
-			anIntArray297 = new int[1];
-			anIntArray297[0] = -1;
-		}
-		if (anInt305 == -1)
-			if (anIntArray299 != null)
-				anInt305 = 2;
-			else
-				anInt305 = 0;
-		if (anInt306 == -1) {
-			if (anIntArray299 != null) {
-				anInt306 = 2;
-				return;
-			}
-			anInt306 = 0;
-		}
-	}
+          }
+          ai[stepCount] = l2;
+          char c = '\0';
+          if (skins.opcodes[l2] == 3) {
+            c = '\200';
+          }
+          if ((i3 & 1) != 0) {
+            ai1[stepCount] = class50_sub1_sub2_3.method534();
+          } else {
+            ai1[stepCount] = c;
+          }
+          if ((i3 & 2) != 0) {
+            ai2[stepCount] = class50_sub1_sub2_3.method534();
+          } else {
+            ai2[stepCount] = c;
+          }
+          if ((i3 & 4) != 0) {
+            ai3[stepCount] = class50_sub1_sub2_3.method534();
+          } else {
+            ai3[stepCount] = c;
+          }
+          j2 = l2;
+          stepCount++;
+          if (skins.opcodes[l2] == 5) {
+            aBooleanArray438[l1] = false;
+          }
+        }
+      }
 
-	public Animation() {
-		anInt298 = -1;
-		aBoolean300 = false;
-		anInt301 = 5;
-		anInt302 = -1;
-		anInt303 = -1;
-		anInt304 = 99;
-		anInt305 = -1;
-		anInt306 = -1;
-		anInt307 = 2;
-	}
+      animation.stepCount = stepCount;
+      animation.opcodeLinkTable = new int[stepCount];
+      animation.anIntArray435 = new int[stepCount];
+      animation.anIntArray436 = new int[stepCount];
+      animation.anIntArray437 = new int[stepCount];
+      for (int j3 = 0; j3 < stepCount; j3++) {
+        animation.opcodeLinkTable[j3] = ai[j3];
+        animation.anIntArray435[j3] = ai1[j3];
+        animation.anIntArray436[j3] = ai2[j3];
+        animation.anIntArray437[j3] = ai3[j3];
+      }
 
-	public static int count;
-	public static Animation animations[];
-	public int anInt294;
-	public int anIntArray295[];
-	public int anIntArray296[];
-	public int anIntArray297[];
-	public int anInt298;
-	public int anIntArray299[];
-	public boolean aBoolean300;
-	public int anInt301;
-	public int anInt302;
-	public int anInt303;
-	public int anInt304;
-	public int anInt305;
-	public int anInt306;
-	public int anInt307;
-	public int anInt308;
-	public static int anInt309;
+    }
+
+  }
+
+  public static void method237() {
+    animations = null;
+  }
+
+  public static Animation getAnimation(int animationId) {
+    if (animations == null) {
+      return null;
+    }
+    return animations[animationId];
+  }
+
+  public static boolean frameIsNull(int frame) {
+    return frame == -1;
+  }
 
 }
