@@ -12,15 +12,19 @@ public class Buffer extends CacheableNode {
 	public ISAACCipher random;
 
 
+	//Increase buffer size to allow bigger incoming packet queue
 	public static Buffer allocate(int sizeMode) {
 		Buffer buffer = new Buffer();
 		buffer.currentPosition = 0;
-		if (sizeMode == 0)
+/*		if (sizeMode == 0)
 			buffer.buffer = new byte[100];
 		else if (sizeMode == 1)
 			buffer.buffer = new byte[5000];
 		else
-			buffer.buffer = new byte[30000];
+			buffer.buffer = new byte[30000];*/
+
+		//Increase buffer size to allow bigger incoming packet queue
+		buffer.buffer = new byte[40000];
 		return buffer;
 	}
 

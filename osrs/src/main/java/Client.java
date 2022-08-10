@@ -1207,12 +1207,13 @@ public class Client extends Game {
     }
 
 
+    //Increase server packet queue from 5 to 100 for 20x the packet capacity per tick
     private void updateGame() {
         if (systemUpdateTime > 1)
             systemUpdateTime--;
         if (idleLogout > 0)
             idleLogout--;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 100; i++)
             if (!parseIncomingPacket())
                 break;
 
