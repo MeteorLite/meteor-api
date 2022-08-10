@@ -121,4 +121,9 @@ public class AudioPlayer {
       channel.controlChange(7, volume);
     }
   }
+
+  public static void kill() {
+    if (synthesizer != null)
+      synthesizer.close();
+  }
 }

@@ -10429,7 +10429,7 @@ public class Client extends Game {
     }
 
     private void stopMidi() {
-        SignLink.music.stop();
+        AudioPlayer.kill();
         SignLink.fadeMidi = 0;
         SignLink.midi = "stop";
     }
