@@ -34,9 +34,9 @@ public class ImageProducer implements java.awt.image.ImageProducer, ImageObserve
 		Rasterizer.createRasterizer(pixels, width, height);
 	}
 
-	public void drawGraphics(int x, int y, Graphics graphics) {
+	public void drawImage(int x, int y, Graphics graphics) {
 		drawPixels();
-		graphics.drawImage(image, x, y, this);
+		//graphics.drawImage(image, x, y, this);
 	}
 
 	public synchronized void addConsumer(ImageConsumer imageConsumer) {

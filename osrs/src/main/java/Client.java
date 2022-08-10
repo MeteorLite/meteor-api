@@ -9,19 +9,16 @@ import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.zip.CRC32;
 
-import net.runelite.mapping.Implements;
-
 import static config.Configuration.*;
 import static packets.ServerPackets.*;
 
-@Implements("com/jagex/runescape/RSClient")
 public class Client extends Game {
-
 
     public static final int[][] playerColours = {
             {6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193},
@@ -508,21 +505,6 @@ public class Client extends Game {
             return "@gr1@";
         else
             return "@yel@";
-    }
-
-    public static void main(String[] args) {
-        try {
-            System.out.println("RS2 user client - release #" + 377);
-            Client client = new Client();
-            client.world = 1;
-            client.portOffset = 0;
-            client.setHighMemory();
-            client.memberServer = true;
-            SignLink.storeId = 32;
-            SignLink.initialize(InetAddress.getLocalHost());
-            client.initializeApplication(765, 503);
-        } catch (Exception exception) {
-        }
     }
 
     private static String getFullAmountText(int amount) {
@@ -1062,7 +1044,7 @@ public class Client extends Game {
     void mouseWheelDragged(int i, int j) {
         if (!mouseWheelDown)
             return;
-        this.cameraVelocityHorizontal += i * 3;
+        this.cameraVelocityHorizontal += i * 4;
         this.cameraVelocityVertical += (j << 1);
     }
 
@@ -3513,7 +3495,7 @@ public class Client extends Game {
         if (moved == 0)
             return;
 
-        MovementType moveType = MovementType.values()[buffer.getBits(2)];
+        MovementType moveType = MovementType.of(buffer.getBits(2));
 
 
         if (moveType == MovementType.NONE) {
@@ -3897,7 +3879,7 @@ public class Client extends Game {
                 npcIds[npcCount++] = i1;
                 npc.pulseCycle = pulseCycle;
             } else {
-                MovementType moveType = MovementType.values()[buffer.getBits(2)];
+                MovementType moveType = MovementType.of(buffer.getBits(2));
                 if (moveType == MovementType.NONE) {
                     npcIds[npcCount++] = i1;
                     npc.pulseCycle = pulseCycle;
@@ -5888,28 +5870,28 @@ public class Client extends Game {
                     drawMenu();
                 }
             }
-            super.imageProducer.drawGraphics(0, 0, super.gameGraphics);
+            super.imageProducer.drawImage(0, 0, super.gameGraphics);
             return;
         }
         if (welcomeScreenRaised) {
             method122();
             welcomeScreenRaised = false;
-            aClass18_906.drawGraphics(0, 4, super.gameGraphics);
-            aClass18_907.drawGraphics(0, 357, super.gameGraphics);
-            aClass18_908.drawGraphics(722, 4, super.gameGraphics);
-            aClass18_909.drawGraphics(743, 205, super.gameGraphics);
-            aClass18_910.drawGraphics(0, 0, super.gameGraphics);
-            aClass18_911.drawGraphics(516, 4, super.gameGraphics);
-            aClass18_912.drawGraphics(516, 205, super.gameGraphics);
-            aClass18_913.drawGraphics(496, 357, super.gameGraphics);
-            aClass18_914.drawGraphics(0, 338, super.gameGraphics);
+            aClass18_906.drawImage(0, 4, super.gameGraphics);
+            aClass18_907.drawImage(0, 357, super.gameGraphics);
+            aClass18_908.drawImage(722, 4, super.gameGraphics);
+            aClass18_909.drawImage(743, 205, super.gameGraphics);
+            aClass18_910.drawImage(0, 0, super.gameGraphics);
+            aClass18_911.drawImage(516, 4, super.gameGraphics);
+            aClass18_912.drawImage(516, 205, super.gameGraphics);
+            aClass18_913.drawImage(496, 357, super.gameGraphics);
+            aClass18_914.drawImage(0, 338, super.gameGraphics);
             redrawTabArea = true;
             redrawChatbox = true;
             drawTabIcons = true;
             redrawChatMode = true;
             if (loadingStage != 2) {
-                gameScreenImageProducer.drawGraphics(4, 4, super.gameGraphics);
-                aClass18_1157.drawGraphics(550, 4, super.gameGraphics);
+                gameScreenImageProducer.drawImage(4, 4, super.gameGraphics);
+                aClass18_1157.drawImage(550, 4, super.gameGraphics);
             }
             anInt1237++;
             if (anInt1237 > 85) {
@@ -5982,7 +5964,7 @@ public class Client extends Game {
         }
         if (loadingStage == 2) {
             renderMinimap();
-            aClass18_1157.drawGraphics(550, 4, super.gameGraphics);
+            aClass18_1157.drawImage(550, 4, super.gameGraphics);
         }
         if (flashingTabId != -1)
             drawTabIcons = true;
@@ -6027,7 +6009,7 @@ public class Client extends Game {
                 if (tabWidgetIds[6] != -1 && (flashingTabId != 6 || pulseCycle % 20 < 10))
                     tabIcon[6].drawImage(208, 13);
             }
-            aClass18_1110.drawGraphics(516, 160, super.gameGraphics);
+            aClass18_1110.drawImage(516, 160, super.gameGraphics);
             aClass18_1109.createRasterizer();
             tabBottomBack.drawImage(0, 0);
             if (tabAreaOverlayWidgetId == -1) {
@@ -6060,7 +6042,7 @@ public class Client extends Game {
                 if (tabWidgetIds[13] != -1 && (flashingTabId != 13 || pulseCycle % 20 < 10))
                     tabIcon[12].drawImage(226, 2);
             }
-            aClass18_1109.drawGraphics(496, 466, super.gameGraphics);
+            aClass18_1109.drawImage(496, 466, super.gameGraphics);
             gameScreenImageProducer.createRasterizer();
             Rasterizer3D.lineOffsets = viewportOffsets;
         }
@@ -6092,7 +6074,7 @@ public class Client extends Game {
             if (tradeMode == 2)
                 fontNormal.drawStringCenter("Off", 324, 41, 0xff0000, true);
             fontNormal.drawStringCenter("Report abuse", 458, 33, 0xffffff, true);
-            aClass18_1108.drawGraphics(0, 453, super.gameGraphics);
+            aClass18_1108.drawImage(0, 453, super.gameGraphics);
             gameScreenImageProducer.createRasterizer();
             Rasterizer3D.lineOffsets = viewportOffsets;
         }
@@ -7090,7 +7072,7 @@ public class Client extends Game {
         if (menuOpen && menuScreenArea == 2)
             drawMenu();
 
-        chatboxProducingGraphicsBuffer.drawGraphics(17, 357, super.gameGraphics);
+        chatboxProducingGraphicsBuffer.drawImage(17, 357, super.gameGraphics);
         gameScreenImageProducer.createRasterizer();
 
         Rasterizer3D.lineOffsets = viewportOffsets;
@@ -7858,7 +7840,7 @@ public class Client extends Game {
             k1 += k2;
         }
 
-        flameLeftBackground.drawGraphics(0, 0, super.gameGraphics);
+        flameLeftBackground.drawImage(0, 0, super.gameGraphics);
 
         System.arraycopy(anImageRGB1227.pixels, 0, flameRightBackground.pixels, 0, 33920);
 
@@ -7889,7 +7871,7 @@ public class Client extends Game {
             k1 += 128 - l3 - j3;
         }
 
-        flameRightBackground.drawGraphics(637, 0, super.gameGraphics);
+        flameRightBackground.drawImage(637, 0, super.gameGraphics);
     }
 
     private void processPlayers() {
@@ -10082,7 +10064,7 @@ public class Client extends Game {
                 fontNormal.drawStringLeft(s, 257, j, 0);
                 fontNormal.drawStringLeft(s, 256, j - 1, 0xffffff);
             }
-            gameScreenImageProducer.drawGraphics(4, 4, super.gameGraphics);
+            gameScreenImageProducer.drawImage(4, 4, super.gameGraphics);
             return;
         }
         if (super.imageProducer != null) {
@@ -10102,7 +10084,7 @@ public class Client extends Game {
                 fontNormal.drawStringLeft(s, 383, k, 0);
                 fontNormal.drawStringLeft(s, 382, k - 1, 0xffffff);
             }
-            super.imageProducer.drawGraphics(0, 0, super.gameGraphics);
+            super.imageProducer.drawImage(0, 0, super.gameGraphics);
         }
     }
 
@@ -10373,15 +10355,15 @@ public class Client extends Game {
             titleboxButtonImage.drawImage(k1 - 73, j2 - 20);
             fontBold.drawStringCenter("Cancel", k1, j2 + 5, 0xffffff, true);
         }
-        aClass18_1200.drawGraphics(202, 171, super.gameGraphics);
+        aClass18_1200.drawImage(202, 171, super.gameGraphics);
         if (welcomeScreenRaised) {
             welcomeScreenRaised = false;
-            aClass18_1198.drawGraphics(128, 0, super.gameGraphics);
-            aClass18_1199.drawGraphics(202, 371, super.gameGraphics);
-            aClass18_1203.drawGraphics(0, 265, super.gameGraphics);
-            aClass18_1204.drawGraphics(562, 265, super.gameGraphics);
-            aClass18_1205.drawGraphics(128, 171, super.gameGraphics);
-            aClass18_1206.drawGraphics(562, 171, super.gameGraphics);
+            aClass18_1198.drawImage(128, 0, super.gameGraphics);
+            aClass18_1199.drawImage(202, 371, super.gameGraphics);
+            aClass18_1203.drawImage(0, 265, super.gameGraphics);
+            aClass18_1204.drawImage(562, 265, super.gameGraphics);
+            aClass18_1205.drawImage(128, 171, super.gameGraphics);
+            aClass18_1206.drawImage(562, 171, super.gameGraphics);
         }
     }
 
@@ -10739,7 +10721,7 @@ public class Client extends Game {
             drawInterface(0, 0, Widget.forId(tabWidgetIds[currentTabId]), 0);
         if (menuOpen && menuScreenArea == 1)
             drawMenu();
-        tabImageProducer.drawGraphics(553, 205, super.gameGraphics);
+        tabImageProducer.drawImage(553, 205, super.gameGraphics);
         gameScreenImageProducer.createRasterizer();
         Rasterizer3D.lineOffsets = viewportOffsets;
     }
@@ -10819,19 +10801,19 @@ public class Client extends Game {
         Rasterizer.drawFilledRectangle(c / 2 - 150, j + 2, i * 3, 30, 0x8c1111);
         Rasterizer.drawFilledRectangle((c / 2 - 150) + i * 3, j + 2, 300 - i * 3, 30, 0);
         fontBold.drawStringLeft(s, c / 2, (c1 / 2 + 5) - byte0, 0xffffff);
-        aClass18_1200.drawGraphics(202, 171, super.gameGraphics);
+        aClass18_1200.drawImage(202, 171, super.gameGraphics);
         if (welcomeScreenRaised) {
             welcomeScreenRaised = false;
             if (!currentlyDrawingFlames) {
-                flameLeftBackground.drawGraphics(0, 0, super.gameGraphics);
-                flameRightBackground.drawGraphics(637, 0, super.gameGraphics);
+                flameLeftBackground.drawImage(0, 0, super.gameGraphics);
+                flameRightBackground.drawImage(637, 0, super.gameGraphics);
             }
-            aClass18_1198.drawGraphics(128, 0, super.gameGraphics);
-            aClass18_1199.drawGraphics(202, 371, super.gameGraphics);
-            aClass18_1203.drawGraphics(0, 265, super.gameGraphics);
-            aClass18_1204.drawGraphics(562, 265, super.gameGraphics);
-            aClass18_1205.drawGraphics(128, 171, super.gameGraphics);
-            aClass18_1206.drawGraphics(562, 171, super.gameGraphics);
+            aClass18_1198.drawImage(128, 0, super.gameGraphics);
+            aClass18_1199.drawImage(202, 371, super.gameGraphics);
+            aClass18_1203.drawImage(0, 265, super.gameGraphics);
+            aClass18_1204.drawImage(562, 265, super.gameGraphics);
+            aClass18_1205.drawImage(128, 171, super.gameGraphics);
+            aClass18_1206.drawImage(562, 171, super.gameGraphics);
         }
     }
 
@@ -11730,7 +11712,7 @@ public class Client extends Game {
         drawMarker();
         animateTexture(textureId);
         draw3dScreen();
-        gameScreenImageProducer.drawGraphics(4, 4, super.gameGraphics);
+        gameScreenImageProducer.drawImage(4, 4, super.gameGraphics);
         cameraX = x;
         cameraZ = z;
         cameraY = y;
@@ -11795,4 +11777,28 @@ public class Client extends Game {
         }
     }
 
+    @Override
+    public void start() {
+        if (ActorDefinition.client == null) {
+            System.out.println("RS2 user client - release #" + 377);
+            ActorDefinition.client = this;
+            start();
+            world = 1;
+            portOffset = 0;
+            setHighMemory();
+            memberServer = true;
+            SignLink.storeId = 32;
+            try {
+                SignLink.initialize(InetAddress.getLocalHost());
+            } catch (UnknownHostException e) {
+                throw new RuntimeException(e);
+            }
+            initializeApplication(765, 503);
+        }
+    }
+
+    public static void main(String[] args) {
+        ActorDefinition.client = new Client();
+        ActorDefinition.client.start();
+    }
 }

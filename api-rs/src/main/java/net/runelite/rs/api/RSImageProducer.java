@@ -24,11 +24,18 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.Client;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
 import net.runelite.mapping.Import;
 
-public interface RSClient extends Client, RSGame
+public interface RSImageProducer extends java.awt.image.ImageProducer, ImageObserver
 {
-    @Import("drawLoginScreen")
-    void drawLoginScreen$api(boolean flag);
+
+  @Import("drawPixels")
+  void drawPixels$api(int x, int y, Graphics g);
+
+  @Import("image")
+  Image getImage$api();
+
 }

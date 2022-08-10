@@ -1,8 +1,9 @@
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class Game extends Canvas implements Runnable, MouseListener, MouseMotionListener, KeyListener,
+public class Game extends Applet implements Runnable, MouseListener, MouseMotionListener, KeyListener,
         MouseWheelListener, FocusListener, WindowListener {
 
 
@@ -213,10 +214,6 @@ public class Game extends Canvas implements Runnable, MouseListener, MouseMotion
     public void mousePressed(MouseEvent mouseevent) {
         int mouseX = mouseevent.getX();
         int mouseY = mouseevent.getY();
-        if (gameFrame != null) {
-            mouseX -= extraWidth;
-            mouseY -= 2 + extraHeight;
-        }
         idleTime = 0;
         eventClickX = mouseX;
         eventClickY = mouseY;
@@ -257,10 +254,7 @@ public class Game extends Canvas implements Runnable, MouseListener, MouseMotion
     public void mouseDragged(MouseEvent mouseevent) {
         int mouseX = mouseevent.getX();
         int mouseY = mouseevent.getY();
-        if (gameFrame != null) {
-            mouseX -= extraWidth;
-            mouseY -= 2 + extraHeight;
-        }
+
         if (mouseWheelDown) {
             mouseY = mouseWheelX - mouseevent.getX();
             int k = mouseWheelY - mouseevent.getY();
@@ -281,10 +275,7 @@ public class Game extends Canvas implements Runnable, MouseListener, MouseMotion
     public void mouseMoved(MouseEvent mouseevent) {
         int mouseX = mouseevent.getX();
         int mouseY = mouseevent.getY();
-        if (gameFrame != null) {
-            mouseX -= extraWidth;
-            mouseY -= 2 + extraHeight;
-        }
+
         idleTime = 0;
         this.mouseX = mouseX;
         this.mouseY = mouseY;
@@ -440,10 +431,10 @@ public class Game extends Canvas implements Runnable, MouseListener, MouseMotion
         if (this instanceof Client) {
             if (!handleInterfaceScrolling(event, (Client) this)) {
                 if ((cameraZoom <= 300 && rotation <= 0)
-                        || (cameraZoom >= 1200 && rotation >= 0)) {
+                        || (cameraZoom >= 1400 && rotation >= 0)) {
                     return;
                 }
-                int diff = rotation * 8;
+                int diff = rotation * 64;
                 cameraZoom = cameraZoom + diff;
             }
         }

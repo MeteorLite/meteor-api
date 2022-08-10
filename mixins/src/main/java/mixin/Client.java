@@ -1,5 +1,6 @@
 package mixin;
 
+import java.applet.Applet;
 import meteor.Logger;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
@@ -7,6 +8,7 @@ import net.runelite.rs.api.RSClient;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import net.runelite.rs.api.RSGame;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
@@ -36,21 +38,6 @@ abstract class Client implements RSClient {
 
     @Inject
     public static BufferedImage gameImage;
-
-    @Inject
-    public static Canvas gameCanvas;
-
-    @Inject
-    @Override
-    public Canvas getCanvas() {
-        return gameCanvas;
-    }
-
-    @Inject
-    @Override
-    public void setCanvas(Canvas gameCanvas) {
-        this.gameCanvas =  gameCanvas;
-    }
 
     @Inject
     Dimension stretchedDimensions = null;
@@ -144,5 +131,36 @@ abstract class Client implements RSClient {
     @Override
     public boolean isStretchedEnabled() {
         return isStretchEnabled;
+    }
+
+    @Copy("drawLoginScreen")
+    @Replace("drawLoginScreen")
+    public void loginScreen$mixin(boolean b) {
+
+        if (gameImage == null) {
+            try {
+                gameImage = new BufferedImage(getRealDimensions().width, getRealDimensions().height, BufferedImage.TYPE_INT_ARGB);
+            } catch (Exception ignore){
+                ignore.printStackTrace();
+            }
+        } else {
+            loginScreen$mixin(b);
+            client.getCallbacks().drawGameImage();
+        }
+
+    }
+
+    @Copy("drawGameScreen")
+    @Replace("drawGameScreen")
+    private void drawGameScreen$mixin() {
+        drawGameScreen$mixin();
+        client.getCallbacks().drawGameImage();
+    }
+
+    @Copy("drawLoadingText")
+    @Replace("drawLoadingText")
+    public void drawLoadingText(int i, String s) {
+        drawLoadingText(i, s);
+        client.getCallbacks().drawGameImage();
     }
 }

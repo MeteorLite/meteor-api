@@ -12,8 +12,9 @@ public class GameFrame extends JFrame {
         setResizable(false);
         gameStub.extraWidth = getInsets().left;
         gameStub.extraHeight = getInsets().top;
-        setSize(width + gameStub.extraWidth + getInsets().right, height + gameStub.extraHeight + getInsets().bottom);
+        setSize(width, height);
         setVisible(true);
+        setVisible(false);
         toFront();
     }
 

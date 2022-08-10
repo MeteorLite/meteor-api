@@ -24,11 +24,12 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.Client;
+import java.awt.Graphics;
+import java.awt.Image;
 import net.runelite.mapping.Import;
 
-public interface RSClient extends Client, RSGame
+public interface RSGameFrame
 {
-    @Import("drawLoginScreen")
-    void drawLoginScreen$api(boolean flag);
+
+
 }
