@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ChatCensor {
 
 
@@ -169,10 +171,10 @@ public class ChatCensor {
 	}
 
 	private static void method387(char[] ac) {
-		char[] ac1 = ac.clone();
+		char[] ac1 = Arrays.copyOf(ac, ac.length);
 		char[] ac2 = {'(', 'a', ')'};
 		method395(null, ac2, ac1);
-		char[] ac3 = ac.clone();
+		char[] ac3 = Arrays.copyOf(ac, ac.length);
 		char[] ac4 = {'d', 'o', 't'};
 		method395(null, ac4, ac3);
 		for (int j = domains.length - 1; j >= 0; j--)
@@ -274,10 +276,11 @@ public class ChatCensor {
 	}
 
 	private static void method391(char[] ac) {
-		char[] ac1 = ac.clone();
+
+		char[] ac1 = Arrays.copyOf(ac, ac.length);
 		char[] ac2 = {'d', 'o', 't'};
 		method395(null, ac2, ac1);
-		char[] ac3 = ac.clone();
+		char[] ac3 = Arrays.copyOf(ac, ac.length);
 		char[] ac4 = {'s', 'l', 'a', 's', 'h'};
 		method395(null, ac4, ac3);
 		for (int j = 0; j < topLevelDomains.length; j++)
