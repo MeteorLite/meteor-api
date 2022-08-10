@@ -1,10 +1,8 @@
 public class FloorDecoration {
-
-  public int anInt567;
-  public int anInt568;
-  public int anInt569;
-  public Renderable renderable;
-  public int anInt571;
-  public byte aByte572;
-
+	public int z;
+	public int x;
+	public int y;
+	public Renderable renderable;
+	public int uid;
+	public byte config;
 }

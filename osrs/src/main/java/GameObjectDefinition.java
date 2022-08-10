@@ -1,546 +1,494 @@
 public class GameObjectDefinition {
 
-  public static int[] anIntArray758;
-  public static Class33 aClass33_762 = new Class33(40);
-  public static Buffer aClass50_Sub1_Sub2_767;
-  public static Client aClient770;
-  public static Model[] aClass50_Sub1_Sub4_Sub4Array771 = new Model[4];
-  public static boolean aBoolean772;
-  public static int cacheIndex;
-  public static Class33 aClass33_779 = new Class33(500);
-  public static GameObjectDefinition[] definitions;
-  public static byte aByte800 = 6;
-  public static int anInt808;
-  public boolean aBoolean759;
-  public int anInt760;
-  public int anInt761;
-  public int[] anIntArray763;
-  public int anInt764;
-  public boolean aBoolean765;
-  public int anInt766;
-  public int anInt768;
-  public boolean aBoolean769;
-  public int anInt773;
-  public boolean aBoolean774;
-  public int anInt775;
-  public String aString776;
-  public int anInt778;
-  public int anInt780;
-  public int anInt781;
-  public byte[] aByteArray783;
-  public byte aByte784;
-  public int anInt785;
-  public boolean aBoolean786;
-  public byte aByte787;
-  public int anInt788;
-  public int[] anIntArray789;
-  public String[] aStringArray790;
-  public boolean aBoolean791;
-  public int[] anIntArray792;
-  public byte aByte793;
-  public int anInt794;
-  public int anInt795;
-  public int anInt796;
-  public boolean aBoolean797;
-  public boolean aBoolean798;
-  public int[] anIntArray799;
-  public int anInt801;
-  public int anInt802;
-  public int anInt803;
-  public boolean aBoolean804;
-  public int[] anIntArray805;
-  public int anInt806;
-  public boolean aBoolean807;
-  public boolean aBoolean809;
-  public boolean aBoolean810;
-  public GameObjectDefinition() {
-    anInt768 = -992;
-    anInt773 = -1;
-    aBoolean774 = true;
-    aString776 = "null";
-    aBoolean786 = true;
-    aByte793 = -113;
-  }
+    public static int bufferOffsets[];
+    public boolean hasActions;
+    public int modelSizeY;
+    public int translateX;
+    public static Cache animatedModelCache = new Cache(40);
+    public int modelIds[];
+    public int anInt764;
+    public boolean unknown;
+    public int translateZ;
+    public static Buffer buffer;
+    public boolean adjustToTerrain;
+    public static Client client;
+    public static Model models[] = new Model[4];
+    public static boolean lowMemory;
+    public int id = -1;
+    public int sizeY;
+    public String name = "null";
+    public static int cacheIndex;
+    public int varbitId;
+    public static Cache modelCache = new Cache(500);
+    public int modelSizeX;
+    public int configId;
+    public static GameObjectDefinition cache[];
+    public byte description[];
+    public byte modelLightFalloff;
+    public int translateY;
+    public boolean aBoolean786 = true;
+    public byte modelLightAmbient;
+    public int modelTypes[];
+    public String options[];
+    public boolean aBoolean791;
+    public int anIntArray792[];
+    public int anInt794;
+    public int anInt795;
+    public int modelSizeZ;
+    public boolean wall;
+    public boolean unknown3;
+    public int modifiedModelColors[];
+    public int sizeX;
+    public int offsetAmplifier;
+    public int animationId;
+    public boolean nonFlatShading;
+    public int childrenIds[];
+    public int icon;
+    public boolean castsShadow;
+    public static int definitionCount;
+    public boolean walkable;
+    public boolean solid;
 
-  public static GameObjectDefinition forId(int i) {
-    for (int j = 0; j < 20; j++) {
-      if (definitions[j].anInt773 == i) {
-        return definitions[j];
-      }
+    public static GameObjectDefinition getDefinition(int id) {
+        for (int index = 0; index < 20; index++)
+            if (cache[index].id == id)
+                return cache[index];
+
+        cacheIndex = (cacheIndex + 1) % 20;
+        GameObjectDefinition definition = cache[cacheIndex];
+        buffer.currentPosition = bufferOffsets[id];
+        definition.id = id;
+        definition.setDefaultValues();
+        definition.load(buffer);
+        return definition;
     }
 
-    cacheIndex = (cacheIndex + 1) % 20;
-    GameObjectDefinition definition = definitions[cacheIndex];
-    aClass50_Sub1_Sub2_767.offset = anIntArray758[i];
-    definition.anInt773 = i;
-    definition.method429();
-    definition.method430(aByte800, aClass50_Sub1_Sub2_767);
-    return definition;
-  }
-
-  public static void method426(Archive class2) {
-    aClass50_Sub1_Sub2_767 = new Buffer(class2.extract("loc.dat"));
-    Buffer class50_sub1_sub2 = new Buffer(class2.extract("loc.idx"));
-    anInt808 = class50_sub1_sub2.readUShort();
-    anIntArray758 = new int[anInt808];
-    int i = 2;
-    for (int j = 0; j < anInt808; j++) {
-      anIntArray758[j] = i;
-      i += class50_sub1_sub2.readUShort();
-    }
-
-    definitions = new GameObjectDefinition[20];
-    for (int k = 0; k < 20; k++) {
-      definitions[k] = new GameObjectDefinition();
-    }
-
-  }
-
-  public static void method433(boolean flag) {
-    aClass33_779 = null;
-    aClass33_762 = null;
-    anIntArray758 = null;
-    if (flag) {
-      for (int i = 1; i > 0; i++) {
-      }
-    }
-    definitions = null;
-    aClass50_Sub1_Sub2_767 = null;
-  }
-
-  public GameObjectDefinition method424(int i) {
-    if (i != 0) {
-      anInt788 = 445;
-    }
-    int j = -1;
-    if (anInt778 != -1) {
-      VarBit class49 = VarBit.varbits[anInt778];
-      int k = class49.anInt826;
-      int l = class49.anInt827;
-      int i1 = class49.anInt828;
-      int j1 = Client.anIntArray1214[i1 - l];
-      j = aClient770.anIntArray1039[k] >> l & j1;
-    } else if (anInt781 != -1) {
-      j = aClient770.anIntArray1039[anInt781];
-    }
-    if (j < 0 || j >= anIntArray805.length || anIntArray805[j] == -1) {
-      return null;
-    } else {
-      return forId(anIntArray805[j]);
-    }
-  }
-
-  public void method425(OnDemandRequester class32_sub1, int i) {
-    if (anIntArray763 == null) {
-      return;
-    }
-    for (int element : anIntArray763) {
-      class32_sub1.method337(element & 0xffff, 0, aByte793);
-    }
-
-    if (i >= 0) {
-      for (int k = 1; k > 0; k++) {
-      }
-    }
-  }
-
-  public Model method427(int i, int j, int k, int l) {
-    Model class50_sub1_sub4_sub4 = null;
-    long l1;
-    if (anIntArray789 == null) {
-      if (l != 10) {
-        return null;
-      }
-      l1 = (long) (((long) anInt773 << 6) + i) + ((long) (j + 1) << 32);
-      Model class50_sub1_sub4_sub4_1 = (Model) aClass33_762
-          .method345(l1);
-      if (class50_sub1_sub4_sub4_1 != null) {
-        return class50_sub1_sub4_sub4_1;
-      }
-      if (anIntArray763 == null) {
-        return null;
-      }
-      boolean flag1 = aBoolean798 ^ i > 3;
-      int k1 = anIntArray763.length;
-      for (int i2 = 0; i2 < k1; i2++) {
-        int l2 = anIntArray763[i2];
-        if (flag1) {
-          l2 += 0x10000;
-        }
-        class50_sub1_sub4_sub4 = (Model) aClass33_779
-            .method345(l2);
-        if (class50_sub1_sub4_sub4 == null) {
-          class50_sub1_sub4_sub4 = Model
-              .method577(l2 & 0xffff);
-          if (class50_sub1_sub4_sub4 == null) {
+    public GameObjectDefinition getChildDefinition() {
+        int child = -1;
+        if (varbitId != -1) {
+            Varbit varbit = Varbit.cache[varbitId];
+            int configId = varbit.configId;
+            int leastSignificantBit = varbit.leastSignificantBit;
+            int mostSignificantBit = varbit.mostSignificantBit;
+            int bit = client.BITFIELD_MAX_VALUE[mostSignificantBit - leastSignificantBit];
+            child = client.widgetSettings[configId] >> leastSignificantBit & bit;
+        } else if (configId != -1)
+            child = client.widgetSettings[configId];
+        if (child < 0 || child >= childrenIds.length || childrenIds[child] == -1)
             return null;
-          }
-          if (flag1) {
-            class50_sub1_sub4_sub4.method592(0);
-          }
-          aClass33_779.method346(class50_sub1_sub4_sub4, l2, 5);
-        }
-        if (k1 > 1) {
-          aClass50_Sub1_Sub4_Sub4Array771[i2] = class50_sub1_sub4_sub4;
-        }
-      }
-
-      if (k1 > 1) {
-        class50_sub1_sub4_sub4 = new Model(k1,
-            aClass50_Sub1_Sub4_Sub4Array771, (byte) -89);
-      }
-    } else {
-      int i1 = -1;
-      for (int j1 = 0; j1 < anIntArray789.length; j1++) {
-        if (anIntArray789[j1] != l) {
-          continue;
-        }
-        i1 = j1;
-        break;
-      }
-
-      if (i1 == -1) {
-        return null;
-      }
-      l1 = (long) (((long) anInt773 << 6) + ((long) i1 << 3) + i)
-          + ((long) (j + 1) << 32);
-      Model class50_sub1_sub4_sub4_2 = (Model) aClass33_762
-          .method345(l1);
-      if (class50_sub1_sub4_sub4_2 != null) {
-        return class50_sub1_sub4_sub4_2;
-      }
-      int j2 = anIntArray763[i1];
-      boolean flag3 = aBoolean798 ^ i > 3;
-      if (flag3) {
-        j2 += 0x10000;
-      }
-      class50_sub1_sub4_sub4 = (Model) aClass33_779
-          .method345(j2);
-      if (class50_sub1_sub4_sub4 == null) {
-        class50_sub1_sub4_sub4 = Model
-            .method577(j2 & 0xffff);
-        if (class50_sub1_sub4_sub4 == null) {
-          return null;
-        }
-        if (flag3) {
-          class50_sub1_sub4_sub4.method592(0);
-        }
-        aClass33_779.method346(class50_sub1_sub4_sub4, j2, 5);
-      }
-    }
-    boolean flag;
-    flag = anInt780 != 128 || anInt760 != 128 || anInt796 != 128;
-    boolean flag2;
-    flag2 = anInt761 != 0 || anInt785 != 0 || anInt766 != 0;
-    Model class50_sub1_sub4_sub4_3 = new Model(
-        i == 0 && j == -1 && !flag && !flag2, false,
-        anIntArray799 == null, class50_sub1_sub4_sub4,
-        Animation.frameIsNull(j));
-    if (k != 0) {
-      anInt768 = 487;
-    }
-    if (j != -1) {
-      class50_sub1_sub4_sub4_3.createBones();
-      class50_sub1_sub4_sub4_3.transform(j);
-      class50_sub1_sub4_sub4_3.anIntArrayArray1679 = null;
-      class50_sub1_sub4_sub4_3.anIntArrayArray1678 = null;
-    }
-    while (i-- > 0) {
-      class50_sub1_sub4_sub4_3.rotate90Degrees();
-    }
-    if (anIntArray799 != null) {
-      for (int k2 = 0; k2 < anIntArray799.length; k2++) {
-        class50_sub1_sub4_sub4_3.method591(anIntArray799[k2],
-            anIntArray792[k2]);
-      }
-
-    }
-    if (flag) {
-      class50_sub1_sub4_sub4_3.scale(anInt760, anInt796, anInt780);
-    }
-    if (flag2) {
-      class50_sub1_sub4_sub4_3.method590(anInt761, anInt766, false,
-          anInt785);
-    }
-    class50_sub1_sub4_sub4_3.lighten(64 + aByte784, 768 + aByte787 * 5,
-        -50, -10, -50, !aBoolean804);
-    if (anInt794 == 1) {
-      class50_sub1_sub4_sub4_3.anInt1675 = class50_sub1_sub4_sub4_3.modelHeight;
-    }
-    aClass33_762.method346(class50_sub1_sub4_sub4_3, l1, 5);
-    return class50_sub1_sub4_sub4_3;
-  }
-
-  public boolean method428(int i) {
-    if (anIntArray763 == null) {
-      return true;
-    }
-    boolean flag = true;
-    while (i >= 0) {
-      anInt768 = 347;
-    }
-    for (int element : anIntArray763) {
-      flag &= Model.method578(element & 0xffff);
+        else
+            return getDefinition(childrenIds[child]);
     }
 
-    return flag;
-  }
-
-  public void method429() {
-    anIntArray763 = null;
-    anIntArray789 = null;
-    aString776 = "null";
-    aByteArray783 = null;
-    anIntArray799 = null;
-    anIntArray792 = null;
-    anInt801 = 1;
-    anInt775 = 1;
-    aBoolean810 = true;
-    aBoolean809 = true;
-    aBoolean759 = false;
-    aBoolean769 = false;
-    aBoolean804 = false;
-    aBoolean797 = false;
-    anInt803 = -1;
-    anInt802 = 16;
-    aByte784 = 0;
-    aByte787 = 0;
-    aStringArray790 = null;
-    anInt806 = -1;
-    anInt795 = -1;
-    aBoolean798 = false;
-    aBoolean807 = true;
-    anInt780 = 128;
-    anInt760 = 128;
-    anInt796 = 128;
-    anInt764 = 0;
-    anInt761 = 0;
-    anInt785 = 0;
-    anInt766 = 0;
-    aBoolean765 = false;
-    aBoolean791 = false;
-    anInt794 = -1;
-    anInt778 = -1;
-    anInt781 = -1;
-    anIntArray805 = null;
-  }
-
-  public void method430(byte byte0, Buffer class50_sub1_sub2) {
-    int i = -1;
-    if (byte0 != 6) {
-      throw new NullPointerException();
+    public void setDefaultValues() {
+        modelIds = null;
+        modelTypes = null;
+        name = "null";
+        description = null;
+        modifiedModelColors = null;
+        anIntArray792 = null;
+        sizeX = 1;
+        sizeY = 1;
+        solid = true;
+        walkable = true;
+        hasActions = false;
+        adjustToTerrain = false;
+        nonFlatShading = false;
+        wall = false;
+        animationId = -1;
+        offsetAmplifier = 16;
+        modelLightFalloff = 0;
+        modelLightAmbient = 0;
+        options = null;
+        icon = -1;
+        anInt795 = -1;
+        unknown3 = false;
+        castsShadow = true;
+        modelSizeX = 128;
+        modelSizeY = 128;
+        modelSizeZ = 128;
+        anInt764 = 0;
+        translateX = 0;
+        translateY = 0;
+        translateZ = 0;
+        unknown = false;
+        aBoolean791 = false;
+        anInt794 = -1;
+        varbitId = -1;
+        configId = -1;
+        childrenIds = null;
     }
-    label0:
-    do {
-      int j;
-      do {
-        j = class50_sub1_sub2.readUByte();
-        if (j == 0) {
-          break label0;
-        }
-        if (j == 1) {
-          int k = class50_sub1_sub2.readUByte();
-          if (k > 0) {
-            if (anIntArray763 == null || aBoolean772) {
-              anIntArray789 = new int[k];
-              anIntArray763 = new int[k];
-              for (int k1 = 0; k1 < k; k1++) {
-                anIntArray763[k1] = class50_sub1_sub2
-                    .readUShort();
-                anIntArray789[k1] = class50_sub1_sub2
-                    .readUByte();
-              }
 
-            } else {
-              class50_sub1_sub2.offset += k * 3;
+    public void passiveRequestModels(OnDemandRequester onDemandRequester) {
+        if (modelIds != null) {
+            for (int modelId : modelIds) {
+                onDemandRequester.passiveRequest(modelId & 0xffff, 0);
             }
-          }
-        } else if (j == 2) {
-          aString776 = class50_sub1_sub2.readJString();
-        } else if (j == 3) {
-          aByteArray783 = class50_sub1_sub2.readBytesString();
-        } else if (j == 5) {
-          int l = class50_sub1_sub2.readUByte();
-          if (l > 0) {
-            if (anIntArray763 == null || aBoolean772) {
-              anIntArray789 = null;
-              anIntArray763 = new int[l];
-              for (int l1 = 0; l1 < l; l1++) {
-                anIntArray763[l1] = class50_sub1_sub2
-                    .readUShort();
-              }
+        }
+    }
 
-            } else {
-              class50_sub1_sub2.offset += l * 2;
+    public static void load(Archive archive) {
+        buffer = new Buffer(archive.getFile("loc.dat"));
+        Buffer buffer = new Buffer(archive.getFile("loc.idx"));
+        FileOperations.WriteFile("DumpedData/377_OBJECTS.dat", archive.getFile("loc.dat"));
+        FileOperations.WriteFile("DumpedData/377_OBJECTS.idx", archive.getFile("loc.idx"));
+        definitionCount = buffer.getUnsignedShortBE();
+        bufferOffsets = new int[definitionCount];
+        int offset = 2;
+        for (int index = 0; index < definitionCount; index++) {
+            bufferOffsets[index] = offset;
+            offset += buffer.getUnsignedShortBE();
+        }
+
+        cache = new GameObjectDefinition[20];
+        for (int definition = 0; definition < 20; definition++)
+            cache[definition] = new GameObjectDefinition();
+
+    }
+
+    public Model getGameObjectAnimatedModel(int type, int animationId, int face) {
+        Model subModel = null;
+        long hash;
+        if (modelTypes == null) {
+            if (type != 10)
+                return null;
+            hash = ((id << 6) + face) + ((long) (animationId + 1) << 32);
+            Model cachedModel = (Model) animatedModelCache.get(hash);
+            if (cachedModel != null)
+                return cachedModel;
+            if (modelIds == null)
+                return null;
+            boolean mirror = unknown3 ^ (face > 3);
+            int modelCount = modelIds.length;
+            for (int modelId = 0; modelId < modelCount; modelId++) {
+                int subModelId = modelIds[modelId];
+                if (mirror)
+                    subModelId += 0x10000;
+                subModel = (Model) modelCache.get(subModelId);
+                if (subModel == null) {
+                    subModel = Model.getModel(subModelId & 0xffff);
+                    if (subModel == null)
+                        return null;
+                    if (mirror)
+                        subModel.mirror(0);
+                    modelCache.put(subModel, subModelId);
+                }
+                if (modelCount > 1)
+                    models[modelId] = subModel;
             }
-          }
-        } else if (j == 14) {
-          anInt801 = class50_sub1_sub2.readUByte();
-        } else if (j == 15) {
-          anInt775 = class50_sub1_sub2.readUByte();
-        } else if (j == 17) {
-          aBoolean810 = false;
-        } else if (j == 18) {
-          aBoolean809 = false;
-        } else if (j == 19) {
-          i = class50_sub1_sub2.readUByte();
-          if (i == 1) {
-            aBoolean759 = true;
-          }
-        } else if (j == 21) {
-          aBoolean769 = true;
-        } else if (j == 22) {
-          aBoolean804 = true;
-        } else if (j == 23) {
-          aBoolean797 = true;
-        } else if (j == 24) {
-          anInt803 = class50_sub1_sub2.readUShort();
-          if (anInt803 == 65535) {
-            anInt803 = -1;
-          }
-        } else if (j == 28) {
-          anInt802 = class50_sub1_sub2.readUByte();
-        } else if (j == 29) {
-          aByte784 = class50_sub1_sub2.readByte();
-        } else if (j == 39) {
-          aByte787 = class50_sub1_sub2.readByte();
-        } else if (j >= 30 && j < 39) {
-          if (aStringArray790 == null) {
-            aStringArray790 = new String[5];
-          }
-          aStringArray790[j - 30] = class50_sub1_sub2.readJString();
-          if (aStringArray790[j - 30].equalsIgnoreCase("hidden")) {
-            aStringArray790[j - 30] = null;
-          }
-        } else if (j == 40) {
-          int i1 = class50_sub1_sub2.readUByte();
-          anIntArray799 = new int[i1];
-          anIntArray792 = new int[i1];
-          for (int i2 = 0; i2 < i1; i2++) {
-            anIntArray799[i2] = class50_sub1_sub2.readUShort();
-            anIntArray792[i2] = class50_sub1_sub2.readUShort();
-          }
 
-        } else if (j == 60) {
-          anInt806 = class50_sub1_sub2.readUShort();
-        } else if (j == 62) {
-          aBoolean798 = true;
-        } else if (j == 64) {
-          aBoolean807 = false;
-        } else if (j == 65) {
-          anInt780 = class50_sub1_sub2.readUShort();
-        } else if (j == 66) {
-          anInt760 = class50_sub1_sub2.readUShort();
-        } else if (j == 67) {
-          anInt796 = class50_sub1_sub2.readUShort();
-        } else if (j == 68) {
-          anInt795 = class50_sub1_sub2.readUShort();
-        } else if (j == 69) {
-          anInt764 = class50_sub1_sub2.readUByte();
-        } else if (j == 70) {
-          anInt761 = class50_sub1_sub2.readShort();
-        } else if (j == 71) {
-          anInt785 = class50_sub1_sub2.readShort();
-        } else if (j == 72) {
-          anInt766 = class50_sub1_sub2.readShort();
-        } else if (j == 73) {
-          aBoolean765 = true;
-        } else if (j == 74) {
-          aBoolean791 = true;
+            if (modelCount > 1)
+                subModel = new Model(modelCount, models);
         } else {
-          if (j != 75) {
-            continue;
-          }
-          anInt794 = class50_sub1_sub2.readUByte();
+            int modelType = -1;
+            for (int index = 0; index < modelTypes.length; index++) {
+                if (modelTypes[index] != type)
+                    continue;
+                modelType = index;
+                break;
+            }
+
+            if (modelType == -1)
+                return null;
+            hash = ((id << 6) + (modelType << 3) + face) + ((long) (animationId + 1) << 32);
+            Model model = (Model) animatedModelCache.get(hash);
+            if (model != null)
+                return model;
+            int j2 = modelIds[modelType];
+            boolean mirror = unknown3 ^ (face > 3);
+            if (mirror)
+                j2 += 0x10000;
+            subModel = (Model) modelCache.get(j2);
+            if (subModel == null) {
+                subModel = Model.getModel(j2 & 0xffff);
+                if (subModel == null)
+                    return null;
+                if (mirror)
+                    subModel.mirror(0);
+                modelCache.put(subModel, j2);
+            }
         }
-        continue label0;
-      } while (j != 77);
-      anInt778 = class50_sub1_sub2.readUShort();
-      if (anInt778 == 65535) {
-        anInt778 = -1;
-      }
-      anInt781 = class50_sub1_sub2.readUShort();
-      if (anInt781 == 65535) {
-        anInt781 = -1;
-      }
-      int j1 = class50_sub1_sub2.readUByte();
-      anIntArray805 = new int[j1 + 1];
-      for (int j2 = 0; j2 <= j1; j2++) {
-        anIntArray805[j2] = class50_sub1_sub2.readUShort();
-        if (anIntArray805[j2] == 65535) {
-          anIntArray805[j2] = -1;
+        boolean scale;
+        if (modelSizeX != 128 || modelSizeY != 128 || modelSizeZ != 128)
+            scale = true;
+        else
+            scale = false;
+        boolean needsTranslation;
+        if (translateX != 0 || translateY != 0 || translateZ != 0)
+            needsTranslation = true;
+        else
+            needsTranslation = false;
+        Model animatedModel = new Model(modifiedModelColors == null, subModel, Animation.exists(animationId));
+        if (animationId != -1) {
+            animatedModel.createBones();
+            animatedModel.applyTransform(animationId);
+            animatedModel.triangleSkin = null;
+            animatedModel.vectorSkin = null;
         }
-      }
+        while (face-- > 0)
+            animatedModel.rotate90Degrees();
+        if (modifiedModelColors != null) {
+            for (int k2 = 0; k2 < modifiedModelColors.length; k2++)
+                animatedModel.replaceColor(modifiedModelColors[k2], anIntArray792[k2]);
 
-    } while (true);
-    if (i == -1) {
-      aBoolean759 = anIntArray763 != null
-          && (anIntArray789 == null || anIntArray789[0] == 10);
-      if (aStringArray790 != null) {
-        aBoolean759 = true;
-      }
+        }
+        if (scale)
+            animatedModel.scaleT(modelSizeY, modelSizeZ, 9, modelSizeX);
+        if (needsTranslation)
+            animatedModel.translate(translateX, translateZ, translateY);
+        animatedModel.applyLighting(64 + modelLightFalloff, 768 + modelLightAmbient * 5, -50, -10, -50, !nonFlatShading);
+        if (anInt794 == 1)
+            animatedModel.anInt1675 = animatedModel.modelHeight;
+        animatedModelCache.put(animatedModel, hash);
+        return animatedModel;
     }
-    if (aBoolean791) {
-      aBoolean810 = false;
-      aBoolean809 = false;
-    }
-    if (anInt794 == -1) {
-      anInt794 = aBoolean810 ? 1 : 0;
-    }
-  }
 
-  public Model method431(int i, int j, int k, int l, int i1,
-      int j1, int k1) {
-    Model class50_sub1_sub4_sub4 = method427(j, k1, 0, i);
-    if (class50_sub1_sub4_sub4 == null) {
-      return null;
+    public boolean isModelCached() {
+        if (modelIds == null)
+            return true;
+        boolean cached = true;
+        for (int modelId : modelIds) {
+            cached &= Model.loaded(modelId & 0xffff);
+        }
+        return cached;
     }
-    if (aBoolean769 || aBoolean804) {
-      class50_sub1_sub4_sub4 = new Model(aBoolean769,
-          aBoolean804, 0, class50_sub1_sub4_sub4);
-    }
-    if (aBoolean769) {
-      int l1 = (k + l + i1 + j1) / 4;
-      for (int i2 = 0; i2 < class50_sub1_sub4_sub4.anInt1648; i2++) {
-        int j2 = class50_sub1_sub4_sub4.anIntArray1649[i2];
-        int k2 = class50_sub1_sub4_sub4.anIntArray1651[i2];
-        int l2 = k + (l - k) * (j2 + 64) / 128;
-        int i3 = j1 + (i1 - j1) * (j2 + 64) / 128;
-        int j3 = l2 + (i3 - l2) * (k2 + 64) / 128;
-        class50_sub1_sub4_sub4.anIntArray1650[i2] += j3 - l1;
-      }
 
-      class50_sub1_sub4_sub4.method582(6);
-    }
-    return class50_sub1_sub4_sub4;
-  }
 
-  public boolean method432(int i, int j) {
-    if (i != 26261) {
-      aBoolean786 = !aBoolean786;
+
+    public void load(Buffer buf) {
+        int i = -1;
+        label0:
+        while (true) {
+            int attribute;
+            do {
+                attribute = buf.getUnsignedByte();
+                if (attribute == 0)
+                    break label0;
+                switch (attribute) {
+                    case 1:
+                        int k = buf.getUnsignedByte();
+                        if (k > 0)
+                            if (modelIds == null || lowMemory) {
+                                modelTypes = new int[k];
+                                modelIds = new int[k];
+                                for (int k1 = 0; k1 < k; k1++) {
+                                    modelIds[k1] = buf.getUnsignedShortBE();
+                                    modelTypes[k1] = buf.getUnsignedByte();
+                                }
+
+                            } else {
+                                buf.currentPosition += k * 3;
+                            }
+                        break;
+                    case 2:
+                        name = buf.getString();
+                        break;
+                    case 3:
+                        description = buf.getStringBytes();
+                        break;
+                    case 5:
+                        int l = buf.getUnsignedByte();
+                        if (l > 0)
+                            if (modelIds == null || lowMemory) {
+                                modelTypes = null;
+                                modelIds = new int[l];
+                                for (int l1 = 0; l1 < l; l1++)
+                                    modelIds[l1] = buf.getUnsignedShortBE();
+
+                            } else {
+                                buf.currentPosition += l * 2;
+                            }
+                        break;
+                    case 14:
+                        sizeX = buf.getUnsignedByte();
+                        break;
+                    case 15:
+                        sizeY = buf.getUnsignedByte();
+                        break;
+                    case 17:
+                        solid = false;
+                        break;
+                    case 18:
+                        walkable = false;
+                        break;
+                    case 19:
+                        i = buf.getUnsignedByte();
+                        if (i == 1)
+                            hasActions = true;
+                        break;
+                    case 21:
+                        adjustToTerrain = true;
+                        break;
+                    case 22:
+                        nonFlatShading = true;
+                        break;
+                    case 23:
+                        wall = true;
+                        break;
+                    case 24:
+                        animationId = buf.getUnsignedShortBE();
+                        if (animationId == 65535)
+                            animationId = -1;
+                        break;
+                    case 28:
+                        offsetAmplifier = buf.getUnsignedByte();
+                        break;
+                    case 29:
+                        modelLightFalloff = buf.getByte();
+                        break;
+                    case 39:
+                        modelLightAmbient = buf.getByte();
+                        break;
+                }
+                if (attribute < 30 || attribute >= 39) {
+                    switch (attribute) {
+                        case 40:
+                            int i1 = buf.getUnsignedByte();
+                            modifiedModelColors = new int[i1];
+                            anIntArray792 = new int[i1];
+                            for (int i2 = 0; i2 < i1; i2++) {
+                                modifiedModelColors[i2] = buf.getUnsignedShortBE();
+                                anIntArray792[i2] = buf.getUnsignedShortBE();
+                            }
+
+                            break;
+                        case 60:
+                            icon = buf.getUnsignedShortBE();
+                            break;
+                        case 62:
+                            unknown3 = true;
+                            break;
+                        case 64:
+                            castsShadow = false;
+                            break;
+                        case 65:
+                            modelSizeX = buf.getUnsignedShortBE();
+                            break;
+                        case 66:
+                            modelSizeY = buf.getUnsignedShortBE();
+                            break;
+                        case 67:
+                            modelSizeZ = buf.getUnsignedShortBE();
+                            break;
+                        case 68:
+                            anInt795 = buf.getUnsignedShortBE();
+                            break;
+                        case 69:
+                            anInt764 = buf.getUnsignedByte();
+                            break;
+                        case 70:
+                            translateX = buf.readShort();
+                            break;
+                        case 71:
+                            translateY = buf.readShort();
+                            break;
+                        case 72:
+                            translateZ = buf.readShort();
+                            break;
+                        case 73:
+                            unknown = true;
+                            break;
+                        case 74:
+                            aBoolean791 = true;
+                            break;
+                        default:
+                            if (attribute != 75)
+                                continue;
+                            anInt794 = buf.getUnsignedByte();
+                            break;
+                    }
+                } else {
+                    if (options == null)
+                        options = new String[5];
+                    options[attribute - 30] = buf.getString();
+                    if (options[attribute - 30].equalsIgnoreCase("hidden"))
+                        options[attribute - 30] = null;
+                }
+                continue label0;
+            } while (attribute != 77);
+            varbitId = buf.getUnsignedShortBE();
+            if (varbitId == 65535)
+                varbitId = -1;
+            configId = buf.getUnsignedShortBE();
+            if (configId == 65535)
+                configId = -1;
+            int j1 = buf.getUnsignedByte();
+            childrenIds = new int[j1 + 1];
+            for (int j2 = 0; j2 <= j1; j2++) {
+                childrenIds[j2] = buf.getUnsignedShortBE();
+                if (childrenIds[j2] == 65535)
+                    childrenIds[j2] = -1;
+            }
+
+        }
+        if (i == -1) {
+            hasActions = false;
+            if (modelIds != null && (modelTypes == null || modelTypes[0] == 10))
+                hasActions = true;
+            if (options != null)
+                hasActions = true;
+        }
+        if (aBoolean791) {
+            solid = false;
+            walkable = false;
+        }
+        if (anInt794 == -1)
+            anInt794 = solid ? 1 : 0;
     }
-    if (anIntArray789 == null) {
-      if (anIntArray763 == null) {
+
+    public Model getGameObjectModel(int type, int face, int vertexHeight, int vertexHeightRight, int vertexHeightTopRight, int vertexHeightTop, int animationId) {
+        Model model = getGameObjectAnimatedModel(type, animationId, face);
+        if (model == null)
+            return null;
+        if (adjustToTerrain || nonFlatShading)
+            model = new Model(adjustToTerrain, nonFlatShading, model);
+        if (adjustToTerrain) {
+            int l1 = (vertexHeight + vertexHeightRight + vertexHeightTopRight + vertexHeightTop) / 4;
+            for (int i2 = 0; i2 < model.vertexCount; i2++) {
+                int j2 = model.verticesX[i2];
+                int k2 = model.verticesZ[i2];
+                int l2 = vertexHeight + ((vertexHeightRight - vertexHeight) * (j2 + 64)) / 128;
+                int i3 = vertexHeightTop + ((vertexHeightTopRight - vertexHeightTop) * (j2 + 64)) / 128;
+                int j3 = l2 + ((i3 - l2) * (k2 + 64)) / 128;
+                model.verticesY[i2] += j3 - l1;
+            }
+
+            model.normalise();
+        }
+        return model;
+    }
+
+    public boolean method432(int i, int j) {
+        if (i != 26261)
+            aBoolean786 = !aBoolean786;
+        if (modelTypes == null) {
+            if (modelIds == null)
+                return true;
+            if (j != 10)
+                return true;
+            boolean flag = true;
+            for (int l = 0; l < modelIds.length; l++)
+                flag &= Model.loaded(modelIds[l] & 0xffff);
+
+            return flag;
+        }
+        for (int k = 0; k < modelTypes.length; k++)
+            if (modelTypes[k] == j)
+                return Model.loaded(modelIds[k] & 0xffff);
+
         return true;
-      }
-      if (j != 10) {
-        return true;
-      }
-      boolean flag = true;
-      for (int element : anIntArray763) {
-        flag &= Model.method578(element & 0xffff);
-      }
-
-      return flag;
-    }
-    for (int k = 0; k < anIntArray789.length; k++) {
-      if (anIntArray789[k] == j) {
-        return Model
-            .method578(anIntArray763[k] & 0xffff);
-      }
     }
 
-    return true;
-  }
+    public static void method433(boolean flag) {
+        modelCache = null;
+        animatedModelCache = null;
+        bufferOffsets = null;
+        if (flag) {
+            for (int i = 1; i > 0; i++) ;
+        }
+        cache = null;
+        buffer = null;
+    }
+
 
 }

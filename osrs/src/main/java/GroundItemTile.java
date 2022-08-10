@@ -1,12 +1,14 @@
 public class GroundItemTile {
 
-  public int anInt173;
-  public int anInt174;
-  public int anInt175;
-  public Renderable aClass50_Sub1_Sub4_176;
-  public Renderable aClass50_Sub1_Sub4_177;
-  public Renderable aClass50_Sub1_Sub4_178;
-  public int anInt179;
-  public int anInt180;
+	public GroundItemTile() {
+	}
 
+	public int z;
+	public int x;
+	public int y;
+	public Renderable firstGroundItem;
+	public Renderable secondGroundItem;
+	public Renderable thirdGroundItem;
+	public int uid;
+	public int anInt180;
 }

@@ -1,68 +1,55 @@
-public class VarBit {
+public class Varbit {
+	public static int count;
+	public static Varbit cache[];
+	public int configId;
+	public int leastSignificantBit;
+	public int mostSignificantBit;
+	public boolean aBoolean829 = false;
+	public boolean aBoolean832 = true;
 
-    public static void method440(Archive archive) {
-	Buffer buffer = new Buffer(archive.extract("varbit.dat"));
-	length = buffer.readUShort();
-	if (varbits == null) {
-	    varbits = new VarBit[length];
+	public static void load(Archive archive) {
+		Buffer buffer = new Buffer(archive.getFile("varbit.dat"));
+		count = buffer.getUnsignedShortBE();
+
+		if (cache == null)
+			cache = new Varbit[count];
+
+		for (int index = 0; index < count; index++) {
+			if (cache[index] == null)
+				cache[index] = new Varbit();
+			cache[index].init(buffer);
+			if (cache[index].aBoolean829)
+				Varp.cache[cache[index].configId].aBoolean716 = true;
+		}
+
+		if (buffer.currentPosition != buffer.buffer.length)
+			System.out.println("varbit load mismatch");
 	}
-	for (int i = 0; i < length; i++) {
-	    if (varbits[i] == null) {
-		varbits[i] = new VarBit();
-	    }
-	    varbits[i].readValues(buffer, i);
-	    if (varbits[i].aBoolean829) {
-		Varp.aClass43Array704[varbits[i].anInt826].aBoolean716 = true;
-	    }
+
+	public void init(Buffer buf) {
+		while (true) {
+			int attribute = buf.getUnsignedByte();
+			if (attribute == 0)
+				return;
+			if (attribute == 1) {
+				configId = buf.getUnsignedShortBE();
+				leastSignificantBit = buf.getUnsignedByte();
+				mostSignificantBit = buf.getUnsignedByte();
+			} else if (attribute == 10)
+				buf.getString(); // dummy
+			else if (attribute == 2)
+				aBoolean829 = true;
+			else if (attribute == 3)
+				buf.getIntBE(); // dummy
+			else if (attribute == 4)
+				buf.getIntBE(); // dummy
+			else if (attribute == 5)
+				aBoolean832 = false;
+			else
+				System.out.println("Error unrecognised config code: " + attribute);
+		}
 	}
 
-	if (buffer.offset != buffer.payload.length) {
-	    System.out.println("varbit load mismatch");
-	}
-    }
 
-    public void readValues(Buffer buffer, int index) {
-	do {
-	    int opcode = buffer.readUByte();
-	    if (opcode == 0) {
-		return;
-	    }
-	    if (opcode == 1) {
-		anInt826 = buffer.readUShort();
-		anInt827 = buffer.readUByte();
-		anInt828 = buffer.readUByte();
-	    } else if (opcode == 10) {
-		aString825 = buffer.readJString();
-	    } else if (opcode == 2) {
-		aBoolean829 = true;
-	    } else if (opcode == 3) {
-		anInt830 = buffer.readInt();
-	    } else if (opcode == 4) {
-		anInt831 = buffer.readInt();
-	    } else if (opcode == 5) {
-		aBoolean832 = false;
-	    } else {
-		System.out.println("Error unrecognised config code: " + opcode);
-	    }
-	} while (true);
-    }
-
-    public VarBit() {
-	aBoolean829 = false;
-	anInt830 = -1;
-	aBoolean832 = true;
-    }
-
-    public int anInt822;
-    public static int length;
-    public static VarBit varbits[];
-    public String aString825;
-    public int anInt826;
-    public int anInt827;
-    public int anInt828;
-    public boolean aBoolean829;
-    public int anInt830;
-    public int anInt831;
-    public boolean aBoolean832;
 
 }

@@ -1,270 +1,218 @@
 public class IndexedImage extends Rasterizer {
 
-  public int anInt1509;
-  public boolean aBoolean1510;
-  public int anInt1511;
-  public int anInt1512;
-  public byte aByte1513;
-  public int anInt1514;
-  public boolean aBoolean1515;
-  public byte[] aByteArray1516;
-  public int[] anIntArray1517;
-  public int anInt1518;
-  public int anInt1519;
-  public int anInt1520;
-  public int anInt1521;
-  public int anInt1522;
-  public int anInt1523;
-  public IndexedImage(Archive archive, String s, int i) {
-    anInt1509 = 3;
-    aBoolean1510 = true;
-    anInt1512 = -235;
-    aByte1513 = 5;
-    anInt1514 = -3539;
-    aBoolean1515 = true;
-    Buffer buffer = new Buffer(archive.extract(s + ".dat"));
-    Buffer index = new Buffer(archive.extract("index.dat"));
-    index.offset = buffer.readUShort();
-    anInt1522 = index.readUShort();
-    anInt1523 = index.readUShort();
-    int j = index.readUByte();
-    anIntArray1517 = new int[j];
-    for (int k = 0; k < j - 1; k++) {
-      anIntArray1517[k + 1] = index.readMedium();
-    }
+    public byte[] imgPixels;
+    public int[] palette;
+    public int imgWidth;
+    public int height;
+    public int xDrawOffset;
+    public int yDrawOffset;
+    public int maxWidth;
+    public int maxHeight;
 
-    for (int l = 0; l < i; l++) {
-      index.offset += 2;
-      buffer.offset += index.readUShort() * index.readUShort();
-      index.offset++;
-    }
+    public IndexedImage(Archive archive, String archiveName, int offset) {
+        Buffer dataBuffer = new Buffer(archive.getFile(archiveName + ".dat"));
+        Buffer indexBuffer = new Buffer(archive.getFile("index.dat"));
+        indexBuffer.currentPosition = dataBuffer.getUnsignedShortBE();
+        maxWidth = indexBuffer.getUnsignedShortBE();
+        maxHeight = indexBuffer.getUnsignedShortBE();
+        int palleteLength = indexBuffer.getUnsignedByte();
+        palette = new int[palleteLength];
+        for (int index = 0; index < palleteLength - 1; index++)
+            palette[index + 1] = indexBuffer.getMediumBE();
 
-    anInt1520 = index.readUByte();
-    anInt1521 = index.readUByte();
-    anInt1518 = index.readUShort();
-    anInt1519 = index.readUShort();
-    int i1 = index.readUByte();
-    int j1 = anInt1518 * anInt1519;
-    aByteArray1516 = new byte[j1];
-    if (i1 == 0) {
-      for (int k1 = 0; k1 < j1; k1++) {
-        aByteArray1516[k1] = buffer.readByte();
-      }
-
-      return;
-    }
-    if (i1 == 1) {
-      for (int l1 = 0; l1 < anInt1518; l1++) {
-        for (int i2 = 0; i2 < anInt1519; i2++) {
-          aByteArray1516[l1 + i2 * anInt1518] = buffer.readByte();
+        for (int counter = 0; counter < offset; counter++) {
+            indexBuffer.currentPosition += 2;
+            dataBuffer.currentPosition += indexBuffer.getUnsignedShortBE() * indexBuffer.getUnsignedShortBE();
+            indexBuffer.currentPosition++;
         }
 
-      }
+        xDrawOffset = indexBuffer.getUnsignedByte();
+        yDrawOffset = indexBuffer.getUnsignedByte();
+        imgWidth = indexBuffer.getUnsignedShortBE();
+        height = indexBuffer.getUnsignedShortBE();
+        int type = indexBuffer.getUnsignedByte();
+        int pixelLength = imgWidth * height;
+        imgPixels = new byte[pixelLength];
+        if (type == 0) {
+            for (int pixel = 0; pixel < pixelLength; pixel++)
+                imgPixels[pixel] = dataBuffer.getByte();
 
-    }
-  }
-
-  public void method485(int i) {
-    anInt1522 /= 2;
-    anInt1523 /= 2;
-    byte[] abyte0 = new byte[anInt1522 * anInt1523];
-    int j = 0;
-    if (i != 0) {
-      return;
-    }
-    for (int k = 0; k < anInt1519; k++) {
-      for (int l = 0; l < anInt1518; l++) {
-        abyte0[(l + anInt1520 >> 1) + (k + anInt1521 >> 1) * anInt1522] = aByteArray1516[j++];
-      }
-
-    }
-
-    aByteArray1516 = abyte0;
-    anInt1518 = anInt1522;
-    anInt1519 = anInt1523;
-    anInt1520 = 0;
-    anInt1521 = 0;
-  }
-
-  public void method486(boolean flag) {
-    if (anInt1518 == anInt1522 && anInt1519 == anInt1523) {
-      return;
-    }
-    byte[] abyte0 = new byte[anInt1522 * anInt1523];
-    int i = 0;
-    for (int j = 0; j < anInt1519; j++) {
-      for (int k = 0; k < anInt1518; k++) {
-        abyte0[k + anInt1520 + (j + anInt1521) * anInt1522] = aByteArray1516[i++];
-      }
-
-    }
-
-    aByteArray1516 = abyte0;
-    anInt1518 = anInt1522;
-    if (!flag) {
-    } else {
-      anInt1519 = anInt1523;
-      anInt1520 = 0;
-      anInt1521 = 0;
-    }
-  }
-
-  public void method487(int i) {
-    byte[] abyte0 = new byte[anInt1518 * anInt1519];
-    int j = 0;
-    for (int k = 0; k < anInt1519; k++) {
-      for (int l = anInt1518 - 1; l >= 0; l--) {
-        abyte0[j++] = aByteArray1516[l + k * anInt1518];
-      }
-
-    }
-
-    aByteArray1516 = abyte0;
-    if (i != 0) {
-    } else {
-      anInt1520 = anInt1522 - anInt1518 - anInt1520;
-    }
-  }
-
-  public void method488(byte byte0) {
-    byte[] abyte0 = new byte[anInt1518 * anInt1519];
-    int i = 0;
-    if (byte0 != 7) {
-      aBoolean1515 = !aBoolean1515;
-    }
-    for (int j = anInt1519 - 1; j >= 0; j--) {
-      for (int k = 0; k < anInt1518; k++) {
-        abyte0[i++] = aByteArray1516[k + j * anInt1518];
-      }
-
-    }
-
-    aByteArray1516 = abyte0;
-    anInt1521 = anInt1523 - anInt1519 - anInt1521;
-  }
-
-  public void method489(int i, int j, int k, int l) {
-    for (int i1 = 0; i1 < anIntArray1517.length; i1++) {
-      int j1 = anIntArray1517[i1] >> 16 & 0xff;
-      j1 += k;
-      if (j1 < 0) {
-        j1 = 0;
-      } else if (j1 > 255) {
-        j1 = 255;
-      }
-      int k1 = anIntArray1517[i1] >> 8 & 0xff;
-      k1 += j;
-      if (k1 < 0) {
-        k1 = 0;
-      } else if (k1 > 255) {
-        k1 = 255;
-      }
-      int l1 = anIntArray1517[i1] & 0xff;
-      l1 += i;
-      if (l1 < 0) {
-        l1 = 0;
-      } else if (l1 > 255) {
-        l1 = 255;
-      }
-      anIntArray1517[i1] = (j1 << 16) + (k1 << 8) + l1;
-    }
-
-    if (l == anInt1512) {
-    }
-  }
-
-  public void method490(int i, int j, int k) {
-    j += anInt1520;
-    i += anInt1521;
-    while (k >= 0) {
-      for (int l = 1; l > 0; l++) {
-      }
-    }
-    int i1 = j + i * Rasterizer.anInt1425;
-    int j1 = 0;
-    int k1 = anInt1519;
-    int l1 = anInt1518;
-    int i2 = Rasterizer.anInt1425 - l1;
-    int j2 = 0;
-    if (i < Rasterizer.anInt1427) {
-      int k2 = Rasterizer.anInt1427 - i;
-      k1 -= k2;
-      i = Rasterizer.anInt1427;
-      j1 += k2 * l1;
-      i1 += k2 * Rasterizer.anInt1425;
-    }
-    if (i + k1 > Rasterizer.anInt1428) {
-      k1 -= i + k1 - Rasterizer.anInt1428;
-    }
-    if (j < Rasterizer.anInt1429) {
-      int l2 = Rasterizer.anInt1429 - j;
-      l1 -= l2;
-      j = Rasterizer.anInt1429;
-      j1 += l2;
-      i1 += l2;
-      j2 += l2;
-      i2 += l2;
-    }
-    if (j + l1 > Rasterizer.anInt1430) {
-      int i3 = j + l1 - Rasterizer.anInt1430;
-      l1 -= i3;
-      j2 += i3;
-      i2 += i3;
-    }
-    if (l1 <= 0 || k1 <= 0) {
-    } else {
-      method491(j1, Rasterizer.anIntArray1424, aByteArray1516, j2,
-          anIntArray1517, k1, l1, i1, false, i2);
-    }
-  }
-
-  public void method491(int i, int[] ai, byte[] abyte0, int j, int[] ai1,
-      int k, int l, int i1, boolean flag, int j1) {
-    int k1 = -(l >> 2);
-    l = -(l & 3);
-    if (flag) {
-      anInt1511 = 264;
-    }
-    for (int l1 = -k; l1 < 0; l1++) {
-      for (int i2 = k1; i2 < 0; i2++) {
-        byte byte0 = abyte0[i++];
-        if (byte0 != 0) {
-          ai[i1++] = ai1[byte0 & 0xff];
-        } else {
-          i1++;
+            return;
         }
-        byte0 = abyte0[i++];
-        if (byte0 != 0) {
-          ai[i1++] = ai1[byte0 & 0xff];
-        } else {
-          i1++;
-        }
-        byte0 = abyte0[i++];
-        if (byte0 != 0) {
-          ai[i1++] = ai1[byte0 & 0xff];
-        } else {
-          i1++;
-        }
-        byte0 = abyte0[i++];
-        if (byte0 != 0) {
-          ai[i1++] = ai1[byte0 & 0xff];
-        } else {
-          i1++;
-        }
-      }
+        if (type == 1) {
+            for (int x = 0; x < imgWidth; x++) {
+                for (int y = 0; y < height; y++)
+                    imgPixels[x + y * imgWidth] = dataBuffer.getByte();
 
-      for (int j2 = l; j2 < 0; j2++) {
-        byte byte1 = abyte0[i++];
-        if (byte1 != 0) {
-          ai[i1++] = ai1[byte1 & 0xff];
-        } else {
-          i1++;
-        }
-      }
+            }
 
-      i1 += j1;
-      i += j;
+        }
     }
 
-  }
+    public void resizeToHalfLibSize() {
+        maxWidth /= 2;
+        maxHeight /= 2;
+        byte[] resizedPixels = new byte[maxWidth * maxHeight];
+        int pixelCount = 0;
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < imgWidth; x++)
+                resizedPixels[(x + xDrawOffset >> 1) + (y + yDrawOffset >> 1) * maxWidth] = imgPixels[pixelCount++];
+
+        }
+
+        imgPixels = resizedPixels;
+        imgWidth = maxWidth;
+        height = maxHeight;
+        xDrawOffset = 0;
+        yDrawOffset = 0;
+    }
+
+    public void resizeToLibSize() {
+        if (imgWidth != maxWidth || height != maxHeight) {
+            byte[] resizedPixels = new byte[maxWidth * maxHeight];
+            int pixelCount = 0;
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < imgWidth; x++)
+                    resizedPixels[x + xDrawOffset + (y + yDrawOffset) * maxWidth] = imgPixels[pixelCount++];
+
+            }
+
+            imgPixels = resizedPixels;
+            imgWidth = maxWidth;
+            height = maxHeight;
+            xDrawOffset = 0;
+            yDrawOffset = 0;
+        }
+
+    }
+
+    public void flipHorizontal() {
+        byte[] flipedPixels = new byte[imgWidth * height];
+        int pixelCount = 0;
+        for (int y = 0; y < height; y++) {
+            for (int x = imgWidth - 1; x >= 0; x--)
+                flipedPixels[pixelCount++] = imgPixels[x + y * imgWidth];
+
+        }
+
+        imgPixels = flipedPixels;
+        xDrawOffset = maxWidth - imgWidth - xDrawOffset;
+
+    }
+
+    public void flipVertical() {
+        byte[] flipedPixels = new byte[imgWidth * height];
+        int pixelCount = 0;
+        for (int y = height - 1; y >= 0; y--) {
+            for (int x = 0; x < imgWidth; x++)
+                flipedPixels[pixelCount++] = imgPixels[x + y * imgWidth];
+
+        }
+        imgPixels = flipedPixels;
+        yDrawOffset = maxHeight - height - yDrawOffset;
+    }
+
+    public void mixPalette(int red, int green, int blue) {
+        for (int index = 0; index < palette.length; index++) {
+            int r = palette[index] >> 16 & 0xff;
+            r += red;
+            if (r < 0)
+                r = 0;
+            else if (r > 255)
+                r = 255;
+            int g = palette[index] >> 8 & 0xff;
+            g += green;
+            if (g < 0)
+                g = 0;
+            else if (g > 255)
+                g = 255;
+            int b = palette[index] & 0xff;
+            b += blue;
+            if (b < 0)
+                b = 0;
+            else if (b > 255)
+                b = 255;
+            palette[index] = (r << 16) + (g << 8) + b;
+        }
+    }
+
+    public void drawImage(int x, int y) {
+        x += xDrawOffset;
+        y += yDrawOffset;
+        int offset = x + y * Rasterizer.width;
+        int originalOffset = 0;
+        int imageHeight = height;
+        int imageWidth = imgWidth;
+        int deviation = Rasterizer.width - imageWidth;
+        int originalDeviation = 0;
+        if (y < Rasterizer.topY) {
+            int yOffset = Rasterizer.topY - y;
+            imageHeight -= yOffset;
+            y = Rasterizer.topY;
+            originalOffset += yOffset * imageWidth;
+            offset += yOffset * Rasterizer.width;
+        }
+        if (y + imageHeight > Rasterizer.bottomY)
+            imageHeight -= (y + imageHeight) - Rasterizer.bottomY;
+        if (x < Rasterizer.topX) {
+            int xOffset = Rasterizer.topX - x;
+            imageWidth -= xOffset;
+            x = Rasterizer.topX;
+            originalOffset += xOffset;
+            offset += xOffset;
+            originalDeviation += xOffset;
+            deviation += xOffset;
+        }
+        if (x + imageWidth > Rasterizer.bottomX) {
+            int xOffset = (x + imageWidth) - Rasterizer.bottomX;
+            imageWidth -= xOffset;
+            originalDeviation += xOffset;
+            deviation += xOffset;
+        }
+        if (imageWidth > 0 && imageHeight > 0) {
+            copyPixels(imgPixels, Rasterizer.pixels, imageWidth, imageHeight, offset, originalOffset, deviation, originalDeviation, palette);
+        }
+    }
+
+    public void copyPixels(byte[] pixels, int[] rasterizerPixels, int width, int height, int offset, int originalOffset, int deviation, int originalDeviation, int[] pallete) {
+        int shiftedWidth = -(width >> 2);
+        width = -(width & 3);
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int shiftedWidthCounter = shiftedWidth; shiftedWidthCounter < 0; shiftedWidthCounter++) {
+                byte pixel = pixels[originalOffset++];
+                if (pixel != 0)
+                    rasterizerPixels[offset++] = pallete[pixel & 0xff];
+                else
+                    offset++;
+                pixel = pixels[originalOffset++];
+                if (pixel != 0)
+                    rasterizerPixels[offset++] = pallete[pixel & 0xff];
+                else
+                    offset++;
+                pixel = pixels[originalOffset++];
+                if (pixel != 0)
+                    rasterizerPixels[offset++] = pallete[pixel & 0xff];
+                else
+                    offset++;
+                pixel = pixels[originalOffset++];
+                if (pixel != 0)
+                    rasterizerPixels[offset++] = pallete[pixel & 0xff];
+                else
+                    offset++;
+            }
+
+            for (int widthCounter = width; widthCounter < 0; widthCounter++) {
+                byte pixel = pixels[originalOffset++];
+                if (pixel != 0)
+                    rasterizerPixels[offset++] = pallete[pixel & 0xff];
+                else
+                    offset++;
+            }
+
+            offset += deviation;
+            originalOffset += originalDeviation;
+        }
+
+    }
+
 }

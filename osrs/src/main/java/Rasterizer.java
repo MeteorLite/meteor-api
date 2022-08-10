@@ -1,273 +1,497 @@
 public class Rasterizer extends CacheableNode {
 
-  public static int anInt1420;
-  public static boolean aBoolean1421;
-  public static boolean aBoolean1422 = true;
-  public static int anInt1423 = -291;
-  public static int[] anIntArray1424;
-  public static int anInt1425;
-  public static int anInt1426;
-  public static int anInt1427;
-  public static int anInt1428;
-  public static int anInt1429;
-  public static int anInt1430;
-  public static int anInt1431;
-  public static int anInt1432;
-  public static int anInt1433;
-  public static boolean aBoolean1434;
-  public Rasterizer() {
-  }
+    public static int[] pixels;
+    public static int width;
+    public static int height;
+    public static int topY;
+    public static int bottomY;
+    public static int topX;
+    public static int bottomX;
+    public static int viewportRx;
+    public static int centerX;
+    public static int centerY;
 
-  public static void method444(int i, int j, int[] pixels) {
-    anIntArray1424 = pixels;
-    anInt1425 = i;
-    anInt1426 = j;
-    method446(0, 0, j, i, true);
-  }
 
-  public static void method445(byte byte0) {
-    anInt1429 = 0;
-    anInt1427 = 0;
-    anInt1430 = anInt1425;
-    anInt1428 = anInt1426;
-    anInt1431 = anInt1430 - 1;
-    if (byte0 != 82) {
-      anInt1423 = -258;
-    }
-    anInt1432 = anInt1430 / 2;
-  }
-
-  public static void method446(int i, int j, int k, int l, boolean flag) {
-    if (j < 0) {
-      j = 0;
-    }
-    if (i < 0) {
-      i = 0;
-    }
-    if (l > anInt1425) {
-      l = anInt1425;
-    }
-    if (k > anInt1426) {
-      k = anInt1426;
-    }
-    anInt1429 = j;
-    anInt1427 = i;
-    anInt1430 = l;
-    anInt1428 = k;
-    if (!flag) {
-    } else {
-      anInt1431 = anInt1430 - 1;
-      anInt1432 = anInt1430 / 2;
-      anInt1433 = anInt1428 / 2;
-    }
-  }
-
-  public static void method447(int i) {
-    int j = anInt1425 * anInt1426;
-    if (i != 4) {
-      aBoolean1421 = !aBoolean1421;
-    }
-    for (int k = 0; k < j; k++) {
-      anIntArray1424[k] = 0;
+    public static void createRasterizer(int[] pixels, int width, int height) {
+        Rasterizer.pixels = pixels;
+        Rasterizer.width = width;
+        Rasterizer.height = height;
+        setCoordinates(0, 0, height, width);
     }
 
-  }
-
-  public static void method448(boolean flag, int i, int j, int k, int l,
-      int i1, int j1) {
-    if (j1 < anInt1429) {
-      k -= anInt1429 - j1;
-      j1 = anInt1429;
-    }
-    if (j < anInt1427) {
-      l -= anInt1427 - j;
-      j = anInt1427;
-    }
-    if (j1 + k > anInt1430) {
-      k = anInt1430 - j1;
-    }
-    if (j + l > anInt1428) {
-      l = anInt1428 - j;
-    }
-    int k1 = 256 - i1;
-    int l1 = (i >> 16 & 0xff) * i1;
-    int i2 = (i >> 8 & 0xff) * i1;
-    int j2 = (i & 0xff) * i1;
-    if (flag) {
-      aBoolean1421 = !aBoolean1421;
-    }
-    int j3 = anInt1425 - k;
-    int k3 = j1 + j * anInt1425;
-    for (int l3 = 0; l3 < l; l3++) {
-      for (int i4 = -k; i4 < 0; i4++) {
-        int k2 = (anIntArray1424[k3] >> 16 & 0xff) * k1;
-        int l2 = (anIntArray1424[k3] >> 8 & 0xff) * k1;
-        int i3 = (anIntArray1424[k3] & 0xff) * k1;
-        int j4 = (l1 + k2 >> 8 << 16) + (i2 + l2 >> 8 << 8)
-            + (j2 + i3 >> 8);
-        anIntArray1424[k3++] = j4;
-      }
-
-      k3 += j3;
+    public static void resetCoordinates() {
+        topX = 0;
+        topY = 0;
+        bottomX = width;
+        bottomY = height;
+        viewportRx = bottomX - 1;
+        centerX = bottomX / 2;
     }
 
-  }
-
-  public static void method449(int i, int j, int k, byte byte0, int l, int i1) {
-    if (i1 < anInt1429) {
-      l -= anInt1429 - i1;
-      i1 = anInt1429;
-    }
-    if (j < anInt1427) {
-      i -= anInt1427 - j;
-      j = anInt1427;
-    }
-    if (i1 + l > anInt1430) {
-      l = anInt1430 - i1;
-    }
-    if (j + i > anInt1428) {
-      i = anInt1428 - j;
-    }
-    int j1 = anInt1425 - l;
-    int k1 = i1 + j * anInt1425;
-    for (int l1 = -i; l1 < 0; l1++) {
-      for (int i2 = -l; i2 < 0; i2++) {
-        anIntArray1424[k1++] = k;
-      }
-
-      k1 += j1;
+    public static void resize(int topX, int topY, int bottomX, int bottomY) {
+        if (Rasterizer.topX < topX) {
+            Rasterizer.topX = topX;
+        }
+        if (Rasterizer.topY < topY) {
+            Rasterizer.topY = topY;
+        }
+        if (Rasterizer.bottomX > bottomX) {
+            Rasterizer.bottomX = bottomX;
+        }
+        if (Rasterizer.bottomY > bottomY) {
+            Rasterizer.bottomY = bottomY;
+        }
     }
 
-    if (byte0 == -24) {
-    }
-  }
 
-  public static void method450(int i, int j, int k, int l, int i1, int j1) {
-    method452(i1, l, j, j1, true);
-    method452(i1, l, j + k - 1, j1, true);
-    if (i != 0) {
-      anInt1420 = -278;
-    }
-    method454(i1, l, k, false, j);
-    method454(i1 + j1 - 1, l, k, false, j);
-  }
+    public static void setCoordinates(int y, int x, int height, int width) {
+        if (x < 0)
+            x = 0;
+        if (y < 0)
+            y = 0;
+        if (width > Rasterizer.width)
+            width = Rasterizer.width;
+        if (height > Rasterizer.height)
+            height = Rasterizer.height;
+        topX = x;
+        topY = y;
+        bottomX = width;
+        bottomY = height;
+        viewportRx = bottomX - 1;
+        centerX = bottomX / 2;
+        centerY = bottomY / 2;
 
-  public static void method451(int i, int j, int k, int l, int i1, int j1,
-      byte byte0) {
-    if (byte0 != -113) {
-      return;
-    }
-    method453(i1, i, j, 1388, j1, k);
-    method453(i1 + l - 1, i, j, 1388, j1, k);
-    if (l >= 3) {
-      method455(0, i1 + 1, i, k, l - 2, j1);
-      method455(0, i1 + 1, i + j - 1, k, l - 2, j1);
-    }
-  }
-
-  public static void method452(int i, int j, int k, int l, boolean flag) {
-    if (k < anInt1427 || k >= anInt1428) {
-      return;
-    }
-    if (i < anInt1429) {
-      l -= anInt1429 - i;
-      i = anInt1429;
-    }
-    if (i + l > anInt1430) {
-      l = anInt1430 - i;
-    }
-    int i1 = i + k * anInt1425;
-    if (!flag) {
-      for (int j1 = 1; j1 > 0; j1++) {
-      }
-    }
-    for (int k1 = 0; k1 < l; k1++) {
-      anIntArray1424[i1 + k1] = j;
     }
 
-  }
+    public static void resetPixels() {
+        int pixelCount = width * height;
+        for (int pixel = 0; pixel < pixelCount; pixel++)
+            pixels[pixel] = 0;
 
-  public static void method453(int i, int j, int k, int l, int i1, int j1) {
-    if (i < anInt1427 || i >= anInt1428) {
-      return;
-    }
-    if (j < anInt1429) {
-      k -= anInt1429 - j;
-      j = anInt1429;
-    }
-    if (j + k > anInt1430) {
-      k = anInt1430 - j;
-    }
-    int k1 = 256 - i1;
-    int l1 = (j1 >> 16 & 0xff) * i1;
-    int i2 = (j1 >> 8 & 0xff) * i1;
-    int j2 = (j1 & 0xff) * i1;
-    int j3 = j + i * anInt1425;
-    for (int k3 = 0; k3 < k; k3++) {
-      int k2 = (anIntArray1424[j3] >> 16 & 0xff) * k1;
-      int l2 = (anIntArray1424[j3] >> 8 & 0xff) * k1;
-      int i3 = (anIntArray1424[j3] & 0xff) * k1;
-      int l3 = (l1 + k2 >> 8 << 16) + (i2 + l2 >> 8 << 8)
-          + (j2 + i3 >> 8);
-      anIntArray1424[j3++] = l3;
     }
 
-    if (l != 1388) {
-      anInt1420 = -36;
-    }
-  }
+    public static void drawFilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
+        if (x < topX) {
+            width -= topX - x;
+            x = topX;
+        }
+        if (y < topY) {
+            height -= topY - y;
+            y = topY;
+        }
+        if (x + width > bottomX)
+            width = bottomX - x;
+        if (y + height > bottomY)
+            height = bottomY - y;
+        int a = 256 - alpha;
+        int r = (colour >> 16 & 0xff) * alpha;
+        int g = (colour >> 8 & 0xff) * alpha;
+        int b = (colour & 0xff) * alpha;
+        int widthOffset = Rasterizer.width - width;
+        int pixel = x + y * Rasterizer.width;
+        for (int heightCounter = 0; heightCounter < height; heightCounter++) {
+            for (int widthCounter = -width; widthCounter < 0; widthCounter++) {
+                int red = (pixels[pixel] >> 16 & 0xff) * a;
+                int green = (pixels[pixel] >> 8 & 0xff) * a;
+                int blue = (pixels[pixel] & 0xff) * a;
+                int rgba = ((r + red >> 8) << 16) + ((g + green >> 8) << 8) + (b + blue >> 8);
+                pixels[pixel++] = rgba;
+            }
 
-  public static void method454(int i, int j, int k, boolean flag, int l) {
-    if (flag) {
-      return;
-    }
-    if (i < anInt1429 || i >= anInt1430) {
-      return;
-    }
-    if (l < anInt1427) {
-      k -= anInt1427 - l;
-      l = anInt1427;
-    }
-    if (l + k > anInt1428) {
-      k = anInt1428 - l;
-    }
-    int i1 = i + l * anInt1425;
-    for (int j1 = 0; j1 < k; j1++) {
-      anIntArray1424[i1 + j1 * anInt1425] = j;
-    }
+            pixel += widthOffset;
+        }
 
-  }
-
-  public static void method455(int i, int j, int k, int l, int i1, int j1) {
-    if (k < anInt1429 || k >= anInt1430) {
-      return;
-    }
-    if (j < anInt1427) {
-      i1 -= anInt1427 - j;
-      j = anInt1427;
-    }
-    if (j + i1 > anInt1428) {
-      i1 = anInt1428 - j;
-    }
-    int k1 = 256 - j1;
-    int l1 = (l >> 16 & 0xff) * j1;
-    int i2 = (l >> 8 & 0xff) * j1;
-    int j2 = (l & 0xff) * j1;
-    if (i != 0) {
-      for (int j3 = 1; j3 > 0; j3++) {
-      }
-    }
-    int k3 = k + j * anInt1425;
-    for (int l3 = 0; l3 < i1; l3++) {
-      int k2 = (anIntArray1424[k3] >> 16 & 0xff) * k1;
-      int l2 = (anIntArray1424[k3] >> 8 & 0xff) * k1;
-      int i3 = (anIntArray1424[k3] & 0xff) * k1;
-      int i4 = (l1 + k2 >> 8 << 16) + (i2 + l2 >> 8 << 8)
-          + (j2 + i3 >> 8);
-      anIntArray1424[k3] = i4;
-      k3 += anInt1425;
     }
 
-  }
+    public static void drawFilledRectangle(int x, int y, int width, int height, int colour) {
+        if (x < topX) {
+            width -= topX - x;
+            x = topX;
+        }
+        if (y < topY) {
+            height -= topY - y;
+            y = topY;
+        }
+        if (x + width > bottomX)
+            width = bottomX - x;
+        if (y + height > bottomY)
+            height = bottomY - y;
+        int pixelOffset = Rasterizer.width - width;
+        int pixel = x + y * Rasterizer.width;
+        for (int heightCounter = -height; heightCounter < 0; heightCounter++) {
+            for (int widthCounter = -width; widthCounter < 0; widthCounter++)
+                pixels[pixel++] = colour;
+
+            pixel += pixelOffset;
+        }
+    }
+
+    public static void drawUnfilledRectangle(int x, int y, int width, int height, int color) {
+        drawHorizontalLine(x, y, width, color);
+        drawHorizontalLine(x, (y + height) - 1, width, color);
+        drawVerticalLine(x, y, height, color);
+        drawVerticalLine((x + width) - 1, y, height, color);
+    }
+
+    public static void drawUnfilledRectangleAlpha(int x, int y, int width, int height, int colour, int alpha) {
+        drawHorizontalLineAlpha(x, y, width, colour, alpha);
+        drawHorizontalLineAlpha(x, (y + height) - 1, width, colour, alpha);
+        if (height >= 3) {
+            drawVerticalLineAlpha(x, y + 1, height - 2, colour, alpha);
+            drawVerticalLineAlpha((x + width) - 1, y + 1, height - 2, colour, alpha);
+        }
+    }
+
+    public static void drawHorizontalLine(int x, int y, int lenght, int colour) {
+        if (y < topY || y >= bottomY)
+            return;
+        if (x < topX) {
+            lenght -= topX - x;
+            x = topX;
+        }
+        if (x + lenght > bottomX)
+            lenght = bottomX - x;
+        int pixelOffset = x + y * width;
+        for (int pixel = 0; pixel < lenght; pixel++)
+            pixels[pixelOffset + pixel] = colour;
+
+    }
+
+    public static void drawHorizontalLineAlpha(int x, int y, int length, int colour, int alpha) {
+        if (y < topY || y >= bottomY)
+            return;
+        if (x < topX) {
+            length -= topX - x;
+            x = topX;
+        }
+        if (x + length > bottomX)
+            length = bottomX - x;
+        int a = 256 - alpha;
+        int r = (colour >> 16 & 0xff) * alpha;
+        int g = (colour >> 8 & 0xff) * alpha;
+        int b = (colour & 0xff) * alpha;
+        int pixelOffset = x + y * width;
+        for (int lengthCounter = 0; lengthCounter < length; lengthCounter++) {
+            int red = (pixels[pixelOffset] >> 16 & 0xff) * a;
+            int green = (pixels[pixelOffset] >> 8 & 0xff) * a;
+            int blue = (pixels[pixelOffset] & 0xff) * a;
+            int rgba = ((r + red >> 8) << 16) + ((g + green >> 8) << 8) + (b + blue >> 8);
+            pixels[pixelOffset++] = rgba;
+        }
+    }
+
+    public static void drawVerticalLine(int x, int y, int lenght, int colour) {
+        if (x < topX || x >= bottomX)
+            return;
+        if (y < topY) {
+            lenght -= topY - y;
+            y = topY;
+        }
+        if (y + lenght > bottomY)
+            lenght = bottomY - y;
+        int pixelOffset = x + y * width;
+        for (int pixel = 0; pixel < lenght; pixel++)
+            pixels[pixelOffset + pixel * width] = colour;
+
+    }
+
+    public static void drawVerticalLineAlpha(int x, int y, int lenght, int colour, int alpha) {
+        if (x < topX || x >= bottomX)
+            return;
+        if (y < topY) {
+            lenght -= topY - y;
+            y = topY;
+        }
+        if (y + lenght > bottomY)
+            lenght = bottomY - y;
+        int a = 256 - alpha;
+        int r = (colour >> 16 & 0xff) * alpha;
+        int g = (colour >> 8 & 0xff) * alpha;
+        int b = (colour & 0xff) * alpha;
+        int pixel = x + y * width;
+        for (int lengthCounter = 0; lengthCounter < lenght; lengthCounter++) {
+            int red = (pixels[pixel] >> 16 & 0xff) * a;
+            int blue = (pixels[pixel] >> 8 & 0xff) * a;
+            int green = (pixels[pixel] & 0xff) * a;
+            int rgba = ((r + red >> 8) << 16) + ((g + blue >> 8) << 8) + (b + green >> 8);
+            pixels[pixel] = rgba;
+            pixel += width;
+        }
+
+    }
+
+
+    static final void drawDiagonalLine(int x, int y, int DestX, int destY, int linecolor) {
+        DestX -= x;
+        destY -= y;
+        if (destY == 0) {
+            if (DestX >= 0) {
+                drawHorizontalLine(x, y, DestX + 1, linecolor);
+            } else {
+                drawHorizontalLine(x + DestX, y, -DestX + 1, linecolor);
+            }
+        } else if (DestX == 0) {
+            if (destY >= 0) {
+                drawVerticalLine(x, y, destY + 1, linecolor);
+            } else {
+                drawVerticalLine(x, y + destY, -destY + 1, linecolor);
+            }
+        } else {
+            if (DestX + destY < 0) {
+                x += DestX;
+                DestX = -DestX;
+                y += destY;
+                destY = -destY;
+            }
+            int var5;
+            int var6;
+            if (DestX > destY) {
+                y <<= 16;
+                y += '\u8000';
+                destY <<= 16;
+                var5 = (int) Math.floor((double) destY / (double) DestX + 0.5D);
+                DestX += x;
+                if (x < topX) {
+                    y += var5 * (topX - x);
+                    x = topX;
+                }
+                if (DestX >= bottomX) {
+                    DestX = bottomX - 1;
+                }
+                while (x <= DestX) {
+                    var6 = y >> 16;
+                    if (var6 >= topY && var6 < bottomY) {
+                        pixels[x + var6 * width] = linecolor;
+                    }
+                    y += var5;
+                    ++x;
+                }
+            } else {
+                x <<= 16;
+                x += '\u8000';
+                DestX <<= 16;
+                var5 = (int) Math.floor((double) DestX / (double) destY + 0.5D);
+                destY += y;
+                if (y < topY) {
+                    x += var5 * (topY - y);
+                    y = topY;
+                }
+                if (destY >= bottomY) {
+                    destY = bottomY - 1;
+                }
+                while (y <= destY) {
+                    var6 = x >> 16;
+                    if (var6 >= topX && var6 < bottomX) {
+                        pixels[var6 + y * width] = linecolor;
+                    }
+                    x += var5;
+                    ++y;
+                }
+            }
+        }
+    }
+
+
+    public static void drawCircle(int x, int y, int radius, int color) {
+        if (radius == 0) {
+            drawPixel(x, y, color);
+        } else {
+            if (radius < 0) {
+                radius = -radius;
+            }
+            int var4 = y - radius;
+            if (var4 < topY) {
+                var4 = topY;
+            }
+            int var5 = y + radius + 1;
+            if (var5 > bottomY) {
+                var5 = bottomY;
+            }
+            int var6 = var4;
+            int var7 = radius * radius;
+            int var8 = 0;
+            int var9 = y - var4;
+            int var10 = var9 * var9;
+            int var11 = var10 - var9;
+            if (y > var5) {
+                y = var5;
+            }
+            int var12;
+            int var13;
+            int var14;
+            int var15;
+            while (var6 < y) {
+                while (var11 <= var7 || var10 <= var7) {
+                    var10 += var8 + var8;
+                    var11 += var8++ + var8;
+                }
+                var12 = x - var8 + 1;
+                if (var12 < topX) {
+                    var12 = topX;
+                }
+                var13 = x + var8;
+                if (var13 > bottomX) {
+                    var13 = bottomX;
+                }
+                var14 = var12 + var6 * width;
+                for (var15 = var12; var15 < var13; ++var15) {
+                    pixels[var14++] = color;
+                }
+                ++var6;
+                var10 -= var9-- + var9;
+                var11 -= var9 + var9;
+            }
+            var8 = radius;
+            var9 = var6 - y;
+            var11 = var9 * var9 + var7;
+            var10 = var11 - radius;
+            for (var11 -= var9; var6 < var5; var10 += var9++ + var9) {
+                while (var11 > var7 && var10 > var7) {
+                    var11 -= var8-- + var8;
+                    var10 -= var8 + var8;
+                }
+                var12 = x - var8;
+                if (var12 < topX) {
+                    var12 = topX;
+                }
+                var13 = x + var8;
+                if (var13 > bottomX - 1) {
+                    var13 = bottomX - 1;
+                }
+                var14 = var12 + var6 * width;
+                for (var15 = var12; var15 <= var13; ++var15) {
+                    pixels[var14++] = color;
+                }
+                ++var6;
+                var11 += var9 + var9;
+            }
+        }
+    }
+
+    public static void drawCircleAlpha(int x, int y, int radius, int color, int alpha) {
+        if (alpha != 0) {
+            if (alpha == 256) {
+                drawCircle(x, y, radius, color);
+            } else {
+                if (radius < 0) {
+                    radius = -radius;
+                }
+                int a = 256 - alpha;
+                int r = (color >> 16 & 255) * alpha;
+                int g = (color >> 8 & 255) * alpha;
+                int b = (color & 255) * alpha;
+                int topY = y - radius;
+                if (topY < Rasterizer.topY) {
+                    topY = Rasterizer.topY;
+                }
+                int bottomY = y + radius + 1;
+                if (bottomY > Rasterizer.bottomY) {
+                    bottomY = Rasterizer.bottomY;
+                }
+                int var14 = topY;
+                int var15 = radius * radius;
+                int var16 = 0;
+                int var17 = y - topY;
+                int var18 = var17 * var17;
+                int var19 = var18 - var17;
+                if (y > bottomY) {
+                    y = bottomY;
+                }
+                int var9;
+                int var10;
+                int var11;
+                int var21;
+                int var20;
+                int var23;
+                int var22;
+                int var24;
+                while (var14 < y) {
+                    while (var19 <= var15 || var18 <= var15) {
+                        var18 += var16 + var16;
+                        var19 += var16++ + var16;
+                    }
+                    var20 = x - var16 + 1;
+                    if (var20 < topX) {
+                        var20 = topX;
+                    }
+                    var21 = x + var16;
+                    if (var21 > bottomX) {
+                        var21 = bottomX;
+                    }
+                    var22 = var20 + var14 * width;
+                    for (var23 = var20; var23 < var21; ++var23) {
+                        var9 = (pixels[var22] >> 16 & 255) * a;
+                        var10 = (pixels[var22] >> 8 & 255) * a;
+                        var11 = (pixels[var22] & 255) * a;
+                        var24 = (r + var9 >> 8 << 16) + (g + var10 >> 8 << 8) + (b + var11 >> 8);
+                        pixels[var22++] = var24;
+                    }
+                    ++var14;
+                    var18 -= var17-- + var17;
+                    var19 -= var17 + var17;
+                }
+                var16 = radius;
+                var17 = -var17;
+                var19 = var17 * var17 + var15;
+                var18 = var19 - radius;
+                for (var19 -= var17; var14 < bottomY; var18 += var17++ + var17) {
+                    while (var19 > var15 && var18 > var15) {
+                        var19 -= var16-- + var16;
+                        var18 -= var16 + var16;
+                    }
+                    var20 = x - var16;
+                    if (var20 < topX) {
+                        var20 = topX;
+                    }
+                    var21 = x + var16;
+                    if (var21 > bottomX - 1) {
+                        var21 = bottomX - 1;
+                    }
+                    var22 = var20 + var14 * width;
+                    for (var23 = var20; var23 <= var21; ++var23) {
+                        var9 = (pixels[var22] >> 16 & 255) * a;
+                        var10 = (pixels[var22] >> 8 & 255) * a;
+                        var11 = (pixels[var22] & 255) * a;
+                        var24 = (r + var9 >> 8 << 16) + (g + var10 >> 8 << 8) + (b + var11 >> 8);
+                        pixels[var22++] = var24;
+                    }
+                    ++var14;
+                    var19 += var17 + var17;
+                }
+            }
+        }
+    }
+
+
+    private static void drawPixel(int x, int y, int color) {
+        if (x >= topX && y >= topY && x < bottomX && y < bottomY) {
+            pixels[x + y * width] = color;
+        }
+    }
+
+    public static void clearPixels() {
+        int i = 0;
+        int pixeltoclear;
+        for (pixeltoclear = width * height - 7; i < pixeltoclear; pixels[i++] = 0) {
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+            pixels[i++] = 0;
+        }
+        for (pixeltoclear += 7; i < pixeltoclear; pixels[i++] = 0) {
+        }
+    }
+
+    public static void destroy() {
+        pixels = null;
+    }
+
+
+    public Rasterizer() {
+    }
+
 
 }

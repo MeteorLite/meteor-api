@@ -24,21 +24,16 @@
  */
 package net.runelite.rs.api;
 
-import net.runelite.api.Client;
-import net.runelite.api.Game;
-import net.runelite.mapping.Import;
-
-import java.awt.*;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelListener;
+import net.runelite.mapping.Import;
 
-public interface RSGame extends Game, MouseListener, MouseMotionListener, FocusListener, KeyListener
+public interface RSGame extends MouseListener, MouseMotionListener, FocusListener, KeyListener,
+    MouseWheelListener
 {
-    @Import("gameWindow")
-    RSGameWindow getGameWindow();
-
-    @Import("getGameWindow")
-    Component getGameContainer(byte byte0);
+  @Import("gameFrame")
+  RSGameFrame getGameFrame$api();
 }

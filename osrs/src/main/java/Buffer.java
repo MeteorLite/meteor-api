@@ -2,380 +2,345 @@ import java.math.BigInteger;
 
 public class Buffer extends CacheableNode {
 
-  public static final int[] BIT_MASKS = {0, 1, 3, 7, 15, 31, 63, 127, 255,
-      511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 0x1ffff, 0x3ffff,
-      0x7ffff, 0xfffff, 0x1fffff, 0x3fffff, 0x7fffff, 0xffffff,
-      0x1ffffff, 0x3ffffff, 0x7ffffff, 0xfffffff, 0x1fffffff, 0x3fffffff,
-      0x7fffffff, -1};
-  public static boolean ENABLE_RSA = true;
-  public static int anInt1459;
-  public static int anInt1460;
-  public static int anInt1461;
-  public static Deque smallBufferPool = new Deque();
-  public static Deque defaultBufferPool = new Deque();
-  public static Deque largeBufferPool = new Deque();
-  public byte[] payload;
-  public int offset;
-  public int bitIndex;
-  public IsaacCipher encryption;
 
-  public Buffer() {
-  }
-
-  public Buffer(byte[] data) {
-    payload = data;
-    offset = 0;
-  }
-
-  public static Buffer create(int type) {
-    synchronized (defaultBufferPool) {
-      Buffer buffer = null;
-      if (type == 0 && anInt1459 > 0) {
-        anInt1459--;
-        buffer = (Buffer) smallBufferPool.method157();
-      } else if (type == 1 && anInt1460 > 0) {
-        anInt1460--;
-        buffer = (Buffer) defaultBufferPool.method157();
-      } else if (type == 2 && anInt1461 > 0) {
-        anInt1461--;
-        buffer = (Buffer) largeBufferPool.method157();
-      }
-      if (buffer != null) {
-        buffer.offset = 0;
-        return buffer;
-      }
-    }
-    Buffer buffer = new Buffer();
-    buffer.offset = 0;
-    if (type == 0) {
-      buffer.payload = new byte[100];
-    } else if (type == 1) {
-      buffer.payload = new byte[5000];
-    } else {
-      buffer.payload = new byte[30000];
-    }
-    return buffer;
-  }
+	public byte[] buffer;
+	public int currentPosition;
+	public int bitPosition;
+	private static final int[] BIT_MASKS = {0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383,
+			32767, 65535, 0x1ffff, 0x3ffff, 0x7ffff, 0xfffff, 0x1fffff, 0x3fffff, 0x7fffff, 0xffffff, 0x1ffffff,
+			0x3ffffff, 0x7ffffff, 0xfffffff, 0x1fffffff, 0x3fffffff, 0x7fffffff, -1};
+	public ISAACCipher random;
 
 
-  public void writeShortLE(int i) {
-    payload[offset++] = (byte) i;
-    payload[offset++] = (byte) (i >> 8);
-  }
+	public static Buffer allocate(int sizeMode) {
+		Buffer buffer = new Buffer();
+		buffer.currentPosition = 0;
+		if (sizeMode == 0)
+			buffer.buffer = new byte[100];
+		else if (sizeMode == 1)
+			buffer.buffer = new byte[5000];
+		else
+			buffer.buffer = new byte[30000];
+		return buffer;
+	}
 
-  public void writeShortAdd(int i) {
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) (i + 128);
-  }
+	public Buffer() {
+	}
 
-  public void writeShortAddLE(int i) {
-    payload[offset++] = (byte) (i + 128);
-    payload[offset++] = (byte) (i >> 8);
-  }
+	public Buffer(byte[] buffer) {
+		this.buffer = buffer;
+		this.currentPosition = 0;
+	}
 
-  public void writeByte(int i) {
-    payload[offset++] = (byte) i;
-  }
+	public void putOpcode(int opcode) {
+		buffer[currentPosition++] = (byte) (opcode + random.nextInt());
+	}
 
-  public void writeShort(int i) {
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) i;
-  }
+	public void putByte(int value) {
+		buffer[currentPosition++] = (byte) value;
+	}
 
-  public void writeMedium(int i) {
-    payload[offset++] = (byte) (i >> 16);
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) i;
-  }
+	public void putShortBE(int value) {
+		buffer[currentPosition++] = (byte) (value >> 8);
+		buffer[currentPosition++] = (byte) value;
+	}
 
-  public void writeInt(int i) {
-    payload[offset++] = (byte) (i >> 24);
-    payload[offset++] = (byte) (i >> 16);
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) i;
-  }
+	public void putShortLECopy(int value) {
+		buffer[currentPosition++] = (byte) value;
+		buffer[currentPosition++] = (byte) (value >> 8);
+	}
 
-  public void writeIntLE(int i) {
-    payload[offset++] = (byte) i;
-    payload[offset++] = (byte) (i >> 8);
-    payload[offset++] = (byte) (i >> 16);
-    payload[offset++] = (byte) (i >> 24);
-  }
+	public void putMediumBE(int value) {
+		buffer[currentPosition++] = (byte) (value >> 16);
+		buffer[currentPosition++] = (byte) (value >> 8);
+		buffer[currentPosition++] = (byte) value;
+	}
 
-  public void writeLong(long l) {
-    payload[offset++] = (byte) (int) (l >> 56);
-    payload[offset++] = (byte) (int) (l >> 48);
-    payload[offset++] = (byte) (int) (l >> 40);
-    payload[offset++] = (byte) (int) (l >> 32);
-    payload[offset++] = (byte) (int) (l >> 24);
-    payload[offset++] = (byte) (int) (l >> 16);
-    payload[offset++] = (byte) (int) (l >> 8);
-    payload[offset++] = (byte) (int) l;
-  }
+	public void putIntBE(int value) {
+		buffer[currentPosition++] = (byte) (value >> 24);
+		buffer[currentPosition++] = (byte) (value >> 16);
+		buffer[currentPosition++] = (byte) (value >> 8);
+		buffer[currentPosition++] = (byte) value;
+	}
 
-  public void writeString(String s) {
-    s.getBytes(0, s.length(), payload, offset);
-    offset += s.length();
-    payload[offset++] = 10;
-  }
+	public void putIntLE(int value) {
+		buffer[currentPosition++] = (byte) value;
+		buffer[currentPosition++] = (byte) (value >> 8);
+		buffer[currentPosition++] = (byte) (value >> 16);
+		buffer[currentPosition++] = (byte) (value >> 24);
+	}
 
-  public void writeBytes(byte[] data, int offset, int length) {
-    for (int i = offset; i < offset + length; i++) {
-      payload[this.offset++] = data[i];
-    }
-  }
+	public void putLongBE(long value) {
+		buffer[currentPosition++] = (byte) (int) (value >> 56);
+		buffer[currentPosition++] = (byte) (int) (value >> 48);
+		buffer[currentPosition++] = (byte) (int) (value >> 40);
+		buffer[currentPosition++] = (byte) (int) (value >> 32);
+		buffer[currentPosition++] = (byte) (int) (value >> 24);
+		buffer[currentPosition++] = (byte) (int) (value >> 16);
+		buffer[currentPosition++] = (byte) (int) (value >> 8);
+		buffer[currentPosition++] = (byte) (int) value;
+	}
 
-  public void writeSizeByte(int i) {
-    payload[offset - i - 1] = (byte) i;
-  }
+	public void putString(String str) {
+		if(str == null) {
+			str = "";
+		}
 
-  public int readUByte() {
-    return payload[offset++] & 0xff;
-  }
-  public byte readByte() {
-    return payload[offset++];
-  }
+		byte[] bytes = new byte[str.length()];
+		for (int i = 0; i < bytes.length; i++) {
+			bytes[i] = (byte) str.charAt(i);
+		}
+		System.arraycopy(bytes, 0, buffer, currentPosition, bytes.length);
+		currentPosition += str.length();
+		buffer[currentPosition++] = 10;
+	}
 
-  public int readUShort() {
-    offset += 2;
-    return ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] & 0xff);
-  }
+	public void putBytes(byte[] bytes, int start, int length) {
+		for (int pos = start; pos < start + length; pos++)
+			buffer[currentPosition++] = bytes[pos];
+	}
 
-  public int readUShortSub() {
-    offset += 2;
-    return ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] - 128 & 0xff);
-  }
+	public void putLength(int length) {
+		buffer[currentPosition - length - 1] = (byte) length;
+	}
 
-  public int readUShortLE() {
-    offset += 2;
-    return ((payload[offset - 1] & 0xff) << 8)
-        + (payload[offset - 2] & 0xff);
-  }
+	public int getUnsignedByte() {
+		return buffer[currentPosition++] & 0xff;
+	}
 
-  public int readShort() {
-    offset += 2;
-    int i = ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] & 0xff);
-    if (i > 32767) {
-      i -= 0x10000;
-    }
-    return i;
-  }
+	public byte getByte() {
+		return buffer[currentPosition++];
+	}
 
-  public int readShortSub() {
-    offset += 2;
-    int i = ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] - 128 & 0xff);
-    if (i > 32767) {
-      i -= 0x10000;
-    }
-    return i;
-  }
+	public int getUnsignedShortBE() {
+		currentPosition += 2;
+		return ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
+	}
 
-  public int readShortLE() {
-    offset += 2;
-    int j = ((payload[offset - 1] & 0xff) << 8)
-        + (payload[offset - 2] & 0xff);
-    if (j > 32767) {
-      j -= 0x10000;
-    }
-    return j;
-  }
+	public int readShort() {
+		currentPosition += 2;
+		int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
+		if (i > 32767)
+			i -= 0x10000;
+		return i;
+	}
 
-  public int readShortLESub() {
-    offset += 2;
-    return ((payload[offset - 1] & 0xff) << 8)
-        + (payload[offset - 2] - 128 & 0xff);
-  }
+	public int getMediumBE() {
+		currentPosition += 3;
+		return ((buffer[currentPosition - 3] & 0xff) << 16) + ((buffer[currentPosition - 2] & 0xff) << 8)
+				+ (buffer[currentPosition - 1] & 0xff);
+	}
 
-  public int readMedium() {
-    offset += 3;
-    return ((payload[offset - 3] & 0xff) << 16)
-        + ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] & 0xff);
-  }
+	public int getIntBE() {
+		currentPosition += 4;
+		return ((buffer[currentPosition - 4] & 0xff) << 24) + ((buffer[currentPosition - 3] & 0xff) << 16)
+				+ ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] & 0xff);
+	}
 
-  public int readInt() {
-    offset += 4;
-    return ((payload[offset - 4] & 0xff) << 24)
-        + ((payload[offset - 3] & 0xff) << 16)
-        + ((payload[offset - 2] & 0xff) << 8)
-        + (payload[offset - 1] & 0xff);
-  }
+	public long getLongBE() {
+		long l = getIntBE() & 0xffffffffL;
+		long l1 = getIntBE() & 0xffffffffL;
+		return (l << 32) + l1;
+	}
 
-  public int method555() {
-    offset += 4;
-    return ((payload[offset - 1] & 0xff) << 24)
-        + ((payload[offset - 2] & 0xff) << 16)
-        + ((payload[offset - 3] & 0xff) << 8)
-        + (payload[offset - 4] & 0xff);
-  }
+	public String getString() {
+		int start = currentPosition;
+		moveBufferToTarget((byte) 10);
+		return new String(buffer, start, currentPosition - start - 1);
+	}
 
-  public int method556() {
-    offset += 4;
-    return ((payload[offset - 2] & 0xff) << 24)
-        + ((payload[offset - 1] & 0xff) << 16)
-        + ((payload[offset - 4] & 0xff) << 8)
-        + (payload[offset - 3] & 0xff);
-  }
+	private void moveBufferToTarget(byte target) {
+		if(buffer[currentPosition++] != target){
+			moveBufferToTarget(target);
+		}
+	}
 
-  public int method557() {
-    offset += 4;
-    return ((payload[offset - 3] & 0xff) << 24)
-        + ((payload[offset - 4] & 0xff) << 16)
-        + ((payload[offset - 1] & 0xff) << 8)
-        + (payload[offset - 2] & 0xff);
-  }
+	public byte[] getStringBytes() {
+		int start = currentPosition;
+		moveBufferToTarget((byte) 10);
+		byte[] bytes = new byte[currentPosition - start - 1];
+		if (currentPosition - 1 - start >= 0)
+			System.arraycopy(buffer, start, bytes, 0, currentPosition - 1 - start);
+		return bytes;
+	}
 
-  public long readLong() {
-    long l = (long) readInt() & 0xffffffffL;
-    long l1 = (long) readInt() & 0xffffffffL;
-    return (l << 32) + l1;
-  }
+	public void getBytes(byte[] bytes, int start, int len) {
+		for (int pos = start; pos < start + len; pos++)
+			bytes[pos] = buffer[currentPosition++];
+	}
 
-  public String readJString() {
-    int off = offset;
-    while (payload[offset++] != 10) {
-    }
-    return new String(payload, off, offset - off - 1);
-  }
+	public void initBitAccess() {
+		bitPosition = currentPosition * 8;
+	}
 
-  public byte[] readBytesString() {
-    int j = offset;
-    while (payload[offset++] != 10) {
-    }
-    byte[] bytes = new byte[offset - j - 1];
-    if (offset - 1 - j >= 0)
-      System.arraycopy(payload, j, bytes, j - j, offset - 1 - j);
+	public int getBits(int numBits) {
+		int k = bitPosition >> 3;
+		int l = 8 - (bitPosition & 7);
+		int value = 0;
+		bitPosition += numBits;
+		for (; numBits > l; l = 8) {
+			value += (buffer[k++] & BIT_MASKS[l]) << numBits - l;
+			numBits -= l;
+		}
 
-    return bytes;
-  }
+		if (numBits == l)
+			value += buffer[k] & BIT_MASKS[l];
+		else
+			value += buffer[k] >> l - numBits & BIT_MASKS[numBits];
+		return value;
+	}
 
-  public void readBytes(byte[] data, int offset, int length) {
-    for (int l = offset; l < offset + length; l++) {
-      data[l] = payload[this.offset++];
-    }
-  }
+	public void finishBitAccess() {
+		currentPosition = (bitPosition + 7) / 8;
+	}
 
-  public void writeByteAdd(int i) {
-    payload[offset++] = (byte) (i + 128);
-  }
+	public int getSignedSmart() {
+		int peek = buffer[currentPosition] & 0xff;
+		if (peek < 128)
+			return getUnsignedByte() - 64;
+		else
+			return getUnsignedShortBE() - 49152;
+	}
 
-  public void writeByteNeg(int i) {
-    payload[offset++] = (byte) -i;
-  }
+	public int getSmart() {
+		int peek = buffer[currentPosition] & 0xff;
+		if (peek < 128)
+			return getUnsignedByte();
+		else
+			return getUnsignedShortBE() - 32768;
+	}
 
-  public void writeByteSub(int i) {
-    payload[offset++] = (byte) (128 - i);
-  }
+	public void encrypt(BigInteger modulus, BigInteger key) {
+		int length = currentPosition;
+		currentPosition = 0;
+		byte[] bytes = new byte[length];
 
-  public int readUByteAdd() {
-    return payload[offset++] - 128 & 0xff;
-  }
+		getBytes(bytes, 0, length);
 
-  public int readUByteNeg() {
-    return -payload[offset++] & 0xff;
-  }
+		BigInteger raw = new BigInteger(bytes);
+		BigInteger encrypted = raw.modPow(key, modulus);
+        bytes = encrypted.toByteArray();
+		currentPosition = 0;
 
-  public int readUByteSub() {
-    return 128 - payload[offset++] & 0xff;
-  }
+		putByte(bytes.length);
+		putBytes(bytes, 0, bytes.length);
+	}
 
-  public byte readByteAdd() {
-    return (byte) (payload[offset++] - 128);
-  }
+	public void putOffsetByte(int value) {
+		buffer[currentPosition++] = (byte) (value + 128);
+	}
 
-  public byte readByteNeg() {
-    return (byte) -payload[offset++];
-  }
+	public void putInvertedByte(int value) {
+		buffer[currentPosition++] = (byte) (-value);
+	}
 
-  public byte readByteSub() {
-    return (byte) (128 - payload[offset++]);
-  }
+	public void putNegativeOffsetByte(int value) {
+		buffer[currentPosition++] = (byte) (128 - value);
+	}
 
-  public void writeByteIsaac(int i) {
-    payload[offset++] = (byte) (i + encryption.nextKey());
-  }
+	public int getUnsignedPostNegativeOffsetByte() {
+		return buffer[currentPosition++] - 128 & 0xff;
+	}
 
-  public void enableBitAccess() {
-    bitIndex = offset * 8;
-  }
+	public int getUnsignedInvertedByte() {
+		return -buffer[currentPosition++] & 0xff;
+	}
 
-  public int readBits(int numBits) {
-    int k = bitIndex >> 3;
-    int l = 8 - (bitIndex & 7);
-    int bit = 0;
-    bitIndex += numBits;
-    for (; numBits > l; l = 8) {
-      bit += (payload[k++] & BIT_MASKS[l]) << numBits - l;
-      numBits -= l;
-    }
+	public int getUnsignedPreNegativeOffsetByte() {
+		return 128 - buffer[currentPosition++] & 0xff;
+	}
 
-    if (numBits == l) {
-      bit += payload[k] & BIT_MASKS[l];
-    } else {
-      bit += payload[k] >> l - numBits & BIT_MASKS[numBits];
-    }
-    return bit;
-  }
+	public byte getPostNegativeOffsetByte() {
+		return (byte) (buffer[currentPosition++] - 128);
+	}
 
-  public void disableBitAccess() {
-    offset = (bitIndex + 7) / 8;
-  }
+	public byte getInvertedByte() {
+		return (byte) (-buffer[currentPosition++]);
+	}
 
-  public int method534() {
-    int i = payload[offset] & 0xff;
-    if (i < 128) {
-      return readUByte() - 64;
-    } else {
-      return readUShort() - 49152;
-    }
-  }
+	public byte getPreNegativeOffsetByte() {
+		return (byte) (128 - buffer[currentPosition++]);
+	}
 
-  public int method535() {
-    int i = payload[offset] & 0xff;
-    if (i < 128) {
-      return readUByte();
-    } else {
-      return readUShort() - 32768;
-    }
-  }
+	public void putShortLE(int value) {
+		buffer[currentPosition++] = (byte) value;
+		buffer[currentPosition++] = (byte) (value >> 8);
+	}
 
-  public void encodeRSA(BigInteger modulus, BigInteger exponent) {
-    int length = offset;
-    offset = 0;
-    byte[] buffer = new byte[length];
-    readBytes(buffer, 0, length);
-    byte[] rsaBuffer = buffer;
-    if (ENABLE_RSA) {
-      BigInteger bigInteger = new BigInteger(buffer);
-      BigInteger rsa = bigInteger.modPow(exponent, modulus);
-      rsaBuffer = rsa.toByteArray();
-    }
-    offset = 0;
-    writeByte(rsaBuffer.length);
-    writeBytes(rsaBuffer, 0, rsaBuffer.length);
-  }
+	public void putOffsetShortBE(int value) {
+		buffer[currentPosition++] = (byte) (value >> 8);
+		buffer[currentPosition++] = (byte) (value + 128);
+	}
 
-  public int method554() {
-    offset += 3;
-    return ((payload[offset - 2] & 0xff) << 16)
-        + ((payload[offset - 3] & 0xff) << 8)
-        + (payload[offset - 1] & 0xff);
-  }
+	public void putOffsetShortLE(int value) {
+		buffer[currentPosition++] = (byte) (value + 128);
+		buffer[currentPosition++] = (byte) (value >> 8);
+	}
 
-  public void readReverseData(byte[] data, int offset, int length) {
-    for (int k = length + offset - 1; k >= length; k--) {
-      data[k] = payload[this.offset++];
-    }
-  }
+	public int getUnsignedShortLE() {
+		currentPosition += 2;
+		return ((buffer[currentPosition - 1] & 0xff) << 8) + (buffer[currentPosition - 2] & 0xff);
+	}
 
-  public void readDataA(byte[] data, int length, int offset) {
-    for (int l = offset; l < offset + length; l++) {
-      data[l] = (byte) (payload[this.offset++] - 128);
-    }
-  }
+	public int getUnsignedNegativeOffsetShortBE() {
+		currentPosition += 2;
+		return ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
+	}
+
+	public int getUnsignedNegativeOffsetShortLE() {
+		currentPosition += 2;
+		return ((buffer[currentPosition - 1] & 0xff) << 8) + (buffer[currentPosition - 2] - 128 & 0xff);
+	}
+
+	public int getShortLE() {
+		currentPosition += 2;
+		int j = ((buffer[currentPosition - 1] & 0xff) << 8) + (buffer[currentPosition - 2] & 0xff);
+		if (j > 0x7fff)
+			j -= 0x10000;
+		return j;
+	}
+
+	public int getNegativeOffsetShortBE() {
+		currentPosition += 2;
+		int i = ((buffer[currentPosition - 2] & 0xff) << 8) + (buffer[currentPosition - 1] - 128 & 0xff);
+		if (i > 32767)
+			i -= 0x10000;
+		return i;
+	}
+
+	public int getMediumME() {
+		currentPosition += 3;
+		return ((buffer[currentPosition - 2] & 0xff) << 16) + ((buffer[currentPosition - 3] & 0xff) << 8)
+				+ (buffer[currentPosition - 1] & 0xff);
+	}
+
+	public int getIntLE() {
+		currentPosition += 4;
+		return ((buffer[currentPosition - 1] & 0xff) << 24) + ((buffer[currentPosition - 2] & 0xff) << 16)
+				+ ((buffer[currentPosition - 3] & 0xff) << 8) + (buffer[currentPosition - 4] & 0xff);
+	}
+
+	public int getIntME1() {
+		currentPosition += 4;
+		return ((buffer[currentPosition - 2] & 0xff) << 24) + ((buffer[currentPosition - 1] & 0xff) << 16)
+				+ ((buffer[currentPosition - 4] & 0xff) << 8) + (buffer[currentPosition - 3] & 0xff);
+	}
+
+	public int getIntME2() {
+		currentPosition += 4;
+		return ((buffer[currentPosition - 3] & 0xff) << 24) + ((buffer[currentPosition - 4] & 0xff) << 16)
+				+ ((buffer[currentPosition - 1] & 0xff) << 8) + (buffer[currentPosition - 2] & 0xff);
+	}
+
+	public void getBytesReverse(byte[] bytes, int start, int len) {
+		for (int pos = (start + len) - 1; pos >= start; pos--)
+			bytes[pos] = buffer[currentPosition++];
+	}
+
+	public void getBytesAdded(byte[] bytes, int start, int len) {
+		for (int pos = start; pos < start + len; pos++)
+			bytes[pos] = (byte) (buffer[currentPosition++] - 128);
+	}
+
 
 }

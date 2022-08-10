@@ -1,13 +1,16 @@
 package mixin;
 
+import java.awt.Frame;
+import java.awt.event.MouseEvent;
 import meteor.Logger;
-import net.runelite.api.mixins.*;
+import net.runelite.api.mixins.Copy;
+import net.runelite.api.mixins.Inject;
+import net.runelite.api.mixins.Mixin;
+import net.runelite.api.mixins.Replace;
+import net.runelite.api.mixins.Shadow;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGame;
-import net.runelite.rs.api.RSGameWindow;
-
-import java.awt.*;
-import java.awt.event.MouseEvent;
+import net.runelite.rs.api.RSGameFrame;
 
 @SuppressWarnings("ALL")
 @Mixin(RSGame.class)
@@ -21,12 +24,6 @@ abstract class Game implements RSGame {
 
     @Inject
     private int isInEvent;
-
-    @Copy("getGameWindow")
-    @Replace("getGameWindow")
-    public Component getGameContainer(byte byte0) {
-        return client.getCanvas();
-    }
 
     @Override
     @Copy("mousePressed")

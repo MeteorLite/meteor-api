@@ -1,16 +1,20 @@
 public class CacheableNode extends Node {
 
-  public CacheableNode nextCacheable;
-  public CacheableNode previousCacheable;
+	public void clear() {
+		if (prev == null) {
+			return;
+		} else {
+			prev.next = next;
+			next.prev = prev;
+			next = null;
+			prev = null;
+			return;
+		}
+	}
 
-  public void unlinkCacheable() {
-    if (previousCacheable == null) {
-      return;
-    }
-    previousCacheable.nextCacheable = nextCacheable;
-    nextCacheable.previousCacheable = previousCacheable;
-    nextCacheable = null;
-    previousCacheable = null;
-  }
+	public CacheableNode() {
+	}
 
+	public CacheableNode next;
+	public CacheableNode prev;
 }
