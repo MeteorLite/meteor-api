@@ -27,11 +27,7 @@ package net.runelite.rs.api;
 import net.runelite.api.Client;
 import net.runelite.mapping.Import;
 
-public interface RSClient extends Client, RSGame
+public interface RSClient extends Client
 {
-    @Import("drawFull")
-    void drawFull$api(int i);
 
-    @Import("loginScreen")
-    void loginScreen$api(boolean flag, boolean flag1);
 }

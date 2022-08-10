@@ -40,12 +40,10 @@ public interface Client
 
     Dimension getStretchedDimensions();
 
-    @Inject
     void setStretchedDimensions(Dimension d);
 
     boolean isClientThread();
 
-    @Inject
     void setCallbacks(Callbacks callbacks);
 
     BufferedImage getGameImage();

@@ -38,12 +38,6 @@ abstract class Client implements RSClient {
     public static BufferedImage gameImage;
 
     @Inject
-    @MethodHook("startup")
-    public void beforeStartup() {
-        logger.debug("!Pre-Startup!");
-    }
-
-    @Inject
     public static Canvas gameCanvas;
 
     @Inject
@@ -68,38 +62,6 @@ abstract class Client implements RSClient {
     @Override
     public BufferedImage getGameImage() {
         return gameImage;
-    }
-
-    @Copy("loginScreen")
-    @Replace("loginScreen")
-    public void loginScreen$mixin(boolean b, boolean b1) {
-        if (gameImage == null) {
-            try {
-                gameImage = new BufferedImage(getRealDimensions().width, getRealDimensions().height, BufferedImage.TYPE_INT_ARGB);
-                if (gameCanvas != null) {
-                    gameCanvas.setSize(gameCanvas.getParent().getSize());
-                    stretchedDimensions = new Dimension(gameCanvas.getWidth(), gameCanvas.getHeight());
-                }
-            } catch (Exception ignore){
-                ignore.printStackTrace();
-            }
-        }
-        if (gameImage != null) {
-            loginScreen$mixin(b, b1);
-            client.getCallbacks().drawGameImage();
-        }
-    }
-
-    @Copy("drawFull")
-    @Replace("drawFull")
-    public void drawFull$mixin(int i) {
-        drawFull$mixin(i);
-        if (gameCanvas != null) {
-            gameCanvas.setSize(gameCanvas.getParent().getSize());
-            stretchedDimensions = new Dimension(gameCanvas.getWidth(), gameCanvas.getHeight());
-        }
-
-        client.getCallbacks().drawGameImage();
     }
 
     @Inject

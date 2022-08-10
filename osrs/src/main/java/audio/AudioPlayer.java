@@ -66,69 +66,52 @@ public class AudioPlayer {
       if (isRunning) {
         fadeOut(song);
       } else {
-        fadeIn(song);
+
+        volume = 100;
+
+        sequencer = MidiSystem.getSequencer(false);
+        synthesizer = MidiSystem.getSynthesizer();
+
+        sequencer.open();
+        synthesizer.open();
+        synthesizer.loadAllInstruments(soundfont);
+
+        sequencer.getTransmitter().setReceiver(synthesizer.getReceiver());
+        sequencer.setSequence(new ByteArrayInputStream(song));
+
+        adjustVolume(volume);
+
+        sequencer.start();
+        isRunning = true;
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  private static void fadeOut(byte[] nextSong) {
-    long fadeStart = System.currentTimeMillis();
-    fadeThread = new Thread(() -> {
-      while (System.currentTimeMillis() < fadeStart + fadeTime) {
-        if (volume >= 10) {
-          volume -= 10;
-          adjustVolume(volume);
+  private static void fadeOut(final byte[] nextSong) {
+    final long fadeStart = System.currentTimeMillis();
+    fadeThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        while (System.currentTimeMillis() < fadeStart + fadeTime) {
+          if (volume >= 10) {
+            volume -= 10;
+            adjustVolume(volume);
+          }
+
+          try {
+            Thread.sleep(fadeTime / 10);
+          } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+          }
         }
-
-        try {
-          Thread.sleep(fadeTime / 10);
-        } catch (InterruptedException e) {
-          throw new RuntimeException(e);
-        }
-      }
-      synthesizer.close();
-      isRunning = false;
-      playSong(nextSong);
-    });
-    fadeThread.start();
-  }
-
-  private static void fadeIn(byte[] nextSong) {
-    long fadeStart = System.currentTimeMillis();
-
-    try {
-      sequencer = MidiSystem.getSequencer(false);
-      synthesizer = MidiSystem.getSynthesizer();
-
-      sequencer.open();
-      synthesizer.open();
-      synthesizer.loadAllInstruments(soundfont);
-
-      sequencer.getTransmitter().setReceiver(synthesizer.getReceiver());
-      sequencer.setSequence(new ByteArrayInputStream(nextSong));
-
-      sequencer.start();
-      isRunning = true;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-    fadeThread = new Thread(() -> {
-      while (System.currentTimeMillis() < fadeStart + fadeTime) {
-        if (volume <= 90) {
-          volume += 10;
-          adjustVolume(volume);
-        }
-
-        try {
-          Thread.sleep(fadeTime / 10);
-        } catch (InterruptedException e) {
-          throw new RuntimeException(e);
-        }
+        synthesizer.close();
+        isRunning = false;
+        playSong(nextSong);
       }
     });
+
     fadeThread.start();
   }
 
