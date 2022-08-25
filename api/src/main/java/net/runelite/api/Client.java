@@ -2136,8 +2136,6 @@ public interface Client extends GameEngine
 
 	void setRenderSelf(boolean enabled);
 
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1);
-
 	MouseRecorder getMouseRecorder();
 
 	void setPrintMenuActions(boolean b);
