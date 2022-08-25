@@ -4,60 +4,57 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oy")
+@ObfuscatedName("pj")
 @Implements("Fonts")
 public class Fonts {
-	@ObfuscatedName("h")
-	@Export("cacheParentPaths")
-	static String[] cacheParentPaths;
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lls;"
 	)
 	@Export("spritesArchive")
 	AbstractArchive spritesArchive;
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lls;"
 	)
 	@Export("fontsArchive")
 	AbstractArchive fontsArchive;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@Export("map")
 	HashMap map;
 
 	@ObfuscatedSignature(
-		descriptor = "(Llh;Llh;)V"
+		descriptor = "(Lls;Lls;)V"
 	)
 	public Fonts(AbstractArchive var1, AbstractArchive var2) {
-		this.spritesArchive = var1; // L: 14
-		this.fontsArchive = var2; // L: 15
-		this.map = new HashMap(); // L: 16
-	} // L: 17
+		this.spritesArchive = var1;
+		this.fontsArchive = var2;
+		this.map = new HashMap();
+	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "([Lpd;B)Ljava/util/HashMap;",
-		garbageValue = "82"
+		descriptor = "([Lps;I)Ljava/util/HashMap;",
+		garbageValue = "726163233"
 	)
 	@Export("createMap")
 	public HashMap createMap(FontName[] var1) {
-		HashMap var2 = new HashMap(); // L: 20
-		FontName[] var3 = var1; // L: 22
+		HashMap var2 = new HashMap();
+		FontName[] var3 = var1;
 
-		for (int var4 = 0; var4 < var3.length; ++var4) { // L: 23
-			FontName var5 = var3[var4]; // L: 24
-			if (this.map.containsKey(var5)) { // L: 26
-				var2.put(var5, this.map.get(var5)); // L: 27
+		for (int var4 = 0; var4 < var3.length; ++var4) {
+			FontName var5 = var3[var4];
+			if (this.map.containsKey(var5)) {
+				var2.put(var5, this.map.get(var5));
 			} else {
-				Font var6 = ServerPacket.method5211(this.spritesArchive, this.fontsArchive, var5.name, ""); // L: 30
-				if (var6 != null) { // L: 31
-					this.map.put(var5, var6); // L: 32
-					var2.put(var5, var6); // L: 33
+				Font var6 = class20.method289(this.spritesArchive, this.fontsArchive, var5.name, "");
+				if (var6 != null) {
+					this.map.put(var5, var6);
+					var2.put(var5, var6);
 				}
 			}
 		}
 
-		return var2; // L: 39
+		return var2;
 	}
 }

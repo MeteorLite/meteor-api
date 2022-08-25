@@ -5,125 +5,137 @@ import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("dt")
 public class class119 implements MouseWheel {
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1497;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1504;
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1505;
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1501;
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1492;
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1493;
-	@ObfuscatedName("g")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1494;
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1495;
-	@ObfuscatedName("y")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1496;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1489;
 	@ObfuscatedName("s")
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	static final class119 field1498;
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1499;
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1500;
-	@ObfuscatedName("r")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1502;
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
 	static final class119 field1488;
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "Ldt;"
-	)
-	static final class119 field1503;
 	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "Ldt;"
 	)
-	static final class119 field1491;
-	@ObfuscatedName("x")
-	@ObfuscatedGetter(
-		intValue = -1597541925
+	static final class119 field1490;
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
 	)
-	final int field1490;
-	@ObfuscatedName("l")
-	@ObfuscatedGetter(
-		intValue = -954105411
+	static final class119 field1468;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
 	)
-	final int field1506;
+	static final class119 field1471;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1472;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1473;
+	@ObfuscatedName("i")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1474;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1475;
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1476;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1477;
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1478;
 	@ObfuscatedName("a")
-	@ObfuscatedGetter(
-		intValue = -1728542525
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
 	)
-	final int field1507;
+	static final class119 field1482;
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1479;
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1481;
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1470;
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1483;
+	@ObfuscatedName("r")
+	@ObfuscatedSignature(
+		descriptor = "Ldt;"
+	)
+	static final class119 field1480;
+	@ObfuscatedName("aw")
+	@ObfuscatedSignature(
+		descriptor = "Lqs;"
+	)
+	@Export("rasterProvider")
+	public static AbstractRasterProvider rasterProvider;
+	@ObfuscatedName("qq")
+	@ObfuscatedSignature(
+		descriptor = "Lfd;"
+	)
+	@Export("mouseWheel")
+	static class158 mouseWheel;
+	@ObfuscatedName("y")
+	@ObfuscatedGetter(
+		intValue = -752072491
+	)
+	final int field1485;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = -1075378133
+	)
+	final int field1486;
+	@ObfuscatedName("e")
+	@ObfuscatedGetter(
+		intValue = 2147335737
+	)
+	final int field1487;
 
 	static {
-		field1497 = new class119(0, 0, (String)null, -1, -1); // L: 52
-		field1504 = new class119(1, 1, (String)null, 0, 2); // L: 53
-		field1505 = new class119(2, 2, (String)null, 1, 2); // L: 54
-		field1501 = new class119(3, 3, (String)null, 2, 2); // L: 55
-		field1492 = new class119(4, 4, (String)null, 3, 1); // L: 56
-		field1493 = new class119(5, 5, (String)null, 4, 1); // L: 57
-		field1494 = new class119(6, 6, (String)null, 5, 1); // L: 58
-		field1495 = new class119(7, 7, (String)null, 6, 3); // L: 59
-		field1496 = new class119(8, 8, (String)null, 7, 3); // L: 60
-		field1489 = new class119(9, 9, (String)null, 8, 3); // L: 61
-		field1498 = new class119(10, 10, (String)null, 0, 7); // L: 62
-		field1499 = new class119(11, 11, (String)null, 1, 7); // L: 63
-		field1500 = new class119(12, 12, (String)null, 2, 7); // L: 64
-		field1502 = new class119(13, 13, (String)null, 3, 7); // L: 65
-		field1488 = new class119(14, 14, (String)null, 4, 7); // L: 66
-		field1503 = new class119(15, 15, (String)null, 5, 7); // L: 67
-		field1491 = new class119(16, 16, (String)null, 0, 5); // L: 68
+		field1488 = new class119(0, 0, (String)null, -1, -1);
+		field1490 = new class119(1, 1, (String)null, 0, 2);
+		field1468 = new class119(2, 2, (String)null, 1, 2);
+		field1471 = new class119(3, 3, (String)null, 2, 2);
+		field1472 = new class119(4, 4, (String)null, 3, 1);
+		field1473 = new class119(5, 5, (String)null, 4, 1);
+		field1474 = new class119(6, 6, (String)null, 5, 1);
+		field1475 = new class119(7, 7, (String)null, 6, 3);
+		field1476 = new class119(8, 8, (String)null, 7, 3);
+		field1477 = new class119(9, 9, (String)null, 8, 3);
+		field1478 = new class119(10, 10, (String)null, 0, 7);
+		field1482 = new class119(11, 11, (String)null, 1, 7);
+		field1479 = new class119(12, 12, (String)null, 2, 7);
+		field1481 = new class119(13, 13, (String)null, 3, 7);
+		field1470 = new class119(14, 14, (String)null, 4, 7);
+		field1483 = new class119(15, 15, (String)null, 5, 7);
+		field1480 = new class119(16, 16, (String)null, 0, 5);
 	}
 
 	@ObfuscatedSignature(
@@ -131,45 +143,235 @@ public class class119 implements MouseWheel {
 		garbageValue = "-1"
 	)
 	class119(int var1, int var2, String var3, int var4, int var5) {
-		this.field1490 = var1; // L: 78
-		this.field1506 = var2; // L: 79
-		this.field1507 = var4; // L: 80
-	} // L: 81
+		this.field1485 = var1;
+		this.field1486 = var2;
+		this.field1487 = var4;
+	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-100"
+		garbageValue = "104"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field1506; // L: 84
+		return this.field1486;
 	}
 
-	@ObfuscatedName("j")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "14"
+		descriptor = "(I)I",
+		garbageValue = "-404131772"
 	)
-	int method2747() {
-		return this.field1507; // L: 88
+	int method2723() {
+		return this.field1487;
 	}
 
-	@ObfuscatedName("t")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "-1713795762"
+		descriptor = "(Li;I)Lv;",
+		garbageValue = "1989632710"
 	)
-	static int method2757(int var0, int var1) {
-		for (int var2 = 0; var2 < 8; ++var2) { // L: 1153
-			if (var1 <= var0 + 30) { // L: 1154
-				return var2; // L: 1155
+	public static class3 method2732(class6 var0) {
+		switch(var0.field20) {
+		case 0:
+			return new class0();
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfj;",
+		garbageValue = "-2034783467"
+	)
+	@Export("getNpcDefinition")
+	public static NPCComposition getNpcDefinition(int var0) {
+		NPCComposition var1 = (NPCComposition)NPCComposition.NpcDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = NPCComposition.NpcDefinition_archive.takeFile(9, var0);
+			var1 = new NPCComposition();
+			var1.id = var0;
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
-			var0 += 30; // L: 1157
-			var0 += var2 != 1 && var2 != 3 ? 5 : 20; // L: 1158
+			var1.postDecode();
+			NPCComposition.NpcDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
+	}
+
+	@ObfuscatedName("d")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1896748538"
+	)
+	static final int method2724() {
+		return ViewportMouse.ViewportMouse_y;
+	}
+
+	@ObfuscatedName("ga")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "-1562460171"
+	)
+	@Export("drawObject")
+	static final void drawObject(int var0, int var1, int var2, int var3, int var4) {
+		long var5 = class12.scene.getBoundaryObjectTag(var0, var1, var2);
+		int var7;
+		int var8;
+		int var9;
+		int var10;
+		int var14;
+		int var26;
+		if (var5 != 0L) {
+			var7 = class12.scene.getObjectFlags(var0, var1, var2, var5);
+			var8 = var7 >> 6 & 3;
+			var9 = var7 & 31;
+			var10 = var3;
+			boolean var12 = 0L != var5;
+			if (var12) {
+				boolean var13 = (int)(var5 >>> 16 & 1L) == 1;
+				var12 = !var13;
+			}
+
+			if (var12) {
+				var10 = var4;
+			}
+
+			int[] var19 = class1.sceneMinimapSprite.pixels;
+			var26 = var1 * 4 + (103 - var2) * 2048 + 24624;
+			var14 = WorldMapSection2.Entity_unpackID(var5);
+			ObjectComposition var15 = FileSystem.getObjectDefinition(var14);
+			if (var15.mapSceneId != -1) {
+				IndexedSprite var16 = class120.mapSceneSprites[var15.mapSceneId];
+				if (var16 != null) {
+					int var17 = (var15.sizeX * 4 - var16.subWidth) / 2;
+					int var18 = (var15.sizeY * 4 - var16.subHeight) / 2;
+					var16.drawAt(var1 * 4 + var17 + 48, var18 + (104 - var2 - var15.sizeY) * 4 + 48);
+				}
+			} else {
+				if (var9 == 0 || var9 == 2) {
+					if (var8 == 0) {
+						var19[var26] = var10;
+						var19[var26 + 512] = var10;
+						var19[var26 + 1024] = var10;
+						var19[var26 + 1536] = var10;
+					} else if (var8 == 1) {
+						var19[var26] = var10;
+						var19[var26 + 1] = var10;
+						var19[var26 + 2] = var10;
+						var19[var26 + 3] = var10;
+					} else if (var8 == 2) {
+						var19[var26 + 3] = var10;
+						var19[var26 + 512 + 3] = var10;
+						var19[var26 + 1024 + 3] = var10;
+						var19[var26 + 1536 + 3] = var10;
+					} else if (var8 == 3) {
+						var19[var26 + 1536] = var10;
+						var19[var26 + 1536 + 1] = var10;
+						var19[var26 + 1536 + 2] = var10;
+						var19[var26 + 1536 + 3] = var10;
+					}
+				}
+
+				if (var9 == 3) {
+					if (var8 == 0) {
+						var19[var26] = var10;
+					} else if (var8 == 1) {
+						var19[var26 + 3] = var10;
+					} else if (var8 == 2) {
+						var19[var26 + 1536 + 3] = var10;
+					} else if (var8 == 3) {
+						var19[var26 + 1536] = var10;
+					}
+				}
+
+				if (var9 == 2) {
+					if (var8 == 3) {
+						var19[var26] = var10;
+						var19[var26 + 512] = var10;
+						var19[var26 + 1024] = var10;
+						var19[var26 + 1536] = var10;
+					} else if (var8 == 0) {
+						var19[var26] = var10;
+						var19[var26 + 1] = var10;
+						var19[var26 + 2] = var10;
+						var19[var26 + 3] = var10;
+					} else if (var8 == 1) {
+						var19[var26 + 3] = var10;
+						var19[var26 + 512 + 3] = var10;
+						var19[var26 + 1024 + 3] = var10;
+						var19[var26 + 1536 + 3] = var10;
+					} else if (var8 == 2) {
+						var19[var26 + 1536] = var10;
+						var19[var26 + 1536 + 1] = var10;
+						var19[var26 + 1536 + 2] = var10;
+						var19[var26 + 1536 + 3] = var10;
+					}
+				}
+			}
 		}
 
-		return 0; // L: 1160
+		var5 = class12.scene.getGameObjectTag(var0, var1, var2);
+		if (0L != var5) {
+			var7 = class12.scene.getObjectFlags(var0, var1, var2, var5);
+			var8 = var7 >> 6 & 3;
+			var9 = var7 & 31;
+			var10 = WorldMapSection2.Entity_unpackID(var5);
+			ObjectComposition var20 = FileSystem.getObjectDefinition(var10);
+			if (var20.mapSceneId != -1) {
+				IndexedSprite var28 = class120.mapSceneSprites[var20.mapSceneId];
+				if (var28 != null) {
+					var26 = (var20.sizeX * 4 - var28.subWidth) / 2;
+					var14 = (var20.sizeY * 4 - var28.subHeight) / 2;
+					var28.drawAt(var1 * 4 + var26 + 48, (104 - var2 - var20.sizeY) * 4 + var14 + 48);
+				}
+			} else if (var9 == 9) {
+				int var25 = 15658734;
+				boolean var27 = var5 != 0L;
+				if (var27) {
+					boolean var21 = (int)(var5 >>> 16 & 1L) == 1;
+					var27 = !var21;
+				}
+
+				if (var27) {
+					var25 = 15597568;
+				}
+
+				int[] var22 = class1.sceneMinimapSprite.pixels;
+				int var29 = var1 * 4 + (103 - var2) * 2048 + 24624;
+				if (var8 != 0 && var8 != 2) {
+					var22[var29] = var25;
+					var22[var29 + 1 + 512] = var25;
+					var22[var29 + 1024 + 2] = var25;
+					var22[var29 + 1536 + 3] = var25;
+				} else {
+					var22[var29 + 1536] = var25;
+					var22[var29 + 1 + 1024] = var25;
+					var22[var29 + 512 + 2] = var25;
+					var22[var29 + 3] = var25;
+				}
+			}
+		}
+
+		var5 = class12.scene.getFloorDecorationTag(var0, var1, var2);
+		if (var5 != 0L) {
+			var7 = WorldMapSection2.Entity_unpackID(var5);
+			ObjectComposition var23 = FileSystem.getObjectDefinition(var7);
+			if (var23.mapSceneId != -1) {
+				IndexedSprite var24 = class120.mapSceneSprites[var23.mapSceneId];
+				if (var24 != null) {
+					var10 = (var23.sizeX * 4 - var24.subWidth) / 2;
+					int var11 = (var23.sizeY * 4 - var24.subHeight) / 2;
+					var24.drawAt(var10 + var1 * 4 + 48, var11 + (104 - var2 - var23.sizeY) * 4 + 48);
+				}
+			}
+		}
+
 	}
 }

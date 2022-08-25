@@ -1,65 +1,56 @@
 import java.util.zip.Inflater;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qj")
+@ObfuscatedName("qh")
 @Implements("GZipDecompressor")
 public class GZipDecompressor {
-	@ObfuscatedName("e")
-	@ObfuscatedGetter(
-		intValue = 1978275225
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lls;"
 	)
-	static int field4821;
-	@ObfuscatedName("c")
+	@Export("SequenceDefinition_skeletonsArchive")
+	static AbstractArchive SequenceDefinition_skeletonsArchive;
+	@ObfuscatedName("s")
 	@Export("inflater")
 	Inflater inflater;
+
+	public GZipDecompressor() {
+		this(-1, 1000000, 1000000);
+	}
 
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
 		garbageValue = "1000000"
 	)
 	GZipDecompressor(int var1, int var2, int var3) {
-	} // L: 13
+	}
 
-	public GZipDecompressor() {
-		this(-1, 1000000, 1000000); // L: 10
-	} // L: 11
-
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;[BI)V",
-		garbageValue = "-1849709887"
+		descriptor = "(Lqr;[BB)V",
+		garbageValue = "29"
 	)
 	@Export("decompress")
 	public void decompress(Buffer var1, byte[] var2) {
-		if (var1.array[var1.offset] == 31 && var1.array[var1.offset + 1] == -117) { // L: 16
+		if (var1.array[var1.offset] == 31 && var1.array[var1.offset + 1] == -117) {
 			if (this.inflater == null) {
-				this.inflater = new Inflater(true); // L: 17
+				this.inflater = new Inflater(true);
 			}
 
 			try {
-				this.inflater.setInput(var1.array, var1.offset + 10, var1.array.length - (var1.offset + 8 + 10)); // L: 19
-				this.inflater.inflate(var2); // L: 20
-			} catch (Exception var4) { // L: 22
-				this.inflater.reset(); // L: 23
-				throw new RuntimeException(""); // L: 24
+				this.inflater.setInput(var1.array, var1.offset + 10, var1.array.length - (var1.offset + 8 + 10));
+				this.inflater.inflate(var2);
+			} catch (Exception var4) {
+				this.inflater.reset();
+				throw new RuntimeException("");
 			}
 
-			this.inflater.reset(); // L: 26
+			this.inflater.reset();
 		} else {
 			throw new RuntimeException("");
 		}
-	} // L: 27
-
-	@ObfuscatedName("fn")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "102"
-	)
-	static int method8314(int var0) {
-		return var0 * 3 + 600; // L: 1653
 	}
 }

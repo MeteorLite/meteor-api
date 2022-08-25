@@ -1,34 +1,72 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cz")
+@ObfuscatedName("cp")
 public class class92 {
-	@ObfuscatedName("e")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-35"
+		descriptor = "(Lqr;IIIIIII)V",
+		garbageValue = "-1423465619"
 	)
-	public static void method2389() {
-		HealthBarDefinition.HealthBarDefinition_cached.clear(); // L: 89
-		HealthBarDefinition.HealthBarDefinition_cachedSprites.clear(); // L: 90
-	} // L: 91
+	@Export("loadTerrain")
+	static final void loadTerrain(Buffer var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+		int var7;
+		if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
+			Tiles.Tiles_renderFlags[var1][var2][var3] = 0;
 
-	@ObfuscatedName("lr")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "38"
-	)
-	static String method2388(String var0) {
-		PlayerType[] var1 = SoundSystem.PlayerType_values(); // L: 12443
+			while (true) {
+				var7 = var0.readUnsignedByte();
+				if (var7 == 0) {
+					if (var1 == 0) {
+						Tiles.Tiles_heights[0][var2][var3] = -class433.method7492(var4 + 932731 + var2, 556238 + var3 + var5) * 8;
+					} else {
+						Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - 240;
+					}
+					break;
+				}
 
-		for (int var2 = 0; var2 < var1.length; ++var2) { // L: 12444
-			PlayerType var3 = var1[var2]; // L: 12445
-			if (var3.modIcon != -1 && var0.startsWith(SecureRandomCallable.method2066(var3.modIcon))) { // L: 12447 12448
-				var0 = var0.substring(6 + Integer.toString(var3.modIcon).length()); // L: 12449
-				break;
+				if (var7 == 1) {
+					int var8 = var0.readUnsignedByte();
+					if (var8 == 1) {
+						var8 = 0;
+					}
+
+					if (var1 == 0) {
+						Tiles.Tiles_heights[0][var2][var3] = -var8 * 8;
+					} else {
+						Tiles.Tiles_heights[var1][var2][var3] = Tiles.Tiles_heights[var1 - 1][var2][var3] - var8 * 8;
+					}
+					break;
+				}
+
+				if (var7 <= 49) {
+					Tiles.Tiles_overlays[var1][var2][var3] = var0.readByte();
+					AbstractUserComparator.Tiles_shapes[var1][var2][var3] = (byte)((var7 - 2) / 4);
+					GrandExchangeOfferOwnWorldComparator.field473[var1][var2][var3] = (byte)(var7 - 2 + var6 & 3);
+				} else if (var7 <= 81) {
+					Tiles.Tiles_renderFlags[var1][var2][var3] = (byte)(var7 - 49);
+				} else {
+					Tiles.Tiles_underlays[var1][var2][var3] = (byte)(var7 - 81);
+				}
+			}
+		} else {
+			while (true) {
+				var7 = var0.readUnsignedByte();
+				if (var7 == 0) {
+					break;
+				}
+
+				if (var7 == 1) {
+					var0.readUnsignedByte();
+					break;
+				}
+
+				if (var7 <= 49) {
+					var0.readUnsignedByte();
+				}
 			}
 		}
 
-		return var0; // L: 12456
 	}
 }

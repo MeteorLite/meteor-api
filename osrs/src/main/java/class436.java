@@ -1,80 +1,245 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ps")
+@ObfuscatedName("pu")
 public class class436 extends DualNode {
-	@ObfuscatedName("f")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "[Lpv;"
+		descriptor = "Lls;"
 	)
-	class432[] field4670;
-	@ObfuscatedName("j")
-	List field4673;
-
+	public static AbstractArchive field4669;
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Llh;I)V"
+		descriptor = "Liz;"
 	)
-	public class436(AbstractArchive var1, int var2) {
-		byte[] var3 = var1.takeFile(var2, 0); // L: 26
-		this.method7618(new Buffer(var3)); // L: 27
-	} // L: 28
+	@Export("DBTableType_cache")
+	static EvictingDualNodeHashTable DBTableType_cache;
+	@ObfuscatedName("w")
+	public int[][] field4668;
+	@ObfuscatedName("v")
+	public Object[][] field4671;
 
+	static {
+		DBTableType_cache = new EvictingDualNodeHashTable(64);
+	}
+
+	class436() {
+	}
+
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(Llh;II)V"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "2102275490"
 	)
-	public class436(AbstractArchive var1, int var2, int var3) {
-		byte[] var4 = var1.takeFile(var2, var3 + 1); // L: 21
-		this.method7618(new Buffer(var4)); // L: 22
-	} // L: 23
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(Lqt;I)V",
-		garbageValue = "-1912545561"
-	)
-	void method7618(Buffer var1) {
-		int var2 = var1.method7754(); // L: 31
-		this.field4670 = new class432[var2]; // L: 32
-		this.field4673 = new ArrayList(var2); // L: 33
-
-		for (int var3 = 0; var3 < var2; ++var3) { // L: 34
-			this.field4670[var3] = (class432)Actor.findEnumerated(class432.method7566(), var1.readUnsignedByte()); // L: 35
-			int var4 = var1.method7754(); // L: 36
-			HashMap var5 = new HashMap(var4); // L: 37
-
-			while (var4-- > 0) { // L: 38
-				Object var6 = this.field4670[var3].method7565(var1); // L: 39
-				int var7 = var1.method7754(); // L: 40
-				ArrayList var8 = new ArrayList(); // L: 41
-
-				while (var7-- > 0) { // L: 42
-					int var9 = var1.method7754(); // L: 43
-					var8.add(var9); // L: 44
-				}
-
-				var5.put(var6, var8); // L: 46
+	void method7532(Buffer var1) {
+		while (true) {
+			int var2 = var1.readUnsignedByte();
+			if (var2 == 0) {
+				return;
 			}
 
-			this.field4673.add(var3, var5); // L: 48
+			this.method7524(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Lqr;IB)V",
+		garbageValue = "0"
+	)
+	void method7524(Buffer var1, int var2) {
+		if (var2 == 1) {
+			int var3 = var1.readUnsignedByte();
+			if (this.field4668 == null) {
+				this.field4668 = new int[var3][];
+			}
+
+			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
+				int var5 = var4 & 127;
+				boolean var6 = (var4 & 128) != 0;
+				int[] var7 = new int[var1.readUnsignedByte()];
+
+				for (int var8 = 0; var8 < var7.length; ++var8) {
+					var7[var8] = var1.readUShortSmart();
+				}
+
+				this.field4668[var5] = var7;
+				if (var6) {
+					if (this.field4671 == null) {
+						this.field4671 = new Object[this.field4668.length][];
+					}
+
+					Object[][] var17 = this.field4671;
+					int var11 = var1.readUShortSmart();
+					Object[] var12 = new Object[var7.length * var11];
+
+					for (int var13 = 0; var13 < var11; ++var13) {
+						for (int var14 = 0; var14 < var7.length; ++var14) {
+							int var15 = var14 + var7.length * var13;
+							class433 var16 = class19.method285(var7[var14]);
+							var12[var15] = var16.method7493(var1);
+						}
+					}
+
+					var17[var5] = var12;
+				}
+			}
 		}
 
-	} // L: 50
+	}
 
 	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
-		garbageValue = "-1640295603"
+		descriptor = "(I)V",
+		garbageValue = "1626541562"
 	)
-	public List method7619(Object var1, int var2) {
-		if (var2 < 0) { // L: 53
-			var2 = 0;
-		}
+	void method7523() {
+	}
 
-		Map var3 = (Map)this.field4673.get(var2); // L: 54
-		return (List)var3.get(var1); // L: 55
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "(ILbz;ZS)I",
+		garbageValue = "4902"
+	)
+	static int method7535(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3903) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].type();
+			return 1;
+		} else if (var0 == 3904) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].id;
+			return 1;
+		} else if (var0 == 3905) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].unitPrice;
+			return 1;
+		} else if (var0 == 3906) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].totalQuantity;
+			return 1;
+		} else if (var0 == 3907) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentQuantity;
+			return 1;
+		} else if (var0 == 3908) {
+			var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = Client.grandExchangeOffers[var3].currentPrice;
+			return 1;
+		} else {
+			int var13;
+			if (var0 == 3910) {
+				var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var13 == 0 ? 1 : 0;
+				return 1;
+			} else if (var0 == 3911) {
+				var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var13 == 2 ? 1 : 0;
+				return 1;
+			} else if (var0 == 3912) {
+				var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var13 == 5 ? 1 : 0;
+				return 1;
+			} else if (var0 == 3913) {
+				var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+				var13 = Client.grandExchangeOffers[var3].status();
+				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var13 == 1 ? 1 : 0;
+				return 1;
+			} else {
+				boolean var12;
+				if (var0 == 3914) {
+					var12 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize] == 1;
+					if (UserComparator3.grandExchangeEvents != null) {
+						UserComparator3.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_nameComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == 3915) {
+					var12 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize] == 1;
+					if (UserComparator3.grandExchangeEvents != null) {
+						UserComparator3.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_priceComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == 3916) {
+					User.Interpreter_intStackSize -= 2;
+					var12 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize] == 1;
+					boolean var11 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1] == 1;
+					if (UserComparator3.grandExchangeEvents != null) {
+						Client.GrandExchangeEvents_worldComparator.filterWorlds = var11;
+						UserComparator3.grandExchangeEvents.sort(Client.GrandExchangeEvents_worldComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == 3917) {
+					var12 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize] == 1;
+					if (UserComparator3.grandExchangeEvents != null) {
+						UserComparator3.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_ageComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == 3918) {
+					var12 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize] == 1;
+					if (UserComparator3.grandExchangeEvents != null) {
+						UserComparator3.grandExchangeEvents.sort(GrandExchangeEvents.GrandExchangeEvents_quantityComparator, var12);
+					}
+
+					return 1;
+				} else if (var0 == 3919) {
+					Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = UserComparator3.grandExchangeEvents == null ? 0 : UserComparator3.grandExchangeEvents.events.size();
+					return 1;
+				} else {
+					GrandExchangeEvent var4;
+					if (var0 == 3920) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var4.world;
+						return 1;
+					} else if (var0 == 3921) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var4.getOfferName();
+						return 1;
+					} else if (var0 == 3922) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var4.getPreviousOfferName();
+						return 1;
+					} else if (var0 == 3923) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						long var5 = class181.method3483() - FontName.field4587 - var4.age;
+						int var7 = (int)(var5 / 3600000L);
+						int var8 = (int)((var5 - (long)(var7 * 3600000)) / 60000L);
+						int var9 = (int)((var5 - (long)(var7 * 3600000) - (long)(var8 * 60000)) / 1000L);
+						String var10 = var7 + ":" + var8 / 10 + var8 % 10 + ":" + var9 / 10 + var9 % 10;
+						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var10;
+						return 1;
+					} else if (var0 == 3924) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.totalQuantity;
+						return 1;
+					} else if (var0 == 3925) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.unitPrice;
+						return 1;
+					} else if (var0 == 3926) {
+						var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
+						var4 = (GrandExchangeEvent)UserComparator3.grandExchangeEvents.events.get(var3);
+						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var4.grandExchangeOffer.id;
+						return 1;
+					} else {
+						return 2;
+					}
+				}
+			}
+		}
 	}
 }

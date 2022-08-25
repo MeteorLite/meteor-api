@@ -264,7 +264,7 @@ public abstract class HClientMixin implements RSClient
 
 	@Copy("menuAction")
 	@Replace("menuAction")
-	static void copy$menuAction(int param0, int param1, int opcode, int id, String option, String target, int canvasX, int canvasY)
+	static void copy$menuAction(int param0, int param1, int opcode, int id, int unknown1, String option, String target, int canvasX, int canvasY)
 	{
 		RSRuneLiteMenuEntry menuEntry = null;
 
@@ -386,9 +386,11 @@ public abstract class HClientMixin implements RSClient
 		if (event.getMenuEntry() == null) {
 			return;
 		}
+
+		//TODO: Investigate var6 (unknown1)
 		copy$menuAction(event.getParam0(), event.getParam1(),
 				event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
-				event.getId(), event.getMenuOption(), event.getMenuTarget(),
+				event.getId(), -1, event.getMenuOption(), event.getMenuTarget(),
 				canvasX, canvasY);
 	}
 

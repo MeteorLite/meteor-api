@@ -43,7 +43,7 @@ public class RuneLiteIterables extends AbstractInjector
 
 	public void injectHashTable()
 	{
-		ClassFile runeliteIterableHashTableVanilla = inject.vanilla.findClass(RUNELITE_ITERABLE_HASHTABLE);
+		ClassFile runeliteIterableHashTableVanilla = inject.deobfuscated.findClass(RUNELITE_ITERABLE_HASHTABLE);
 
 		final ClassFile nodeHashTableVanilla = inject.toVanilla(
 			inject.getDeobfuscated()
@@ -70,7 +70,7 @@ public class RuneLiteIterables extends AbstractInjector
 
 	public void injectNodeDeque()
 	{
-		ClassFile runeliteIterableNodeDequeVanilla = inject.vanilla.findClass(RUNELITE_ITERABLE_NODE_DEQUE);
+		ClassFile runeliteIterableNodeDequeVanilla = inject.deobfuscated.findClass(RUNELITE_ITERABLE_NODE_DEQUE);
 
 		final ClassFile nodeDequeVanilla = inject.toVanilla(
 			inject.getDeobfuscated()
@@ -97,7 +97,7 @@ public class RuneLiteIterables extends AbstractInjector
 
 	public void injectLinkDeque()
 	{
-		ClassFile runeliteIterableLinkDequeVanilla = inject.vanilla.findClass(RUNELITE_ITERABLE_LINK_DEQUE);
+		ClassFile runeliteIterableLinkDequeVanilla = inject.deobfuscated.findClass(RUNELITE_ITERABLE_LINK_DEQUE);
 
 		final ClassFile linkDequeVanilla = inject.toVanilla(
 			inject.getDeobfuscated()

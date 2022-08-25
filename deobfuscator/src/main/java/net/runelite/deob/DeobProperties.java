@@ -31,32 +31,9 @@ import java.util.Properties;
 
 public class DeobProperties
 {
-	private static final Properties properties;
-	static
-	{
-		properties = new Properties();
-		try (InputStream resourceAsStream = DeobProperties.class.getResourceAsStream("/deob.properties"))
-		{
-			properties.load(resourceAsStream);
-		}
-		catch (IOException e)
-		{
-			//yes
-		}
-	}
 
 	public static String getRevision()
 	{
-		return properties.getProperty("rs.version");
-	}
-
-	public static File getVanilla()
-	{
-		return new File(properties.getProperty("vanilla.jar"));
-	}
-
-	public static File getRsClient()
-	{
-		return new File(properties.getProperty("rs.client"));
+		return "207.4";
 	}
 }

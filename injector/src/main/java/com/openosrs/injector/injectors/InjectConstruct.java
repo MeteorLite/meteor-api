@@ -88,11 +88,12 @@ public class InjectConstruct extends AbstractInjector
 
 	private void injectConstruct(ClassFile targetClass, Method apiMethod)
 	{
-		log.debug("[DEBUG] Injecting constructor for {} into {}", apiMethod, targetClass.getPoolClass());
+		log.error("[DEBUG] Injecting constructor for {} into {}", apiMethod, targetClass.getPoolClass());
 
 		final Type returnval = apiMethod.getType().getReturnValue();
-
+		System.out.println(returnval.getInternalName());
 		final ClassFile deobClass = inject.toDeob(returnval.getInternalName());
+		System.out.println(deobClass.getClassName());
 		final ClassFile classToConstruct = inject.toVanilla(deobClass);
 
 		Signature constr = new Signature.Builder()

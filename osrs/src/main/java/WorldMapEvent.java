@@ -4,82 +4,123 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("iy")
+@ObfuscatedName("ib")
 @Implements("WorldMapEvent")
 public class WorldMapEvent {
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "Llc;"
-	)
-	static Archive field2882;
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 285885713
+		intValue = 1706747549
 	)
 	@Export("mapElement")
 	public int mapElement;
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lku;"
 	)
 	@Export("coord1")
 	public Coord coord1;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lku;"
 	)
 	@Export("coord2")
 	public Coord coord2;
 
 	@ObfuscatedSignature(
-		descriptor = "(ILkd;Lkd;)V"
+		descriptor = "(ILku;Lku;)V"
 	)
 	public WorldMapEvent(int var1, Coord var2, Coord var3) {
-		this.mapElement = var1; // L: 11
-		this.coord1 = var2; // L: 12
-		this.coord2 = var3; // L: 13
-	} // L: 14
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(DDIB)[D",
-		garbageValue = "-87"
-	)
-	public static double[] method5119(double var0, double var2, int var4) {
-		int var5 = var4 * 2 + 1; // L: 18
-		double[] var6 = new double[var5]; // L: 19
-		int var7 = -var4;
-
-		for (int var8 = 0; var7 <= var4; ++var8) {
-			var6[var8] = class357.method6530((double)var7, var0, var2); // L: 21
-			++var7; // L: 20
-		}
-
-		return var6; // L: 23
+		this.mapElement = var1;
+		this.coord1 = var2;
+		this.coord2 = var3;
 	}
 
-	@ObfuscatedName("kb")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-2116126418"
+		descriptor = "(B)V",
+		garbageValue = "32"
 	)
-	static final void method5120(int var0) {
-		var0 = Math.max(Math.min(var0, 100), 0); // L: 11823
-		var0 = 100 - var0; // L: 11824
-		float var1 = (float)var0 / 200.0F + 0.5F; // L: 11825
-		Rasterizer3D.Rasterizer3D_setBrightness((double)var1); // L: 11827
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness((double)var1); // L: 11828
-		Projectile.method1959(); // L: 11829
-		class19.clientPreferences.method2255((double)var1); // L: 11830
-	} // L: 11832
+	public static void method5064() {
+		try {
+			if (class273.musicPlayerStatus == 1) {
+				int var0 = ItemContainer.midiPcmStream.method5237();
+				if (var0 > 0 && ItemContainer.midiPcmStream.isReady()) {
+					var0 -= class160.pcmSampleLength;
+					if (var0 < 0) {
+						var0 = 0;
+					}
 
-	@ObfuscatedName("kn")
+					ItemContainer.midiPcmStream.setPcmStreamVolume(var0);
+					return;
+				}
+
+				ItemContainer.midiPcmStream.clear();
+				ItemContainer.midiPcmStream.removeAll();
+				if (NetFileRequest.musicTrackArchive != null) {
+					class273.musicPlayerStatus = 2;
+				} else {
+					class273.musicPlayerStatus = 0;
+				}
+
+				Username.musicTrack = null;
+				Script.soundCache = null;
+			}
+		} catch (Exception var2) {
+			var2.printStackTrace();
+			ItemContainer.midiPcmStream.clear();
+			class273.musicPlayerStatus = 0;
+			Username.musicTrack = null;
+			Script.soundCache = null;
+			NetFileRequest.musicTrackArchive = null;
+		}
+
+	}
+
+	@ObfuscatedName("hh")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "124"
+		descriptor = "(ILjava/lang/String;B)V",
+		garbageValue = "3"
 	)
-	static final void method5121(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127); // L: 11861
-		class19.clientPreferences.method2341(var0); // L: 11862
-	} // L: 11863
+	static void method5063(int var0, String var1) {
+		int var2 = Players.Players_count;
+		int[] var3 = Players.Players_indices;
+		boolean var4 = false;
+		Username var5 = new Username(var1, StructComposition.loginType);
+
+		for (int var6 = 0; var6 < var2; ++var6) {
+			Player var7 = Client.players[var3[var6]];
+			if (var7 != null && var7 != ScriptFrame.localPlayer && var7.username != null && var7.username.equals(var5)) {
+				PacketBufferNode var8;
+				if (var0 == 1) {
+					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2934, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7667(0);
+					var8.packetBuffer.method7647(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 4) {
+					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2957, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7647(var3[var6]);
+					var8.packetBuffer.method7667(0);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 6) {
+					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2952, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.method7878(0);
+					var8.packetBuffer.method7647(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				} else if (var0 == 7) {
+					var8 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field3000, Client.packetWriter.isaacCipher);
+					var8.packetBuffer.writeByte(0);
+					var8.packetBuffer.writeIntME(var3[var6]);
+					Client.packetWriter.addNode(var8);
+				}
+
+				var4 = true;
+				break;
+			}
+		}
+
+		if (!var4) {
+			VarcInt.addGameMessage(4, "", "Unable to find " + var1);
+		}
+
+	}
 }

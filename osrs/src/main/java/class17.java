@@ -9,143 +9,169 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("x")
+@ObfuscatedName("y")
 class class17 implements SSLSession {
-	@ObfuscatedName("x")
-	@Export("ByteArrayPool_altSizeArrayCounts")
-	public static int[] ByteArrayPool_altSizeArrayCounts;
-	@ObfuscatedName("bt")
-	@ObfuscatedGetter(
-		intValue = 1069442965
+	@ObfuscatedName("l")
+	static int[][][] field92;
+	@ObfuscatedName("cx")
+	@ObfuscatedSignature(
+		descriptor = "Lqe;"
 	)
-	static int field99;
+	@Export("worldSelectLeftSprite")
+	static IndexedSprite worldSelectLeftSprite;
+	@ObfuscatedName("eg")
+	@ObfuscatedSignature(
+		descriptor = "Lln;"
+	)
+	static Archive field89;
+	@ObfuscatedName("fx")
+	@ObfuscatedGetter(
+		intValue = -1132082091
+	)
+	static int field91;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lz;"
+		descriptor = "Lm;"
 	)
 	final class12 this$1;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lz;)V"
+		descriptor = "(Lm;)V"
 	)
 	class17(class12 var1) {
-		this.this$1 = var1; // L: 134
+		this.this$1 = var1;
 	}
 
 	public int getApplicationBufferSize() {
-		return 0; // L: 137
-	}
-
-	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
-		return null; // L: 197
-	}
-
-	public byte[] getId() {
-		throw new UnsupportedOperationException(); // L: 152
-	}
-
-	public long getLastAccessedTime() {
-		throw new UnsupportedOperationException(); // L: 157
-	}
-
-	public Certificate[] getLocalCertificates() {
-		throw new UnsupportedOperationException(); // L: 162
-	}
-
-	public int getPacketBufferSize() {
-		throw new UnsupportedOperationException(); // L: 172
-	}
-
-	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
-		return this.this$1.field63; // L: 182
-	}
-
-	public String getPeerHost() {
-		throw new UnsupportedOperationException(); // L: 187
-	}
-
-	public int getPeerPort() {
-		return 0; // L: 192
-	}
-
-	public String getProtocol() {
-		throw new UnsupportedOperationException(); // L: 202
-	}
-
-	public Object getValue(String var1) {
-		throw new UnsupportedOperationException(); // L: 212
-	}
-
-	public void invalidate() {
-		throw new UnsupportedOperationException(); // L: 222
-	}
-
-	public boolean isValid() {
-		throw new UnsupportedOperationException(); // L: 227
-	}
-
-	public void putValue(String var1, Object var2) {
-		throw new UnsupportedOperationException(); // L: 232
-	}
-
-	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
-		return null; // L: 177
-	}
-
-	public SSLSessionContext getSessionContext() {
-		throw new UnsupportedOperationException(); // L: 207
-	}
-
-	public long getCreationTime() {
-		throw new UnsupportedOperationException(); // L: 147
-	}
-
-	public void removeValue(String var1) {
-		throw new UnsupportedOperationException(); // L: 237
-	}
-
-	public Principal getLocalPrincipal() {
-		throw new UnsupportedOperationException(); // L: 167
-	}
-
-	public String[] getValueNames() {
-		throw new UnsupportedOperationException(); // L: 217
+		return 0;
 	}
 
 	public String getCipherSuite() {
-		throw new UnsupportedOperationException(); // L: 142
+		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)I",
-		garbageValue = "1793849187"
-	)
-	public static int method232(int var0, int var1, int var2) {
-		int var3 = VarpDefinition.method3374(var2 - var1 + 1); // L: 43
-		var3 <<= var1; // L: 44
-		var0 |= var3; // L: 45
-		return var0; // L: 46
+	public long getCreationTime() {
+		throw new UnsupportedOperationException();
 	}
 
-	@ObfuscatedName("kt")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "113"
-	)
-	@Export("Widget_resetModelFrames")
-	static final void Widget_resetModelFrames(int var0) {
-		if (WorldMapSection2.loadInterface(var0)) { // L: 11760
-			Widget[] var1 = SoundCache.Widget_interfaceComponents[var0]; // L: 11761
+	public Certificate[] getPeerCertificates() throws SSLPeerUnverifiedException {
+		return this.this$1.field70;
+	}
 
-			for (int var2 = 0; var2 < var1.length; ++var2) { // L: 11762
-				Widget var3 = var1[var2]; // L: 11763
-				if (var3 != null) { // L: 11764
-					var3.modelFrame = 0; // L: 11765
-					var3.modelFrameCycle = 0; // L: 11766
-				}
+	public Principal getLocalPrincipal() {
+		throw new UnsupportedOperationException();
+	}
+
+	public int getPacketBufferSize() {
+		throw new UnsupportedOperationException();
+	}
+
+	public X509Certificate[] getPeerCertificateChain() throws SSLPeerUnverifiedException {
+		return null;
+	}
+
+	public int getPeerPort() {
+		return 0;
+	}
+
+	public Principal getPeerPrincipal() throws SSLPeerUnverifiedException {
+		return null;
+	}
+
+	public Object getValue(String var1) {
+		throw new UnsupportedOperationException();
+	}
+
+	public String[] getValueNames() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void invalidate() {
+		throw new UnsupportedOperationException();
+	}
+
+	public String getPeerHost() {
+		throw new UnsupportedOperationException();
+	}
+
+	public String getProtocol() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void removeValue(String var1) {
+		throw new UnsupportedOperationException();
+	}
+
+	public Certificate[] getLocalCertificates() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void putValue(String var1, Object var2) {
+		throw new UnsupportedOperationException();
+	}
+
+	public SSLSessionContext getSessionContext() {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean isValid() {
+		throw new UnsupportedOperationException();
+	}
+
+	public byte[] getId() {
+		throw new UnsupportedOperationException();
+	}
+
+	public long getLastAccessedTime() {
+		throw new UnsupportedOperationException();
+	}
+
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "(II)Lfv;",
+		garbageValue = "2008817465"
+	)
+	@Export("KitDefinition_get")
+	public static KitDefinition KitDefinition_get(int var0) {
+		KitDefinition var1 = (KitDefinition)KitDefinition.KitDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = KitDefinition.KitDefinition_archive.takeFile(3, var0);
+			var1 = new KitDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
 
+			KitDefinition.KitDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
-	} // L: 11768
+	}
+
+	@ObfuscatedName("e")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)I",
+		garbageValue = "53"
+	)
+	@Export("hslToRgb")
+	static final int hslToRgb(int var0, int var1, int var2) {
+		if (var2 > 179) {
+			var1 /= 2;
+		}
+
+		if (var2 > 192) {
+			var1 /= 2;
+		}
+
+		if (var2 > 217) {
+			var1 /= 2;
+		}
+
+		if (var2 > 243) {
+			var1 /= 2;
+		}
+
+		int var3 = (var1 / 32 << 7) + (var0 / 4 << 10) + var2 / 2;
+		return var3;
+	}
 }

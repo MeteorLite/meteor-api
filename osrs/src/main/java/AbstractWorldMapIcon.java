@@ -3,165 +3,196 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
 
-@ObfuscatedName("im")
+@ObfuscatedName("il")
 @Implements("AbstractWorldMapIcon")
 public abstract class AbstractWorldMapIcon {
-	@ObfuscatedName("g")
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lku;"
 	)
 	@Export("coord2")
 	public final Coord coord2;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lkd;"
+		descriptor = "Lku;"
 	)
 	@Export("coord1")
 	public final Coord coord1;
-	@ObfuscatedName("y")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1729910963
+		intValue = 2140173675
 	)
 	@Export("screenX")
 	int screenX;
-	@ObfuscatedName("i")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -218016767
+		intValue = -3406293
 	)
 	@Export("screenY")
 	int screenY;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lkd;Lkd;)V"
+		descriptor = "(Lku;Lku;)V"
 	)
 	AbstractWorldMapIcon(Coord var1, Coord var2) {
-		this.coord1 = var1; // L: 13
-		this.coord2 = var2; // L: 14
-	} // L: 15
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "781292504"
-	)
-	@Export("getElement")
-	public abstract int getElement();
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(I)Liz;",
-		garbageValue = "1473728"
-	)
-	@Export("getLabel")
-	abstract WorldMapLabel getLabel();
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1263012412"
-	)
-	@Export("getSubWidth")
-	abstract int getSubWidth();
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "-34"
-	)
-	@Export("getSubHeight")
-	abstract int getSubHeight();
-
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "(III)Z",
-		garbageValue = "1869827620"
-	)
-	@Export("fitsScreen")
-	boolean fitsScreen(int var1, int var2) {
-		if (this.elementFitsScreen(var1, var2)) { // L: 18
-			return true; // L: 19
-		} else {
-			return this.labelFitsScreen(var1, var2); // L: 21
-		}
+		this.coord1 = var1;
+		this.coord2 = var2;
 	}
 
 	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "75"
+		descriptor = "(B)I",
+		garbageValue = "-71"
+	)
+	@Export("getElement")
+	public abstract int getElement();
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(B)Liw;",
+		garbageValue = "32"
+	)
+	@Export("getLabel")
+	abstract WorldMapLabel getLabel();
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-452679181"
+	)
+	@Export("getSubWidth")
+	abstract int getSubWidth();
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-1451719857"
+	)
+	@Export("getSubHeight")
+	abstract int getSubHeight();
+
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "(III)Z",
+		garbageValue = "1086236185"
+	)
+	@Export("fitsScreen")
+	boolean fitsScreen(int var1, int var2) {
+		if (this.elementFitsScreen(var1, var2)) {
+			return true;
+		} else {
+			return this.labelFitsScreen(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "(I)Z",
+		garbageValue = "1803263494"
 	)
 	@Export("hasValidElement")
 	boolean hasValidElement() {
-		return this.getElement() >= 0; // L: 33
+		return this.getElement() >= 0;
 	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)Z",
-		garbageValue = "0"
+		garbageValue = "-2"
 	)
 	@Export("elementFitsScreen")
 	boolean elementFitsScreen(int var1, int var2) {
-		if (!this.hasValidElement()) { // L: 37
+		if (!this.hasValidElement()) {
 			return false;
 		} else {
-			WorldMapElement var3 = class432.WorldMapElement_get(this.getElement()); // L: 38
-			int var4 = this.getSubWidth(); // L: 39
-			int var5 = this.getSubHeight(); // L: 40
-			switch(var3.horizontalAlignment.value) { // L: 41
+			WorldMapElement var3 = EnumComposition.WorldMapElement_get(this.getElement());
+			int var4 = this.getSubWidth();
+			int var5 = this.getSubHeight();
+			switch(var3.horizontalAlignment.value) {
 			case 0:
-				if (var1 < this.screenX || var1 >= var4 + this.screenX) { // L: 44
+				if (var1 < this.screenX - var4 / 2 || var1 > var4 / 2 + this.screenX) {
 					return false;
 				}
 				break;
 			case 1:
-				if (var1 > this.screenX - var4 && var1 <= this.screenX) { // L: 49
+				if (var1 > this.screenX - var4 && var1 <= this.screenX) {
 					break;
 				}
 
 				return false;
 			case 2:
-				if (var1 < this.screenX - var4 / 2 || var1 > var4 / 2 + this.screenX) { // L: 54
+				if (var1 < this.screenX || var1 >= var4 + this.screenX) {
 					return false;
 				}
 			}
 
-			switch(var3.verticalAlignment.value) { // L: 58
+			switch(var3.verticalAlignment.value) {
 			case 0:
-				if (var2 <= this.screenY - var5 || var2 > this.screenY) { // L: 71
-					return false;
+				if (var2 >= this.screenY - var5 / 2 && var2 <= var5 / 2 + this.screenY) {
+					break;
 				}
-				break;
+
+				return false;
 			case 1:
-				if (var2 < this.screenY || var2 >= var5 + this.screenY) { // L: 66
-					return false;
+				if (var2 >= this.screenY && var2 < var5 + this.screenY) {
+					break;
 				}
-				break;
+
+				return false;
 			case 2:
-				if (var2 < this.screenY - var5 / 2 || var2 > var5 / 2 + this.screenY) { // L: 61
+				if (var2 <= this.screenY - var5 || var2 > this.screenY) {
 					return false;
 				}
 			}
 
-			return true; // L: 75
+			return true;
 		}
 	}
 
-	@ObfuscatedName("l")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "-1782115036"
+		garbageValue = "-1776555956"
 	)
 	@Export("labelFitsScreen")
 	boolean labelFitsScreen(int var1, int var2) {
-		WorldMapLabel var3 = this.getLabel(); // L: 79
-		if (var3 == null) { // L: 80
-			return false; // L: 81
-		} else if (var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX) { // L: 83
-			return var2 >= this.screenY && var2 <= this.screenY + var3.height; // L: 84
+		WorldMapLabel var3 = this.getLabel();
+		if (var3 == null) {
+			return false;
+		} else if (var1 >= this.screenX - var3.width / 2 && var1 <= var3.width / 2 + this.screenX) {
+			return var2 >= this.screenY && var2 <= var3.height + this.screenY;
 		} else {
-			return false; // L: 85
+			return false;
+		}
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
+		garbageValue = "-2127870231"
+	)
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
+		} else {
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
 		}
 	}
 }

@@ -1,97 +1,173 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("g")
+@ObfuscatedName("i")
 public enum class6 implements MouseWheel {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lg;"
+		descriptor = "Li;"
 	)
-	field17(0, 0);
+	field19(0, 0);
 
-	@ObfuscatedName("e")
-	@ObfuscatedSignature(
-		descriptor = "Lqu;"
-	)
-	@Export("titlebuttonSprite")
-	static IndexedSprite titlebuttonSprite;
-	@ObfuscatedName("ef")
-	@ObfuscatedSignature(
-		descriptor = "Llc;"
-	)
-	@Export("archive17")
-	static Archive archive17;
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1659874385
+		intValue = -1989990503
 	)
-	public final int field16;
-	@ObfuscatedName("q")
+	final int field20;
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -162249617
+		intValue = 1806793245
 	)
-	final int field15;
+	final int field23;
 
 	class6(int var3, int var4) {
-		this.field16 = var3; // L: 12
-		this.field15 = var4; // L: 13
-	} // L: 14
+		this.field20 = var3;
+		this.field23 = var4;
+	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "-100"
+		garbageValue = "104"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field15; // L: 18
+		return this.field23;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1172724173"
+		descriptor = "(IIIII)V",
+		garbageValue = "96365567"
 	)
-	public static boolean method37() {
-		ReflectionCheck var0 = (ReflectionCheck)class33.reflectionChecks.last(); // L: 28
-		return var0 != null; // L: 29
+	static void method42(int var0, int var1, int var2, int var3) {
+		for (ObjectSound var4 = (ObjectSound)ObjectSound.objectSounds.last(); var4 != null; var4 = (ObjectSound)ObjectSound.objectSounds.previous()) {
+			if (var4.soundEffectId != -1 || var4.soundEffectIds != null) {
+				int var5 = 0;
+				if (var1 > var4.maxX * 16384) {
+					var5 += var1 - var4.maxX * 16384;
+				} else if (var1 < var4.x * 128) {
+					var5 += var4.x * 128 - var1;
+				}
+
+				if (var2 > var4.maxY * 16384) {
+					var5 += var2 - var4.maxY * 16384;
+				} else if (var2 < var4.y * 16384) {
+					var5 += var4.y * 16384 - var2;
+				}
+
+				if (var5 - 64 <= var4.field812 && ClanMate.clientPreferences.method2226() != 0 && var0 == var4.plane) {
+					var5 -= 64;
+					if (var5 < 0) {
+						var5 = 0;
+					}
+
+					int var6 = (var4.field812 - var5) * ClanMate.clientPreferences.method2226() / var4.field812;
+					if (var4.stream1 == null) {
+						if (var4.soundEffectId >= 0) {
+							SoundEffect var7 = SoundEffect.readSoundEffect(class271.archive4, var4.soundEffectId, 0);
+							if (var7 != null) {
+								RawSound var8 = var7.toRawSound().resample(ScriptEvent.decimator);
+								RawPcmStream var9 = RawPcmStream.createRawPcmStream(var8, 100, var6);
+								var9.setNumLoops(-1);
+								ModeWhere.pcmStreamMixer.addSubStream(var9);
+								var4.stream1 = var9;
+							}
+						}
+					} else {
+						var4.stream1.method836(var6);
+					}
+
+					if (var4.stream2 == null) {
+						if (var4.soundEffectIds != null && (var4.field815 -= var3) <= 0) {
+							int var11 = (int)(Math.random() * (double)var4.soundEffectIds.length);
+							SoundEffect var12 = SoundEffect.readSoundEffect(class271.archive4, var4.soundEffectIds[var11], 0);
+							if (var12 != null) {
+								RawSound var13 = var12.toRawSound().resample(ScriptEvent.decimator);
+								RawPcmStream var10 = RawPcmStream.createRawPcmStream(var13, 100, var6);
+								var10.setNumLoops(0);
+								ModeWhere.pcmStreamMixer.addSubStream(var10);
+								var4.stream2 = var10;
+								var4.field815 = var4.field807 + (int)(Math.random() * (double)(var4.field811 - var4.field807));
+							}
+						}
+					} else {
+						var4.stream2.method836(var6);
+						if (!var4.stream2.hasNext()) {
+							var4.stream2 = null;
+						}
+					}
+				} else {
+					if (var4.stream1 != null) {
+						ModeWhere.pcmStreamMixer.removeSubStream(var4.stream1);
+						var4.stream1 = null;
+					}
+
+					if (var4.stream2 != null) {
+						ModeWhere.pcmStreamMixer.removeSubStream(var4.stream2);
+						var4.stream2 = null;
+					}
+				}
+			}
+		}
+
 	}
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(IIILgk;II)V",
-		garbageValue = "565551340"
+		descriptor = "(ZB)V",
+		garbageValue = "-25"
 	)
-	static void method38(int var0, int var1, int var2, ObjectComposition var3, int var4) {
-		ObjectSound var5 = new ObjectSound(); // L: 67
-		var5.plane = var0; // L: 68
-		var5.x = var1 * 128; // L: 69
-		var5.y = var2 * 128; // L: 70
-		int var6 = var3.sizeX; // L: 71
-		int var7 = var3.sizeY; // L: 72
-		if (var4 == 1 || var4 == 3) { // L: 73
-			var6 = var3.sizeY; // L: 74
-			var7 = var3.sizeX; // L: 75
-		}
+	@Export("Login_promptCredentials")
+	static void Login_promptCredentials(boolean var0) {
+		if (!AbstractByteArrayCopier.client.method1086() && !AbstractByteArrayCopier.client.method1087()) {
+			Login.Login_response1 = "";
+			Login.Login_response2 = "Enter your username/email & password.";
+			Login.Login_response3 = "";
+			class116.method2683(2);
+			if (var0) {
+				Login.Login_password = "";
+			}
 
-		var5.maxX = (var6 + var1) * 128; // L: 77
-		var5.maxY = (var7 + var2) * 128; // L: 78
-		var5.soundEffectId = var3.ambientSoundId; // L: 79
-		var5.field812 = var3.int7 * 128; // L: 80
-		var5.field819 = var3.int5; // L: 81
-		var5.field811 = var3.int6; // L: 82
-		var5.soundEffectIds = var3.soundEffectIds; // L: 83
-		if (var3.transforms != null) { // L: 84
-			var5.obj = var3; // L: 85
-			var5.set(); // L: 86
-		}
+			if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+				if (ClanMate.clientPreferences.method2227() != null) {
+					Login.Login_username = ClanMate.clientPreferences.method2227();
+					Client.Login_isUsernameRemembered = true;
+				} else {
+					Client.Login_isUsernameRemembered = false;
+				}
+			}
 
-		ObjectSound.objectSounds.addFirst(var5); // L: 88
-		if (var5.soundEffectIds != null) { // L: 89
-			var5.field809 = var5.field819 + (int)(Math.random() * (double)(var5.field811 - var5.field819));
+			ReflectionCheck.method580();
+		} else {
+			class116.method2683(10);
 		}
+	}
 
-	} // L: 90
+	@ObfuscatedName("gk")
+	@ObfuscatedSignature(
+		descriptor = "(ZB)V",
+		garbageValue = "48"
+	)
+	static final void method45(boolean var0) {
+		class83.playPcmPlayers();
+		++Client.packetWriter.pendingWrites;
+		if (Client.packetWriter.pendingWrites >= 50 || var0) {
+			Client.packetWriter.pendingWrites = 0;
+			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
+				PacketBufferNode var1 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2966, Client.packetWriter.isaacCipher);
+				Client.packetWriter.addNode(var1);
+
+				try {
+					Client.packetWriter.flush();
+				} catch (IOException var3) {
+					Client.hadNetworkError = true;
+				}
+			}
+
+		}
+	}
 }

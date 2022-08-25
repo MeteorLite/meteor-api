@@ -3,48 +3,62 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kr")
+@ObfuscatedName("ka")
 @Implements("Varps")
 public class Varps {
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@Export("Varps_masks")
 	static int[] Varps_masks;
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@Export("Varps_temp")
 	public static int[] Varps_temp;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@Export("Varps_main")
 	public static int[] Varps_main;
 
 	static {
-		Varps_masks = new int[32]; // L: 6
-		int var0 = 2; // L: 9
+		Varps_masks = new int[32];
+		int var0 = 2;
 
-		for (int var1 = 0; var1 < 32; ++var1) { // L: 10
-			Varps_masks[var1] = var0 - 1; // L: 11
-			var0 += var0; // L: 12
+		for (int var1 = 0; var1 < 32; ++var1) {
+			Varps_masks[var1] = var0 - 1;
+			var0 += var0;
 		}
 
-		Varps_temp = new int[4000]; // L: 16
-		Varps_main = new int[4000]; // L: 17
+		Varps_temp = new int[4000];
+		Varps_main = new int[4000];
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/Object;ZB)[B",
-		garbageValue = "74"
+		descriptor = "(IIB)Lbz;",
+		garbageValue = "8"
 	)
-	public static byte[] method5530(Object var0, boolean var1) {
-		if (var0 == null) { // L: 21
-			return null;
-		} else if (var0 instanceof byte[]) { // L: 22
-			byte[] var3 = (byte[])((byte[])var0); // L: 23
-			return var1 ? MusicPatch.method5432(var3) : var3; // L: 24
-		} else if (var0 instanceof AbstractByteArrayCopier) { // L: 27
-			AbstractByteArrayCopier var2 = (AbstractByteArrayCopier)var0; // L: 28
-			return var2.get(); // L: 29
+	static Script method5465(int var0, int var1) {
+		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
+		if (var2 != null) {
+			return var2;
 		} else {
-			throw new IllegalArgumentException(); // L: 31
+			String var3 = String.valueOf(var0);
+			int var4 = SequenceDefinition.archive12.getGroupId(var3);
+			if (var4 == -1) {
+				return null;
+			} else {
+				byte[] var5 = SequenceDefinition.archive12.takeFileFlat(var4);
+				if (var5 != null) {
+					if (var5.length <= 1) {
+						return null;
+					}
+
+					var2 = class21.newScript(var5);
+					if (var2 != null) {
+						Script.Script_cached.put(var2, (long)(var0 << 16));
+						return var2;
+					}
+				}
+
+				return null;
+			}
 		}
 	}
 }

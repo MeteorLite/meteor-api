@@ -4,549 +4,1117 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ci")
+@ObfuscatedName("cq")
 @Implements("Player")
 public final class Player extends Actor {
-	@ObfuscatedName("ug")
+	@ObfuscatedName("rq")
 	@ObfuscatedSignature(
-		descriptor = "Lbl;"
+		descriptor = "Lqi;"
 	)
-	@Export("friendSystem")
-	public static FriendSystem friendSystem;
-	@ObfuscatedName("mu")
-	@ObfuscatedGetter(
-		intValue = 1878220187
-	)
-	@Export("menuHeight")
-	static int menuHeight;
-	@ObfuscatedName("c")
+	@Export("privateChatMode")
+	static PrivateChatMode privateChatMode;
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lqa;"
+		descriptor = "Lqy;"
 	)
 	@Export("username")
 	Username username;
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "Lkt;"
+		descriptor = "Lkk;"
 	)
 	@Export("appearance")
 	PlayerComposition appearance;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1076287933
+		intValue = -339690919
 	)
 	@Export("headIconPk")
 	int headIconPk;
-	@ObfuscatedName("f")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1720053255
+		intValue = -1767225387
 	)
 	@Export("headIconPrayer")
 	int headIconPrayer;
-	@ObfuscatedName("e")
+	@ObfuscatedName("q")
 	@Export("actions")
 	String[] actions;
-	@ObfuscatedName("g")
+	@ObfuscatedName("i")
 	@ObfuscatedGetter(
-		intValue = -1534122855
+		intValue = 295884031
 	)
 	@Export("combatLevel")
 	int combatLevel;
-	@ObfuscatedName("w")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 351433381
+		intValue = 412407165
 	)
 	@Export("skillLevel")
 	int skillLevel;
-	@ObfuscatedName("y")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = 1504708523
+		intValue = -705296317
 	)
 	@Export("tileHeight")
 	int tileHeight;
-	@ObfuscatedName("i")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1066412829
+		intValue = 1109822011
 	)
 	@Export("animationCycleStart")
 	int animationCycleStart;
-	@ObfuscatedName("s")
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = 2100929431
+		intValue = 544334885
 	)
 	@Export("animationCycleEnd")
 	int animationCycleEnd;
-	@ObfuscatedName("t")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1217050523
+		intValue = -1362904281
 	)
-	int field1095;
-	@ObfuscatedName("z")
+	int field1093;
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 363139371
+		intValue = 2036186281
 	)
 	@Export("tileHeight2")
 	int tileHeight2;
-	@ObfuscatedName("r")
-	@ObfuscatedGetter(
-		intValue = -1513637527
-	)
-	int field1108;
 	@ObfuscatedName("u")
+	@ObfuscatedGetter(
+		intValue = -472748625
+	)
+	int field1097;
+	@ObfuscatedName("l")
 	@ObfuscatedSignature(
-		descriptor = "Lhy;"
+		descriptor = "Lhp;"
 	)
 	@Export("model0")
 	Model model0;
-	@ObfuscatedName("k")
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 458056289
+		intValue = -1915037801
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("h")
+	@ObfuscatedName("r")
 	@ObfuscatedGetter(
-		intValue = 872094215
+		intValue = 2110454417
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("x")
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -863733713
+		intValue = -447071197
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("l")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -381044703
+		intValue = 1319610801
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("a")
+	@ObfuscatedName("e")
 	@Export("isUnanimated")
 	boolean isUnanimated;
-	@ObfuscatedName("p")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 9198677
+		intValue = -1985723861
 	)
 	@Export("team")
 	int team;
-	@ObfuscatedName("b")
+	@ObfuscatedName("x")
 	@Export("isHidden")
 	boolean isHidden;
-	@ObfuscatedName("n")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1115427467
+		intValue = -1670935727
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("o")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1343839549
+		intValue = -1637139185
 	)
 	@Export("index")
 	int index;
-	@ObfuscatedName("m")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "Lnt;"
+		descriptor = "Lng;"
 	)
 	@Export("isFriendTriBool")
 	TriBool isFriendTriBool;
-	@ObfuscatedName("d")
+	@ObfuscatedName("g")
 	@ObfuscatedSignature(
-		descriptor = "Lnt;"
+		descriptor = "Lng;"
 	)
 	@Export("isInFriendsChat")
 	TriBool isInFriendsChat;
-	@ObfuscatedName("ad")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "Lnt;"
+		descriptor = "Lng;"
 	)
 	@Export("isInClanChat")
 	TriBool isInClanChat;
-	@ObfuscatedName("ak")
-	boolean field1088;
-	@ObfuscatedName("al")
+	@ObfuscatedName("aq")
+	boolean field1111;
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -335116009
+		intValue = -1622070341
 	)
 	@Export("tileX")
 	int tileX;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1610456875
+		intValue = -1343320041
 	)
 	@Export("tileY")
 	int tileY;
 
 	Player() {
-		this.headIconPk = -1; // L: 20
-		this.headIconPrayer = -1; // L: 21
-		this.actions = new String[3]; // L: 23
+		this.headIconPk = -1;
+		this.headIconPrayer = -1;
+		this.actions = new String[3];
 
-		for (int var1 = 0; var1 < 3; ++var1) { // L: 26
+		for (int var1 = 0; var1 < 3; ++var1) {
 			this.actions[var1] = "";
 		}
 
-		this.combatLevel = 0; // L: 29
-		this.skillLevel = 0; // L: 30
-		this.animationCycleStart = 0; // L: 32
-		this.animationCycleEnd = 0; // L: 33
-		this.isUnanimated = false; // L: 42
-		this.team = 0; // L: 43
-		this.isHidden = false; // L: 44
-		this.isFriendTriBool = TriBool.TriBool_unknown; // L: 47
-		this.isInFriendsChat = TriBool.TriBool_unknown; // L: 48
-		this.isInClanChat = TriBool.TriBool_unknown; // L: 49
-		this.field1088 = false; // L: 50
-	} // L: 54
+		this.combatLevel = 0;
+		this.skillLevel = 0;
+		this.animationCycleStart = 0;
+		this.animationCycleEnd = 0;
+		this.isUnanimated = false;
+		this.team = 0;
+		this.isHidden = false;
+		this.isFriendTriBool = TriBool.TriBool_unknown;
+		this.isInFriendsChat = TriBool.TriBool_unknown;
+		this.isInClanChat = TriBool.TriBool_unknown;
+		this.field1111 = false;
+	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(Lqt;I)V",
-		garbageValue = "2050981456"
+		descriptor = "(Lqr;I)V",
+		garbageValue = "-1877482907"
 	)
 	@Export("read")
 	final void read(Buffer var1) {
-		var1.offset = 0; // L: 57
-		int var2 = var1.readUnsignedByte(); // L: 58
-		this.headIconPk = var1.readByte(); // L: 59
-		this.headIconPrayer = var1.readByte(); // L: 60
-		int var3 = -1; // L: 61
-		this.team = 0; // L: 62
-		int[] var4 = new int[12]; // L: 63
+		var1.offset = 0;
+		int var2 = var1.readUnsignedByte();
+		this.headIconPk = var1.readByte();
+		this.headIconPrayer = var1.readByte();
+		int var3 = -1;
+		this.team = 0;
+		int[] var4 = new int[12];
 
 		int var6;
 		int var7;
 		int var8;
-		for (int var5 = 0; var5 < 12; ++var5) { // L: 64
-			var6 = var1.readUnsignedByte(); // L: 65
-			if (var6 == 0) { // L: 66
-				var4[var5] = 0; // L: 67
+		for (int var5 = 0; var5 < 12; ++var5) {
+			var6 = var1.readUnsignedByte();
+			if (var6 == 0) {
+				var4[var5] = 0;
 			} else {
-				var7 = var1.readUnsignedByte(); // L: 70
-				var4[var5] = var7 + (var6 << 8); // L: 71
-				if (var5 == 0 && var4[0] == 65535) { // L: 72
-					var3 = var1.readUnsignedShort(); // L: 73
+				var7 = var1.readUnsignedByte();
+				var4[var5] = var7 + (var6 << 8);
+				if (var5 == 0 && var4[0] == 65535) {
+					var3 = var1.readUnsignedShort();
 					break;
 				}
 
-				if (var4[var5] >= 512) { // L: 76
-					var8 = EnumComposition.ItemDefinition_get(var4[var5] - 512).team; // L: 77
-					if (var8 != 0) { // L: 78
+				if (var4[var5] >= 512) {
+					var8 = AttackOption.ItemDefinition_get(var4[var5] - 512).team;
+					if (var8 != 0) {
 						this.team = var8;
 					}
 				}
 			}
 		}
 
-		int[] var11 = new int[5]; // L: 81
+		int[] var11 = new int[5];
 
-		for (var6 = 0; var6 < 5; ++var6) { // L: 82
-			var7 = var1.readUnsignedByte(); // L: 83
-			if (var7 < 0 || var7 >= PlayerComposition.field3342[var6].length) { // L: 84
+		for (var6 = 0; var6 < 5; ++var6) {
+			var7 = var1.readUnsignedByte();
+			if (var7 < 0 || var7 >= FloorDecoration.field2275[var6].length) {
 				var7 = 0;
 			}
 
-			var11[var6] = var7; // L: 85
+			var11[var6] = var7;
 		}
 
-		super.idleSequence = var1.readUnsignedShort(); // L: 87
-		if (super.idleSequence == 65535) { // L: 88
+		super.idleSequence = var1.readUnsignedShort();
+		if (super.idleSequence == 65535) {
 			super.idleSequence = -1;
 		}
 
-		super.turnLeftSequence = var1.readUnsignedShort(); // L: 89
-		if (super.turnLeftSequence == 65535) { // L: 90
+		super.turnLeftSequence = var1.readUnsignedShort();
+		if (super.turnLeftSequence == 65535) {
 			super.turnLeftSequence = -1;
 		}
 
-		super.turnRightSequence = super.turnLeftSequence; // L: 91
-		super.walkSequence = var1.readUnsignedShort(); // L: 92
-		if (super.walkSequence == 65535) { // L: 93
+		super.turnRightSequence = super.turnLeftSequence;
+		super.walkSequence = var1.readUnsignedShort();
+		if (super.walkSequence == 65535) {
 			super.walkSequence = -1;
 		}
 
-		super.walkBackSequence = var1.readUnsignedShort(); // L: 94
-		if (super.walkBackSequence == 65535) { // L: 95
+		super.walkBackSequence = var1.readUnsignedShort();
+		if (super.walkBackSequence == 65535) {
 			super.walkBackSequence = -1;
 		}
 
-		super.walkLeftSequence = var1.readUnsignedShort(); // L: 96
-		if (super.walkLeftSequence == 65535) { // L: 97
+		super.walkLeftSequence = var1.readUnsignedShort();
+		if (super.walkLeftSequence == 65535) {
 			super.walkLeftSequence = -1;
 		}
 
-		super.walkRightSequence = var1.readUnsignedShort(); // L: 98
-		if (super.walkRightSequence == 65535) { // L: 99
+		super.walkRightSequence = var1.readUnsignedShort();
+		if (super.walkRightSequence == 65535) {
 			super.walkRightSequence = -1;
 		}
 
-		super.runSequence = var1.readUnsignedShort(); // L: 100
-		if (super.runSequence == 65535) { // L: 101
+		super.runSequence = var1.readUnsignedShort();
+		if (super.runSequence == 65535) {
 			super.runSequence = -1;
 		}
 
-		this.username = new Username(var1.readStringCp1252NullTerminated(), HealthBarDefinition.loginType); // L: 102
-		this.clearIsFriend(); // L: 103
-		this.clearIsInFriendsChat(); // L: 104
-		this.method2135(); // L: 105
-		if (this == class101.localPlayer) { // L: 106
+		this.username = new Username(var1.readStringCp1252NullTerminated(), StructComposition.loginType);
+		this.clearIsFriend();
+		this.clearIsInFriendsChat();
+		this.method2134();
+		if (this == ScriptFrame.localPlayer) {
 			RunException.localPlayerName = this.username.getName();
 		}
 
-		this.combatLevel = var1.readUnsignedByte(); // L: 107
-		this.skillLevel = var1.readUnsignedShort(); // L: 108
-		this.isHidden = var1.readUnsignedByte() == 1; // L: 109
-		if (Client.gameBuild == 0 && Client.staffModLevel >= 2) { // L: 110
+		this.combatLevel = var1.readUnsignedByte();
+		this.skillLevel = var1.readUnsignedShort();
+		this.isHidden = var1.readUnsignedByte() == 1;
+		if (Client.gameBuild == 0 && Client.staffModLevel >= 2) {
 			this.isHidden = false;
 		}
 
-		class167[] var12 = null; // L: 111
-		boolean var13 = false; // L: 112
-		var8 = var1.readUnsignedShort(); // L: 113
-		var13 = (var8 >> 15 & 1) == 1; // L: 114
+		class167[] var12 = null;
+		boolean var13 = false;
+		var8 = var1.readUnsignedShort();
+		var13 = (var8 >> 15 & 1) == 1;
 		int var9;
-		if (var8 > 0 && var8 != 32768) { // L: 115
-			var12 = new class167[12]; // L: 116
+		if (var8 > 0 && var8 != 32768) {
+			var12 = new class167[12];
 
-			for (var9 = 0; var9 < 12; ++var9) { // L: 117
-				int var10 = var8 >> 12 - var9 & 1; // L: 118
-				if (var10 == 1) { // L: 119
-					var12[var9] = UserComparator10.method2609(var4[var9] - 512, var1); // L: 120
+			for (var9 = 0; var9 < 12; ++var9) {
+				int var10 = var8 >> 12 - var9 & 1;
+				if (var10 == 1) {
+					var12[var9] = UserComparator8.method2551(var4[var9] - 512, var1);
 				}
 			}
 		}
 
-		if (var1.offset < var1.array.length) { // L: 124
-			for (var9 = 0; var9 < 3; ++var9) { // L: 125
-				this.actions[var9] = var1.readStringCp1252NullTerminated(); // L: 126
+		if (var1.offset < var1.array.length) {
+			for (var9 = 0; var9 < 3; ++var9) {
+				this.actions[var9] = var1.readStringCp1252NullTerminated();
 			}
 		}
 
-		if (this.appearance == null) { // L: 129
+		if (this.appearance == null) {
 			this.appearance = new PlayerComposition();
 		}
 
-		this.appearance.method5566(var4, var12, var13, var11, var2 == 1, var3); // L: 130
-	} // L: 131
+		this.appearance.method5494(var4, var12, var13, var11, var2 == 1, var3);
+	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("h")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lhy;",
-		garbageValue = "1081110576"
+		descriptor = "(B)Lhp;",
+		garbageValue = "4"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		if (this.appearance == null) { // L: 194
+		if (this.appearance == null) {
 			return null;
 		} else {
-			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? ScriptFrame.SequenceDefinition_get(super.sequence) : null; // L: 195
-			SequenceDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.idleSequence == super.movementSequence && var1 != null ? null : ScriptFrame.SequenceDefinition_get(super.movementSequence); // L: 196
-			Model var3 = this.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame); // L: 197
-			if (var3 == null) { // L: 198
+			SequenceDefinition var1 = super.sequence != -1 && super.sequenceDelay == 0 ? ByteArrayPool.SequenceDefinition_get(super.sequence) : null;
+			SequenceDefinition var2 = super.movementSequence == -1 || this.isUnanimated || super.idleSequence == super.movementSequence && var1 != null ? null : ByteArrayPool.SequenceDefinition_get(super.movementSequence);
+			Model var3 = this.appearance.getModel(var1, super.sequenceFrame, var2, super.movementFrame);
+			if (var3 == null) {
 				return null;
 			} else {
-				var3.calculateBoundsCylinder(); // L: 199
-				super.defaultHeight = var3.height; // L: 200
-				Model var4;
-				Model[] var5;
-				if (!this.isUnanimated && super.spotAnimation != -1 && super.spotAnimationFrame != -1) { // L: 201
-					var4 = ObjectSound.SpotAnimationDefinition_get(super.spotAnimation).getModel(super.spotAnimationFrame); // L: 202
-					if (var4 != null) { // L: 203
-						var4.offsetBy(0, -super.spotAnimationHeight, 0); // L: 204
-						var5 = new Model[]{var3, var4}; // L: 205
-						var3 = new Model(var5, 2); // L: 206
+				var3.calculateBoundsCylinder();
+				super.defaultHeight = var3.height;
+				int var4 = var3.indicesCount;
+				Model var5;
+				Model[] var6;
+				if (!this.isUnanimated && super.spotAnimation != -1 && super.spotAnimationFrame != -1) {
+					var5 = ArchiveDisk.SpotAnimationDefinition_get(super.spotAnimation).getModel(super.spotAnimationFrame);
+					if (var5 != null) {
+						var5.offsetBy(0, -super.field1195, 0);
+						var6 = new Model[]{var3, var5};
+						var3 = new Model(var6, 2);
 					}
 				}
 
-				if (!this.isUnanimated && this.model0 != null) { // L: 209
-					if (Client.cycle >= this.animationCycleEnd) { // L: 210
+				if (!this.isUnanimated && this.model0 != null) {
+					if (Client.cycle >= this.animationCycleEnd) {
 						this.model0 = null;
 					}
 
-					if (Client.cycle >= this.animationCycleStart && Client.cycle < this.animationCycleEnd) { // L: 211
-						var4 = this.model0; // L: 212
-						var4.offsetBy(this.field1095 - super.x, this.tileHeight2 - this.tileHeight, this.field1108 - super.y); // L: 213
-						if (super.orientation == 512) { // L: 214
-							var4.rotateY90Ccw(); // L: 215
-							var4.rotateY90Ccw(); // L: 216
-							var4.rotateY90Ccw(); // L: 217
-						} else if (super.orientation == 1024) { // L: 219
-							var4.rotateY90Ccw(); // L: 220
-							var4.rotateY90Ccw(); // L: 221
-						} else if (super.orientation == 1536) { // L: 223
-							var4.rotateY90Ccw();
+					if (Client.cycle >= this.animationCycleStart && Client.cycle < this.animationCycleEnd) {
+						var5 = this.model0;
+						var5.offsetBy(this.field1093 * 4096 - super.x, this.tileHeight2 - this.tileHeight, this.field1097 * 4096 - super.y);
+						if (super.orientation == 512) {
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
+						} else if (super.orientation == 1024) {
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
+						} else if (super.orientation == 1536) {
+							var5.rotateY90Ccw();
 						}
 
-						var5 = new Model[]{var3, var4}; // L: 224
-						var3 = new Model(var5, 2); // L: 225
-						if (super.orientation == 512) { // L: 226
-							var4.rotateY90Ccw();
-						} else if (super.orientation == 1024) { // L: 227
-							var4.rotateY90Ccw(); // L: 228
-							var4.rotateY90Ccw(); // L: 229
-						} else if (super.orientation == 1536) { // L: 231
-							var4.rotateY90Ccw(); // L: 232
-							var4.rotateY90Ccw(); // L: 233
-							var4.rotateY90Ccw(); // L: 234
+						var6 = new Model[]{var3, var5};
+						var3 = new Model(var6, 2);
+						if (super.orientation == 512) {
+							var5.rotateY90Ccw();
+						} else if (super.orientation == 1024) {
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
+						} else if (super.orientation == 1536) {
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
+							var5.rotateY90Ccw();
 						}
 
-						var4.offsetBy(super.x - this.field1095, this.tileHeight - this.tileHeight2, super.y - this.field1108); // L: 236
+						var5.offsetBy(super.x - this.field1093 * 4096, this.tileHeight - this.tileHeight2, super.y - this.field1097 * 4096);
 					}
 				}
 
-				var3.isSingleTile = true; // L: 239
-				if (super.field1133 != 0 && Client.cycle >= super.field1189 && Client.cycle < super.field1135) { // L: 240
-					var3.overrideHue = super.field1191; // L: 241
-					var3.overrideSaturation = super.field1192; // L: 242
-					var3.overrideLuminance = super.field1193; // L: 243
-					var3.overrideAmount = super.field1133; // L: 244
+				var3.isSingleTile = true;
+				if (super.field1192 != 0 && Client.cycle >= super.field1187 && Client.cycle < super.field1188) {
+					var3.overrideHue = super.field1189;
+					var3.overrideSaturation = super.field1131;
+					var3.overrideLuminance = super.field1191;
+					var3.overrideAmount = super.field1192;
+					var3.field2527 = (short)var4;
 				} else {
-					var3.overrideAmount = 0; // L: 247
+					var3.overrideAmount = 0;
 				}
 
-				return var3; // L: 249
+				return var3;
 			}
 		}
 	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "541693037"
-	)
-	@Export("isFriend")
-	boolean isFriend() {
-		if (this.isFriendTriBool == TriBool.TriBool_unknown) { // L: 134
-			this.checkIsFriend(); // L: 135
-		}
-
-		return this.isFriendTriBool == TriBool.TriBool_true; // L: 137
-	}
-
-	@ObfuscatedName("f")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-842597449"
-	)
-	@Export("clearIsFriend")
-	void clearIsFriend() {
-		this.isFriendTriBool = TriBool.TriBool_unknown; // L: 141
-	} // L: 142
-
-	@ObfuscatedName("j")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "82"
-	)
-	@Export("checkIsFriend")
-	void checkIsFriend() {
-		this.isFriendTriBool = friendSystem.isFriendAndHasWorld(this.username) ? TriBool.TriBool_true : TriBool.TriBool_false; // L: 145
-	} // L: 146
 
 	@ObfuscatedName("w")
 	@ObfuscatedSignature(
+		descriptor = "(B)Z",
+		garbageValue = "1"
+	)
+	@Export("isFriend")
+	boolean isFriend() {
+		if (this.isFriendTriBool == TriBool.TriBool_unknown) {
+			this.checkIsFriend();
+		}
+
+		return this.isFriendTriBool == TriBool.TriBool_true;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(S)V",
+		garbageValue = "19668"
+	)
+	@Export("clearIsFriend")
+	void clearIsFriend() {
+		this.isFriendTriBool = TriBool.TriBool_unknown;
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "689286"
+	)
+	@Export("checkIsFriend")
+	void checkIsFriend() {
+		this.isFriendTriBool = class321.friendSystem.isFriendAndHasWorld(this.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
+
+	@ObfuscatedName("o")
+	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1871762564"
+		garbageValue = "365465151"
 	)
 	@Export("isFriendsChatMember")
 	boolean isFriendsChatMember() {
-		if (this.isInFriendsChat == TriBool.TriBool_unknown) { // L: 149
-			this.updateIsInFriendsChat(); // L: 150
+		if (this.isInFriendsChat == TriBool.TriBool_unknown) {
+			this.updateIsInFriendsChat();
 		}
 
-		return this.isInFriendsChat == TriBool.TriBool_true; // L: 152
+		return this.isInFriendsChat == TriBool.TriBool_true;
 	}
 
-	@ObfuscatedName("y")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1664103781"
+		garbageValue = "2010863403"
 	)
 	@Export("clearIsInFriendsChat")
 	void clearIsInFriendsChat() {
-		this.isInFriendsChat = TriBool.TriBool_unknown; // L: 156
-	} // L: 157
+		this.isInFriendsChat = TriBool.TriBool_unknown;
+	}
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1421965855"
+		descriptor = "(B)V",
+		garbageValue = "122"
 	)
 	@Export("updateIsInFriendsChat")
 	void updateIsInFriendsChat() {
-		this.isInFriendsChat = Huffman.friendsChat != null && Huffman.friendsChat.contains(this.username) ? TriBool.TriBool_true : TriBool.TriBool_false; // L: 160
-	} // L: 161
+		this.isInFriendsChat = class19.friendsChat != null && class19.friendsChat.contains(this.username) ? TriBool.TriBool_true : TriBool.TriBool_false;
+	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("a")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1544435810"
+		garbageValue = "-154264181"
 	)
 	@Export("updateIsInClanChat")
 	void updateIsInClanChat() {
-		for (int var1 = 0; var1 < 4; ++var1) { // L: 164
-			if (Client.currentClanSettings[var1] != null && Client.currentClanSettings[var1].method2991(this.username.getName()) != -1 && var1 != 2) { // L: 165 166
-				this.isInClanChat = TriBool.TriBool_true; // L: 167
-				return; // L: 168
+		for (int var1 = 0; var1 < 4; ++var1) {
+			if (Client.currentClanSettings[var1] != null && Client.currentClanSettings[var1].method2901(this.username.getName()) != -1 && var1 != 2) {
+				this.isInClanChat = TriBool.TriBool_true;
+				return;
 			}
 		}
 
-		this.isInClanChat = TriBool.TriBool_false; // L: 172
-	} // L: 173
-
-	@ObfuscatedName("t")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2144863199"
-	)
-	void method2135() {
-		this.isInClanChat = TriBool.TriBool_unknown; // L: 176
-	} // L: 177
-
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "2071495153"
-	)
-	@Export("isClanMember")
-	boolean isClanMember() {
-		if (this.isInClanChat == TriBool.TriBool_unknown) { // L: 180
-			this.updateIsInClanChat(); // L: 181
-		}
-
-		return this.isInClanChat == TriBool.TriBool_true; // L: 183
+		this.isInClanChat = TriBool.TriBool_false;
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "20"
+		descriptor = "(I)V",
+		garbageValue = "-309302132"
 	)
-	@Export("transformedSize")
-	int transformedSize() {
-		return this.appearance != null && this.appearance.npcTransformId != -1 ? BuddyRankComparator.getNpcDefinition(this.appearance.npcTransformId).size : 1; // L: 187 188 190
+	void method2134() {
+		this.isInClanChat = TriBool.TriBool_unknown;
 	}
 
 	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "(IILgn;S)V",
-		garbageValue = "26658"
+		descriptor = "(I)Z",
+		garbageValue = "-268947223"
 	)
-	final void method2139(int var1, int var2, class192 var3) {
-		if (super.sequence != -1 && ScriptFrame.SequenceDefinition_get(super.sequence).field2188 == 1) { // L: 253
+	@Export("isClanMember")
+	boolean isClanMember() {
+		if (this.isInClanChat == TriBool.TriBool_unknown) {
+			this.updateIsInClanChat();
+		}
+
+		return this.isInClanChat == TriBool.TriBool_true;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "-83725541"
+	)
+	@Export("transformedSize")
+	int transformedSize() {
+		return this.appearance != null && this.appearance.npcTransformId != -1 ? class119.getNpcDefinition(this.appearance.npcTransformId).size : 1;
+	}
+
+	@ObfuscatedName("z")
+	@ObfuscatedSignature(
+		descriptor = "(IILgi;I)V",
+		garbageValue = "646320028"
+	)
+	final void method2131(int var1, int var2, class192 var3) {
+		if (super.sequence != -1 && ByteArrayPool.SequenceDefinition_get(super.sequence).field2180 == 1) {
 			super.sequence = -1;
 		}
 
-		super.field1165 = -1; // L: 254
-		if (var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104) { // L: 255
-			if (super.pathX[0] >= 0 && super.pathX[0] < 104 && super.pathY[0] >= 0 && super.pathY[0] < 104) { // L: 256
-				if (var3 == class192.field2211) {
-					class306.method5765(this, var1, var2, class192.field2211); // L: 258
+		super.field1162 = -1;
+		if (var1 >= 0 && var1 < 104 && var2 >= 0 && var2 < 104) {
+			if (super.pathX[0] >= 0 && super.pathX[0] < 104 && super.pathY[0] >= 0 && super.pathY[0] < 104) {
+				if (var3 == class192.field2207) {
+					Player var4 = this;
+					class192 var5 = class192.field2207;
+					int var6 = super.pathX[0];
+					int var7 = super.pathY[0];
+					int var8 = this.transformedSize();
+					if (var6 >= var8 && var6 < 104 - var8 && var7 >= var8 && var7 < 104 - var8 && var1 >= var8 && var1 < 104 - var8 && var2 >= var8 && var2 < 104 - var8) {
+						int var10 = this.transformedSize();
+						RouteStrategy var11 = class13.method164(var1, var2);
+						CollisionMap var12 = Client.collisionMaps[this.plane];
+						int[] var13 = Client.field547;
+						int[] var14 = Client.field771;
+						int var15 = 0;
+
+						label863:
+						while (true) {
+							int var16;
+							if (var15 >= 128) {
+								int var17;
+								int var18;
+								byte var19;
+								byte var20;
+								int var21;
+								int var22;
+								byte var23;
+								int var24;
+								int[][] var25;
+								int var26;
+								int var27;
+								int var28;
+								int var29;
+								boolean var35;
+								boolean var36;
+								int var37;
+								int var38;
+								int var40;
+								if (var10 == 1) {
+									var17 = var6;
+									var18 = var7;
+									var19 = 64;
+									var20 = 64;
+									var21 = var6 - var19;
+									var22 = var7 - var20;
+									class193.directions[var19][var20] = 99;
+									class193.distances[var19][var20] = 0;
+									var23 = 0;
+									var24 = 0;
+									class193.bufferX[var23] = var6;
+									var40 = var23 + 1;
+									class193.bufferY[var23] = var7;
+									var25 = var12.flags;
+
+									while (true) {
+										if (var24 == var40) {
+											Huffman.field3288 = var17;
+											class193.field2212 = var18;
+											var36 = false;
+											break;
+										}
+
+										var17 = class193.bufferX[var24];
+										var18 = class193.bufferY[var24];
+										var24 = var24 + 1 & 4095;
+										var37 = var17 - var21;
+										var38 = var18 - var22;
+										var26 = var17 - var12.xInset;
+										var27 = var18 - var12.yInset;
+										if (var11.hasArrived(1, var17, var18, var12)) {
+											Huffman.field3288 = var17;
+											class193.field2212 = var18;
+											var36 = true;
+											break;
+										}
+
+										var28 = class193.distances[var37][var38] + 1;
+										if (var37 > 0 && class193.directions[var37 - 1][var38] == 0 && (var25[var26 - 1][var27] & 19136776) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38] = 2;
+											class193.distances[var37 - 1][var38] = var28;
+										}
+
+										if (var37 < 127 && class193.directions[var37 + 1][var38] == 0 && (var25[var26 + 1][var27] & 19136896) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38] = 8;
+											class193.distances[var37 + 1][var38] = var28;
+										}
+
+										if (var38 > 0 && class193.directions[var37][var38 - 1] == 0 && (var25[var26][var27 - 1] & 19136770) == 0) {
+											class193.bufferX[var40] = var17;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37][var38 - 1] = 1;
+											class193.distances[var37][var38 - 1] = var28;
+										}
+
+										if (var38 < 127 && class193.directions[var37][var38 + 1] == 0 && (var25[var26][var27 + 1] & 19136800) == 0) {
+											class193.bufferX[var40] = var17;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37][var38 + 1] = 4;
+											class193.distances[var37][var38 + 1] = var28;
+										}
+
+										if (var37 > 0 && var38 > 0 && class193.directions[var37 - 1][var38 - 1] == 0 && (var25[var26 - 1][var27 - 1] & 19136782) == 0 && (var25[var26 - 1][var27] & 19136776) == 0 && (var25[var26][var27 - 1] & 19136770) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38 - 1] = 3;
+											class193.distances[var37 - 1][var38 - 1] = var28;
+										}
+
+										if (var37 < 127 && var38 > 0 && class193.directions[var37 + 1][var38 - 1] == 0 && (var25[var26 + 1][var27 - 1] & 19136899) == 0 && (var25[var26 + 1][var27] & 19136896) == 0 && (var25[var26][var27 - 1] & 19136770) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38 - 1] = 9;
+											class193.distances[var37 + 1][var38 - 1] = var28;
+										}
+
+										if (var37 > 0 && var38 < 127 && class193.directions[var37 - 1][var38 + 1] == 0 && (var25[var26 - 1][var27 + 1] & 19136824) == 0 && (var25[var26 - 1][var27] & 19136776) == 0 && (var25[var26][var27 + 1] & 19136800) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38 + 1] = 6;
+											class193.distances[var37 - 1][var38 + 1] = var28;
+										}
+
+										if (var37 < 127 && var38 < 127 && class193.directions[var37 + 1][var38 + 1] == 0 && (var25[var26 + 1][var27 + 1] & 19136992) == 0 && (var25[var26 + 1][var27] & 19136896) == 0 && (var25[var26][var27 + 1] & 19136800) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38 + 1] = 12;
+											class193.distances[var37 + 1][var38 + 1] = var28;
+										}
+									}
+
+									var35 = var36;
+								} else if (var10 == 2) {
+									var17 = var6;
+									var18 = var7;
+									var19 = 64;
+									var20 = 64;
+									var21 = var6 - var19;
+									var22 = var7 - var20;
+									class193.directions[var19][var20] = 99;
+									class193.distances[var19][var20] = 0;
+									var23 = 0;
+									var24 = 0;
+									class193.bufferX[var23] = var6;
+									var40 = var23 + 1;
+									class193.bufferY[var23] = var7;
+									var25 = var12.flags;
+
+									while (true) {
+										if (var40 == var24) {
+											Huffman.field3288 = var17;
+											class193.field2212 = var18;
+											var36 = false;
+											break;
+										}
+
+										var17 = class193.bufferX[var24];
+										var18 = class193.bufferY[var24];
+										var24 = var24 + 1 & 4095;
+										var37 = var17 - var21;
+										var38 = var18 - var22;
+										var26 = var17 - var12.xInset;
+										var27 = var18 - var12.yInset;
+										if (var11.hasArrived(2, var17, var18, var12)) {
+											Huffman.field3288 = var17;
+											class193.field2212 = var18;
+											var36 = true;
+											break;
+										}
+
+										var28 = class193.distances[var37][var38] + 1;
+										if (var37 > 0 && class193.directions[var37 - 1][var38] == 0 && (var25[var26 - 1][var27] & 19136782) == 0 && (var25[var26 - 1][var27 + 1] & 19136824) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38] = 2;
+											class193.distances[var37 - 1][var38] = var28;
+										}
+
+										if (var37 < 126 && class193.directions[var37 + 1][var38] == 0 && (var25[var26 + 2][var27] & 19136899) == 0 && (var25[var26 + 2][var27 + 1] & 19136992) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38] = 8;
+											class193.distances[var37 + 1][var38] = var28;
+										}
+
+										if (var38 > 0 && class193.directions[var37][var38 - 1] == 0 && (var25[var26][var27 - 1] & 19136782) == 0 && (var25[var26 + 1][var27 - 1] & 19136899) == 0) {
+											class193.bufferX[var40] = var17;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37][var38 - 1] = 1;
+											class193.distances[var37][var38 - 1] = var28;
+										}
+
+										if (var38 < 126 && class193.directions[var37][var38 + 1] == 0 && (var25[var26][var27 + 2] & 19136824) == 0 && (var25[var26 + 1][var27 + 2] & 19136992) == 0) {
+											class193.bufferX[var40] = var17;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37][var38 + 1] = 4;
+											class193.distances[var37][var38 + 1] = var28;
+										}
+
+										if (var37 > 0 && var38 > 0 && class193.directions[var37 - 1][var38 - 1] == 0 && (var25[var26 - 1][var27] & 19136830) == 0 && (var25[var26 - 1][var27 - 1] & 19136782) == 0 && (var25[var26][var27 - 1] & 19136911) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38 - 1] = 3;
+											class193.distances[var37 - 1][var38 - 1] = var28;
+										}
+
+										if (var37 < 126 && var38 > 0 && class193.directions[var37 + 1][var38 - 1] == 0 && (var25[var26 + 1][var27 - 1] & 19136911) == 0 && (var25[var26 + 2][var27 - 1] & 19136899) == 0 && (var25[var26 + 2][var27] & 19136995) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18 - 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38 - 1] = 9;
+											class193.distances[var37 + 1][var38 - 1] = var28;
+										}
+
+										if (var37 > 0 && var38 < 126 && class193.directions[var37 - 1][var38 + 1] == 0 && (var25[var26 - 1][var27 + 1] & 19136830) == 0 && (var25[var26 - 1][var27 + 2] & 19136824) == 0 && (var25[var26][var27 + 2] & 19137016) == 0) {
+											class193.bufferX[var40] = var17 - 1;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 - 1][var38 + 1] = 6;
+											class193.distances[var37 - 1][var38 + 1] = var28;
+										}
+
+										if (var37 < 126 && var38 < 126 && class193.directions[var37 + 1][var38 + 1] == 0 && (var25[var26 + 1][var27 + 2] & 19137016) == 0 && (var25[var26 + 2][var27 + 2] & 19136992) == 0 && (var25[var26 + 2][var27 + 1] & 19136995) == 0) {
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38 + 1] = 12;
+											class193.distances[var37 + 1][var38 + 1] = var28;
+										}
+									}
+
+									var35 = var36;
+								} else {
+									var17 = var6;
+									var18 = var7;
+									var19 = 64;
+									var20 = 64;
+									var21 = var6 - var19;
+									var22 = var7 - var20;
+									class193.directions[var19][var20] = 99;
+									class193.distances[var19][var20] = 0;
+									var23 = 0;
+									var24 = 0;
+									class193.bufferX[var23] = var6;
+									var40 = var23 + 1;
+									class193.bufferY[var23] = var7;
+									var25 = var12.flags;
+
+									label849:
+									while (true) {
+										label847:
+										while (true) {
+											do {
+												do {
+													do {
+														label824:
+														do {
+															if (var40 == var24) {
+																Huffman.field3288 = var17;
+																class193.field2212 = var18;
+																var36 = false;
+																break label849;
+															}
+
+															var17 = class193.bufferX[var24];
+															var18 = class193.bufferY[var24];
+															var24 = var24 + 1 & 4095;
+															var37 = var17 - var21;
+															var38 = var18 - var22;
+															var26 = var17 - var12.xInset;
+															var27 = var18 - var12.yInset;
+															if (var11.hasArrived(var10, var17, var18, var12)) {
+																Huffman.field3288 = var17;
+																class193.field2212 = var18;
+																var36 = true;
+																break label849;
+															}
+
+															var28 = class193.distances[var37][var38] + 1;
+															if (var37 > 0 && class193.directions[var37 - 1][var38] == 0 && (var25[var26 - 1][var27] & 19136782) == 0 && (var25[var26 - 1][var10 + var27 - 1] & 19136824) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10 - 1) {
+																		class193.bufferX[var40] = var17 - 1;
+																		class193.bufferY[var40] = var18;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37 - 1][var38] = 2;
+																		class193.distances[var37 - 1][var38] = var28;
+																		break;
+																	}
+
+																	if ((var25[var26 - 1][var29 + var27] & 19136830) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var37 < 128 - var10 && class193.directions[var37 + 1][var38] == 0 && (var25[var10 + var26][var27] & 19136899) == 0 && (var25[var10 + var26][var10 + var27 - 1] & 19136992) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10 - 1) {
+																		class193.bufferX[var40] = var17 + 1;
+																		class193.bufferY[var40] = var18;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37 + 1][var38] = 8;
+																		class193.distances[var37 + 1][var38] = var28;
+																		break;
+																	}
+
+																	if ((var25[var10 + var26][var27 + var29] & 19136995) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var38 > 0 && class193.directions[var37][var38 - 1] == 0 && (var25[var26][var27 - 1] & 19136782) == 0 && (var25[var10 + var26 - 1][var27 - 1] & 19136899) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10 - 1) {
+																		class193.bufferX[var40] = var17;
+																		class193.bufferY[var40] = var18 - 1;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37][var38 - 1] = 1;
+																		class193.distances[var37][var38 - 1] = var28;
+																		break;
+																	}
+
+																	if ((var25[var29 + var26][var27 - 1] & 19136911) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var38 < 128 - var10 && class193.directions[var37][var38 + 1] == 0 && (var25[var26][var10 + var27] & 19136824) == 0 && (var25[var26 + var10 - 1][var10 + var27] & 19136992) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10 - 1) {
+																		class193.bufferX[var40] = var17;
+																		class193.bufferY[var40] = var18 + 1;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37][var38 + 1] = 4;
+																		class193.distances[var37][var38 + 1] = var28;
+																		break;
+																	}
+
+																	if ((var25[var29 + var26][var10 + var27] & 19137016) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var37 > 0 && var38 > 0 && class193.directions[var37 - 1][var38 - 1] == 0 && (var25[var26 - 1][var27 - 1] & 19136782) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10) {
+																		class193.bufferX[var40] = var17 - 1;
+																		class193.bufferY[var40] = var18 - 1;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37 - 1][var38 - 1] = 3;
+																		class193.distances[var37 - 1][var38 - 1] = var28;
+																		break;
+																	}
+
+																	if ((var25[var26 - 1][var29 + (var27 - 1)] & 19136830) != 0 || (var25[var29 + (var26 - 1)][var27 - 1] & 19136911) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var37 < 128 - var10 && var38 > 0 && class193.directions[var37 + 1][var38 - 1] == 0 && (var25[var26 + var10][var27 - 1] & 19136899) == 0) {
+																var29 = 1;
+
+																while (true) {
+																	if (var29 >= var10) {
+																		class193.bufferX[var40] = var17 + 1;
+																		class193.bufferY[var40] = var18 - 1;
+																		var40 = var40 + 1 & 4095;
+																		class193.directions[var37 + 1][var38 - 1] = 9;
+																		class193.distances[var37 + 1][var38 - 1] = var28;
+																		break;
+																	}
+
+																	if ((var25[var26 + var10][var29 + (var27 - 1)] & 19136995) != 0 || (var25[var29 + var26][var27 - 1] & 19136911) != 0) {
+																		break;
+																	}
+
+																	++var29;
+																}
+															}
+
+															if (var37 > 0 && var38 < 128 - var10 && class193.directions[var37 - 1][var38 + 1] == 0 && (var25[var26 - 1][var10 + var27] & 19136824) == 0) {
+																for (var29 = 1; var29 < var10; ++var29) {
+																	if ((var25[var26 - 1][var27 + var29] & 19136830) != 0 || (var25[var29 + (var26 - 1)][var10 + var27] & 19137016) != 0) {
+																		continue label824;
+																	}
+																}
+
+																class193.bufferX[var40] = var17 - 1;
+																class193.bufferY[var40] = var18 + 1;
+																var40 = var40 + 1 & 4095;
+																class193.directions[var37 - 1][var38 + 1] = 6;
+																class193.distances[var37 - 1][var38 + 1] = var28;
+															}
+														} while(var37 >= 128 - var10);
+													} while(var38 >= 128 - var10);
+												} while(class193.directions[var37 + 1][var38 + 1] != 0);
+											} while((var25[var26 + var10][var10 + var27] & 19136992) != 0);
+
+											for (var29 = 1; var29 < var10; ++var29) {
+												if ((var25[var29 + var26][var10 + var27] & 19137016) != 0 || (var25[var26 + var10][var29 + var27] & 19136995) != 0) {
+													continue label847;
+												}
+											}
+
+											class193.bufferX[var40] = var17 + 1;
+											class193.bufferY[var40] = var18 + 1;
+											var40 = var40 + 1 & 4095;
+											class193.directions[var37 + 1][var38 + 1] = 12;
+											class193.distances[var37 + 1][var38 + 1] = var28;
+										}
+									}
+
+									var35 = var36;
+								}
+
+								int var9;
+								label906: {
+									var16 = var6 - 64;
+									var17 = var7 - 64;
+									var18 = Huffman.field3288;
+									var37 = class193.field2212;
+									if (!var35) {
+										var38 = Integer.MAX_VALUE;
+										var21 = Integer.MAX_VALUE;
+										byte var39 = 10;
+										var40 = var11.approxDestinationX;
+										var24 = var11.approxDestinationY;
+										int var34 = var11.approxDestinationSizeX;
+										var26 = var11.approxDestinationSizeY;
+
+										for (var27 = var40 - var39; var27 <= var40 + var39; ++var27) {
+											for (var28 = var24 - var39; var28 <= var39 + var24; ++var28) {
+												var29 = var27 - var16;
+												int var30 = var28 - var17;
+												if (var29 >= 0 && var30 >= 0 && var29 < 128 && var30 < 128 && class193.distances[var29][var30] < 100) {
+													int var31 = 0;
+													if (var27 < var40) {
+														var31 = var40 - var27;
+													} else if (var27 > var40 + var34 - 1) {
+														var31 = var27 - (var40 + var34 - 1);
+													}
+
+													int var32 = 0;
+													if (var28 < var24) {
+														var32 = var24 - var28;
+													} else if (var28 > var26 + var24 - 1) {
+														var32 = var28 - (var26 + var24 - 1);
+													}
+
+													int var33 = var32 * var32 + var31 * var31;
+													if (var33 < var38 || var38 == var33 && class193.distances[var29][var30] < var21) {
+														var38 = var33;
+														var21 = class193.distances[var29][var30];
+														var18 = var27;
+														var37 = var28;
+													}
+												}
+											}
+										}
+
+										if (var38 == Integer.MAX_VALUE) {
+											var9 = -1;
+											break label906;
+										}
+									}
+
+									if (var18 == var6 && var7 == var37) {
+										var13[0] = var18;
+										var14[0] = var37;
+										var9 = 0;
+									} else {
+										var20 = 0;
+										class193.bufferX[var20] = var18;
+										var38 = var20 + 1;
+										class193.bufferY[var20] = var37;
+
+										for (var21 = var22 = class193.directions[var18 - var16][var37 - var17]; var18 != var6 || var37 != var7; var21 = class193.directions[var18 - var16][var37 - var17]) {
+											if (var21 != var22) {
+												var22 = var21;
+												class193.bufferX[var38] = var18;
+												class193.bufferY[var38++] = var37;
+											}
+
+											if ((var21 & 2) != 0) {
+												++var18;
+											} else if ((var21 & 8) != 0) {
+												--var18;
+											}
+
+											if ((var21 & 1) != 0) {
+												++var37;
+											} else if ((var21 & 4) != 0) {
+												--var37;
+											}
+										}
+
+										var40 = 0;
+
+										while (var38-- > 0) {
+											var13[var40] = class193.bufferX[var38];
+											var14[var40++] = class193.bufferY[var38];
+											if (var40 >= var13.length) {
+												break;
+											}
+										}
+
+										var9 = var40;
+									}
+								}
+
+								var15 = var9;
+								if (var9 < 1) {
+									break;
+								}
+
+								var16 = 0;
+
+								while (true) {
+									if (var16 >= var15 - 1) {
+										break label863;
+									}
+
+									var4.method2106(Client.field547[var16], Client.field771[var16], var5);
+									++var16;
+								}
+							}
+
+							for (var16 = 0; var16 < 128; ++var16) {
+								class193.directions[var15][var16] = 0;
+								class193.distances[var15][var16] = 99999999;
+							}
+
+							++var15;
+						}
+					}
 				}
 
-				this.method2141(var1, var2, var3); // L: 259
+				this.method2106(var1, var2, var3);
 			} else {
 				this.resetPath(var1, var2);
 			}
@@ -554,53 +1122,89 @@ public final class Player extends Actor {
 			this.resetPath(var1, var2);
 		}
 
-	} // L: 261
+	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("r")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "3"
+		descriptor = "(III)V",
+		garbageValue = "-1321665391"
 	)
 	@Export("resetPath")
 	void resetPath(int var1, int var2) {
-		super.pathLength = 0; // L: 264
-		super.field1203 = 0; // L: 265
-		super.field1202 = 0; // L: 266
-		super.pathX[0] = var1; // L: 267
-		super.pathY[0] = var2; // L: 268
-		int var3 = this.transformedSize(); // L: 269
-		super.x = var3 * 64 + super.pathX[0] * 128; // L: 270
-		super.y = var3 * 64 + super.pathY[0] * 128; // L: 271
-	} // L: 272
+		super.pathLength = 0;
+		super.field1201 = 0;
+		super.field1200 = 0;
+		super.pathX[0] = var1;
+		super.pathY[0] = var2;
+		int var3 = this.transformedSize();
+		super.x = super.pathX[0] * 128 + var3 * 64;
+		super.y = var3 * 64 + super.pathY[0] * 128;
+	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("y")
 	@ObfuscatedSignature(
-		descriptor = "(IILgn;I)V",
-		garbageValue = "829621719"
+		descriptor = "(IILgi;B)V",
+		garbageValue = "1"
 	)
-	final void method2141(int var1, int var2, class192 var3) {
-		if (super.pathLength < 9) { // L: 275
+	final void method2106(int var1, int var2, class192 var3) {
+		if (super.pathLength < 9) {
 			++super.pathLength;
 		}
 
-		for (int var4 = super.pathLength; var4 > 0; --var4) { // L: 276
-			super.pathX[var4] = super.pathX[var4 - 1]; // L: 277
-			super.pathY[var4] = super.pathY[var4 - 1]; // L: 278
-			super.pathTraversed[var4] = super.pathTraversed[var4 - 1]; // L: 279
+		for (int var4 = super.pathLength; var4 > 0; --var4) {
+			super.pathX[var4] = super.pathX[var4 - 1];
+			super.pathY[var4] = super.pathY[var4 - 1];
+			super.pathTraversed[var4] = super.pathTraversed[var4 - 1];
 		}
 
-		super.pathX[0] = var1; // L: 281
-		super.pathY[0] = var2; // L: 282
-		super.pathTraversed[0] = var3; // L: 283
-	} // L: 284
+		super.pathX[0] = var1;
+		super.pathY[0] = var2;
+		super.pathTraversed[0] = var3;
+	}
 
-	@ObfuscatedName("x")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "9013641"
+		descriptor = "(B)Z",
+		garbageValue = "-18"
 	)
 	@Export("isVisible")
 	final boolean isVisible() {
-		return this.appearance != null; // L: 287
+		return this.appearance != null;
+	}
+
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(IIILgc;II)V",
+		garbageValue = "1711611133"
+	)
+	static void method2147(int var0, int var1, int var2, ObjectComposition var3, int var4) {
+		ObjectSound var5 = new ObjectSound();
+		var5.plane = var0;
+		var5.x = var1 * 16384;
+		var5.y = var2 * 128;
+		int var6 = var3.sizeX;
+		int var7 = var3.sizeY;
+		if (var4 == 1 || var4 == 3) {
+			var6 = var3.sizeY;
+			var7 = var3.sizeX;
+		}
+
+		var5.maxX = (var6 + var1) * 128;
+		var5.maxY = (var7 + var2) * 128;
+		var5.soundEffectId = var3.ambientSoundId;
+		var5.field812 = var3.int7 * 128;
+		var5.field807 = var3.int5;
+		var5.field811 = var3.int6;
+		var5.soundEffectIds = var3.soundEffectIds;
+		if (var3.transforms != null) {
+			var5.obj = var3;
+			var5.set();
+		}
+
+		ObjectSound.objectSounds.addFirst(var5);
+		if (var5.soundEffectIds != null) {
+			var5.field815 = var5.field807 + (int)(Math.random() * (double)(var5.field811 - var5.field807));
+		}
+
 	}
 }
