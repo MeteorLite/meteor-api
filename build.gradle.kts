@@ -7,7 +7,7 @@ plugins{
 }
 
 group = "meteor"
-val release by rootProject.extra { "1.6.2" }
+val release by rootProject.extra { "1.6.3" }
 
 allprojects {
     configurations.all {
