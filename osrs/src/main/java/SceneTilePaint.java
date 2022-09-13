@@ -1,60 +1,68 @@
+import java.io.File;
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ha")
+@ObfuscatedName("hj")
 @Implements("SceneTilePaint")
 public final class SceneTilePaint {
-	@ObfuscatedName("k")
+	@ObfuscatedName("uh")
 	@ObfuscatedGetter(
-		intValue = -246999917
+		longValue = 4139438951691168581L
 	)
-	@Export("musicTrackFileId")
-	public static int musicTrackFileId;
-	@ObfuscatedName("j")
+	static long field2649;
+	@ObfuscatedName("sw")
+	@ObfuscatedGetter(
+		intValue = 403292160
+	)
+	static int field2638;
+	@ObfuscatedName("ah")
+	static String field2648;
+	@ObfuscatedName("ll")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Lkw;"
 	)
-	@Export("Widget_fontsArchive")
-	public static AbstractArchive Widget_fontsArchive;
-	@ObfuscatedName("s")
+	@Export("hoveredItemContainer")
+	static Widget hoveredItemContainer;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -874065581
+		intValue = 313526917
 	)
 	@Export("swColor")
 	int swColor;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 1159712219
+		intValue = 1400554561
 	)
 	@Export("seColor")
 	int seColor;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1006604365
+		intValue = 645705857
 	)
 	@Export("neColor")
 	int neColor;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1851893905
+		intValue = 855976187
 	)
 	@Export("nwColor")
 	int nwColor;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 503057411
+		intValue = -1928669257
 	)
 	@Export("texture")
 	int texture;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@Export("isFlat")
 	boolean isFlat;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -532188411
+		intValue = -1925546141
 	)
 	@Export("rgb")
 	int rgb;
@@ -70,71 +78,54 @@ public final class SceneTilePaint {
 		this.isFlat = var7;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lco;S)V",
-		garbageValue = "203"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;ZI)Lpk;",
+		garbageValue = "526697035"
 	)
-	@Export("runScriptEvent")
-	public static void runScriptEvent(ScriptEvent var0) {
-		GraphicsObject.runScript(var0, 500000, 475000);
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1527071876"
-	)
-	public static final boolean method4416(char var0) {
-		return var0 == 160 || var0 == ' ' || var0 == '_' || var0 == '-';
-	}
-
-	@ObfuscatedName("es")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "110"
-	)
-	static void method4417() {
-		Client.packetWriter.clearBuffer();
-		Client.packetWriter.packetBuffer.offset = 0;
-		Client.packetWriter.serverPacket = null;
-		Client.packetWriter.field1337 = null;
-		Client.packetWriter.field1339 = null;
-		Client.packetWriter.field1330 = null;
-		Client.packetWriter.serverPacketLength = 0;
-		Client.packetWriter.field1336 = 0;
-		Client.rebootTimer = 0;
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
-		Client.minimapState = 0;
-		Client.destinationX = 0;
-
-		int var0;
-		for (var0 = 0; var0 < 2048; ++var0) {
-			Client.players[var0] = null;
-		}
-
-		ScriptFrame.localPlayer = null;
-
-		for (var0 = 0; var0 < Client.npcs.length; ++var0) {
-			NPC var1 = Client.npcs[var0];
-			if (var1 != null) {
-				var1.targetIndex = -1;
-				var1.false0 = false;
+	@Export("getPreferencesFile")
+	public static AccessFile getPreferencesFile(String var0, String var1, boolean var2) {
+		File var3 = new File(JagexCache.cacheDir, "preferences" + var0 + ".dat");
+		if (var3.exists()) {
+			try {
+				AccessFile var10 = new AccessFile(var3, "rw", 10000L);
+				return var10;
+			} catch (IOException var9) {
 			}
 		}
 
-		ItemContainer.itemContainers = new NodeHashTable(32);
-		class4.updateGameState(30);
-
-		for (var0 = 0; var0 < 100; ++var0) {
-			Client.field643[var0] = true;
+		String var4 = "";
+		if (class151.cacheGamebuild == 33) {
+			var4 = "_rc";
+		} else if (class151.cacheGamebuild == 34) {
+			var4 = "_wip";
 		}
 
-		PacketBufferNode var2 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2990, Client.packetWriter.isaacCipher);
-		var2.packetBuffer.writeByte(Canvas.getWindowedMode());
-		var2.packetBuffer.writeShort(class7.canvasWidth);
-		var2.packetBuffer.writeShort(WallDecoration.canvasHeight);
-		Client.packetWriter.addNode(var2);
+		File var5 = new File(JagexCache.userHomeDirectory, "jagex_" + var1 + "_preferences" + var0 + var4 + ".dat");
+		AccessFile var6;
+		if (!var2 && var5.exists()) {
+			try {
+				var6 = new AccessFile(var5, "rw", 10000L);
+				return var6;
+			} catch (IOException var8) {
+			}
+		}
+
+		try {
+			var6 = new AccessFile(var3, "rw", 10000L);
+			return var6;
+		} catch (IOException var7) {
+			throw new RuntimeException();
+		}
+	}
+
+	@ObfuscatedName("gm")
+	@ObfuscatedSignature(
+		descriptor = "(I)I",
+		garbageValue = "759233642"
+	)
+	@Export("getWindowedMode")
+	static int getWindowedMode() {
+		return Client.isResizable ? 2 : 1;
 	}
 }

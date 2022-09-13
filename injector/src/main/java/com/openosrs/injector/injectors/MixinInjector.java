@@ -148,6 +148,7 @@ public class MixinInjector extends AbstractInjector
 		{
 			for (ClassFile mixinClass : inject.getMixins())
 			{
+				System.out.println(mixinClass.getClassName());
 				final List<ClassFile> ret = getMixins(mixinClass);
 				builder.put(
 					(ret.size() > 1 ? mixinProvider(mixinClass) : () -> mixinClass),
@@ -266,6 +267,7 @@ public class MixinInjector extends AbstractInjector
 
 			if (targetField == null)
 			{
+				System.out.println(shadowed);
 				final Field deobTargetField = InjectUtil.findStaticField(inject, shadowed, null, InjectUtil.apiToDeob(inject, field.getType()));
 				targetField = inject.toVanilla(deobTargetField);
 
@@ -495,13 +497,13 @@ public class MixinInjector extends AbstractInjector
 					}
 
 					String obReplacedName = InjectUtil.getObfuscatedName(deobMethod);
-					Signature obMethodSignature = deobMethod.getObfuscatedSignature();
+					Signature obMethoddescriptor = deobMethod.getObfuscatedSignature();
 
 					// Find the vanilla class where the method to copy is in
 					ClassFile obCf = inject.toVanilla(deobMethod.getClassFile());
 
-					Method obMethod = obCf.findMethod(obReplacedName, obMethodSignature);
-					assert obMethod != null : "obfuscated method " + obReplacedName + obMethodSignature + " does not exist";
+					Method obMethod = obCf.findMethod(obReplacedName, obMethoddescriptor);
+					assert obMethod != null : "obfuscated method " + obReplacedName + obMethoddescriptor + " does not exist";
 
 					if (mixinMethod.getDescriptor().size() > obMethod.getDescriptor().size())
 					{
@@ -538,7 +540,7 @@ public class MixinInjector extends AbstractInjector
 					moveCode(obMethod, mixinMethod.getCode());
 
 					boolean hasGarbageValue = mixinMethod.getDescriptor().size() != obMethod.getDescriptor().size()
-						&& deobMethod.getDescriptor().size() < obMethodSignature.size();
+						&& deobMethod.getDescriptor().size() < obMethoddescriptor.size();
 
 					if (hasGarbageValue)
 					{

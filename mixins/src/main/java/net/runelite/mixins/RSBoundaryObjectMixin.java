@@ -78,8 +78,8 @@ public abstract class RSBoundaryObjectMixin implements RSBoundaryObject
 	@Override
 	public Shape getClickbox()
 	{
-		Shape clickboxA = Perspective.getClickbox(client, getModelA(), 0, getX(), getY(), getZ());
-		Shape clickboxB = Perspective.getClickbox(client, getModelB(), 0, getX(), getY(), getZ());
+		Shape clickboxA = Perspective.getClickbox(client, getModelA(), 0, new LocalPoint(getX(), getY()));
+		Shape clickboxB = Perspective.getClickbox(client, getModelB(), 0, new LocalPoint(getX(), getY()));
 
 		if (clickboxA == null && clickboxB == null)
 		{

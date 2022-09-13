@@ -4,109 +4,109 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ky")
+@ObfuscatedName("kj")
 @Implements("PlayerType")
 public enum PlayerType implements MouseWheel {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_normal")
 	PlayerType_normal(0, -1, true, false, true),
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_playerModerator")
 	PlayerType_playerModerator(1, 0, true, true, true),
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_jagexModerator")
 	PlayerType_jagexModerator(2, 1, true, true, false),
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_ironman")
 	PlayerType_ironman(3, 2, false, false, true),
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_ultimateIronman")
 	PlayerType_ultimateIronman(4, 3, false, false, true),
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
 	@Export("PlayerType_hardcoreIronman")
 	PlayerType_hardcoreIronman(5, 10, false, false, true),
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
-	field3952(6, 22, false, false, true),
-	@ObfuscatedName("k")
+	field3990(6, 22, false, false, true),
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
-	field3953(7, 41, false, false, true),
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3965(8, 42, false, false, true),
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3955(9, 43, false, false, true),
-	@ObfuscatedName("d")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3956(10, 44, false, false, true),
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3946(11, 45, false, false, true),
+	field3988(7, 41, false, false, true),
 	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
-	field3958(12, 46, false, false, true),
+	field3992(8, 42, false, false, true),
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3993(9, 43, false, false, true),
+	@ObfuscatedName("j")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3994(10, 44, false, false, true),
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3995(11, 45, false, false, true),
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3996(12, 46, false, false, true),
+	@ObfuscatedName("t")
+	@ObfuscatedSignature(
+		descriptor = "Lkj;"
+	)
+	field3986(13, 47, false, false, true),
 	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
-	field3959(13, 47, false, false, true),
-	@ObfuscatedName("l")
+	field3998(14, 48, false, false, true),
+	@ObfuscatedName("d")
 	@ObfuscatedSignature(
-		descriptor = "Lky;"
+		descriptor = "Lkj;"
 	)
-	field3960(14, 48, false, false, true),
-	@ObfuscatedName("z")
-	@ObfuscatedSignature(
-		descriptor = "Lky;"
-	)
-	field3961(15, 49, false, false, true);
+	field3999(15, 49, false, false, true);
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = -835440721
+		intValue = -1197271127
 	)
 	@Export("id")
 	final int id;
-	@ObfuscatedName("y")
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = -1081419077
+		intValue = -938815979
 	)
 	@Export("modIcon")
 	public final int modIcon;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@Export("isPrivileged")
 	public final boolean isPrivileged;
 	@ObfuscatedName("e")
@@ -120,50 +120,27 @@ public enum PlayerType implements MouseWheel {
 		this.isUser = var7;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "104"
+		garbageValue = "1"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[IIIB)V",
-		garbageValue = "107"
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "-26"
 	)
-	public static void method5694(String[] var0, int[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			int var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					int var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
-				}
-			}
-
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			method5694(var0, var1, var2, var5 - 1);
-			method5694(var0, var1, var5 + 1, var3);
+	static int method5943(int var0, Script var1, boolean var2) {
+		if (var0 == 7108) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Widget.method5882() ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
 		}
-
 	}
 }

@@ -7,43 +7,43 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nj")
+@ObfuscatedName("nm")
 @Implements("BufferedSource")
 public class BufferedSource implements Runnable {
-	@ObfuscatedName("ih")
-	@ObfuscatedSignature(
-		descriptor = "[Lqn;"
+	@ObfuscatedName("mm")
+	@ObfuscatedGetter(
+		intValue = 830865447
 	)
-	@Export("headIconPkSprites")
-	static SpritePixels[] headIconPkSprites;
-	@ObfuscatedName("s")
+	@Export("menuX")
+	static int menuX;
+	@ObfuscatedName("c")
 	@Export("thread")
 	Thread thread;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@Export("inputStream")
 	InputStream inputStream;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1647447189
+		intValue = -1335488063
 	)
 	@Export("capacity")
 	int capacity;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@Export("buffer")
 	byte[] buffer;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1571074557
+		intValue = 885941459
 	)
 	@Export("position")
 	int position;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 1029497331
+		intValue = 1087004357
 	)
 	@Export("limit")
 	int limit;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@Export("exception")
 	IOException exception;
 
@@ -58,10 +58,10 @@ public class BufferedSource implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(II)Z",
-		garbageValue = "-396035802"
+		garbageValue = "-204109826"
 	)
 	@Export("isAvailable")
 	boolean isAvailable(int var1) throws IOException {
@@ -92,10 +92,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "182656390"
+		garbageValue = "324153997"
 	)
 	@Export("available")
 	int available() throws IOException {
@@ -116,15 +116,15 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "39"
+		descriptor = "(I)I",
+		garbageValue = "1116130893"
 	)
 	@Export("readUnsignedByte")
 	int readUnsignedByte() throws IOException {
 		synchronized(this) {
-			if (this.limit == this.position) {
+			if (this.position == this.limit) {
 				if (this.exception != null) {
 					throw new IOException(this.exception.toString());
 				} else {
@@ -139,10 +139,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "([BIII)I",
-		garbageValue = "-1742021300"
+		descriptor = "([BIIB)I",
+		garbageValue = "-37"
 	)
 	@Export("read")
 	int read(byte[] var1, int var2, int var3) throws IOException {
@@ -180,10 +180,10 @@ public class BufferedSource implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "-10525"
+		descriptor = "(I)V",
+		garbageValue = "-1863713978"
 	)
 	@Export("close")
 	void close() {
@@ -247,6 +247,68 @@ public class BufferedSource implements Runnable {
 			synchronized(this) {
 				this.limit = (var7 + this.limit) % this.capacity;
 			}
+		}
+	}
+
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "538575636"
+	)
+	static final int method7052(int var0, int var1) {
+		int var2 = var1 * 57 + var0;
+		var2 ^= var2 << 13;
+		int var3 = (var2 * var2 * 15731 + 789221) * var2 + 1376312589 & Integer.MAX_VALUE;
+		return var3 >> 19 & 255;
+	}
+
+	@ObfuscatedName("gd")
+	@ObfuscatedSignature(
+		descriptor = "(Lkw;III)V",
+		garbageValue = "-1127533475"
+	)
+	@Export("checkIfMinimapClicked")
+	static final void checkIfMinimapClicked(Widget var0, int var1, int var2) {
+		if (Client.minimapState == 0 || Client.minimapState == 3) {
+			if (!Client.isMenuOpen && (MouseHandler.MouseHandler_lastButton == 1 || !Renderable.mouseCam && MouseHandler.MouseHandler_lastButton == 4)) {
+				SpriteMask var3 = var0.getSpriteMask(true);
+				if (var3 == null) {
+					return;
+				}
+
+				int var4 = MouseHandler.MouseHandler_lastPressedX - var1;
+				int var5 = MouseHandler.MouseHandler_lastPressedY - var2;
+				if (var3.contains(var4, var5)) {
+					var4 -= var3.width / 2;
+					var5 -= var3.height / 2;
+					int var6 = Client.camAngleY & 2047;
+					int var7 = Rasterizer3D.Rasterizer3D_sine[var6];
+					int var8 = Rasterizer3D.Rasterizer3D_cosine[var6];
+					int var9 = var8 * var4 + var7 * var5 >> 11;
+					int var10 = var8 * var5 - var4 * var7 >> 11;
+					int var11 = var9 + class67.localPlayer.x >> 7;
+					int var12 = class67.localPlayer.y - var10 >> 7;
+					PacketBufferNode var13 = class120.getPacketBufferNode(ClientPacket.field2977, Client.packetWriter.isaacCipher);
+					var13.packetBuffer.writeByte(18);
+					var13.packetBuffer.method7962(class128.baseX * 64 + var11);
+					var13.packetBuffer.writeShort(WorldMapData_1.baseY * 64 + var12);
+					var13.packetBuffer.method7952(KeyHandler.KeyHandler_pressedKeys[82] ? (KeyHandler.KeyHandler_pressedKeys[81] ? 2 : 1) : 0);
+					var13.packetBuffer.writeByte(var4);
+					var13.packetBuffer.writeByte(var5);
+					var13.packetBuffer.writeShort(Client.camAngleY);
+					var13.packetBuffer.writeByte(57);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(0);
+					var13.packetBuffer.writeByte(89);
+					var13.packetBuffer.writeShort(class67.localPlayer.x);
+					var13.packetBuffer.writeShort(class67.localPlayer.y);
+					var13.packetBuffer.writeByte(63);
+					Client.packetWriter.addNode(var13);
+					Client.destinationX = var11;
+					Client.destinationY = var12;
+				}
+			}
+
 		}
 	}
 }

@@ -9,32 +9,33 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("cd")
 @Implements("Messages")
 public class Messages {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@Export("Messages_channels")
 	static final Map Messages_channels;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lpm;"
+		descriptor = "Lpq;"
 	)
 	@Export("Messages_hashTable")
 	static final IterableNodeHashTable Messages_hashTable;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lms;"
+		descriptor = "Lmt;"
 	)
 	@Export("Messages_queue")
 	static final IterableDualNodeQueue Messages_queue;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -2125602271
+		intValue = -513745227
 	)
 	@Export("Messages_count")
 	static int Messages_count;
-	@ObfuscatedName("z")
+	@ObfuscatedName("ha")
 	@ObfuscatedSignature(
-		descriptor = "Leh;"
+		descriptor = "Lch;"
 	)
-	static ClanSettings field1326;
+	@Export("urlRequester")
+	static UrlRequester urlRequester;
 
 	static {
 		Messages_channels = new HashMap();
@@ -43,15 +44,31 @@ public class Messages {
 		Messages_count = 0;
 	}
 
-	@ObfuscatedName("ks")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "([BIIB)Ljava/lang/String;",
+		garbageValue = "28"
 	)
-	static void method2451() {
-		if (Client.oculusOrbState == 1) {
-			Client.field484 = true;
+	static String method2651(byte[] var0, int var1, int var2) {
+		StringBuilder var3 = new StringBuilder();
+
+		for (int var4 = var1; var4 < var2 + var1; var4 += 3) {
+			int var5 = var0[var4] & 255;
+			var3.append(class343.field4188[var5 >>> 2]);
+			if (var4 < var2 - 1) {
+				int var6 = var0[var4 + 1] & 255;
+				var3.append(class343.field4188[(var5 & 3) << 4 | var6 >>> 4]);
+				if (var4 < var2 - 2) {
+					int var7 = var0[var4 + 2] & 255;
+					var3.append(class343.field4188[(var6 & 15) << 2 | var7 >>> 6]).append(class343.field4188[var7 & 63]);
+				} else {
+					var3.append(class343.field4188[(var6 & 15) << 2]).append("=");
+				}
+			} else {
+				var3.append(class343.field4188[(var5 & 3) << 4]).append("==");
+			}
 		}
 
+		return var3.toString();
 	}
 }

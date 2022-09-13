@@ -1,42 +1,42 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cj")
+@ObfuscatedName("cr")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("pm")
-	@ObfuscatedGetter(
-		intValue = 1643162371
-	)
-	static int field1249;
-	@ObfuscatedName("w")
+	@ObfuscatedName("ew")
 	@ObfuscatedSignature(
-		descriptor = "Lfi;"
+		descriptor = "Llb;"
+	)
+	@Export("archive17")
+	static Archive archive17;
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Lfd;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Llz;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lfi;)V"
+		descriptor = "(Lfd;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIIIB)V",
-		garbageValue = "106"
+		descriptor = "(IIIII)V",
+		garbageValue = "-1917483306"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +69,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcc;",
-		garbageValue = "-741230363"
+		descriptor = "(II)Lcg;",
+		garbageValue = "-160380440"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -94,34 +94,22 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1803012983"
+		garbageValue = "705872557"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method6073();
+		return this.updates.method6309();
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lgu;",
-		garbageValue = "-1068428838"
+		descriptor = "([Ljava/lang/String;[IS)V",
+		garbageValue = "255"
 	)
-	public static HitSplatDefinition method2311(int var0) {
-		HitSplatDefinition var1 = (HitSplatDefinition)HitSplatDefinition.HitSplatDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = class430.HitSplatDefinition_archive.takeFile(32, var0);
-			var1 = new HitSplatDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			HitSplatDefinition.HitSplatDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
+	public static void method2495(String[] var0, int[] var1) {
+		class353.method6683(var0, var1, 0, var0.length - 1);
 	}
 }

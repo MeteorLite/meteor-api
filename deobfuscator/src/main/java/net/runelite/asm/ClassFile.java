@@ -244,6 +244,18 @@ public class ClassFile implements Annotated, Named
 		return null;
 	}
 
+	public Field findFieldLastResort(Type type)
+	{
+		for (Field f : fields)
+		{
+			if (f.getType().equals(type))
+			{
+				return f;
+			}
+		}
+		return null;
+	}
+
 	public Field findField(String name)
 	{
 		for (Field f : fields)

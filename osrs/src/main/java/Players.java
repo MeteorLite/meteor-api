@@ -1,70 +1,78 @@
+import java.awt.Component;
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cw")
+@ObfuscatedName("ck")
 @Implements("Players")
 public class Players {
+	@ObfuscatedName("f")
+	static byte[] field1290;
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "[Lga;"
+	)
+	static class193[] field1291;
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "[Lqq;"
+	)
+	static Buffer[] field1292;
 	@ObfuscatedName("w")
-	static byte[] field1297;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "[Lgi;"
-	)
-	static class192[] field1298;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "[Lqr;"
-	)
-	static Buffer[] field1308;
-	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -2113383221
+		intValue = -1742411547
 	)
 	@Export("Players_count")
 	static int Players_count;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@Export("Players_indices")
 	static int[] Players_indices;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1667275583
+		intValue = 842704609
 	)
 	@Export("Players_emptyIdxCount")
 	static int Players_emptyIdxCount;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@Export("Players_emptyIndices")
 	static int[] Players_emptyIndices;
-	@ObfuscatedName("n")
+	@ObfuscatedName("x")
 	@Export("Players_regions")
 	static int[] Players_regions;
-	@ObfuscatedName("d")
+	@ObfuscatedName("j")
 	@Export("Players_orientations")
 	static int[] Players_orientations;
-	@ObfuscatedName("a")
+	@ObfuscatedName("v")
 	@Export("Players_targetIndices")
 	static int[] Players_targetIndices;
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = -1903883359
+		intValue = 1336760617
 	)
 	@Export("Players_pendingUpdateCount")
 	static int Players_pendingUpdateCount;
-	@ObfuscatedName("u")
+	@ObfuscatedName("t")
 	@Export("Players_pendingUpdateIndices")
 	static int[] Players_pendingUpdateIndices;
-	@ObfuscatedName("l")
+	@ObfuscatedName("u")
 	@ObfuscatedSignature(
-		descriptor = "Lqr;"
+		descriptor = "Lqq;"
 	)
-	static Buffer field1309;
+	static Buffer field1302;
+	@ObfuscatedName("bj")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	@Export("loginType")
+	static LoginType loginType;
 
 	static {
-		field1297 = new byte[2048];
-		field1298 = new class192[2048];
-		field1308 = new Buffer[2048];
+		field1290 = new byte[2048];
+		field1291 = new class193[2048];
+		field1292 = new Buffer[2048];
 		Players_count = 0;
 		Players_indices = new int[2048];
 		Players_emptyIdxCount = 0;
@@ -74,24 +82,41 @@ public class Players {
 		Players_targetIndices = new int[2048];
 		Players_pendingUpdateCount = 0;
 		Players_pendingUpdateIndices = new int[2048];
-		field1309 = new Buffer(new byte[5000]);
+		field1302 = new Buffer(new byte[5000]);
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lch;",
-		garbageValue = "643509029"
+		descriptor = "(Ljava/awt/Component;I)V",
+		garbageValue = "1351614638"
 	)
-	static class83[] method2388() {
-		return new class83[]{class83.field1077, class83.field1073, class83.field1076, class83.field1078, class83.field1074, class83.field1081};
+	static void method2569(Component var0) {
+		var0.removeKeyListener(KeyHandler.KeyHandler_instance);
+		var0.removeFocusListener(KeyHandler.KeyHandler_instance);
+		KeyHandler.field131 = -1;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("hg")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1108116744"
+		descriptor = "(ZI)V",
+		garbageValue = "1280446"
 	)
-	public static boolean method2383(int var0) {
-		return (var0 >> 20 & 1) != 0;
+	static final void method2581(boolean var0) {
+		class14.playPcmPlayers();
+		++Client.packetWriter.pendingWrites;
+		if (Client.packetWriter.pendingWrites >= 50 || var0) {
+			Client.packetWriter.pendingWrites = 0;
+			if (!Client.hadNetworkError && Client.packetWriter.getSocket() != null) {
+				PacketBufferNode var1 = class120.getPacketBufferNode(ClientPacket.field2986, Client.packetWriter.isaacCipher);
+				Client.packetWriter.addNode(var1);
+
+				try {
+					Client.packetWriter.flush();
+				} catch (IOException var3) {
+					Client.hadNetworkError = true;
+				}
+			}
+
+		}
 	}
 }

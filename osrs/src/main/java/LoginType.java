@@ -4,89 +4,101 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pl")
+@ObfuscatedName("pn")
 @Implements("LoginType")
 public class LoginType {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
 	@Export("oldscape")
 	public static final LoginType oldscape;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
-	static final LoginType field4609;
-	@ObfuscatedName("w")
+	static final LoginType field4643;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
-	static final LoginType field4607;
-	@ObfuscatedName("v")
+	static final LoginType field4644;
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
-	static final LoginType field4610;
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	static final LoginType field4612;
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	static final LoginType field4613;
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "Lpl;"
-	)
-	static final LoginType field4611;
+	static final LoginType field4645;
 	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
-	static final LoginType field4614;
-	@ObfuscatedName("o")
+	static final LoginType field4652;
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
-	public static final LoginType field4615;
-	@ObfuscatedName("n")
+	static final LoginType field4647;
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	static final LoginType field4646;
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	static final LoginType field4649;
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Lpn;"
+	)
+	public static final LoginType field4650;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "[Lqu;"
+	)
+	@Export("title_muteSprite")
+	static IndexedSprite[] title_muteSprite;
+	@ObfuscatedName("pp")
+	@ObfuscatedSignature(
+		descriptor = "Lcb;"
+	)
+	@Export("varcs")
+	static Varcs varcs;
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -14950581
+		intValue = 472013381
 	)
-	public final int field4616;
-	@ObfuscatedName("d")
-	final String field4617;
+	public final int field4642;
+	@ObfuscatedName("j")
+	final String field4654;
 
 	static {
-		oldscape = new LoginType(6, 0, "", "");
-		field4609 = new LoginType(0, 1, "", "");
-		field4607 = new LoginType(4, 2, "", "");
-		field4610 = new LoginType(7, 3, "", "");
-		field4612 = new LoginType(3, 4, "", "");
-		field4613 = new LoginType(1, 5, "", "");
-		field4611 = new LoginType(8, 6, "", "");
-		field4614 = new LoginType(5, 7, "", "");
-		field4615 = new LoginType(2, -1, "", "", true, new LoginType[]{oldscape, field4609, field4607, field4612, field4610});
+		oldscape = new LoginType(5, 0, "", "");
+		field4643 = new LoginType(2, 1, "", "");
+		field4644 = new LoginType(3, 2, "", "");
+		field4645 = new LoginType(4, 3, "", "");
+		field4652 = new LoginType(8, 4, "", "");
+		field4647 = new LoginType(7, 5, "", "");
+		field4646 = new LoginType(6, 6, "", "");
+		field4649 = new LoginType(1, 7, "", "");
+		field4650 = new LoginType(0, -1, "", "", true, new LoginType[]{oldscape, field4643, field4644, field4652, field4645});
 	}
 
 	LoginType(int var1, int var2, String var3, String var4) {
-		this.field4616 = var1;
-		this.field4617 = var4;
+		this.field4642 = var1;
+		this.field4654 = var4;
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lpl;)V"
+		descriptor = "(IILjava/lang/String;Ljava/lang/String;Z[Lpn;)V"
 	)
 	LoginType(int var1, int var2, String var3, String var4, boolean var5, LoginType[] var6) {
-		this.field4616 = var1;
-		this.field4617 = var4;
+		this.field4642 = var1;
+		this.field4654 = var4;
 	}
 
 	public String toString() {
-		return this.field4617;
+		return this.field4654;
 	}
 }

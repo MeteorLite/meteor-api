@@ -1,106 +1,163 @@
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("k")
+@ObfuscatedName("q")
 public class class7 {
-	@ObfuscatedName("t")
-	@ObfuscatedGetter(
-		intValue = -1894406353
-	)
-	@Export("canvasWidth")
-	public static int canvasWidth;
-	@ObfuscatedName("hv")
-	@ObfuscatedGetter(
-		intValue = 542116271
-	)
-	@Export("baseY")
-	static int baseY;
-	@ObfuscatedName("ia")
+	@ObfuscatedName("c")
+	ExecutorService field27;
+	@ObfuscatedName("p")
+	Future field22;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "[Lqn;"
+		descriptor = "Lqq;"
 	)
-	@Export("mapMarkerSprites")
-	static SpritePixels[] mapMarkerSprites;
-	@ObfuscatedName("s")
-	ExecutorService field29;
-	@ObfuscatedName("h")
-	Future field25;
-	@ObfuscatedName("w")
+	final Buffer field23;
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lqr;"
+		descriptor = "Ln;"
 	)
-	final Buffer field26;
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Lv;"
-	)
-	final class3 field27;
+	final class3 field24;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;Lv;)V"
+		descriptor = "(Lqq;Ln;)V"
 	)
 	public class7(Buffer var1, class3 var2) {
-		this.field29 = Executors.newSingleThreadExecutor();
-		this.field26 = var1;
-		this.field27 = var2;
-		this.method51();
+		this.field27 = Executors.newSingleThreadExecutor();
+		this.field23 = var1;
+		this.field24 = var2;
+		this.method58();
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(B)Z",
-		garbageValue = "-50"
+		garbageValue = "1"
 	)
-	public boolean method56() {
-		return this.field25.isDone();
+	public boolean method51() {
+		return this.field22.isDone();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-230299666"
+		garbageValue = "1794518613"
 	)
-	public void method49() {
-		this.field29.shutdown();
-		this.field29 = null;
+	public void method52() {
+		this.field27.shutdown();
+		this.field27 = null;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lqr;",
-		garbageValue = "-4"
+		descriptor = "(B)Lqq;",
+		garbageValue = "68"
 	)
-	public Buffer method48() {
+	public Buffer method55() {
 		try {
-			return (Buffer)this.field25.get();
+			return (Buffer)this.field22.get();
 		} catch (Exception var2) {
 			return null;
 		}
 	}
 
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1069539596"
-	)
-	void method51() {
-		this.field25 = this.field29.submit(new class1(this, this.field26, this.field27));
-	}
-
-	@ObfuscatedName("fa")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
 		descriptor = "(B)V",
-		garbageValue = "68"
+		garbageValue = "-109"
 	)
-	static void method60() {
-		if (ClientPacket.worldMap != null) {
-			ClientPacket.worldMap.method7130(class268.Client_plane, Decimator.baseX * 64 + (ScriptFrame.localPlayer.x >> 7), baseY * 64 + (ScriptFrame.localPlayer.y >> 7), false);
-			ClientPacket.worldMap.loadCache();
+	void method58() {
+		this.field22 = this.field27.submit(new class1(this, this.field23, this.field24));
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lkg;",
+		garbageValue = "1957950782"
+	)
+	public static GameBuild[] method59() {
+		return new GameBuild[]{GameBuild.BUILDLIVE, GameBuild.LIVE, GameBuild.RC, GameBuild.WIP};
+	}
+
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "(Llv;B)V",
+		garbageValue = "-126"
+	)
+	public static void method69(AbstractArchive var0) {
+		EnumComposition.EnumDefinition_archive = var0;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "1939268693"
+	)
+	static void method68() {
+		class139.method3101(24);
+		SecureRandomCallable.setLoginResponseString("", "You were disconnected from the server.", "");
+	}
+
+	@ObfuscatedName("ga")
+	@ObfuscatedSignature(
+		descriptor = "(III)V",
+		garbageValue = "2127754023"
+	)
+	static final void method67(int var0, int var1) {
+		if (var0 < 128) {
+			var0 = 128;
+		}
+
+		if (var0 > 383) {
+			var0 = 383;
+		}
+
+		if (class163.cameraPitch < var0) {
+			class163.cameraPitch = (var0 - class163.cameraPitch) * class93.field1270 / 1000 + class163.cameraPitch + SoundSystem.field327;
+			if (class163.cameraPitch > var0) {
+				class163.cameraPitch = var0;
+			}
+		}
+
+		if (class163.cameraPitch > var0) {
+			class163.cameraPitch -= (class163.cameraPitch - var0) * class93.field1270 / 1000 + SoundSystem.field327;
+			if (class163.cameraPitch < var0) {
+				class163.cameraPitch = var0;
+			}
+		}
+
+		int var2 = var1 - class10.cameraYaw;
+		if (var2 > 1024) {
+			var2 -= 2048;
+		}
+
+		if (var2 < -1024) {
+			var2 += 2048;
+		}
+
+		if (var2 > 0) {
+			class10.cameraYaw = class10.cameraYaw + SoundSystem.field327 + var2 * class93.field1270 / 1000;
+			class10.cameraYaw &= 2047;
+		}
+
+		if (var2 < 0) {
+			class10.cameraYaw -= SoundSystem.field327 + -var2 * class93.field1270 / 1000;
+			class10.cameraYaw &= 2047;
+		}
+
+		int var3 = var1 - class10.cameraYaw;
+		if (var3 > 1024) {
+			var3 -= 2048;
+		}
+
+		if (var3 < -1024) {
+			var3 += 2048;
+		}
+
+		if (var3 < 0 && var2 > 0 || var3 > 0 && var2 < 0) {
+			class10.cameraYaw = var1;
 		}
 
 	}

@@ -4,35 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fo")
+@ObfuscatedName("fy")
 @Implements("HorizontalAlignment")
 public enum HorizontalAlignment implements MouseWheel {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lfo;"
+		descriptor = "Lfy;"
 	)
-	field1898(1, 0),
-	@ObfuscatedName("h")
+	field1921(1, 0),
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lfo;"
+		descriptor = "Lfy;"
 	)
 	@Export("HorizontalAlignment_centered")
-	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("w")
+	HorizontalAlignment_centered(2, 1),
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lfo;"
+		descriptor = "Lfy;"
 	)
-	field1895(2, 2);
+	field1927(0, 2);
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("ek")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	static Archive field1926;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -682238819
+		intValue = 1423068571
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 928621237
+		intValue = 2111839571
 	)
 	@Export("id")
 	final int id;
@@ -42,30 +47,13 @@ public enum HorizontalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "104"
+		garbageValue = "1"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
-	}
-
-	@ObfuscatedName("eu")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-943359452"
-	)
-	static final void method3399() {
-		if (class4.field13) {
-			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-				Player var1 = Client.players[Players.Players_indices[var0]];
-				var1.method2134();
-			}
-
-			class4.field13 = false;
-		}
-
 	}
 }

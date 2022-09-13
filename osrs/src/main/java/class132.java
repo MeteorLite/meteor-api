@@ -1,162 +1,101 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ek")
-public class class132 extends class128 {
-	@ObfuscatedName("mt")
+@ObfuscatedName("eo")
+public class class132 {
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -785479869
+		longValue = -6674799221148244799L
 	)
-	@Export("menuWidth")
-	static int menuWidth;
-	@ObfuscatedName("s")
+	long field1581;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1004156633
+		intValue = 304285101
 	)
-	int field1566;
-	@ObfuscatedName("h")
-	byte field1562;
-	// $FF: synthetic field
+	int field1576;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Llz;"
 	)
-	final class131 this$0;
+	IterableNodeDeque field1577;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lei;)V"
+		descriptor = "(Lqq;)V"
 	)
-	class132(class131 var1) {
-		this.this$0 = var1;
-		this.field1566 = -1;
+	public class132(Buffer var1) {
+		this.field1576 = -1;
+		this.field1577 = new IterableNodeDeque();
+		this.method3030(var1);
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "-885940784"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-2121541233"
 	)
-	void vmethod3087(Buffer var1) {
-		this.field1566 = var1.readUnsignedShort();
-		this.field1562 = var1.readByte();
-	}
+	void method3030(Buffer var1) {
+		this.field1581 = var1.readLong();
+		this.field1576 = var1.readInt();
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Leh;B)V",
-		garbageValue = "0"
-	)
-	void vmethod3084(ClanSettings var1) {
-		var1.method2910(this.field1566, this.field1562);
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/String;[SIII)V",
-		garbageValue = "-1978534658"
-	)
-	@Export("sortItemsByName")
-	public static void sortItemsByName(String[] var0, short[] var1, int var2, int var3) {
-		if (var2 < var3) {
-			int var4 = (var3 + var2) / 2;
-			int var5 = var2;
-			String var6 = var0[var4];
-			var0[var4] = var0[var3];
-			var0[var3] = var6;
-			short var7 = var1[var4];
-			var1[var4] = var1[var3];
-			var1[var3] = var7;
-
-			for (int var8 = var2; var8 < var3; ++var8) {
-				if (var6 == null || var0[var8] != null && var0[var8].compareTo(var6) < (var8 & 1)) {
-					String var9 = var0[var8];
-					var0[var8] = var0[var5];
-					var0[var5] = var9;
-					short var10 = var1[var8];
-					var1[var8] = var1[var5];
-					var1[var5++] = var10;
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 3) {
+				var3 = new class151(this);
+			} else if (var2 == 1) {
+				var3 = new class127(this);
+			} else if (var2 == 13) {
+				var3 = new class144(this);
+			} else if (var2 == 4) {
+				var3 = new class136(this);
+			} else if (var2 == 6) {
+				var3 = new class143(this);
+			} else if (var2 == 5) {
+				var3 = new class128(this);
+			} else if (var2 == 2) {
+				var3 = new class133(this);
+			} else if (var2 == 7) {
+				var3 = new class126(this);
+			} else if (var2 == 14) {
+				var3 = new class130(this);
+			} else if (var2 == 8) {
+				var3 = new class147(this);
+			} else if (var2 == 9) {
+				var3 = new class153(this);
+			} else if (var2 == 10) {
+				var3 = new class139(this);
+			} else if (var2 == 11) {
+				var3 = new class134(this);
+			} else if (var2 == 12) {
+				var3 = new class138(this);
+			} else {
+				if (var2 != 15) {
+					throw new RuntimeException("");
 				}
+
+				var3 = new class148(this);
 			}
 
-			var0[var3] = var0[var5];
-			var0[var5] = var6;
-			var1[var3] = var1[var5];
-			var1[var5] = var7;
-			sortItemsByName(var0, var1, var2, var5 - 1);
-			sortItemsByName(var0, var1, var5 + 1, var3);
+			((class129)var3).vmethod3320(var1);
+			this.field1577.addFirst((Node)var3);
 		}
 
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lpm;ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "-101"
+		descriptor = "(Led;B)V",
+		garbageValue = "-61"
 	)
-	static String method2837(IterableNodeHashTable var0, int var1, String var2) {
-		if (var0 == null) {
-			return var2;
+	public void method3028(ClanSettings var1) {
+		if (var1.field1626 == this.field1581 && this.field1576 == var1.field1630) {
+			for (class129 var2 = (class129)this.field1577.last(); var2 != null; var2 = (class129)this.field1577.previous()) {
+				var2.vmethod3313(var1);
+			}
+
+			++var1.field1630;
 		} else {
-			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-			return var3 == null ? var2 : (String)var3.obj;
+			throw new RuntimeException("");
 		}
-	}
-
-	@ObfuscatedName("fh")
-	@ObfuscatedSignature(
-		descriptor = "(ZS)V",
-		garbageValue = "-13470"
-	)
-	@Export("addNpcsToScene")
-	static final void addNpcsToScene(boolean var0) {
-		for (int var1 = 0; var1 < Client.npcCount; ++var1) {
-			NPC var2 = Client.npcs[Client.npcIndices[var1]];
-			if (var2 != null && var2.isVisible() && var2.definition.isVisible == var0 && var2.definition.transformIsVisible()) {
-				int var3 = var2.x >> 7;
-				int var4 = var2.y >> 7;
-				if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
-					if (var2.field1190 * -1671884800 == 1 && (var2.x & 127) == 64 && (var2.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var3][var4] == Client.viewportDrawCount) {
-							continue;
-						}
-
-						Client.tileLastDrawnActor[var3][var4] = Client.viewportDrawCount;
-					}
-
-					long var5 = FloorDecoration.calculateTag(0, 0, 1, !var2.definition.isInteractable, Client.npcIndices[var1]);
-					var2.playerCycle = Client.cycle;
-					class12.scene.drawEntity(class268.Client_plane, var2.x, var2.y, ObjectComposition.getTileHeight(var2.field1190 * 373555200 - 64 + var2.x, var2.field1190 * 373555200 - 64 + var2.y, class268.Client_plane), var2.field1190 * 373555200 - 64 + 60, var2, var2.rotation, var5, var2.isWalking);
-				}
-			}
-		}
-
-	}
-
-	@ObfuscatedName("jv")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-12232330"
-	)
-	static final void method2838(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		ClanMate.clientPreferences.method2225(var0);
-	}
-
-	@ObfuscatedName("kb")
-	@ObfuscatedSignature(
-		descriptor = "(Lqr;IB)V",
-		garbageValue = "19"
-	)
-	static void method2828(Buffer var0, int var1) {
-		Actor.method2148(var0.array, var1);
-		if (JagexCache.JagexCache_randomDat != null) {
-			try {
-				JagexCache.JagexCache_randomDat.seek(0L);
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-			} catch (Exception var3) {
-			}
-		}
-
 	}
 }

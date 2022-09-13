@@ -300,8 +300,8 @@ public class InjectHook extends AbstractInjector
 
 	private void injectCallbackBefore(Instructions ins, int idx, HookInfo hookInfo, StackContext index, StackContext object, StackContext value)
 	{
-		Signature signature = hookInfo.method.getDescriptor();
-		Type methodArgumentType = signature.getTypeOfArg(0);
+		Signature descriptor = hookInfo.method.getDescriptor();
+		Type methodArgumentType = descriptor.getTypeOfArg(0);
 
 		if (!hookInfo.method.isStatic())
 		{

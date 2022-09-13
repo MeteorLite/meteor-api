@@ -31,30 +31,35 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import meteor.Logger;
 import net.runelite.http.api.RuneLiteAPI;
+import net.runelite.http.api.worlds.WorldResult;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import meteor.Logger;
+
 
 @RequiredArgsConstructor
 public class WorldClient
 {
 	private final OkHttpClient client;
-	private Logger log = Logger.Companion.getLogger(WorldClient.class);
+	private final HttpUrl apiBase = RuneLiteAPI.getApiBase();
+
+	public final Logger log = new Logger("World Client");
 
 	public WorldResult lookupWorlds() throws IOException
 	{
-		HttpUrl url = RuneLiteAPI.getApiBase().newBuilder()
-						.addPathSegment("worlds.js")
-						.build();
+		HttpUrl url = apiBase.newBuilder()
+			.addPathSegment("worlds.js")
+			.build();
 
-		log.warn("Requesting URI: {}", url);
+		log.debug("Built URI: {}", url);
 
 		Request request = new Request.Builder()
-						.url(url)
-						.build();
+			.url(url)
+			.build();
 
 		try (Response response = client.newCall(request).execute())
 		{

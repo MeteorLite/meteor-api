@@ -1,97 +1,69 @@
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("r")
+@ObfuscatedName("b")
 public class class16 implements ThreadFactory {
-	@ObfuscatedName("il")
+	@ObfuscatedName("su")
 	@ObfuscatedSignature(
-		descriptor = "Lqn;"
+		descriptor = "Lam;"
 	)
-	@Export("compass")
-	static SpritePixels compass;
-	@ObfuscatedName("jq")
-	@ObfuscatedGetter(
-		intValue = -1423106171
-	)
-	@Export("cameraX")
-	static int cameraX;
-	@ObfuscatedName("lk")
-	@ObfuscatedSignature(
-		descriptor = "Lkn;"
-	)
-	@Export("dragInventoryWidget")
-	static Widget dragInventoryWidget;
-	@ObfuscatedName("s")
-	final ThreadGroup field84;
-	@ObfuscatedName("h")
-	final AtomicInteger field83;
+	@Export("pcmStreamMixer")
+	static PcmStreamMixer pcmStreamMixer;
+	@ObfuscatedName("c")
+	final ThreadGroup field89;
+	@ObfuscatedName("p")
+	final AtomicInteger field87;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Ll;"
+		descriptor = "Lu;"
 	)
 	final class14 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ll;)V"
+		descriptor = "(Lu;)V"
 	)
 	class16(class14 var1) {
 		this.this$0 = var1;
-		this.field83 = new AtomicInteger(1);
+		this.field87 = new AtomicInteger(1);
 		SecurityManager var2 = System.getSecurityManager();
-		this.field84 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
+		this.field89 = var2 != null ? var2.getThreadGroup() : Thread.currentThread().getThreadGroup();
 	}
 
 	public Thread newThread(Runnable var1) {
-		Thread var2 = new Thread(this.field84, var1, this.this$0.field78 + "-rest-request-" + this.field83.getAndIncrement(), 0L);
+		Thread var2 = new Thread(this.field89, var1, this.this$0.field78 + "-rest-request-" + this.field87.getAndIncrement(), 0L);
 		var2.setDaemon(true);
 		var2.setPriority(5);
 		return var2;
 	}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-1187318424"
-	)
-	public static boolean method204(char var0) {
-		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
-			if (var0 != 0) {
-				char[] var1 = class341.cp1252AsciiExtension;
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					char var3 = var1[var2];
-					if (var0 == var3) {
-						return true;
-					}
-				}
-			}
-
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	@ObfuscatedName("h")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
 		descriptor = "(III)I",
-		garbageValue = "1866345097"
+		garbageValue = "1453675384"
 	)
-	static int method203(int var0, int var1) {
+	static int method217(int var0, int var1) {
+		long var2 = (long)((var0 << 16) + var1);
+		return class135.NetCache_currentResponse != null && class135.NetCache_currentResponse.key == var2 ? class20.NetCache_responseArchiveBuffer.offset * 99 / (class20.NetCache_responseArchiveBuffer.array.length - class135.NetCache_currentResponse.padding) + 1 : 0;
+	}
+
+	@ObfuscatedName("l")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1688709395"
+	)
+	static final int method216(int var0, int var1) {
 		if (var0 == -2) {
 			return 12345678;
 		} else if (var0 == -1) {
-			if (var1 < 0) {
-				var1 = 0;
-			} else if (var1 > 127) {
-				var1 = 127;
+			if (var1 < 2) {
+				var1 = 2;
+			} else if (var1 > 126) {
+				var1 = 126;
 			}
 
-			var1 = 127 - var1;
 			return var1;
 		} else {
 			var1 = (var0 & 127) * var1 / 128;
@@ -105,27 +77,84 @@ public class class16 implements ThreadFactory {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("as")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-476601149"
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "-78"
 	)
-	public static int method205(int var0) {
-		return class402.field4444[var0 & 16383];
-	}
+	static int method215(int var0, Script var1, boolean var2) {
+		int var3;
+		int var6;
+		int var9;
+		if (var0 == 3400) {
+			Interpreter.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			EnumComposition var10 = PlayerComposition.getEnum(var3);
+			if (var10.outputType != 's') {
+			}
 
-	@ObfuscatedName("o")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1785411411"
-	)
-	@Export("Messages_getLastChatID")
-	static int Messages_getLastChatID(int var0) {
-		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
-		if (var1 == null) {
-			return -1;
+			for (var6 = 0; var6 < var10.outputCount; ++var6) {
+				if (var9 == var10.keys[var6]) {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var10.strVals[var6];
+					var10 = null;
+					break;
+				}
+			}
+
+			if (var10 != null) {
+				Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var10.defaultStr;
+			}
+
+			return 1;
+		} else if (var0 != 3408) {
+			if (var0 == 3411) {
+				var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+				EnumComposition var4 = PlayerComposition.getEnum(var3);
+				Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var4.size();
+				return 1;
+			} else {
+				return 2;
+			}
 		} else {
-			return var1.previousDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.previousDual).count;
+			Interpreter.Interpreter_intStackSize -= 4;
+			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
+			var9 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
+			int var5 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 2];
+			var6 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 3];
+			EnumComposition var7 = PlayerComposition.getEnum(var5);
+			if (var3 == var7.inputType && var9 == var7.outputType) {
+				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
+					if (var6 == var7.keys[var8]) {
+						if (var9 == 115) {
+							Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var7.strVals[var8];
+						} else {
+							Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.intVals[var8];
+						}
+
+						var7 = null;
+						break;
+					}
+				}
+
+				if (var7 != null) {
+					if (var9 == 115) {
+						Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var7.defaultStr;
+					} else {
+						Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var7.defaultInt;
+					}
+				}
+
+				return 1;
+			} else {
+				if (var9 == 115) {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = "null";
+				} else {
+					Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = 0;
+				}
+
+				return 1;
+			}
 		}
 	}
 }

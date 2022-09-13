@@ -1,33 +1,23 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nl")
+@ObfuscatedName("ne")
 @Implements("Friend")
 public class Friend extends Buddy {
-	@ObfuscatedName("en")
-	@ObfuscatedSignature(
-		descriptor = "Lln;"
-	)
-	@Export("archive20")
-	static Archive archive20;
-	@ObfuscatedName("s")
-	boolean field4294;
-	@ObfuscatedName("h")
-	boolean field4293;
+	@ObfuscatedName("c")
+	boolean field4339;
+	@ObfuscatedName("p")
+	boolean field4340;
 
 	Friend() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnl;I)I",
-		garbageValue = "-1549435031"
+		descriptor = "(Lne;I)I",
+		garbageValue = "596588464"
 	)
 	@Export("compareToFriend")
 	int compareToFriend(Friend var1) {
@@ -39,23 +29,23 @@ public class Friend extends Buddy {
 			return -1;
 		} else if (var1.world != 0 && super.world == 0) {
 			return 1;
-		} else if (this.field4294 && !var1.field4294) {
+		} else if (this.field4339 && !var1.field4339) {
 			return -1;
-		} else if (!this.field4294 && var1.field4294) {
+		} else if (!this.field4339 && var1.field4339) {
 			return 1;
-		} else if (this.field4293 && !var1.field4293) {
+		} else if (this.field4340 && !var1.field4340) {
 			return -1;
-		} else if (!this.field4293 && var1.field4293) {
+		} else if (!this.field4340 && var1.field4340) {
 			return 1;
 		} else {
 			return super.world != 0 ? super.int2 - var1.int2 : var1.int2 - super.int2;
 		}
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lnb;I)I",
-		garbageValue = "1550816169"
+		descriptor = "(Lnc;I)I",
+		garbageValue = "-1401768476"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -66,29 +56,56 @@ public class Friend extends Buddy {
 		return this.compareToFriend((Friend)var1);
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("ii")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljava/util/Date;",
-		garbageValue = "-16"
+		descriptor = "(III)V",
+		garbageValue = "-2137951637"
 	)
-	static Date method6595() throws ParseException {
-		SimpleDateFormat var0 = new SimpleDateFormat("ddMMyyyyHH", Locale.ENGLISH);
-		var0.setLenient(false);
-		StringBuilder var1 = new StringBuilder();
-		String[] var2 = Login.field892;
+	@Export("updateItemPile")
+	static final void updateItemPile(int var0, int var1) {
+		NodeDeque var2 = Client.groundItems[Tiles.Client_plane][var0][var1];
+		if (var2 == null) {
+			MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1);
+		} else {
+			long var3 = -99999999L;
+			TileItem var5 = null;
 
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			String var4 = var2[var3];
-			if (var4 == null) {
-				class116.method2683(7);
-				ItemComposition.setLoginResponseString("Date not valid.", "Please ensure all characters are populated.", "");
-				return null;
+			TileItem var6;
+			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+				ItemComposition var7 = UserComparator3.ItemDefinition_get(var6.id);
+				long var11 = (long)var7.price;
+				if (var7.isStackable == 1) {
+					var11 *= (long)(var6.quantity + 1);
+				}
+
+				if (var11 > var3) {
+					var3 = var11;
+					var5 = var6;
+				}
 			}
 
-			var1.append(var4);
-		}
+			if (var5 == null) {
+				MusicPatchNode.scene.removeGroundItemPile(Tiles.Client_plane, var0, var1);
+			} else {
+				var2.addLast(var5);
+				TileItem var13 = null;
+				TileItem var8 = null;
 
-		var1.append("12");
-		return var0.parse(var1.toString());
+				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
+					if (var6.id != var5.id) {
+						if (var13 == null) {
+							var13 = var6;
+						}
+
+						if (var13.id != var6.id && var8 == null) {
+							var8 = var6;
+						}
+					}
+				}
+
+				long var9 = class259.calculateTag(var0, var1, 3, false, 0);
+				MusicPatchNode.scene.newGroundItemPile(Tiles.Client_plane, var0, var1, class120.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, Tiles.Client_plane), var5, var9, var13, var8);
+			}
+		}
 	}
 }

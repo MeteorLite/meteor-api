@@ -4,140 +4,134 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gg")
+@ObfuscatedName("gf")
 @Implements("Tile")
 public final class Tile extends Node {
-	@ObfuscatedName("to")
+	@ObfuscatedName("pq")
 	@ObfuscatedGetter(
-		intValue = 1625689069
+		intValue = -1447414295
 	)
-	static int field2309;
-	@ObfuscatedName("ey")
-	@ObfuscatedSignature(
-		descriptor = "Lln;"
-	)
-	@Export("archive19")
-	static Archive archive19;
-	@ObfuscatedName("s")
+	static int field2344;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 310315191
+		intValue = 1115103641
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1042449253
+		intValue = -1271850871
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1729743891
+		intValue = 622993199
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1166615343
+		intValue = 377528605
 	)
 	@Export("originalPlane")
 	int originalPlane;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lha;"
+		descriptor = "Lhj;"
 	)
 	@Export("paint")
 	SceneTilePaint paint;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lhf;"
+		descriptor = "Lhm;"
 	)
 	@Export("model")
 	SceneTileModel model;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lhn;"
+		descriptor = "Lhc;"
 	)
 	@Export("boundaryObject")
 	BoundaryObject boundaryObject;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "Lhk;"
+		descriptor = "Lhu;"
 	)
 	@Export("wallDecoration")
 	WallDecoration wallDecoration;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@ObfuscatedSignature(
-		descriptor = "Lgk;"
+		descriptor = "Lgi;"
 	)
 	@Export("floorDecoration")
 	FloorDecoration floorDecoration;
-	@ObfuscatedName("n")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "Lgv;"
+		descriptor = "Lgc;"
 	)
 	@Export("itemLayer")
 	ItemLayer itemLayer;
-	@ObfuscatedName("d")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -586782739
+		intValue = 1915552999
 	)
 	@Export("gameObjectsCount")
 	int gameObjectsCount;
-	@ObfuscatedName("a")
+	@ObfuscatedName("v")
 	@ObfuscatedSignature(
-		descriptor = "[Lhe;"
+		descriptor = "[Lhd;"
 	)
 	@Export("gameObjects")
 	GameObject[] gameObjects;
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
 	@Export("gameObjectEdgeMasks")
 	int[] gameObjectEdgeMasks;
-	@ObfuscatedName("u")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1285794361
+		intValue = 713976971
 	)
 	@Export("gameObjectsEdgeMask")
 	int gameObjectsEdgeMask;
-	@ObfuscatedName("l")
+	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1656859021
+		intValue = -1676001773
 	)
 	@Export("minPlane")
 	int minPlane;
-	@ObfuscatedName("z")
+	@ObfuscatedName("d")
 	@Export("drawPrimary")
 	boolean drawPrimary;
-	@ObfuscatedName("r")
+	@ObfuscatedName("b")
 	@Export("drawSecondary")
 	boolean drawSecondary;
-	@ObfuscatedName("y")
+	@ObfuscatedName("a")
 	@Export("drawGameObjects")
 	boolean drawGameObjects;
-	@ObfuscatedName("p")
+	@ObfuscatedName("l")
 	@ObfuscatedGetter(
-		intValue = -356982793
+		intValue = -952901597
 	)
 	@Export("drawGameObjectEdges")
 	int drawGameObjectEdges;
 	@ObfuscatedName("e")
 	@ObfuscatedGetter(
-		intValue = 1340907321
+		intValue = 879436659
 	)
-	int field2328;
-	@ObfuscatedName("b")
+	int field2363;
+	@ObfuscatedName("g")
 	@ObfuscatedGetter(
-		intValue = 1070411147
+		intValue = 324890351
 	)
-	int field2329;
-	@ObfuscatedName("x")
+	int field2364;
+	@ObfuscatedName("y")
 	@ObfuscatedGetter(
-		intValue = -661116225
+		intValue = 2010185507
 	)
-	int field2330;
-	@ObfuscatedName("f")
+	int field2365;
+	@ObfuscatedName("i")
 	@ObfuscatedSignature(
-		descriptor = "Lgg;"
+		descriptor = "Lgf;"
 	)
 	@Export("linkedBelowTile")
 	Tile linkedBelowTile;
@@ -151,70 +145,132 @@ public final class Tile extends Node {
 		this.y = var3;
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("gb")
 	@ObfuscatedSignature(
-		descriptor = "(IIIB)I",
-		garbageValue = "67"
+		descriptor = "(IIIB)V",
+		garbageValue = "-9"
 	)
-	public static int method3935(int var0, int var1, int var2) {
-		int var3 = class14.method171(var2 - var1 + 1);
-		var3 <<= var1;
-		var0 |= var3;
-		return var0;
+	static final void method4128(int var0, int var1, int var2) {
+		if (TaskHandler.cameraX < var0) {
+			TaskHandler.cameraX = (var0 - TaskHandler.cameraX) * UserComparator6.field1398 / 1000 + TaskHandler.cameraX + ObjectSound.field832;
+			if (TaskHandler.cameraX > var0) {
+				TaskHandler.cameraX = var0;
+			}
+		}
+
+		if (TaskHandler.cameraX > var0) {
+			TaskHandler.cameraX -= (TaskHandler.cameraX - var0) * UserComparator6.field1398 / 1000 + ObjectSound.field832;
+			if (TaskHandler.cameraX < var0) {
+				TaskHandler.cameraX = var0;
+			}
+		}
+
+		if (SecureRandomFuture.cameraY < var1) {
+			SecureRandomFuture.cameraY = (var1 - SecureRandomFuture.cameraY) * UserComparator6.field1398 / 1000 + SecureRandomFuture.cameraY + ObjectSound.field832;
+			if (SecureRandomFuture.cameraY > var1) {
+				SecureRandomFuture.cameraY = var1;
+			}
+		}
+
+		if (SecureRandomFuture.cameraY > var1) {
+			SecureRandomFuture.cameraY -= (SecureRandomFuture.cameraY - var1) * UserComparator6.field1398 / 1000 + ObjectSound.field832;
+			if (SecureRandomFuture.cameraY < var1) {
+				SecureRandomFuture.cameraY = var1;
+			}
+		}
+
+		if (ApproximateRouteStrategy.cameraZ < var2) {
+			ApproximateRouteStrategy.cameraZ = (var2 - ApproximateRouteStrategy.cameraZ) * UserComparator6.field1398 / 1000 + ApproximateRouteStrategy.cameraZ + ObjectSound.field832;
+			if (ApproximateRouteStrategy.cameraZ > var2) {
+				ApproximateRouteStrategy.cameraZ = var2;
+			}
+		}
+
+		if (ApproximateRouteStrategy.cameraZ > var2) {
+			ApproximateRouteStrategy.cameraZ -= (ApproximateRouteStrategy.cameraZ - var2) * UserComparator6.field1398 / 1000 + ObjectSound.field832;
+			if (ApproximateRouteStrategy.cameraZ < var2) {
+				ApproximateRouteStrategy.cameraZ = var2;
+			}
+		}
+
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("ku")
 	@ObfuscatedSignature(
-		descriptor = "(Lls;IIB)Z",
-		garbageValue = "127"
+		descriptor = "([Lkw;II)V",
+		garbageValue = "-468512104"
 	)
-	public static boolean method3937(AbstractArchive var0, int var1, int var2) {
-		byte[] var3 = var0.takeFile(var1, var2);
-		if (var3 == null) {
-			return false;
-		} else {
-			class117.SpriteBuffer_decode(var3);
-			return true;
-		}
-	}
+	@Export("drawModelComponents")
+	static final void drawModelComponents(Widget[] var0, int var1) {
+		for (int var2 = 0; var2 < var0.length; ++var2) {
+			Widget var3 = var0[var2];
+			if (var3 != null && var3.parentId == var1 && (!var3.isIf3 || !class11.isComponentHidden(var3))) {
+				if (var3.type == 0) {
+					if (!var3.isIf3 && class11.isComponentHidden(var3) && var3 != class148.mousedOverWidgetIf1) {
+						continue;
+					}
 
-	@ObfuscatedName("a")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "401867522"
-	)
-	static final void method3936() {
-		if (!ViewportMouse.ViewportMouse_false0) {
-			int var0 = Scene.Scene_cameraPitchSine;
-			int var1 = Scene.Scene_cameraPitchCosine;
-			int var2 = Scene.Scene_cameraYawSine;
-			int var3 = Scene.Scene_cameraYawCosine;
-			byte var4 = 50;
-			short var5 = 3500;
-			int var6 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var4 / Rasterizer3D.Rasterizer3D_zoom;
-			int var7 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var4 / Rasterizer3D.Rasterizer3D_zoom;
-			int var8 = (ViewportMouse.ViewportMouse_x - Rasterizer3D.Rasterizer3D_clipMidX) * var5 / Rasterizer3D.Rasterizer3D_zoom;
-			int var9 = (ViewportMouse.ViewportMouse_y - Rasterizer3D.Rasterizer3D_clipMidY) * var5 / Rasterizer3D.Rasterizer3D_zoom;
-			int var10 = Rasterizer3D.method3944(var7, var4, var1, var0);
-			int var11 = Rasterizer3D.method3965(var7, var4, var1, var0);
-			var7 = var10;
-			var10 = Rasterizer3D.method3944(var9, var5, var1, var0);
-			int var12 = Rasterizer3D.method3965(var9, var5, var1, var0);
-			var9 = var10;
-			var10 = Rasterizer3D.method3945(var6, var11, var3, var2);
-			var11 = Rasterizer3D.method3963(var6, var11, var3, var2);
-			var6 = var10;
-			var10 = Rasterizer3D.method3945(var8, var12, var3, var2);
-			var12 = Rasterizer3D.method3963(var8, var12, var3, var2);
-			class141.field1634 = (var10 + var6) / 2;
-			ViewportMouse.field2593 = (var7 + var9) / 2;
-			class143.field1639 = (var12 + var11) / 2;
-			SoundCache.field322 = (var10 - var6) / 2;
-			WorldMapCacheName.field2870 = (var9 - var7) / 2;
-			ViewportMouse.field2599 = (var12 - var11) / 2;
-			UrlRequest.field1355 = Math.abs(SoundCache.field322);
-			class123.field1517 = Math.abs(WorldMapCacheName.field2870);
-			class150.field1677 = Math.abs(ViewportMouse.field2599);
+					drawModelComponents(var0, var3.id);
+					if (var3.children != null) {
+						drawModelComponents(var3.children, var3.id);
+					}
+
+					InterfaceParent var4 = (InterfaceParent)Client.interfaceParents.get((long)var3.id);
+					if (var4 != null) {
+						class260.method5339(var4.group);
+					}
+				}
+
+				if (var3.type == 6) {
+					int var5;
+					if (var3.sequenceId != -1 || var3.sequenceId2 != -1) {
+						boolean var8 = class264.runCs1(var3);
+						if (var8) {
+							var5 = var3.sequenceId2;
+						} else {
+							var5 = var3.sequenceId;
+						}
+
+						if (var5 != -1) {
+							SequenceDefinition var6 = class4.SequenceDefinition_get(var5);
+							if (!var6.isCachedModelIdSet()) {
+								for (var3.modelFrameCycle += Client.field743; var3.modelFrameCycle > var6.frameLengths[var3.modelFrame]; class403.invalidateWidget(var3)) {
+									var3.modelFrameCycle -= var6.frameLengths[var3.modelFrame];
+									++var3.modelFrame;
+									if (var3.modelFrame >= var6.frameIds.length) {
+										var3.modelFrame -= var6.frameCount;
+										if (var3.modelFrame < 0 || var3.modelFrame >= var6.frameIds.length) {
+											var3.modelFrame = 0;
+										}
+									}
+								}
+							} else {
+								var3.modelFrame += Client.field743;
+								int var7 = var6.method3950();
+								if (var3.modelFrame >= var7) {
+									var3.modelFrame -= var6.frameCount;
+									if (var3.modelFrame < 0 || var3.modelFrame >= var7) {
+										var3.modelFrame = 0;
+									}
+								}
+
+								class403.invalidateWidget(var3);
+							}
+						}
+					}
+
+					if (var3.field3451 != 0 && !var3.isIf3) {
+						int var9 = var3.field3451 >> 16;
+						var5 = var3.field3451 << 16 >> 16;
+						var9 *= Client.field743;
+						var5 *= Client.field743;
+						var3.modelAngleX = var9 + var3.modelAngleX & 2047;
+						var3.modelAngleY = var5 + var3.modelAngleY & 2047;
+						class403.invalidateWidget(var3);
+					}
+				}
+			}
 		}
+
 	}
 }

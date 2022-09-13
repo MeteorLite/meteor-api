@@ -4,38 +4,38 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lw")
+@ObfuscatedName("lp")
 @Implements("IterableNodeDequeDescendingIterator")
 public class IterableNodeDequeDescendingIterator implements Iterator {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Llx;"
+		descriptor = "Llz;"
 	)
 	@Export("deque")
 	IterableNodeDeque deque;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lov;"
 	)
-	Node field4127;
-	@ObfuscatedName("w")
+	Node field4169;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lon;"
+		descriptor = "Lov;"
 	)
 	@Export("last")
 	Node last;
 
 	@ObfuscatedSignature(
-		descriptor = "(Llx;)V"
+		descriptor = "(Llz;)V"
 	)
 	IterableNodeDequeDescendingIterator(IterableNodeDeque var1) {
 		this.last = null;
 		this.setDeque(var1);
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Llx;)V"
+		descriptor = "(Llz;)V"
 	)
 	@Export("setDeque")
 	void setDeque(IterableNodeDeque var1) {
@@ -43,29 +43,20 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 		this.start();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@Export("start")
 	void start() {
-		this.field4127 = this.deque != null ? this.deque.sentinel.previous : null;
+		this.field4169 = this.deque != null ? this.deque.sentinel.previous : null;
 		this.last = null;
 	}
 
-	public void remove() {
-		if (this.last == null) {
-			throw new IllegalStateException();
-		} else {
-			this.last.remove();
-			this.last = null;
-		}
-	}
-
 	public Object next() {
-		Node var1 = this.field4127;
+		Node var1 = this.field4169;
 		if (var1 == this.deque.sentinel) {
 			var1 = null;
-			this.field4127 = null;
+			this.field4169 = null;
 		} else {
-			this.field4127 = var1.previous;
+			this.field4169 = var1.previous;
 		}
 
 		this.last = var1;
@@ -73,6 +64,11 @@ public class IterableNodeDequeDescendingIterator implements Iterator {
 	}
 
 	public boolean hasNext() {
-		return this.deque.sentinel != this.field4127 && this.field4127 != null;
+		return this.deque.sentinel != this.field4169 && this.field4169 != null;
+	}
+
+	public void remove() {
+		this.last.remove();
+		this.last = null;
 	}
 }

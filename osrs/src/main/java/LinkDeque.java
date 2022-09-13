@@ -1,74 +1,66 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ly")
-@Implements("LinkDeque")
+@ObfuscatedName("mx")
 public class LinkDeque {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Loy;"
 	)
-	@Export("sentinel")
-	Link sentinel;
-	@ObfuscatedName("h")
+	Link field4174;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Lof;"
+		descriptor = "Loy;"
 	)
-	@Export("current")
-	Link current;
+	Link field4173;
 
 	public LinkDeque() {
-		this.sentinel = new Link();
-		this.sentinel.previous = this.sentinel;
-		this.sentinel.next = this.sentinel;
+		this.field4174 = new Link();
+		this.field4174.field4495 = this.field4174;
+		this.field4174.field4494 = this.field4174;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lof;)V"
+		descriptor = "(Loy;)V"
 	)
-	@Export("addFirst")
-	public void addFirst(Link var1) {
-		if (var1.next != null) {
-			var1.remove();
+	public void method6384(Link var1) {
+		if (var1.field4494 != null) {
+			var1.method7333();
 		}
 
-		var1.next = this.sentinel.next;
-		var1.previous = this.sentinel;
-		var1.next.previous = var1;
-		var1.previous.next = var1;
+		var1.field4494 = this.field4174.field4494;
+		var1.field4495 = this.field4174;
+		var1.field4494.field4495 = var1;
+		var1.field4495.field4494 = var1;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "()Lof;"
+		descriptor = "()Loy;"
 	)
-	@Export("last")
-	public Link last() {
-		Link var1 = this.sentinel.previous;
-		if (var1 == this.sentinel) {
-			this.current = null;
+	public Link method6386() {
+		Link var1 = this.field4174.field4495;
+		if (var1 == this.field4174) {
+			this.field4173 = null;
 			return null;
 		} else {
-			this.current = var1.previous;
+			this.field4173 = var1.field4495;
 			return var1;
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "()Lof;"
+		descriptor = "()Loy;"
 	)
-	@Export("previous")
-	public Link previous() {
-		Link var1 = this.current;
-		if (var1 == this.sentinel) {
-			this.current = null;
+	public Link method6393() {
+		Link var1 = this.field4173;
+		if (var1 == this.field4174) {
+			this.field4173 = null;
 			return null;
 		} else {
-			this.current = var1.previous;
+			this.field4173 = var1.field4495;
 			return var1;
 		}
 	}

@@ -4,40 +4,29 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fw")
+@ObfuscatedName("fo")
 @Implements("VarpDefinition")
 public class VarpDefinition extends DualNode {
-	@ObfuscatedName("tf")
-	@ObfuscatedGetter(
-		intValue = -1358941939
-	)
-	static int field1805;
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Llv;"
 	)
 	@Export("VarpDefinition_archive")
-	static AbstractArchive VarpDefinition_archive;
-	@ObfuscatedName("h")
+	public static AbstractArchive VarpDefinition_archive;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1767580571
+		intValue = 1908361649
 	)
-	public static int field1809;
-	@ObfuscatedName("w")
+	public static int field1841;
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Liz;"
+		descriptor = "Lif;"
 	)
 	@Export("VarpDefinition_cached")
 	public static EvictingDualNodeHashTable VarpDefinition_cached;
-	@ObfuscatedName("ip")
-	@ObfuscatedSignature(
-		descriptor = "[Lqe;"
-	)
-	@Export("modIconSprites")
-	static IndexedSprite[] modIconSprites;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -953256093
+		intValue = -220539481
 	)
 	@Export("type")
 	public int type;
@@ -50,10 +39,10 @@ public class VarpDefinition extends DualNode {
 		this.type = 0;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "1926258442"
+		descriptor = "(Lqq;S)V",
+		garbageValue = "8196"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -67,10 +56,10 @@ public class VarpDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;IB)V",
-		garbageValue = "-21"
+		descriptor = "(Lqq;II)V",
+		garbageValue = "1285334577"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -80,21 +69,35 @@ public class VarpDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "284353290"
+		descriptor = "(IB)V",
+		garbageValue = "55"
 	)
-	public static void method3288() {
-		FloorOverlayDefinition.FloorOverlayDefinition_cached.clear();
+	@Export("clearItemContainer")
+	static void clearItemContainer(int var0) {
+		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
+		if (var1 != null) {
+			for (int var2 = 0; var2 < var1.ids.length; ++var2) {
+				var1.ids[var2] = -1;
+				var1.quantities[var2] = 0;
+			}
+
+		}
 	}
 
-	@ObfuscatedName("d")
+	@ObfuscatedName("mm")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-252579017"
+		descriptor = "(II)Lpb;",
+		garbageValue = "1112569904"
 	)
-	public static void method3284() {
-		PlayerComposition.PlayerAppearance_cachedModels.clear();
+	static class438 method3527(int var0) {
+		class438 var1 = (class438)Client.Widget_cachedModels.get((long)var0);
+		if (var1 == null) {
+			var1 = new class438(PcmPlayer.field308, class425.method7664(var0), TaskHandler.method3414(var0));
+			Client.Widget_cachedModels.put(var1, (long)var0);
+		}
+
+		return var1;
 	}
 }

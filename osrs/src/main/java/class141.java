@@ -2,70 +2,58 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ex")
-public class class141 extends class144 {
+@ObfuscatedName("ey")
+public class class141 extends class145 {
 	@ObfuscatedName("c")
+	String field1654;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 1063144767
+		intValue = 1572942225
 	)
-	static int field1634;
-	@ObfuscatedName("bp")
-	@ObfuscatedGetter(
-		intValue = -1823717349
-	)
-	static int field1635;
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -283678157
-	)
-	int field1633;
-	@ObfuscatedName("h")
-	byte field1632;
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 93816935
-	)
-	int field1631;
-	@ObfuscatedName("v")
-	String field1630;
+	int field1657;
+	@ObfuscatedName("f")
+	byte field1656;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Let;"
+		descriptor = "Lem;"
 	)
-	final class145 this$0;
+	final class146 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Let;)V"
+		descriptor = "(Lem;)V"
 	)
-	class141(class145 var1) {
+	class141(class146 var1) {
 		this.this$0 = var1;
-		this.field1633 = -1;
+		this.field1654 = null;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "1539485988"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-64301329"
 	)
-	void vmethod3074(Buffer var1) {
-		var1.readUnsignedByte();
-		this.field1633 = var1.readUnsignedShort();
-		this.field1632 = var1.readByte();
-		this.field1631 = var1.readUnsignedShort();
+	void vmethod3300(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			var1.readLong();
+		}
+
+		this.field1654 = var1.readStringCp1252NullTerminatedOrNull();
+		this.field1657 = var1.readUnsignedShort();
+		this.field1656 = var1.readByte();
 		var1.readLong();
-		this.field1630 = var1.readStringCp1252NullTerminated();
-		var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lec;I)V",
-		garbageValue = "-1270425284"
+		descriptor = "(Ler;B)V",
+		garbageValue = "97"
 	)
-	void vmethod3073(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1633);
-		var2.rank = this.field1632;
-		var2.world = this.field1631;
-		var2.username = new Username(this.field1630);
+	void vmethod3302(ClanChannel var1) {
+		ClanChannelMember var2 = new ClanChannelMember();
+		var2.username = new Username(this.field1654);
+		var2.world = this.field1657;
+		var2.rank = this.field1656;
+		var1.addMember(var2);
 	}
 }

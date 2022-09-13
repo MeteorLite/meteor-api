@@ -1363,7 +1363,6 @@ public abstract class RSClientMixin implements RSClient
 		if (npc != null)
 		{
 			npc.setIndex(idx);
-
 			client.getCallbacks().postDeferred(Events.NPC_SPAWNED, new NpcSpawned(npc));
 		}
 	}
@@ -2102,7 +2101,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Copy("changeGameOptions")
+/*	@Copy("changeGameOptions")
 	@Replace("changeGameOptions")
 	@SuppressWarnings("InfiniteRecursion")
 	public static void copy$changeGameOptions(int var0)
@@ -2115,7 +2114,7 @@ public abstract class RSClientMixin implements RSClient
 			VolumeChanged volumeChanged = new VolumeChanged(type == 3 ? VolumeChanged.Type.MUSIC : type == 4 ? VolumeChanged.Type.EFFECTS : VolumeChanged.Type.AREA);
 			client.getCallbacks().post(Events.VOLUME_CHANGED, volumeChanged);
 		}
-	}
+	}*/
 
 	@Replace("getWidgetFlags")
 	public static int getWidgetFlags(Widget widget)
@@ -2358,12 +2357,12 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-	@Inject
+/*	@Inject
 	@MethodHook("closeInterface")
 	public static void preCloseInterface(RSInterfaceParent iface, boolean willUnload)
 	{
 		client.getCallbacks().post(Events.WIDGET_CLOSED, new WidgetClosed(iface.getId(), iface.getModalMode(), willUnload));
-	}
+	}*/
 
 	@Inject
 	@Override

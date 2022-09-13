@@ -4,134 +4,85 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bj")
+@ObfuscatedName("bm")
 @Implements("Tiles")
 public final class Tiles {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@Export("Tiles_heights")
 	static int[][][] Tiles_heights;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@Export("Tiles_renderFlags")
 	static byte[][][] Tiles_renderFlags;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -625386397
+		intValue = -1384721217
 	)
 	@Export("Tiles_minPlane")
 	static int Tiles_minPlane;
-	@ObfuscatedName("v")
-	@Export("Tiles_underlays")
-	static byte[][][] Tiles_underlays;
-	@ObfuscatedName("c")
-	@Export("Tiles_overlays")
-	static byte[][][] Tiles_overlays;
-	@ObfuscatedName("k")
-	static byte[][][] field975;
-	@ObfuscatedName("p")
-	static final int[] field977;
-	@ObfuscatedName("e")
-	static final int[] field978;
-	@ObfuscatedName("b")
-	static final int[] field979;
-	@ObfuscatedName("x")
-	static final int[] field982;
-	@ObfuscatedName("f")
-	static final int[] field981;
+	@ObfuscatedName("w")
+	@Export("Tiles_shapes")
+	static byte[][][] Tiles_shapes;
+	@ObfuscatedName("s")
+	static byte[][][] field1001;
+	@ObfuscatedName("m")
+	static int[][] field1002;
 	@ObfuscatedName("t")
-	static final int[] field970;
-	@ObfuscatedName("j")
+	static int[] field1008;
+	@ObfuscatedName("l")
+	static final int[] field1013;
+	@ObfuscatedName("e")
+	static final int[] field1005;
+	@ObfuscatedName("g")
+	static final int[] field1006;
+	@ObfuscatedName("y")
+	static final int[] field1000;
+	@ObfuscatedName("i")
+	static final int[] field1003;
+	@ObfuscatedName("r")
+	static final int[] field1009;
+	@ObfuscatedName("z")
 	@ObfuscatedGetter(
-		intValue = 565999891
+		intValue = 2056000543
 	)
 	@Export("rndHue")
 	static int rndHue;
-	@ObfuscatedName("g")
+	@ObfuscatedName("o")
 	@ObfuscatedGetter(
-		intValue = -917550561
+		intValue = 533087545
 	)
 	@Export("rndLightness")
 	static int rndLightness;
+	@ObfuscatedName("lr")
+	@ObfuscatedGetter(
+		intValue = -1028329921
+	)
+	@Export("Client_plane")
+	static int Client_plane;
 
 	static {
 		Tiles_heights = new int[4][105][105];
 		Tiles_renderFlags = new byte[4][104][104];
 		Tiles_minPlane = 99;
-		field977 = new int[]{1, 2, 4, 8};
-		field978 = new int[]{16, 32, 64, 128};
-		field979 = new int[]{1, 0, -1, 0};
-		field982 = new int[]{0, -1, 0, 1};
-		field981 = new int[]{1, -1, -1, 1};
-		field970 = new int[]{-1, -1, 1, 1};
+		field1013 = new int[]{1, 2, 4, 8};
+		field1005 = new int[]{16, 32, 64, 128};
+		field1006 = new int[]{1, 0, -1, 0};
+		field1000 = new int[]{0, -1, 0, 1};
+		field1003 = new int[]{1, -1, -1, 1};
+		field1009 = new int[]{-1, -1, 1, 1};
 		rndHue = (int)(Math.random() * 17.0D) - 8;
 		rndLightness = (int)(Math.random() * 33.0D) - 16;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("x")
 	@ObfuscatedSignature(
-		descriptor = "(S)I",
-		garbageValue = "-9992"
+		descriptor = "([BIIIIIIILgp;[Lgj;)V"
 	)
-	static int method1973() {
-		return ++Messages.Messages_count - 1;
-	}
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(Lls;III)[Lqn;",
-		garbageValue = "-2043818816"
-	)
-	public static SpritePixels[] method2024(AbstractArchive var0, int var1, int var2) {
-		if (!Tile.method3937(var0, var1, var2)) {
-			return null;
-		} else {
-			SpritePixels[] var4 = new SpritePixels[class457.SpriteBuffer_spriteCount];
-
-			for (int var5 = 0; var5 < class457.SpriteBuffer_spriteCount; ++var5) {
-				SpritePixels var6 = var4[var5] = new SpritePixels();
-				var6.width = class457.SpriteBuffer_spriteWidth;
-				var6.height = class457.SpriteBuffer_spriteHeight;
-				var6.xOffset = class457.SpriteBuffer_xOffsets[var5];
-				var6.yOffset = InterfaceParent.SpriteBuffer_yOffsets[var5];
-				var6.subWidth = class457.SpriteBuffer_spriteWidths[var5];
-				var6.subHeight = SoundCache.SpriteBuffer_spriteHeights[var5];
-				int var7 = var6.subWidth * var6.subHeight;
-				byte[] var8 = class181.SpriteBuffer_pixels[var5];
-				var6.pixels = new int[var7];
-
-				for (int var9 = 0; var9 < var7; ++var9) {
-					var6.pixels[var9] = class457.SpriteBuffer_spritePalette[var8[var9] & 255];
-				}
-			}
-
-			class457.SpriteBuffer_xOffsets = null;
-			InterfaceParent.SpriteBuffer_yOffsets = null;
-			class457.SpriteBuffer_spriteWidths = null;
-			SoundCache.SpriteBuffer_spriteHeights = null;
-			class457.SpriteBuffer_spritePalette = null;
-			class181.SpriteBuffer_pixels = null;
-			return var4;
-		}
-	}
-
-	@ObfuscatedName("i")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "5"
-	)
-	public static void method2022() {
-		StructComposition.StructDefinition_cached.clear();
-	}
-
-	@ObfuscatedName("n")
-	@ObfuscatedSignature(
-		descriptor = "([BIIIIIIILgy;[Lgl;)V"
-	)
-	static final void method2011(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
+	static final void method2148(byte[] var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, Scene var8, CollisionMap[] var9) {
 		Buffer var10 = new Buffer(var0);
 		int var11 = -1;
 
 		while (true) {
-			int var12 = var10.method7881();
+			int var12 = var10.method8003();
 			if (var12 == 0) {
 				return;
 			}
@@ -153,7 +104,7 @@ public final class Tiles {
 				int var19 = var18 >> 2;
 				int var20 = var18 & 3;
 				if (var17 == var4 && var16 >= var5 && var16 < var5 + 8 && var15 >= var6 && var15 < var6 + 8) {
-					ObjectComposition var21 = FileSystem.getObjectDefinition(var11);
+					ObjectComposition var21 = PlayerComposition.getObjectDefinition(var11);
 					int var24 = var16 & 7;
 					int var25 = var15 & 7;
 					int var27 = var21.sizeX;
@@ -178,55 +129,22 @@ public final class Tiles {
 					}
 
 					var29 = var23 + var2;
-					int var32 = var16 & 7;
-					int var33 = var15 & 7;
-					int var35 = var21.sizeX;
-					int var36 = var21.sizeY;
-					int var37;
-					if ((var20 & 1) == 1) {
-						var37 = var35;
-						var35 = var36;
-						var36 = var37;
-					}
-
-					int var34 = var7 & 3;
-					int var31;
-					if (var34 == 0) {
-						var31 = var33;
-					} else if (var34 == 1) {
-						var31 = 7 - var32 - (var35 - 1);
-					} else if (var34 == 2) {
-						var31 = 7 - var33 - (var36 - 1);
-					} else {
-						var31 = var32;
-					}
-
-					var37 = var31 + var3;
-					if (var29 > 0 && var37 > 0 && var29 < 103 && var37 < 103) {
-						int var38 = var1;
-						if ((Tiles_renderFlags[1][var29][var37] & 2) == 2) {
-							var38 = var1 - 1;
+					int var30 = var3 + class239.method5121(var16 & 7, var15 & 7, var7, var21.sizeX, var21.sizeY, var20);
+					if (var29 > 0 && var30 > 0 && var29 < 103 && var30 < 103) {
+						int var31 = var1;
+						if ((Tiles_renderFlags[1][var29][var30] & 2) == 2) {
+							var31 = var1 - 1;
 						}
 
-						CollisionMap var39 = null;
-						if (var38 >= 0) {
-							var39 = var9[var38];
+						CollisionMap var32 = null;
+						if (var31 >= 0) {
+							var32 = var9[var31];
 						}
 
-						class347.addObjects(var1, var29, var37, var11, var20 + var7 & 3, var19, var8, var39);
+						WorldMapAreaData.addObjects(var1, var29, var30, var11, var20 + var7 & 3, var19, var8, var32);
 					}
 				}
 			}
 		}
-	}
-
-	@ObfuscatedName("kw")
-	@ObfuscatedSignature(
-		descriptor = "(Lkn;B)Z",
-		garbageValue = "3"
-	)
-	@Export("isComponentHidden")
-	static boolean isComponentHidden(Widget var0) {
-		return var0.isHidden;
 	}
 }

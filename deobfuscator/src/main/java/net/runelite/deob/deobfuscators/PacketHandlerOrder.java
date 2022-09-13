@@ -151,8 +151,8 @@ public class PacketHandlerOrder implements Deobfuscator
 					if (matches)
 					{
 						Method method = ii.getMethods().get(0);
-						Signature signature = method.getDescriptor();
-						Type returnValue = signature.getReturnValue();
+						Signature descriptor = method.getDescriptor();
+						Type returnValue = descriptor.getReturnValue();
 
 						assert ictx.getPops().size() == 1; // buffer reference
 						InstructionContext bufferCtx = ictx.getPops().get(0).getPushed();

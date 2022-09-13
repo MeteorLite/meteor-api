@@ -4,24 +4,30 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("if")
+@ObfuscatedName("ie")
 @Implements("WorldMapDecoration")
 public class WorldMapDecoration {
-	@ObfuscatedName("s")
+	@ObfuscatedName("h")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
+	)
+	@Export("options_buttons_0Sprite")
+	static IndexedSprite options_buttons_0Sprite;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1371988127
+		intValue = 1187895399
 	)
 	@Export("objectDefinitionId")
 	final int objectDefinitionId;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -761624157
+		intValue = -508855771
 	)
 	@Export("decoration")
 	final int decoration;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -863337605
+		intValue = -992636429
 	)
 	@Export("rotation")
 	final int rotation;
@@ -30,34 +36,5 @@ public class WorldMapDecoration {
 		this.objectDefinitionId = var1;
 		this.decoration = var2;
 		this.rotation = var3;
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1361182691"
-	)
-	public static int method4914(int var0) {
-		--var0;
-		var0 |= var0 >>> 1;
-		var0 |= var0 >>> 2;
-		var0 |= var0 >>> 4;
-		var0 |= var0 >>> 8;
-		var0 |= var0 >>> 16;
-		return var0 + 1;
-	}
-
-	@ObfuscatedName("kv")
-	@ObfuscatedSignature(
-		descriptor = "(Lkn;B)Ljava/lang/String;",
-		garbageValue = "87"
-	)
-	@Export("Widget_getSpellActionName")
-	static String Widget_getSpellActionName(Widget var0) {
-		if (ModeWhere.Widget_unpackTargetMask(class193.getWidgetFlags(var0)) == 0) {
-			return null;
-		} else {
-			return var0.spellActionName != null && var0.spellActionName.trim().length() != 0 ? var0.spellActionName : null;
-		}
 	}
 }

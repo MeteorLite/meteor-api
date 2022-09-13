@@ -107,10 +107,10 @@ public class Renamer implements Deobfuscator
 
 				// rename on parameters
 				Signature.Builder builder = new Signature.Builder();
-				Signature signature = method.getDescriptor();
-				for (int i = 0; i < signature.size(); ++i)
+				Signature descriptor = method.getDescriptor();
+				for (int i = 0; i < descriptor.size(); ++i)
 				{
-					Type type = signature.getTypeOfArg(i);
+					Type type = descriptor.getTypeOfArg(i);
 
 					if (type.getInternalName().equals(cf.getName()))
 					{
@@ -123,18 +123,18 @@ public class Renamer implements Deobfuscator
 				}
 
 				// rename return type
-				if (signature.getReturnValue().getInternalName().equals(cf.getName()))
+				if (descriptor.getReturnValue().getInternalName().equals(cf.getName()))
 				{
-					builder.setReturnType(Type.getType("L" + name + ";", signature.getReturnValue().getDimensions()));
+					builder.setReturnType(Type.getType("L" + name + ";", descriptor.getReturnValue().getDimensions()));
 				}
 				else
 				{
-					builder.setReturnType(signature.getReturnValue());
+					builder.setReturnType(descriptor.getReturnValue());
 				}
 
-				Signature newSignature = builder.build();
+				Signature newdescriptor = builder.build();
 
-				if (!method.getDescriptor().equals(newSignature))
+				if (!method.getDescriptor().equals(newdescriptor))
 				{
 					if (method.findAnnotation(OBFUSCATED_SIGNATURE) == null)
 					{
@@ -142,7 +142,7 @@ public class Renamer implements Deobfuscator
 					}
 				}
 
-				method.setDescriptor(newSignature);
+				method.setDescriptor(newdescriptor);
 
 				// rename on exceptions thrown
 				if (method.getExceptions() != null)

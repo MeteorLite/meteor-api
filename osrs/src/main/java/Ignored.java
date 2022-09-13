@@ -4,18 +4,12 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nv")
+@ObfuscatedName("ng")
 @Implements("Ignored")
 public class Ignored extends User {
-	@ObfuscatedName("u")
-	@ObfuscatedSignature(
-		descriptor = "Lkn;"
-	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 410982667
+		intValue = -1587700263
 	)
 	@Export("id")
 	int id;
@@ -23,20 +17,20 @@ public class Ignored extends User {
 	Ignored() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnv;I)I",
-		garbageValue = "2045269019"
+		descriptor = "(Lng;I)I",
+		garbageValue = "-1633511303"
 	)
 	@Export("compareTo_ignored")
 	int compareTo_ignored(Ignored var1) {
 		return this.id - var1.id;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lnb;I)I",
-		garbageValue = "1550816169"
+		descriptor = "(Lnc;I)I",
+		garbageValue = "-1401768476"
 	)
 	@Export("compareTo_user")
 	public int compareTo_user(User var1) {
@@ -47,19 +41,12 @@ public class Ignored extends User {
 		return this.compareTo_ignored((Ignored)var1);
 	}
 
-	@ObfuscatedName("hg")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1092263394"
+		descriptor = "(S)V",
+		garbageValue = "31135"
 	)
-	@Export("addCancelMenuEntry")
-	static void addCancelMenuEntry() {
-		Client.menuOptionsCount = 0;
-		Client.isMenuOpen = false;
-		Client.menuActions[0] = "Cancel";
-		Client.menuTargets[0] = "";
-		Client.menuOpcodes[0] = 1006;
-		Client.menuShiftClick[0] = false;
-		Client.menuOptionsCount = 1;
+	public static void method6968() {
+		class437.DBTableType_cache.clear();
 	}
 }

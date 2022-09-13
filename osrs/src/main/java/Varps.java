@@ -3,16 +3,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ka")
+@ObfuscatedName("kb")
 @Implements("Varps")
 public class Varps {
-	@ObfuscatedName("s")
+	@ObfuscatedName("ub")
+	@ObfuscatedSignature(
+		descriptor = "Lbr;"
+	)
+	@Export("friendSystem")
+	public static FriendSystem friendSystem;
+	@ObfuscatedName("c")
 	@Export("Varps_masks")
 	static int[] Varps_masks;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@Export("Varps_temp")
 	public static int[] Varps_temp;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@Export("Varps_main")
 	public static int[] Varps_main;
 
@@ -29,36 +35,36 @@ public class Varps {
 		Varps_main = new int[4000];
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)Lbz;",
-		garbageValue = "8"
+		descriptor = "([Llq;II)Llq;",
+		garbageValue = "-1925758966"
 	)
-	static Script method5465(int var0, int var1) {
-		Script var2 = (Script)Script.Script_cached.get((long)(var0 << 16));
-		if (var2 != null) {
-			return var2;
-		} else {
-			String var3 = String.valueOf(var0);
-			int var4 = SequenceDefinition.archive12.getGroupId(var3);
-			if (var4 == -1) {
-				return null;
-			} else {
-				byte[] var5 = SequenceDefinition.archive12.takeFileFlat(var4);
-				if (var5 != null) {
-					if (var5.length <= 1) {
-						return null;
-					}
+	@Export("findEnumerated")
+	public static MouseWheel findEnumerated(MouseWheel[] var0, int var1) {
+		MouseWheel[] var2 = var0;
 
-					var2 = class21.newScript(var5);
-					if (var2 != null) {
-						Script.Script_cached.put(var2, (long)(var0 << 16));
-						return var2;
-					}
-				}
-
-				return null;
+		for (int var3 = 0; var3 < var2.length; ++var3) {
+			MouseWheel var4 = var2[var3];
+			if (var1 == var4.rsOrdinal()) {
+				return var4;
 			}
+		}
+
+		return null;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "-1558722409"
+	)
+	static int method5699(int var0) {
+		Message var1 = (Message)Messages.Messages_hashTable.get((long)var0);
+		if (var1 == null) {
+			return -1;
+		} else {
+			return var1.nextDual == Messages.Messages_queue.sentinel ? -1 : ((Message)var1.nextDual).count;
 		}
 	}
 }

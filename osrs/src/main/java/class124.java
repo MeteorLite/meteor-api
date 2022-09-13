@@ -3,155 +3,142 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("df")
+@ObfuscatedName("dc")
 public enum class124 implements MouseWheel {
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	field1519(3, 0),
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	field1522(0, 1),
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	field1521(1, 2),
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "Ldf;"
-	)
-	field1520(4, 3),
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Ldf;"
+		descriptor = "Ldc;"
 	)
-	field1523(2, 4);
-
+	field1531(0, 0),
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1528(1, 1),
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1525(2, 2),
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1523(3, 3),
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1527(4, 4),
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1526(5, 5),
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
+	)
+	field1529(6, 6),
 	@ObfuscatedName("q")
-	@ObfuscatedGetter(
-		intValue = 1199083661
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
 	)
-	public final int field1524;
-	@ObfuscatedName("i")
-	@ObfuscatedGetter(
-		intValue = -2124972105
+	field1530(7, 7),
+	@ObfuscatedName("m")
+	@ObfuscatedSignature(
+		descriptor = "Ldc;"
 	)
-	@Export("id")
-	final int id;
+	field1524(8, 8);
+
+	@ObfuscatedName("y")
+	@Export("operatingSystemName")
+	static String operatingSystemName;
+	@ObfuscatedName("hh")
+	@Export("regionMapArchiveIds")
+	static int[] regionMapArchiveIds;
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = -2497053
+	)
+	final int field1532;
+	@ObfuscatedName("j")
+	@ObfuscatedGetter(
+		intValue = -357833305
+	)
+	final int field1533;
 
 	class124(int var3, int var4) {
-		this.field1524 = var3;
-		this.id = var4;
+		this.field1532 = var3;
+		this.field1533 = var4;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(B)I",
-		garbageValue = "104"
+		garbageValue = "1"
 	)
-	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.id;
+		return this.field1533;
 	}
 
-	@ObfuscatedName("u")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "123"
+		descriptor = "(Llv;I)V",
+		garbageValue = "259178183"
 	)
-	@Export("isCharPrintable")
-	public static boolean isCharPrintable(char var0) {
-		if (var0 >= ' ' && var0 <= '~') {
-			return true;
-		} else if (var0 >= 160 && var0 <= 255) {
-			return true;
-		} else {
-			return var0 == 8364 || var0 == 338 || var0 == 8212 || var0 == 339 || var0 == 376;
-		}
+	public static void method2964(AbstractArchive var0) {
+		StructComposition.StructDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("j")
 	@ObfuscatedSignature(
-		descriptor = "(ILbz;ZI)I",
-		garbageValue = "-1560947837"
+		descriptor = "(S)[Lqi;",
+		garbageValue = "255"
 	)
-	static int method2768(int var0, Script var1, boolean var2) {
-		int var3;
-		int var6;
-		int var9;
-		if (var0 == 3400) {
-			User.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1];
-			EnumComposition var10 = WorldMapIcon_1.getEnum(var3);
-			if (var10.outputType != 's') {
-			}
+	static SpritePixels[] method2967() {
+		SpritePixels[] var0 = new SpritePixels[class458.SpriteBuffer_spriteCount];
 
-			for (var6 = 0; var6 < var10.outputCount; ++var6) {
-				if (var9 == var10.keys[var6]) {
-					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var10.strVals[var6];
-					var10 = null;
-					break;
-				}
-			}
+		for (int var1 = 0; var1 < class458.SpriteBuffer_spriteCount; ++var1) {
+			SpritePixels var2 = var0[var1] = new SpritePixels();
+			var2.width = SecureRandomCallable.SpriteBuffer_spriteWidth;
+			var2.height = class402.SpriteBuffer_spriteHeight;
+			var2.xOffset = class458.SpriteBuffer_xOffsets[var1];
+			var2.yOffset = class458.SpriteBuffer_yOffsets[var1];
+			var2.subWidth = ApproximateRouteStrategy.SpriteBuffer_spriteWidths[var1];
+			var2.subHeight = UserComparator9.SpriteBuffer_spriteHeights[var1];
+			int var3 = var2.subWidth * var2.subHeight;
+			byte[] var4 = FileSystem.SpriteBuffer_pixels[var1];
+			var2.pixels = new int[var3];
 
-			if (var10 != null) {
-				Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var10.defaultStr;
-			}
-
-			return 1;
-		} else if (var0 != 3408) {
-			if (var0 == 3411) {
-				var3 = Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize];
-				EnumComposition var4 = WorldMapIcon_1.getEnum(var3);
-				Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var4.size();
-				return 1;
-			} else {
-				return 2;
-			}
-		} else {
-			User.Interpreter_intStackSize -= 4;
-			var3 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize];
-			var9 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1];
-			int var5 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 2];
-			var6 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 3];
-			EnumComposition var7 = WorldMapIcon_1.getEnum(var5);
-			if (var3 == var7.inputType && var9 == var7.outputType) {
-				for (int var8 = 0; var8 < var7.outputCount; ++var8) {
-					if (var6 == var7.keys[var8]) {
-						if (var9 == 115) {
-							Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var7.strVals[var8];
-						} else {
-							Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var7.intVals[var8];
-						}
-
-						var7 = null;
-						break;
-					}
-				}
-
-				if (var7 != null) {
-					if (var9 == 115) {
-						Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = var7.defaultStr;
-					} else {
-						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = var7.defaultInt;
-					}
-				}
-
-				return 1;
-			} else {
-				if (var9 == 115) {
-					Interpreter.Interpreter_stringStack[++UserComparator8.Interpreter_stringStackSize - 1] = "null";
-				} else {
-					Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
+			for (int var5 = 0; var5 < var3; ++var5) {
+				var2.pixels[var5] = class458.SpriteBuffer_spritePalette[var4[var5] & 255];
 			}
 		}
+
+		class458.SpriteBuffer_xOffsets = null;
+		class458.SpriteBuffer_yOffsets = null;
+		ApproximateRouteStrategy.SpriteBuffer_spriteWidths = null;
+		UserComparator9.SpriteBuffer_spriteHeights = null;
+		class458.SpriteBuffer_spritePalette = null;
+		FileSystem.SpriteBuffer_pixels = null;
+		return var0;
+	}
+
+	@ObfuscatedName("hk")
+	@ObfuscatedSignature(
+		descriptor = "(Lce;II)V",
+		garbageValue = "-2011953728"
+	)
+	static final void method2956(Actor var0, int var1) {
+		class82.worldToScreen(var0.x, var0.y, var1);
+	}
+
+	@ObfuscatedName("kn")
+	static final void method2965(double var0) {
+		Rasterizer3D.Rasterizer3D_setBrightness(var0);
+		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
+		MouseRecorder.method2247();
+		Player.clientPreferences.method2399(var0);
 	}
 }

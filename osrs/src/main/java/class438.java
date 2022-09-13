@@ -1,116 +1,80 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("pr")
+@ObfuscatedName("pb")
 public class class438 extends DualNode {
-	@ObfuscatedName("s")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "[Lps;"
 	)
-	static AbstractArchive field4678;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Liz;"
-	)
-	@Export("DBRowType_cache")
-	static EvictingDualNodeHashTable DBRowType_cache;
-	@ObfuscatedName("x")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	@Export("Widget_archive")
-	public static AbstractArchive Widget_archive;
-	@ObfuscatedName("w")
-	Object[][] field4679;
-	@ObfuscatedName("v")
-	int[][] field4681;
-	@ObfuscatedName("c")
-	@ObfuscatedGetter(
-		intValue = 1503762807
-	)
-	public int field4677;
+	class434[] field4711;
+	@ObfuscatedName("k")
+	List field4710;
 
-	static {
-		DBRowType_cache = new EvictingDualNodeHashTable(64);
+	@ObfuscatedSignature(
+		descriptor = "(Llv;I)V"
+	)
+	public class438(AbstractArchive var1, int var2) {
+		byte[] var3 = var1.takeFile(var2, 0);
+		this.method7823(new Buffer(var3));
 	}
 
-	class438() {
-	}
-
-	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;B)V",
-		garbageValue = "0"
+		descriptor = "(Llv;II)V"
 	)
-	void method7542(Buffer var1) {
-		while (true) {
-			int var2 = var1.readUnsignedByte();
-			if (var2 == 0) {
-				return;
-			}
-
-			this.method7543(var1, var2);
-		}
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)[Ljava/lang/Object;",
-		garbageValue = "1183170979"
-	)
-	public Object[] method7548(int var1) {
-		return this.field4679 == null ? null : this.field4679[var1];
+	public class438(AbstractArchive var1, int var2, int var3) {
+		byte[] var4 = var1.takeFile(var2, var3 + 1);
+		this.method7823(new Buffer(var4));
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;II)V",
-		garbageValue = "2146701023"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "27"
 	)
-	void method7543(Buffer var1, int var2) {
-		if (var2 == 3) {
-			int var3 = var1.readUnsignedByte();
-			if (this.field4679 == null) {
-				this.field4679 = new Object[var3][];
-				this.field4681 = new int[var3][];
-			}
+	void method7823(Buffer var1) {
+		int var2 = var1.method7944();
+		this.field4711 = new class434[var2];
+		this.field4710 = new ArrayList(var2);
 
-			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
-				int var5 = var1.readUnsignedByte();
-				int[] var6 = new int[var5];
+		for (int var3 = 0; var3 < var2; ++var3) {
+			this.field4711[var3] = (class434)Varps.findEnumerated(class434.method7781(), var1.readUnsignedByte());
+			int var4 = var1.method7944();
+			HashMap var5 = new HashMap(var4);
 
-				for (int var7 = 0; var7 < var5; ++var7) {
-					var6[var7] = var1.readUShortSmart();
+			while (var4-- > 0) {
+				Object var6 = this.field4711[var3].method7778(var1);
+				int var7 = var1.method7944();
+				ArrayList var8 = new ArrayList();
+
+				while (var7-- > 0) {
+					int var9 = var1.method7944();
+					var8.add(var9);
 				}
 
-				Object[][] var16 = this.field4679;
-				int var10 = var1.readUShortSmart();
-				Object[] var11 = new Object[var6.length * var10];
-
-				for (int var12 = 0; var12 < var10; ++var12) {
-					for (int var13 = 0; var13 < var6.length; ++var13) {
-						int var14 = var13 + var6.length * var12;
-						class433 var15 = class19.method285(var6[var13]);
-						var11[var14] = var15.method7493(var1);
-					}
-				}
-
-				var16[var4] = var11;
-				this.field4681[var4] = var6;
+				var5.put(var6, var8);
 			}
-		} else if (var2 == 4) {
-			this.field4677 = var1.method7678();
+
+			this.field4710.add(var3, var5);
 		}
 
 	}
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-57"
+		descriptor = "(Ljava/lang/Object;II)Ljava/util/List;",
+		garbageValue = "-592587149"
 	)
-	void method7549() {
+	public List method7824(Object var1, int var2) {
+		if (var2 < 0) {
+			var2 = 0;
+		}
+
+		Map var3 = (Map)this.field4710.get(var2);
+		return (List)var3.get(var1);
 	}
 }

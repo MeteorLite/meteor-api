@@ -74,7 +74,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		OptionSet options = parser.parse(args);
 		String oprsVer = "1.0-SNAPSHOT";
 
-		File vanillaFile = new File("./gamepack-207.4.jar");
+		File vanillaFile = new File("./gamepack-208.jar");
 		injector.vanilla = load(vanillaFile);
 		injector.deobfuscated = load(
 			new File("../osrs/build/libs/osrs-" + oprsVer + ".jar"));

@@ -1,12 +1,30 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dd")
+@ObfuscatedName("dq")
 @Implements("UserComparator10")
 public class UserComparator10 extends AbstractUserComparator {
-	@ObfuscatedName("s")
+	@ObfuscatedName("bd")
+	@ObfuscatedGetter(
+		intValue = -13271251
+	)
+	static int field1393;
+	@ObfuscatedName("ez")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive4")
+	static Archive archive4;
+	@ObfuscatedName("er")
+	@ObfuscatedSignature(
+		descriptor = "Llb;"
+	)
+	@Export("archive19")
+	static Archive archive19;
+	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +32,10 @@ public class UserComparator10 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;Lnt;I)I",
-		garbageValue = "-1766049214"
+		descriptor = "(Lnr;Lnr;I)I",
+		garbageValue = "-1298946916"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,24 +50,22 @@ public class UserComparator10 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("ar")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lfr;",
-		garbageValue = "1"
+		descriptor = "(ILbt;ZB)I",
+		garbageValue = "80"
 	)
-	public static VarcInt method2598(int var0) {
-		VarcInt var1 = (VarcInt)VarcInt.VarcInt_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = VarcInt.VarcInt_archive.takeFile(19, var0);
-			var1 = new VarcInt();
-			if (var2 != null) {
-				var1.method3318(new Buffer(var2));
-			}
+	static int method2782(int var0, Script var1, boolean var2) {
+		return 2;
+	}
 
-			VarcInt.VarcInt_cached.put(var1, (long)var0);
-			return var1;
-		}
+	@ObfuscatedName("el")
+	@ObfuscatedSignature(
+		descriptor = "(I)Lpi;",
+		garbageValue = "-1585871942"
+	)
+	@Export("getWorldMap")
+	static WorldMap getWorldMap() {
+		return Decimator.worldMap;
 	}
 }

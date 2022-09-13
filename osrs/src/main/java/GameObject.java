@@ -4,89 +4,95 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("he")
+@ObfuscatedName("hd")
 @Implements("GameObject")
 public final class GameObject {
-	@ObfuscatedName("s")
+	@ObfuscatedName("ix")
 	@ObfuscatedGetter(
-		intValue = 271411639
+		intValue = 216493687
+	)
+	@Export("selectedItemWidget")
+	static int selectedItemWidget;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = -524659345
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 582497265
+		intValue = -2019849325
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -9176165
+		intValue = 1901568163
 	)
 	@Export("centerX")
 	int centerX;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1556132625
+		intValue = 512475551
 	)
 	@Export("centerY")
 	int centerY;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lgq;"
+		descriptor = "Lgg;"
 	)
 	@Export("renderable")
 	public Renderable renderable;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -248114719
+		intValue = -1736260079
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1113126289
+		intValue = 155227051
 	)
 	@Export("startX")
 	int startX;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1835931621
+		intValue = 2081819735
 	)
 	@Export("endX")
 	int endX;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1093203169
+		intValue = -377885443
 	)
 	@Export("startY")
 	int startY;
-	@ObfuscatedName("n")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = -764736559
+		intValue = -1283564619
 	)
 	@Export("endY")
 	int endY;
-	@ObfuscatedName("d")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = 1931911743
+		intValue = 942214617
 	)
-	int field2658;
-	@ObfuscatedName("a")
+	int field2679;
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = 1034085493
+		intValue = 1995571253
 	)
 	@Export("lastDrawn")
 	int lastDrawn;
-	@ObfuscatedName("m")
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		longValue = -3701413312264417241L
+		longValue = 7185604237786058919L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("u")
+	@ObfuscatedName("t")
 	@ObfuscatedGetter(
-		intValue = -1225853567
+		intValue = 1855881837
 	)
 	@Export("flags")
 	int flags;
@@ -94,5 +100,14 @@ public final class GameObject {
 	GameObject() {
 		this.tag = 0L;
 		this.flags = 0;
+	}
+
+	@ObfuscatedName("s")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "0"
+	)
+	public static boolean method4666(int var0) {
+		return var0 >= 0 && var0 < 112 ? KeyHandler.field134[var0] : false;
 	}
 }

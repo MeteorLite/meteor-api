@@ -1,185 +1,106 @@
-import java.util.Date;
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ej")
-public class class134 extends class144 {
-	@ObfuscatedName("s")
+@ObfuscatedName("ek")
+public class class134 extends class129 {
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -305870119
+		intValue = -1271767891
 	)
-	int field1573;
-	@ObfuscatedName("h")
-	byte field1574;
-	@ObfuscatedName("w")
+	int field1592;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 469034561
+		intValue = -695677663
 	)
-	int field1577;
-	@ObfuscatedName("v")
-	String field1576;
+	int field1591;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -768466047
+	)
+	int field1594;
+	@ObfuscatedName("n")
+	@ObfuscatedGetter(
+		intValue = -353550851
+	)
+	int field1593;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Let;"
+		descriptor = "Leo;"
 	)
-	final class145 this$0;
+	final class132 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Let;)V"
+		descriptor = "(Leo;)V"
 	)
-	class134(class145 var1) {
+	class134(class132 var1) {
 		this.this$0 = var1;
-		this.field1573 = -1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "1539485988"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
 	)
-	void vmethod3074(Buffer var1) {
-		this.field1573 = var1.readUnsignedShort();
-		this.field1574 = var1.readByte();
-		this.field1577 = var1.readUnsignedShort();
-		var1.readLong();
-		this.field1576 = var1.readStringCp1252NullTerminated();
+	void vmethod3320(Buffer var1) {
+		this.field1592 = var1.readInt();
+		this.field1593 = var1.readInt();
+		this.field1591 = var1.readUnsignedByte();
+		this.field1594 = var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Lec;I)V",
-		garbageValue = "-1270425284"
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
 	)
-	void vmethod3073(ClanChannel var1) {
-		ClanChannelMember var2 = (ClanChannelMember)var1.members.get(this.field1573);
-		var2.rank = this.field1574;
-		var2.world = this.field1577;
-		var2.username = new Username(this.field1576);
+	void vmethod3313(ClanSettings var1) {
+		var1.method3160(this.field1592, this.field1593, this.field1591, this.field1594);
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lls;Lls;Lls;I)V",
-		garbageValue = "1275882912"
+		descriptor = "(Ljava/lang/Object;ZB)[B",
+		garbageValue = "-126"
 	)
-	public static void method2851(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-		class20.SequenceDefinition_archive = var0;
-		SequenceDefinition.SequenceDefinition_animationsArchive = var1;
-		GZipDecompressor.SequenceDefinition_skeletonsArchive = var2;
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(Lls;I)V",
-		garbageValue = "-1864938082"
-	)
-	public static void method2857(AbstractArchive var0) {
-		VarpDefinition.VarpDefinition_archive = var0;
-		VarpDefinition.field1809 = VarpDefinition.VarpDefinition_archive.getGroupFileCount(16);
-	}
-
-	@ObfuscatedName("v")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1782317198"
-	)
-	public static int method2860(int var0) {
-		return var0 >> 17 & 7;
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/util/Date;I)Z",
-		garbageValue = "175729561"
-	)
-	static boolean method2858(Date var0) {
-		Date var1 = UserComparator7.method2563();
-		return var0.after(var1);
-	}
-
-	@ObfuscatedName("fe")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIZI)V",
-		garbageValue = "55931143"
-	)
-	@Export("setViewportShape")
-	static final void setViewportShape(int var0, int var1, int var2, int var3, boolean var4) {
-		if (var2 < 1) {
-			var2 = 1;
-		}
-
-		if (var3 < 1) {
-			var3 = 1;
-		}
-
-		int var5 = var3 - 334;
-		int var6;
-		if (var5 < 0) {
-			var6 = Client.field561;
-		} else if (var5 >= 100) {
-			var6 = Client.field744;
+	public static byte[] method3043(Object var0, boolean var1) {
+		if (var0 == null) {
+			return null;
+		} else if (var0 instanceof byte[]) {
+			byte[] var3 = (byte[])((byte[])var0);
+			return var1 ? BuddyRankComparator.method2790(var3) : var3;
+		} else if (var0 instanceof AbstractByteArrayCopier) {
+			AbstractByteArrayCopier var2 = (AbstractByteArrayCopier)var0;
+			return var2.get();
 		} else {
-			var6 = (Client.field744 - Client.field561) * var5 / 100 + Client.field561;
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@ObfuscatedName("ll")
+	@ObfuscatedSignature(
+		descriptor = "(IIIB)Lcv;",
+		garbageValue = "1"
+	)
+	static final InterfaceParent method3053(int var0, int var1, int var2) {
+		InterfaceParent var3 = new InterfaceParent();
+		var3.group = var1;
+		var3.type = var2;
+		Client.interfaceParents.put(var3, (long)var0);
+		MouseHandler.Widget_resetModelFrames(var1);
+		Widget var4 = SpotAnimationDefinition.getWidget(var0);
+		class403.invalidateWidget(var4);
+		if (Client.meslayerContinueWidget != null) {
+			class403.invalidateWidget(Client.meslayerContinueWidget);
+			Client.meslayerContinueWidget = null;
 		}
 
-		int var7 = var3 * var6 * 512 / (var2 * 334);
-		int var8;
-		int var9;
-		short var14;
-		if (var7 < Client.field749) {
-			var14 = Client.field749;
-			var6 = var14 * var2 * 334 / (var3 * 512);
-			if (var6 > Client.field748) {
-				var6 = Client.field748;
-				var8 = var3 * var6 * 512 / (var14 * 334);
-				var9 = (var2 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var9, var3, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0 + var2 - var9, var1, var9, var3, -16777216);
-				}
-
-				var0 += var9;
-				var2 -= var9 * 2;
-			}
-		} else if (var7 > Client.field724) {
-			var14 = Client.field724;
-			var6 = var14 * var2 * 334 / (var3 * 512);
-			if (var6 < Client.field747) {
-				var6 = Client.field747;
-				var8 = var14 * var2 * 334 / (var6 * 512);
-				var9 = (var3 - var8) / 2;
-				if (var4) {
-					Rasterizer2D.Rasterizer2D_resetClip();
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
-					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
-				}
-
-				var1 += var9;
-				var3 -= var9 * 2;
-			}
+		StructComposition.revalidateWidgetScroll(Calendar.Widget_interfaceComponents[var0 >> 16], var4, false);
+		class11.runWidgetOnLoadListener(var1);
+		if (Client.rootInterface != -1) {
+			class18.runIntfCloseListeners(Client.rootInterface, 1);
 		}
 
-		Client.viewportZoom = var3 * var6 / 334;
-		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
-			int[] var13 = new int[9];
-
-			for (var9 = 0; var9 < var13.length; ++var9) {
-				int var10 = var9 * 32 + 15 + 128;
-				int var11 = HealthBarUpdate.method2170(var10);
-				int var12 = Rasterizer3D.Rasterizer3D_sine[var10];
-				var11 = World.method1624(var11, var3);
-				var13[var9] = var12 * var11 >> 16;
-			}
-
-			Scene.Scene_buildVisiblityMap(var13, 500, 800, var2 * 334 / var3, 334);
-		}
-
-		Client.viewportOffsetX = var0;
-		Client.viewportOffsetY = var1;
-		Client.viewportWidth = var2;
-		Client.viewportHeight = var3;
+		return var3;
 	}
 }

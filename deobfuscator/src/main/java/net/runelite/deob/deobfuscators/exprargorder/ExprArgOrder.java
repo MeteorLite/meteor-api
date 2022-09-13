@@ -297,10 +297,10 @@ public class ExprArgOrder implements Deobfuscator
 		else if (i instanceof LVTInstruction)
 		{
 			int idx = ((LVTInstruction) i).getVariableIndex();
-			Signature signature = method.getDescriptor();
+			Signature descriptor = method.getDescriptor();
 
 			int lvt = method.isStatic() ? 0 : 1;
-			for (Type type : signature.getArguments())
+			for (Type type : descriptor.getArguments())
 			{
 				if (idx == lvt)
 				{

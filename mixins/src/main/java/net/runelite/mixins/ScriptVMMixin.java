@@ -46,7 +46,6 @@ import static net.runelite.cache.script.Opcodes.RETURN;
 import static net.runelite.cache.script.Opcodes.CAM_FORCEANGLE;
 import static net.runelite.cache.script.Opcodes.INVOKE;
 import static net.runelite.cache.script.RuneLiteOpcodes.RUNELITE_EXECUTE;
-import static net.runelite.rs.ScriptOpcodes.*;
 
 @Mixin(RSClient.class)
 public abstract class ScriptVMMixin implements RSClient

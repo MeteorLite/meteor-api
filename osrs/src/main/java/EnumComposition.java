@@ -4,59 +4,55 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fn")
+@ObfuscatedName("fe")
 @Implements("EnumComposition")
 public class EnumComposition extends DualNode {
-	@ObfuscatedName("s")
+	@ObfuscatedName("uz")
 	@ObfuscatedSignature(
-		descriptor = "Lls;"
+		descriptor = "Llg;"
+	)
+	@Export("grandExchangeEvents")
+	static GrandExchangeEvents grandExchangeEvents;
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llv;"
 	)
 	@Export("EnumDefinition_archive")
-	public static AbstractArchive EnumDefinition_archive;
-	@ObfuscatedName("h")
+	static AbstractArchive EnumDefinition_archive;
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "Liz;"
+		descriptor = "Lif;"
 	)
 	@Export("EnumDefinition_cached")
 	static EvictingDualNodeHashTable EnumDefinition_cached;
-	@ObfuscatedName("jk")
-	@ObfuscatedGetter(
-		intValue = 35416535
-	)
-	static int field1891;
-	@ObfuscatedName("ng")
-	@ObfuscatedSignature(
-		descriptor = "Lkn;"
-	)
-	static Widget field1890;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@Export("inputType")
 	public char inputType;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@Export("outputType")
 	public char outputType;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@Export("defaultStr")
 	public String defaultStr;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -19231955
+		intValue = 268659087
 	)
 	@Export("defaultInt")
 	public int defaultInt;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = -633508893
+		intValue = -86792711
 	)
 	@Export("outputCount")
 	public int outputCount;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@Export("keys")
 	public int[] keys;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@Export("intVals")
 	public int[] intVals;
-	@ObfuscatedName("n")
+	@ObfuscatedName("x")
 	@Export("strVals")
 	public String[] strVals;
 
@@ -69,10 +65,10 @@ public class EnumComposition extends DualNode {
 		this.outputCount = 0;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "-687932105"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-1787405045"
 	)
 	@Export("decode")
 	void decode(Buffer var1) {
@@ -86,10 +82,10 @@ public class EnumComposition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;IB)V",
-		garbageValue = "32"
+		descriptor = "(Lqq;II)V",
+		garbageValue = "2042214635"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2) {
@@ -126,23 +122,46 @@ public class EnumComposition extends DualNode {
 
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-2141311437"
+		descriptor = "(B)I",
+		garbageValue = "28"
 	)
 	@Export("size")
 	public int size() {
 		return this.outputCount;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lfy;",
-		garbageValue = "1248940994"
+		descriptor = "(II)I",
+		garbageValue = "21250774"
 	)
-	@Export("WorldMapElement_get")
-	public static WorldMapElement WorldMapElement_get(int var0) {
-		return var0 >= 0 && var0 < WorldMapElement.WorldMapElement_cached.length && WorldMapElement.WorldMapElement_cached[var0] != null ? WorldMapElement.WorldMapElement_cached[var0] : new WorldMapElement(var0);
+	public static int method3627(int var0) {
+		return class156.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var0]);
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(LJSONObject;Ljava/lang/String;I)[F",
+		garbageValue = "1275839888"
+	)
+	static float[] method3622(JSONObject var0, String var1) throws JSONException {
+		float[] var2 = new float[4];
+
+		try {
+			JSONArray var3 = var0.getJSONArray(var1);
+			var2[0] = (float)var3.optDouble(0, 0.0D);
+			var2[1] = (float)var3.optDouble(1, 0.0D);
+			var2[2] = (float)var3.optDouble(2, 1.0D);
+			var2[3] = (float)var3.optDouble(3, 1.0D);
+		} catch (JSONException var4) {
+			var2[0] = 0.0F;
+			var2[1] = 0.0F;
+			var2[2] = 1.0F;
+			var2[3] = 1.0F;
+		}
+
+		return var2;
 	}
 }

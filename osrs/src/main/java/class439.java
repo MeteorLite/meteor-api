@@ -3,36 +3,97 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("px")
-public class class439 {
-	@ObfuscatedName("w")
-	@ObfuscatedGetter(
-		intValue = 812509895
+@ObfuscatedName("pl")
+public class class439 extends DualNode {
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Llv;"
 	)
-	static final int field4689;
-	@ObfuscatedName("v")
-	@ObfuscatedGetter(
-		intValue = 1192394091
+	static AbstractArchive field4718;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lif;"
 	)
-	static final int field4687;
-	@ObfuscatedName("q")
+	@Export("DBRowType_cache")
+	public static EvictingDualNodeHashTable DBRowType_cache;
+	@ObfuscatedName("f")
+	Object[][] field4715;
+	@ObfuscatedName("n")
+	int[][] field4716;
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 1933647607
+		intValue = 1580984827
 	)
-	@Export("idxCount")
-	public static int idxCount;
+	public int field4713;
 
 	static {
-		field4689 = (int)(Math.pow(2.0D, 4.0D) - 1.0D);
-		field4687 = (int)(Math.pow(2.0D, 8.0D) - 1.0D);
+		DBRowType_cache = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("i")
+	class439() {
+		this.field4713 = -1;
+	}
+
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1992686298"
+		descriptor = "(Lqq;I)V",
+		garbageValue = "-435731106"
 	)
-	public static boolean method7568(int var0) {
-		return (var0 >> 22 & 1) != 0;
+	void method7830(Buffer var1) {
+		while (true) {
+			int var2 = var1.readUnsignedByte();
+			if (var2 == 0) {
+				return;
+			}
+
+			this.method7826(var1, var2);
+		}
+	}
+
+	@ObfuscatedName("n")
+	@ObfuscatedSignature(
+		descriptor = "(II)[Ljava/lang/Object;",
+		garbageValue = "906427284"
+	)
+	public Object[] method7827(int var1) {
+		return this.field4715 == null ? null : this.field4715[var1];
+	}
+
+	@ObfuscatedName("k")
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;II)V",
+		garbageValue = "2127843822"
+	)
+	void method7826(Buffer var1, int var2) {
+		if (var2 == 3) {
+			int var3 = var1.readUnsignedByte();
+			if (this.field4715 == null) {
+				this.field4715 = new Object[var3][];
+				this.field4716 = new int[var3][];
+			}
+
+			for (int var4 = var1.readUnsignedByte(); var4 != 255; var4 = var1.readUnsignedByte()) {
+				int var5 = var1.readUnsignedByte();
+				int[] var6 = new int[var5];
+
+				for (int var7 = 0; var7 < var5; ++var7) {
+					var6[var7] = var1.readUShortSmart();
+				}
+
+				this.field4715[var4] = class358.method6730(var1, var6);
+				this.field4716[var4] = var6;
+			}
+		} else if (var2 == 4) {
+			this.field4713 = var1.method7944();
+		}
+
+	}
+
+	@ObfuscatedName("w")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1247469224"
+	)
+	void method7829() {
 	}
 }

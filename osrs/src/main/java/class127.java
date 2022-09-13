@@ -3,89 +3,91 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dl")
-public class class127 extends class128 {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -1705057231
+@ObfuscatedName("dd")
+public class class127 extends class129 {
+	@ObfuscatedName("pw")
+	@ObfuscatedSignature(
+		descriptor = "Lpf;"
 	)
-	int field1535;
+	@Export("HitSplatDefinition_cachedSprites")
+	static class429 HitSplatDefinition_cachedSprites;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		longValue = 8032391392508483815L
+	)
+	long field1553;
+	@ObfuscatedName("p")
+	String field1552;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Leo;"
 	)
-	final class131 this$0;
+	final class132 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lei;)V"
+		descriptor = "(Leo;)V"
 	)
-	class127(class131 var1) {
+	class127(class132 var1) {
 		this.this$0 = var1;
-		this.field1535 = -1;
+		this.field1553 = -1L;
+		this.field1552 = null;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "-885940784"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
 	)
-	void vmethod3087(Buffer var1) {
-		this.field1535 = var1.readUnsignedShort();
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Leh;B)V",
-		garbageValue = "0"
-	)
-	void vmethod3084(ClanSettings var1) {
-		var1.method2906(this.field1535);
-	}
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(Lls;I)V",
-		garbageValue = "848477537"
-	)
-	public static void method2798(AbstractArchive var0) {
-		FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)Lbz;",
-		garbageValue = "-1413111060"
-	)
-	@Export("getWorldMapScript")
-	static Script getWorldMapScript(int var0, int var1, int var2) {
-		int var3 = FontName.method7323(var1, var0);
-		Script var4 = Varps.method5465(var3, var0);
-		if (var4 != null) {
-			return var4;
-		} else {
-			var3 = class286.method5455(var2, var0);
-			var4 = Varps.method5465(var3, var0);
-			return var4 != null ? var4 : null;
+	void vmethod3320(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1553 = var1.readLong();
 		}
+
+		this.field1552 = var1.readStringCp1252NullTerminatedOrNull();
 	}
 
-	@ObfuscatedName("kj")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IIZS)V",
-		garbageValue = "-10523"
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
 	)
-	static final void method2792(int var0, int var1, boolean var2) {
-		if (Client.currentClanChannels[var0] != null) {
-			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3046()) {
-				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
-				PacketBufferNode var4 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2987, Client.packetWriter.isaacCipher);
-				var4.packetBuffer.writeByte(4 + class309.stringCp1252NullTerminatedByteSize(var3.username.getName()));
-				var4.packetBuffer.writeByte(var0);
-				var4.packetBuffer.writeShort(var1);
-				var4.packetBuffer.writeBoolean(var2);
-				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
-				Client.packetWriter.addNode(var4);
+	void vmethod3313(ClanSettings var1) {
+		var1.method3117(this.field1553, this.field1552, 0);
+	}
+
+	@ObfuscatedName("a")
+	@ObfuscatedSignature(
+		descriptor = "(ILbt;ZI)I",
+		garbageValue = "-1440587934"
+	)
+	static int method2992(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? TextureProvider.scriptDotWidget : MenuAction.scriptActiveWidget;
+		if (var0 == 1800) {
+			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = SoundCache.Widget_unpackTargetMask(class97.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != 1801) {
+			if (var0 == 1802) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
+
+				return 1;
+			} else {
+				return 2;
 			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++VarbitComposition.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
 		}
 	}
 }

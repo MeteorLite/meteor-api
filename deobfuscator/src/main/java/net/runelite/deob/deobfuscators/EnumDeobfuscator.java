@@ -132,14 +132,14 @@ public class EnumDeobfuscator implements Deobfuscator
 
 			// Add string as first argument, which is the field name,
 			// and ordinal as second argument
-			Signature signature = new Signature.Builder()
+			Signature descriptor = new Signature.Builder()
 				.setReturnType(method.getDescriptor().getReturnValue())
 				.addArgument(Type.STRING)
 				.addArgument(Type.INT)
 				.addArguments(method.getDescriptor().getArguments())
 				.build();
 
-			method.setDescriptor(signature);
+			method.setDescriptor(descriptor);
 
 			// Remove instructions up to invokespecial
 			Instructions ins = method.getCode().getInstructions();

@@ -118,12 +118,12 @@ public class UnusedParameters implements Deobfuscator
 					continue;
 				}
 
-				Signature signature = m.get(0).getDescriptor();
-				int lvtIndex = this.getLvtIndex(signature, offset, unusedParameter);
+				Signature descriptor = m.get(0).getDescriptor();
+				int lvtIndex = this.getLvtIndex(descriptor, offset, unusedParameter);
 				/* removing the parameter can't cause collisions on other (overloaded) methods because prior to this we rename
 				 * all classes/fields/methods to have unique names.
 				 */
-				removeParameter(group, m, signature, execution, unusedParameter, lvtIndex);
+				removeParameter(group, m, descriptor, execution, unusedParameter, lvtIndex);
 				break;
 			}
 
@@ -136,12 +136,12 @@ public class UnusedParameters implements Deobfuscator
 	private Set<Integer> findUnusedParameters(Method method)
 	{
 		int offset = method.isStatic() ? 0 : 1;
-		Signature signature = method.getDescriptor();
+		Signature descriptor = method.getDescriptor();
 		List<Integer> unusedParams = new ArrayList<>();
 
 		for (int variableIndex = 0, lvtIndex = offset;
-			variableIndex < signature.size();
-			lvtIndex += signature.getTypeOfArg(variableIndex++).getSize())
+			variableIndex < descriptor.size();
+			lvtIndex += descriptor.getTypeOfArg(variableIndex++).getSize())
 		{
 			List<? extends Instruction> lv = method.findLVTInstructionsForVariable(lvtIndex);
 			if (lv == null || lv.isEmpty())

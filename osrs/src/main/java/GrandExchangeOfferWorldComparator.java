@@ -4,19 +4,14 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lc")
+@Deprecated
+@ObfuscatedName("lw")
 @Implements("GrandExchangeOfferWorldComparator")
 final class GrandExchangeOfferWorldComparator implements Comparator {
-	@ObfuscatedName("ci")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
-	)
-	static IndexedSprite field4064;
-
-	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "(Llh;Llh;I)I",
-		garbageValue = "-1981334118"
+		descriptor = "(Lla;Lla;I)I",
+		garbageValue = "-1330623095"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {

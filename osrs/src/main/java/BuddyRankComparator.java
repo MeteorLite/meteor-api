@@ -1,12 +1,24 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("dl")
 @Implements("BuddyRankComparator")
 public class BuddyRankComparator extends AbstractUserComparator {
-	@ObfuscatedName("s")
+	@ObfuscatedName("x")
+	@ObfuscatedGetter(
+		intValue = 1111006345
+	)
+	static int field1396;
+	@ObfuscatedName("fk")
+	@ObfuscatedGetter(
+		intValue = -54248331
+	)
+	@Export("currentPort")
+	static int currentPort;
+	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +26,10 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;Lnt;I)I",
-		garbageValue = "-1676940583"
+		descriptor = "(Lnr;Lnr;I)I",
+		garbageValue = "1824850774"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,12 +44,24 @@ public class BuddyRankComparator extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("bd")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljava/lang/Object;",
-		garbageValue = "1"
+		descriptor = "([BI)[B",
+		garbageValue = "-168568172"
 	)
-	static Object method2610(int var0) {
-		return UserComparator9.method2593((class433)GameEngine.findEnumerated(class433.method7494(), var0));
+	public static byte[] method2790(byte[] var0) {
+		int var1 = var0.length;
+		byte[] var2 = new byte[var1];
+		System.arraycopy(var0, 0, var2, 0, var1);
+		return var2;
+	}
+
+	@ObfuscatedName("f")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Z",
+		garbageValue = "0"
+	)
+	public static boolean method2791(int var0) {
+		return var0 >= WorldMapDecorationType.field3579.id && var0 <= WorldMapDecorationType.field3560.id;
 	}
 }

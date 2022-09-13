@@ -4,35 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gr")
+@ObfuscatedName("gb")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("sh")
-	@ObfuscatedGetter(
-		intValue = 1077493760
+	@ObfuscatedName("gt")
+	@ObfuscatedSignature(
+		descriptor = "Lnl;"
 	)
-	static int field2198;
-	@ObfuscatedName("s")
+	static AbstractSocket field2237;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 58129171
+		intValue = -1762849059
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -980043277
+		intValue = 610056427
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -393157049
+		intValue = 410415313
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 312616933
+		intValue = 1876745509
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -40,101 +40,84 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIILgl;B)Z",
-		garbageValue = "57"
+		descriptor = "(IIILgj;I)Z",
+		garbageValue = "-385329000"
 	)
-	@Export("hasArrived")
-	public abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
+	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Ldj;[F[FB)V",
-		garbageValue = "0"
+		descriptor = "(Lqf;B)V",
+		garbageValue = "13"
 	)
-	static void method3813(class117 var0, float[] var1, float[] var2) {
-		if (var0 != null) {
-			float var3 = var1[3] - var1[0];
-			if ((double)var3 != 0.0D) {
-				float var4 = var1[1] - var1[0];
-				float var5 = var1[2] - var1[0];
-				Float var6 = var4 / var3;
-				Float var7 = var5 / var3;
-				var0.field1442 = var6 == 0.33333334F && var7 == 0.6666667F;
-				float var8 = var6;
-				float var9 = var7;
-				if ((double)var6 < 0.0D) {
-					var6 = 0.0F;
-				}
+	@Export("updatePlayer")
+	static final void updatePlayer(PacketBuffer var0) {
+		var0.importIndex();
+		int var1 = Client.localPlayerIndex;
+		Player var2 = class67.localPlayer = Client.players[var1] = new Player();
+		var2.index = var1;
+		int var3 = var0.readBits(30);
+		byte var4 = (byte)(var3 >> 28);
+		int var5 = var3 >> 14 & 16383;
+		int var6 = var3 & 16383;
+		var2.pathX[0] = var5 - class128.baseX * 64;
+		var2.x = (var2.pathX[0] << 7) + (var2.transformedSize() << 6);
+		var2.pathY[0] = var6 - WorldMapData_1.baseY * 64;
+		var2.y = (var2.pathY[0] << 7) + (var2.transformedSize() << 6);
+		Tiles.Client_plane = var2.plane = var4;
+		if (Players.field1292[var1] != null) {
+			var2.read(Players.field1292[var1]);
+		}
 
-				if ((double)var7 > 1.0D) {
-					var7 = 1.0F;
-				}
+		Players.Players_count = 0;
+		Players.Players_indices[++Players.Players_count - 1] = var1;
+		Players.field1290[var1] = 0;
+		Players.Players_emptyIdxCount = 0;
 
-				if ((double)var6 > 1.0D || var7 < -1.0F) {
-					Float var10 = var6;
-					Float var11 = 1.0F - var7;
-					if (var6 < 0.0F) {
-						var10 = 0.0F;
-					}
-
-					if (var11 < 0.0F) {
-						var11 = 0.0F;
-					}
-
-					if (var10 > 1.0F || var11 > 1.0F) {
-						float var12 = (float)((double)(var10 * (var10 - 2.0F + var11)) + (double)var11 * ((double)var11 - 2.0D) + 1.0D);
-						if (var12 + class114.field1410 > 0.0F) {
-							class143.method3003(var10, var11);
-						}
-					}
-
-					var11 = 1.0F - var11;
-				}
-
-				if (var6 != var8) {
-					var1[1] = var1[0] + var6 * var3;
-					if (0.0D != (double)var8) {
-						var2[1] = var2[0] + (var2[1] - var2[0]) * var6 / var8;
-					}
-				}
-
-				if (var7 != var9) {
-					var1[2] = var1[0] + var7 * var3;
-					if (1.0D != (double)var9) {
-						var2[2] = (float)((double)var2[3] - (double)(var2[3] - var2[2]) * (1.0D - (double)var7) / (1.0D - (double)var9));
-					}
-				}
-
-				var0.field1437 = var1[0];
-				var0.field1444 = var1[3];
-				SpotAnimationDefinition.method3448(0.0F, var6, var7, 1.0F, var0.field1445);
-				SpotAnimationDefinition.method3448(var2[0], var2[1], var2[2], var2[3], var0.field1440);
+		for (int var7 = 1; var7 < 2048; ++var7) {
+			if (var1 != var7) {
+				int var8 = var0.readBits(18);
+				int var9 = var8 >> 16;
+				int var10 = var8 >> 8 & 597;
+				int var11 = var8 & 597;
+				Players.Players_regions[var7] = (var10 << 14) + var11 + (var9 << 28);
+				Players.Players_orientations[var7] = 0;
+				Players.Players_targetIndices[var7] = -1;
+				Players.Players_emptyIndices[++Players.Players_emptyIdxCount - 1] = var7;
+				Players.field1290[var7] = 0;
 			}
 		}
+
+		var0.exportIndex();
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
+		descriptor = "(IB)I",
 		garbageValue = "7"
 	)
-	public static int[] method3814() {
-		int[] var0 = new int[KeyHandler.field138];
-
-		for (int var1 = 0; var1 < KeyHandler.field138; ++var1) {
-			var0[var1] = KeyHandler.field137[var1];
-		}
-
-		return var0;
+	public static int method4026(int var0) {
+		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
+		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
+		var0 = var0 + (var0 >>> 4) & 252645135;
+		var0 += var0 >>> 8;
+		var0 += var0 >>> 16;
+		return var0 & 255;
 	}
 
-	@ObfuscatedName("jj")
-	static final void method3811(double var0) {
-		Rasterizer3D.Rasterizer3D_setBrightness(var0);
-		((TextureProvider)Rasterizer3D.Rasterizer3D_textureLoader).setBrightness(var0);
-		class269.method5150();
-		ClanMate.clientPreferences.method2234(var0);
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "44720495"
+	)
+	public static void method4027() {
+		if (MouseHandler.MouseHandler_instance != null) {
+			synchronized(MouseHandler.MouseHandler_instance) {
+				MouseHandler.MouseHandler_instance = null;
+			}
+		}
+
 	}
 }

@@ -4,61 +4,60 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("no")
+@ObfuscatedName("na")
 @Implements("FriendsList")
 public class FriendsList extends UserList {
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "Lpl;"
+		descriptor = "Lpn;"
 	)
 	@Export("loginType")
 	final LoginType loginType;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -2142591423
+		intValue = -1686578925
 	)
-	int field4282;
-	@ObfuscatedName("c")
+	int field4329;
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "Lly;"
+		descriptor = "Lmx;"
 	)
-	@Export("friendLoginUpdates")
-	public LinkDeque friendLoginUpdates;
+	public LinkDeque field4330;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lpl;)V"
+		descriptor = "(Lpn;)V"
 	)
 	public FriendsList(LoginType var1) {
 		super(400);
-		this.field4282 = 1;
-		this.friendLoginUpdates = new LinkDeque();
+		this.field4329 = 1;
+		this.field4330 = new LinkDeque();
 		this.loginType = var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lnb;",
-		garbageValue = "1043377845"
+		descriptor = "(B)Lnc;",
+		garbageValue = "-25"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Friend();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lnb;",
-		garbageValue = "46467081"
+		descriptor = "(IB)[Lnc;",
+		garbageValue = "0"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Friend[var1];
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lqy;ZB)Z",
-		garbageValue = "63"
+		descriptor = "(Lqo;ZI)Z",
+		garbageValue = "15565735"
 	)
 	@Export("isFriended")
 	public boolean isFriended(Username var1, boolean var2) {
@@ -70,10 +69,10 @@ public class FriendsList extends UserList {
 		}
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;II)V",
-		garbageValue = "-1824082958"
+		descriptor = "(Lqq;II)V",
+		garbageValue = "1793281005"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
@@ -112,20 +111,20 @@ public class FriendsList extends UserList {
 						if (var6 != var11.world) {
 							boolean var14 = true;
 
-							for (FriendLoginUpdate var13 = (FriendLoginUpdate)this.friendLoginUpdates.last(); var13 != null; var13 = (FriendLoginUpdate)this.friendLoginUpdates.previous()) {
-								if (var13.username.equals(var4)) {
-									if (var6 != 0 && var13.world == 0) {
-										var13.remove();
+							for (class370 var13 = (class370)this.field4330.method6386(); var13 != null; var13 = (class370)this.field4330.method6393()) {
+								if (var13.field4345.equals(var4)) {
+									if (var6 != 0 && var13.field4347 == 0) {
+										var13.method7333();
 										var14 = false;
-									} else if (var6 == 0 && var13.world != 0) {
-										var13.remove();
+									} else if (var6 == 0 && var13.field4347 != 0) {
+										var13.method7333();
 										var14 = false;
 									}
 								}
 							}
 
 							if (var14) {
-								this.friendLoginUpdates.addFirst(new FriendLoginUpdate(var4, var6));
+								this.field4330.method6384(new class370(var4, var6));
 							}
 						}
 					} else {
@@ -137,17 +136,17 @@ public class FriendsList extends UserList {
 					}
 
 					if (var6 != var11.world) {
-						var11.int2 = ++this.field4282 - 1;
+						var11.int2 = ++this.field4329 - 1;
 						if (var11.world == -1 && var6 == 0) {
-							var11.int2 = -(var11.int2 * 1745645509) * 547305229;
+							var11.int2 = -(var11.int2 * -287223117) * 597666939;
 						}
 
 						var11.world = var6;
 					}
 
 					var11.rank = var7;
-					var11.field4294 = var9;
-					var11.field4293 = var10;
+					var11.field4339 = var9;
+					var11.field4340 = var10;
 					continue;
 				}
 
@@ -157,5 +156,14 @@ public class FriendsList extends UserList {
 			this.sort();
 			return;
 		}
+	}
+
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "37576687"
+	)
+	public static int method6799(int var0, int var1) {
+		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
 	}
 }

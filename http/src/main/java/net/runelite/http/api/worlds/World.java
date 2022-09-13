@@ -1,46 +1,175 @@
-/*
- * Copyright (c) 2017, Adam <Adam@sigterm.info>
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
- *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
- * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
- * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 package net.runelite.http.api.worlds;
 
 import java.util.EnumSet;
-import lombok.Builder;
-import lombok.Value;
 
-@Value
-@Builder
-public class World
-{
-	private int id;
-	private EnumSet<WorldType> types;
-	private String address;
-	private String activity;
-	private int location;
-	private int players;
+public final class World {
+	private final int id;
+	private final EnumSet<WorldType> types;
+	private final String address;
+	private final String activity;
+	private final int location;
+	private final int players;
 
-	public WorldRegion getRegion()
-	{
-		return WorldRegion.valueOf(location);
+	public WorldRegion getRegion() {
+		return WorldRegion.valueOf(this.location);
+	}
+
+	World(int id, EnumSet<WorldType> types, String address, String activity, int location, int players) {
+		this.id = id;
+		this.types = types;
+		this.address = address;
+		this.activity = activity;
+		this.location = location;
+		this.players = players;
+	}
+
+	public static World.WorldBuilder builder() {
+		return new World.WorldBuilder();
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public EnumSet<WorldType> getTypes() {
+		return this.types;
+	}
+
+	public String getAddress() {
+		return this.address;
+	}
+
+	public String getActivity() {
+		return this.activity;
+	}
+
+	public int getLocation() {
+		return this.location;
+	}
+
+	public int getPlayers() {
+		return this.players;
+	}
+
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		} else if (!(o instanceof World other)) {
+			return false;
+		} else {
+			if (this.getId() != other.getId()) {
+				return false;
+			} else if (this.getLocation() != other.getLocation()) {
+				return false;
+			} else if (this.getPlayers() != other.getPlayers()) {
+				return false;
+			} else {
+				label52: {
+					Object this$types = this.getTypes();
+					Object other$types = other.getTypes();
+					if (this$types == null) {
+						if (other$types == null) {
+							break label52;
+						}
+					} else if (this$types.equals(other$types)) {
+						break label52;
+					}
+
+					return false;
+				}
+
+				Object this$address = this.getAddress();
+				Object other$address = other.getAddress();
+				if (this$address == null) {
+					if (other$address != null) {
+						return false;
+					}
+				} else if (!this$address.equals(other$address)) {
+					return false;
+				}
+
+				Object this$activity = this.getActivity();
+				Object other$activity = other.getActivity();
+				if (this$activity == null) {
+					if (other$activity != null) {
+						return false;
+					}
+				} else if (!this$activity.equals(other$activity)) {
+					return false;
+				}
+
+				return true;
+			}
+		}
+	}
+
+	public int hashCode() {
+		boolean PRIME = true;
+		int result = 1;
+		result = result * 59 + this.getId();
+		result = result * 59 + this.getLocation();
+		result = result * 59 + this.getPlayers();
+		Object $types = this.getTypes();
+		result = result * 59 + ($types == null ? 43 : $types.hashCode());
+		Object $address = this.getAddress();
+		result = result * 59 + ($address == null ? 43 : $address.hashCode());
+		Object $activity = this.getActivity();
+		result = result * 59 + ($activity == null ? 43 : $activity.hashCode());
+		return result;
+	}
+
+	public String toString() {
+		int var10000 = this.getId();
+		return "World(id=" + var10000 + ", types=" + this.getTypes() + ", address=" + this.getAddress() + ", activity=" + this.getActivity() + ", location=" + this.getLocation() + ", players=" + this.getPlayers() + ")";
+	}
+
+	public static class WorldBuilder {
+		private int id;
+		private EnumSet types;
+		private String address;
+		private String activity;
+		private int location;
+		private int players;
+
+		WorldBuilder() {
+		}
+
+		public World.WorldBuilder id(int id) {
+			this.id = id;
+			return this;
+		}
+
+		public World.WorldBuilder types(EnumSet types) {
+			this.types = types;
+			return this;
+		}
+
+		public World.WorldBuilder address(String address) {
+			this.address = address;
+			return this;
+		}
+
+		public World.WorldBuilder activity(String activity) {
+			this.activity = activity;
+			return this;
+		}
+
+		public World.WorldBuilder location(int location) {
+			this.location = location;
+			return this;
+		}
+
+		public World.WorldBuilder players(int players) {
+			this.players = players;
+			return this;
+		}
+
+		public World build() {
+			return new World(this.id, this.types, this.address, this.activity, this.location, this.players);
+		}
+
+		public String toString() {
+			return "World.WorldBuilder(id=" + this.id + ", types=" + this.types + ", address=" + this.address + ", activity=" + this.activity + ", location=" + this.location + ", players=" + this.players + ")";
+		}
 	}
 }

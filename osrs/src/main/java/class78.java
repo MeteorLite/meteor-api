@@ -1,54 +1,73 @@
-import net.runelite.mapping.Export;
+import java.net.URL;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ce")
+@ObfuscatedName("cy")
 public class class78 {
-	@ObfuscatedName("sg")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "Laf;"
+		descriptor = "(Ljava/lang/String;ILjava/lang/String;B)Z",
+		garbageValue = "6"
 	)
-	@Export("pcmPlayer0")
-	static PcmPlayer pcmPlayer0;
+	static boolean method2234(String var0, int var1, String var2) {
+		if (var1 == 0) {
+			try {
+				if (!class29.field172.startsWith("win")) {
+					throw new Exception();
+				} else if (!var0.startsWith("http://") && !var0.startsWith("https://")) {
+					throw new Exception();
+				} else {
+					String var10 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?&=,.%+-_#:/*";
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lfw;",
-		garbageValue = "-14"
-	)
-	@Export("VarpDefinition_get")
-	public static VarpDefinition VarpDefinition_get(int var0) {
-		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
-			var1 = new VarpDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
+					for (int var4 = 0; var4 < var0.length(); ++var4) {
+						if (var10.indexOf(var0.charAt(var4)) == -1) {
+							throw new Exception();
+						}
+					}
+
+					Runtime.getRuntime().exec("cmd /c start \"j\" \"" + var0 + "\"");
+					return true;
+				}
+			} catch (Throwable var5) {
+				return false;
+			}
+		} else if (var1 == 1) {
+			try {
+				Object var3 = class27.method405(class29.field179, var2, new Object[]{(new URL(class29.field179.getCodeBase(), var0)).toString()});
+				return var3 != null;
+			} catch (Throwable var6) {
+				return false;
+			}
+		} else if (var1 == 2) {
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_blank");
+				return true;
+			} catch (Exception var7) {
+				return false;
+			}
+		} else if (var1 == 3) {
+			try {
+				class27.method404(class29.field179, "loggedout");
+			} catch (Throwable var9) {
 			}
 
-			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
-			return var1;
+			try {
+				class29.field179.getAppletContext().showDocument(new URL(class29.field179.getCodeBase(), var0), "_top");
+				return true;
+			} catch (Exception var8) {
+				return false;
+			}
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1585294077"
+		descriptor = "(ILbt;ZS)I",
+		garbageValue = "-16458"
 	)
-	public static boolean method2054(int var0) {
-		return var0 >= 0 && var0 < 112 ? KeyHandler.field126[var0] : false;
-	}
-
-	@ObfuscatedName("k")
-	@ObfuscatedSignature(
-		descriptor = "(CI)Z",
-		garbageValue = "-2035745879"
-	)
-	@Export("isCharAlphabetic")
-	public static boolean isCharAlphabetic(char var0) {
-		return var0 >= 'A' && var0 <= 'Z' || var0 >= 'a' && var0 <= 'z';
+	static int method2235(int var0, Script var1, boolean var2) {
+		return 2;
 	}
 }

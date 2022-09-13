@@ -4,44 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nh")
+@ObfuscatedName("nk")
 @Implements("Bounds")
 public class Bounds {
-	@ObfuscatedName("bt")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -941369423
+		intValue = -1488779815
 	)
-	static int field4379;
-	@ObfuscatedName("dm")
-	@Export("mouseCam")
-	static boolean mouseCam;
-	@ObfuscatedName("qz")
-	@ObfuscatedSignature(
-		descriptor = "Lpp;"
-	)
-	@Export("HitSplatDefinition_cached")
-	static class428 HitSplatDefinition_cached;
-	@ObfuscatedName("s")
+	public static int field4422;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -1706987485
+		intValue = 351496297
 	)
 	@Export("lowX")
 	public int lowX;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 600654443
+		intValue = -1627346609
 	)
 	@Export("lowY")
 	public int lowY;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1180177163
+		intValue = 54983627
 	)
 	@Export("highX")
 	public int highX;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1058256337
+		intValue = 1537853667
 	)
 	@Export("highY")
 	public int highY;
@@ -55,10 +46,10 @@ public class Bounds {
 		this(0, 0, var1, var2);
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(IIB)V",
-		garbageValue = "77"
+		descriptor = "(III)V",
+		garbageValue = "1233929932"
 	)
 	@Export("setLow")
 	public void setLow(int var1, int var2) {
@@ -66,10 +57,10 @@ public class Bounds {
 		this.lowY = var2;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(III)V",
-		garbageValue = "1126625188"
+		garbageValue = "-964537863"
 	)
 	@Export("setHigh")
 	public void setHigh(int var1, int var2) {
@@ -77,31 +68,31 @@ public class Bounds {
 		this.highY = var2;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(III)Z",
-		garbageValue = "1971817218"
+		garbageValue = "-1931286639"
 	)
-	public boolean method6853(int var1, int var2) {
-		return var1 >= this.lowX && var1 < this.lowX + this.highX && var2 >= this.lowY && var2 < this.lowY + this.highY;
+	public boolean method7113(int var1, int var2) {
+		return var1 >= this.lowX && var1 < this.lowX + this.highX && var2 >= this.lowY && var2 < this.highY + this.lowY;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lnh;Lnh;B)V",
-		garbageValue = "71"
+		descriptor = "(Lnk;Lnk;B)V",
+		garbageValue = "2"
 	)
-	public void method6848(Bounds var1, Bounds var2) {
-		this.method6847(var1, var2);
-		this.method6850(var1, var2);
+	public void method7096(Bounds var1, Bounds var2) {
+		this.method7097(var1, var2);
+		this.method7098(var1, var2);
 	}
 
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedSignature(
-		descriptor = "(Lnh;Lnh;B)V",
-		garbageValue = "-120"
+		descriptor = "(Lnk;Lnk;I)V",
+		garbageValue = "-929205205"
 	)
-	void method6847(Bounds var1, Bounds var2) {
+	void method7097(Bounds var1, Bounds var2) {
 		var2.lowX = this.lowX;
 		var2.highX = this.highX;
 		if (this.lowX < var1.lowX) {
@@ -109,8 +100,8 @@ public class Bounds {
 			var2.lowX = var1.lowX;
 		}
 
-		if (var2.method6851() > var1.method6851()) {
-			var2.highX -= var2.method6851() - var1.method6851();
+		if (var2.method7117() > var1.method7117()) {
+			var2.highX -= var2.method7117() - var1.method7117();
 		}
 
 		if (var2.highX < 0) {
@@ -119,12 +110,12 @@ public class Bounds {
 
 	}
 
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "(Lnh;Lnh;I)V",
-		garbageValue = "986167182"
+		descriptor = "(Lnk;Lnk;B)V",
+		garbageValue = "25"
 	)
-	void method6850(Bounds var1, Bounds var2) {
+	void method7098(Bounds var1, Bounds var2) {
 		var2.lowY = this.lowY;
 		var2.highY = this.highY;
 		if (this.lowY < var1.lowY) {
@@ -132,8 +123,8 @@ public class Bounds {
 			var2.lowY = var1.lowY;
 		}
 
-		if (var2.method6852() > var1.method6852()) {
-			var2.highY -= var2.method6852() - var1.method6852();
+		if (var2.method7105() > var1.method7105()) {
+			var2.highY -= var2.method7105() - var1.method7105();
 		}
 
 		if (var2.highY < 0) {
@@ -142,21 +133,21 @@ public class Bounds {
 
 	}
 
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "8"
+		descriptor = "(I)I",
+		garbageValue = "-511168866"
 	)
-	int method6851() {
-		return this.highX + this.lowX;
+	int method7117() {
+		return this.lowX + this.highX;
 	}
 
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(B)I",
-		garbageValue = "2"
+		descriptor = "(I)I",
+		garbageValue = "-1102543624"
 	)
-	int method6852() {
+	int method7105() {
 		return this.highY + this.lowY;
 	}
 
@@ -166,47 +157,37 @@ public class Bounds {
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lls;Ljava/lang/String;Ljava/lang/String;I)[Lqe;",
-		garbageValue = "-446960317"
+		descriptor = "(IB)I",
+		garbageValue = "32"
 	)
-	public static IndexedSprite[] method6868(AbstractArchive var0, String var1, String var2) {
-		int var3 = var0.getGroupId(var1);
-		int var4 = var0.getFileId(var3, var2);
-		return DefaultsGroup.method6840(var0, var3, var4);
+	public static int method7118(int var0) {
+		return var0 != 0 && var0 != 1 ? -1 : 0;
 	}
 
-	@ObfuscatedName("gr")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "816054314"
+		descriptor = "(Ljava/lang/Throwable;Ljava/lang/String;)Lrr;"
 	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = ObjectComposition.getTileHeight(var0, var1, class268.Client_plane) - var2;
-			var0 -= class16.cameraX;
-			var3 -= WorldMapLabel.cameraY;
-			var1 -= class269.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[class82.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[class82.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[ClientPreferences.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[ClientPreferences.cameraYaw];
-			int var8 = var0 * var7 + var6 * var1 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var5 * var1 + var4 * var3 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = Client.viewportHeight / 2 + var8 * Client.viewportZoom / var1;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
-			}
-
+	@Export("newRunException")
+	public static RunException newRunException(Throwable var0, String var1) {
+		RunException var2;
+		if (var0 instanceof RunException) {
+			var2 = (RunException)var0;
+			var2.message = var2.message + ' ' + var1;
 		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			var2 = new RunException(var0, var1);
 		}
+
+		return var2;
+	}
+
+	@ObfuscatedName("u")
+	@ObfuscatedSignature(
+		descriptor = "(IIIII)I",
+		garbageValue = "1903687902"
+	)
+	static final int method7094(int var0, int var1, int var2, int var3) {
+		int var4 = 65536 - Rasterizer3D.Rasterizer3D_cosine[var2 * 1024 / var3] >> 1;
+		return ((65536 - var4) * var0 >> 16) + (var4 * var1 >> 16);
 	}
 }

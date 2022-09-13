@@ -31,5 +31,4 @@ import net.runelite.api.WallObject
 /**
  * An event where a [WallObject] on a [Tile] has been removed.
  */
-class WallObjectDespawned(val tile: Tile, val wallObject: WallObject) : Event() {
-}
+class WallObjectDespawned(val tile: Tile, val wallObject: WallObject) : Event()

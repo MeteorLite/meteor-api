@@ -10,22 +10,13 @@ import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 import org.bouncycastle.crypto.tls.TlsClientProtocol;
 
-@ObfuscatedName("m")
+@ObfuscatedName("h")
 class class12 extends SSLSocket {
-	@ObfuscatedName("fp")
-	@Export("worldHost")
-	static String worldHost;
-	@ObfuscatedName("iv")
-	@ObfuscatedSignature(
-		descriptor = "Lgy;"
-	)
-	@Export("scene")
-	static Scene scene;
-	@ObfuscatedName("s")
-	Certificate[] field70;
+	@ObfuscatedName("c")
+	Certificate[] field62;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lz;"
+		descriptor = "Ld;"
 	)
 	final class15 this$0;
 	// $FF: synthetic field
@@ -34,7 +25,7 @@ class class12 extends SSLSocket {
 	final String val$host;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lz;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
+		descriptor = "(Ld;Lorg/bouncycastle/crypto/tls/TlsClientProtocol;Ljava/lang/String;)V"
 	)
 	class12(class15 var1, TlsClientProtocol var2, String var3) {
 		this.this$0 = var1;
@@ -42,12 +33,15 @@ class class12 extends SSLSocket {
 		this.val$host = var3;
 	}
 
-	public boolean getWantClientAuth() {
-		return false;
+	public void setEnabledCipherSuites(String[] var1) {
 	}
 
 	public InputStream getInputStream() throws IOException {
 		return this.val$tlsClientProtocol.getInputStream();
+	}
+
+	public OutputStream getOutputStream() throws IOException {
+		return this.val$tlsClientProtocol.getOutputStream();
 	}
 
 	public synchronized void close() throws IOException {
@@ -57,8 +51,8 @@ class class12 extends SSLSocket {
 	public void addHandshakeCompletedListener(HandshakeCompletedListener var1) {
 	}
 
-	public String[] getSupportedCipherSuites() {
-		return null;
+	public boolean getEnableSessionCreation() {
+		return false;
 	}
 
 	public String[] getEnabledCipherSuites() {
@@ -69,31 +63,25 @@ class class12 extends SSLSocket {
 		return null;
 	}
 
+	public boolean getNeedClientAuth() {
+		return false;
+	}
+
 	public SSLSession getSession() {
 		return new class17(this);
 	}
 
-	public String[] getSupportedProtocols() {
-		return null;
-	}
-
-	public boolean getUseClientMode() {
+	public boolean getWantClientAuth() {
 		return false;
 	}
 
-	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
-	}
-
-	public void setEnableSessionCreation(boolean var1) {
+	public void setUseClientMode(boolean var1) {
 	}
 
 	public void setEnabledProtocols(String[] var1) {
 	}
 
 	public void setNeedClientAuth(boolean var1) {
-	}
-
-	public void setUseClientMode(boolean var1) {
 	}
 
 	public void setWantClientAuth(boolean var1) {
@@ -103,209 +91,199 @@ class class12 extends SSLSocket {
 		this.val$tlsClientProtocol.connect(new class13(this));
 	}
 
-	public void setEnabledCipherSuites(String[] var1) {
+	public void setEnableSessionCreation(boolean var1) {
 	}
 
-	public boolean getNeedClientAuth() {
+	public String[] getSupportedProtocols() {
+		return null;
+	}
+
+	public String[] getSupportedCipherSuites() {
+		return null;
+	}
+
+	public void removeHandshakeCompletedListener(HandshakeCompletedListener var1) {
+	}
+
+	public boolean getUseClientMode() {
 		return false;
 	}
 
-	public boolean getEnableSessionCreation() {
-		return false;
-	}
-
-	public OutputStream getOutputStream() throws IOException {
-		return this.val$tlsClientProtocol.getOutputStream();
-	}
-
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "([BIILgy;[Lgl;B)V",
-		garbageValue = "-68"
+		descriptor = "(Llv;I)V",
+		garbageValue = "1963307877"
 	)
-	static final void method157(byte[] var0, int var1, int var2, Scene var3, CollisionMap[] var4) {
-		Buffer var5 = new Buffer(var0);
-		int var6 = -1;
-
-		while (true) {
-			int var7 = var5.method7881();
-			if (var7 == 0) {
-				return;
-			}
-
-			var6 += var7;
-			int var8 = 0;
-
-			while (true) {
-				int var9 = var5.readUShortSmart();
-				if (var9 == 0) {
-					break;
-				}
-
-				var8 += var9 - 1;
-				int var10 = var8 & 63;
-				int var11 = var8 >> 6 & 63;
-				int var12 = var8 >> 12;
-				int var13 = var5.readUnsignedByte();
-				int var14 = var13 >> 2;
-				int var15 = var13 & 3;
-				int var16 = var11 + var1;
-				int var17 = var10 + var2;
-				if (var16 > 0 && var17 > 0 && var16 < 103 && var17 < 103) {
-					int var18 = var12;
-					if ((Tiles.Tiles_renderFlags[1][var16][var17] & 2) == 2) {
-						var18 = var12 - 1;
-					}
-
-					CollisionMap var19 = null;
-					if (var18 >= 0) {
-						var19 = var4[var18];
-					}
-
-					class347.addObjects(var12, var16, var17, var6, var15, var14, var3, var19);
-				}
-			}
-		}
+	public static void method178(AbstractArchive var0) {
+		FloorOverlayDefinition.FloorOverlayDefinition_archive = var0;
 	}
 
-	@ObfuscatedName("eh")
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "2145461636"
+	)
+	static void method176() {
+		class152.Tiles_underlays = null;
+		class294.Tiles_overlays = null;
+		Tiles.Tiles_shapes = null;
+		Tiles.field1001 = null;
+		ChatChannel.field996 = null;
+		SoundCache.field328 = null;
+		Tiles.field1002 = null;
+		TextureProvider.Tiles_hue = null;
+		FontName.Tiles_saturation = null;
+		class436.Tiles_lightness = null;
+		class434.Tiles_hueMultiplier = null;
+		Tiles.field1008 = null;
+	}
+
+	@ObfuscatedName("fd")
 	@ObfuscatedSignature(
 		descriptor = "(II)V",
-		garbageValue = "-1182686074"
+		garbageValue = "-1208132518"
 	)
 	@Export("getLoginError")
 	static void getLoginError(int var0) {
-		int var1 = Login.loginIndex;
+		int var1 = WorldMapIcon_0.method5034();
 		if (var0 == -3) {
-			ItemComposition.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
+			SecureRandomCallable.setLoginResponseString("Connection timed out.", "Please try using a different world.", "");
 		} else if (var0 == -2) {
-			ItemComposition.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
+			SecureRandomCallable.setLoginResponseString("Error connecting to server.", "Please try using a different world.", "");
 		} else if (var0 == -1) {
-			ItemComposition.setLoginResponseString("No response from server.", "Please try using a different world.", "");
+			SecureRandomCallable.setLoginResponseString("No response from server.", "Please try using a different world.", "");
 		} else if (var0 == 3) {
-			class116.method2683(3);
-			Login.field875 = 1;
+			class139.method3101(3);
+			Login.field903 = 1;
 		} else if (var0 == 4) {
-			class116.method2683(14);
-			Login.field882 = 0;
+			class139.method3101(14);
+			Login.field902 = 0;
 		} else if (var0 == 5) {
-			Login.field875 = 2;
-			ItemComposition.setLoginResponseString("Your account has not logged out from its last", "session or the server is too busy right now.", "Please try again in a few minutes.");
+			Login.field903 = 2;
+			SecureRandomCallable.setLoginResponseString("Either your account is still logged in, or the last", "world you were using has become unavailable.", "Please try again later.");
 		} else if (var0 != 68 && (Client.onMobile || var0 != 6)) {
 			if (var0 == 7) {
-				ItemComposition.setLoginResponseString("This world is full.", "Please use a different world.", "");
+				SecureRandomCallable.setLoginResponseString("This world is full.", "Please use a different world.", "");
 			} else if (var0 == 8) {
-				ItemComposition.setLoginResponseString("Unable to connect.", "Login server offline.", "");
+				SecureRandomCallable.setLoginResponseString("Unable to connect.", "Login server offline.", "");
 			} else if (var0 == 9) {
-				ItemComposition.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
+				SecureRandomCallable.setLoginResponseString("Login limit exceeded.", "Too many connections from your address.", "");
 			} else if (var0 == 10) {
-				ItemComposition.setLoginResponseString("Unable to connect.", "Bad session id.", "");
+				SecureRandomCallable.setLoginResponseString("Unable to connect.", "Bad session id.", "");
 			} else if (var0 == 11) {
-				ItemComposition.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
+				SecureRandomCallable.setLoginResponseString("We suspect someone knows your password.", "Press 'change your password' on front page.", "");
 			} else if (var0 == 12) {
-				ItemComposition.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
+				SecureRandomCallable.setLoginResponseString("You need a members account to login to this world.", "Please subscribe, or use a different world.", "");
 			} else if (var0 == 13) {
-				ItemComposition.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
+				SecureRandomCallable.setLoginResponseString("Could not complete login.", "Please try using a different world.", "");
 			} else if (var0 == 14) {
-				ItemComposition.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
+				SecureRandomCallable.setLoginResponseString("The server is being updated.", "Please wait 1 minute and try again.", "");
 			} else if (var0 == 16) {
-				ItemComposition.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
+				SecureRandomCallable.setLoginResponseString("Too many login attempts.", "Please wait a few minutes before trying again.", "");
 			} else if (var0 == 17) {
-				ItemComposition.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
+				SecureRandomCallable.setLoginResponseString("To access this free world, log into a", "members world and move your character", "to a non-members area.");
 			} else if (var0 == 18) {
-				class116.method2683(14);
-				Login.field882 = 1;
+				class139.method3101(14);
+				Login.field902 = 1;
 			} else if (var0 == 19) {
-				ItemComposition.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
+				SecureRandomCallable.setLoginResponseString("This world is running a closed Beta.", "Sorry invited players only.", "Please use a different world.");
 			} else if (var0 == 20) {
-				ItemComposition.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
+				SecureRandomCallable.setLoginResponseString("Invalid loginserver requested.", "Please try using a different world.", "");
 			} else if (var0 == 22) {
-				ItemComposition.setLoginResponseString("Malformed login packet.", "Please try again.", "");
+				SecureRandomCallable.setLoginResponseString("Malformed login packet.", "Please try again.", "");
 			} else if (var0 == 23) {
-				ItemComposition.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
+				SecureRandomCallable.setLoginResponseString("No reply from loginserver.", "Please wait 1 minute and try again.", "");
 			} else if (var0 == 24) {
-				ItemComposition.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
+				SecureRandomCallable.setLoginResponseString("Error loading your profile.", "Please contact customer support.", "");
 			} else if (var0 == 25) {
-				ItemComposition.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
+				SecureRandomCallable.setLoginResponseString("Unexpected loginserver response.", "Please try using a different world.", "");
 			} else if (var0 == 26) {
-				ItemComposition.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
+				SecureRandomCallable.setLoginResponseString("This computers address has been blocked", "as it was used to break our rules.", "");
 			} else if (var0 == 27) {
-				ItemComposition.setLoginResponseString("", "Service unavailable.", "");
+				SecureRandomCallable.setLoginResponseString("", "Service unavailable.", "");
 			} else if (var0 == 31) {
-				ItemComposition.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
+				SecureRandomCallable.setLoginResponseString("Your account must have a displayname set", "in order to play the game.  Please set it", "via the website, or the main game.");
 			} else if (var0 == 32) {
-				class116.method2683(14);
-				Login.field882 = 2;
+				class139.method3101(14);
+				Login.field902 = 2;
 			} else if (var0 == 37) {
-				ItemComposition.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
+				SecureRandomCallable.setLoginResponseString("Your account is currently inaccessible.", "Please try again in a few minutes.", "");
 			} else if (var0 == 38) {
-				ItemComposition.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
+				SecureRandomCallable.setLoginResponseString("You need to vote to play!", "Visit runescape.com and vote,", "and then come back here!");
 			} else if (var0 == 55) {
-				class116.method2683(8);
+				class139.method3101(8);
 			} else {
 				if (var0 == 56) {
-					ItemComposition.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
-					class4.updateGameState(11);
+					SecureRandomCallable.setLoginResponseString("Enter the 6-digit code generated by your", "authenticator app.", "");
+					Coord.updateGameState(11);
 					return;
 				}
 
 				if (var0 == 57) {
-					ItemComposition.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
-					class4.updateGameState(11);
+					SecureRandomCallable.setLoginResponseString("The code you entered was incorrect.", "Please try again.", "");
+					Coord.updateGameState(11);
 					return;
 				}
 
 				if (var0 == 61) {
-					ItemComposition.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
-					class116.method2683(7);
+					SecureRandomCallable.setLoginResponseString("", "Please enter your date of birth (DD/MM/YYYY)", "");
+					class139.method3101(7);
 				} else {
 					if (var0 == 62) {
-						class4.updateGameState(10);
-						class116.method2683(9);
-						ItemComposition.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
+						Coord.updateGameState(10);
+						class139.method3101(9);
+						SecureRandomCallable.setLoginResponseString("Login attempt timed out.", "Please try again.", "");
 						return;
 					}
 
 					if (var0 == 63) {
-						class4.updateGameState(10);
-						class116.method2683(9);
-						ItemComposition.setLoginResponseString("You were signed out.", "Please sign in again.", "");
+						Coord.updateGameState(10);
+						class139.method3101(9);
+						SecureRandomCallable.setLoginResponseString("You were signed out.", "Please sign in again.", "");
 						return;
 					}
 
 					if (var0 == 65 || var0 == 67) {
-						class4.updateGameState(10);
-						class116.method2683(9);
-						ItemComposition.setLoginResponseString("Failed to login.", "Please try again.", "");
+						Coord.updateGameState(10);
+						class139.method3101(9);
+						SecureRandomCallable.setLoginResponseString("Failed to login.", "Please try again.", "");
 						return;
 					}
 
 					if (var0 == 71) {
-						class4.updateGameState(10);
-						class116.method2683(7);
-						ItemComposition.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
+						Coord.updateGameState(10);
+						class139.method3101(7);
+						SecureRandomCallable.setLoginResponseString("There was a problem updating your DOB.", "Please try again later. If the problem ", "persists, please contact Jagex Support.");
 					} else if (var0 == 73) {
-						class4.updateGameState(10);
-						class116.method2683(6);
-						ItemComposition.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
+						Coord.updateGameState(10);
+						class139.method3101(6);
+						SecureRandomCallable.setLoginResponseString("Your date of birth information is waiting", "to be reviewed by our staff.", "It will be processed shortly.");
 					} else if (var0 == 72) {
-						class4.updateGameState(10);
-						class116.method2683(26);
+						Coord.updateGameState(10);
+						class139.method3101(26);
 					} else {
-						ItemComposition.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
+						SecureRandomCallable.setLoginResponseString("Unexpected server response", "Please try using a different world.", "");
 					}
 				}
 			}
 		} else {
-			ItemComposition.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
+			SecureRandomCallable.setLoginResponseString("RuneScape has been updated!", "Please reload this page.", "");
 		}
 
-		class4.updateGameState(10);
-		int var4 = Login.loginIndex;
-		boolean var5 = var4 != var1;
-		if (!var5 && Client.field512.method7914()) {
-			class116.method2683(9);
+		Coord.updateGameState(10);
+		boolean var2 = var1 != WorldMapIcon_0.method5034();
+		if (!var2 && Client.field639.method8184()) {
+			class139.method3101(9);
 		}
 
+	}
+
+	@ObfuscatedName("mc")
+	@ObfuscatedSignature(
+		descriptor = "(ZI)V",
+		garbageValue = "243834325"
+	)
+	static void method164(boolean var0) {
+		Client.field520 = var0;
 	}
 }

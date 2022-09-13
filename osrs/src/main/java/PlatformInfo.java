@@ -4,217 +4,193 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oo")
+@ObfuscatedName("os")
 @Implements("PlatformInfo")
 public class PlatformInfo extends Node {
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = -1504444763
-	)
-	int field4509;
-	@ObfuscatedName("au")
-	boolean field4508;
-	@ObfuscatedName("ae")
-	@ObfuscatedGetter(
-		intValue = 445223555
-	)
-	int field4491;
-	@ObfuscatedName("as")
-	@ObfuscatedGetter(
-		intValue = -233505363
-	)
-	int field4488;
-	@ObfuscatedName("ay")
-	@ObfuscatedGetter(
-		intValue = -199706051
-	)
-	int field4489;
-	@ObfuscatedName("ag")
-	@ObfuscatedGetter(
-		intValue = 2076327411
-	)
-	int field4490;
-	@ObfuscatedName("ad")
-	@ObfuscatedGetter(
-		intValue = -610401671
-	)
-	int field4478;
-	@ObfuscatedName("af")
-	boolean field4486;
-	@ObfuscatedName("aw")
-	@ObfuscatedGetter(
-		intValue = -822666267
-	)
-	int field4493;
-	@ObfuscatedName("ai")
-	@ObfuscatedGetter(
-		intValue = 828949577
-	)
-	int field4494;
-	@ObfuscatedName("az")
-	@ObfuscatedGetter(
-		intValue = 414932851
-	)
-	int field4495;
 	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1216080859
+		intValue = -1491327705
 	)
-	int field4496;
-	@ObfuscatedName("ah")
-	String field4497;
+	int field4517;
 	@ObfuscatedName("aa")
-	String field4498;
+	boolean field4518;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -1770862873
+	)
+	int field4519;
 	@ObfuscatedName("am")
-	String field4499;
-	@ObfuscatedName("ao")
-	String field4500;
+	@ObfuscatedGetter(
+		intValue = 168679747
+	)
+	int field4529;
+	@ObfuscatedName("ap")
+	@ObfuscatedGetter(
+		intValue = 788596425
+	)
+	int field4521;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1793496309
+	)
+	int field4522;
+	@ObfuscatedName("az")
+	@ObfuscatedGetter(
+		intValue = -1553431275
+	)
+	int field4523;
+	@ObfuscatedName("ad")
+	boolean field4524;
+	@ObfuscatedName("af")
+	@ObfuscatedGetter(
+		intValue = -1639768545
+	)
+	int field4525;
+	@ObfuscatedName("aj")
+	@ObfuscatedGetter(
+		intValue = -1260912817
+	)
+	int field4526;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -1168171821
+	)
+	int field4527;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = 121638841
+	)
+	int field4513;
+	@ObfuscatedName("ay")
+	String field4536;
+	@ObfuscatedName("ag")
+	String field4514;
+	@ObfuscatedName("aw")
+	String field4528;
+	@ObfuscatedName("ah")
+	String field4532;
 	@ObfuscatedName("at")
 	@ObfuscatedGetter(
-		intValue = 891233991
+		intValue = 104379723
 	)
-	int field4483;
+	int field4512;
 	@ObfuscatedName("al")
 	@ObfuscatedGetter(
-		intValue = -736208085
+		intValue = 1336079991
 	)
-	int field4501;
-	@ObfuscatedName("ac")
+	int field4534;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 433011061
+		intValue = 1881657771
 	)
-	int field4503;
-	@ObfuscatedName("bq")
+	int field4535;
+	@ObfuscatedName("bg")
 	@ObfuscatedGetter(
-		intValue = -204682335
+		intValue = 733268679
 	)
-	int field4504;
-	@ObfuscatedName("bn")
-	String field4505;
-	@ObfuscatedName("bl")
-	String field4506;
+	int field4530;
+	@ObfuscatedName("bw")
+	String field4537;
+	@ObfuscatedName("bc")
+	String field4538;
 	@ObfuscatedName("bv")
-	int[] field4507;
-	@ObfuscatedName("bu")
+	int[] field4539;
+	@ObfuscatedName("bi")
 	@ObfuscatedGetter(
-		intValue = -1067289661
+		intValue = 28181965
 	)
-	int field4487;
-	@ObfuscatedName("bb")
-	String field4492;
+	int field4540;
+	@ObfuscatedName("bj")
+	String field4541;
+	@ObfuscatedName("by")
+	String field4542;
 
-	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25) {
-		this.field4507 = new int[3];
-		this.field4509 = var1;
-		this.field4508 = var2;
-		this.field4491 = var3;
-		this.field4488 = var4;
-		this.field4489 = var5;
-		this.field4490 = var6;
-		this.field4478 = var7;
-		this.field4486 = var8;
-		this.field4493 = var9;
-		this.field4494 = var10;
-		this.field4495 = var11;
-		this.field4496 = var12;
-		this.field4497 = var13;
-		this.field4498 = var14;
-		this.field4499 = var15;
-		this.field4500 = var16;
-		this.field4483 = var17;
-		this.field4501 = var18;
-		this.field4503 = var19;
-		this.field4504 = var20;
-		this.field4505 = var21;
-		this.field4506 = var22;
-		this.field4507 = var23;
-		this.field4487 = var24;
-		this.field4492 = var25;
+	PlatformInfo(int var1, boolean var2, int var3, int var4, int var5, int var6, int var7, boolean var8, int var9, int var10, int var11, int var12, String var13, String var14, String var15, String var16, int var17, int var18, int var19, int var20, String var21, String var22, int[] var23, int var24, String var25, String var26) {
+		this.field4539 = new int[3];
+		this.field4517 = var1;
+		this.field4518 = var2;
+		this.field4519 = var3;
+		this.field4529 = var4;
+		this.field4521 = var5;
+		this.field4522 = var6;
+		this.field4523 = var7;
+		this.field4524 = var8;
+		this.field4525 = var9;
+		this.field4526 = var10;
+		this.field4527 = var11;
+		this.field4513 = var12;
+		this.field4536 = var13;
+		this.field4514 = var14;
+		this.field4528 = var15;
+		this.field4532 = var16;
+		this.field4512 = var17;
+		this.field4534 = var18;
+		this.field4535 = var19;
+		this.field4530 = var20;
+		this.field4537 = var21;
+		this.field4538 = var22;
+		this.field4539 = var23;
+		this.field4540 = var24;
+		this.field4541 = var25;
+		this.field4542 = var26;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;B)V",
-		garbageValue = "-121"
+		descriptor = "(Lqq;S)V",
+		garbageValue = "2713"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		var1.writeByte(8);
-		var1.writeByte(this.field4509);
-		var1.writeByte(this.field4508 ? 1 : 0);
-		var1.writeShort(this.field4491);
-		var1.writeByte(this.field4488);
-		var1.writeByte(this.field4489);
-		var1.writeByte(this.field4490);
-		var1.writeByte(this.field4478);
-		var1.writeByte(this.field4486 ? 1 : 0);
-		var1.writeShort(this.field4493);
-		var1.writeByte(this.field4494);
-		var1.writeMedium(this.field4495);
-		var1.writeShort(this.field4496);
-		var1.writeStringCp1252NullCircumfixed(this.field4497);
-		var1.writeStringCp1252NullCircumfixed(this.field4498);
-		var1.writeStringCp1252NullCircumfixed(this.field4499);
-		var1.writeStringCp1252NullCircumfixed(this.field4500);
-		var1.writeByte(this.field4501);
-		var1.writeShort(this.field4483);
-		var1.writeStringCp1252NullCircumfixed(this.field4505);
-		var1.writeStringCp1252NullCircumfixed(this.field4506);
-		var1.writeByte(this.field4503);
-		var1.writeByte(this.field4504);
+		var1.writeByte(9);
+		var1.writeByte(this.field4517);
+		var1.writeByte(this.field4518 ? 1 : 0);
+		var1.writeShort(this.field4519);
+		var1.writeByte(this.field4529);
+		var1.writeByte(this.field4521);
+		var1.writeByte(this.field4522);
+		var1.writeByte(this.field4523);
+		var1.writeByte(this.field4524 ? 1 : 0);
+		var1.writeShort(this.field4525);
+		var1.writeByte(this.field4526);
+		var1.writeMedium(this.field4527);
+		var1.writeShort(this.field4513);
+		var1.writeStringCp1252NullCircumfixed(this.field4536);
+		var1.writeStringCp1252NullCircumfixed(this.field4514);
+		var1.writeStringCp1252NullCircumfixed(this.field4528);
+		var1.writeStringCp1252NullCircumfixed(this.field4532);
+		var1.writeByte(this.field4534);
+		var1.writeShort(this.field4512);
+		var1.writeStringCp1252NullCircumfixed(this.field4537);
+		var1.writeStringCp1252NullCircumfixed(this.field4538);
+		var1.writeByte(this.field4535);
+		var1.writeByte(this.field4530);
 
-		for (int var2 = 0; var2 < this.field4507.length; ++var2) {
-			var1.writeInt(this.field4507[var2]);
+		for (int var2 = 0; var2 < this.field4539.length; ++var2) {
+			var1.writeInt(this.field4539[var2]);
 		}
 
-		var1.writeInt(this.field4487);
-		var1.writeStringCp1252NullCircumfixed(this.field4492);
+		var1.writeInt(this.field4540);
+		var1.writeStringCp1252NullCircumfixed(this.field4541);
+		var1.writeStringCp1252NullCircumfixed(this.field4542);
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-992171392"
+		garbageValue = "853872720"
 	)
 	@Export("size")
 	public int size() {
 		byte var1 = 39;
-		int var2 = var1 + class145.method3015(this.field4497);
-		var2 += class145.method3015(this.field4498);
-		var2 += class145.method3015(this.field4499);
-		var2 += class145.method3015(this.field4500);
-		var2 += class145.method3015(this.field4505);
-		var2 += class145.method3015(this.field4506);
-		var2 += class145.method3015(this.field4492);
+		int var2 = var1 + class142.method3185(this.field4536);
+		var2 += class142.method3185(this.field4514);
+		var2 += class142.method3185(this.field4528);
+		var2 += class142.method3185(this.field4532);
+		var2 += class142.method3185(this.field4537);
+		var2 += class142.method3185(this.field4538);
+		var2 += class142.method3185(this.field4541);
+		var2 += class142.method3185(this.field4542);
 		return var2;
-	}
-
-	@ObfuscatedName("q")
-	@ObfuscatedSignature(
-		descriptor = "([BIII)Ljava/lang/String;",
-		garbageValue = "1568227992"
-	)
-	@Export("decodeStringCp1252")
-	public static String decodeStringCp1252(byte[] var0, int var1, int var2) {
-		char[] var3 = new char[var2];
-		int var4 = 0;
-
-		for (int var5 = 0; var5 < var2; ++var5) {
-			int var6 = var0[var5 + var1] & 255;
-			if (var6 != 0) {
-				if (var6 >= 128 && var6 < 160) {
-					char var7 = class341.cp1252AsciiExtension[var6 - 128];
-					if (var7 == 0) {
-						var7 = '?';
-					}
-
-					var6 = var7;
-				}
-
-				var3[var4++] = (char)var6;
-			}
-		}
-
-		return new String(var3, 0, var4);
 	}
 }

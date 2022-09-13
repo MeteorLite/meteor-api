@@ -4,30 +4,35 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ho")
+@ObfuscatedName("hw")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("s")
+	@ObfuscatedName("b")
+	@ObfuscatedSignature(
+		descriptor = "Lcu;"
+	)
+	static LoginScreenAnimation field2637;
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -1709363353
+		intValue = -1936083837
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("h")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -333188113
+		intValue = -1468539031
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("w")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -810751955
+		intValue = -498232775
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("v")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -773180697
+		intValue = 1111169615
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -36,7 +41,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Lho;)V"
+		descriptor = "(Lhw;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -45,13 +50,23 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("ku")
+	@ObfuscatedName("lj")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1152311367"
+		descriptor = "(IIZI)V",
+		garbageValue = "-2127974658"
 	)
-	static final void method4415() {
-		Client.field477 = Client.cycleCntr;
-		class4.field13 = true;
+	static final void method4646(int var0, int var1, boolean var2) {
+		if (Client.currentClanChannels[var0] != null) {
+			if (var1 >= 0 && var1 < Client.currentClanChannels[var0].method3265()) {
+				ClanChannelMember var3 = (ClanChannelMember)Client.currentClanChannels[var0].members.get(var1);
+				PacketBufferNode var4 = class120.getPacketBufferNode(ClientPacket.field3015, Client.packetWriter.isaacCipher);
+				var4.packetBuffer.writeByte(4 + class357.stringCp1252NullTerminatedByteSize(var3.username.getName()));
+				var4.packetBuffer.writeByte(var0);
+				var4.packetBuffer.writeShort(var1);
+				var4.packetBuffer.writeBoolean(var2);
+				var4.packetBuffer.writeStringCp1252NullTerminated(var3.username.getName());
+				Client.packetWriter.addNode(var4);
+			}
+		}
 	}
 }

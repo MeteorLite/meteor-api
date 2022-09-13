@@ -1,90 +1,130 @@
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.PrintWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.net.URL;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
+@ObfuscatedName("fx")
 @Implements("Clock")
 public abstract class Clock {
+	@ObfuscatedName("gg")
+	@ObfuscatedSignature(
+		descriptor = "Lfk;"
+	)
+	@Export("socketTask")
+	static Task socketTask;
+
 	Clock() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "1571265211"
+		garbageValue = "2049257466"
 	)
 	@Export("mark")
 	public abstract void mark();
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "(IIB)I",
-		garbageValue = "56"
+		garbageValue = "-4"
 	)
 	@Export("wait")
 	public abstract int wait(int var1, int var2);
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lls;I)V",
-		garbageValue = "-596131229"
+		descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;B)V",
+		garbageValue = "28"
 	)
-	public static void method3265(AbstractArchive var0) {
-		VarcInt.VarcInt_archive = var0;
-	}
-
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(Lls;III)Lqe;",
-		garbageValue = "325266913"
-	)
-	static IndexedSprite method3260(AbstractArchive var0, int var1, int var2) {
-		if (!Tile.method3937(var0, var1, var2)) {
-			return null;
+	@Export("RunException_sendStackTrace")
+	public static void RunException_sendStackTrace(String var0, Throwable var1) {
+		if (var1 != null) {
+			var1.printStackTrace();
 		} else {
-			IndexedSprite var4 = new IndexedSprite();
-			var4.width = class457.SpriteBuffer_spriteWidth;
-			var4.height = class457.SpriteBuffer_spriteHeight;
-			var4.xOffset = class457.SpriteBuffer_xOffsets[0];
-			var4.yOffset = InterfaceParent.SpriteBuffer_yOffsets[0];
-			var4.subWidth = class457.SpriteBuffer_spriteWidths[0];
-			var4.subHeight = SoundCache.SpriteBuffer_spriteHeights[0];
-			var4.palette = class457.SpriteBuffer_spritePalette;
-			var4.pixels = class181.SpriteBuffer_pixels[0];
-			class457.SpriteBuffer_xOffsets = null;
-			InterfaceParent.SpriteBuffer_yOffsets = null;
-			class457.SpriteBuffer_spriteWidths = null;
-			SoundCache.SpriteBuffer_spriteHeights = null;
-			class457.SpriteBuffer_spritePalette = null;
-			class181.SpriteBuffer_pixels = null;
-			return var4;
-		}
-	}
+			try {
+				String var2 = "";
+				if (var1 != null) {
+					Throwable var4 = var1;
+					String var5;
+					if (var1 instanceof RunException) {
+						RunException var6 = (RunException)var1;
+						var5 = var6.message + " | ";
+						var4 = var6.throwable;
+					} else {
+						var5 = "";
+					}
 
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "(II)Ljava/lang/String;",
-		garbageValue = "-332792055"
-	)
-	@Export("colorStartTag")
-	static String colorStartTag(int var0) {
-		return "<col=" + Integer.toHexString(var0) + ">";
-	}
+					StringWriter var18 = new StringWriter();
+					PrintWriter var7 = new PrintWriter(var18);
+					var4.printStackTrace(var7);
+					var7.close();
+					String var8 = var18.toString();
+					BufferedReader var9 = new BufferedReader(new StringReader(var8));
+					String var10 = var9.readLine();
 
-	@ObfuscatedName("eg")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "11"
-	)
-	static final void method3264() {
-		if (Client.logoutTimer > 0) {
-			UserComparator8.logOut();
-		} else {
-			Client.timer.method6468();
-			class4.updateGameState(40);
-			PacketBufferNode.field3045 = Client.packetWriter.getSocket();
-			Client.packetWriter.removeSocket();
+					label63:
+					while (true) {
+						while (true) {
+							String var11 = var9.readLine();
+							if (var11 == null) {
+								var5 = var5 + "| " + var10;
+								var2 = var5;
+								break label63;
+							}
+
+							int var12 = var11.indexOf(40);
+							int var13 = var11.indexOf(41, var12 + 1);
+							if (var12 >= 0 && var13 >= 0) {
+								String var14 = var11.substring(var12 + 1, var13);
+								int var15 = var14.indexOf(".java:");
+								if (var15 >= 0) {
+									var14 = var14.substring(0, var15) + var14.substring(var15 + 5);
+									var5 = var5 + var14 + ' ';
+									continue;
+								}
+
+								var11 = var11.substring(0, var12);
+							}
+
+							var11 = var11.trim();
+							var11 = var11.substring(var11.lastIndexOf(32) + 1);
+							var11 = var11.substring(var11.lastIndexOf(9) + 1);
+							var5 = var5 + var11 + ' ';
+						}
+					}
+				}
+
+				if (var0 != null) {
+					if (var1 != null) {
+						var2 = var2 + " | ";
+					}
+
+					var2 = var2 + var0;
+				}
+
+				System.out.println("Error: " + var2);
+				var2 = var2.replace(':', '.');
+				var2 = var2.replace('@', '_');
+				var2 = var2.replace('&', '_');
+				var2 = var2.replace('#', '_');
+				if (RunException.RunException_applet == null) {
+					return;
+				}
+
+				URL var3 = new URL(RunException.RunException_applet.getCodeBase(), "clienterror.ws?cv=" + RunException.RunException_revision + "&cs=" + class287.field3337 + "&u=" + RunException.localPlayerName + "&v1=" + TaskHandler.javaVendor + "&v2=" + TaskHandler.javaVersion + "&ct=" + class130.clientType + "&e=" + var2);
+				DataInputStream var17 = new DataInputStream(var3.openStream());
+				var17.read();
+				var17.close();
+			} catch (Exception var16) {
+			}
+
 		}
 	}
 }

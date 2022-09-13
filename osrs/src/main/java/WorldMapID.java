@@ -1,99 +1,92 @@
-import java.lang.management.GarbageCollectorMXBean;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import netscape.javascript.JSObject;
 
-@ObfuscatedName("ig")
+@ObfuscatedName("ii")
 @Implements("WorldMapID")
 public class WorldMapID {
+	@ObfuscatedName("c")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
+	static final WorldMapID field2873;
+	@ObfuscatedName("p")
+	@ObfuscatedSignature(
+		descriptor = "Lii;"
+	)
+	static final WorldMapID field2868;
 	@ObfuscatedName("s")
-	@ObfuscatedSignature(
-		descriptor = "Lig;"
-	)
-	static final WorldMapID field2849;
-	@ObfuscatedName("h")
-	@ObfuscatedSignature(
-		descriptor = "Lig;"
-	)
-	static final WorldMapID field2846;
-	@ObfuscatedName("aa")
-	@Export("garbageCollector")
-	static GarbageCollectorMXBean garbageCollector;
-	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = -1483153309
+		intValue = -362664165
+	)
+	static int field2870;
+	@ObfuscatedName("ba")
+	@ObfuscatedGetter(
+		intValue = 943758061
+	)
+	static int field2874;
+	@ObfuscatedName("f")
+	@ObfuscatedGetter(
+		intValue = -414282509
 	)
 	@Export("value")
 	final int value;
 
 	static {
-		field2849 = new WorldMapID(0);
-		field2846 = new WorldMapID(1);
+		field2873 = new WorldMapID(0);
+		field2868 = new WorldMapID(1);
 	}
 
 	WorldMapID(int var1) {
 		this.value = var1;
 	}
 
-	@ObfuscatedName("r")
+	@ObfuscatedName("n")
 	@ObfuscatedSignature(
-		descriptor = "(Lbd;I)V",
-		garbageValue = "1423196275"
+		descriptor = "(Llb;II)V",
+		garbageValue = "-1011889815"
 	)
-	@Export("changeWorld")
-	static void changeWorld(World var0) {
-		if (var0.isMembersOnly() != Client.isMembersWorld) {
-			Client.isMembersWorld = var0.isMembersOnly();
-			boolean var1 = var0.isMembersOnly();
-			if (var1 != InterfaceParent.ItemDefinition_inMembersWorld) {
-				class120.method2734();
-				InterfaceParent.ItemDefinition_inMembersWorld = var1;
-			}
-		}
-
-		if (var0.properties != Client.worldProperties) {
-			Archive var3 = class299.archive8;
-			int var2 = var0.properties;
-			if ((var2 & 536870912) != 0) {
-				MusicPatchPcmStream.logoSprite = class150.SpriteBuffer_getIndexedSpriteByName(var3, "logo_deadman_mode", "");
-			} else if ((var2 & 1073741824) != 0) {
-				MusicPatchPcmStream.logoSprite = class150.SpriteBuffer_getIndexedSpriteByName(var3, "logo_seasonal_mode", "");
+	public static void method5123(Archive var0, int var1) {
+		MilliClock.field1810.offset = var1 * 8 + 5;
+		if (MilliClock.field1810.offset >= MilliClock.field1810.array.length) {
+			if (var0.field4028) {
+				var0.method5983();
 			} else {
-				MusicPatchPcmStream.logoSprite = class150.SpriteBuffer_getIndexedSpriteByName(var3, "logo", "");
+				throw new RuntimeException("");
 			}
+		} else {
+			int var2 = MilliClock.field1810.readInt();
+			int var3 = MilliClock.field1810.readInt();
+			var0.loadIndex(var2, var3);
 		}
-
-		class12.worldHost = var0.host;
-		Client.worldId = var0.id;
-		Client.worldProperties = var0.properties;
-		FloorDecoration.worldPort = Client.gameBuild == 0 ? 43594 : var0.id + 40000;
-		FileSystem.js5Port = Client.gameBuild == 0 ? 443 : var0.id + 50000;
-		WorldMapLabelSize.currentPort = FloorDecoration.worldPort;
 	}
 
-	@ObfuscatedName("jz")
+	@ObfuscatedName("mx")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2107985805"
+		descriptor = "(Ljava/lang/String;I)V",
+		garbageValue = "-501668566"
 	)
-	static final void method4919() {
-		PacketBufferNode var0 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2975, Client.packetWriter.isaacCipher);
-		Client.packetWriter.addNode(var0);
-		Interpreter.field816 = true;
+	static void method5124(String var0) {
+		AttackOption.field1279 = var0;
 
-		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
-			if (var1.type == 0 || var1.type == 3) {
-				class29.closeInterface(var1, true);
+		try {
+			String var1 = IgnoreList.client.getParameter(Integer.toString(18));
+			String var2 = IgnoreList.client.getParameter(Integer.toString(13));
+			String var3 = var1 + "settings=" + var0 + "; version=1; path=/; domain=" + var2;
+			if (var0.length() == 0) {
+				var3 = var3 + "; Expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0";
+			} else {
+				var3 = var3 + "; Expires=" + IgnoreList.method6781(Language.method6232() + 94608000000L) + "; Max-Age=" + 94608000L;
 			}
+
+			Client var4 = IgnoreList.client;
+			String var5 = "document.cookie=\"" + var3 + "\"";
+			//JSObject.getWindow(var4).eval(var5);
+		} catch (Throwable var6) {
 		}
 
-		if (Client.meslayerContinueWidget != null) {
-			class125.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		Interpreter.field816 = false;
 	}
 }

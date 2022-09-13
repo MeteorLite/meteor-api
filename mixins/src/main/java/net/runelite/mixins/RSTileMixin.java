@@ -25,12 +25,23 @@
  */
 package net.runelite.mixins;
 
+import eventbus.Events;
+import eventbus.events.DecorativeObjectChanged;
+import eventbus.events.DecorativeObjectDespawned;
+import eventbus.events.DecorativeObjectSpawned;
+import eventbus.events.GameObjectChanged;
+import eventbus.events.GameObjectDespawned;
+import eventbus.events.GameObjectSpawned;
+import eventbus.events.GroundObjectChanged;
+import eventbus.events.GroundObjectDespawned;
+import eventbus.events.GroundObjectSpawned;
+import eventbus.events.ItemDespawned;
+import eventbus.events.ItemSpawned;
+import eventbus.events.WallObjectChanged;
+import eventbus.events.WallObjectDespawned;
+import eventbus.events.WallObjectSpawned;
 import java.util.ArrayList;
 import java.util.List;
-
-import eventbus.Events;
-import eventbus.events.*;
-import meteor.Logger;
 import net.runelite.api.CollisionData;
 import net.runelite.api.CollisionDataFlag;
 import net.runelite.api.Constants;
@@ -671,8 +682,6 @@ public abstract class RSTileMixin implements RSTile
 			prevInvalid = renderable instanceof RSActor || renderable instanceof RSProjectile || renderable instanceof RSGraphicsObject;
 			prevInvalid |= previous.getStartX() != this.getX() || previous.getStartY() != this.getY();
 		}
-
-		Logger logger = client.getLogger();
 		if (current == null)
 		{
 			if (prevInvalid)

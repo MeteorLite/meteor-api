@@ -4,150 +4,135 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("gt")
+@ObfuscatedName("hi")
 @Implements("Occluder")
 public final class Occluder {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 420323745
+		intValue = -1605596789
 	)
 	@Export("minTileX")
 	int minTileX;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 664232373
+		intValue = -1617192677
 	)
 	@Export("maxTileX")
 	int maxTileX;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 1752935515
+		intValue = 487682617
 	)
 	@Export("minTileY")
 	int minTileY;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1056536929
+		intValue = 137187413
 	)
 	@Export("maxTileY")
 	int maxTileY;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = 571087511
+		intValue = 1593720321
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 406575443
+		intValue = -964537863
 	)
 	@Export("minX")
 	int minX;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedGetter(
-		intValue = 1576796185
+		intValue = 1361380143
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = 1314559405
+		intValue = 223200283
 	)
 	@Export("minZ")
 	int minZ;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = 2128416579
+		intValue = 1105032199
 	)
 	@Export("maxZ")
 	int maxZ;
-	@ObfuscatedName("n")
+	@ObfuscatedName("x")
 	@ObfuscatedGetter(
-		intValue = 1717210177
+		intValue = -1399281183
 	)
 	@Export("minY")
 	int minY;
-	@ObfuscatedName("d")
+	@ObfuscatedName("j")
 	@ObfuscatedGetter(
-		intValue = -492747543
+		intValue = -1916248411
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("a")
+	@ObfuscatedName("v")
 	@ObfuscatedGetter(
-		intValue = -1212775709
+		intValue = 1282854379
 	)
-	int field2470;
-	@ObfuscatedName("m")
+	int field2501;
+	@ObfuscatedName("h")
 	@ObfuscatedGetter(
-		intValue = 2080254021
+		intValue = 1769519663
 	)
-	int field2471;
+	int field2499;
+	@ObfuscatedName("t")
+	@ObfuscatedGetter(
+		intValue = -1424390111
+	)
+	int field2500;
 	@ObfuscatedName("u")
 	@ObfuscatedGetter(
-		intValue = 1185688463
+		intValue = 1455414205
 	)
-	int field2472;
-	@ObfuscatedName("l")
+	int field2491;
+	@ObfuscatedName("d")
 	@ObfuscatedGetter(
-		intValue = -333239733
+		intValue = -87483173
 	)
-	int field2473;
-	@ObfuscatedName("z")
+	int field2502;
+	@ObfuscatedName("b")
 	@ObfuscatedGetter(
-		intValue = 1901247891
+		intValue = 1629881229
 	)
-	int field2474;
-	@ObfuscatedName("r")
+	int field2494;
+	@ObfuscatedName("a")
 	@ObfuscatedGetter(
-		intValue = 1422842103
+		intValue = 546307651
 	)
-	int field2477;
-	@ObfuscatedName("y")
-	@ObfuscatedGetter(
-		intValue = 205898589
-	)
-	int field2461;
+	int field2504;
 
 	Occluder() {
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(DDIB)[D",
-		garbageValue = "0"
+		descriptor = "(Lqq;I)Ljava/lang/String;",
+		garbageValue = "807708444"
 	)
-	public static double[] method4235(double var0, double var2, int var4) {
-		int var5 = var4 * 2 + 1;
-		double[] var6 = new double[var5];
-		int var7 = -var4;
+	public static String method4474(Buffer var0) {
+		return PacketBufferNode.method5356(var0, 32767);
+	}
 
-		for (int var8 = 0; var7 <= var4; ++var8) {
-			double var15 = ((double)var7 - var0) / var2;
-			double var13 = Math.exp(-var15 * var15 / 2.0D) / Math.sqrt(6.283185307179586D);
-			double var11 = var13 / var2;
-			var6[var8] = var11;
-			++var7;
+	@ObfuscatedName("v")
+	@ObfuscatedSignature(
+		descriptor = "(Llv;IIB)Z",
+		garbageValue = "-102"
+	)
+	static boolean method4475(AbstractArchive var0, int var1, int var2) {
+		byte[] var3 = var0.takeFile(var1, var2);
+		if (var3 == null) {
+			return false;
+		} else {
+			class428.SpriteBuffer_decode(var3);
+			return true;
 		}
-
-		return var6;
-	}
-
-	@ObfuscatedName("w")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1428269525"
-	)
-	public static int method4236(int var0) {
-		return FileSystem.method3214(ViewportMouse.ViewportMouse_entityTags[var0]);
-	}
-
-	@ObfuscatedName("c")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-27"
-	)
-	public static void method4237() {
-		class436.DBTableType_cache.clear();
 	}
 }

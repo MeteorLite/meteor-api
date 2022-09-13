@@ -45,7 +45,11 @@ public abstract class RSNanoClockMixin implements RSNanoClock
 	@Replace("wait")
 	public int copy$wait(int cycleDurationMillis, int var2)
 	{
-		if (client.isUnlockedFps() && client.getRSGameState() >= 25)
+		if (!client.isUnlockedFps())
+		{
+			return copy$wait(cycleDurationMillis, var2);
+		}
+		else
 		{
 			long nanoTime = System.nanoTime();
 
@@ -103,10 +107,6 @@ public abstract class RSNanoClockMixin implements RSNanoClock
 
 				return 1;
 			}
-		}
-		else
-		{
-			return copy$wait(cycleDurationMillis, var2);
 		}
 	}
 }

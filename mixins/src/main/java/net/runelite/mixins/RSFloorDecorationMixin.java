@@ -77,6 +77,6 @@ public abstract class RSFloorDecorationMixin implements RSFloorDecoration
 	@Override
 	public Shape getClickbox()
 	{
-		return Perspective.getClickbox(client, getModel(), 0, getX(), getY(), getZ());
+		return Perspective.getClickbox(client, getModel(), 0, new LocalPoint(getX(), getY()));
 	}
 }

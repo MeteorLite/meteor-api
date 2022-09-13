@@ -1,69 +1,72 @@
+import java.lang.management.GarbageCollectorMXBean;
+import java.lang.management.ManagementFactory;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bo")
+@ObfuscatedName("bb")
 @Implements("DynamicObject")
 public class DynamicObject extends Renderable {
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = -2094517607
+		intValue = -585589299
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = -140486865
+		intValue = -1720592507
 	)
 	@Export("type")
 	int type;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = -1181845419
+		intValue = -873668315
 	)
 	@Export("orientation")
 	int orientation;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -1335219741
+		intValue = 995624317
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1839332185
+		intValue = -1828700547
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedGetter(
-		intValue = 38712731
+		intValue = 2077372087
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lgh;"
+		descriptor = "Lgd;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		intValue = -1728628647
+		intValue = -1793820327
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1660744645
+		intValue = -306120065
 	)
 	@Export("cycleStart")
 	int cycleStart;
 
 	@ObfuscatedSignature(
-		descriptor = "(IIIIIIIZLgq;)V"
+		descriptor = "(IIIIIIIZLgg;)V"
 	)
 	DynamicObject(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, Renderable var9) {
 		this.id = var1;
@@ -73,12 +76,12 @@ public class DynamicObject extends Renderable {
 		this.x = var5;
 		this.y = var6;
 		if (var7 != -1) {
-			this.sequenceDefinition = ByteArrayPool.SequenceDefinition_get(var7);
+			this.sequenceDefinition = class4.SequenceDefinition_get(var7);
 			this.frame = 0;
 			this.cycleStart = Client.cycle - 1;
-			if (this.sequenceDefinition.field2181 == 0 && var9 != null && var9 instanceof DynamicObject) {
+			if (this.sequenceDefinition.field2219 == 0 && var9 != null && var9 instanceof DynamicObject) {
 				DynamicObject var10 = (DynamicObject)var9;
-				if (this.sequenceDefinition == var10.sequenceDefinition) {
+				if (var10.sequenceDefinition == this.sequenceDefinition) {
 					this.frame = var10.frame;
 					this.cycleStart = var10.cycleStart;
 					return;
@@ -90,17 +93,17 @@ public class DynamicObject extends Renderable {
 					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.frameIds.length);
 					this.cycleStart -= (int)(Math.random() * (double)this.sequenceDefinition.frameLengths[this.frame]);
 				} else {
-					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3729());
+					this.frame = (int)(Math.random() * (double)this.sequenceDefinition.method3950());
 				}
 			}
 		}
 
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(B)Lhp;",
-		garbageValue = "4"
+		descriptor = "(B)Lha;",
+		garbageValue = "13"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
@@ -112,7 +115,7 @@ public class DynamicObject extends Renderable {
 			}
 
 			if (this.sequenceDefinition.isCachedModelIdSet()) {
-				var2 = this.sequenceDefinition.method3729();
+				var2 = this.sequenceDefinition.method3950();
 				this.frame += var1;
 				var1 = 0;
 				if (this.frame >= var2) {
@@ -122,11 +125,11 @@ public class DynamicObject extends Renderable {
 					}
 				}
 			} else {
-				label80: {
+				label83: {
 					do {
 						do {
 							if (var1 <= this.sequenceDefinition.frameLengths[this.frame]) {
-								break label80;
+								break label83;
 							}
 
 							var1 -= this.sequenceDefinition.frameLengths[this.frame];
@@ -143,7 +146,7 @@ public class DynamicObject extends Renderable {
 			this.cycleStart = Client.cycle - var1;
 		}
 
-		ObjectComposition var12 = FileSystem.getObjectDefinition(this.id);
+		ObjectComposition var12 = PlayerComposition.getObjectDefinition(this.id);
 		if (var12.transforms != null) {
 			var12 = var12.transform();
 		}
@@ -165,108 +168,65 @@ public class DynamicObject extends Renderable {
 			int var6 = (var3 >> 1) + this.y;
 			int var7 = (var3 + 1 >> 1) + this.y;
 			int[][] var8 = Tiles.Tiles_heights[this.plane];
-			int var9 = var8[var4][var7] + var8[var4][var6] + var8[var5][var6] + var8[var5][var7] >> 2;
+			int var9 = var8[var5][var7] + var8[var4][var7] + var8[var5][var6] + var8[var4][var6] >> 2;
 			int var10 = (this.x << 7) + (var2 << 6);
 			int var11 = (this.y << 7) + (var3 << 6);
 			return var12.getModelDynamic(this.type, this.orientation, var8, var10, var9, var11, this.sequenceDefinition, this.frame);
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "([Ljava/lang/CharSequence;III)Ljava/lang/String;",
-		garbageValue = "-1660311016"
+		descriptor = "(S)I",
+		garbageValue = "-29763"
 	)
-	public static String method1949(CharSequence[] var0, int var1, int var2) {
-		if (var2 == 0) {
+	@Export("getGcDuration")
+	protected static int getGcDuration() {
+		int var0 = 0;
+		if (VarcInt.garbageCollector == null || !VarcInt.garbageCollector.isValid()) {
+			try {
+				Iterator var1 = ManagementFactory.getGarbageCollectorMXBeans().iterator();
+
+				while (var1.hasNext()) {
+					GarbageCollectorMXBean var2 = (GarbageCollectorMXBean)var1.next();
+					if (var2.isValid()) {
+						VarcInt.garbageCollector = var2;
+						GameEngine.garbageCollectorLastCheckTimeMs = -1L;
+						GameEngine.garbageCollectorLastCollectionTime = -1L;
+					}
+				}
+			} catch (Throwable var11) {
+			}
+		}
+
+		if (VarcInt.garbageCollector != null) {
+			long var9 = Language.method6232();
+			long var3 = VarcInt.garbageCollector.getCollectionTime();
+			if (GameEngine.garbageCollectorLastCollectionTime != -1L) {
+				long var5 = var3 - GameEngine.garbageCollectorLastCollectionTime;
+				long var7 = var9 - GameEngine.garbageCollectorLastCheckTimeMs;
+				if (0L != var7) {
+					var0 = (int)(var5 * 100L / var7);
+				}
+			}
+
+			GameEngine.garbageCollectorLastCollectionTime = var3;
+			GameEngine.garbageCollectorLastCheckTimeMs = var9;
+		}
+
+		return var0;
+	}
+
+	@ObfuscatedName("jz")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Ljava/lang/String;",
+		garbageValue = "1"
+	)
+	static String method2135(int var0) {
+		if (var0 < 0) {
 			return "";
-		} else if (var2 == 1) {
-			CharSequence var10 = var0[var1];
-			return var10 == null ? "null" : var10.toString();
 		} else {
-			int var3 = var2 + var1;
-			int var4 = 0;
-
-			for (int var5 = var1; var5 < var3; ++var5) {
-				CharSequence var9 = var0[var5];
-				if (var9 == null) {
-					var4 += 4;
-				} else {
-					var4 += var9.length();
-				}
-			}
-
-			StringBuilder var8 = new StringBuilder(var4);
-
-			for (int var6 = var1; var6 < var3; ++var6) {
-				CharSequence var7 = var0[var6];
-				if (var7 == null) {
-					var8.append("null");
-				} else {
-					var8.append(var7);
-				}
-			}
-
-			return var8.toString();
-		}
-	}
-
-	@ObfuscatedName("hs")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-1905507981"
-	)
-	@Export("selectSpell")
-	static void selectSpell(int var0, int var1, int var2, int var3) {
-		Widget var4 = class128.getWidgetChild(var0, var1);
-		if (var4 != null && var4.onTargetEnter != null) {
-			ScriptEvent var5 = new ScriptEvent();
-			var5.widget = var4;
-			var5.args = var4.onTargetEnter;
-			SceneTilePaint.runScriptEvent(var5);
-		}
-
-		Client.selectedSpellItemId = var3;
-		Client.isSpellSelected = true;
-		class282.selectedSpellWidget = var0;
-		Client.selectedSpellChildIndex = var1;
-		class149.selectedSpellFlags = var2;
-		class125.invalidateWidget(var4);
-	}
-
-	@ObfuscatedName("km")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;B)V",
-		garbageValue = "93"
-	)
-	@Export("clanKickUser")
-	static final void clanKickUser(String var0) {
-		if (class19.friendsChat != null) {
-			PacketBufferNode var1 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher);
-			var1.packetBuffer.writeByte(class309.stringCp1252NullTerminatedByteSize(var0));
-			var1.packetBuffer.writeStringCp1252NullTerminated(var0);
-			Client.packetWriter.addNode(var1);
-		}
-	}
-
-	@ObfuscatedName("ke")
-	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-226908688"
-	)
-	static final void method1954(int var0, int var1) {
-		ClanChannel var2 = var0 >= 0 ? Client.currentClanChannels[var0] : NetCache.guestClanChannel;
-		if (var2 != null && var1 >= 0 && var1 < var2.method3046()) {
-			ClanChannelMember var3 = (ClanChannelMember)var2.members.get(var1);
-			if (var3.rank == -1) {
-				String var4 = var3.username.getName();
-				PacketBufferNode var5 = DevicePcmPlayerProvider.getPacketBufferNode(ClientPacket.field2984, Client.packetWriter.isaacCipher);
-				var5.packetBuffer.writeByte(3 + class309.stringCp1252NullTerminatedByteSize(var4));
-				var5.packetBuffer.writeByte(var0);
-				var5.packetBuffer.writeShort(var1);
-				var5.packetBuffer.writeStringCp1252NullTerminated(var4);
-				Client.packetWriter.addNode(var5);
-			}
+			return Client.menuTargets[var0].length() > 0 ? Client.menuActions[var0] + " " + Client.menuTargets[var0] : Client.menuActions[var0];
 		}
 	}
 }

@@ -4,67 +4,65 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hn")
+@ObfuscatedName("hc")
 @Implements("BoundaryObject")
 public final class BoundaryObject {
-	@ObfuscatedName("cj")
-	public static char field2636;
-	@ObfuscatedName("kd")
+	@ObfuscatedName("pc")
 	@ObfuscatedSignature(
-		descriptor = "Lkn;"
+		descriptor = "[Lkw;"
 	)
-	static Widget field2634;
-	@ObfuscatedName("s")
+	static Widget[] field2663;
+	@ObfuscatedName("c")
 	@ObfuscatedGetter(
-		intValue = 1760692663
+		intValue = 184581345
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedGetter(
-		intValue = 1190754957
+		intValue = -1430540447
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedGetter(
-		intValue = 2046459239
+		intValue = -1551630571
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("v")
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = -283671445
+		intValue = 1676188487
 	)
 	@Export("orientationA")
 	int orientationA;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -1295985349
+		intValue = 2069012073
 	)
 	@Export("orientationB")
 	int orientationB;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@ObfuscatedSignature(
-		descriptor = "Lgq;"
+		descriptor = "Lgg;"
 	)
 	@Export("renderable1")
 	public Renderable renderable1;
-	@ObfuscatedName("i")
+	@ObfuscatedName("s")
 	@ObfuscatedSignature(
-		descriptor = "Lgq;"
+		descriptor = "Lgg;"
 	)
 	@Export("renderable2")
 	public Renderable renderable2;
-	@ObfuscatedName("k")
+	@ObfuscatedName("q")
 	@ObfuscatedGetter(
-		longValue = 2351322069323510671L
+		longValue = 6147520536142177601L
 	)
 	@Export("tag")
 	public long tag;
-	@ObfuscatedName("o")
+	@ObfuscatedName("m")
 	@ObfuscatedGetter(
-		intValue = -1112023027
+		intValue = -1671682929
 	)
 	@Export("flags")
 	int flags;
@@ -74,117 +72,17 @@ public final class BoundaryObject {
 		this.flags = 0;
 	}
 
-	@ObfuscatedName("v")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(ILbz;ZI)I",
-		garbageValue = "797879953"
+		descriptor = "(I)[Loi;",
+		garbageValue = "-701060466"
 	)
-	static int method4420(int var0, Script var1, boolean var2) {
-		int var4;
-		int var9;
-		if (var0 == 100) {
-			User.Interpreter_intStackSize -= 3;
-			var9 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize];
-			var4 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1];
-			int var11 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 2];
-			if (var4 == 0) {
-				throw new RuntimeException();
-			} else {
-				Widget var6 = HitSplatDefinition.getWidget(var9);
-				if (var6.children == null) {
-					var6.children = new Widget[var11 + 1];
-				}
+	static class392[] method4650() {
+		return new class392[]{class392.field4459, class392.field4462, class392.field4458, class392.field4457};
+	}
 
-				if (var6.children.length <= var11) {
-					Widget[] var7 = new Widget[var11 + 1];
-
-					for (int var8 = 0; var8 < var6.children.length; ++var8) {
-						var7[var8] = var6.children[var8];
-					}
-
-					var6.children = var7;
-				}
-
-				if (var11 > 0 && var6.children[var11 - 1] == null) {
-					throw new RuntimeException("" + (var11 - 1));
-				} else {
-					Widget var12 = new Widget();
-					var12.type = var4;
-					var12.parentId = var12.id = var6.id;
-					var12.childIndex = var11;
-					var12.isIf3 = true;
-					var6.children[var11] = var12;
-					if (var2) {
-						SoundSystem.scriptDotWidget = var12;
-					} else {
-						Ignored.scriptActiveWidget = var12;
-					}
-
-					class125.invalidateWidget(var6);
-					return 1;
-				}
-			}
-		} else {
-			Widget var3;
-			if (var0 == 101) {
-				var3 = var2 ? SoundSystem.scriptDotWidget : Ignored.scriptActiveWidget;
-				Widget var10 = HitSplatDefinition.getWidget(var3.id);
-				var10.children[var3.childIndex] = null;
-				class125.invalidateWidget(var10);
-				return 1;
-			} else if (var0 == 102) {
-				var3 = HitSplatDefinition.getWidget(Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize]);
-				var3.children = null;
-				class125.invalidateWidget(var3);
-				return 1;
-			} else if (var0 == 103) {
-				User.Interpreter_intStackSize -= 3;
-				return 1;
-			} else if (var0 == 104) {
-				--User.Interpreter_intStackSize;
-				return 1;
-			} else if (var0 != 200) {
-				if (var0 == 201) {
-					var3 = HitSplatDefinition.getWidget(Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize]);
-					if (var3 != null) {
-						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 1;
-						if (var2) {
-							SoundSystem.scriptDotWidget = var3;
-						} else {
-							Ignored.scriptActiveWidget = var3;
-						}
-					} else {
-						Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
-					}
-
-					return 1;
-				} else if (var0 == 202) {
-					Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1] = 0;
-					return 1;
-				} else if (var0 == 203) {
-					Interpreter.Interpreter_intStack[--User.Interpreter_intStackSize + 1] = 0;
-					return 1;
-				} else {
-					return 2;
-				}
-			} else {
-				User.Interpreter_intStackSize -= 2;
-				var9 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize];
-				var4 = Interpreter.Interpreter_intStack[User.Interpreter_intStackSize + 1];
-				Widget var5 = class128.getWidgetChild(var9, var4);
-				if (var5 != null && var4 != -1) {
-					Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 1;
-					if (var2) {
-						SoundSystem.scriptDotWidget = var5;
-					} else {
-						Ignored.scriptActiveWidget = var5;
-					}
-				} else {
-					Interpreter.Interpreter_intStack[++User.Interpreter_intStackSize - 1] = 0;
-				}
-
-				return 1;
-			}
-		}
+	@ObfuscatedName("p")
+	static double method4649(double var0, double var2, double var4) {
+		return class33.method644((var0 - var2) / var4) / var4;
 	}
 }

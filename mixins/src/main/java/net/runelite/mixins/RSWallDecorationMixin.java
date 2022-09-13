@@ -86,8 +86,8 @@ public abstract class RSWallDecorationMixin implements RSWallDecoration
 	@Override
 	public Shape getClickbox()
 	{
-		Shape clickboxA = Perspective.getClickbox(client, getModel1(), 0, getX() + getXOffset(), getY() + getYOffset(), getZ());
-		Shape clickboxB = Perspective.getClickbox(client, getModel2(), 0, getX(), getY(), getZ());
+		Shape clickboxA = Perspective.getClickbox(client, getModel1(), 0, new LocalPoint(getX() + getXOffset(), getY() + getYOffset()));
+		Shape clickboxB = Perspective.getClickbox(client, getModel2(), 0, new LocalPoint(getX(), getY()));
 
 		if (clickboxA == null && clickboxB == null)
 		{

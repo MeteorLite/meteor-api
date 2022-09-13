@@ -3,60 +3,74 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
-public class class147 extends class128 {
-	@ObfuscatedName("s")
-	@ObfuscatedGetter(
-		intValue = -326277189
+@ObfuscatedName("ef")
+public class class147 extends class129 {
+	@ObfuscatedName("q")
+	@ObfuscatedSignature(
+		descriptor = "Lqu;"
 	)
-	int field1659;
+	static IndexedSprite field1693;
+	@ObfuscatedName("v")
+	@ObfuscatedGetter(
+		intValue = -1946571271
+	)
+	static int field1689;
+	@ObfuscatedName("jo")
+	@ObfuscatedGetter(
+		intValue = -760957949
+	)
+	@Export("oculusOrbFocalPointX")
+	static int oculusOrbFocalPointX;
+	@ObfuscatedName("c")
+	@ObfuscatedGetter(
+		intValue = 1032650765
+	)
+	int field1690;
+	@ObfuscatedName("p")
+	@ObfuscatedGetter(
+		intValue = 229451587
+	)
+	int field1695;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lei;"
+		descriptor = "Leo;"
 	)
-	final class131 this$0;
+	final class132 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lei;)V"
+		descriptor = "(Leo;)V"
 	)
-	class147(class131 var1) {
+	class147(class132 var1) {
 		this.this$0 = var1;
-		this.field1659 = -1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lqr;I)V",
-		garbageValue = "-885940784"
+		descriptor = "(Lqq;B)V",
+		garbageValue = "-41"
 	)
-	void vmethod3087(Buffer var1) {
-		this.field1659 = var1.readUnsignedShort();
+	void vmethod3320(Buffer var1) {
+		this.field1690 = var1.readInt();
+		this.field1695 = var1.readInt();
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(Leh;B)V",
-		garbageValue = "0"
+		descriptor = "(Led;I)V",
+		garbageValue = "-538131930"
 	)
-	void vmethod3084(ClanSettings var1) {
-		var1.method2935(this.field1659);
+	void vmethod3313(ClanSettings var1) {
+		var1.method3126(this.field1690, this.field1695);
 	}
 
-	@ObfuscatedName("en")
+	@ObfuscatedName("q")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-2091691243"
+		descriptor = "(B)Lbo;",
+		garbageValue = "84"
 	)
-	@Export("queueSoundEffect")
-	static void queueSoundEffect(int var0, int var1, int var2) {
-		if (ClanMate.clientPreferences.method2204() != 0 && var1 != 0 && Client.soundEffectCount < 50) {
-			Client.soundEffectIds[Client.soundEffectCount] = var0;
-			Client.queuedSoundEffectLoops[Client.soundEffectCount] = var1;
-			Client.queuedSoundEffectDelays[Client.soundEffectCount] = var2;
-			Client.soundEffects[Client.soundEffectCount] = null;
-			Client.soundLocations[Client.soundEffectCount] = 0;
-			++Client.soundEffectCount;
-		}
-
+	@Export("worldListStart")
+	static World worldListStart() {
+		World.World_listCount = 0;
+		return NetCache.getNextWorldListWorld();
 	}
 }

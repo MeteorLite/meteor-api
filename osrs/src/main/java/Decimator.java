@@ -1,80 +1,94 @@
+import java.io.IOException;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("bq")
+@ObfuscatedName("bg")
 @Implements("Decimator")
 public class Decimator {
-	@ObfuscatedName("ej")
+	@ObfuscatedName("vj")
 	@ObfuscatedSignature(
-		descriptor = "Lln;"
+		descriptor = "Lpi;"
 	)
-	static Archive field403;
-	@ObfuscatedName("hu")
-	@ObfuscatedGetter(
-		intValue = 620670661
+	@Export("worldMap")
+	static WorldMap worldMap;
+	@ObfuscatedName("x")
+	@ObfuscatedSignature(
+		descriptor = "Laj;"
 	)
-	@Export("baseX")
-	static int baseX;
-	@ObfuscatedName("v")
+	@Export("soundSystem")
+	static SoundSystem soundSystem;
+	@ObfuscatedName("n")
 	@ObfuscatedGetter(
-		intValue = 1580600363
+		intValue = 1829904369
 	)
 	@Export("inputRate")
 	int inputRate;
-	@ObfuscatedName("c")
+	@ObfuscatedName("k")
 	@ObfuscatedGetter(
-		intValue = -135318399
+		intValue = -1857281025
 	)
 	@Export("outputRate")
 	int outputRate;
-	@ObfuscatedName("q")
+	@ObfuscatedName("w")
 	@Export("table")
 	int[][] table;
 
 	public Decimator(int var1, int var2) {
 		if (var2 != var1) {
-			int var3 = method1005(var1, var2);
-			var1 /= var3;
-			var2 /= var3;
+			int var4 = var1;
+			int var5 = var2;
+			if (var2 > var1) {
+				var4 = var2;
+				var5 = var1;
+			}
+
+			while (var5 != 0) {
+				int var6 = var4 % var5;
+				var4 = var5;
+				var5 = var6;
+			}
+
+			var1 /= var4;
+			var2 /= var4;
 			this.inputRate = var1;
 			this.outputRate = var2;
 			this.table = new int[var1][14];
 
-			for (int var4 = 0; var4 < var1; ++var4) {
-				int[] var5 = this.table[var4];
-				double var6 = 6.0D + (double)var4 / (double)var1;
-				int var8 = (int)Math.floor(var6 - 7.0D + 1.0D);
-				if (var8 < 0) {
-					var8 = 0;
+			for (int var7 = 0; var7 < var1; ++var7) {
+				int[] var8 = this.table[var7];
+				double var9 = 6.0D + (double)var7 / (double)var1;
+				int var11 = (int)Math.floor(var9 - 7.0D + 1.0D);
+				if (var11 < 0) {
+					var11 = 0;
 				}
 
-				int var9 = (int)Math.ceil(7.0D + var6);
-				if (var9 > 14) {
-					var9 = 14;
+				int var12 = (int)Math.ceil(var9 + 7.0D);
+				if (var12 > 14) {
+					var12 = 14;
 				}
 
-				for (double var10 = (double)var2 / (double)var1; var8 < var9; ++var8) {
-					double var12 = ((double)var8 - var6) * 3.141592653589793D;
-					double var14 = var10;
-					if (var12 < -1.0E-4D || var12 > 1.0E-4D) {
-						var14 = var10 * (Math.sin(var12) / var12);
+				for (double var13 = (double)var2 / (double)var1; var11 < var12; ++var11) {
+					double var15 = ((double)var11 - var9) * 3.141592653589793D;
+					double var17 = var13;
+					if (var15 < -1.0E-4D || var15 > 1.0E-4D) {
+						var17 = var13 * (Math.sin(var15) / var15);
 					}
 
-					var14 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var8 - var6));
-					var5[var8] = (int)Math.floor(0.5D + var14 * 65536.0D);
+					var17 *= 0.54D + 0.46D * Math.cos(0.2243994752564138D * ((double)var11 - var9));
+					var8[var11] = (int)Math.floor(0.5D + var17 * 65536.0D);
 				}
 			}
 
 		}
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "([BI)[B",
-		garbageValue = "1902066376"
+		garbageValue = "849766572"
 	)
 	@Export("resample")
 	byte[] resample(byte[] var1) {
@@ -91,7 +105,7 @@ public class Decimator {
 
 				int var9;
 				for (var9 = 0; var9 < 14; ++var9) {
-					var3[var4 + var9] += var7 * var8[var9];
+					var3[var9 + var4] += var8[var9] * var7;
 				}
 
 				var5 += this.outputRate;
@@ -117,24 +131,24 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("h")
+	@ObfuscatedName("p")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "2068008362"
+		descriptor = "(IS)I",
+		garbageValue = "198"
 	)
 	@Export("scaleRate")
 	int scaleRate(int var1) {
 		if (this.table != null) {
-			var1 = (int)((long)var1 * (long)this.outputRate / (long)this.inputRate);
+			var1 = (int)((long)this.outputRate * (long)var1 / (long)this.inputRate);
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("w")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
 		descriptor = "(II)I",
-		garbageValue = "-945066766"
+		garbageValue = "-709095343"
 	)
 	@Export("scalePosition")
 	int scalePosition(int var1) {
@@ -145,92 +159,92 @@ public class Decimator {
 		return var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1674028137"
+		descriptor = "(S)Lcz;",
+		garbageValue = "-26006"
 	)
-	public static int method1005(int var0, int var1) {
-		int var2;
-		if (var1 > var0) {
-			var2 = var0;
-			var0 = var1;
-			var1 = var2;
+	static ClientPreferences method1102() {
+		AccessFile var0 = null;
+		ClientPreferences var1 = new ClientPreferences();
+
+		try {
+			var0 = SceneTilePaint.getPreferencesFile("", class153.field1729.name, false);
+			byte[] var2 = new byte[(int)var0.length()];
+
+			int var4;
+			for (int var3 = 0; var3 < var2.length; var3 += var4) {
+				var4 = var0.read(var2, var3, var2.length - var3);
+				if (var4 == -1) {
+					throw new IOException();
+				}
+			}
+
+			var1 = new ClientPreferences(new Buffer(var2));
+		} catch (Exception var6) {
 		}
 
-		while (var1 != 0) {
-			var2 = var0 % var1;
-			var0 = var1;
-			var1 = var2;
+		try {
+			if (var0 != null) {
+				var0.close();
+			}
+		} catch (Exception var5) {
 		}
 
-		return var0;
+		return var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("f")
 	@ObfuscatedSignature(
-		descriptor = "(Lls;I)V",
-		garbageValue = "-762396085"
+		descriptor = "(IIIIB)V",
+		garbageValue = "67"
 	)
-	public static void method994(AbstractArchive var0) {
-		VarbitComposition.VarbitDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("iw")
-	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;Lkn;B)Ljava/lang/String;",
-		garbageValue = "-38"
-	)
-	static String method1006(String var0, Widget var1) {
-		if (var0.indexOf("%") != -1) {
-			for (int var2 = 1; var2 <= 5; ++var2) {
-				while (true) {
-					int var3 = var0.indexOf("%" + var2);
-					if (var3 == -1) {
-						break;
+	static final void method1104(int var0, int var1, int var2, int var3) {
+		for (int var4 = var1; var4 <= var3 + var1; ++var4) {
+			for (int var5 = var0; var5 <= var0 + var2; ++var5) {
+				if (var5 >= 0 && var5 < 104 && var4 >= 0 && var4 < 104) {
+					SoundCache.field328[0][var5][var4] = 127;
+					if (var0 == var5 && var5 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 - 1][var4];
 					}
 
-					String var4 = var0.substring(0, var3);
-					int var6 = GrandExchangeEvents.method5876(var1, var2 - 1);
-					String var5;
-					if (var6 < 999999999) {
-						var5 = Integer.toString(var6);
-					} else {
-						var5 = "*";
+					if (var0 + var2 == var5 && var5 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5 + 1][var4];
 					}
 
-					var0 = var4 + var5 + var0.substring(var3 + 2);
+					if (var4 == var1 && var4 > 0) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 - 1];
+					}
+
+					if (var3 + var1 == var4 && var4 < 103) {
+						Tiles.Tiles_heights[0][var5][var4] = Tiles.Tiles_heights[0][var5][var4 + 1];
+					}
 				}
 			}
 		}
 
-		return var0;
 	}
 
-	@ObfuscatedName("jk")
+	@ObfuscatedName("mo")
 	@ObfuscatedSignature(
-		descriptor = "(IIII)Lcb;",
-		garbageValue = "-2111411796"
+		descriptor = "(I)Z",
+		garbageValue = "2002052932"
 	)
-	static final InterfaceParent method1001(int var0, int var1, int var2) {
-		InterfaceParent var3 = new InterfaceParent();
-		var3.group = var1;
-		var3.type = var2;
-		Client.interfaceParents.put(var3, (long)var0);
-		PacketWriter.Widget_resetModelFrames(var1);
-		Widget var4 = HitSplatDefinition.getWidget(var0);
-		class125.invalidateWidget(var4);
-		if (Client.meslayerContinueWidget != null) {
-			class125.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
+	public static boolean method1091() {
+		return Client.staffModLevel >= 2;
+	}
+
+	@ObfuscatedName("mj")
+	@ObfuscatedSignature(
+		descriptor = "(IB)Lpb;",
+		garbageValue = "-3"
+	)
+	static class438 method1103(int var0) {
+		class438 var1 = (class438)Client.Widget_cachedFonts.get((long)var0);
+		if (var1 == null) {
+			var1 = new class438(PcmPlayer.field308, var0);
 		}
 
-		class181.revalidateWidgetScroll(class358.Widget_interfaceComponents[var0 >> 16], var4, false);
-		class282.runWidgetOnLoadListener(var1);
-		if (Client.rootInterface != -1) {
-			ModelData0.runIntfCloseListeners(Client.rootInterface, 1);
-		}
-
-		return var3;
+		return var1;
 	}
 }

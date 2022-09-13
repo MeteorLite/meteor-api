@@ -1,16 +1,20 @@
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ck")
+@ObfuscatedName("db")
 @Implements("UserComparator4")
 public class UserComparator4 implements Comparator {
-	@ObfuscatedName("r")
-	@Export("ByteArrayPool_alternativeSizes")
-	public static int[] ByteArrayPool_alternativeSizes;
-	@ObfuscatedName("s")
+	@ObfuscatedName("vf")
+	@ObfuscatedGetter(
+		intValue = 1706361753
+	)
+	@Export("foundItemIdCount")
+	static int foundItemIdCount;
+	@ObfuscatedName("c")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -18,10 +22,10 @@ public class UserComparator4 implements Comparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("s")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(Lnt;Lnt;I)I",
-		garbageValue = "-668032566"
+		descriptor = "(Lnr;Lnr;B)I",
+		garbageValue = "-116"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(Buddy var1, Buddy var2) {
@@ -36,27 +40,95 @@ public class UserComparator4 implements Comparator {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("o")
+	@ObfuscatedName("c")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1201413197"
+		descriptor = "(I)[Lqt;",
+		garbageValue = "392614583"
 	)
-	public static void method2535() {
-		KitDefinition.KitDefinition_cached.clear();
+	@Export("FillMode_values")
+	public static class455[] FillMode_values() {
+		return new class455[]{class455.SOLID, class455.field4810, class455.field4814};
 	}
 
-	@ObfuscatedName("ea")
+	@ObfuscatedName("hp")
 	@ObfuscatedSignature(
-		descriptor = "(IZZZZI)Lln;",
-		garbageValue = "1667153978"
+		descriptor = "(I)Z",
+		garbageValue = "564741140"
 	)
-	@Export("newArchive")
-	static Archive newArchive(int var0, boolean var1, boolean var2, boolean var3, boolean var4) {
-		ArchiveDisk var5 = null;
-		if (JagexCache.JagexCache_dat2File != null) {
-			var5 = new ArchiveDisk(var0, JagexCache.JagexCache_dat2File, class115.JagexCache_idxFiles[var0], 1000000);
+	static boolean method2730() {
+		return (Client.drawPlayerNames & 4) != 0;
+	}
+
+	@ObfuscatedName("iq")
+	@ObfuscatedSignature(
+		descriptor = "(I)V",
+		garbageValue = "-1545861626"
+	)
+	static final void method2731() {
+		PacketBuffer var0 = Client.packetWriter.packetBuffer;
+		var0.importIndex();
+		int var1 = var0.readBits(8);
+		int var2;
+		if (var1 < Client.npcCount) {
+			for (var2 = var1; var2 < Client.npcCount; ++var2) {
+				Client.field775[++Client.field625 - 1] = Client.npcIndices[var2];
+			}
 		}
 
-		return new Archive(var5, class11.masterDisk, var0, var1, var2, var3, var4);
+		if (var1 > Client.npcCount) {
+			throw new RuntimeException("");
+		} else {
+			Client.npcCount = 0;
+
+			for (var2 = 0; var2 < var1; ++var2) {
+				int var3 = Client.npcIndices[var2];
+				NPC var4 = Client.npcs[var3];
+				int var5 = var0.readBits(1);
+				if (var5 == 0) {
+					Client.npcIndices[++Client.npcCount - 1] = var3;
+					var4.npcCycle = Client.cycle;
+				} else {
+					int var6 = var0.readBits(2);
+					if (var6 == 0) {
+						Client.npcIndices[++Client.npcCount - 1] = var3;
+						var4.npcCycle = Client.cycle;
+						Client.field550[++Client.field549 - 1] = var3;
+					} else {
+						int var7;
+						int var8;
+						if (var6 == 1) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							var7 = var0.readBits(3);
+							var4.method2510(var7, class193.field2246);
+							var8 = var0.readBits(1);
+							if (var8 == 1) {
+								Client.field550[++Client.field549 - 1] = var3;
+							}
+						} else if (var6 == 2) {
+							Client.npcIndices[++Client.npcCount - 1] = var3;
+							var4.npcCycle = Client.cycle;
+							if (var0.readBits(1) == 1) {
+								var7 = var0.readBits(3);
+								var4.method2510(var7, class193.field2247);
+								var8 = var0.readBits(3);
+								var4.method2510(var8, class193.field2247);
+							} else {
+								var7 = var0.readBits(3);
+								var4.method2510(var7, class193.field2244);
+							}
+
+							var7 = var0.readBits(1);
+							if (var7 == 1) {
+								Client.field550[++Client.field549 - 1] = var3;
+							}
+						} else if (var6 == 3) {
+							Client.field775[++Client.field625 - 1] = var3;
+						}
+					}
+				}
+			}
+
+		}
 	}
 }
