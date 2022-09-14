@@ -2921,6 +2921,9 @@ public abstract class RSClientMixin implements RSClient
 				param0 = 1;
 			}
 
+			if (param0 < 0)
+				param0 = 0;
+
 			Widget child = widget.getChild(param0);
 			if (child != null)
 			{
