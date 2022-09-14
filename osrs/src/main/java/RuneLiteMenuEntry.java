@@ -409,6 +409,8 @@ public class RuneLiteMenuEntry implements MenuEntry
 		return -1;
 	}
 
+	int itemIdOverride = -1;
+
 	@Override
 	public int getItemId()
 	{
@@ -429,11 +431,15 @@ public class RuneLiteMenuEntry implements MenuEntry
 			}
 		}
 
+		if (itemIdOverride != -1)
+			return itemIdOverride;
+
 		return -1;
 	}
 
 	public void setItemId(int itemId) {
 		Client.menuItemIds[this.idx] = itemId;
+		itemIdOverride = itemId;
 	}
 	@Override
 	public Widget getWidget()

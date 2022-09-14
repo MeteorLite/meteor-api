@@ -58,6 +58,9 @@ public abstract class RuneLiteMenuEntryMixin implements RSRuneLiteMenuEntry
 			}
 		}
 
+		if (getItemIdOverride() != -1)
+			return getItemIdOverride();
+
 		return -1;
 	}
 

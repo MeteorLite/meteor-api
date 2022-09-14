@@ -3027,7 +3027,6 @@ public abstract class RSClientMixin implements RSClient
 				menuEntry.setTarget(menu.getTarget());
 			}
 
-			client.getLogger().debug("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
 			event = new MenuOptionClicked(menuEntry);
 			client.getCallbacks().post(Events.MENU_OPTION_CLICKED,event);
 

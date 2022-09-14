@@ -28,6 +28,7 @@ import lombok.Data
 import net.runelite.api.MenuAction
 import net.runelite.api.MenuEntry
 import net.runelite.api.widgets.Widget
+import java.lang.RuntimeException
 
 /**
  * An event where a menu option has been clicked.
@@ -43,16 +44,25 @@ import net.runelite.api.widgets.Widget
  * it seems that this event still triggers with the "Cancel" action.
  */
 
-data class MenuOptionClicked(var menuEntry: MenuEntry? = null, var selectedItemIndex: Int = -1, var canvasX: Int = -1,
-                             var canvasY: Int = -1, var automated: Boolean = false,
-                             /**
-                              * Whether or not the event has been consumed by a subscriber.
-                              */
-                             var consumed: Boolean = false
+data class MenuOptionClicked(var menuEntry: MenuEntry? = null
 ) {
-    constructor(tmpEntry: MenuEntry) : this() {
-        menuEntry = tmpEntry
+    var consumed: Boolean = false
+    var selectedItemIndex: Int = -1
+    var canvasX: Int = -1
+    var canvasY: Int = -1
+    var automated: Boolean = false
+
+    /**
+     * If this menu entry is an item op, get the item id
+     * @return
+     * @see net.runelite.api.ItemID
+     *
+     * @see net.runelite.api.NullItemID
+     */
+    fun getItemId(): Int {
+        return menuEntry!!.itemId
     }
+
     fun setItemId(itemId: Int) {
         menuEntry!!.itemId = itemId
     }
@@ -112,17 +122,6 @@ data class MenuOptionClicked(var menuEntry: MenuEntry? = null, var selectedItemI
      */
     fun getItemOp(): Int {
         return menuEntry!!.itemOp
-    }
-
-    /**
-     * If this menu entry is an item op, get the item id
-     * @return
-     * @see net.runelite.api.ItemID
-     *
-     * @see net.runelite.api.NullItemID
-     */
-    fun getItemId(): Int {
-        return menuEntry!!.itemId
     }
 
     /**

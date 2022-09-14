@@ -135,18 +135,4 @@ public class AutomatedMenu
 				false
 		);
 	}
-
-	public MenuOptionClicked toMenuOptionClicked()
-	{
-		MenuOptionClicked event = new MenuOptionClicked();
-		event.getMenuEntry().setOption(option);
-		event.getMenuEntry().setTarget(target);
-		event.getMenuEntry().setType(opcode);
-		event.getMenuEntry().setIdentifier(identifier);
-		event.getMenuEntry().setParam0(param0);
-		event.getMenuEntry().setParam1(param1);
-		event.setCanvasX(clickX);
-		event.setCanvasY(clickY);
-		return event;
-	}
 }
