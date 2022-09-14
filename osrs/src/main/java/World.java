@@ -170,7 +170,7 @@ public class World {
 	)
 	static final void method1782(MenuAction var0, int var1, int var2) {
 		if (var0 != null) {
-			class17.method273(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.field880, var0.field879, var0.action, var1, var2);
+			class17.menuAction(var0.param0, var0.param1, var0.opcode, var0.identifier, var0.itemId, var0.action, var0.target, var1, var2);
 		}
 
 	}

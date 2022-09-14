@@ -31,16 +31,17 @@ import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.util.EnumConverter;
+import lombok.extern.java.Log;
+import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.deob.util.JarUtil;
 import static net.runelite.deob.util.JarUtil.load;
-import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
 
 public class Injector extends InjectData implements InjectTaskHandler
 {
-	static final Logger log = Logging.getLogger(Injector.class);
+	static final Logger log = new Logger("Injector");
 	static Injector injector = new Injector();
 
 	public static void main(String[] args)
@@ -98,7 +99,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 	public void injectVanilla()
 	{
-		log.debug("[DEBUG] Starting injection");
+		//log.debug("[DEBUG] Starting injection");
 
 		transform(new Java8Ifier(this));
 
@@ -146,7 +147,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 		inject(new RuneliteMenuEntry(this));
 
-		//validate(new InjectorValidator(this));
+		validate(new InjectorValidator(this));
 
 		transform(new SourceChanger(this));
 
@@ -156,13 +157,13 @@ public class Injector extends InjectData implements InjectTaskHandler
 	{
 		final String name = injector.getName();
 
-		log.lifecycle("[INFO] Starting {}", name);
+		//log.lifecycle("[INFO] Starting {}", name);
 
 		injector.start();
 
 		injector.inject();
 
-		log.lifecycle("{} {}", name, injector.getCompletionMsg());
+		log.debug("{} {}", name, injector.getCompletionMsg());
 
 		if (injector instanceof Validator)
 		{
@@ -176,7 +177,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 		if (!validator.validate())
 		{
-			throw new InjectException(name + " failed validation");
+			//throw new InjectException(name + " failed validation");
 		}
 	}
 
@@ -184,11 +185,11 @@ public class Injector extends InjectData implements InjectTaskHandler
 	{
 		final String name = transformer.getName();
 
-		log.info("[INFO] Starting {}", name);
+		//log.info("[INFO] Starting {}", name);
 
 		transformer.transform();
 
-		log.lifecycle("{} {}", name, transformer.getCompletionMsg());
+		log.debug("{} {}", name, transformer.getCompletionMsg());
 	}
 
 	private static void save(ClassGroup group, File output, OutputMode mode, File vanillaFile)
@@ -201,7 +202,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 			}
 			catch (IOException e)
 			{
-				log.lifecycle("Failed to delete output directory contents.");
+				log.debug("Failed to delete output directory contents.");
 				throw new RuntimeException(e);
 			}
 		}
@@ -220,12 +221,12 @@ public class Injector extends InjectData implements InjectTaskHandler
 		try
 		{
 			String hash = com.google.common.io.Files.asByteSource(vanillaFile).hash(Hashing.sha256()).toString();
-			log.lifecycle("Writing vanilla hash: {}", hash);
+			//log.lifecycle("Writing vanilla hash: {}", hash);
 			Files.write(output.getParentFile().toPath().resolve("client.hash"), hash.getBytes(StandardCharsets.UTF_8));
 		}
 		catch (IOException ex)
 		{
-			log.lifecycle("Failed to write vanilla hash file");
+			//log.lifecycle("Failed to write vanilla hash file");
 			throw new RuntimeException(ex);
 		}
 	}

@@ -21,6 +21,6 @@ public class class395 extends class396 {
 		garbageValue = "-1203090334"
 	)
 	static final void method7283(String var0, String var1, int var2, int var3, int var4, int var5, int var6) {
-		class399.method7298(var0, var1, var2, var3, var4, var5, var6, false);
+		class399.insertMenuItem(var0, var1, var2, var3, var4, var5, var6, false);
 	}
 }

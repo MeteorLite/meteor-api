@@ -41,12 +41,13 @@ public class MenuAction {
 	@ObfuscatedGetter(
 		intValue = 1901856087
 	)
-	int field880;
+	int itemId;
 	@ObfuscatedName("w")
-	String field879;
-	@ObfuscatedName("s")
 	@Export("action")
 	String action;
+	@ObfuscatedName("s")
+
+	String target;
 
 	MenuAction() {
 	}

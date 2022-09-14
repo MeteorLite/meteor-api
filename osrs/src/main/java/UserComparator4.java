@@ -46,8 +46,8 @@ public class UserComparator4 implements Comparator {
 		garbageValue = "392614583"
 	)
 	@Export("FillMode_values")
-	public static class455[] FillMode_values() {
-		return new class455[]{class455.SOLID, class455.field4810, class455.field4814};
+	public static FillMode[] FillMode_values() {
+		return new FillMode[]{FillMode.SOLID, FillMode.field4810, FillMode.field4814};
 	}
 
 	@ObfuscatedName("hp")

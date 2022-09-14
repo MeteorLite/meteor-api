@@ -22,7 +22,7 @@ public class FriendsList extends UserList {
 	@ObfuscatedSignature(
 		descriptor = "Lmx;"
 	)
-	public LinkDeque field4330;
+	public LinkDeque friendLoginUpdates;
 
 	@ObfuscatedSignature(
 		descriptor = "(Lpn;)V"
@@ -30,7 +30,7 @@ public class FriendsList extends UserList {
 	public FriendsList(LoginType var1) {
 		super(400);
 		this.field4329 = 1;
-		this.field4330 = new LinkDeque();
+		this.friendLoginUpdates = new LinkDeque();
 		this.loginType = var1;
 	}
 
@@ -111,20 +111,20 @@ public class FriendsList extends UserList {
 						if (var6 != var11.world) {
 							boolean var14 = true;
 
-							for (class370 var13 = (class370)this.field4330.method6386(); var13 != null; var13 = (class370)this.field4330.method6393()) {
+							for (class370 var13 = (class370)this.friendLoginUpdates.last(); var13 != null; var13 = (class370)this.friendLoginUpdates.previous()) {
 								if (var13.field4345.equals(var4)) {
 									if (var6 != 0 && var13.field4347 == 0) {
-										var13.method7333();
+										var13.remove();
 										var14 = false;
 									} else if (var6 == 0 && var13.field4347 != 0) {
-										var13.method7333();
+										var13.remove();
 										var14 = false;
 									}
 								}
 							}
 
 							if (var14) {
-								this.field4330.method6384(new class370(var4, var6));
+								this.friendLoginUpdates.addFirst(new class370(var4, var6));
 							}
 						}
 					} else {

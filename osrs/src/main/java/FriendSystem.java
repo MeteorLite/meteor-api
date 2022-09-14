@@ -78,7 +78,7 @@ public class FriendSystem {
 	)
 	@Export("processFriendUpdates")
 	final void processFriendUpdates() {
-		for (class370 var1 = (class370)this.friendsList.field4330.method6386(); var1 != null; var1 = (class370)this.friendsList.field4330.method6393()) {
+		for (class370 var1 = (class370)this.friendsList.friendLoginUpdates.last(); var1 != null; var1 = (class370)this.friendsList.friendLoginUpdates.previous()) {
 			if ((long)var1.field4346 < Language.method6232() / 1000L - 5L) {
 				if (var1.field4347 > 0) {
 					class65.addGameMessage(5, "", var1.field4345 + " has logged in.");
@@ -88,7 +88,7 @@ public class FriendSystem {
 					class65.addGameMessage(5, "", var1.field4345 + " has logged out.");
 				}
 
-				var1.method7333();
+				var1.remove();
 			}
 		}
 

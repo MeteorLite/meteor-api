@@ -7,45 +7,45 @@ public class LinkDeque {
 	@ObfuscatedSignature(
 		descriptor = "Loy;"
 	)
-	Link field4174;
+	Link sentinel;
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "Loy;"
 	)
-	Link field4173;
+	Link current;
 
 	public LinkDeque() {
-		this.field4174 = new Link();
-		this.field4174.field4495 = this.field4174;
-		this.field4174.field4494 = this.field4174;
+		this.sentinel = new Link();
+		this.sentinel.previous = this.sentinel;
+		this.sentinel.next = this.sentinel;
 	}
 
 	@ObfuscatedName("c")
 	@ObfuscatedSignature(
 		descriptor = "(Loy;)V"
 	)
-	public void method6384(Link var1) {
-		if (var1.field4494 != null) {
-			var1.method7333();
+	public void addFirst(Link var1) {
+		if (var1.next != null) {
+			var1.remove();
 		}
 
-		var1.field4494 = this.field4174.field4494;
-		var1.field4495 = this.field4174;
-		var1.field4494.field4495 = var1;
-		var1.field4495.field4494 = var1;
+		var1.next = this.sentinel.next;
+		var1.previous = this.sentinel;
+		var1.next.previous = var1;
+		var1.previous.next = var1;
 	}
 
 	@ObfuscatedName("p")
 	@ObfuscatedSignature(
 		descriptor = "()Loy;"
 	)
-	public Link method6386() {
-		Link var1 = this.field4174.field4495;
-		if (var1 == this.field4174) {
-			this.field4173 = null;
+	public Link last() {
+		Link var1 = this.sentinel.previous;
+		if (var1 == this.sentinel) {
+			this.current = null;
 			return null;
 		} else {
-			this.field4173 = var1.field4495;
+			this.current = var1.previous;
 			return var1;
 		}
 	}
@@ -54,13 +54,13 @@ public class LinkDeque {
 	@ObfuscatedSignature(
 		descriptor = "()Loy;"
 	)
-	public Link method6393() {
-		Link var1 = this.field4173;
-		if (var1 == this.field4174) {
-			this.field4173 = null;
+	public Link previous() {
+		Link var1 = this.current;
+		if (var1 == this.sentinel) {
+			this.current = null;
 			return null;
 		} else {
-			this.field4173 = var1.field4495;
+			this.current = var1.previous;
 			return var1;
 		}
 	}

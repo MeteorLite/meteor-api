@@ -48,7 +48,7 @@ public class class399 {
 		descriptor = "(Ljava/lang/String;Ljava/lang/String;IIIIIZI)V",
 		garbageValue = "2129607347"
 	)
-	static final void method7298(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
+	static final void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7) {
 		if (!Client.isMenuOpen) {
 			if (Client.menuOptionsCount < 500) {
 				Client.menuActions[Client.menuOptionsCount] = var0;
@@ -57,7 +57,7 @@ public class class399 {
 				Client.menuIdentifiers[Client.menuOptionsCount] = var3;
 				Client.menuArguments1[Client.menuOptionsCount] = var4;
 				Client.menuArguments2[Client.menuOptionsCount] = var5;
-				Client.field615[Client.menuOptionsCount] = var6;
+				Client.menuItemIds[Client.menuOptionsCount] = var6;
 				Client.menuShiftClick[Client.menuOptionsCount] = var7;
 				++Client.menuOptionsCount;
 			}

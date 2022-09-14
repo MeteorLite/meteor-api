@@ -703,7 +703,7 @@ public class TaskHandler implements Runnable {
 					}
 
 					if (var5 != null) {
-						class399.method7298(var5, var0.dataText, 57, var4 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry);
+						class399.insertMenuItem(var5, var0.dataText, 57, var4 + 1, var0.childIndex, var0.id, var0.itemId, var0.prioritizeMenuEntry);
 					}
 				}
 

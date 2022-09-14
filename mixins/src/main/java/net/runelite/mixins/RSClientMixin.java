@@ -105,6 +105,7 @@ import net.runelite.api.overlay.OverlayIndex;
 import net.runelite.api.vars.AccountType;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetConfig;
+import net.runelite.api.widgets.WidgetID;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.widgets.WidgetType;
@@ -125,7 +126,7 @@ public abstract class RSClientMixin implements RSClient
 	private static RSClient instance;
 
 	@Inject
-	public static Logger rl$logger = new meteor.Logger("");
+	public static Logger rl$logger = new Logger("");
 
 	@Inject
 	@javax.inject.Inject
@@ -187,8 +188,8 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	private final Cache<Integer, RSEnumComposition> enumCache = CacheBuilder.newBuilder()
-		.maximumSize(64)
-		.build();
+			.maximumSize(64)
+			.build();
 
 	@Inject
 	private static boolean printMenuActions;
@@ -798,7 +799,7 @@ public abstract class RSClientMixin implements RSClient
 
 	@Inject
 	@Override
-	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick)
+	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick)
 	{
 		RSRuneLiteMenuEntry menuEntry = newBareRuneliteMenuEntry();
 
@@ -810,6 +811,7 @@ public abstract class RSClientMixin implements RSClient
 		menuEntry.setParam1(param2);
 		menuEntry.setConsumer(null);
 		menuEntry.setForceLeftClick(forceLeftClick);
+		menuEntry.setItemId(itemId);
 
 		return menuEntry;
 	}
@@ -1048,12 +1050,12 @@ public abstract class RSClientMixin implements RSClient
 			}
 
 			MenuEntryAdded menuEntryAdded = new MenuEntryAdded(
-				menuOption,
-				menuTarget,
-				menuOpcode,
-				menuIdentifier,
-				menuArgument1,
-				menuArgument2
+					menuOption,
+					menuTarget,
+					menuOpcode,
+					menuIdentifier,
+					menuArgument1,
+					menuArgument2
 			);
 			client.getCallbacks().post(Events.MENU_ENTRY_ADDED, menuEntryAdded);
 
@@ -1276,10 +1278,10 @@ public abstract class RSClientMixin implements RSClient
 		if (skillIdx >= 0 && skillIdx < skills.length - 1)
 		{
 			StatChanged statChanged = new StatChanged(
-				skills[skillIdx],
-				client.getSkillExperiences()[skillIdx],
-				client.getRealSkillLevels()[skillIdx],
-				client.getBoostedSkillLevels()[skillIdx]
+					skills[skillIdx],
+					client.getSkillExperiences()[skillIdx],
+					client.getRealSkillLevels()[skillIdx],
+					client.getBoostedSkillLevels()[skillIdx]
 			);
 			client.getCallbacks().post(Events.STAT_CHANGED, statChanged);
 		}
@@ -1291,7 +1293,7 @@ public abstract class RSClientMixin implements RSClient
 	{
 		// Reset the menu opcode
 		MenuAction[] playerActions = {PLAYER_FIRST_OPTION, PLAYER_SECOND_OPTION, PLAYER_THIRD_OPTION, PLAYER_FOURTH_OPTION,
-			PLAYER_FIFTH_OPTION, PLAYER_SIXTH_OPTION, PLAYER_SEVENTH_OPTION, PLAYER_EIGTH_OPTION};
+				PLAYER_FIFTH_OPTION, PLAYER_SIXTH_OPTION, PLAYER_SEVENTH_OPTION, PLAYER_EIGTH_OPTION};
 		if (idx >= 0 && idx < playerActions.length)
 		{
 			MenuAction playerAction = playerActions[idx];
@@ -1363,6 +1365,7 @@ public abstract class RSClientMixin implements RSClient
 		if (npc != null)
 		{
 			npc.setIndex(idx);
+
 			client.getCallbacks().postDeferred(Events.NPC_SPAWNED, new NpcSpawned(npc));
 		}
 	}
@@ -1751,8 +1754,8 @@ public abstract class RSClientMixin implements RSClient
 			widget.setRenderY(renderY);
 
 			if (widget.getType() == WidgetType.RECTANGLE && renderX == client.getViewportXOffset() && renderY == client.getViewportYOffset()
-				&& widget.getWidth() == client.getViewportWidth() && widget.getHeight() == client.getViewportHeight()
-				&& widget.getOpacity() > 0 && widget.isFilled() && widget.getFillMode().getOrdinal() == 0 && client.isGpu())
+					&& widget.getWidth() == client.getViewportWidth() && widget.getHeight() == client.getViewportHeight()
+					&& widget.getOpacity() > 0 && widget.isFilled() && widget.getFillMode().getOrdinal() == 0 && client.isGpu())
 			{
 				int tc = widget.getTextColor();
 				int alpha = widget.getOpacity() & 0xFF;
@@ -2033,7 +2036,7 @@ public abstract class RSClientMixin implements RSClient
 		if (client.getSpellSelected())
 		{
 			return ((hideFriendCastOptions && p.isFriended()) || (hideClanmateCastOptions && p.isFriendsChatMember()))
-				&& !unhiddenCasts.contains(client.getSelectedSpellName().replaceAll("<[^>]*>", "").toLowerCase());
+					&& !unhiddenCasts.contains(client.getSelectedSpellName().replaceAll("<[^>]*>", "").toLowerCase());
 		}
 
 		return ((hideFriendAttackOptions && p.isFriended()) || (hideClanmateAttackOptions && p.isFriendsChatMember()));
@@ -2101,7 +2104,7 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-/*	@Copy("changeGameOptions")
+	@Copy("changeGameOptions")
 	@Replace("changeGameOptions")
 	@SuppressWarnings("InfiniteRecursion")
 	public static void copy$changeGameOptions(int var0)
@@ -2114,7 +2117,7 @@ public abstract class RSClientMixin implements RSClient
 			VolumeChanged volumeChanged = new VolumeChanged(type == 3 ? VolumeChanged.Type.MUSIC : type == 4 ? VolumeChanged.Type.EFFECTS : VolumeChanged.Type.AREA);
 			client.getCallbacks().post(Events.VOLUME_CHANGED, volumeChanged);
 		}
-	}*/
+	}
 
 	@Replace("getWidgetFlags")
 	public static int getWidgetFlags(Widget widget)
@@ -2357,12 +2360,12 @@ public abstract class RSClientMixin implements RSClient
 		}
 	}
 
-/*	@Inject
+	@Inject
 	@MethodHook("closeInterface")
 	public static void preCloseInterface(RSInterfaceParent iface, boolean willUnload)
 	{
 		client.getCallbacks().post(Events.WIDGET_CLOSED, new WidgetClosed(iface.getId(), iface.getModalMode(), willUnload));
-	}*/
+	}
 
 	@Inject
 	@Override
@@ -2845,5 +2848,45 @@ public abstract class RSClientMixin implements RSClient
 		client.getCallbacks().post(Events.BEFORE_MENU_RENDER, event);
 		return event.getConsumed();
 	}
-}
+	@Override
+	@Inject
+	public void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1, int itemId, int x, int y)
+	{
+		assert isClientThread() : "invokeMenuAction must be called on client thread";
 
+		client.sendMenuAction(param0, param1, opcode, identifier, itemId, option, target, x, y);
+	}
+
+	@Inject
+	@Override
+	public void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick)
+	{
+		insertMenuItem(action, target, opcode, identifier, argument1, argument2, getItemId(argument1, argument2, -1), forceLeftClick);
+	}
+
+	@Inject
+	private static int getItemId(int param0, int param1, int currentItemId)
+	{
+		Widget widget = client.getWidget(param1);
+		if (widget != null)
+		{
+			int group = param1 >>> 16;
+			Widget[] children = widget.getChildren();
+			if (children != null && children.length >= 2 && group == WidgetID.EQUIPMENT_GROUP_ID)
+			{
+				param0 = 1;
+			}
+
+			Widget child = widget.getChild(param0);
+			if (child != null)
+			{
+				if (currentItemId != child.getItemId())
+				{
+					return child.getItemId();
+				}
+			}
+		}
+
+		return currentItemId;
+	}
+}

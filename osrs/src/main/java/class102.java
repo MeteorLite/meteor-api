@@ -257,7 +257,7 @@ public class class102 extends UrlRequester {
 				return 1;
 			} else if (var0 == 1125) {
 				var8 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-				class455 var6 = (class455)Varps.findEnumerated(UserComparator4.FillMode_values(), var8);
+				FillMode var6 = (FillMode)Varps.findEnumerated(UserComparator4.FillMode_values(), var8);
 				if (var6 != null) {
 					var3.fillMode = var6;
 					class403.invalidateWidget(var3);

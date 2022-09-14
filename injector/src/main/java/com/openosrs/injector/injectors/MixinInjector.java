@@ -148,7 +148,7 @@ public class MixinInjector extends AbstractInjector
 		{
 			for (ClassFile mixinClass : inject.getMixins())
 			{
-				System.out.println(mixinClass.getClassName());
+				//System.out.println(mixinClass.getClassName());
 				final List<ClassFile> ret = getMixins(mixinClass);
 				builder.put(
 					(ret.size() > 1 ? mixinProvider(mixinClass) : () -> mixinClass),
@@ -267,7 +267,7 @@ public class MixinInjector extends AbstractInjector
 
 			if (targetField == null)
 			{
-				System.out.println(shadowed);
+				//System.out.println(shadowed);
 				final Field deobTargetField = InjectUtil.findStaticField(inject, shadowed, null, InjectUtil.apiToDeob(inject, field.getType()));
 				targetField = inject.toVanilla(deobTargetField);
 

@@ -20,6 +20,7 @@ import net.runelite.mapping.ObfuscatedSignature;
 @Implements("Client")
 @ObfuscatedName("client")
 public final class Client extends GameEngine implements Usernamed, OAuthApi {
+
 	@ObfuscatedName("rj")
 	@ObfuscatedSignature(
 		descriptor = "[Led;"
@@ -167,7 +168,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@Export("isCameraLocked")
 	static boolean isCameraLocked;
 	@ObfuscatedName("rl")
-	static long[] field785;
+	static long[] crossWorldMessageIds;
 	@ObfuscatedName("tc")
 	static boolean[] field755;
 	@ObfuscatedName("tz")
@@ -187,7 +188,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@ObfuscatedGetter(
 		intValue = -814923163
 	)
-	static int field729;
+	static int crossWorldMessageIdsIndex;
 	@ObfuscatedName("tb")
 	static int[] field758;
 	@ObfuscatedName("rm")
@@ -953,7 +954,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@Export("experience")
 	static int[] experience;
 	@ObfuscatedName("mf")
-	static boolean field520;
+	@Export("leftClickOpensMenu")
+	static boolean leftClickOpensMenu;
 	@ObfuscatedName("mc")
 	@Export("isMenuOpen")
 	static boolean isMenuOpen;
@@ -976,7 +978,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@Export("menuIdentifiers")
 	static int[] menuIdentifiers;
 	@ObfuscatedName("mk")
-	static int[] field615;
+	static int[] menuItemIds;
 	@ObfuscatedName("ns")
 	@Export("menuActions")
 	static String[] menuActions;
@@ -1522,14 +1524,14 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 		currentLevels = new int[25];
 		levels = new int[25];
 		experience = new int[25];
-		field520 = false;
+		leftClickOpensMenu = false;
 		isMenuOpen = false;
 		menuOptionsCount = 0;
 		menuArguments1 = new int[500];
 		menuArguments2 = new int[500];
 		menuOpcodes = new int[500];
 		menuIdentifiers = new int[500];
-		field615 = new int[500];
+		menuItemIds = new int[500];
 		menuActions = new String[500];
 		menuTargets = new String[500];
 		menuShiftClick = new boolean[500];
@@ -1611,8 +1613,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 		publicChatMode = 0;
 		tradeChatMode = 0;
 		field752 = "";
-		field785 = new long[100];
-		field729 = 0;
+		crossWorldMessageIds = new long[100];
+		crossWorldMessageIdsIndex = 0;
 		field529 = 0;
 		field731 = new int[128];
 		field749 = new int[128];
@@ -2865,13 +2867,13 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 			if (loginState == 7 && ((AbstractSocket)var1).available() >= 2) {
 				((AbstractSocket)var1).read(var2.array, 0, 2);
 				var2.offset = 0;
-				class455.field4809 = var2.readUnsignedShort();
+				FillMode.field4809 = var2.readUnsignedShort();
 				class142.method3196(8);
 			}
 
-			if (loginState == 8 && ((AbstractSocket)var1).available() >= class455.field4809) {
+			if (loginState == 8 && ((AbstractSocket)var1).available() >= FillMode.field4809) {
 				var2.offset = 0;
-				((AbstractSocket)var1).read(var2.array, var2.offset, class455.field4809);
+				((AbstractSocket)var1).read(var2.array, var2.offset, FillMode.field4809);
 				class6 var38 = class117.method2863()[var2.readUnsignedByte()];
 
 				try {
@@ -4052,7 +4054,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					boolean var69 = false;
 
 					for (var15 = 0; var15 < 100; ++var15) {
-						if (var30 == field785[var15]) {
+						if (var30 == crossWorldMessageIds[var15]) {
 							var69 = true;
 							break;
 						}
@@ -4063,8 +4065,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					if (!var69 && field617 == 0) {
-						field785[field729] = var30;
-						field729 = (field729 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var30;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var32 = AbstractFont.escapeBrackets(class123.method2954(Occluder.method4474(var3)));
 						if (var80.modIcon != -1) {
 							class120.addChatMessage(9, SecureRandomFuture.method2108(var80.modIcon) + var50, var32, class241.base37DecodeLong(var23));
@@ -4238,7 +4240,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 								break;
 							}
 
-							if (field785[var15] == var39) {
+							if (crossWorldMessageIds[var15] == var39) {
 								var68 = true;
 								break;
 							}
@@ -4248,8 +4250,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					if (!var68) {
-						field785[field729] = var39;
-						field729 = (field729 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var39;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var32 = AbstractFont.escapeBrackets(Occluder.method4474(var3));
 						var16 = var79 >= 0 ? 41 : 44;
 						if (var84.modIcon != -1) {
@@ -4974,7 +4976,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					boolean var65 = false;
 
 					for (var13 = 0; var13 < 100; ++var13) {
-						if (field785[var13] == var44) {
+						if (crossWorldMessageIds[var13] == var44) {
 							var65 = true;
 							break;
 						}
@@ -4985,8 +4987,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					if (!var65 && field617 == 0) {
-						field785[field729] = var44;
-						field729 = (field729 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var44;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var46 = AbstractFont.escapeBrackets(class123.method2954(Occluder.method4474(var3)));
 						byte var67;
 						if (var43.isPrivileged) {
@@ -5095,7 +5097,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 						var62 = true;
 					} else {
 						for (var13 = 0; var13 < 100; ++var13) {
-							if (var27 == field785[var13]) {
+							if (var27 == crossWorldMessageIds[var13]) {
 								var62 = true;
 								break;
 							}
@@ -5103,8 +5105,8 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					}
 
 					if (!var62) {
-						field785[field729] = var27;
-						field729 = (field729 + 1) % 100;
+						crossWorldMessageIds[crossWorldMessageIdsIndex] = var27;
+						crossWorldMessageIdsIndex = (crossWorldMessageIdsIndex + 1) % 100;
 						var46 = Occluder.method4474(var3);
 						var14 = var79 >= 0 ? 43 : 46;
 						class120.addChatMessage(var14, "", var46, var93.name);
@@ -5642,9 +5644,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					var5 = menuIdentifiers[var2];
 					menuIdentifiers[var2] = menuIdentifiers[var2 + 1];
 					menuIdentifiers[var2 + 1] = var5;
-					var5 = field615[var2];
-					field615[var2] = field615[var2 + 1];
-					field615[var2 + 1] = var5;
+					var5 = menuItemIds[var2];
+					menuItemIds[var2] = menuItemIds[var2 + 1];
+					menuItemIds[var2 + 1] = var5;
 					boolean var15 = menuShiftClick[var2];
 					menuShiftClick[var2] = menuShiftClick[var2 + 1];
 					menuShiftClick[var2 + 1] = var15;
@@ -5693,10 +5695,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 								var17 = menuArguments2[var21];
 								int var10 = menuOpcodes[var21];
 								int var11 = menuIdentifiers[var21];
-								int var12 = field615[var21];
+								int var12 = menuItemIds[var21];
 								String var13 = menuActions[var21];
 								String var14 = menuTargets[var21];
-								class17.method273(var8, var17, var10, var11, var12, var13, var14, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+								class17.menuAction(var8, var17, var10, var11, var12, var13, var14, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 							}
 
 							isMenuOpen = false;
@@ -5731,10 +5733,10 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 							var4 = menuArguments2[var2];
 							var5 = menuOpcodes[var2];
 							var22 = menuIdentifiers[var2];
-							var21 = field615[var2];
+							var21 = menuItemIds[var2];
 							String var16 = menuActions[var2];
 							String var9 = menuTargets[var2];
-							class17.method273(var3, var4, var5, var22, var21, var16, var9, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
+							class17.menuAction(var3, var4, var5, var22, var21, var16, var9, MouseHandler.MouseHandler_lastPressedX, MouseHandler.MouseHandler_lastPressedY);
 						}
 
 						if (var20 == 2 && menuOptionsCount > 0) {
@@ -5765,9 +5767,9 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 					class146.tempMenuAction.param1 = menuArguments2[var2];
 					class146.tempMenuAction.opcode = menuOpcodes[var2];
 					class146.tempMenuAction.identifier = menuIdentifiers[var2];
-					class146.tempMenuAction.field880 = field615[var2];
-					class146.tempMenuAction.field879 = menuActions[var2];
-					class146.tempMenuAction.action = menuTargets[var2];
+					class146.tempMenuAction.itemId = menuItemIds[var2];
+					class146.tempMenuAction.action = menuActions[var2];
+					class146.tempMenuAction.target = menuTargets[var2];
 				}
 
 				class403.invalidateWidget(User.dragInventoryWidget);
@@ -5783,7 +5785,7 @@ public final class Client extends GameEngine implements Usernamed, OAuthApi {
 	@Export("shouldLeftClickOpenMenu")
 	final boolean shouldLeftClickOpenMenu() {
 		int var1 = class156.method3411();
-		return (field520 && menuOptionsCount > 2 || class1.method15(var1)) && !menuShiftClick[var1];
+		return (leftClickOpensMenu && menuOptionsCount > 2 || class1.method15(var1)) && !menuShiftClick[var1];
 	}
 
 	@ObfuscatedName("it")

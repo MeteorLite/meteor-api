@@ -77,6 +77,6 @@ public class class135 extends class145 {
 	)
 	@Export("insertMenuItemNoShift")
 	public static final void insertMenuItemNoShift(String var0, String var1, int var2, int var3, int var4, int var5) {
-		class399.method7298(var0, var1, var2, var3, var4, var5, -1, false);
+		class399.insertMenuItem(var0, var1, var2, var3, var4, var5, -1, false);
 	}
 }

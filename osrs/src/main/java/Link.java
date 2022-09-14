@@ -7,20 +7,20 @@ public class Link {
 	@ObfuscatedSignature(
 		descriptor = "Loy;"
 	)
-	public Link field4495;
+	public Link previous;
 	@ObfuscatedName("k")
 	@ObfuscatedSignature(
 		descriptor = "Loy;"
 	)
-	public Link field4494;
+	public Link next;
 
 	@ObfuscatedName("c")
-	public void method7333() {
-		if (this.field4494 != null) {
-			this.field4494.field4495 = this.field4495;
-			this.field4495.field4494 = this.field4494;
-			this.field4495 = null;
-			this.field4494 = null;
+	public void remove() {
+		if (this.next != null) {
+			this.next.previous = this.previous;
+			this.previous.next = this.next;
+			this.previous = null;
+			this.next = null;
 		}
 	}
 }

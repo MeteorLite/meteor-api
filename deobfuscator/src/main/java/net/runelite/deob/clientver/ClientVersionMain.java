@@ -35,7 +35,7 @@ public class ClientVersionMain
 	{
 		File jar = new File(args[0]);
 		ClientVersion cv = new ClientVersion(jar);
-		System.out.println(cv.getVersion());
+		//System.out.println(cv.getVersion());
 	}
 
 	public static int version(String loc)

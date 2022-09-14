@@ -700,11 +700,22 @@ public interface Client extends GameEngine
 	 */
 	MenuEntry createMenuEntry(int idx);
 
-	/**
-	 * Create a new menu entry
-	 * @return the newly created menu entry
-	 */
+	void invokeWidgetAction(int identifier, int param1, int param0, int itemId, String target);
+	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, int itemId, boolean forceLeftClick);
 	MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick);
+
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, int itemId, boolean forceLeftClick);
+	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
+	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
+	{
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
+	}
+
+	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+			int screenX, int screenY);
+
+	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+			int itemId, int screenX, int screenY);
 
 	/**
 	 * Gets an array of currently open right-click menu entries that can be
@@ -2211,11 +2222,6 @@ public interface Client extends GameEngine
 	int getItemCount();
 
 	void setAllWidgetsAreOpTargetable(boolean value);
-
-	/**
-	 * Adds a MenuEntry to the current menu.
-	 */
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 
 	/**
 	 * @deprecated use {@link #setSelectedSpellItemId(int)} instead.

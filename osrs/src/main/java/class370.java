@@ -57,7 +57,7 @@ public class class370 extends Link {
 		}
 
 		if (var6 != -1 && var7 != null) {
-			class399.method7298(var7, SoundCache.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
+			class399.insertMenuItem(var7, SoundCache.colorStartTag(16748608) + var1.name, var6, 0, var2, var0.id, var1.id, var4);
 		}
 
 	}

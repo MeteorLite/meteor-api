@@ -12,16 +12,16 @@ import com.openosrs.injector.rsapi.RSApi;
 import com.openosrs.injector.rsapi.RSApiClass;
 import com.openosrs.injector.rsapi.RSApiMethod;
 import lombok.RequiredArgsConstructor;
+import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.pool.Class;
-import org.gradle.api.logging.Logger;
 import org.gradle.api.logging.Logging;
 import static com.openosrs.injector.rsapi.RSApi.API_BASE;
 
 @RequiredArgsConstructor
 public class InjectorValidator implements Validator
 {
-	private static final Logger log = Logging.getLogger(InjectorValidator.class);
+	private static final Logger log = new Logger("Validator");
 	private static final String OK = "OK", ERROR = "ERROR", WTF = "WTF";
 	private final InjectData inject;
 
@@ -52,7 +52,8 @@ public class InjectorValidator implements Validator
 		}
 
 		String status = wtf > 0 ? WTF : missing > 0 ? ERROR : OK;
-		log.info("[INFO] RSApiValidator completed. Status [{}] {} overridden methods, {} missing", status, okay, missing);
+		if (missing > 0)
+			log.error("RSApiValidator completed. Status [{}] {} overridden methods, {} missing", status, okay, missing);
 
 		// valid, ref to static final field
 		return status == OK;
@@ -69,7 +70,7 @@ public class InjectorValidator implements Validator
 
 			if (clazz.findMethodDeep(apiMethod.getName(), apiMethod.getSignature()) == null)
 			{
-				log.error("[WARN] Class {} implements interface {} but doesn't implement {}",
+				log.error("Class {} implements interface {} but doesn't implement {}",
 					clazz.getPoolClass(), apiClass.getClazz(), apiMethod.getMethod());
 				++missing;
 			}

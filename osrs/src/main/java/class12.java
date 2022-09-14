@@ -284,6 +284,6 @@ class class12 extends SSLSocket {
 		garbageValue = "243834325"
 	)
 	static void method164(boolean var0) {
-		Client.field520 = var0;
+		Client.leftClickOpensMenu = var0;
 	}
 }

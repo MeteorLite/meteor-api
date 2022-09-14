@@ -98,14 +98,6 @@ public interface RSActor extends RSRenderable, Actor
 	@Override
 	void setGraphic(int id);
 
-	@Import("spotAnimationHeight")
-	@Override
-	int getGraphicHeight();
-
-	@Import("spotAnimationHeight")
-	@Override
-	void setGraphicHeight(int id);
-
 	@Import("spotAnimationFrame")
 	int getSpotAnimFrame();
 
@@ -113,7 +105,7 @@ public interface RSActor extends RSRenderable, Actor
 	@Override
 	void setSpotAnimFrame(int id);
 
-	@Import("spotAnimationFrameCycle")
+	@Import("sequenceFrameCycle")
 	int getSpotAnimationFrameCycle();
 
 	// Idle animation

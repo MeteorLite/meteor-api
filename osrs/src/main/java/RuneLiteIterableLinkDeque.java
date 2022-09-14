@@ -10,32 +10,32 @@ public class RuneLiteIterableLinkDeque implements Iterator {
 
 	public RuneLiteIterableLinkDeque(LinkDeque var1) {
 		this.linkDeque = var1;
-		this.link = this.linkDeque.field4174.field4495;
+		this.link = this.linkDeque.sentinel.previous;
 	}
 
 	@Export("hasNext")
 	public boolean hasNext() {
-		return this.link != this.linkDeque.field4174;
+		return this.link != this.linkDeque.sentinel;
 	}
 
 	@Export("next")
 	public class370 next() {
-		if (this.link == this.linkDeque.field4174) {
+		if (this.link == this.linkDeque.sentinel) {
 			throw new NoSuchElementException();
 		} else {
 			class370 var1 = (class370)this.link;
-			this.link = this.link.field4495;
+			this.link = this.link.previous;
 			return var1;
 		}
 	}
 
 	@Export("remove")
 	public void remove() {
-		Link var1 = this.link.field4494;
-		if (var1 == this.linkDeque.field4174) {
+		Link var1 = this.link.next;
+		if (var1 == this.linkDeque.sentinel) {
 			throw new IllegalStateException();
 		} else {
-			var1.method7333();
+			var1.remove();
 		}
 	}
 }

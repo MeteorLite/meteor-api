@@ -393,7 +393,7 @@ public final class class269 {
 			}
 
 			if (var1 == 5) {
-				Client.field520 = var2 == 1;
+				Client.leftClickOpensMenu = var2 == 1;
 			}
 
 			if (var1 == 6) {

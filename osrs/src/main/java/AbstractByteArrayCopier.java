@@ -58,9 +58,9 @@ public abstract class AbstractByteArrayCopier {
 						class146.tempMenuAction.param1 = Client.menuArguments2[var5];
 						class146.tempMenuAction.opcode = Client.menuOpcodes[var5];
 						class146.tempMenuAction.identifier = Client.menuIdentifiers[var5];
-						class146.tempMenuAction.field880 = Client.field615[var5];
-						class146.tempMenuAction.field879 = Client.menuActions[var5];
-						class146.tempMenuAction.action = Client.menuTargets[var5];
+						class146.tempMenuAction.itemId = Client.menuItemIds[var5];
+						class146.tempMenuAction.action = Client.menuActions[var5];
+						class146.tempMenuAction.target = Client.menuTargets[var5];
 					}
 
 					return;

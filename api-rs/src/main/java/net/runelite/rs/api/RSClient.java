@@ -1158,7 +1158,10 @@ public interface RSClient extends RSGameEngine, Client
 
 	@Import("insertMenuItem")
 	@Override
-	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
+	void insertMenuItem(String var0, String var1, int var2, int var3, int var4, int var5, int var6, boolean var7);
+
+	@Import("menuAction")
+	void sendMenuAction(int n2, int n3, int n4, int n5, int itemId, String string, String string2, int n6, int n7);
 
 	@Import("selectedItemId")
 	@Override
@@ -1284,7 +1287,7 @@ public interface RSClient extends RSGameEngine, Client
 	void setMouseCrossColor(int color);
 
 	@Import("leftClickOpensMenu")
-	int getLeftClickOpensMenu();
+	boolean getLeftClickOpensMenu();
 
 	@Import("showMouseOverText")
 	boolean getShowMouseOverText();
@@ -1677,10 +1680,6 @@ public interface RSClient extends RSGameEngine, Client
 	@Override
 	RSMouseHandler getMouseHandler();
 
-	@Import("getServerTime")
-	@Override
-	long getCurrentTime();
-
 	@Import("hasFocus")
 	@Override
 	boolean isFocused();
@@ -1726,4 +1725,7 @@ public interface RSClient extends RSGameEngine, Client
 	@Import("selectedSpellItemId")
 	@Override
 	void setSelectedSpellItemId(int itemId);
+
+	@Import("menuItemIds")
+	int[] getMenuItemIds();
 }

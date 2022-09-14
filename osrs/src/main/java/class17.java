@@ -134,7 +134,7 @@ class class17 implements SSLSession {
 		descriptor = "(IIIIILjava/lang/String;Ljava/lang/String;III)V",
 		garbageValue = "-2056199428"
 	)
-	static final void method273(int var0, int var1, int var2, int var3, int var4, String var5, String var6, int var7, int var8) {
+	static final void menuAction(int var0, int var1, int var2, int var3, int var4, String var5, String var6, int var7, int var8) {
 		if (var2 >= 2000) {
 			var2 -= 2000;
 		}

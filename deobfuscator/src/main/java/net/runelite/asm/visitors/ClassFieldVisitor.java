@@ -59,6 +59,6 @@ public class ClassFieldVisitor extends FieldVisitor
 	@Override
 	public void visitAttribute(Attribute attr)
 	{
-		System.out.println(attr);
+		//System.out.println(attr);
 	}
 }
