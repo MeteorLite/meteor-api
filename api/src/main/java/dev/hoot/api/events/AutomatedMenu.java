@@ -22,7 +22,7 @@ public class AutomatedMenu
 	private int clickX;
 	private int clickY;
 	private long entityTag;
-
+	private int itemId = -1;
 	@Setter
 	private long timestamp;
 
@@ -62,7 +62,7 @@ public class AutomatedMenu
 	}
 
 	public AutomatedMenu(String option, String target, int identifier, MenuAction opcode, int param0, int param1,
-						 int clickX, int clickY, long entityTag)
+			int clickX, int clickY, long entityTag)
 	{
 		this.option = option;
 		this.target = target;

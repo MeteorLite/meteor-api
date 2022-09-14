@@ -57,4 +57,10 @@ public interface RSMenuAction
 
 	@Import("param1")
 	void setParam1(int yes);
+
+	@Import("target")
+	String getTarget();
+
+	@Import("itemId")
+	int getItemId();
 }

@@ -41,8 +41,8 @@ public abstract class HClientMixin implements RSClient
 	@Inject
 	private static final int[] previousExp = new int[23];
 
-	@Inject
-	private static final AtomicReference<AutomatedMenu> automatedMenu = new AtomicReference<>(null);
+	@Shadow("automatedMenu")
+	private static AtomicReference<AutomatedMenu> automatedMenu;
 
 	@Inject
 	private static long lastMenuChange = -1;

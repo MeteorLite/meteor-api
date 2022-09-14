@@ -42,18 +42,20 @@ import net.runelite.api.widgets.Widget
  * By default, when there is no action performed when left-clicking,
  * it seems that this event still triggers with the "Cancel" action.
  */
-@Data
-class MenuOptionClicked() {
-    var menuEntry: MenuEntry? = null
-    var selectedItemIndex: Int = -1
-    var canvasX: Int = -1
-    var canvasY: Int = -1
-    var automated: Boolean = false
-    /**
-     * Whether or not the event has been consumed by a subscriber.
-     */
-    var consumed = false
 
+data class MenuOptionClicked(var menuEntry: MenuEntry? = null, var selectedItemIndex: Int = -1, var canvasX: Int = -1,
+                             var canvasY: Int = -1, var automated: Boolean = false,
+                             /**
+                              * Whether or not the event has been consumed by a subscriber.
+                              */
+                             var consumed: Boolean = false
+) {
+    constructor(tmpEntry: MenuEntry) : this() {
+        menuEntry = tmpEntry
+    }
+    fun setItemId(itemId: Int) {
+        menuEntry!!.itemId = itemId
+    }
     /**
      * Action parameter 0. Its value depends on the menuAction.
      */

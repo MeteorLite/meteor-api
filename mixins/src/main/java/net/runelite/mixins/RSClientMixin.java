@@ -28,8 +28,10 @@ package net.runelite.mixins;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.primitives.Doubles;
+import dev.hoot.api.events.AutomatedMenu;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -54,6 +56,7 @@ import net.runelite.api.IntegerNode;
 import net.runelite.api.InventoryID;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.MenuAction;
+import static net.runelite.api.MenuAction.CANCEL;
 import static net.runelite.api.MenuAction.PLAYER_EIGTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FIFTH_OPTION;
 import static net.runelite.api.MenuAction.PLAYER_FIRST_OPTION;
@@ -72,6 +75,7 @@ import net.runelite.api.NameableContainer;
 import net.runelite.api.NodeCache;
 import net.runelite.api.ObjectComposition;
 import net.runelite.api.Perspective;
+import static net.runelite.api.MenuAction.UNKNOWN;
 import static net.runelite.api.Perspective.LOCAL_TILE_SIZE;
 import net.runelite.api.Player;
 import net.runelite.api.Point;
@@ -2865,6 +2869,46 @@ public abstract class RSClientMixin implements RSClient
 	}
 
 	@Inject
+	private static int getItemId(int identifier, int opcode, int param0, int param1, int currentItemId)
+	{
+		switch (opcode)
+		{
+			case 1006:
+				currentItemId = 0;
+				break;
+			case 25:
+			case 31:
+			case 32:
+			case 33:
+			case 34:
+			case 35:
+			case 36:
+			case 37:
+			case 38:
+			case 39:
+			case 40:
+			case 41:
+			case 42:
+			case 43:
+			case 58:
+			case 1005:
+				currentItemId = getItemId(param0, param1, currentItemId);
+				break;
+
+			case 57:
+			case 1007:
+				if (identifier >= 1 && identifier <= 10)
+				{
+					currentItemId = getItemId(param0, param1, currentItemId);
+				}
+
+				break;
+		}
+
+		return currentItemId;
+	}
+
+	@Inject
 	private static int getItemId(int param0, int param1, int currentItemId)
 	{
 		Widget widget = client.getWidget(param1);
@@ -2888,5 +2932,153 @@ public abstract class RSClientMixin implements RSClient
 		}
 
 		return currentItemId;
+	}
+
+	@Inject
+	private static final AtomicReference<AutomatedMenu> automatedMenu = new AtomicReference<>(null);
+
+	@Copy("menuAction")
+	@Replace("menuAction")
+	static void copy$menuAction(int param0, int param1, int opcode, int id, int itemId, String option, String target, int canvasX, int canvasY)
+	{
+		RSRuneLiteMenuEntry menuEntry = null;
+		for (int i = client.getMenuOptionCount() - 1; i >= 0; --i)
+		{
+			if (client.getMenuOpcodes()[i] == opcode
+					&& client.getMenuIdentifiers()[i] == id
+					&& client.getMenuArguments1()[i] == param0
+					&& client.getMenuArguments2()[i] == param1
+					&& client.getMenuItemIds()[i] == itemId
+					&& option.equals(client.getMenuOptions()[i])
+					&& target.equals(client.getMenuTargets()[i])
+			)
+			{
+				menuEntry = rl$menuEntries[i];
+				break;
+			}
+		}
+
+		boolean isTemp = false;
+		if (client.getTempMenuAction() != null)
+		{
+			isTemp = client.getTempMenuAction().getOpcode() == opcode &&
+					client.getTempMenuAction().getIdentifier() == id &&
+					client.getTempMenuAction().getOption().equals(option) &&
+					client.getTempMenuAction().getTarget().equals(target) &&
+					client.getTempMenuAction().getParam0() == param0 &&
+					client.getTempMenuAction().getParam1() == param1 &&
+					client.getTempMenuAction().getItemId() == itemId;
+		}
+
+		if (menuEntry == null && isTemp)
+		{
+			int i;
+			if (client.getMenuOptionCount() < 500)
+			{
+				i = client.getMenuOptionCount();
+				client.setMenuOptionCount(client.getMenuOptionCount() + 1);
+			}
+			else
+			{
+				i = 0;
+			}
+
+			client.getMenuOpcodes()[i] = opcode;
+			client.getMenuIdentifiers()[i] = id;
+			client.getMenuOptions()[i] = option;
+			client.getMenuTargets()[i] = target;
+			client.getMenuArguments1()[i] = param0;
+			client.getMenuArguments2()[i] = param1;
+			client.getMenuItemIds()[i] = itemId;
+			client.getMenuForceLeftClick()[i] = false;
+			menuEntry = rl$menuEntries[i];
+
+			if (menuEntry == null)
+			{
+				menuEntry = rl$menuEntries[i] = newRuneliteMenuEntry(i);
+			}
+		}
+
+		MenuOptionClicked event;
+		if (menuEntry == null)
+		{
+			MenuEntry tmpEntry = client.createMenuEntry(option, target, id, opcode, param0, param1, itemId, false);
+			event = new MenuOptionClicked(tmpEntry);
+
+			if (canvasX != -1 || canvasY != -1)
+			{
+				client.getLogger().warn("Unable to find clicked menu op {} targ {} action {} id {} p0 {} p1 {} item {}", option, target, opcode, id, param0, param1, itemId);
+			}
+		}
+		else
+		{
+			AutomatedMenu menu = automatedMenu.getAndSet(null);
+			if (menu != null)
+			{
+				menuEntry.setIdentifier(menu.getIdentifier());
+				menuEntry.setType(menu.getOpcode());
+				menuEntry.setParam0(menu.getParam0());
+				menuEntry.setParam1(menu.getParam1());
+				menuEntry.setItemId(menu.getItemId());
+				menuEntry.setOption(menu.getOption());
+				menuEntry.setTarget(menu.getTarget());
+			}
+
+			client.getLogger().debug("Menu click op {} targ {} action {} id {} p0 {} p1 {}", option, target, opcode, id, param0, param1);
+			event = new MenuOptionClicked(menuEntry);
+			client.getCallbacks().post(Events.MENU_OPTION_CLICKED,event);
+
+			// Set new item id here in case event is modified
+			int newItemId = getItemId(event.getId(), event.getMenuAction().getId(), event.getParam0(), event.getParam1(), event.getItemId());
+			event.setItemId(newItemId);
+
+			if (menuEntry.getConsumer() != null)
+			{
+				try
+				{
+					menuEntry.getConsumer().accept(menuEntry);
+				}
+				catch (Exception ex)
+				{
+					client.getLogger().warn("exception in menu callback", ex);
+				}
+			}
+
+			if (event.getConsumed())
+			{
+				return;
+			}
+		}
+
+		if ("Automated".equals(event.getMenuOption()) && event.getMenuAction() == MenuAction.WALK)
+		{
+			client.setSelectedSceneTileX(event.getParam0());
+			client.setSelectedSceneTileY(event.getParam1());
+			client.setViewportWalking(true);
+
+			copy$menuAction(0, 0, CANCEL.getId(), 0, 0, "Automated", "", canvasX, canvasY);
+			return;
+		}
+
+		if ("Automated".equals(event.getMenuOption())
+				&& (event.getMenuAction() == MenuAction.CC_OP || event.getMenuAction() == MenuAction.CC_OP_LOW_PRIORITY)
+				&& event.getItemId() > -1)
+		{
+			client.invokeWidgetAction(event.getId(), event.getParam1(), event.getParam0(), event.getItemId(), event.getMenuTarget());
+		}
+		else
+		{
+			copy$menuAction(event.getParam0(), event.getParam1(),
+					event.getMenuAction() == UNKNOWN ? opcode : event.getMenuAction().getId(),
+					event.getId(), event.getItemId(), event.getMenuOption(), event.getMenuTarget(),
+					canvasX, canvasY);
+		}
+	}
+
+	@Inject
+	@Override
+	public MenuEntry createMenuEntry(String option, String target, int identifier, int opcode, int param1, int param2, boolean forceLeftClick)
+	{
+		return createMenuEntry(option, target, identifier, opcode, param1, param2, getItemId(identifier, opcode, param1, param2, -1), forceLeftClick);
 	}
 }
