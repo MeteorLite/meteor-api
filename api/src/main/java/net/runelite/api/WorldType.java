@@ -73,7 +73,10 @@ public enum WorldType
 	/**
 	 * Seasonal world type for leagues and seasonal deadman.
 	 */
-	SEASONAL(1 << 30);
+	SEASONAL(1 << 30),
+	PVP_ARENA(1 << 6),
+
+	QUEST_SPEEDRUNNING(1 << 8);
 
 	private final int mask;
 
