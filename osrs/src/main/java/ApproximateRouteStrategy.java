@@ -145,13 +145,13 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 		garbageValue = "1905973140"
 	)
 	@Export("widgetDefaultMenuAction")
-	static void widgetDefaultMenuAction(int var0, int var1, int var2, int var3, String var4) {
-		Widget var5 = JagexCache.getWidgetChild(var1, var2);
+	static void widgetDefaultMenuAction(int id, int param1, int param0, int itemId, String var4) {
+		Widget var5 = JagexCache.getWidgetChild(param1, param0);
 		if (var5 != null) {
 			if (var5.onOp != null) {
 				ScriptEvent var6 = new ScriptEvent();
 				var6.widget = var5;
-				var6.opIndex = var0;
+				var6.opIndex = id;
 				var6.targetName = var4;
 				var6.args = var5.onOp;
 				class348.runScriptEvent(var6);
@@ -164,87 +164,87 @@ public class ApproximateRouteStrategy extends RouteStrategy {
 
 			if (var11) {
 				int var8 = class97.getWidgetFlags(var5);
-				int var9 = var0 - 1;
+				int var9 = id - 1;
 				boolean var7 = (var8 >> var9 + 1 & 1) != 0;
 				if (var7) {
 					PacketBufferNode var10;
-					if (var0 == 1) {
+					if (id == 1) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field2964, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 2) {
+					if (id == 2) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field2983, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 3) {
+					if (id == 3) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field3012, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 4) {
+					if (id == 4) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field2936, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 5) {
+					if (id == 5) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field3027, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 6) {
+					if (id == 6) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field3014, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 7) {
+					if (id == 7) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field3017, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 8) {
+					if (id == 8) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field2959, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 9) {
+					if (id == 9) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field2974, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
-					if (var0 == 10) {
+					if (id == 10) {
 						var10 = class120.getPacketBufferNode(ClientPacket.field3010, Client.packetWriter.isaacCipher);
-						var10.packetBuffer.writeInt(var1);
-						var10.packetBuffer.writeShort(var2);
-						var10.packetBuffer.writeShort(var3);
+						var10.packetBuffer.writeInt(param1);
+						var10.packetBuffer.writeShort(param0);
+						var10.packetBuffer.writeShort(itemId);
 						Client.packetWriter.addNode(var10);
 					}
 
