@@ -52,8 +52,11 @@ public class InjectorValidator implements Validator
 		}
 
 		String status = wtf > 0 ? WTF : missing > 0 ? ERROR : OK;
-		if (missing > 0)
-			log.error("RSApiValidator completed. Status [{}] {} overridden methods, {} missing", status, okay, missing);
+		if (missing > 0) {
+			log.error("RSApiValidator completed. Status [{}] {} overridden methods, {} missing", status,
+					okay, missing);
+			throw new RuntimeException("Implementations are missing, exiting...");
+		}
 
 		// valid, ref to static final field
 		return status == OK;
