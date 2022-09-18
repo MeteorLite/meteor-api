@@ -66,7 +66,7 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 				}
 			}
 		}
-		else if (opcode == 2) setName(buffer.readStringCp1252NullTerminated());
+		else if (opcode == 2) setName(buffer.readString());
 		else if (opcode == 5)
 		{
 			var3 = buffer.readUnsignedByte();
@@ -111,7 +111,7 @@ public abstract class RSObjectCompositionMixin implements RSObjectComposition
 		else if (opcode == 39) setContrast(buffer.readByte() * 25);
 		else if (opcode >= 30 && opcode < 35)
 		{
-			getActions()[opcode - 30] = buffer.readStringCp1252NullTerminated();
+			getActions()[opcode - 30] = buffer.readString();
 			if (getActions()[opcode - 30].equalsIgnoreCase("Hidden"))
 			{
 				getActions()[opcode - 30] = null;
