@@ -36,4 +36,9 @@ public interface Buffer extends Node
 	int readShortLE();
 	void writeLong(long l);
 	void writeLongMedium(long l);
+	void writeShort(int i);
+	void writeByteAdd(int i);
+	void writeByteSub(int i);
+	void writeByteNeg(int i);
+	void writeString(String s);
 }
