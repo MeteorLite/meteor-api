@@ -88,14 +88,14 @@ public enum SlayerUnlock
 	VAMPYRE_EXTEND(49),
 	VAMPYRE_UNLOCK(50);
 
-	private @Varbit Varbits toggleVarbit;
+	private @Varbit int toggleVarbit;
 
 	SlayerUnlock(int index)
 	{
-		this(index, null);
+		this(index, -1);
 	}
 
-	SlayerUnlock(int index, Varbits toggleVarbit)
+	SlayerUnlock(int index, int toggleVarbit)
 	{
 		assert index == ordinal();
 		this.toggleVarbit = toggleVarbit;
@@ -117,12 +117,12 @@ public enum SlayerUnlock
 	{
 		if (isOwned(client))
 		{
-			if (toggleVarbit == null)
+			if (toggleVarbit == -1)
 			{
 				return true;
 			}
 
-			return client.getVarbitValue(toggleVarbit.getId()) == 0;
+			return client.getVarbitValue(toggleVarbit) == 0;
 		}
 		return false;
 	}

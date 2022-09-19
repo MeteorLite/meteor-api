@@ -458,7 +458,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public AccountType getAccountType()
 	{
-		int varbit = getVarbitValue(Varbits.ACCOUNT_TYPE.getId());
+		int varbit = getVarbitValue(Varbits.ACCOUNT_TYPE);
 
 		switch (varbit)
 		{
@@ -733,7 +733,7 @@ public abstract class RSClientMixin implements RSClient
 	@Override
 	public boolean isPrayerActive(Prayer prayer)
 	{
-		return getVarbitValue(prayer.getVarbit().getId()) == 1;
+		return getVarbitValue(prayer.getVarbit()) == 1;
 	}
 
 	/**

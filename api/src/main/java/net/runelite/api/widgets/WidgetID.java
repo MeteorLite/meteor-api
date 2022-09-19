@@ -132,6 +132,7 @@ public final class WidgetID
 	public static final int SKOTIZO_GROUP_ID = 308;
 	public static final int ENTERING_HOUSE_GROUP_ID = 71;
 	public static final int FULLSCREEN_CONTAINER_TLI = 165;
+	public static final int QUESTLIST_GROUP_ID = 399;
 	public static final int SKILLS_GROUP_ID = 320;
 	public static final int MUSIC_GROUP_ID = 239;
 	public static final int BARROWS_PUZZLE_GROUP_ID = 25;
@@ -164,6 +165,26 @@ public final class WidgetID
 	public static final int DUEL_INVENTORY_GROUP_ID = 421;
 	public static final int DUEL_INVENTORY_OTHER_GROUP_ID = 481;
 	public static final int TRAILBLAZER_AREAS_GROUP_ID = 512;
+	public static final int TEMPOROSS_GROUP_ID = 437;
+	public static final int CLAN_GROUP_ID = 701;
+	public static final int CLAN_GUEST_GROUP_ID = 702;
+	public static final int GRAVESTONE_GROUP_ID = 672;
+	public static final int POH_TREASURE_CHEST_INVENTORY_GROUP_ID = 674;
+	public static final int GROUP_IRON_GROUP_ID = 726;
+	public static final int GROUP_STORAGE_INVENTORY_GROUP_ID = 725;
+	public static final int GROUP_STORAGE_GROUP_ID = 724;
+	public static final int WILDERNESS_LOOT_CHEST = 742;
+	public static final int TRADE_WINDOW_GROUP_ID = 335;
+	public static final int TOA_REWARD_GROUP_ID = 771;
+	/**
+	 * toa party interface in the raid lobby
+	 */
+	public static final int TOA_PARTY_GROUP_ID = 773;
+	/**
+	 * toa raid interface in the raid
+	 */
+	public static final int TOA_RAID_GROUP_ID = 481;
+
 	public static final int DIALOG_MINIGAME_GROUP_ID = 229;
 	public static final int PEST_CONTROL_EXCHANGE_WINDOW_GROUP_ID = 243;
 	public static final int GAUNTLET_MAP_GROUP_ID = 638;
@@ -178,15 +199,7 @@ public final class WidgetID
 	public static final int DIALOG_NOTIFICATION_GROUP_ID = 229;
 	public static final int DIALOG_SPRITE2_ID = 11;
 	public static final int MULTISKILL_MENU_GROUP_ID = 270;
-	public static final int TEMPOROSS_GROUP_ID = 437;
-	public static final int CLAN_GROUP_ID = 701;
-	public static final int CLAN_GUEST_GROUP_ID = 702;
-	public static final int GRAVESTONE_GROUP_ID = 672;
-	public static final int POH_TREASURE_CHEST_INVENTORY_GROUP_ID = 674;
-	public static final int GROUP_IRON_GROUP_ID = 726;
-	public static final int GROUP_STORAGE_INVENTORY_GROUP_ID = 725;
-	public static final int GROUP_STORAGE_GROUP_ID = 724;
-	public static final int WILDERNESS_LOOT_CHEST = 742;
+
 
 	static class WorldMap
 	{
@@ -310,6 +323,7 @@ public final class WidgetID
 
 	static class GroupStorage
 	{
+		static final int UI = 2;
 		static final int ITEM_CONTAINER = 10;
 	}
 
@@ -345,7 +359,6 @@ public final class WidgetID
 
 	static class Shop
 	{
-		static final int ITEMS_CONTAINER = 2;
 		static final int INVENTORY_ITEM_CONTAINER = 0;
 	}
 
@@ -394,28 +407,12 @@ public final class WidgetID
 		static final int INVENTORY_ITEM_CONTAINER = 0;
 	}
 
-	static class Equipment
-	{
-		static final int HELMET = 15;
-		static final int CAPE = 16;
-		static final int AMULET = 17;
-		static final int WEAPON = 18;
-		static final int BODY = 19;
-		static final int SHIELD = 20;
-		static final int LEGS = 21;
-		static final int GLOVES = 22;
-		static final int BOOTS = 23;
-		static final int RING = 24;
-		static final int AMMO = 25;
-
-		static final int INVENTORY_ITEM_CONTAINER = 0;
-	}
-
 	static class Emotes
 	{
 		static final int EMOTE_WINDOW = 0;
-		static final int EMOTE_CONTAINER = 1;
-		static final int EMOTE_SCROLLBAR = 2;
+		static final int EMOTE_SCROLL_CONTAINER = 1;
+		static final int EMOTE_CONTAINER = 2;
+		static final int EMOTE_SCROLLBAR = 4;
 	}
 
 	static class Cluescroll
@@ -426,20 +423,19 @@ public final class WidgetID
 
 	static class Minimap
 	{
-		static final int XP_ORB = 1;
-		static final int HEALTH_ORB = 2;
-		static final int PRAYER_ORB = 13;
-		static final int QUICK_PRAYER_ORB = 15; // Has the "Quick-prayers" name
-		static final int PRAYER_ORB_TEXT = 16;
-		static final int RUN_ORB = 21;
-		static final int TOGGLE_RUN_ORB = 23; // Has the "Toggle run" name
-		static final int RUN_ORB_TEXT = 24;
-		static final int SPEC_ORB = 29;
-		static final int SPEC_CLICKBOX = 31;
-		static final int WORLDMAP_ORB = 43;
-		static final int WIKI_BANNER_PARENT = 44;
-		static final int WIKI_BANNER = 45;
-		static final int WORLDMAP_OPTIONS = 48;
+		static final int XP_ORB = 5;
+		static final int HEALTH_ORB = 6;
+		static final int PRAYER_ORB = 17;
+		static final int QUICK_PRAYER_ORB = 19; // Has the "Quick-prayers" name
+		static final int PRAYER_ORB_TEXT = 20;
+		static final int RUN_ORB = 25;
+		static final int TOGGLE_RUN_ORB = 27; // Has the "Toggle run" name
+		static final int RUN_ORB_TEXT = 28;
+		static final int SPEC_ORB = 33;
+		static final int WORLDMAP_ORB = 48;
+		static final int WIKI_BANNER_PARENT = 49;
+		static final int WIKI_BANNER = 50;
+		static final int WORLDMAP_OPTIONS = 53;
 	}
 
 	static class LoginClickToPlayScreen
@@ -524,6 +520,8 @@ public final class WidgetID
 		static final int MAGIC_ICON = 71;
 		static final int INTERFACE_CONTAINER = 72;
 		static final int INVENTORY_CONTAINER = 78;
+		static final int CHATBOX_PARENT = 94;
+		static final int INVENTORY_PARENT = 95;
 	}
 
 	static class ResizableViewportBottomLine
@@ -551,6 +549,10 @@ public final class WidgetID
 		static final int MAGIC_ICON = 64;
 		static final int INTERFACE_CONTAINER = 69;
 		static final int INVENTORY_CONTAINER = 75;
+		static final int CHATBOX_PARENT = 91;
+		static final int TABS1 = 92;
+		static final int TABS2 = 93;
+		static final int INVENTORY_PARENT = 94;
 	}
 
 	static class Chatbox
@@ -726,6 +728,17 @@ public final class WidgetID
 		static final int POINTS_INFOBOX = 3;
 	}
 
+	static class Health
+	{
+		static final int HEALTHBAR_CONTAINER = 5;
+		static final int HEALTHBAR_TEXT = 20;
+	}
+
+	static class ChambersOfXericStorageUnitPrivate
+	{
+		static final int PRIVATE_CHEST_ITEM_CONTAINER = 6;
+	}
+
 	static class Tob
 	{
 		static final int PARTY_INTERFACE = 5;
@@ -835,10 +848,10 @@ public final class WidgetID
 
 	static class Minigames
 	{
-		static final int TELEPORT_BUTTON = 26;
+		static final int TELEPORT_BUTTON = 30;
 	}
 
-	public static class StandardSpellBook
+	static class StandardSpellBook
 	{
 		static final int LUMBRIDGE_HOME_TELEPORT = 6;
 		static final int KOUREND_HOME_TELEPORT = 4;
@@ -853,6 +866,7 @@ public final class WidgetID
 	static class LunarSpellBook
 	{
 		static final int LUNAR_HOME_TELEPORT = 101;
+		static final int FERTILE_SOIL = 126;
 	}
 
 	static class ArceuusSpellBook
@@ -889,11 +903,18 @@ public final class WidgetID
 		static final int CONTAINER = 2;
 	}
 
+	static class QuestList
+	{
+		static final int BOX = 0;
+		static final int CONTAINER = 2;
+	}
+
 	static class Music
 	{
 		static final int CONTAINER = 0;
-		static final int LIST = 3;
-		static final int SCROLLBAR = 4;
+		static final int SCROLL_CONTAINER = 3;
+		static final int LIST = 5;
+		static final int SCROLLBAR = 6;
 	}
 
 	static class Barrows_Puzzle
@@ -983,7 +1004,52 @@ public final class WidgetID
 		static final int CONTAINER = 2;
 	}
 
-	// Also used for many other interfaces!
+	static class TrailblazerAreas
+	{
+		static final int TELEPORT = 59;
+	}
+
+	static class TemporossStatus
+	{
+		static final int STATUS_INDICATOR = 2;
+	}
+
+	static class Clan
+	{
+		static final int LAYER = 0;
+		static final int HEADER = 1;
+		static final int MEMBERS = 6;
+	}
+
+	static class ClanGuest
+	{
+		static final int LAYER = 0;
+		static final int HEADER = 1;
+		static final int MEMBERS = 6;
+	}
+
+	static class Trade
+	{
+		static final int HEADER = 31;
+	}
+
+	static class Equipment
+	{
+		static final int HELMET = 15;
+		static final int CAPE = 16;
+		static final int AMULET = 17;
+		static final int WEAPON = 18;
+		static final int BODY = 19;
+		static final int SHIELD = 20;
+		static final int LEGS = 21;
+		static final int GLOVES = 22;
+		static final int BOOTS = 23;
+		static final int RING = 24;
+		static final int AMMO = 25;
+
+		static final int INVENTORY_ITEM_CONTAINER = 0;
+	}
+
 	static class BankPin
 	{
 		static final int CONTAINER = 0;
@@ -1005,16 +1071,6 @@ public final class WidgetID
 		static final int BUTTON_8 = 30;
 		static final int BUTTON_9 = 32;
 		static final int BUTTON_10 = 34;
-	}
-
-	static class TrailblazerAreas
-	{
-		static final int TELEPORT = 59;
-	}
-
-	static class TemporossStatus
-	{
-		static final int STATUS_INDICATOR = 2;
 	}
 
 	static class DialogNotification
@@ -1344,19 +1400,5 @@ public final class WidgetID
 	static class GauntletMap
 	{
 		static final int CONTAINER = 4;
-	}
-
-	static class Clan
-	{
-		static final int LAYER = 0;
-		static final int HEADER = 1;
-		static final int MEMBERS = 6;
-	}
-
-	static class ClanGuest
-	{
-		static final int LAYER = 0;
-		static final int HEADER = 1;
-		static final int MEMBERS = 6;
 	}
 }
