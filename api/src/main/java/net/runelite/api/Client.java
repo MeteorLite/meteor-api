@@ -708,11 +708,14 @@ public interface Client extends GameEngine
 	void insertMenuItem(String action, String target, int opcode, int identifier, int argument1, int argument2, boolean forceLeftClick);
 	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1)
 	{
-		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1);
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, -1, -1);
 	}
 
-	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
-			int screenX, int screenY);
+	default void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
+			int screenX, int screenY)
+	{
+		invokeMenuAction(option, target, identifier, opcode, param0, param1, -1, screenX, screenY);
+	}
 
 	void invokeMenuAction(String option, String target, int identifier, int opcode, int param0, int param1,
 			int itemId, int screenX, int screenY);
